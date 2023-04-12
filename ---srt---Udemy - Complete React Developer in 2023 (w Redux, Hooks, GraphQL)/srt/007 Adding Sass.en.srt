@@ -1,0 +1,379 @@
+1
+00:00:00,450 --> 00:00:01,470
+Welcome back, everyone.
+
+2
+00:00:02,010 --> 00:00:06,750
+In this video, we are going to tackle learning how to write SAS rather than CSI.
+
+3
+00:00:07,320 --> 00:00:10,430
+SAS is really just a much more efficient way of writing courses.
+
+4
+00:00:10,530 --> 00:00:12,150
+And let me break down how it works.
+
+5
+00:00:12,960 --> 00:00:18,810
+So first, we need to actually load in the ability for our application to consume SAS files.
+
+6
+00:00:19,320 --> 00:00:24,090
+In order to do that, we need to go back to our application inside of a terminal and we're just going
+
+7
+00:00:24,090 --> 00:00:25,890
+to run yarn, add SAS.
+
+8
+00:00:27,150 --> 00:00:34,800
+Luckily for us, create React app by default, when you include the SAS Library will set your application
+
+9
+00:00:34,800 --> 00:00:38,970
+in such a way that it will be able to render SAS styling.
+
+10
+00:00:40,260 --> 00:00:45,000
+We're going to break down much later how you can do that yourself with Webpack, because it's really
+
+11
+00:00:45,000 --> 00:00:50,280
+what it's done is that it's set up these configurations within the underlying web pack so that you can
+
+12
+00:00:50,280 --> 00:00:53,760
+actually leverage SAS files inside of your application.
+
+13
+00:00:54,920 --> 00:00:58,700
+So now that we have it fully installed, we are going to go back to our obligation.
+
+14
+00:00:59,210 --> 00:01:01,430
+And now what I can do is I can make a new file.
+
+15
+00:01:01,970 --> 00:01:08,480
+So for now, I'm just going to call it let's actually call it categories dot styles, dot SC.
+
+16
+00:01:09,500 --> 00:01:13,370
+So access is the SAS file type.
+
+17
+00:01:14,910 --> 00:01:15,900
+Once you have this in.
+
+18
+00:01:17,410 --> 00:01:19,900
+What is SAS versus regular CSIS?
+
+19
+00:01:20,680 --> 00:01:24,220
+So in order for this to work, let's look at an example.
+
+20
+00:01:24,880 --> 00:01:29,740
+Here we have a div and this class name is categories container.
+
+21
+00:01:31,110 --> 00:01:38,970
+If I had styling four categories container here, let's say, for example, I wanted to make the background
+
+22
+00:01:38,970 --> 00:01:40,050
+color red.
+
+23
+00:01:41,760 --> 00:01:50,190
+If I wanted now to target specifically the category container inside of categories container.
+
+24
+00:01:51,730 --> 00:01:58,000
+The way that I would do that in regular cases is, I would say first give me the categories container
+
+25
+00:01:58,000 --> 00:02:02,680
+class element, then go in and target the category.
+
+26
+00:02:04,960 --> 00:02:05,890
+Container.
+
+27
+00:02:07,530 --> 00:02:12,240
+And then inside of there, I could do something where I set the background color to green.
+
+28
+00:02:14,430 --> 00:02:21,030
+This way now I'm essentially saying, hey, I have styling four categories container and anything nested
+
+29
+00:02:21,030 --> 00:02:21,430
+within.
+
+30
+00:02:22,020 --> 00:02:27,030
+I want you to target it knowing that my KSAZ essentially is going to target it like so go into categories
+
+31
+00:02:27,030 --> 00:02:30,060
+container and then get the category container and then apply the styling.
+
+32
+00:02:30,600 --> 00:02:36,750
+If we want even another step in and try to target the category body container within this.
+
+33
+00:02:38,270 --> 00:02:39,860
+I would have to go even further.
+
+34
+00:02:40,400 --> 00:02:45,380
+Categories container, category container and then category body container.
+
+35
+00:02:45,680 --> 00:02:47,690
+And here I would do a background color.
+
+36
+00:02:50,050 --> 00:02:51,190
+Of Blue, let's say.
+
+37
+00:02:52,420 --> 00:02:54,400
+So just to show you let's just.
+
+38
+00:02:55,530 --> 00:02:57,720
+Actually import in.
+
+39
+00:02:59,400 --> 00:03:05,160
+This styling file that we just made category styles that asks us if we save this and now we go back
+
+40
+00:03:05,160 --> 00:03:07,890
+to our application, we see our styling.
+
+41
+00:03:08,640 --> 00:03:15,180
+It might be actually a little bit difficult because we don't have enough, I guess, like padding so
+
+42
+00:03:15,180 --> 00:03:15,750
+that we can see it.
+
+43
+00:03:15,750 --> 00:03:17,070
+So let's just make this more clear.
+
+44
+00:03:17,070 --> 00:03:18,570
+Let's do padding like this.
+
+45
+00:03:19,560 --> 00:03:20,850
+Let's just add a.
+
+46
+00:03:21,850 --> 00:03:28,120
+Padding value so that we can see everything that we've just written, so we save this go back.
+
+47
+00:03:29,400 --> 00:03:35,520
+There we see that the red on the outside is the container, we see the green on the inside is the inside
+
+48
+00:03:35,520 --> 00:03:38,610
+target, and then of course, this body container is the blue.
+
+49
+00:03:39,670 --> 00:03:41,920
+So this is how you would normally write your CIUSSS.
+
+50
+00:03:43,570 --> 00:03:45,700
+SAS, however, makes this much easier.
+
+51
+00:03:46,270 --> 00:03:53,260
+Instead of writing all this nesting on duplicated styling like this, it actually allows you to directly
+
+52
+00:03:53,260 --> 00:03:56,980
+nest these values within the inferred parent.
+
+53
+00:03:57,820 --> 00:04:03,840
+So here are categories container I can just write my category container code like this.
+
+54
+00:04:04,630 --> 00:04:08,410
+So category container knows, oh, I'm nested inside categories container.
+
+55
+00:04:08,500 --> 00:04:15,850
+You want to target category container within this specific parent class, so only give me the styling
+
+56
+00:04:15,850 --> 00:04:24,130
+if this class is literally a child of this class, which is what the previous code we had written was
+
+57
+00:04:24,130 --> 00:04:24,430
+doing.
+
+58
+00:04:25,150 --> 00:04:30,610
+Similarly, if you want the same thing here, you would move this inside of here.
+
+59
+00:04:31,540 --> 00:04:37,900
+So now it knows that only apply the styling to this category body container if this is a child of category
+
+60
+00:04:37,900 --> 00:04:42,820
+container and if category container is also a child of category is container.
+
+61
+00:04:43,330 --> 00:04:44,500
+So now if I save this.
+
+62
+00:04:45,590 --> 00:04:47,390
+Again, we refresh.
+
+63
+00:04:49,330 --> 00:04:50,590
+We see our code still works.
+
+64
+00:04:50,830 --> 00:04:51,790
+Everything here still works.
+
+65
+00:04:52,690 --> 00:04:55,000
+This is really the great advantage of SAS.
+
+66
+00:04:55,420 --> 00:04:59,710
+It makes our CSC code much more legible and a lot easier to write.
+
+67
+00:04:59,980 --> 00:05:03,520
+It's way more intuitive when you're reading it, and it's really self-contained.
+
+68
+00:05:04,150 --> 00:05:08,380
+And SAS is pretty much the format of CSIS that we're going to write for the rest of the course.
+
+69
+00:05:08,950 --> 00:05:14,800
+So now that you have your SAS and you understand the differences between SAS and CSC, unfortunately
+
+70
+00:05:14,800 --> 00:05:17,410
+again, this is not a success heavy course.
+
+71
+00:05:17,800 --> 00:05:23,380
+So we are really just going to import in all of our guests that I have pre-written for you or all of
+
+72
+00:05:23,380 --> 00:05:24,310
+the SAS, I should say.
+
+73
+00:05:25,000 --> 00:05:30,880
+So inside of your resources folder, I want you to copy the SAS code in the SAS file and paste it in
+
+74
+00:05:30,880 --> 00:05:31,150
+here.
+
+75
+00:05:31,180 --> 00:05:31,930
+So do that now.
+
+76
+00:05:33,980 --> 00:05:37,800
+So once you've pasted it all in, I'm going to quickly go over the structure.
+
+77
+00:05:37,820 --> 00:05:43,940
+I'm not going to really go over a lot of the CSIS itself because there's a lot of CIUSSS and going through
+
+78
+00:05:43,940 --> 00:05:47,870
+all of the different variations is really going to take up way too much time.
+
+79
+00:05:47,870 --> 00:05:52,820
+And we really want to focus on the react, not necessarily the CIUSSS, but primarily the main thing
+
+80
+00:05:52,820 --> 00:05:58,940
+I want you to notice is I did not nest the category container class within the category's container.
+
+81
+00:05:59,450 --> 00:06:05,270
+The reason for this is because we know that the category container is going to be its own component.
+
+82
+00:06:05,840 --> 00:06:10,430
+Typically, when we saw this with our monster's Rolodex, it were mapping through this were most likely
+
+83
+00:06:10,430 --> 00:06:13,280
+going to use this as its own component.
+
+84
+00:06:13,970 --> 00:06:20,270
+One quick thing that we didn't do that we want to make sure we do is leverage the ID and append that
+
+85
+00:06:20,390 --> 00:06:22,730
+onto this as the key.
+
+86
+00:06:23,180 --> 00:06:26,330
+Because as we remember, whenever we map the things, we want to use the ID.
+
+87
+00:06:26,510 --> 00:06:27,530
+So that's just one quick thing.
+
+88
+00:06:28,280 --> 00:06:32,210
+But other than that, all of our source code is now in.
+
+89
+00:06:32,510 --> 00:06:35,840
+So let's just save this and let's go back to our application.
+
+90
+00:06:37,030 --> 00:06:38,090
+And let's refresh.
+
+91
+00:06:38,110 --> 00:06:40,120
+We should see this warning go away, which we do.
+
+92
+00:06:40,840 --> 00:06:45,970
+But here we now see this looks much closer to what we have in our final product.
+
+93
+00:06:46,940 --> 00:06:53,210
+So now that we have this different styling, what we want to do next is we want to actually upend the
+
+94
+00:06:53,210 --> 00:06:53,960
+background image.
+
+95
+00:06:54,080 --> 00:06:55,670
+So let's do that in the next video.

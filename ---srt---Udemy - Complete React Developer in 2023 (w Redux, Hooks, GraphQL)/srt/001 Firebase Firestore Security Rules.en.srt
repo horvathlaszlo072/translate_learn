@@ -1,0 +1,335 @@
+1
+00:00:00,210 --> 00:00:01,140
+Welcome back, everyone.
+
+2
+00:00:01,890 --> 00:00:07,320
+In this video, I want to talk about Firebase Security roles inside of your Firebase console.
+
+3
+00:00:07,830 --> 00:00:10,290
+Go into your Firestar database.
+
+4
+00:00:11,220 --> 00:00:14,430
+Inside of this database, you'll notice that you have a rules tab.
+
+5
+00:00:14,970 --> 00:00:19,980
+When you click this Rules Tab, your version of your rules may look different from my version.
+
+6
+00:00:20,460 --> 00:00:26,340
+In fact, you will see inside of your version, most likely this list of original rules where every
+
+7
+00:00:26,340 --> 00:00:29,550
+single document is readable and readable.
+
+8
+00:00:30,420 --> 00:00:33,780
+So here, let's discuss how these rules work and the format.
+
+9
+00:00:35,340 --> 00:00:41,130
+First off, looking at the left hand side, you will notice that the history is being tracked of all
+
+10
+00:00:41,130 --> 00:00:45,150
+of the changes between how the rules have been modified.
+
+11
+00:00:46,120 --> 00:00:51,220
+My ruleset is going to be different from your rule set because students may potentially accidentally
+
+12
+00:00:51,220 --> 00:00:59,500
+download my actual configuration that allows their application to access my version of this Firebase
+
+13
+00:00:59,500 --> 00:01:00,010
+database.
+
+14
+00:01:00,550 --> 00:01:02,830
+So as a result, I have to make it very strict.
+
+15
+00:01:03,610 --> 00:01:11,470
+I essentially only allow users to get users or read and write to them, but I do not allow them to update
+
+16
+00:01:11,470 --> 00:01:14,100
+it unless that is their own student account.
+
+17
+00:01:15,120 --> 00:01:19,920
+As for matching, I match every document that I allowed anyone to read.
+
+18
+00:01:20,070 --> 00:01:22,910
+Just in case, once again, you need to read from my database.
+
+19
+00:01:22,920 --> 00:01:29,190
+But other than that, I do not allow any users to create or to write to this database.
+
+20
+00:01:30,000 --> 00:01:32,790
+But let me go through these rules in a very simple way.
+
+21
+00:01:34,550 --> 00:01:41,540
+Essentially from the top level rules are designed to be a series of match statements.
+
+22
+00:01:42,410 --> 00:01:44,210
+So here, if you look inside.
+
+23
+00:01:45,190 --> 00:01:46,810
+We're in Rules Version two.
+
+24
+00:01:47,080 --> 00:01:48,190
+I don't know the future.
+
+25
+00:01:48,190 --> 00:01:52,390
+Firebase will update to a newer version of the rules, but right now the rules is version two.
+
+26
+00:01:53,020 --> 00:01:57,100
+The service is for Cloud Fire Store, which is the database that we're running.
+
+27
+00:01:58,280 --> 00:02:03,200
+This statement match matches a path to a series of documents.
+
+28
+00:02:03,650 --> 00:02:07,780
+So of course, it starts with match databases and then the general database.
+
+29
+00:02:07,790 --> 00:02:13,700
+So these angular brackets designate that any database inside of the database, and then the following
+
+30
+00:02:13,700 --> 00:02:16,640
+documents are going to abide by the following rules.
+
+31
+00:02:17,390 --> 00:02:23,960
+Now to begin, we want only users to be able to access their own user profile, and we want users only
+
+32
+00:02:23,960 --> 00:02:25,880
+to be able to modify their own profile.
+
+33
+00:02:26,390 --> 00:02:30,360
+So we're going to match to that database, which is our users database.
+
+34
+00:02:30,380 --> 00:02:33,320
+So let's say slash users and then slash.
+
+35
+00:02:33,650 --> 00:02:40,130
+And in here you can isolate down to the actual user ID by saying user ID like.
+
+36
+00:02:40,130 --> 00:02:46,400
+So Firebase knows that when you add this identifier ID, it will cast that variable so that it will
+
+37
+00:02:46,400 --> 00:02:53,810
+know that if you're trying to access a specific user document by the ID, well now you can only access
+
+38
+00:02:53,810 --> 00:02:55,670
+it inside based on these rules.
+
+39
+00:02:56,150 --> 00:03:03,860
+So we can say that will allow anybody to read well, allow anybody to get and will allow people to create.
+
+40
+00:03:04,730 --> 00:03:10,670
+So creating, reading, getting no problem, but only you're allowed to write to it.
+
+41
+00:03:10,670 --> 00:03:13,760
+As in you're allowed to update it if.
+
+42
+00:03:14,710 --> 00:03:21,370
+The request, which has a special keyword inside of these rules, meaning that with every request that
+
+43
+00:03:21,370 --> 00:03:26,020
+gets sent to Firebase, there's a couple of things on this special keyword that comes with the request.
+
+44
+00:03:26,590 --> 00:03:34,480
+I'm going to say auth, meaning that this user's authenticated and only if they're authenticated.
+
+45
+00:03:34,660 --> 00:03:42,710
+So I'm going to say that if this does not equal not only if they're authenticated and the request asks
+
+46
+00:03:43,120 --> 00:03:51,100
+you ID meaning that their authentication identifier is equal to the user ID only.
+
+47
+00:03:51,100 --> 00:03:56,380
+If these are true can the user actually write to this user ID.
+
+48
+00:03:58,170 --> 00:04:06,330
+Now, as far as the categories go, we can make a new line and I can say match slash categories, which
+
+49
+00:04:06,330 --> 00:04:09,480
+is the name of our categories database in fire store.
+
+50
+00:04:10,460 --> 00:04:16,550
+And now if I do a wild card, meaning that I access any individual category document.
+
+51
+00:04:17,150 --> 00:04:19,130
+Remember, you cannot target collections.
+
+52
+00:04:19,130 --> 00:04:21,200
+You can only target documents.
+
+53
+00:04:21,200 --> 00:04:23,050
+You have to write this slash.
+
+54
+00:04:23,360 --> 00:04:25,250
+You're not allowed to just put this.
+
+55
+00:04:25,610 --> 00:04:31,130
+You have to do either with an ID or with just the base.
+
+56
+00:04:32,460 --> 00:04:40,140
+Variable, essentially through doing this wild card here, I'm going to allow reading only because I
+
+57
+00:04:40,140 --> 00:04:44,040
+don't want anybody to be able to add categories, modify categories or anything like that.
+
+58
+00:04:45,030 --> 00:04:53,760
+I can allow myself to write by saying allow writes if once again request does not equal no, and I can
+
+59
+00:04:53,760 --> 00:04:58,320
+say request to off uid equals.
+
+60
+00:04:58,530 --> 00:05:02,340
+And then I can paste in here the uid for my specific user.
+
+61
+00:05:02,610 --> 00:05:07,830
+If I can find my user that I want to be allowed to actually make write requests, I would just paste
+
+62
+00:05:07,830 --> 00:05:11,460
+that in there, but I'm not going to put that here in case anybody sees it.
+
+63
+00:05:12,060 --> 00:05:13,620
+So I can just say allow, read.
+
+64
+00:05:14,660 --> 00:05:16,280
+Now, one more thing I want to mention.
+
+65
+00:05:17,000 --> 00:05:24,470
+If in the future I were to add additional properties or additional tables into my database, I may forget
+
+66
+00:05:24,470 --> 00:05:28,970
+to update the rules here and I want to match everything else that does get added.
+
+67
+00:05:29,450 --> 00:05:35,750
+So to do that, I'm just going to say match slash and then document equals and then two cards.
+
+68
+00:05:36,410 --> 00:05:42,170
+This is enough to tell Firebase, Hey, I want to match every other document inside that has not already
+
+69
+00:05:42,200 --> 00:05:44,660
+had rules defined for it above, as we see.
+
+70
+00:05:45,170 --> 00:05:48,350
+And then here, I'm just going to allow read for all of those ones.
+
+71
+00:05:49,280 --> 00:05:51,290
+And this is my updated rules.
+
+72
+00:05:51,860 --> 00:05:56,270
+I can publish these and now my firebase is more secure.
+
+73
+00:05:57,020 --> 00:06:00,670
+I'm going to link for you additional documentation to these rules.
+
+74
+00:06:00,680 --> 00:06:02,540
+You can actually get pretty happy with them.
+
+75
+00:06:02,750 --> 00:06:04,880
+But for our application, it's pretty simple.
+
+76
+00:06:04,910 --> 00:06:10,370
+There's not additional that much to learn about it, but if you really want it to get really verbose
+
+77
+00:06:10,370 --> 00:06:11,720
+with it, you definitely can.
+
+78
+00:06:12,500 --> 00:06:18,260
+You can even try and implement a cart feature where we store the cart inside a fire store and remember
+
+79
+00:06:18,260 --> 00:06:21,740
+only the user who owns that cart should be allowed to access it.
+
+80
+00:06:22,550 --> 00:06:24,960
+If you wanted to access it, how would you do so?
+
+81
+00:06:24,980 --> 00:06:29,420
+Again, you may have to look through the docs to figure out how to implement that feature, but it would
+
+82
+00:06:29,420 --> 00:06:31,160
+be an interesting feature to try out.
+
+83
+00:06:32,330 --> 00:06:33,740
+So that's it for Firebase Rules.
+
+84
+00:06:34,070 --> 00:06:35,030
+I'll see you in the next video.

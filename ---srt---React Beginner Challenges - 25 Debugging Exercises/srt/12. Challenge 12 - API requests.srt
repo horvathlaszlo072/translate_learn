@@ -1,0 +1,579 @@
+1
+00:00:00,690 --> 00:00:06,450
+All right, so for this challenge, you could see here we have GitHub card repos are not showing any
+
+2
+00:00:06,450 --> 00:00:06,900
+data.
+
+3
+00:00:06,900 --> 00:00:08,010
+Please see if you could fix.
+
+4
+00:00:08,460 --> 00:00:16,050
+So you could see here we have this GitHub repos display here and we're going to go and open up the sandbox
+
+5
+00:00:16,050 --> 00:00:17,190
+to get a full view.
+
+6
+00:00:18,890 --> 00:00:25,340
+OK, so as you can see here, this is a fairly involved example, we have a lot going on here in the
+
+7
+00:00:25,340 --> 00:00:32,290
+main app and then also we have some folders over here with an API components and some styles as well.
+
+8
+00:00:32,780 --> 00:00:34,220
+So the issue.
+
+9
+00:00:35,350 --> 00:00:41,710
+That we are experiencing is that the cards are not showing any data, so you can see here we have some
+
+10
+00:00:41,710 --> 00:00:43,360
+data, it looks like being shown.
+
+11
+00:00:43,360 --> 00:00:49,120
+But at the end of the day, when we type something in, you could see here we are getting some cards
+
+12
+00:00:49,120 --> 00:00:49,840
+back basically.
+
+13
+00:00:49,840 --> 00:00:55,720
+So when we do type this in, we really want to figure out first exactly what's going on.
+
+14
+00:00:55,720 --> 00:00:55,930
+Right.
+
+15
+00:00:55,940 --> 00:00:59,440
+We see we can experience the error here.
+
+16
+00:00:59,470 --> 00:01:02,230
+We could see that we don't have any names found here.
+
+17
+00:01:02,650 --> 00:01:05,610
+And we see we have some mystery data on the bottom.
+
+18
+00:01:05,890 --> 00:01:12,500
+So first thing we really want to understand is what is actually going wrong here and the intention here.
+
+19
+00:01:12,550 --> 00:01:18,160
+Now, I know it's kind of a complicated example, but the intention with this challenge specifically
+
+20
+00:01:18,160 --> 00:01:22,270
+was to understand why the names here were not being shown on the cards.
+
+21
+00:01:22,570 --> 00:01:22,840
+Right.
+
+22
+00:01:22,840 --> 00:01:28,750
+And as well as this section here now you can see there is part of this data being shown here, but other
+
+23
+00:01:28,750 --> 00:01:30,220
+parts of the data are missing.
+
+24
+00:01:30,730 --> 00:01:33,970
+It doesn't look like any of this functionality is broken.
+
+25
+00:01:34,150 --> 00:01:35,290
+It looks like this app works.
+
+26
+00:01:35,290 --> 00:01:36,810
+It's just that there's data missing.
+
+27
+00:01:37,210 --> 00:01:42,940
+So let's continue on our investigation with identifying what components are actually causing this issue.
+
+28
+00:01:43,330 --> 00:01:44,260
+Let's check our console.
+
+29
+00:01:44,260 --> 00:01:49,450
+Of course, as you can see, we are getting just some logs here, but no errors.
+
+30
+00:01:50,740 --> 00:01:56,200
+So what I want to do first, actually, is find the components that are actually being rendered in here,
+
+31
+00:01:56,230 --> 00:01:58,160
+so let's try to find that card first.
+
+32
+00:01:58,540 --> 00:02:05,320
+So if I go to my react dev tools, it's probably better to open this in a separate tab.
+
+33
+00:02:05,320 --> 00:02:08,790
+So let's just go ahead and click open in new window over here.
+
+34
+00:02:09,940 --> 00:02:12,040
+And so now you can see we have the whole app open up.
+
+35
+00:02:12,280 --> 00:02:13,780
+We're going to open up our dev tools.
+
+36
+00:02:15,040 --> 00:02:17,170
+And when we open up our dev tools.
+
+37
+00:02:18,030 --> 00:02:24,540
+We can go to our react component, explore here, and we could just find these components here so you
+
+38
+00:02:24,540 --> 00:02:29,370
+can see we find the card and then we could go out and find specific things.
+
+39
+00:02:29,370 --> 00:02:32,350
+So let's actually find the specific data point.
+
+40
+00:02:32,370 --> 00:02:33,120
+So here we go.
+
+41
+00:02:33,120 --> 00:02:34,290
+We have No-Name found.
+
+42
+00:02:34,590 --> 00:02:35,070
+Here we go.
+
+43
+00:02:35,070 --> 00:02:38,440
+And then we can go over here to view source for this component.
+
+44
+00:02:39,660 --> 00:02:43,740
+So we were brought into this with stuff which isn't very helpful.
+
+45
+00:02:43,770 --> 00:02:45,840
+This doesn't tell us really what's going on.
+
+46
+00:02:45,870 --> 00:02:48,090
+This is a library inside of material.
+
+47
+00:02:48,130 --> 00:02:48,510
+Why?
+
+48
+00:02:48,870 --> 00:02:52,770
+So this is kind of a problem with these styled component wrappers.
+
+49
+00:02:52,780 --> 00:02:56,880
+They don't really give you the direct component and these debuggers.
+
+50
+00:02:57,180 --> 00:02:58,830
+So we're going to do is we're going to actually go up.
+
+51
+00:03:00,470 --> 00:03:05,630
+A little bit to find one that doesn't have this with Styles thing here, right?
+
+52
+00:03:05,660 --> 00:03:11,390
+So if we go up one more, then we find this one and we are actually brought into what looks like our
+
+53
+00:03:11,390 --> 00:03:11,930
+code, right?
+
+54
+00:03:12,590 --> 00:03:14,800
+Well, it's actually materialize code.
+
+55
+00:03:14,810 --> 00:03:18,830
+So this doesn't help us either because we want to debug our code.
+
+56
+00:03:18,830 --> 00:03:19,110
+Right.
+
+57
+00:03:19,790 --> 00:03:21,830
+So let's go one step above.
+
+58
+00:03:22,220 --> 00:03:22,910
+We have paper.
+
+59
+00:03:22,910 --> 00:03:23,630
+We have card.
+
+60
+00:03:23,750 --> 00:03:24,680
+Simple card.
+
+61
+00:03:26,240 --> 00:03:29,100
+Let's go here, see if simple card can help us.
+
+62
+00:03:30,320 --> 00:03:30,860
+So here we go.
+
+63
+00:03:30,890 --> 00:03:33,920
+Simple card is a function inside of card.
+
+64
+00:03:34,070 --> 00:03:37,430
+Jass cards is minified here.
+
+65
+00:03:37,430 --> 00:03:42,520
+So we're going to go and find the actual thing here with control or command post.
+
+66
+00:03:43,100 --> 00:03:47,660
+And then we're going to find for card games and then we're going to actually pick the source, mapped
+
+67
+00:03:47,660 --> 00:03:49,620
+one and then we're going to clean up.
+
+68
+00:03:49,620 --> 00:03:51,260
+We're going to close our other tabs.
+
+69
+00:03:53,060 --> 00:04:01,250
+So now we found the card contents, so now we could start to debug well, what's going on in here?
+
+70
+00:04:01,610 --> 00:04:07,850
+Well, you could see No-Name found is just written here and cannot find language is written here as
+
+71
+00:04:07,850 --> 00:04:08,240
+well.
+
+72
+00:04:08,570 --> 00:04:12,920
+So you could see these are just things that are written in the code, it looks like just in completed
+
+73
+00:04:13,610 --> 00:04:14,150
+project.
+
+74
+00:04:14,160 --> 00:04:14,420
+Right.
+
+75
+00:04:15,230 --> 00:04:17,550
+So let's actually put a breakpoint here.
+
+76
+00:04:18,260 --> 00:04:20,270
+So when I search for someone.
+
+77
+00:04:22,920 --> 00:04:28,260
+And I go in here, I can now just start to explore some data, right, so you could see what are the
+
+78
+00:04:28,260 --> 00:04:30,030
+actual props passed into this component?
+
+79
+00:04:31,070 --> 00:04:36,830
+You could go up and try and read some Propp types, Propp types are classes, but no other type, so
+
+80
+00:04:36,830 --> 00:04:37,880
+we don't know what else is in here.
+
+81
+00:04:38,330 --> 00:04:41,840
+So we have here this is looks like some styles classes.
+
+82
+00:04:41,840 --> 00:04:42,100
+Right?
+
+83
+00:04:42,860 --> 00:04:45,350
+So we don't really have much else to go off of.
+
+84
+00:04:45,350 --> 00:04:45,540
+Right.
+
+85
+00:04:45,560 --> 00:04:49,010
+We could go here and we could look at this, which is the description.
+
+86
+00:04:49,010 --> 00:04:49,140
+Right.
+
+87
+00:04:49,160 --> 00:04:51,760
+We know that some data is coming in, which is the description.
+
+88
+00:04:52,070 --> 00:04:54,380
+So we look at that and we could actually look and see.
+
+89
+00:04:54,380 --> 00:04:57,840
+We do have another actual prop here.
+
+90
+00:04:58,460 --> 00:05:01,220
+So this is actually just this is not what you think.
+
+91
+00:05:01,220 --> 00:05:02,660
+This is actually the classes.
+
+92
+00:05:03,250 --> 00:05:08,350
+This is just some, you know, nuances with the debugger here not being correct.
+
+93
+00:05:08,960 --> 00:05:09,800
+Go over here.
+
+94
+00:05:09,800 --> 00:05:11,990
+And this is the actual real props.
+
+95
+00:05:12,450 --> 00:05:13,880
+So we have another thing in here called repo.
+
+96
+00:05:14,900 --> 00:05:18,920
+So this looks like the the repo, which is what we're intending to fetch.
+
+97
+00:05:18,920 --> 00:05:19,100
+Right.
+
+98
+00:05:19,130 --> 00:05:22,160
+Actually fetching GitHub repos by entering a username.
+
+99
+00:05:22,730 --> 00:05:23,240
+So it's important.
+
+100
+00:05:23,240 --> 00:05:24,580
+I understand the business use case.
+
+101
+00:05:24,920 --> 00:05:26,300
+So we have that repo here.
+
+102
+00:05:26,990 --> 00:05:29,890
+And what we want to do here is actually find that missing data.
+
+103
+00:05:30,560 --> 00:05:32,800
+Now, that's actually the easiest way to do this.
+
+104
+00:05:32,990 --> 00:05:37,300
+What I really wanted to show at this demo actually was the network tab.
+
+105
+00:05:37,670 --> 00:05:42,820
+So let's say I didn't know what was going on in here at all and I wanted to debug some network data.
+
+106
+00:05:42,920 --> 00:05:46,220
+So if I go here and I search again, you could see we have.
+
+107
+00:05:47,670 --> 00:05:53,910
+Our requests, if you go on to this exchange and fetch request to filter here, you could see here that
+
+108
+00:05:53,910 --> 00:06:01,410
+we are getting a fetch to GitHub API and here you could click on this and you could see that.
+
+109
+00:06:02,740 --> 00:06:08,740
+This is where we can get the data preview, right, so we can actually see all the data coming back
+
+110
+00:06:09,010 --> 00:06:14,450
+and you can then look and see the different data parameters here, which is really cool.
+
+111
+00:06:14,470 --> 00:06:20,290
+So if you were able to do this, this is a really great thing to learn and to understand how to look
+
+112
+00:06:20,290 --> 00:06:24,850
+at the preview, the response preview and the raw response data as well.
+
+113
+00:06:25,180 --> 00:06:26,890
+So that's great.
+
+114
+00:06:27,460 --> 00:06:31,990
+If we go here and fetch again, we look I think we just spelled his name wrong.
+
+115
+00:06:31,990 --> 00:06:37,540
+And there was no this is one of the maintainers of react, so.
+
+116
+00:06:40,140 --> 00:06:41,300
+We refresh.
+
+117
+00:06:44,320 --> 00:06:45,040
+Paige.
+
+118
+00:06:46,310 --> 00:06:53,240
+And once again, we go to repose, so at the end of the day, you have that previews here and what I
+
+119
+00:06:53,240 --> 00:06:54,950
+wanted you to understand was the name.
+
+120
+00:06:54,950 --> 00:06:56,360
+So where would the name be?
+
+121
+00:06:56,780 --> 00:06:59,000
+You could see there's a name object in this repo.
+
+122
+00:06:59,420 --> 00:07:01,840
+So let's go ahead and start filling in this data.
+
+123
+00:07:01,850 --> 00:07:02,060
+Right.
+
+124
+00:07:02,080 --> 00:07:03,310
+So we want to find the name.
+
+125
+00:07:03,620 --> 00:07:04,790
+We want to find the language.
+
+126
+00:07:04,790 --> 00:07:11,210
+So if we go back to our preview for that fetch, which is then, as you can see, we have the language
+
+127
+00:07:11,210 --> 00:07:16,790
+here as JavaScript and then also we're looking for stars or.
+
+128
+00:07:17,710 --> 00:07:24,780
+Or whatever this may be, it looks like shares or notifications or other data that we can look at,
+
+129
+00:07:24,790 --> 00:07:30,830
+so you could see here that this is really kind of a business issue, right.
+
+130
+00:07:30,850 --> 00:07:35,050
+Like you want to ask, well, what are the requirements for this component and look into that.
+
+131
+00:07:35,050 --> 00:07:38,680
+So clearly, the stars are here.
+
+132
+00:07:38,680 --> 00:07:41,530
+Stargazers count to see the correct example.
+
+133
+00:07:41,530 --> 00:07:44,890
+You could just look at the fork that I have here of this issue.
+
+134
+00:07:44,890 --> 00:07:48,460
+And this is where we have the original code here.
+
+135
+00:07:48,730 --> 00:07:56,830
+And so if you go into the card here, you can see the original fix for this, which is to add in the
+
+136
+00:07:56,830 --> 00:08:01,300
+name language and stargazers count and then Fork's.
+
+137
+00:08:01,900 --> 00:08:08,920
+So the point of this message was to learn to clarify some business requirements, look into exactly
+
+138
+00:08:08,920 --> 00:08:14,830
+what the components are supposed to do, look at your network tab to inspect network data, to understand
+
+139
+00:08:14,830 --> 00:08:21,760
+different attributes using the react dev tools to actually find components that are in your code base
+
+140
+00:08:22,000 --> 00:08:30,460
+and not part of an external UI library, and then resolving the issue by just filling in the data so
+
+141
+00:08:30,460 --> 00:08:32,650
+we could fill in this data in our app as well.
+
+142
+00:08:32,950 --> 00:08:34,990
+But it will end up looking just like that.
+
+143
+00:08:35,020 --> 00:08:42,370
+So that's the only thing that was wrong with this, was that certain attributes here were not like this
+
+144
+00:08:42,730 --> 00:08:43,390
+right here.
+
+145
+00:08:46,470 --> 00:08:49,320
+So that's the only thing and thank you.

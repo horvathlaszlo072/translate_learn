@@ -1,0 +1,238 @@
+1
+00:00:00.05 --> 00:00:01.04
+- [Instructor] We have our own project
+
+2
+00:00:01.04 --> 00:00:04.08
+and our own custom files
+and third party packages
+
+3
+00:00:04.08 --> 00:00:06.09
+from where we left off previously.
+
+4
+00:00:06.09 --> 00:00:10.00
+But what if wanted to
+distribute our app or project
+
+5
+00:00:10.00 --> 00:00:12.07
+or put it into a git repository?
+
+6
+00:00:12.07 --> 00:00:14.07
+It wouldn't make sense to include
+
+7
+00:00:14.07 --> 00:00:16.01
+all of the packages we depend on
+
+8
+00:00:16.01 --> 00:00:18.06
+because they take up a lot of space
+
+9
+00:00:18.06 --> 00:00:21.08
+and since there are hundreds,
+if not thousands, of files
+
+10
+00:00:21.08 --> 00:00:24.01
+each package depends on,
+
+11
+00:00:24.01 --> 00:00:26.03
+it takes a long time to transfer those.
+
+12
+00:00:26.03 --> 00:00:27.06
+But then the developer,
+
+13
+00:00:27.06 --> 00:00:29.04
+who just got our project,
+
+14
+00:00:29.04 --> 00:00:32.08
+will have to manually install
+all of those packages.
+
+15
+00:00:32.08 --> 00:00:34.07
+And, if your depending on a few dozen,
+
+16
+00:00:34.07 --> 00:00:36.04
+it will take a lot of time
+
+17
+00:00:36.04 --> 00:00:39.09
+to execute all of those npm install calls
+
+18
+00:00:39.09 --> 00:00:44.03
+each time we download a new
+project or take in an update.
+
+19
+00:00:44.03 --> 00:00:45.02
+To solve that,
+
+20
+00:00:45.02 --> 00:00:47.06
+we can create a package.json file.
+
+21
+00:00:47.06 --> 00:00:48.06
+Among other things,
+
+22
+00:00:48.06 --> 00:00:50.06
+it stores a list of the packages
+
+23
+00:00:50.06 --> 00:00:53.07
+you depend on in your project.
+
+24
+00:00:53.07 --> 00:00:56.05
+That way, when using
+the npm command install,
+
+25
+00:00:56.05 --> 00:00:57.09
+it will go through that list
+
+26
+00:00:57.09 --> 00:01:00.05
+and install everything automatically.
+
+27
+00:01:00.05 --> 00:01:03.07
+So to create a package.json file,
+
+28
+00:01:03.07 --> 00:01:05.07
+let's go to our terminal
+
+29
+00:01:05.07 --> 00:01:10.03
+and type in npm init.
+
+30
+00:01:10.03 --> 00:01:12.03
+This will ask us several questions.
+
+31
+00:01:12.03 --> 00:01:14.07
+For now, I'll go ahead and
+use all of the defaults.
+
+32
+00:01:14.07 --> 00:01:18.01
+But you can customize this
+for your specific project
+
+33
+00:01:18.01 --> 00:01:22.05
+when it comes time to production.
+
+34
+00:01:22.05 --> 00:01:23.09
+Once its about to generate the file,
+
+35
+00:01:23.09 --> 00:01:25.02
+it'll ask you to confirm
+
+36
+00:01:25.02 --> 00:01:28.04
+and I'll submit y for yes.
+
+37
+00:01:28.04 --> 00:01:29.03
+At that point,
+
+38
+00:01:29.03 --> 00:01:31.04
+it should have generated
+a package.json file.
+
+39
+00:01:31.04 --> 00:01:33.08
+Let's take a look at that.
+
+40
+00:01:33.08 --> 00:01:34.06
+As it is now,
+
+41
+00:01:34.06 --> 00:01:36.04
+it just contains all of those defaults
+
+42
+00:01:36.04 --> 00:01:38.09
+we were prompted to modify
+
+43
+00:01:38.09 --> 00:01:41.01
+when we used npm init.
+
+44
+00:01:41.01 --> 00:01:42.03
+It also was nice enough
+
+45
+00:01:42.03 --> 00:01:44.05
+to look in our node modules folder
+
+46
+00:01:44.05 --> 00:01:47.04
+and see what dependencies
+we have in there,
+
+47
+00:01:47.04 --> 00:01:50.08
+automatically adding them
+to the dependencies list.
+
+48
+00:01:50.08 --> 00:01:52.06
+Another shortcut you might want to know
+
+49
+00:01:52.06 --> 00:01:56.05
+is if you're trying to create
+a package.json file quickly,
+
+50
+00:01:56.05 --> 00:02:00.07
+you can use the command npm init --yes,
+
+51
+00:02:00.07 --> 00:02:03.08
+to create one with all of the defaults.
+
+52
+00:02:03.08 --> 00:02:05.07
+Now that we have an understanding
+
+53
+00:02:05.07 --> 00:02:09.01
+of how to work with modules
+and packages inside Node,
+
+54
+00:02:09.01 --> 00:02:11.01
+let's take a look at using
+
+55
+00:02:11.01 --> 00:02:14.02
+one of the more popular
+built-in node modules
+
+56
+00:02:14.02 --> 00:02:16.07
+for reading and writing files.
+

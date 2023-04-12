@@ -1,0 +1,487 @@
+1
+00:00:00,210 --> 00:00:01,230
+Welcome back, everyone.
+
+2
+00:00:01,860 --> 00:00:08,340
+In this video, we are going to leverage the is loading inside of our state in order to show or hide
+
+3
+00:00:08,340 --> 00:00:12,450
+a spinner for our category and our category preview component.
+
+4
+00:00:12,780 --> 00:00:18,810
+The reason why we do so is because these components leverage the actual data we need to get back in
+
+5
+00:00:18,810 --> 00:00:20,130
+order to show their content.
+
+6
+00:00:20,430 --> 00:00:26,310
+So we want to have some kind of indicator for our different users so that they know that this feature
+
+7
+00:00:26,340 --> 00:00:27,480
+is in progress.
+
+8
+00:00:28,260 --> 00:00:33,960
+So what I want you to do is go into your components folder and create the spinner component.
+
+9
+00:00:34,620 --> 00:00:43,260
+Inside, we will have both a spinner dot style such as X as well as a spinner component such as X.
+
+10
+00:00:44,280 --> 00:00:49,080
+So for the styles, I want you to look inside your resources folder, get the stylesheet and paste it
+
+11
+00:00:49,080 --> 00:00:49,260
+in.
+
+12
+00:00:49,890 --> 00:00:56,550
+This is going to be a bunch of style components, so make sure that you import in styled components
+
+13
+00:00:57,480 --> 00:00:58,500
+in order for this to work.
+
+14
+00:00:59,460 --> 00:01:04,710
+As for the actual spinner component, let's import in the two different components that we have the
+
+15
+00:01:04,710 --> 00:01:06,900
+spinner overlay and the spinner container.
+
+16
+00:01:07,650 --> 00:01:10,590
+So here I'm going to import from our style.
+
+17
+00:01:12,140 --> 00:01:16,700
+And I want to impart in the spinner container and the spinner overlay.
+
+18
+00:01:18,140 --> 00:01:26,330
+The component itself is just a simple component, and all it renders is both a spinner overlay that
+
+19
+00:01:26,330 --> 00:01:29,030
+contains the spinner container.
+
+20
+00:01:32,070 --> 00:01:33,690
+Just a very simple component.
+
+21
+00:01:34,500 --> 00:01:36,880
+Then we're going to export this out by default.
+
+22
+00:01:38,120 --> 00:01:44,270
+And now what we're going to do is depending on the is loading value, we will conditionally render the
+
+23
+00:01:44,270 --> 00:01:51,050
+actual component inside of category or at least the irrelevant portion of it, or we're going to render
+
+24
+00:01:51,050 --> 00:01:51,530
+the spinner.
+
+25
+00:01:52,190 --> 00:01:55,790
+So to do that, what we need to do is create a new selector.
+
+26
+00:01:56,540 --> 00:02:01,310
+So this selector is going to get us the value of is loading.
+
+27
+00:02:01,610 --> 00:02:10,130
+So I want to say select is categories loading like this or we can even be a little bit more consistent
+
+28
+00:02:10,130 --> 00:02:17,210
+and say categories is loading, select categories is loading and this is going to be a selector.
+
+29
+00:02:17,210 --> 00:02:23,120
+So we're going to use crate selector, we're going to pass it select category reducer, which will give
+
+30
+00:02:23,120 --> 00:02:24,920
+us the categories, slice.
+
+31
+00:02:25,580 --> 00:02:30,850
+And then all we're going to take off of this slice is the is loading value and that's what we're going
+
+32
+00:02:30,850 --> 00:02:31,250
+to return.
+
+33
+00:02:32,240 --> 00:02:39,830
+So now inside of our Catturare component, we can use the use selector so that we get is loading.
+
+34
+00:02:43,540 --> 00:02:45,370
+And then we need to import this in.
+
+35
+00:02:46,620 --> 00:02:48,630
+From our category selector as well.
+
+36
+00:02:49,650 --> 00:02:51,360
+And with this is loading value.
+
+37
+00:02:51,690 --> 00:02:58,180
+We now have to either render this part of the entire component or we can render the spinner.
+
+38
+00:02:58,200 --> 00:02:59,370
+So let's bring that in as well.
+
+39
+00:03:00,610 --> 00:03:02,500
+I'm going to import in Spinner.
+
+40
+00:03:03,980 --> 00:03:04,520
+From.
+
+41
+00:03:05,270 --> 00:03:06,010
+Components.
+
+42
+00:03:06,890 --> 00:03:07,430
+Spinner.
+
+43
+00:03:08,270 --> 00:03:08,630
+Spinner.
+
+44
+00:03:08,630 --> 00:03:09,110
+Component.
+
+45
+00:03:11,020 --> 00:03:16,170
+So looking at this, we know that at any given point, we must have the category for them to have access
+
+46
+00:03:16,190 --> 00:03:16,870
+this component.
+
+47
+00:03:17,050 --> 00:03:19,300
+There must be some category value we have.
+
+48
+00:03:20,050 --> 00:03:26,080
+So what we can do is we can say, okay, if is loading is true.
+
+49
+00:03:28,000 --> 00:03:33,100
+Then what we're going to do is we are going to render these spinner components.
+
+50
+00:03:34,160 --> 00:03:39,800
+If it's not true, then we're going to render the category container like so.
+
+51
+00:03:41,020 --> 00:03:47,560
+And now if we save this and we go to our application and we go into one of these and we refresh.
+
+52
+00:03:48,890 --> 00:03:50,870
+There we see the loading spinner.
+
+53
+00:03:51,740 --> 00:03:52,340
+So there we go.
+
+54
+00:03:53,850 --> 00:04:01,290
+What we can also do now is we can add this spinner as well to our other component, which is our categories
+
+55
+00:04:01,290 --> 00:04:01,830
+preview.
+
+56
+00:04:02,610 --> 00:04:06,090
+So just like before, we need to bring in the spinner component.
+
+57
+00:04:11,300 --> 00:04:14,810
+And what we also need is to bring in the appropriate selector.
+
+58
+00:04:14,930 --> 00:04:17,120
+So select categories is loading.
+
+59
+00:04:18,340 --> 00:04:23,140
+And now we just say content is loading is equal to use selector.
+
+60
+00:04:23,800 --> 00:04:26,230
+Passing select categories is loading.
+
+61
+00:04:27,230 --> 00:04:29,870
+And then inside of here, we just check.
+
+62
+00:04:33,150 --> 00:04:36,900
+I'm going to just separate these out so that it's easier for me to.
+
+63
+00:04:38,090 --> 00:04:43,400
+Group this component like so and I'm going to say is loading.
+
+64
+00:04:44,420 --> 00:04:44,900
+Yes.
+
+65
+00:04:45,560 --> 00:04:46,400
+Show the spinner.
+
+66
+00:04:47,060 --> 00:04:49,340
+Otherwise, show this component.
+
+67
+00:04:50,120 --> 00:04:52,760
+So now that I've saved this, let's go back here.
+
+68
+00:04:53,030 --> 00:04:57,390
+Let's go to shop, let's refresh so that we fetch and there we go.
+
+69
+00:04:58,100 --> 00:05:04,730
+Now that we have in this func and the ability to check whether the loading state is present, we have
+
+70
+00:05:04,730 --> 00:05:08,810
+a lot more flexibility in how we determine the user experience.
+
+71
+00:05:09,620 --> 00:05:11,960
+Thanks to this is loading ability to check now?
+
+72
+00:05:12,260 --> 00:05:18,470
+It's a lot easier for us to segment out the user experience into a way where a component knows, Hey,
+
+73
+00:05:18,740 --> 00:05:22,610
+I'm just going to determine based off the Boolean whether or not I'm in a loading state or not.
+
+74
+00:05:23,150 --> 00:05:28,550
+This is a very powerful pattern because essentially it does not matter if you have any asynchronous
+
+75
+00:05:28,550 --> 00:05:30,470
+fetching happening because of funks.
+
+76
+00:05:30,470 --> 00:05:34,370
+Now we know whether or not we're in a loading state or not in the loading state.
+
+77
+00:05:34,520 --> 00:05:40,460
+It's a lot easier to reason about and segment out the logic that we have in this flow that typically
+
+78
+00:05:40,460 --> 00:05:43,130
+occurs throughout so many different web applications.
+
+79
+00:05:44,000 --> 00:05:49,610
+One thing I do want you to notice, though, is that whenever you refresh for a split second, you do
+
+80
+00:05:49,610 --> 00:05:51,360
+see these components.
+
+81
+00:05:51,890 --> 00:05:57,950
+And the reason for that is because we are caching those values inside of Redux persist because now we
+
+82
+00:05:57,950 --> 00:06:04,100
+have a loading spinner, we don't actually need to leverage redux persist for this categories preview
+
+83
+00:06:04,100 --> 00:06:04,670
+anymore.
+
+84
+00:06:05,270 --> 00:06:07,670
+We're not just the categories preview, but the categories in general.
+
+85
+00:06:08,600 --> 00:06:13,640
+So what we can do now is we can say, hey, inside of persist config.
+
+86
+00:06:14,300 --> 00:06:18,080
+Really the main thing that we want to persist is the cart.
+
+87
+00:06:18,560 --> 00:06:24,680
+That's really the primary benefit that we leverage when it comes to local storage persistence.
+
+88
+00:06:25,040 --> 00:06:25,910
+There may be more.
+
+89
+00:06:26,090 --> 00:06:28,280
+Maybe you want to store some other things as well.
+
+90
+00:06:28,850 --> 00:06:33,920
+But given how we've architected the application and we think about the feature of the product that we're
+
+91
+00:06:33,920 --> 00:06:38,080
+building, we don't want them to see anything that they don't need to see.
+
+92
+00:06:38,090 --> 00:06:39,500
+We already have this loading spinner.
+
+93
+00:06:39,500 --> 00:06:42,380
+We know we have to get categories from a separate database anyways.
+
+94
+00:06:42,980 --> 00:06:45,230
+Now when you refresh, you don't see it.
+
+95
+00:06:45,230 --> 00:06:49,730
+You just see the loading spinner and then you see your content and that's pretty much it.
+
+96
+00:06:50,090 --> 00:06:55,640
+That's as simple as Redux, Thunk is, it's really just this additional function that you now can pass
+
+97
+00:06:55,640 --> 00:07:03,800
+instead that allows you to really set up this structure of success, start and failures.
+
+98
+00:07:04,430 --> 00:07:09,020
+If you're curious about what the failure looks like, we really haven't done anything with the error.
+
+99
+00:07:09,020 --> 00:07:11,990
+But this might be where you would log the error to something.
+
+100
+00:07:12,410 --> 00:07:15,140
+You might want to handle it in your own way.
+
+101
+00:07:15,770 --> 00:07:19,820
+The main thing is that you have it inside of your actual reducer.
+
+102
+00:07:19,820 --> 00:07:21,170
+Now, your category reducer.
+
+103
+00:07:22,040 --> 00:07:25,070
+If you want to test it, you can easily go inside of here.
+
+104
+00:07:25,070 --> 00:07:29,420
+And all we need to do is just await a new error.
+
+105
+00:07:29,600 --> 00:07:35,840
+So we could just say promise dot reject like this and we can throw a new error.
+
+106
+00:07:38,280 --> 00:07:39,450
+And here we'll say.
+
+107
+00:07:40,730 --> 00:07:42,980
+New air swoops like that.
+
+108
+00:07:44,800 --> 00:07:46,360
+So now if we refresh.
+
+109
+00:07:47,940 --> 00:07:52,650
+And we look, we see we got our categories failed and there is our error.
+
+110
+00:07:53,520 --> 00:07:56,910
+We have not handle it, of course, but we can if we want it to.
+
+111
+00:07:58,760 --> 00:07:59,390
+But there we go.
+
+112
+00:08:00,470 --> 00:08:01,760
+Now you understand how things work.
+
+113
+00:08:02,120 --> 00:08:07,370
+It seems a lot scarier than it is when you hear asynchronous side effect event handling inside of Redux.
+
+114
+00:08:07,700 --> 00:08:09,590
+It sounds more intimidating than it is.
+
+115
+00:08:10,100 --> 00:08:10,460
+Really.
+
+116
+00:08:10,460 --> 00:08:14,960
+All it is is that now you have this middleware that allows you to pass functions that can get called.
+
+117
+00:08:15,290 --> 00:08:15,980
+If you think about it.
+
+118
+00:08:16,010 --> 00:08:20,360
+All we're saying is that, hey, I want an action that essentially is just an async await.
+
+119
+00:08:20,630 --> 00:08:23,030
+And all I wanted to have access to is dispatch.
+
+120
+00:08:23,600 --> 00:08:24,530
+And that's pretty much it.
+
+121
+00:08:25,070 --> 00:08:26,000
+That's all things are.
+
+122
+00:08:26,810 --> 00:08:32,300
+And now that we understand, thanks, we can move on to the next topic I see in the next video.

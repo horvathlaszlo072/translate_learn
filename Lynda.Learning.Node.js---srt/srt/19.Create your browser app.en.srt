@@ -1,0 +1,686 @@
+1
+00:00:00.06 --> 00:00:02.03
+- [Instructor] Since
+this is a Node course,
+
+2
+00:00:02.03 --> 00:00:05.01
+we won't be spending too
+much time on our front end,
+
+3
+00:00:05.01 --> 00:00:07.05
+but for now we'll dedicate
+this lesson to setting
+
+4
+00:00:07.05 --> 00:00:09.07
+up our front end and
+the rest of the videos
+
+5
+00:00:09.07 --> 00:00:13.04
+and chapters will be
+focused on Node once again.
+
+6
+00:00:13.04 --> 00:00:17.04
+Let's continue in our index.html.
+
+7
+00:00:17.04 --> 00:00:21.07
+We will begin by specifying
+our doc type as HTML,
+
+8
+00:00:21.07 --> 00:00:27.05
+so let's replace line one with an element
+
+9
+00:00:27.05 --> 00:00:30.02
+that starts off with an exclamation mark,
+
+10
+00:00:30.02 --> 00:00:36.06
+then doctype, and then we specify HTML.
+
+11
+00:00:36.06 --> 00:00:39.01
+Now in order to make our layout look good,
+
+12
+00:00:39.01 --> 00:00:41.06
+let's use a library called Bootstrap.
+
+13
+00:00:41.06 --> 00:00:46.02
+Head over to getbootstrap.com,
+then select Get Started.
+
+14
+00:00:46.02 --> 00:00:49.05
+Here we can copy the style
+sheet link from the CDN
+
+15
+00:00:49.05 --> 00:00:53.03
+the website provides and
+paste it into our HTML.
+
+16
+00:00:53.03 --> 00:01:00.02
+So, let's scroll down and let's
+copy the style sheet link.
+
+17
+00:01:00.02 --> 00:01:03.05
+And then back in our
+editor, let's paste that in.
+
+18
+00:01:03.05 --> 00:01:06.05
+If we save this, then we go to our webpage
+
+19
+00:01:06.05 --> 00:01:10.06
+and we go to our network tab and refresh,
+
+20
+00:01:10.06 --> 00:01:13.01
+we can see that Bootstrap is being loaded.
+
+21
+00:01:13.01 --> 00:01:14.07
+Then back on the Bootstrap page,
+
+22
+00:01:14.07 --> 00:01:17.04
+we'll need to copy one other thing.
+
+23
+00:01:17.04 --> 00:01:19.07
+We'll copy over all of
+the JavaScript links
+
+24
+00:01:19.07 --> 00:01:23.05
+from their CDN examples,
+which will include jQuery
+
+25
+00:01:23.05 --> 00:01:28.03
+and two other JavaScript files
+that Bootstrap can utilize.
+
+26
+00:01:28.03 --> 00:01:32.00
+So I'll copy that, and
+once again paste it below.
+
+27
+00:01:32.00 --> 00:01:35.00
+Let's save those and give it a try.
+
+28
+00:01:35.00 --> 00:01:37.00
+Back in our webpage, we can see that
+
+29
+00:01:37.00 --> 00:01:40.02
+it's loaded the JavaScript files.
+
+30
+00:01:40.02 --> 00:01:44.03
+For our demo application, the
+most important will be jQuery.
+
+31
+00:01:44.03 --> 00:01:46.01
+We'll be using jQuery in order to inject
+
+32
+00:01:46.01 --> 00:01:50.05
+our data into the HTML,
+and bind to certain events
+
+33
+00:01:50.05 --> 00:01:54.00
+since we are not using a
+framework like Angular or React.
+
+34
+00:01:54.00 --> 00:01:56.01
+Let's go back in our
+editor, and we'll begin
+
+35
+00:01:56.01 --> 00:01:59.05
+by placing a Bootstrap container element.
+
+36
+00:01:59.05 --> 00:02:02.04
+A container element creates
+a fixed width container
+
+37
+00:02:02.04 --> 00:02:04.05
+that centers our content inside.
+
+38
+00:02:04.05 --> 00:02:08.03
+So we'll start with a div,
+
+39
+00:02:08.03 --> 00:02:13.08
+and then we'll use a Bootstrap
+class called container.
+
+40
+00:02:13.08 --> 00:02:17.01
+Then inside, we'll place
+a Bootstrap jumbotron.
+
+41
+00:02:17.01 --> 00:02:20.03
+This will contain our
+message-sending elements,
+
+42
+00:02:20.03 --> 00:02:23.08
+and the jumbotron is a Bootstrap
+component that allows us
+
+43
+00:02:23.08 --> 00:02:28.08
+to focus or showcase specific
+elements on our site.
+
+44
+00:02:28.08 --> 00:02:32.06
+So we'll place another div,
+
+45
+00:02:32.06 --> 00:02:37.03
+and add the jumbotron class.
+
+46
+00:02:37.03 --> 00:02:42.03
+Then inside, let's add a header with h1,
+
+47
+00:02:42.03 --> 00:02:47.06
+and we'll use class="display-4"
+
+48
+00:02:47.06 --> 00:02:49.03
+to set the style of the header.
+
+49
+00:02:49.03 --> 00:02:52.07
+And then the text will be Send Message.
+
+50
+00:02:52.07 --> 00:02:56.02
+Let's save that and take a look.
+
+51
+00:02:56.02 --> 00:02:58.02
+So we'll refresh, and we can see
+
+52
+00:02:58.02 --> 00:03:01.07
+our reactive container and jumbotron.
+
+53
+00:03:01.07 --> 00:03:03.00
+I'll also add some space
+
+54
+00:03:03.00 --> 00:03:11.08
+by adding a break above the jumbotron.
+
+55
+00:03:11.08 --> 00:03:18.08
+So I've created a new line
+and added a br element.
+
+56
+00:03:18.08 --> 00:03:21.02
+Let's refresh, and now we
+can see there's some space
+
+57
+00:03:21.02 --> 00:03:26.01
+in between the jumbotron
+and the top of the browser.
+
+58
+00:03:26.01 --> 00:03:29.08
+Next, let's create an
+input inside the jumbotron
+
+59
+00:03:29.08 --> 00:03:32.00
+after our title, Send Message,
+
+60
+00:03:32.00 --> 00:03:37.01
+and I'll use another br to separate them.
+
+61
+00:03:37.01 --> 00:03:43.01
+And I'll use the class
+form-control from Bootstrap,
+
+62
+00:03:43.01 --> 00:03:47.06
+and I'll use a placeholder
+and set it to Name.
+
+63
+00:03:47.06 --> 00:03:49.04
+Let's take a look at that.
+
+64
+00:03:49.04 --> 00:03:53.01
+Then finally, let's add a button.
+
+65
+00:03:53.01 --> 00:03:56.09
+So I'll use another break,
+and then add a button.
+
+66
+00:03:56.09 --> 00:04:02.05
+The text will be Send, and
+we'll use a Bootstrap class,
+
+67
+00:04:02.05 --> 00:04:07.02
+or several classes, the
+first being btn for button,
+
+68
+00:04:07.02 --> 00:04:10.03
+and then btn so that we get
+
+69
+00:04:10.03 --> 00:04:13.00
+the success styling on the button.
+
+70
+00:04:13.00 --> 00:04:15.04
+Let's take a look at that.
+
+71
+00:04:15.04 --> 00:04:17.02
+The next thing we'll do is add a div
+
+72
+00:04:17.02 --> 00:04:20.00
+where the message history will be shown.
+
+73
+00:04:20.00 --> 00:04:26.06
+Let's add that below the jumbotron.
+
+74
+00:04:26.06 --> 00:04:29.03
+So I've added a new div on line 16
+
+75
+00:04:29.03 --> 00:04:32.05
+below our jumbotron on line nine.
+
+76
+00:04:32.05 --> 00:04:36.09
+We'll give the div an ID
+property and set it to messages.
+
+77
+00:04:36.09 --> 00:04:40.04
+That way we can access
+it by ID with jQuery.
+
+78
+00:04:40.04 --> 00:04:42.02
+So in the div tag on line 16,
+
+79
+00:04:42.02 --> 00:04:46.06
+I'll add an ID property
+and set it to messages.
+
+80
+00:04:46.06 --> 00:04:48.05
+Now that we have our HTML set up,
+
+81
+00:04:48.05 --> 00:04:50.07
+let's add in some JavaScript.
+
+82
+00:04:50.07 --> 00:04:53.07
+We will put in some script
+tags below our main div
+
+83
+00:04:53.07 --> 00:04:58.07
+and put in a callback function
+for jQuery document ready.
+
+84
+00:04:58.07 --> 00:05:01.07
+So below our last div on line 19,
+
+85
+00:05:01.07 --> 00:05:05.07
+we'll add a script element.
+
+86
+00:05:05.07 --> 00:05:08.00
+We will use the shorthand version
+
+87
+00:05:08.00 --> 00:05:11.00
+of the document ready event function,
+
+88
+00:05:11.00 --> 00:05:14.01
+which is just a dollar sign
+and then paranesthesia.
+
+89
+00:05:14.01 --> 00:05:16.06
+Inside here, we can add
+our callback function
+
+90
+00:05:16.06 --> 00:05:20.05
+with an arrow function.
+
+91
+00:05:20.05 --> 00:05:22.03
+The document ready event will be called
+
+92
+00:05:22.03 --> 00:05:24.01
+when the document finishes loading.
+
+93
+00:05:24.01 --> 00:05:27.06
+That way we know all of our
+elements are ready to be used.
+
+94
+00:05:27.06 --> 00:05:29.08
+And for now, we'll do a
+quick console log test
+
+95
+00:05:29.08 --> 00:05:35.02
+to make sure everything's working so far.
+
+96
+00:05:35.02 --> 00:05:38.03
+Let's go back to our
+webpage, select Console
+
+97
+00:05:38.03 --> 00:05:41.06
+from our developer
+console, and then refresh.
+
+98
+00:05:41.06 --> 00:05:44.00
+And you can see we're
+getting our loaded text.
+
+99
+00:05:44.00 --> 00:05:45.06
+The next thing we'll
+do is create a function
+
+100
+00:05:45.06 --> 00:05:49.02
+that will allow us to add
+messages to our message history.
+
+101
+00:05:49.02 --> 00:05:51.07
+So below our document ready function
+
+102
+00:05:51.07 --> 00:05:54.04
+that's located on line 21,
+
+103
+00:05:54.04 --> 00:06:02.07
+we'll create an add messages function.
+
+104
+00:06:02.07 --> 00:06:07.07
+And it will take in the message object.
+
+105
+00:06:07.07 --> 00:06:10.08
+Then let's access the
+message div through its ID
+
+106
+00:06:10.08 --> 00:06:13.06
+and append some HTML to it.
+
+107
+00:06:13.06 --> 00:06:16.03
+So we'll use the jQuery shortcut,
+
+108
+00:06:16.03 --> 00:06:20.09
+and then pass in the ID with #messages,
+
+109
+00:06:20.09 --> 00:06:24.08
+and this will match the ID on line 16.
+
+110
+00:06:24.08 --> 00:06:29.03
+Then we'll use .append, and
+then we'll add in some HTML.
+
+111
+00:06:29.03 --> 00:06:33.00
+We'll start with a header
+four for the title,
+
+112
+00:06:33.00 --> 00:06:35.09
+which in this case will
+be the message name.
+
+113
+00:06:35.09 --> 00:06:38.03
+And I'll use JavaScript template literals,
+
+114
+00:06:38.03 --> 00:06:43.00
+so instead of a single
+quote, I'll use a backtick
+
+115
+00:06:43.00 --> 00:06:46.03
+to surround the header four,
+and I'll use the dollar sign
+
+116
+00:06:46.03 --> 00:06:51.03
+and the curly braces
+surrounding message.name.
+
+117
+00:06:51.03 --> 00:06:57.06
+Then another space, and
+we'll close the header four.
+
+118
+00:06:57.06 --> 00:07:00.06
+Then we'll add a paragraph tag,
+
+119
+00:07:00.06 --> 00:07:05.05
+and we'll place message.message inside,
+
+120
+00:07:05.05 --> 00:07:07.07
+and let's close the paragraph tag.
+
+121
+00:07:07.07 --> 00:07:10.07
+If you're not familiar with
+JavaScript template literals,
+
+122
+00:07:10.07 --> 00:07:13.00
+this allows us to inject variables,
+
+123
+00:07:13.00 --> 00:07:15.04
+for example, into strings.
+
+124
+00:07:15.04 --> 00:07:17.03
+We could use other formatting methods
+
+125
+00:07:17.03 --> 00:07:20.04
+but I find that this is one
+of the cleanest methods.
+
+126
+00:07:20.04 --> 00:07:22.08
+To test this out, let's
+call our new function
+
+127
+00:07:22.08 --> 00:07:24.07
+inside document ready.
+
+128
+00:07:24.07 --> 00:07:27.02
+So on line 22, instead of our console log,
+
+129
+00:07:27.02 --> 00:07:31.06
+we'll call addmessages, and
+then let's pass in an object
+
+130
+00:07:31.06 --> 00:07:33.09
+that has a property name,
+
+131
+00:07:33.09 --> 00:07:36.07
+and then we'll set that to
+a placeholder called Tim,
+
+132
+00:07:36.07 --> 00:07:38.08
+and then a property called message,
+
+133
+00:07:38.08 --> 00:07:40.05
+and we'll set that to Hello.
+
+134
+00:07:40.05 --> 00:07:43.07
+Let's save that and reload our page.
+
+135
+00:07:43.07 --> 00:07:45.01
+And we know our function's working
+
+136
+00:07:45.01 --> 00:07:48.00
+since we see the example object.
+
+137
+00:07:48.00 --> 00:07:49.00
+The next thing we need to do
+
+138
+00:07:49.00 --> 00:07:51.03
+is make our Send button do something.
+
+139
+00:07:51.03 --> 00:07:53.04
+So let's give the button
+an ID and then create
+
+140
+00:07:53.04 --> 00:07:56.09
+a click callback for the
+button's click event.
+
+141
+00:07:56.09 --> 00:08:00.09
+So on line 14, let's add
+an ID to the button tag,
+
+142
+00:08:00.09 --> 00:08:02.07
+and I'll call it Send for now.
+
+143
+00:08:02.07 --> 00:08:06.04
+Then inside our document ready,
+above our add messages test,
+
+144
+00:08:06.04 --> 00:08:10.05
+let's use jQuery to access the send button
+
+145
+00:08:10.05 --> 00:08:15.08
+with #send, and then we'll use .click
+
+146
+00:08:15.08 --> 00:08:21.09
+to bind to the click event
+by passing in a callback.
+
+147
+00:08:21.09 --> 00:08:24.06
+Inside the callback,
+let's just copy line 25,
+
+148
+00:08:24.06 --> 00:08:26.08
+and then paste it inside.
+
+149
+00:08:26.08 --> 00:08:29.00
+Let's save that and give it a try.
+
+150
+00:08:29.00 --> 00:08:32.00
+So I'll refresh, then I'll hit send.
+
+151
+00:08:32.00 --> 00:08:35.02
+Each time I hit it, it will
+add a new message object.
+
+152
+00:08:35.02 --> 00:08:37.05
+And that's it for now
+with our front-end app.
+
+153
+00:08:37.05 --> 00:08:40.04
+Next, let's focus on getting
+some actual message data
+
+154
+00:08:40.04 --> 00:08:42.06
+to and from our back-end.
+

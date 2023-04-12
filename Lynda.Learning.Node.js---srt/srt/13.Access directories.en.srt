@@ -1,0 +1,89 @@
+1
+00:00:00.05 --> 00:00:01.03
+- [Instructor] Now that we have
+
+2
+00:00:01.03 --> 00:00:04.00
+a good grasp of reading
+files from the file system,
+
+3
+00:00:04.00 --> 00:00:06.02
+let's move on to trying
+to read directories
+
+4
+00:00:06.02 --> 00:00:07.09
+with the file system as well.
+
+5
+00:00:07.09 --> 00:00:10.04
+Let's create a new demo file.
+
+6
+00:00:10.04 --> 00:00:17.08
+And once again, we'll need
+access to the file system.
+
+7
+00:00:17.08 --> 00:00:21.04
+And so I'll require an fs.
+
+8
+00:00:21.04 --> 00:00:22.06
+And we'll use a function from
+
+9
+00:00:22.06 --> 00:00:26.02
+the file system called readdir.
+
+10
+00:00:26.02 --> 00:00:27.02
+The first parameter we'll need
+
+11
+00:00:27.02 --> 00:00:29.07
+to pass in is the location we want
+
+12
+00:00:29.07 --> 00:00:31.06
+to read our directories from.
+
+13
+00:00:31.06 --> 00:00:37.02
+So let's use Drive C as an example.
+
+14
+00:00:37.02 --> 00:00:39.01
+Then once again, we'll create a callback
+
+15
+00:00:39.01 --> 00:00:45.02
+that takes in an error and data.
+
+16
+00:00:45.02 --> 00:00:50.00
+And then let's console-log the data.
+
+17
+00:00:50.00 --> 00:00:55.03
+Let's save that, and I'll
+use nodemon to run demo.
+
+18
+00:00:55.03 --> 00:00:56.08
+And you can see we're getting all
+
+19
+00:00:56.08 --> 00:01:00.00
+of the directories inside our Drive C.
+
+20
+00:01:00.00 --> 00:01:03.02
+As you can see, reading directories
+is very straightforward.
+
+21
+00:01:03.02 --> 00:01:05.08
+Next let's take a look at writing files.
+

@@ -1,0 +1,427 @@
+1
+00:00:00,990 --> 00:00:01,920
+Welcome back, everyone.
+
+2
+00:00:02,430 --> 00:00:06,750
+In the last video, I issued a challenge to you in order to figure out how to use this event, we're
+
+3
+00:00:06,750 --> 00:00:12,360
+getting back from our on change handler inside of our input in order to filter out the list of monsters
+
+4
+00:00:12,360 --> 00:00:14,210
+that we have stored inside of our state.
+
+5
+00:00:15,300 --> 00:00:17,700
+Here, what we're going to do is do this together.
+
+6
+00:00:18,760 --> 00:00:24,840
+So we know that event, our target date value gives us the string that is typed into the search bar
+
+7
+00:00:24,850 --> 00:00:25,360
+so far.
+
+8
+00:00:26,300 --> 00:00:34,130
+So what we need to do is we need to filter down this list of monsters into a list of monsters that have
+
+9
+00:00:34,130 --> 00:00:37,700
+names that match this event, our target value.
+
+10
+00:00:38,390 --> 00:00:43,250
+So here what I'm going to say is I'm going to initialize some kind of variable called filtered monsters
+
+11
+00:00:43,250 --> 00:00:46,100
+just so that we know exactly what it is that we're creating.
+
+12
+00:00:46,910 --> 00:00:52,040
+And I'm going to say this dots state dot monsters.
+
+13
+00:00:53,290 --> 00:01:01,030
+Dot filter and dot filter is very similar to Dot Map in the sense that it gives us back a new array.
+
+14
+00:01:02,010 --> 00:01:13,620
+And what that array will contain is going to be a list of elements where it's run this callback on every
+
+15
+00:01:13,620 --> 00:01:14,760
+element in that array.
+
+16
+00:01:15,090 --> 00:01:21,450
+So here we know that monsters is an array of these different values that have a name on them.
+
+17
+00:01:21,720 --> 00:01:29,010
+So let's just say, for example, we have Liane, and we also have equal just as an example.
+
+18
+00:01:30,870 --> 00:01:34,770
+So, of course, our array is bigger about I'm going to use these two, for example, what's going to
+
+19
+00:01:34,770 --> 00:01:40,350
+happen when you call it filter is that dot filter is going to receive a callback that you give to it
+
+20
+00:01:40,800 --> 00:01:45,450
+and it's going to pass and call this callback on each element the same way it left to right.
+
+21
+00:01:46,860 --> 00:01:51,460
+And based on what the return of this callback is, whether it's true or false.
+
+22
+00:01:51,480 --> 00:01:54,330
+So it's expecting a Boolean, it's expecting true or false.
+
+23
+00:01:55,330 --> 00:02:01,840
+If it's true, then it will keep that element, if it's false, then it will take it out.
+
+24
+00:02:02,890 --> 00:02:09,040
+So what will happen is once Filter runs this call back on all of these different elements inside of
+
+25
+00:02:09,040 --> 00:02:12,940
+the array that you're calling it on, it will give you back a new array.
+
+26
+00:02:14,170 --> 00:02:20,950
+So here, let's say that with that filter, what we know is that the first argument, just like we saw
+
+27
+00:02:20,950 --> 00:02:25,660
+before when we called don't map, the first argument is going to be the element itself, and I'm just
+
+28
+00:02:25,660 --> 00:02:27,720
+going to call it monster just for my own sanity.
+
+29
+00:02:28,940 --> 00:02:33,590
+And here we're going to say that monster dot name, so give me the name.
+
+30
+00:02:34,710 --> 00:02:40,950
+And what we want to do is we want to think about how we're going to actually check whether or not the
+
+31
+00:02:40,950 --> 00:02:43,080
+tax we have is included in this name.
+
+32
+00:02:43,530 --> 00:02:46,710
+Luckily for us, with all strings, we have eight includes method.
+
+33
+00:02:47,040 --> 00:02:56,460
+And I want to say that if it includes events that target value, meaning that if the name includes the
+
+34
+00:02:56,460 --> 00:03:00,660
+string, then what I want you to do is I want you to return.
+
+35
+00:03:00,660 --> 00:03:01,020
+True.
+
+36
+00:03:01,620 --> 00:03:08,190
+So luckily for us, includes is a method that returns a Boolean as well don't include returns.
+
+37
+00:03:08,190 --> 00:03:14,580
+True if this string includes the string you passed to it, meaning that if the name includes the search
+
+38
+00:03:14,580 --> 00:03:17,190
+string, then return true.
+
+39
+00:03:17,190 --> 00:03:18,780
+If it doesn't, then return false.
+
+40
+00:03:19,140 --> 00:03:22,650
+And what we're saying is that when you filter over these monsters.
+
+41
+00:03:23,670 --> 00:03:30,600
+If this monster's name includes the search string, then keep it, if it doesn't include it, then get
+
+42
+00:03:30,600 --> 00:03:30,990
+rid of it.
+
+43
+00:03:31,650 --> 00:03:34,770
+And here filter monsters will give us back a new array.
+
+44
+00:03:35,460 --> 00:03:42,480
+And the reason we want a new array is because similarly, with our previous example and we're looking
+
+45
+00:03:42,480 --> 00:03:48,540
+at react with those objects and our state objects, you remember with our object, if we modify the
+
+46
+00:03:48,540 --> 00:03:51,720
+object, react can't actually register that it's a different object.
+
+47
+00:03:52,500 --> 00:03:57,930
+Similarly, with arrays, it's the same if you increase or decrease the number of elements inside of
+
+48
+00:03:57,930 --> 00:04:00,360
+an array, meaning you add more or you remove to it.
+
+49
+00:04:00,690 --> 00:04:02,520
+This is still the same array in memory.
+
+50
+00:04:02,520 --> 00:04:03,810
+It behaves very similarly.
+
+51
+00:04:05,010 --> 00:04:09,720
+Now, React doesn't really care about this as much, because it's really just what the state object
+
+52
+00:04:09,720 --> 00:04:10,350
+that it checks.
+
+53
+00:04:10,620 --> 00:04:17,730
+But as a general best practice, you always want to use non modifying methods, meaning that if you're
+
+54
+00:04:17,730 --> 00:04:20,490
+going to modify an array, you want to generate a new one.
+
+55
+00:04:21,030 --> 00:04:22,890
+Chances are you don't want to modify the same one.
+
+56
+00:04:22,890 --> 00:04:26,760
+And this is a concept called immutability, and it's a general best practice.
+
+57
+00:04:27,120 --> 00:04:33,720
+So most of the time, remember, if you're going to modify an array, create a new array with that modification,
+
+58
+00:04:33,720 --> 00:04:39,690
+and there's a series of these different methods on arrays that are helpful map as one that filters one
+
+59
+00:04:39,840 --> 00:04:42,390
+and there's another one we're going to learn later called dark reduce.
+
+60
+00:04:43,770 --> 00:04:51,210
+So here we filter out this massive array, and now what we need to do is we actually need to set the
+
+61
+00:04:51,240 --> 00:04:53,820
+monsters to this new filter at monsters.
+
+62
+00:04:54,240 --> 00:04:57,180
+So here we can just say this Scott set state.
+
+63
+00:04:58,720 --> 00:05:00,040
+Is equal again.
+
+64
+00:05:01,500 --> 00:05:02,610
+To this.
+
+65
+00:05:03,960 --> 00:05:11,610
+Function and we're going to return back and object where monsters is filtered.
+
+66
+00:05:11,940 --> 00:05:12,480
+Monsters.
+
+67
+00:05:14,470 --> 00:05:17,710
+And here, very explicitly, this is exactly what's happening.
+
+68
+00:05:18,280 --> 00:05:20,680
+And if we save and we check back here.
+
+69
+00:05:21,820 --> 00:05:28,900
+Now, if we type in L e A, we see that we're filtering out now, you might be wondering why is it that
+
+70
+00:05:29,110 --> 00:05:32,890
+this first name, Monster of Leon is not here?
+
+71
+00:05:33,400 --> 00:05:33,710
+Sorry.
+
+72
+00:05:33,730 --> 00:05:34,420
+Let me refresh.
+
+73
+00:05:36,630 --> 00:05:39,090
+You notice that as we typed in a.
+
+74
+00:05:40,180 --> 00:05:42,100
+We expected the capital, Liane.
+
+75
+00:05:42,730 --> 00:05:46,750
+Well, the reason for this is because it includes is not case sensitive.
+
+76
+00:05:47,290 --> 00:05:52,630
+In order for us to make this case sensitive, we actually need to lowercase all of the text that we're
+
+77
+00:05:52,630 --> 00:05:53,170
+typing in.
+
+78
+00:05:53,740 --> 00:06:01,390
+So here what we can do in order to actually make this handier for us is let's actually cast this into
+
+79
+00:06:01,390 --> 00:06:02,020
+a variable.
+
+80
+00:06:02,230 --> 00:06:09,070
+So let's say a search string is equal to event dot target value dot to lowercase.
+
+81
+00:06:09,760 --> 00:06:11,860
+So two lowercase is a method on all strings.
+
+82
+00:06:12,100 --> 00:06:13,590
+That lowercase is them all.
+
+83
+00:06:13,600 --> 00:06:17,800
+So no matter where there is a capital, it will get lowercase.
+
+84
+00:06:18,040 --> 00:06:24,940
+So if you have a string that's like AAA, a like this, this when you run to lowercase on it will give
+
+85
+00:06:24,940 --> 00:06:26,440
+you back a string that's like this.
+
+86
+00:06:28,230 --> 00:06:31,320
+So that's really handy for us when it comes to any kind of search ability.
+
+87
+00:06:31,350 --> 00:06:35,370
+We just want a lower case, everything because most of the time people don't search with the idea that
+
+88
+00:06:35,370 --> 00:06:36,330
+it's case sensitive.
+
+89
+00:06:37,340 --> 00:06:41,450
+So now that we have our search string, we want to do the same thing to dot name.
+
+90
+00:06:41,690 --> 00:06:43,670
+We want a lowercase the name.
+
+91
+00:06:44,390 --> 00:06:50,720
+And then on that lowercase string, we want to check to see if it includes our new lowercase search
+
+92
+00:06:50,720 --> 00:06:51,050
+string.
+
+93
+00:06:53,230 --> 00:07:00,940
+And now, if we save this and we go back to our application and I type L e A, we see that it works.
+
+94
+00:07:01,750 --> 00:07:03,340
+So this is the beautiful thing now.
+
+95
+00:07:03,730 --> 00:07:05,110
+Everything is working for us.
+
+96
+00:07:05,830 --> 00:07:08,290
+But what you'll notice again is as you.
+
+97
+00:07:10,170 --> 00:07:11,670
+Remove characters.
+
+98
+00:07:11,760 --> 00:07:16,980
+Why is it that this array of monsters is still what we had filter?
+
+99
+00:07:17,610 --> 00:07:22,590
+I want to give you a second to think about it, really think about what's happening here and in the
+
+100
+00:07:22,590 --> 00:07:25,560
+next video, we'll cover it together and how to remove it.
+
+101
+00:07:25,800 --> 00:07:30,900
+If you want to take the challenge, in fact, and you figure out why, it is that even as we removed
+
+102
+00:07:31,170 --> 00:07:35,970
+the different strings, we didn't get back the original list of monsters and you want to try and solve
+
+103
+00:07:35,970 --> 00:07:36,600
+it yourself.
+
+104
+00:07:37,080 --> 00:07:41,790
+Please try and take a stab at it, because that's the best way to learn is to really try and figure
+
+105
+00:07:41,790 --> 00:07:42,690
+it out yourself first.
+
+106
+00:07:43,470 --> 00:07:47,880
+But once you've hit a point where you ever figured it out or you want to see the answer, join me in
+
+107
+00:07:47,880 --> 00:07:50,160
+the next video and we will implement this together.

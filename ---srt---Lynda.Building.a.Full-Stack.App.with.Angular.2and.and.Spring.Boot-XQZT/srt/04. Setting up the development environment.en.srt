@@ -1,0 +1,106 @@
+1
+00:00:00.06 --> 00:00:01.04
+- [Instructor] Now let's set up
+
+2
+00:00:01.04 --> 00:00:02.08
+your development environment.
+
+3
+00:00:02.08 --> 00:00:05.06
+You will need to install
+node JS and Gradle
+
+4
+00:00:05.06 --> 00:00:07.08
+to work with the exercise files.
+
+5
+00:00:07.08 --> 00:00:11.05
+You will also need to install
+Eclipse and Post Mane.
+
+6
+00:00:11.05 --> 00:00:13.02
+First let's install Brew.
+
+7
+00:00:13.02 --> 00:00:16.02
+Brew is a package manager for Mac OS.
+
+8
+00:00:16.02 --> 00:00:20.05
+Let's navigate to the
+Homebrew site, brew.sh.
+
+9
+00:00:20.05 --> 00:00:21.08
+Let's open up a terminal
+
+10
+00:00:21.08 --> 00:00:27.00
+and execute the following command here.
+
+11
+00:00:27.00 --> 00:00:28.05
+Now that we have Brew installed,
+
+12
+00:00:28.05 --> 00:00:30.08
+let's make sure it is up to date.
+
+13
+00:00:30.08 --> 00:00:34.01
+Okay now let's verify it
+is configured correctly
+
+14
+00:00:34.01 --> 00:00:38.01
+by running Brew Doctor.
+
+15
+00:00:38.01 --> 00:00:41.00
+Okay it looks like we have
+Brew installed correctly.
+
+16
+00:00:41.00 --> 00:00:43.01
+Now, let's add it to the path.
+
+17
+00:00:43.01 --> 00:00:52.02
+Type in export path /usr/local/bin path.
+
+18
+00:00:52.02 --> 00:00:54.05
+Okay now that we have brew set up
+
+19
+00:00:54.05 --> 00:00:57.05
+let's install node JS using Brew.
+
+20
+00:00:57.05 --> 00:01:01.09
+Type in brew install node.
+
+21
+00:01:01.09 --> 00:01:04.07
+Okay so now we have node installed.
+
+22
+00:01:04.07 --> 00:01:07.05
+Next let's install get
+
+23
+00:01:07.05 --> 00:01:10.03
+and then finally let's install Gradle.
+
+24
+00:01:10.03 --> 00:01:13.00
+Okay you should now be
+all set and ready to build
+
+25
+00:01:13.00 --> 00:01:15.07
+and run the application locally.
+

@@ -1,0 +1,381 @@
+1
+00:00:00.06 --> 00:00:02.07
+- [Narrator] Alright,
+let's add the functionality
+
+2
+00:00:02.07 --> 00:00:05.05
+to your reserve a room from our front end.
+
+3
+00:00:05.05 --> 00:00:09.08
+Let's open up app.component.ts.
+
+4
+00:00:09.08 --> 00:00:12.01
+We added getAll previously,
+
+5
+00:00:12.01 --> 00:00:15.08
+but executed a get request to our API.
+
+6
+00:00:15.08 --> 00:00:18.03
+Now, we want to execute a post.
+
+7
+00:00:18.03 --> 00:00:22.00
+First, let's create two
+fields to keep track of
+
+8
+00:00:22.00 --> 00:00:26.00
+the values check in ad
+check out from the form.
+
+9
+00:00:26.00 --> 00:00:27.09
+Let's name it current check in value
+
+10
+00:00:27.09 --> 00:00:31.04
+and current check out value.
+
+11
+00:00:31.04 --> 00:00:35.07
+Next in ngOnInit, let's
+subscribe to changes
+
+12
+00:00:35.07 --> 00:00:37.07
+from our form group.
+
+13
+00:00:37.07 --> 00:00:42.03
+Let's define a field called
+roomsearchValueChanges.
+
+14
+00:00:42.03 --> 00:00:46.09
+First, let's define a constant,
+roomsearchValueChanges,
+
+15
+00:00:46.09 --> 00:00:52.07
+and let's set that equal to roomsearch,
+
+16
+00:00:52.07 --> 00:00:55.08
+which is our form group,
+
+17
+00:00:55.08 --> 00:00:58.09
+and we're going to set it to valueChanges.
+
+18
+00:00:58.09 --> 00:01:00.06
+Now that we have that set,
+
+19
+00:01:00.06 --> 00:01:05.01
+we can subscribe to these
+value change events.
+
+20
+00:01:05.01 --> 00:01:07.09
+Let's pass in a lamda.
+
+21
+00:01:07.09 --> 00:01:12.08
+Let's copy currentCheckInVal
+and set it equal
+
+22
+00:01:12.08 --> 00:01:16.04
+to the value in that form field.
+
+23
+00:01:16.04 --> 00:01:22.06
+Same thing on currentCheckOutValue.
+
+24
+00:01:22.06 --> 00:01:26.05
+That was any time we omit
+a value change event,
+
+25
+00:01:26.05 --> 00:01:31.01
+we are capturing the current
+value in these two strings.
+
+26
+00:01:31.01 --> 00:01:34.06
+Next, let's create a
+function called reserve room.
+
+27
+00:01:34.06 --> 00:01:38.06
+We'll take in a parameter
+called value on the type string.
+
+28
+00:01:38.06 --> 00:01:41.08
+Let's create a new request body object.
+
+29
+00:01:41.08 --> 00:01:46.05
+Let's name it ReserveRoomRequest.
+
+30
+00:01:46.05 --> 00:01:50.03
+Let's add a roomId string, checkin string,
+
+31
+00:01:50.03 --> 00:01:53.02
+and a checkout string.
+
+32
+00:01:53.02 --> 00:01:57.03
+Then, let's create a constructor,
+
+33
+00:01:57.03 --> 00:02:01.04
+and then let's copy these three fields,
+
+34
+00:02:01.04 --> 00:02:06.01
+and paste them into the
+constructor parameters.
+
+35
+00:02:06.01 --> 00:02:08.04
+Let's take off the semi-colons,
+
+36
+00:02:08.04 --> 00:02:12.01
+and delimit each parameter with a comma.
+
+37
+00:02:12.01 --> 00:02:14.05
+Then, within the body of the constructor,
+
+38
+00:02:14.05 --> 00:02:20.04
+let's set all the fields.
+
+39
+00:02:20.04 --> 00:02:23.04
+Then shift F to format,
+
+40
+00:02:23.04 --> 00:02:28.03
+then let's head back to
+the reserveroom function.
+
+41
+00:02:28.03 --> 00:02:32.00
+It actually looks like we
+had reserveroom defined,
+
+42
+00:02:32.00 --> 00:02:34.08
+so let's use that existing function.
+
+43
+00:02:34.08 --> 00:02:43.00
+Let's create a request body,
+passing in the parameter value,
+
+44
+00:02:43.00 --> 00:02:46.03
+which will be the room ID
+that you want to reserve,
+
+45
+00:02:46.03 --> 00:02:51.03
+the current value in the
+field currentCheckInValue,
+
+46
+00:02:51.03 --> 00:02:54.02
+which is populated from the form element,
+
+47
+00:02:54.02 --> 00:02:57.04
+and the currectCheckOutValue.
+
+48
+00:02:57.04 --> 00:03:01.01
+Next, let's create a
+createReservation function.
+
+49
+00:03:01.01 --> 00:03:03.01
+Let's pass in that request body,
+
+50
+00:03:03.01 --> 00:03:12.06
+let's copy ReserveRoomRequest class name.
+
+51
+00:03:12.06 --> 00:03:16.00
+Let's serialize that
+ReserveRoomRequest object
+
+52
+00:03:16.00 --> 00:03:19.04
+into a JSON string.
+
+53
+00:03:19.04 --> 00:03:24.02
+Let's add some headers and
+let's create an array in place
+
+54
+00:03:24.02 --> 00:03:25.07
+and pass in the
+
+55
+00:03:25.07 --> 00:03:31.08
+single header Content-Type
+equals to application JSON.
+
+56
+00:03:31.08 --> 00:03:34.09
+Then let's set the request options.
+
+57
+00:03:34.09 --> 00:03:42.00
+Fix the typo in content type,
+and let's add these headers.
+
+58
+00:03:42.00 --> 00:03:47.00
+Let's use the HTTP
+module to execute a post
+
+59
+00:03:47.00 --> 00:03:54.01
+passing in the base URL and
+the domain and resource,
+
+60
+00:03:54.01 --> 00:03:58.03
+the request body, and headers.
+
+61
+00:03:58.03 --> 00:04:02.07
+Then let's subscribe to the
+observable that gets returned.
+
+62
+00:04:02.07 --> 00:04:06.09
+Let's pass in a lamda, and at this point,
+
+63
+00:04:06.09 --> 00:04:12.09
+all we're going to do is log
+that response to the console.
+
+64
+00:04:12.09 --> 00:04:17.00
+Let's save and webpack
+compiled our changes,
+
+65
+00:04:17.00 --> 00:04:19.08
+so let's head back to our application.
+
+66
+00:04:19.08 --> 00:04:22.05
+Let's do a refresh.
+
+67
+00:04:22.05 --> 00:04:25.00
+Let's search for available rooms,
+
+68
+00:04:25.00 --> 00:04:27.06
+let's right click and inspect,
+
+69
+00:04:27.06 --> 00:04:29.01
+and then open up the console.
+
+70
+00:04:29.01 --> 00:04:34.00
+When you click reserve, we
+can see that we made a request
+
+71
+00:04:34.00 --> 00:04:38.08
+to our API and got back a successful 201.
+
+72
+00:04:38.08 --> 00:04:40.07
+Let's check on our API,
+
+73
+00:04:40.07 --> 00:04:47.05
+and let's look at that room
+with ID one and room number 405.
+
+74
+00:04:47.05 --> 00:04:49.08
+Now, it looks like we
+have two reservations
+
+75
+00:04:49.08 --> 00:04:51.09
+attached to that room.
+
+76
+00:04:51.09 --> 00:04:54.00
+So it looks like we were successfully able
+
+77
+00:04:54.00 --> 00:04:57.05
+to reserve a room from our front end UI
+
+78
+00:04:57.05 --> 00:05:01.08
+using AngularJS2, and the HTTP module.
+
+79
+00:05:01.08 --> 00:05:03.02
+Now that we are tracking
+
+80
+00:05:03.02 --> 00:05:07.03
+the current value of the CheckIn field,
+
+81
+00:05:07.03 --> 00:05:11.03
+let's go ahead an update the get URL
+
+82
+00:05:11.03 --> 00:05:14.03
+so that we're passing in the actual value
+
+83
+00:05:14.03 --> 00:05:23.08
+of that form field instead
+of the hard-coded value.
+
+84
+00:05:23.08 --> 00:05:26.03
+Let's save our changes, let's refresh,
+
+85
+00:05:26.03 --> 00:05:31.05
+and let's make sure our get still works.
+
+86
+00:05:31.05 --> 00:05:34.03
+We are now passing in
+the CheckIn and CheckOut
+
+87
+00:05:34.03 --> 00:05:36.06
+from the form fields dynamically.
+

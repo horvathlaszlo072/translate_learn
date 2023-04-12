@@ -1,0 +1,379 @@
+1
+00:00:00,630 --> 00:00:01,680
+Welcome back, everyone.
+
+2
+00:00:02,610 --> 00:00:11,580
+In this video we are going to tackle converting out a lot of our Firebase user methods into a saga.
+
+3
+00:00:12,570 --> 00:00:14,250
+So what do I mean by this?
+
+4
+00:00:14,880 --> 00:00:22,350
+Currently inside of the application, we actually have a bunch of Firebase methods that are asynchronous
+
+5
+00:00:22,350 --> 00:00:26,310
+methods, but we're keeping them inside of our components.
+
+6
+00:00:27,120 --> 00:00:31,680
+So when you think about our sign in with Google method that calls of course our signing with Google
+
+7
+00:00:31,680 --> 00:00:37,950
+pop up, or if you think about our sign in with user email and password, a lot of these methods we
+
+8
+00:00:37,950 --> 00:00:40,530
+are currently baking into our components.
+
+9
+00:00:41,530 --> 00:00:47,500
+If you think about our sign up component, we also have a similar create off user with email and password
+
+10
+00:00:47,500 --> 00:00:52,660
+method, also asynchronous and all interacting with our Firebase API.
+
+11
+00:00:53,690 --> 00:00:59,690
+Finally, we also have this observable listener that we instantiate on the app, and all of this code
+
+12
+00:00:59,690 --> 00:01:03,950
+currently is living deeply nested inside of our components.
+
+13
+00:01:04,920 --> 00:01:11,610
+With Saga is we can attempt to remove these and put them into Saga so that our components are more free
+
+14
+00:01:11,760 --> 00:01:14,100
+from this asynchronous code.
+
+15
+00:01:15,110 --> 00:01:19,040
+In order for us to do that, though, we have to think deeply about what we're trying to do.
+
+16
+00:01:20,100 --> 00:01:27,660
+So one thing I want to know about this off listener is that unless we are inside of a component, we
+
+17
+00:01:27,660 --> 00:01:34,440
+don't really have a way of keeping track of some kind of listener and then unsubscribing at some point.
+
+18
+00:01:35,520 --> 00:01:43,980
+What we should do instead is convert this over into a promise based single check to see if there is
+
+19
+00:01:43,980 --> 00:01:44,640
+a user.
+
+20
+00:01:45,000 --> 00:01:51,300
+So there is a couple modifications we need to make in order to convert this into a saga based flow.
+
+21
+00:01:51,540 --> 00:01:56,040
+But through doing this, we will see a interesting pattern emerge with sagas.
+
+22
+00:01:56,580 --> 00:02:03,180
+One thing I do want to mention is that this is not necessarily the right way to do it, because Firebase
+
+23
+00:02:03,180 --> 00:02:09,690
+has been optimized through their author listener for us to essentially write this code very simply.
+
+24
+00:02:10,080 --> 00:02:14,880
+There's nothing wrong with the way that we've coded out our app, our sign in and our sign up.
+
+25
+00:02:15,450 --> 00:02:22,290
+This is simply a way for us to code out Saga so that we can see what happens inside of a flow where
+
+26
+00:02:22,290 --> 00:02:25,790
+we don't have something like an observable listener for authentication.
+
+27
+00:02:26,430 --> 00:02:32,070
+And it's also another way for us to get more practice in terms of writing out off flows through sagas.
+
+28
+00:02:32,340 --> 00:02:33,330
+So this is a very important thing.
+
+29
+00:02:33,330 --> 00:02:40,620
+I do want to highlight one thing as well is that we need to be able to convert a lot of this code over
+
+30
+00:02:40,620 --> 00:02:46,320
+to asynchronous but more promise base code in order for this to work as well, because generators,
+
+31
+00:02:46,320 --> 00:02:48,480
+as we know, are essentially async awaits.
+
+32
+00:02:49,460 --> 00:02:54,920
+So in order for us to make this work, though, we need to start by converting this on off state listener
+
+33
+00:02:54,920 --> 00:02:58,850
+code over into some type of single check.
+
+34
+00:02:59,390 --> 00:03:04,220
+So instead of having a listener that responds every time a user state updates.
+
+35
+00:03:04,610 --> 00:03:08,930
+Instead we're going to wrap this in a promise inside of Firebase Utils.
+
+36
+00:03:09,800 --> 00:03:10,880
+So first things first.
+
+37
+00:03:11,270 --> 00:03:12,680
+Let's define this function.
+
+38
+00:03:13,460 --> 00:03:17,810
+This function is going to be called get current user because that's what we're really trying to do.
+
+39
+00:03:18,170 --> 00:03:22,490
+We're trying to see if there is a active user that's been authenticated already.
+
+40
+00:03:23,150 --> 00:03:29,240
+And what we want to do, of course, is convert from a observable listener into a promise based function
+
+41
+00:03:29,240 --> 00:03:29,540
+call.
+
+42
+00:03:29,960 --> 00:03:36,440
+So here what I'm going to do is I am going to return back a new promise with this promise.
+
+43
+00:03:36,470 --> 00:03:42,530
+We have the resolve and we have the reject, which are the positive and the negative handle cases for
+
+44
+00:03:42,530 --> 00:03:47,510
+a promise, resolve goes down the path when you successfully retrieve the value that you want back.
+
+45
+00:03:47,780 --> 00:03:51,560
+Reject is what happens when you usually get some kind of error that you want to catch.
+
+46
+00:03:52,220 --> 00:03:57,710
+So what we're going to say, using a little bit of cleverness is we're going to say, okay, we know
+
+47
+00:03:57,710 --> 00:04:04,070
+we have the unsubscribe from on off state changed because we get back the unsubscribe from the listener.
+
+48
+00:04:04,940 --> 00:04:09,650
+So what we want to do, because this is a promise, is we don't want this listener to stay active.
+
+49
+00:04:10,070 --> 00:04:12,680
+We want to unsubscribe the moment we get a value.
+
+50
+00:04:13,310 --> 00:04:17,200
+Now, this on off state changed is what we get back from Firebase.
+
+51
+00:04:17,210 --> 00:04:23,180
+We're not actually using the listener that we created for the actual application because now we're trying
+
+52
+00:04:23,180 --> 00:04:24,020
+to modify it.
+
+53
+00:04:24,530 --> 00:04:29,360
+So on off, say change takes the off object and then it takes the callback.
+
+54
+00:04:29,360 --> 00:04:35,310
+And the callback, of course, gives us the user off when it successfully gets a value when it first.
+
+55
+00:04:35,310 --> 00:04:39,500
+Then Stanulis is the moment instantiation and it gives us the user off.
+
+56
+00:04:39,500 --> 00:04:44,630
+We'll know immediately from that user off whether or not there was already an existing user logged in.
+
+57
+00:04:45,440 --> 00:04:48,350
+If there is or isn't, doesn't matter to us.
+
+58
+00:04:48,740 --> 00:04:53,120
+The key thing is that we have the value and immediately we're going to unsubscribe.
+
+59
+00:04:53,270 --> 00:04:54,560
+So we're going to close the listener.
+
+60
+00:04:54,620 --> 00:04:59,540
+If we don't do this, there will be a memory leak, meaning that that listener is always active inside
+
+61
+00:04:59,540 --> 00:05:00,320
+of our file.
+
+62
+00:05:00,320 --> 00:05:01,280
+But we don't want that.
+
+63
+00:05:01,280 --> 00:05:02,900
+We don't want it to take up more memory.
+
+64
+00:05:03,800 --> 00:05:10,490
+So once we unsubscribe, we are also going to resolve with the user off because now of course we have
+
+65
+00:05:10,520 --> 00:05:11,530
+the actual user on.
+
+66
+00:05:11,990 --> 00:05:17,000
+Now remember, this listener itself is asynchronous, so we're going to resolve the moment we get the
+
+67
+00:05:17,000 --> 00:05:17,840
+value anyways.
+
+68
+00:05:18,830 --> 00:05:19,850
+Once we're done with this.
+
+69
+00:05:19,850 --> 00:05:26,270
+The other thing that this on off stage change takes is a third optional parameter, which is a callback
+
+70
+00:05:26,270 --> 00:05:31,170
+that runs when an error is thrown in the process of trying to fetch for the user off.
+
+71
+00:05:31,760 --> 00:05:33,560
+This is where we're going to pass our reject.
+
+72
+00:05:34,040 --> 00:05:36,980
+Reject is a callback that takes the whatever you passed to it.
+
+73
+00:05:37,010 --> 00:05:40,490
+Usually it's an error and it will actually reject it to the promised notes to reject.
+
+74
+00:05:41,030 --> 00:05:44,480
+In this particular case, we're passing reject to this on our state change listener.
+
+75
+00:05:44,930 --> 00:05:49,490
+The reject will pass the error into it, and then everything will behave as we expect it to.
+
+76
+00:05:50,150 --> 00:05:51,470
+So this is our get current user.
+
+77
+00:05:51,920 --> 00:05:59,630
+If I copy this and I go into our app JS and what I'm going to do is I will remove all of this code that
+
+78
+00:05:59,630 --> 00:06:00,590
+we don't need anymore.
+
+79
+00:06:01,550 --> 00:06:05,030
+And what I'm going to say is, hey, just get current user.
+
+80
+00:06:05,970 --> 00:06:10,560
+Just so we can test this might actually end up being the way that we set up our code.
+
+81
+00:06:10,860 --> 00:06:12,840
+But I want to test this function to see if it works.
+
+82
+00:06:14,150 --> 00:06:15,500
+Inside of get current user.
+
+83
+00:06:15,500 --> 00:06:22,460
+Remember this gives us a new promise so I can actually call dot then on it and then we'll get us back
+
+84
+00:06:22,460 --> 00:06:24,890
+the user off which we can console.log.
+
+85
+00:06:25,640 --> 00:06:28,910
+So here, if I save this and I go back to the application.
+
+86
+00:06:30,230 --> 00:06:31,190
+There we see it lot.
+
+87
+00:06:31,310 --> 00:06:36,140
+This is our user because we have assigned a user and it runs when our app mounts for the first time.
+
+88
+00:06:37,180 --> 00:06:42,370
+So using this method, we have now managed to essentially move out of that listener.
+
+89
+00:06:42,550 --> 00:06:46,690
+So what we can do now is put this inside of a saga which will trigger a check.
+
+90
+00:06:47,560 --> 00:06:53,080
+From here on, we need to now migrate the majority of the code that we have across the sign up form,
+
+91
+00:06:53,080 --> 00:07:00,310
+the sign in form and this object into a saga and a series of new actions that will all perform these
+
+92
+00:07:00,310 --> 00:07:01,540
+behaviors for us.
+
+93
+00:07:02,260 --> 00:07:07,540
+So now I want you to join me in the next video where we will continue breaking this up and thinking
+
+94
+00:07:07,540 --> 00:07:08,650
+about these flows.
+
+95
+00:07:08,650 --> 00:07:12,670
+But now in the context of sagas, I'll see you in the next video.

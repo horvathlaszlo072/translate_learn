@@ -1,0 +1,215 @@
+1
+00:00:00,570 --> 00:00:01,240
+All right, hello.
+
+2
+00:00:01,260 --> 00:00:07,410
+And this one, we're going to talk about the mobile debugging right here so you could toggle the device
+
+3
+00:00:07,410 --> 00:00:08,220
+on right here.
+
+4
+00:00:08,220 --> 00:00:16,080
+So when you click on this, you'll see that your sight kind of turns into this phone shaped, basically.
+
+5
+00:00:16,110 --> 00:00:21,000
+So if you go back to my site here, you could see that I am.
+
+6
+00:00:22,180 --> 00:00:26,860
+Basically showing the iPhone, so if you go up to the top here, you'll see the device that you're running.
+
+7
+00:00:27,070 --> 00:00:30,900
+So you could see you could choose from a couple of different types of phones or tablets.
+
+8
+00:00:30,910 --> 00:00:35,140
+So here I could choose an iPad if I want to, and it'll render it like an iPad, which is cool.
+
+9
+00:00:35,140 --> 00:00:38,260
+And then I could click around like I'm in like I'm on an iPad.
+
+10
+00:00:38,590 --> 00:00:40,570
+And here you'll see the zoom here.
+
+11
+00:00:40,570 --> 00:00:42,010
+So the zoom is 50 percent.
+
+12
+00:00:42,190 --> 00:00:43,660
+I could change that to 100 percent.
+
+13
+00:00:43,660 --> 00:00:45,310
+So this would be more life size.
+
+14
+00:00:45,700 --> 00:00:49,780
+And then I can also zoom in more if I want to make it zoomed in more.
+
+15
+00:00:49,780 --> 00:00:52,810
+But you'll see up here, this is very useful, the pixel count.
+
+16
+00:00:52,830 --> 00:00:58,750
+So if you're doing media queries, so you actually want to target specific access, you could actually
+
+17
+00:00:58,750 --> 00:00:59,550
+set that up here.
+
+18
+00:00:59,560 --> 00:01:03,310
+So where you can you just know exactly what size devices these are.
+
+19
+00:01:03,340 --> 00:01:09,360
+So if I do an iPhone ten, I know that this is going to be a maximum width of 375 pixels.
+
+20
+00:01:09,880 --> 00:01:11,240
+So that's really useful.
+
+21
+00:01:11,330 --> 00:01:16,220
+And here you could throttle mobile speed also if you want to see how slow or fast your website is.
+
+22
+00:01:16,240 --> 00:01:19,690
+So I did low end mobile, so my site's going to load really slow.
+
+23
+00:01:21,340 --> 00:01:28,690
+So there you go and then I do online, so here, if I do responsive, this is another more free form
+
+24
+00:01:28,690 --> 00:01:30,120
+way to check responsiveness.
+
+25
+00:01:30,370 --> 00:01:33,220
+So here as I change this now, you could.
+
+26
+00:01:33,250 --> 00:01:37,900
+Now, if you do in a normal browser window, what you're going to get, you get stuck right here at
+
+27
+00:01:37,900 --> 00:01:39,860
+about 500 pixels, I think.
+
+28
+00:01:40,150 --> 00:01:43,120
+So usually it tells you if I undo this.
+
+29
+00:01:43,540 --> 00:01:45,610
+So see up here this top.
+
+30
+00:01:45,610 --> 00:01:51,340
+Right, you're going to see that here where it's going to tell you exactly how wide your browser is
+
+31
+00:01:51,610 --> 00:01:52,610
+and that's going to go away.
+
+32
+00:01:52,750 --> 00:01:54,820
+So I believe this is about 500 pixels.
+
+33
+00:01:54,820 --> 00:01:57,340
+It see, it locks you at 500 pixels.
+
+34
+00:01:57,340 --> 00:01:58,400
+It can't go further than that.
+
+35
+00:01:58,600 --> 00:02:03,460
+So if you want to actually debug your iPhone, believe it or not, you can only do that by going in
+
+36
+00:02:03,460 --> 00:02:07,960
+here and clicking this phone and then you can go in a responsive and then you can see how your device
+
+37
+00:02:07,960 --> 00:02:10,640
+looks on a phone that's as wide as you want.
+
+38
+00:02:10,960 --> 00:02:15,460
+So I recommend keeping this on iPhone and then just doing iPad as well.
+
+39
+00:02:15,460 --> 00:02:17,230
+Just getting a couple good breakpoints in.
+
+40
+00:02:17,650 --> 00:02:21,160
+And that's how I would debug a mobile responsive website.
+
+41
+00:02:22,610 --> 00:02:26,150
+So that's all I do with this device toolbar here.
+
+42
+00:02:27,090 --> 00:02:32,040
+I just toggle it on and then I check my breakpoints and I check different things on your phone.
+
+43
+00:02:32,220 --> 00:02:34,980
+This is only going to do certain things.
+
+44
+00:02:34,980 --> 00:02:41,580
+It's not going to actually render native functionality like native iPhone controls or native iPhone
+
+45
+00:02:41,580 --> 00:02:43,830
+widgets or anything like that.
+
+46
+00:02:43,830 --> 00:02:45,750
+It's not going to emulate everything on an iPhone.
+
+47
+00:02:45,750 --> 00:02:47,730
+It's just to see your width.
+
+48
+00:02:48,060 --> 00:02:49,620
+And that's pretty much it.
+
+49
+00:02:49,620 --> 00:02:52,140
+And there's probably other stuff that does, too.
+
+50
+00:02:52,410 --> 00:02:53,940
+But don't fully rely on this.
+
+51
+00:02:53,940 --> 00:02:56,190
+Always go and actually test on a real device.
+
+52
+00:02:57,000 --> 00:02:58,940
+So that's the best advice I can give you there.
+
+53
+00:02:58,950 --> 00:03:04,400
+So when you're done, you can just untangle it and then you're in dev tools again and you're good.
+
+54
+00:03:04,830 --> 00:03:07,890
+So that's mobile, responsive testing.

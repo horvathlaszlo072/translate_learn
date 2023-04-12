@@ -1,0 +1,67 @@
+1
+00:00:00,240 --> 00:00:05,520
+This is our final e commerce project, we're going to have navigation and routing.
+
+2
+00:00:06,870 --> 00:00:13,470
+That takes us to different pages of categories of items and from these items, we're actually going
+
+3
+00:00:13,470 --> 00:00:15,780
+to be able to add them to our cart.
+
+4
+00:00:17,260 --> 00:00:21,880
+And from our car, we're actually going to see these things directly update.
+
+5
+00:00:22,900 --> 00:00:29,680
+And from this car, we're going to be able to check out increase or decrease these items again and see
+
+6
+00:00:29,680 --> 00:00:35,950
+the live changes in both our checkout page and our car page, remove items.
+
+7
+00:00:36,970 --> 00:00:42,520
+And actually integrate with a stripe API so that we can handle payments.
+
+8
+00:00:43,010 --> 00:00:49,390
+Now this is actually going to be a test version of Stripe because we don't actually have items to ship
+
+9
+00:00:49,390 --> 00:00:55,390
+and we don't actually want to process real payments because this is just a portfolio project.
+
+10
+00:00:55,900 --> 00:01:03,130
+But the matter of switching it is simply a change in the actual stripe website it you're going to actually
+
+11
+00:01:03,130 --> 00:01:06,610
+learn what it is to actually build using the stripe API.
+
+12
+00:01:08,330 --> 00:01:15,050
+And beyond that, we're also going to integrate with Firebase to handle our authentication and our storage.
+
+13
+00:01:15,890 --> 00:01:22,550
+So with Firebase, we're actually going to be able to authorize our users using Google so that we can
+
+14
+00:01:22,550 --> 00:01:25,190
+sign in with our Google accounts.
+
+15
+00:01:27,200 --> 00:01:32,090
+And once we sign and we're also going to provide a sign of feature.
+
+16
+00:01:33,210 --> 00:01:39,690
+And a sign up and sign in with email and password feature, so it's going to be a really fleshed out,
+
+17
+00:01:39,930 --> 00:01:46,200
+fully complete e-commerce platform, just like you would build for a real e-commerce company.

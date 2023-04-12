@@ -1,0 +1,835 @@
+1
+00:00:01,040 --> 00:00:01,820
+Welcome back.
+
+2
+00:00:02,420 --> 00:00:07,670
+We've written quite a few tests now and, well, 13 tests.
+
+3
+00:00:07,710 --> 00:00:09,350
+That's not bad for a small app.
+
+4
+00:00:09,350 --> 00:00:10,810
+There's definitely more that we can do.
+
+5
+00:00:11,300 --> 00:00:18,350
+But I want to cover the last part now that I think is important and that is testing our actions.
+
+6
+00:00:20,080 --> 00:00:25,000
+Now, you might be asking yourself, what about Constance, are we not testing the constants file?
+
+7
+00:00:25,120 --> 00:00:34,570
+But you can see here that constants are just simply, well, just assigning string constants to a variable.
+
+8
+00:00:35,200 --> 00:00:40,870
+And when you're testing, you really want to decide for yourself what you need to test and why you don't.
+
+9
+00:00:41,350 --> 00:00:43,720
+With testing, you can really get into a rabbit hole.
+
+10
+00:00:43,720 --> 00:00:46,590
+That is, you just keep working on test, keep working on tests.
+
+11
+00:00:46,600 --> 00:00:52,150
+And next thing you know, you haven't really done anything on the production side of things.
+
+12
+00:00:52,780 --> 00:00:59,080
+And tests are important, but you really want to avoid the idea that, oh, I just need to have one
+
+13
+00:00:59,080 --> 00:01:04,840
+hundred pass tests or one hundred snapshots or I need my code coverage to be 100 percent.
+
+14
+00:01:05,530 --> 00:01:11,560
+It's actually not a good idea to have 100 percent code coverage because it means that you're running
+
+15
+00:01:11,800 --> 00:01:19,690
+tests that most likely don't need to be run and your time could have been spent wisely in other areas
+
+16
+00:01:19,690 --> 00:01:20,470
+of your app.
+
+17
+00:01:20,920 --> 00:01:25,930
+Remember, there's infinite things that we can do to refactor and make our code prettier, write more
+
+18
+00:01:25,930 --> 00:01:28,960
+tests, but we have limited time.
+
+19
+00:01:29,050 --> 00:01:34,120
+So as a senior developer, you have to decide for yourself where the tradeoffs are.
+
+20
+00:01:35,580 --> 00:01:41,640
+All right, so Constance File, we don't really need tests for that, but actions, I think we do need
+
+21
+00:01:41,640 --> 00:01:43,320
+some tests for our actions.
+
+22
+00:01:43,950 --> 00:01:47,460
+Let's create an action or actions that test file.
+
+23
+00:01:51,590 --> 00:01:58,580
+And within here, let's once again import star as actions.
+
+24
+00:02:00,670 --> 00:02:02,440
+From our actions file.
+
+25
+00:02:06,450 --> 00:02:07,140
+And.
+
+26
+00:02:08,060 --> 00:02:12,920
+With the first action that we have, which is the set search field, that's a pretty simple one.
+
+27
+00:02:12,920 --> 00:02:17,180
+We just want to make sure that this function returns, this object.
+
+28
+00:02:18,760 --> 00:02:24,370
+So we can just use basic just functionality here, we can just have the IT.
+
+29
+00:02:26,380 --> 00:02:32,560
+And I know I should be using that described to to separate out the.
+
+30
+00:02:33,910 --> 00:02:37,760
+To actions that we have, but I think you get the idea you can do that on your own.
+
+31
+00:02:38,290 --> 00:02:47,500
+I want to get you to board here, but let's have it should create an action to search robots.
+
+32
+00:02:49,780 --> 00:02:51,790
+And this is going to have.
+
+33
+00:02:54,890 --> 00:03:03,230
+A simple, very simple tax, let's have a constant text that's going to equal our search term through.
+
+34
+00:03:04,590 --> 00:03:11,010
+And the consulates have the expected action.
+
+35
+00:03:13,430 --> 00:03:17,750
+And the expected action is going to be our object of.
+
+36
+00:03:19,680 --> 00:03:20,160
+Type.
+
+37
+00:03:23,980 --> 00:03:27,540
+And let's import our constants here as well.
+
+38
+00:03:28,920 --> 00:03:29,880
+So we can use them.
+
+39
+00:03:31,760 --> 00:03:39,020
+It's going to have a type of change Sarsfield and a payload, and this is the expected action.
+
+40
+00:03:39,020 --> 00:03:45,440
+So we expect that the action is going to include the RUU text or we don't need the strong characters
+
+41
+00:03:45,440 --> 00:03:45,650
+here.
+
+42
+00:03:45,950 --> 00:03:46,420
+There you go.
+
+43
+00:03:47,210 --> 00:03:49,100
+So we can simply just say expect.
+
+44
+00:03:51,190 --> 00:03:52,000
+Actions.
+
+45
+00:03:54,530 --> 00:03:55,010
+Dot.
+
+46
+00:03:56,110 --> 00:03:57,290
+Search, what was it?
+
+47
+00:03:57,310 --> 00:04:02,350
+It was set search field, Skype, that search field.
+
+48
+00:04:05,500 --> 00:04:07,240
+To have the text.
+
+49
+00:04:08,260 --> 00:04:17,950
+And to have two equal so we want to set the search field with that text and we needed to have the expected
+
+50
+00:04:17,950 --> 00:04:22,150
+output of the action, so expected action, let's save.
+
+51
+00:04:24,460 --> 00:04:27,220
+And what did I miss here?
+
+52
+00:04:27,250 --> 00:04:27,940
+Let's see.
+
+53
+00:04:29,830 --> 00:04:35,680
+No, no comma here now over using the commas, this test section has been hard on me with the commas.
+
+54
+00:04:35,740 --> 00:04:37,060
+All right, so there you go.
+
+55
+00:04:37,090 --> 00:04:41,200
+We have new tests now in the actions that is passing.
+
+56
+00:04:41,530 --> 00:04:42,970
+Very, very nice.
+
+57
+00:04:43,180 --> 00:04:44,110
+And that's simple.
+
+58
+00:04:44,110 --> 00:04:45,250
+We should know how to do that.
+
+59
+00:04:45,730 --> 00:04:46,990
+But here's the challenging part.
+
+60
+00:04:46,990 --> 00:04:55,870
+Now we have this action request robots that, oh, boy, does a dispatch and I have an API call here.
+
+61
+00:04:56,080 --> 00:04:58,840
+And this is something that you might not have seen.
+
+62
+00:04:59,020 --> 00:05:04,510
+I've created an API folder here that simply extracts out our fetch call.
+
+63
+00:05:04,930 --> 00:05:06,430
+So we give it a neutral.
+
+64
+00:05:06,430 --> 00:05:08,890
+And does the response response that Jason.
+
+65
+00:05:09,370 --> 00:05:13,920
+So that it simplifies things for things for us so we don't have to constantly do fetch.
+
+66
+00:05:14,020 --> 00:05:14,950
+But then response.
+
+67
+00:05:14,950 --> 00:05:15,940
+Response that Jason.
+
+68
+00:05:17,310 --> 00:05:21,090
+But you've seen this before, the where is it?
+
+69
+00:05:23,960 --> 00:05:32,630
+The actions just have the dispatch of request robots pending and then finally it's going to have either
+
+70
+00:05:32,630 --> 00:05:34,250
+success or failed.
+
+71
+00:05:34,700 --> 00:05:34,860
+Hmm.
+
+72
+00:05:35,240 --> 00:05:36,950
+So how do we do this?
+
+73
+00:05:36,950 --> 00:05:41,480
+Because looking at this action, we need to dispatch.
+
+74
+00:05:42,840 --> 00:05:51,300
+Because this is an asynchronous action and remember, we need thunk for it, we need a thunk middleware.
+
+75
+00:05:52,330 --> 00:05:54,880
+Let's start writing the test and see what we can improve on.
+
+76
+00:05:54,910 --> 00:05:57,480
+I'm going to close some of these tabs just to clean things out.
+
+77
+00:06:01,830 --> 00:06:02,470
+There you go.
+
+78
+00:06:03,000 --> 00:06:05,040
+And we're going to create a new blog.
+
+79
+00:06:06,230 --> 00:06:10,160
+And in this block, we want to say handle's.
+
+80
+00:06:12,780 --> 00:06:20,340
+Changing, changing or handles requesting robots API.
+
+81
+00:06:23,480 --> 00:06:25,190
+And we'll say here that.
+
+82
+00:06:26,840 --> 00:06:33,860
+Well, the very first thing we want to do, we need to pass the dispatch to our function.
+
+83
+00:06:34,810 --> 00:06:37,190
+Again, remember the dispatch here?
+
+84
+00:06:37,960 --> 00:06:41,740
+Well, if we do it without this, so let's just test it out.
+
+85
+00:06:42,490 --> 00:06:47,740
+If I run the expect actions dot request.
+
+86
+00:06:49,970 --> 00:06:59,870
+Robots action, I believe that's what's called the request robots, and we leave it at this and let's
+
+87
+00:06:59,870 --> 00:07:04,070
+just say that we expect the type of the action.
+
+88
+00:07:09,620 --> 00:07:15,950
+To have the, let's say, request robots pending and payload, if we look at our actions, we're not
+
+89
+00:07:15,950 --> 00:07:17,060
+sending any payloads.
+
+90
+00:07:18,170 --> 00:07:23,750
+So we can just go ahead and leave that as it is if I save.
+
+91
+00:07:26,150 --> 00:07:27,350
+Yet one failed.
+
+92
+00:07:30,630 --> 00:07:32,400
+Request robots.
+
+93
+00:07:34,150 --> 00:07:43,990
+And there you go, I get an error type error dispatch is not a function because remember, with asynchronous
+
+94
+00:07:43,990 --> 00:07:50,830
+code, we need to pass this dispatch function to actually run this.
+
+95
+00:07:51,670 --> 00:07:56,020
+And we used a thunk middleware in order for us to do this.
+
+96
+00:07:56,020 --> 00:08:00,640
+If you remember, index suggests we have the thunk middleware in here.
+
+97
+00:08:02,550 --> 00:08:03,630
+How do we do this?
+
+98
+00:08:04,380 --> 00:08:07,220
+Well, there is a special package that we can use here.
+
+99
+00:08:07,410 --> 00:08:08,670
+Let me exit out of this.
+
+100
+00:08:09,570 --> 00:08:10,770
+Make this a little bit bigger.
+
+101
+00:08:12,110 --> 00:08:13,160
+Let's clear.
+
+102
+00:08:15,150 --> 00:08:18,870
+We can install a package called the Redox.
+
+103
+00:08:20,520 --> 00:08:21,030
+Mark.
+
+104
+00:08:22,260 --> 00:08:22,830
+Store.
+
+105
+00:08:24,290 --> 00:08:31,580
+And remember that this gives us access to a fake store that we can use for testing, so let's do.
+
+106
+00:08:32,860 --> 00:08:33,640
+NPM.
+
+107
+00:08:34,900 --> 00:08:37,810
+Install, dash, dash, save def.
+
+108
+00:08:43,830 --> 00:08:53,100
+And now we have access to this fake store and the way we can use it is if I go up here and I say import.
+
+109
+00:08:54,540 --> 00:09:00,630
+Configure store, and once again, this is all in their documentation for the package, we want to use
+
+110
+00:09:00,630 --> 00:09:03,570
+the redox lock store.
+
+111
+00:09:06,540 --> 00:09:09,150
+And we also want to import the.
+
+112
+00:09:10,760 --> 00:09:11,300
+Thank.
+
+113
+00:09:12,200 --> 00:09:12,800
+Middleware.
+
+114
+00:09:13,690 --> 00:09:14,380
+From the.
+
+115
+00:09:15,530 --> 00:09:16,160
+Redux.
+
+116
+00:09:17,780 --> 00:09:25,370
+Funk package, which, if you remember, we already have in our index does jazz file.
+
+117
+00:09:27,340 --> 00:09:28,900
+And the last thing we need to do.
+
+118
+00:09:29,430 --> 00:09:37,540
+Let me make sure it's lined up properly, is to configure and create this store so we can simply just
+
+119
+00:09:37,540 --> 00:09:38,680
+say const.
+
+120
+00:09:40,110 --> 00:09:40,920
+Mark store.
+
+121
+00:09:42,590 --> 00:09:43,220
+Equals.
+
+122
+00:09:45,850 --> 00:09:54,340
+Configure, lock store, and we can figure it by giving it some properties, of which one of them is
+
+123
+00:09:54,340 --> 00:09:58,140
+the middleware that we're going to use, which is going to be the thunk middleware.
+
+124
+00:09:58,810 --> 00:10:04,060
+So sometimes you're most likely going to add this into a setup test file.
+
+125
+00:10:04,240 --> 00:10:11,110
+For now, I'm going to keep it in here because we only have one actions file, but you can usually export
+
+126
+00:10:11,110 --> 00:10:11,260
+it.
+
+127
+00:10:11,260 --> 00:10:14,440
+So this store is available to all your tests.
+
+128
+00:10:16,520 --> 00:10:18,890
+So now we can.
+
+129
+00:10:20,000 --> 00:10:20,960
+Create the store.
+
+130
+00:10:24,710 --> 00:10:27,950
+He goes to the mock store and we run it.
+
+131
+00:10:30,080 --> 00:10:42,190
+And I can now say store dot dispatch and store dot dispatch takes actions, dot requests for robots.
+
+132
+00:10:42,530 --> 00:10:45,770
+So we're going to dispatch this action.
+
+133
+00:10:46,820 --> 00:10:47,810
+Remember, that's.
+
+134
+00:10:49,990 --> 00:10:51,070
+This action over here.
+
+135
+00:10:52,780 --> 00:11:04,570
+And once we dispatched that, we can do something like constant action equals to store DOT get actions.
+
+136
+00:11:06,880 --> 00:11:09,670
+And now this action is going to contain what we need.
+
+137
+00:11:11,190 --> 00:11:14,070
+Let me just I get to show you, so console dialogue.
+
+138
+00:11:18,240 --> 00:11:20,880
+Action, it's going to contain the action.
+
+139
+00:11:21,920 --> 00:11:23,660
+Let's save and run test.
+
+140
+00:11:30,200 --> 00:11:39,950
+Scroll up and I have a bit of a console log area here, the Configure MOX store should be Configure
+
+141
+00:11:41,060 --> 00:11:41,840
+Mok's store here.
+
+142
+00:11:44,190 --> 00:11:48,640
+All right, so we see that dispatch is not a function.
+
+143
+00:11:49,340 --> 00:11:51,150
+Now, why is that?
+
+144
+00:11:52,190 --> 00:11:58,350
+And this is something that you may have noticed while we're looking at the action dot JS file.
+
+145
+00:11:59,190 --> 00:12:04,640
+Do you remember that Redox Thunk expects a function to be returned?
+
+146
+00:12:05,300 --> 00:12:14,000
+And although our program works the way it is now, you ideally want to let's go back to the top dogs.
+
+147
+00:12:17,190 --> 00:12:22,590
+You see here that and this is something we talked about before, the redox section you see here, that
+
+148
+00:12:23,070 --> 00:12:28,320
+we're just giving the dispatch to our request robots.
+
+149
+00:12:28,890 --> 00:12:35,250
+But the way it works is we want to make sure that we dispatch like this.
+
+150
+00:12:36,880 --> 00:12:44,740
+Run the function inside of it so that we can run the dispatch dispatch function, just like we have
+
+151
+00:12:44,740 --> 00:12:50,530
+in our tests over here and the actions request robots and we want to dispatch that.
+
+152
+00:12:50,810 --> 00:12:55,150
+Otherwise, we would have to do store dispatch in here, which is kind of ugly.
+
+153
+00:12:55,270 --> 00:13:01,870
+Once again, to fix that or we need to do is in the actions, because if you remember Apgar's, we have
+
+154
+00:13:01,870 --> 00:13:05,200
+dispatch now and request robots needs to run.
+
+155
+00:13:07,550 --> 00:13:12,680
+So we're just going to have a function inside of a function.
+
+156
+00:13:14,160 --> 00:13:16,580
+And we want to make sure that this works as well.
+
+157
+00:13:16,620 --> 00:13:19,080
+So I'm going to go back and do not start.
+
+158
+00:13:26,100 --> 00:13:33,150
+Right, and everything still works, but now we're able to hopefully run the tests better.
+
+159
+00:13:33,300 --> 00:13:35,070
+So AMPM test.
+
+160
+00:13:38,120 --> 00:13:42,650
+Go back to our tests and we see that we have one failed fun.
+
+161
+00:13:44,030 --> 00:13:49,460
+We have a type request, robots pending that we expected, but we got a function instead.
+
+162
+00:13:51,450 --> 00:13:58,290
+And if we log actions, we see that we have a action type of request, robots pending, which we're
+
+163
+00:13:58,290 --> 00:13:58,680
+getting.
+
+164
+00:13:59,860 --> 00:14:06,280
+And that's because you can see that the action is returning an array and we want the object.
+
+165
+00:14:07,670 --> 00:14:16,310
+All of the action in the expect because we no longer need to run this action, it's all being run up
+
+166
+00:14:16,310 --> 00:14:23,600
+here and we can get the actions, we can just say expect action.
+
+167
+00:14:26,390 --> 00:14:27,770
+The first item in the array.
+
+168
+00:14:30,040 --> 00:14:37,930
+To be run and look at that, everything works, and I know this can get a little bit confusing, and
+
+169
+00:14:37,930 --> 00:14:41,950
+any time you're testing asynchronous things, it can get pretty difficult.
+
+170
+00:14:42,220 --> 00:14:48,310
+But all we did was really create a fake store that had the thunk middleware.
+
+171
+00:14:48,310 --> 00:14:55,360
+So it awaits for any functions that are returned from an action, in which case we did with our actions
+
+172
+00:14:55,930 --> 00:14:56,920
+request robots.
+
+173
+00:14:56,920 --> 00:15:00,640
+Because you see here that every turns and action.
+
+174
+00:15:01,960 --> 00:15:04,600
+That takes the dispatch and.
+
+175
+00:15:05,840 --> 00:15:14,210
+Now this dispatch gets automatically sent into request robots, it's going to receive the actions,
+
+176
+00:15:14,780 --> 00:15:22,190
+and because if we go to our action dogs, the very first thing we dispatch is the pending action.
+
+177
+00:15:23,300 --> 00:15:24,140
+We receive.
+
+178
+00:15:25,640 --> 00:15:31,160
+Action zero to equal the expected action of robots pending.
+
+179
+00:15:32,180 --> 00:15:40,610
+All right, so how do we test the request, robot success and request robots failed, and that's a little
+
+180
+00:15:40,610 --> 00:15:46,550
+challenge that I'm going to leave for you to decide what to do based on what we've learned about asynchronous
+
+181
+00:15:46,550 --> 00:15:52,100
+tests and also what we've learned about mocking our reduc store.
+
+182
+00:15:54,040 --> 00:16:00,790
+And this is a tough, challenging problem, so use whatever resources you have at hand, Internet,
+
+183
+00:16:00,790 --> 00:16:08,170
+Google Stack, overflow, anything you can to try and figure this out, because that's what testing
+
+184
+00:16:08,180 --> 00:16:08,740
+is all about.
+
+185
+00:16:08,740 --> 00:16:17,620
+Testing is sometimes very simple when you have pure functional components or functions, or it could
+
+186
+00:16:17,620 --> 00:16:22,780
+be really difficult when you have all these dependencies that your tests run on.
+
+187
+00:16:23,680 --> 00:16:25,960
+But every situation is different.
+
+188
+00:16:26,110 --> 00:16:32,920
+And luckily for us, with all these resources online, you can figure it out as long as you understand
+
+189
+00:16:32,920 --> 00:16:39,220
+how things work and what the errors mean, which as a senior developer is the most important thing.
+
+190
+00:16:39,550 --> 00:16:43,810
+They don't know every single syntax in a library and know all the documentation.
+
+191
+00:16:44,080 --> 00:16:50,170
+They just understand how things work underneath the hood so that when the problem arises, they can
+
+192
+00:16:50,170 --> 00:16:50,590
+solve it.
+
+193
+00:16:52,000 --> 00:16:59,920
+Finally, I wanted to show you two things that may help you or I think are great whenever you are doing
+
+194
+00:16:59,920 --> 00:17:00,970
+asynchronous tests.
+
+195
+00:17:02,050 --> 00:17:09,510
+The first one is a library called knock and knock, simply as an MP and package that you can install
+
+196
+00:17:09,820 --> 00:17:18,550
+and you can see over here that we can pretend that we're doing a Eurail call, we can do a get request
+
+197
+00:17:18,880 --> 00:17:24,940
+to an end point, and we can automatically reply with whatever we want.
+
+198
+00:17:25,120 --> 00:17:31,810
+We can say that this reply had a status of two hundred and it gave us username and email.
+
+199
+00:17:32,500 --> 00:17:36,010
+And this sets you up really nicely for asynchronous test.
+
+200
+00:17:37,420 --> 00:17:44,200
+Once you get deep into testing as well, especially when you start working with APIs, Super Test is
+
+201
+00:17:44,200 --> 00:17:48,930
+one of my favorite tools simply by importing super test, just like here.
+
+202
+00:17:48,970 --> 00:17:57,520
+And we have the request you can request, let's say, an express app and you can do all these things
+
+203
+00:17:57,520 --> 00:18:05,800
+like running get and expecting a content type and a status and a ton of things.
+
+204
+00:18:05,870 --> 00:18:13,210
+Now, this is beyond the scope of this course and is something that you can take a look at as you get
+
+205
+00:18:13,210 --> 00:18:14,500
+more and more into testing.
+
+206
+00:18:14,890 --> 00:18:20,860
+But just realize that there's tons of tools out there for you to use to write clean, nice, beautiful
+
+207
+00:18:20,860 --> 00:18:21,250
+tests.
+
+208
+00:18:22,760 --> 00:18:23,670
+I'll see you in the next one.
+
+209
+00:18:24,380 --> 00:18:24,770
+Bye bye.

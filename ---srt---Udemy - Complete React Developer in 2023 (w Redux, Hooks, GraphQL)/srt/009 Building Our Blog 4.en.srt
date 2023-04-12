@@ -1,0 +1,375 @@
+1
+00:00:00,330 --> 00:00:05,460
+Now we're going to build a pretty simple template, so what we first need to do is import react from
+
+2
+00:00:05,460 --> 00:00:05,970
+react.
+
+3
+00:00:07,260 --> 00:00:14,550
+And we're also going to import in fuel from Gatsby because we need to make a request for the actual
+
+4
+00:00:14,550 --> 00:00:15,010
+markdown.
+
+5
+00:00:15,870 --> 00:00:19,440
+We're also going to import the layout from our components.
+
+6
+00:00:20,070 --> 00:00:24,990
+Now, if you're curious why this template is not in our components folder, the reason is because this
+
+7
+00:00:24,990 --> 00:00:30,750
+template is not a component that we actually use in the application, any application files we keep
+
+8
+00:00:30,750 --> 00:00:31,890
+inside of our components.
+
+9
+00:00:31,890 --> 00:00:37,740
+But anything that we use to actually build out our blog posts or any other templates that we dynamically
+
+10
+00:00:37,740 --> 00:00:40,650
+generate in Our Gatsby note, we're just going to put here instead.
+
+11
+00:00:43,020 --> 00:00:48,600
+What we're going to export as the default is going to be this new function where we get the data.
+
+12
+00:00:50,530 --> 00:00:53,760
+Because we know what we're going to want to pluck off is the Makhdoom.
+
+13
+00:00:54,950 --> 00:00:56,900
+The actual graph fuel that we need.
+
+14
+00:00:58,250 --> 00:00:59,570
+Is going to be this query.
+
+15
+00:01:01,120 --> 00:01:08,710
+Now, what we want to query for is the individual markdown remark related to the slug that we get.
+
+16
+00:01:09,760 --> 00:01:17,050
+We're actually going to get that slug manually by passing in it as a parameter that our graph cool will
+
+17
+00:01:17,050 --> 00:01:17,450
+use.
+
+18
+00:01:18,190 --> 00:01:20,350
+So I'm going to show you what the graph looks like.
+
+19
+00:01:20,350 --> 00:01:23,810
+And then when we go back to Our Gatsby, no, Jess, you're going to see how we pass that it.
+
+20
+00:01:24,460 --> 00:01:29,860
+So essentially, we're going to have our query and it's going to receive this parameter called sluggard.
+
+21
+00:01:29,860 --> 00:01:32,500
+That's going to be a string and it's always going to be mandatory.
+
+22
+00:01:33,760 --> 00:01:37,090
+Now, what we're going to get back is a down Remarque.
+
+23
+00:01:38,240 --> 00:01:46,220
+Where what we're looking for is we want to match this fields' here to the slug value, right.
+
+24
+00:01:46,370 --> 00:01:50,180
+And we want it to be equal to the slug parameter that we pass in.
+
+25
+00:01:50,600 --> 00:01:54,020
+So if you're unfamiliar with GaveKal, this is the syntax of writing a query.
+
+26
+00:01:54,410 --> 00:01:59,600
+Essentially, we're specifying that I want you to match this field on our markdown remark where the
+
+27
+00:01:59,600 --> 00:02:04,430
+slug is equivalent to this slug strength that we pass in here.
+
+28
+00:02:04,880 --> 00:02:10,610
+Now, we can actually test to see if this quarry works first and we can do it inside of our graph cual
+
+29
+00:02:10,610 --> 00:02:11,180
+playground.
+
+30
+00:02:11,790 --> 00:02:15,710
+So let's just get rid of our initial query for all markdown remarks.
+
+31
+00:02:16,190 --> 00:02:19,960
+And what we're going to request for is simply a markdown remark.
+
+32
+00:02:20,660 --> 00:02:25,940
+And inside here we see that what we did was we checked for the fields, we checked for the slug, and
+
+33
+00:02:25,940 --> 00:02:28,050
+we checked that it was equal to some string.
+
+34
+00:02:28,430 --> 00:02:33,080
+So in this case, the string that we're matching will be either ice cream or my first block.
+
+35
+00:02:33,680 --> 00:02:41,240
+And now whenever this logs, I also want to make sure that I get the ID and I want the fields as well.
+
+36
+00:02:41,840 --> 00:02:43,260
+And I also want the slug here.
+
+37
+00:02:43,910 --> 00:02:50,240
+So now if I do this, I see that I'm fetching for exactly the markdown that matched the ice cream slug
+
+38
+00:02:50,510 --> 00:02:53,840
+to this string, which was our ice cream markdown.
+
+39
+00:02:54,700 --> 00:02:55,960
+So that's really what we're doing here.
+
+40
+00:02:56,930 --> 00:03:03,920
+So what we're doing is we are getting that mark down and what we want to plug off of it is the HTML.
+
+41
+00:03:04,490 --> 00:03:05,720
+We want the front matter.
+
+42
+00:03:06,660 --> 00:03:07,650
+And we want the title.
+
+43
+00:03:08,920 --> 00:03:16,000
+So with this, we now have the data that we need and what we're going to do is we are going to set the
+
+44
+00:03:16,000 --> 00:03:20,080
+post itself equal to data markdown remark.
+
+45
+00:03:21,980 --> 00:03:26,090
+So now we have access to the marked and remarkable object.
+
+46
+00:03:27,040 --> 00:03:36,040
+And what we're going to return is our lay out component wrapping around some somdev that holds inside
+
+47
+00:03:36,040 --> 00:03:39,440
+of it and H2 or an H1.
+
+48
+00:03:39,460 --> 00:03:40,600
+Let's do another one, actually.
+
+49
+00:03:43,320 --> 00:03:47,040
+And as you can guess, we're going to do post front matter.
+
+50
+00:03:51,050 --> 00:03:57,710
+And then for a div, this is where we're actually going to populate the div with our TEMEL, so we're
+
+51
+00:03:57,710 --> 00:04:01,940
+going to use a react method called dangerously set in our HTML.
+
+52
+00:04:06,690 --> 00:04:12,240
+This is the preferred way of actually setting this value, so I know it says dangerously set, this
+
+53
+00:04:12,240 --> 00:04:14,460
+is because in typical reactor you don't want to do this.
+
+54
+00:04:14,460 --> 00:04:18,080
+But in Gatsby, this is perfectly fine because it's not dynamically generated.
+
+55
+00:04:18,480 --> 00:04:19,640
+This is statically set.
+
+56
+00:04:20,460 --> 00:04:27,630
+So underscore, underscore, HTML is the value and we want post HTML, so we want to use the HTML value
+
+57
+00:04:27,630 --> 00:04:28,020
+here.
+
+58
+00:04:28,260 --> 00:04:32,760
+And what this will do is this will set all of the HTML value inside of this div.
+
+59
+00:04:33,850 --> 00:04:40,000
+So with this, we have our blog post template, so let's go back to Our Gatsby, no jazz file and inside
+
+60
+00:04:40,000 --> 00:04:44,190
+of our Krey pages that we had before, we are going to now pass the component.
+
+61
+00:04:44,770 --> 00:04:48,370
+Now, this component is expecting a relative path.
+
+62
+00:04:48,380 --> 00:04:52,420
+So we actually have to build it using the path variable.
+
+63
+00:04:53,780 --> 00:04:54,740
+That we get.
+
+64
+00:04:55,670 --> 00:05:03,200
+By default from the Path library that comes with every single no jass file, so we're going to pass
+
+65
+00:05:03,200 --> 00:05:05,960
+in path and we're going to say path dot resolve.
+
+66
+00:05:06,650 --> 00:05:09,770
+And what we're going to say is dot slash sauce.
+
+67
+00:05:09,800 --> 00:05:15,400
+So I want to go from the route down to the source folder into templates using our blogs.
+
+68
+00:05:16,430 --> 00:05:22,940
+Now, in order for us to pass the actual slug value to this query, we pass it through this context
+
+69
+00:05:22,940 --> 00:05:23,390
+object.
+
+70
+00:05:23,750 --> 00:05:27,440
+And here we're going to give the Sloggett equal to our no duff fields dot slug.
+
+71
+00:05:27,920 --> 00:05:33,500
+So now this will know that when it runs create pages, what it's going to do is it's going to create
+
+72
+00:05:33,500 --> 00:05:38,540
+the page calling graph QOL using every single markdown remark.
+
+73
+00:05:39,750 --> 00:05:44,700
+It's going to loop through every single markdown file that we have, and it's going to manually create
+
+74
+00:05:44,700 --> 00:05:47,960
+a new page for it using that new blog post template.
+
+75
+00:05:48,450 --> 00:05:50,640
+But now we have our new create pages method.
+
+76
+00:05:51,650 --> 00:05:54,570
+There's actually a typo here, this actually should be asked.
+
+77
+00:05:55,310 --> 00:05:59,060
+In fact, let's just double check our blog post to make sure that we're not doing anything wrong.
+
+78
+00:05:59,240 --> 00:06:05,110
+Oh, it looks like I actually use the wrong parentheses here, so let's just fix that as well.
+
+79
+00:06:06,000 --> 00:06:07,970
+We want to make sure we're turning with round brackets.
+
+80
+00:06:08,600 --> 00:06:11,990
+OK, so now let's restart our server.
+
+81
+00:06:15,440 --> 00:06:17,570
+So let's just wait for our server to finish building.
+
+82
+00:06:19,860 --> 00:06:25,920
+OK, so now that we're finished building, let's actually see if our pages have generated, so let's
+
+83
+00:06:25,920 --> 00:06:30,050
+go to localhost eight thousand and let's just navigate to our pages.
+
+84
+00:06:30,720 --> 00:06:31,920
+So the first is ice cream.
+
+85
+00:06:32,860 --> 00:06:37,660
+And we see that we have and our second is my first Šamaš.
+
+86
+00:06:38,540 --> 00:06:44,780
+And here we see that this also works, so we now have our dynamic bill pages using our markdowns if
+
+87
+00:06:44,780 --> 00:06:46,710
+we write any new markdowns to our pages.
+
+88
+00:06:47,120 --> 00:06:51,020
+Not only is it going to add to our index, but we're going to generate a new page for it.
+
+89
+00:06:51,500 --> 00:06:57,920
+So this is awesome because now we've pretty much got a dynamically structured and building blog without
+
+90
+00:06:57,920 --> 00:07:02,380
+us having to add any more code other than some styling if we want to, or new features.
+
+91
+00:07:02,810 --> 00:07:07,610
+But as far as it goes, in terms of adding new blog posts, this is pretty much done.
+
+92
+00:07:08,360 --> 00:07:15,500
+One other thing that we're going to do is we actually probably should reverse the order of this listing,
+
+93
+00:07:15,830 --> 00:07:22,490
+because right now it's listing the earliest dates first versus listing the latest dates as the newest
+
+94
+00:07:22,490 --> 00:07:25,400
+things so we can do all this in the next lesson.

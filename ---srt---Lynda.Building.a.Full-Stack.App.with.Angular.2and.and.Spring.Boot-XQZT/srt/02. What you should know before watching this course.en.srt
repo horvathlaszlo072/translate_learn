@@ -1,0 +1,47 @@
+1
+00:00:00.06 --> 00:00:01.08
+- [Instructor] This course is designed
+
+2
+00:00:01.08 --> 00:00:03.09
+for experienced developers.
+
+3
+00:00:03.09 --> 00:00:05.08
+You will be expected to have experience
+
+4
+00:00:05.08 --> 00:00:08.00
+with Java and Spring Boot.
+
+5
+00:00:08.00 --> 00:00:11.00
+Also, you should have used
+JavaScript, TypeScript,
+
+6
+00:00:11.00 --> 00:00:14.01
+and AngularJS 2 previously.
+
+7
+00:00:14.01 --> 00:00:16.06
+If you're new to any
+of these technologies,
+
+8
+00:00:16.06 --> 00:00:19.09
+you may want to take a
+look at some other courses.
+
+9
+00:00:19.09 --> 00:00:23.01
+We recommend Up and Running with Java,
+
+10
+00:00:23.01 --> 00:00:26.03
+Learn AngularJS 2: The Basics,
+
+11
+00:00:26.03 --> 00:00:29.00
+Learning Spring with Spring Boot.
+

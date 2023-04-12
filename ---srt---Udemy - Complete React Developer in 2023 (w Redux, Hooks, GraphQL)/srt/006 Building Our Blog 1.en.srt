@@ -1,0 +1,551 @@
+1
+00:00:00,150 --> 00:00:01,590
+Hello and welcome back.
+
+2
+00:00:02,310 --> 00:00:07,620
+So in the last lesson, we learned a little bit about this Gatsby's source filesystem plug in.
+
+3
+00:00:08,310 --> 00:00:15,930
+So plug ins are pretty much these tools that we can include inside of our Gatsby config in order for
+
+4
+00:00:15,930 --> 00:00:19,500
+our Gatsby processes to get these bonus features.
+
+5
+00:00:19,950 --> 00:00:25,560
+So, for example, our source file system, as we know, gave us access to that all file query inside
+
+6
+00:00:25,560 --> 00:00:27,600
+of our graph queue all queries on our web.
+
+7
+00:00:28,380 --> 00:00:35,250
+Now, the next thing that we need to add is actually going to be a new plug in that is called a transformer.
+
+8
+00:00:36,210 --> 00:00:43,740
+That transformer will allow us to take these files that we are pulling into our query, using the Al-Fadl
+
+9
+00:00:43,740 --> 00:00:49,860
+query, that gives us a no representation, but we actually want the data that sits inside of those
+
+10
+00:00:49,860 --> 00:00:50,260
+files.
+
+11
+00:00:50,280 --> 00:00:52,110
+So we need a transformer to do that.
+
+12
+00:00:52,770 --> 00:00:57,510
+The thing that we have to note, though, is that transformers tend to be libraries that we need to
+
+13
+00:00:57,510 --> 00:00:59,220
+install inside of our project.
+
+14
+00:00:59,910 --> 00:01:04,650
+Now, if you look inside of your directory, you might see a yarn log file.
+
+15
+00:01:05,040 --> 00:01:09,300
+If you see a yarn log file, it means that by default, this project comes with yarn.
+
+16
+00:01:09,570 --> 00:01:14,080
+If you see a package log file, then you actually don't have yarn installed.
+
+17
+00:01:14,100 --> 00:01:16,590
+Instead, what you're using is just NPM.
+
+18
+00:01:17,660 --> 00:01:22,640
+What we're going to do is we're just going to add this new file and depending on what you have, whether
+
+19
+00:01:22,640 --> 00:01:29,720
+it's yarn or NPM, just use the respective one in order for you to add a new file in NPM, you do NPM
+
+20
+00:01:29,720 --> 00:01:33,890
+install and then you type the name of the file or the side of the package that we're adding.
+
+21
+00:01:34,010 --> 00:01:36,680
+If you're using yarn, you're just going to do yarn add.
+
+22
+00:01:36,680 --> 00:01:41,930
+And then the name of the package that we're adding now, the name of the package is Gatsby.
+
+23
+00:01:43,000 --> 00:01:44,740
+Transformer, Remarque.
+
+24
+00:01:45,910 --> 00:01:50,650
+So simply add that in with your respective package manager, depending on how your folder structure
+
+25
+00:01:50,650 --> 00:01:51,040
+looks.
+
+26
+00:01:52,030 --> 00:01:59,290
+And what this will do is this will add in this new transformer object that we need to plug into our
+
+27
+00:01:59,290 --> 00:01:59,910
+application.
+
+28
+00:02:00,220 --> 00:02:03,880
+So you simply add these boxes here and you type in Gatsby.
+
+29
+00:02:04,920 --> 00:02:05,700
+Transformer.
+
+30
+00:02:06,720 --> 00:02:07,260
+Remarque.
+
+31
+00:02:08,440 --> 00:02:16,000
+Now, what Gatsby transform a remark does is it is a Plug-In that allows us to convert our markdown
+
+32
+00:02:16,000 --> 00:02:23,530
+files into data and to melt the front matter portion of our markdown will get converted into a data
+
+33
+00:02:23,530 --> 00:02:24,970
+object that we can access.
+
+34
+00:02:25,330 --> 00:02:31,960
+And everything in the actual markdown itself will be converted into HTML that we can use to build the
+
+35
+00:02:31,960 --> 00:02:34,990
+pages that we want inside of our application.
+
+36
+00:02:35,800 --> 00:02:41,020
+Now, keeping this in mind, the other thing we have to do is remember to restart our server because
+
+37
+00:02:41,020 --> 00:02:42,310
+we've added a new plugin.
+
+38
+00:02:44,110 --> 00:02:50,470
+In order for us to actually access what we're going to see with our transformer Mark is that once this
+
+39
+00:02:50,470 --> 00:02:56,440
+server finishes rebuilding, we get access to this new query inside of our graphical.
+
+40
+00:02:57,740 --> 00:02:59,480
+So let's just wait until this finishes building.
+
+41
+00:03:00,860 --> 00:03:07,970
+And we'll go back to our you and we'll refresh now what we'll see is this thing called all markdown
+
+42
+00:03:07,970 --> 00:03:08,400
+remark.
+
+43
+00:03:08,690 --> 00:03:14,680
+So if we add this and we simply fire this off, we see that now we only get two notes.
+
+44
+00:03:15,020 --> 00:03:18,290
+The reason for this is because these are actually our markdown notes.
+
+45
+00:03:18,770 --> 00:03:24,410
+So in order for us to see inside of the note itself, here we have our front matter where we have an
+
+46
+00:03:24,410 --> 00:03:31,640
+optional description, the title and the date, as well as this HTML block, which represents the actual
+
+47
+00:03:31,640 --> 00:03:33,860
+body of the markdown that we've written.
+
+48
+00:03:34,070 --> 00:03:35,720
+So we try this again here.
+
+49
+00:03:35,720 --> 00:03:44,120
+We see that the HTML holds the markdown, but now convert it into HTML as well as our front matter object
+
+50
+00:03:44,120 --> 00:03:46,400
+that holds our description, our title and our date.
+
+51
+00:03:46,700 --> 00:03:48,320
+Now description, of course, is optional.
+
+52
+00:03:48,630 --> 00:03:52,490
+That's why in some places we get null because we don't include one.
+
+53
+00:03:52,490 --> 00:03:55,910
+So we just have to account for this when we actually build out our blog template.
+
+54
+00:03:56,000 --> 00:03:59,270
+Now, another property that we see that we have is this excerpt.
+
+55
+00:03:59,870 --> 00:04:06,890
+Now, the excerpt, unlike the HTML, is what will give us this little snippet of what we're trying
+
+56
+00:04:06,890 --> 00:04:07,410
+to show.
+
+57
+00:04:07,820 --> 00:04:12,720
+So this is pretty much the body of our markdown, except it truncates it automatically for us.
+
+58
+00:04:13,370 --> 00:04:20,360
+Now, this is really good when we want to actually show or highlight something inside of our blog preview,
+
+59
+00:04:20,360 --> 00:04:24,920
+for example, where we don't want to show the full body, but maybe just an excerpt from the top of
+
+60
+00:04:24,920 --> 00:04:25,040
+it.
+
+61
+00:04:25,490 --> 00:04:31,670
+So we want to use this property inside of our index page, for example, or we actually list out our
+
+62
+00:04:31,670 --> 00:04:32,170
+blocks.
+
+63
+00:04:32,990 --> 00:04:35,720
+So what we're going to do is exactly that.
+
+64
+00:04:35,720 --> 00:04:38,270
+Next, we're going to go to our index page.
+
+65
+00:04:38,570 --> 00:04:46,520
+And what we're going to do is we are going to bring in the graphical query so that we can actually start
+
+66
+00:04:46,520 --> 00:04:51,680
+requesting for that data that we just wrote inside of our graphical.
+
+67
+00:04:52,630 --> 00:04:55,100
+So what we want to do is we want to copy this graph.
+
+68
+00:04:55,900 --> 00:05:03,220
+And then after where we export out our actual index page, we want to make sure that what we export
+
+69
+00:05:03,490 --> 00:05:04,710
+is a query.
+
+70
+00:05:05,050 --> 00:05:06,910
+So we're just going to export const.
+
+71
+00:05:07,990 --> 00:05:11,700
+Query, which is equal to this graph queue all request.
+
+72
+00:05:12,730 --> 00:05:19,930
+And inside, we're going to say it's a query and then we're going to copy over this object that we wrote
+
+73
+00:05:19,930 --> 00:05:27,040
+before, now, Gatsby is smart enough to know that if you explore out something that has this graph,
+
+74
+00:05:27,040 --> 00:05:34,780
+QoL almost body to it, that this is probably a query that you want to use and pass into whatever component
+
+75
+00:05:34,780 --> 00:05:36,500
+you're exporting out by default.
+
+76
+00:05:37,030 --> 00:05:39,910
+Now, we still have to export out our component by default.
+
+77
+00:05:40,210 --> 00:05:43,540
+And if we want to make this a bit more clear, we don't have to export it like this.
+
+78
+00:05:43,570 --> 00:05:49,130
+We can just copy our export default text and replace this index page like so.
+
+79
+00:05:49,420 --> 00:05:55,630
+So by default, we're just automatically exporting our function that represents the actual component
+
+80
+00:05:55,630 --> 00:05:57,590
+that we render render for our index page.
+
+81
+00:05:58,270 --> 00:06:01,330
+And now what we're going to do is we're going to get in that props object.
+
+82
+00:06:01,330 --> 00:06:08,220
+And on that object will be the data object that is our query return.
+
+83
+00:06:08,830 --> 00:06:16,780
+So using that data, we're going to now end up creating some kind of default look to our index page
+
+84
+00:06:16,780 --> 00:06:19,130
+that shows us our list of blog posts.
+
+85
+00:06:19,840 --> 00:06:23,980
+So what we're going to do is we are just going to make sure that there is a div here.
+
+86
+00:06:25,770 --> 00:06:28,860
+We can actually keep this issue at the top, it doesn't really matter.
+
+87
+00:06:29,900 --> 00:06:38,030
+And inside of this d'Hiv, we are going to have an H1 and in this H1, we're just going to say it was
+
+88
+00:06:38,330 --> 00:06:38,810
+thoughts.
+
+89
+00:06:42,080 --> 00:06:47,400
+Now, we do also actually want the total count of our blog posts, so we're going to do that.
+
+90
+00:06:47,420 --> 00:06:52,730
+Let's actually first remove this and what we're going to do is we're going to add a new property to
+
+91
+00:06:52,730 --> 00:06:55,470
+our all markdown remark called total count.
+
+92
+00:06:56,270 --> 00:07:04,010
+Now, this actually exists right here on our all markdown remark as a property called total count.
+
+93
+00:07:04,730 --> 00:07:10,720
+And as you'll see, what we'll get is the number of nodes that exist inside of this markdown remark.
+
+94
+00:07:11,450 --> 00:07:16,310
+So by doing this, we're now able to access it inside of our data object.
+
+95
+00:07:16,340 --> 00:07:19,010
+So we're just going to make an offer that says.
+
+96
+00:07:21,350 --> 00:07:26,690
+A JavaScript interpolation of data all marked down Remarque.
+
+97
+00:07:28,620 --> 00:07:29,520
+Total count.
+
+98
+00:07:30,930 --> 00:07:34,890
+And now if we save and we go back to our actual application.
+
+99
+00:07:38,990 --> 00:07:44,870
+We see that we have our count here now let's actually log out the data to see what else we have access
+
+100
+00:07:44,870 --> 00:07:49,300
+to before we continue, because the shape is actually going to represent the query.
+
+101
+00:07:49,310 --> 00:07:52,850
+But let's just make sure it doesn't hurt to always double check.
+
+102
+00:07:56,180 --> 00:08:01,100
+Now, if we open up our console, we'll see this object that represents our data.
+
+103
+00:08:02,010 --> 00:08:08,580
+On it, we see, are all marked down Remarque, and inside of it our edges, inside of our edges array
+
+104
+00:08:08,580 --> 00:08:15,060
+is each element that has our node property and then on the node property has those fields that we requested
+
+105
+00:08:15,060 --> 00:08:15,670
+in our query.
+
+106
+00:08:16,110 --> 00:08:22,320
+So as we can see, the object that we get back resembles the exact shape of the object that we passed
+
+107
+00:08:22,320 --> 00:08:23,860
+into our graphical query.
+
+108
+00:08:24,150 --> 00:08:27,630
+So this format matches exactly this format.
+
+109
+00:08:28,580 --> 00:08:35,090
+So that's really great for us, because now we know roughly what it is that we need to use on this element
+
+110
+00:08:35,090 --> 00:08:39,030
+in order to actually build out our blog previews.
+
+111
+00:08:39,710 --> 00:08:46,550
+So what we're going to do is we are going to make another JavaScript tag and we're going to say data,
+
+112
+00:08:47,210 --> 00:08:48,740
+all markdown Remarque.
+
+113
+00:08:49,960 --> 00:08:57,330
+Edges map, so we want to map over each edge and on each edge, we want the note object that we saw.
+
+114
+00:08:57,550 --> 00:09:05,260
+So each of these and what we're going to do is we are going to return back a div where the key is equal
+
+115
+00:09:05,260 --> 00:09:06,250
+to the node ID.
+
+116
+00:09:08,240 --> 00:09:14,660
+And then inside of each div, we're going to have a title, so let's just use an H2 for now and what
+
+117
+00:09:14,660 --> 00:09:19,010
+will render right here is our node front matter.
+
+118
+00:09:21,680 --> 00:09:24,080
+Actually, this might be lower case all.
+
+119
+00:09:25,700 --> 00:09:26,150
+Title.
+
+120
+00:09:27,240 --> 00:09:32,100
+And we'll also going to put a tab here that also loads the date.
+
+121
+00:09:36,580 --> 00:09:37,870
+I just have to let you a.
+
+122
+00:09:39,520 --> 00:09:40,840
+Just so that it's not too big.
+
+123
+00:09:42,380 --> 00:09:49,460
+And then after we have the span, we are also going to put a P tag and in the P tag is where we'll put
+
+124
+00:09:49,460 --> 00:09:50,330
+our excerpt.
+
+125
+00:09:54,060 --> 00:09:59,310
+Now, if we save and we go back, we see that our blog data is showing up.
+
+126
+00:09:59,940 --> 00:10:03,210
+So it's not solved yet, but so far it's all perfectly fine.
+
+127
+00:10:03,690 --> 00:10:09,300
+So that's one of the great things about Gatsby, is that by leveraging the flow that Gatsby expects
+
+128
+00:10:09,300 --> 00:10:15,420
+us to use, as well as tinkering around with some of the code, we're now able to pull in our markdown
+
+129
+00:10:15,420 --> 00:10:19,560
+files as the data that we use to actually populate this index page.
+
+130
+00:10:19,950 --> 00:10:25,890
+So this is great because whenever we add new markdown files now to that markdown pages folder, we will
+
+131
+00:10:25,890 --> 00:10:30,160
+automatically be able to pull it into our index just with our graphical query.
+
+132
+00:10:30,600 --> 00:10:37,980
+And as you would expect, our data would simply just populate out and give us new blog samples inside
+
+133
+00:10:37,980 --> 00:10:41,100
+of this index without ever having to modify that code.
+
+134
+00:10:41,580 --> 00:10:42,600
+So this is really great.
+
+135
+00:10:43,050 --> 00:10:47,970
+Now, in the next lesson, we're actually going to build out these blog post pages individually, because
+
+136
+00:10:47,970 --> 00:10:49,290
+right now we can't link to them.
+
+137
+00:10:49,290 --> 00:10:51,120
+We're simply displaying it in our index.
+
+138
+00:10:51,570 --> 00:10:52,980
+So let's do that in the next lesson.

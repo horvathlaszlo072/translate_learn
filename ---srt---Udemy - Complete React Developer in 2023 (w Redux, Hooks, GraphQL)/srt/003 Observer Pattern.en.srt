@@ -1,0 +1,607 @@
+1
+00:00:00,090 --> 00:00:00,940
+Welcome back, everyone.
+
+2
+00:00:01,830 --> 00:00:06,690
+In this video, I want to dive a little deeper into this observer pattern that we're now seeing from
+
+3
+00:00:06,690 --> 00:00:08,490
+this on off state changed.
+
+4
+00:00:09,730 --> 00:00:16,750
+So let's talk about it in the sense of thinking in streams, when you think about a stream, you can
+
+5
+00:00:16,750 --> 00:00:25,630
+think about a sequence of asynchronous events, such as a click when a user clicks onto a button or
+
+6
+00:00:25,630 --> 00:00:26,470
+on the website.
+
+7
+00:00:26,950 --> 00:00:28,810
+If you are listening for that, click.
+
+8
+00:00:29,110 --> 00:00:33,670
+You actually don't know when that user makes any of those clicks.
+
+9
+00:00:33,670 --> 00:00:37,360
+Because a user might click, they might wait five seconds and then click again.
+
+10
+00:00:37,510 --> 00:00:38,860
+They might wait one second.
+
+11
+00:00:39,070 --> 00:00:40,750
+They might make one hour.
+
+12
+00:00:41,140 --> 00:00:48,460
+The concept of an asynchronous stream is just one where it's a sequence of most likely the same kind
+
+13
+00:00:48,460 --> 00:00:53,170
+of event, but just with an indefinite amount of time between them.
+
+14
+00:00:53,830 --> 00:00:58,510
+So here you can visualize it as if there is a start of a stream.
+
+15
+00:00:58,810 --> 00:01:02,350
+So let's talk about this click stream and then the user clicks.
+
+16
+00:01:03,040 --> 00:01:04,180
+Three seconds pass by.
+
+17
+00:01:04,420 --> 00:01:05,080
+They click again.
+
+18
+00:01:05,740 --> 00:01:06,790
+10 minutes passed by.
+
+19
+00:01:06,790 --> 00:01:07,300
+They click.
+
+20
+00:01:08,200 --> 00:01:11,770
+And then suddenly, let's say they click three times in a row really quickly.
+
+21
+00:01:11,950 --> 00:01:16,660
+Still subsequent clicks, though, but just with very short intervals of time between it.
+
+22
+00:01:17,290 --> 00:01:24,610
+And then maybe they click one more time after 30 seconds and so on and so forth and so on and so forth.
+
+23
+00:01:25,090 --> 00:01:27,040
+The idea with the stream is really just that.
+
+24
+00:01:27,040 --> 00:01:32,170
+It's a sequence of events meaning that there is an order to them in time.
+
+25
+00:01:33,850 --> 00:01:41,260
+As I mentioned before, the key thing here being that there is a variable amount of time between these
+
+26
+00:01:41,260 --> 00:01:45,610
+events and that is really the main thing about streams.
+
+27
+00:01:47,040 --> 00:01:56,340
+The part of why this is interesting as a pattern is because we are able to react to each of these events
+
+28
+00:01:56,340 --> 00:01:57,720
+inside of this stream.
+
+29
+00:01:58,230 --> 00:02:01,260
+So you want to see the stream as a observable.
+
+30
+00:02:01,590 --> 00:02:05,610
+There are libraries such as art suggest that essentially encapsulate this concept.
+
+31
+00:02:06,180 --> 00:02:12,300
+But the main thing for you to focus on is that this is just some kind of asynchronous stream of events.
+
+32
+00:02:13,360 --> 00:02:19,510
+The part where you interact with it is where you use a listener and a listener is really just a class
+
+33
+00:02:19,510 --> 00:02:23,530
+or some kind of object that has three key methods on it.
+
+34
+00:02:24,100 --> 00:02:26,410
+The first is the next method.
+
+35
+00:02:27,040 --> 00:02:30,970
+Next is called every time a new event in the stream happens.
+
+36
+00:02:31,390 --> 00:02:36,280
+And what will happen is that that event will get passed to this next function.
+
+37
+00:02:36,820 --> 00:02:42,820
+And then for us, we're really just saying, Hey, here's a callback is expecting to receive an event.
+
+38
+00:02:43,300 --> 00:02:50,170
+And then what we do with it is up to our code next is really just pointing to our callback, which is
+
+39
+00:02:50,170 --> 00:02:54,370
+really what that callback was when we passed you on ofstate changed.
+
+40
+00:02:54,790 --> 00:02:57,670
+This is exactly the next callback.
+
+41
+00:02:58,000 --> 00:03:03,940
+There is also a error callback, and this error callback just says, Oh, do something whenever we throw
+
+42
+00:03:03,940 --> 00:03:04,450
+an error.
+
+43
+00:03:05,020 --> 00:03:07,900
+And then finally, there is a complete callback.
+
+44
+00:03:08,440 --> 00:03:14,080
+So for streams, streams might actually close, meaning that at some point we might say, Hey, I know
+
+45
+00:03:14,080 --> 00:03:17,380
+I'm done sending out events from this stream.
+
+46
+00:03:17,740 --> 00:03:21,760
+So let me just tell everybody that there's no more events coming.
+
+47
+00:03:22,330 --> 00:03:25,540
+If the stream is open, we can anticipate more stuff to come.
+
+48
+00:03:25,540 --> 00:03:28,090
+If it's closed, it's most likely complete.
+
+49
+00:03:29,080 --> 00:03:35,800
+So how this works is that we need to in some way subscribe from our listener to the stream.
+
+50
+00:03:36,460 --> 00:03:41,200
+And this subscription is really just saying, Hey, let me start listening to what happens in the stream,
+
+51
+00:03:41,500 --> 00:03:48,430
+and you can listen at any point when the stream is going, because remember, this stream is happening
+
+52
+00:03:48,430 --> 00:03:55,300
+in time, so it's possible that maybe we are listening at the start of the stream, meaning no events
+
+53
+00:03:55,300 --> 00:03:56,110
+have triggered yet.
+
+54
+00:03:56,860 --> 00:03:58,390
+So in this case, what's going to happen?
+
+55
+00:03:58,420 --> 00:03:59,410
+The first event fires.
+
+56
+00:03:59,680 --> 00:04:03,040
+It goes to our next function, so our next function gets called.
+
+57
+00:04:03,400 --> 00:04:04,870
+Similarly, the next one fires.
+
+58
+00:04:04,870 --> 00:04:06,310
+We call the next function again.
+
+59
+00:04:06,550 --> 00:04:12,670
+The next event fires, we call the next function again and so on and so forth for the remainder of the
+
+60
+00:04:12,670 --> 00:04:13,810
+upcoming events.
+
+61
+00:04:14,410 --> 00:04:18,850
+The one thing to note here is that the moment that this stream, let's say it's done, though it will
+
+62
+00:04:18,850 --> 00:04:21,760
+complete, which we will learn.
+
+63
+00:04:21,790 --> 00:04:26,020
+So our listener will find that out from the stream because the screen will actually say, Hey, I'm
+
+64
+00:04:26,020 --> 00:04:26,380
+done.
+
+65
+00:04:26,560 --> 00:04:31,990
+And the moment it says it's done, it's going to fire the complete method of every listener that's listening
+
+66
+00:04:31,990 --> 00:04:32,590
+to the stream.
+
+67
+00:04:33,520 --> 00:04:39,250
+So here complete runs and maybe based on whatever callback we have there, it will do something to clean
+
+68
+00:04:39,250 --> 00:04:43,690
+up or whatever it needs to do in order to know that, Oh, I'm done using this stream.
+
+69
+00:04:44,260 --> 00:04:50,110
+But as I mentioned before, we might actually subscribe when a couple events have already happened.
+
+70
+00:04:50,560 --> 00:04:55,090
+Let's imagine that in our stream, two events have already happened, maybe 30 seconds ago.
+
+71
+00:04:55,540 --> 00:05:00,940
+By the time we subscribe, we will not get those two events because they're in the past, it's already
+
+72
+00:05:00,940 --> 00:05:01,420
+over.
+
+73
+00:05:02,050 --> 00:05:05,500
+What we can do now is just start listening for the new events.
+
+74
+00:05:05,950 --> 00:05:10,900
+So when the third event happens in the stream, then we'll catch it because we've subscribed already.
+
+75
+00:05:11,110 --> 00:05:15,930
+And similarly, we'll call next and then any future event that happens.
+
+76
+00:05:15,940 --> 00:05:20,080
+We will also call next on and be aware of them.
+
+77
+00:05:20,800 --> 00:05:24,940
+So this is one important thing to know about subscription models.
+
+78
+00:05:26,280 --> 00:05:32,130
+The other thing is that similarly, as before, when it completes, the complete callback gets called.
+
+79
+00:05:32,760 --> 00:05:37,650
+So as far as this model is concerned, it's really just understanding the nuances of the timing of these
+
+80
+00:05:37,650 --> 00:05:38,100
+streams.
+
+81
+00:05:38,250 --> 00:05:41,280
+But generally speaking, the actual logic is very simple.
+
+82
+00:05:41,430 --> 00:05:44,500
+You get some event you fire next, once it's done.
+
+83
+00:05:44,520 --> 00:05:46,590
+Once the stream is complete, you fire complete.
+
+84
+00:05:47,290 --> 00:05:48,870
+Oftentimes, we don't fire it either.
+
+85
+00:05:48,900 --> 00:05:51,150
+This is just a pattern that emerges.
+
+86
+00:05:51,750 --> 00:05:57,000
+So essentially, as long as you're subscribing with some object that has these three methods next,
+
+87
+00:05:57,000 --> 00:06:00,030
+Aaron complete and they all three point two different callbacks.
+
+88
+00:06:00,660 --> 00:06:07,920
+The actual observer stream will be the one that actually will call these methods to whatever is subscribed
+
+89
+00:06:07,920 --> 00:06:08,250
+to them.
+
+90
+00:06:08,970 --> 00:06:15,450
+So imagine that we had a complete stream, for example, in this particular case, you might subscribe
+
+91
+00:06:15,450 --> 00:06:16,980
+to an already completed stream.
+
+92
+00:06:17,250 --> 00:06:23,280
+If that happens, you will not get any of these events because once again, all of these events have
+
+93
+00:06:23,280 --> 00:06:25,800
+already done and the stream itself is already completed.
+
+94
+00:06:26,610 --> 00:06:27,120
+So now.
+
+95
+00:06:28,030 --> 00:06:30,670
+Let's talk about this Arafat method.
+
+96
+00:06:31,000 --> 00:06:33,070
+How does this happen in extreme events?
+
+97
+00:06:33,400 --> 00:06:35,200
+Let's imagine one event has fire so far.
+
+98
+00:06:35,860 --> 00:06:40,930
+We subscribe, and now we start listening for subsequent events after the first one.
+
+99
+00:06:41,260 --> 00:06:43,360
+Remember, as I mentioned, the first events fired.
+
+100
+00:06:43,690 --> 00:06:44,890
+We have no knowledge of it.
+
+101
+00:06:46,470 --> 00:06:52,080
+When we subscribe, let's say a new event happens, event two again, we call next and then we call
+
+102
+00:06:52,080 --> 00:06:52,680
+next again.
+
+103
+00:06:53,550 --> 00:06:56,430
+But then suddenly, let's say something breaks in the stream.
+
+104
+00:06:56,430 --> 00:06:58,710
+For some reason, we get some kind of error.
+
+105
+00:06:59,010 --> 00:07:03,750
+You can imagine with API calls, asynchronous events, there are chances that maybe there's a network
+
+106
+00:07:03,750 --> 00:07:05,370
+delay, maybe there's a server error.
+
+107
+00:07:05,370 --> 00:07:07,500
+Something happens in this process.
+
+108
+00:07:07,920 --> 00:07:14,490
+When that happens, we get informed by the stream that there is an error, then our listener is in turn
+
+109
+00:07:14,490 --> 00:07:16,650
+going to call the error method.
+
+110
+00:07:17,250 --> 00:07:22,530
+So this is very similar to you can think about it as if you have a promise with a promise.
+
+111
+00:07:22,530 --> 00:07:24,810
+When you get an error, it'll reject this error.
+
+112
+00:07:25,020 --> 00:07:27,480
+Callback that we have is pretty much the same thing.
+
+113
+00:07:28,390 --> 00:07:36,730
+So this is what's really good about this model, because essentially now you're able to react consistently
+
+114
+00:07:37,120 --> 00:07:39,190
+in this way from these streams.
+
+115
+00:07:39,700 --> 00:07:45,910
+The last thing I want to mention is that a stream can have any number of listeners, any number of different
+
+116
+00:07:45,910 --> 00:07:49,870
+listeners can have different reactions to what happens in the stream.
+
+117
+00:07:50,110 --> 00:07:52,720
+But each of them just need to subscribe to the stream.
+
+118
+00:07:53,770 --> 00:07:59,630
+So whenever we were working with our on off state changed, all we were saying is that, hey, I want
+
+119
+00:07:59,630 --> 00:08:05,080
+to start listening to on off state change the moment we invoked the function and we passed that the
+
+120
+00:08:05,080 --> 00:08:05,620
+callback.
+
+121
+00:08:06,340 --> 00:08:10,810
+Similarly, with that on off state change, we can also pass that an air callback and a complete callback
+
+122
+00:08:10,810 --> 00:08:13,090
+as arguments three and four.
+
+123
+00:08:13,330 --> 00:08:17,200
+We're just really using the first two arguments, if you remember inside of our code base.
+
+124
+00:08:18,420 --> 00:08:22,230
+If you want to think about us opening up the listener with this method.
+
+125
+00:08:23,440 --> 00:08:29,590
+The moment we call this method, we're saying, Hey, create a listener for me using this callback.
+
+126
+00:08:29,890 --> 00:08:36,400
+So what's happening here is that this on off state changed invocation is actually behind the scenes,
+
+127
+00:08:36,400 --> 00:08:38,320
+creating a listener for us.
+
+128
+00:08:38,350 --> 00:08:39,580
+You can imagine it like that.
+
+129
+00:08:39,970 --> 00:08:44,170
+And on here, it's going to take the next value and set it as our callback.
+
+130
+00:08:44,530 --> 00:08:47,500
+We can actually call it with more parameters.
+
+131
+00:08:47,500 --> 00:08:55,960
+As I was mentioning here, you can see that in that list, we were looking at the off the next or observer,
+
+132
+00:08:55,960 --> 00:08:57,760
+and this is the callback trigger on change.
+
+133
+00:08:57,760 --> 00:09:03,070
+As I mentioned, there is an error parameter we can pass as number three and a complete a callback as
+
+134
+00:09:03,070 --> 00:09:03,670
+number four.
+
+135
+00:09:04,180 --> 00:09:09,340
+So here you can imagine that we could have passed an error callback if we wanted to and then a completed
+
+136
+00:09:09,340 --> 00:09:09,910
+callback.
+
+137
+00:09:10,360 --> 00:09:12,300
+So this is pretty much just that same model.
+
+138
+00:09:12,310 --> 00:09:19,960
+It's just that behind the scenes, this on-off state change is just building out this actual.
+
+139
+00:09:21,630 --> 00:09:28,770
+Listener model for us, so this is really all there is to know about this observer pattern.
+
+140
+00:09:29,750 --> 00:09:34,940
+It's honestly rather simple once you wrap your mind around this concept of an asynchronous stream,
+
+141
+00:09:35,780 --> 00:09:40,490
+but once you really just understand how it works as far as you're concerned, all you know is that you
+
+142
+00:09:40,490 --> 00:09:41,510
+need to give it a call back.
+
+143
+00:09:41,930 --> 00:09:46,220
+And as I mentioned before, we need to also clean up this listener.
+
+144
+00:09:46,820 --> 00:09:50,030
+So that's why it returns us back a unsubscribe.
+
+145
+00:09:50,720 --> 00:09:57,530
+So essentially, what happens is that on this unsubscribe method, it will clean up this actual method.
+
+146
+00:09:58,160 --> 00:10:03,940
+And oftentimes with this unsubscribe, also it will call if you were to pass it a complete callback.
+
+147
+00:10:03,950 --> 00:10:08,330
+It will also call that which is why when you hover over, you see that the program completed callback
+
+148
+00:10:08,330 --> 00:10:13,880
+trigger when observer is removed, and that often also happens in the cleanup phase now that we've finished
+
+149
+00:10:13,880 --> 00:10:17,450
+up with everything we need when it comes to isolating our authentication.
+
+150
+00:10:18,020 --> 00:10:20,780
+What I want you to do before moving on is just commit your code.
+
+151
+00:10:20,900 --> 00:10:23,930
+Push it up and then join me in the next video.
+
+152
+00:10:24,380 --> 00:10:25,010
+I'll see you there.

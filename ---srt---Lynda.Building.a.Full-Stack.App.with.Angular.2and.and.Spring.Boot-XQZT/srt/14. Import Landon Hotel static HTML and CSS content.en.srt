@@ -1,0 +1,215 @@
+1
+00:00:01.00 --> 00:00:02.05
+- [Instructor] First off, let's add
+
+2
+00:00:02.05 --> 00:00:05.01
+the typescript plugin for Eclipse
+
+3
+00:00:05.01 --> 00:00:07.03
+so that we have proper syntax highlighting
+
+4
+00:00:07.03 --> 00:00:09.09
+on our .ts files.
+
+5
+00:00:09.09 --> 00:00:18.03
+Let's navigate to
+github.com/palantir/eclipse-typescript.
+
+6
+00:00:18.03 --> 00:00:21.09
+Next, let's copy the update site link.
+
+7
+00:00:21.09 --> 00:00:24.06
+Okay, let's head back to Eclipse,
+
+8
+00:00:24.06 --> 00:00:28.04
+click on Help, Install New Software.
+
+9
+00:00:28.04 --> 00:00:30.05
+Let's click on Add,
+
+10
+00:00:30.05 --> 00:00:33.04
+and then let's copy the update site link
+
+11
+00:00:33.04 --> 00:00:36.01
+into the location and name field.
+
+12
+00:00:36.01 --> 00:00:39.08
+Click on the typescript plugin, then Next,
+
+13
+00:00:39.08 --> 00:00:44.09
+and Next again, then Accept, and Finish.
+
+14
+00:00:44.09 --> 00:00:48.09
+Then, let's restart.
+
+15
+00:00:48.09 --> 00:00:52.06
+Okay, now let's click on the
+project root, and refresh.
+
+16
+00:00:52.06 --> 00:00:55.01
+Let's take a look
+
+17
+00:00:55.01 --> 00:00:58.03
+at the angular JST project
+files we generated.
+
+18
+00:00:58.03 --> 00:01:04.03
+Let's navigate into source,
+main, webapp, angular2,
+
+19
+00:01:04.03 --> 00:01:07.01
+source, and then app.
+
+20
+00:01:07.01 --> 00:01:09.06
+We're going to go ahead
+and reuse some static HTML
+
+21
+00:01:09.06 --> 00:01:14.01
+and styles from an existing
+LinkedIn learning brand,
+
+22
+00:01:14.01 --> 00:01:15.07
+landonhotel.com.
+
+23
+00:01:15.07 --> 00:01:18.01
+Having an actual branded front-end
+
+24
+00:01:18.01 --> 00:01:22.02
+will add context and meaning
+to what we're building.
+
+25
+00:01:22.02 --> 00:01:28.01
+First, get the exercise file
+labeled Landon-Hotel.zip.
+
+26
+00:01:28.01 --> 00:01:30.04
+Double-click to extract,
+
+27
+00:01:30.04 --> 00:01:32.04
+and then open up the files.
+
+28
+00:01:32.04 --> 00:01:36.03
+First, let's open up the
+file labeled home.html.
+
+29
+00:01:36.03 --> 00:01:40.06
+Let's right-click, Open With, Other,
+
+30
+00:01:40.06 --> 00:01:45.03
+and then STS, or Eclipse.
+
+31
+00:01:45.03 --> 00:01:51.08
+Next, let's open up the file
+labeled app.component.html.
+
+32
+00:01:51.08 --> 00:01:56.00
+Let's go ahead and copy
+the content from home.html
+
+33
+00:01:56.00 --> 00:01:59.05
+into our component, then save.
+
+34
+00:01:59.05 --> 00:02:02.04
+Next, let's copy the image directory
+
+35
+00:02:02.04 --> 00:02:06.00
+and then copy the images
+into our app directory.
+
+36
+00:02:06.00 --> 00:02:08.06
+Finally, let's grab the styles
+
+37
+00:02:08.06 --> 00:02:13.05
+from the landon-hotel.css file.
+
+38
+00:02:13.05 --> 00:02:17.03
+Let's right-click, Open With, Other,
+
+39
+00:02:17.03 --> 00:02:20.06
+and double-click on STS or Eclipse.
+
+40
+00:02:20.06 --> 00:02:25.08
+Let's copy all the content
+from landon-hotel.css
+
+41
+00:02:25.08 --> 00:02:31.01
+and then paste it into
+app.component.css, and Save.
+
+42
+00:02:31.01 --> 00:02:33.06
+Next, let's head to a terminal.
+
+43
+00:02:33.06 --> 00:02:35.06
+Let's start up our application
+
+44
+00:02:35.06 --> 00:02:38.01
+using the command ng serve.
+
+45
+00:02:38.01 --> 00:02:40.00
+Let's head to a browser,
+
+46
+00:02:40.00 --> 00:02:43.05
+and let's navigate to localhost:4200.
+
+47
+00:02:43.05 --> 00:02:45.00
+We can now see our new homepage.
+
+48
+00:02:45.00 --> 00:02:47.05
+If you scroll down,
+
+49
+00:02:47.05 --> 00:02:50.04
+we can see the message app works.
+
+50
+00:02:50.04 --> 00:02:53.09
+This has been populated
+dynamically from angular JS2.
+

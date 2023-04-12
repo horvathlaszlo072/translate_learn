@@ -1,0 +1,459 @@
+1
+00:00:00,470 --> 00:00:01,460
+Welcome back, everyone.
+
+2
+00:00:02,550 --> 00:00:08,220
+In this video, we are going to learn how inside of our rendering cycles we may actually be getting
+
+3
+00:00:08,220 --> 00:00:13,920
+extra renders that we do not need in order to better optimize our application.
+
+4
+00:00:14,890 --> 00:00:20,620
+So inside of your resources folder, I want you to download this Chrome extension, the React developer
+
+5
+00:00:20,620 --> 00:00:24,220
+tools offered by Facebook, which is also now name matter.
+
+6
+00:00:25,120 --> 00:00:31,120
+Once you've installed it, if you come back to your application, what I'm going to do is I'm going
+
+7
+00:00:31,120 --> 00:00:34,390
+to reset our cart, so I'm going to remove everything from the cart.
+
+8
+00:00:35,800 --> 00:00:42,160
+And then what I'm going to do is go into the shop page and I am going to open up the developer console
+
+9
+00:00:42,160 --> 00:00:43,690
+inside of its own window.
+
+10
+00:00:45,110 --> 00:00:45,950
+Inside of here.
+
+11
+00:00:46,130 --> 00:00:52,400
+What I want to do is I'm going to click these arrows and you're going to see these two new little tabs
+
+12
+00:00:52,400 --> 00:00:52,850
+added.
+
+13
+00:00:52,850 --> 00:00:55,130
+One for components, one for the profiler.
+
+14
+00:00:55,700 --> 00:00:57,440
+We want to focus on the profiler.
+
+15
+00:00:58,220 --> 00:01:04,250
+The profiler allows us to record any interactions that happen inside of React, and this will pick it
+
+16
+00:01:04,250 --> 00:01:04,460
+up.
+
+17
+00:01:04,910 --> 00:01:09,560
+So first, what I'm going to do is I'm going to start profiling and then what I'll do is I will add
+
+18
+00:01:09,560 --> 00:01:15,170
+some cart, so I'll add one, two, three of the brown brim hat, one, two, three, four, five of
+
+19
+00:01:15,170 --> 00:01:18,500
+the blue beanie and then one of the brown cowboy hat.
+
+20
+00:01:19,160 --> 00:01:26,960
+Now, if I come back and I start profiling, what you'll see is this flame graph that will display where
+
+21
+00:01:26,960 --> 00:01:31,880
+it will show all of the different components and their interactions during this time.
+
+22
+00:01:32,510 --> 00:01:36,530
+I want to zero in though right here on the CART dropdown component.
+
+23
+00:01:36,650 --> 00:01:41,420
+So in here there is a timeline that is showing all of the different things that are happening inside
+
+24
+00:01:41,420 --> 00:01:42,380
+of our components.
+
+25
+00:01:42,830 --> 00:01:46,610
+But inside the CART dropdown, what you'll see is the breakdown.
+
+26
+00:01:47,150 --> 00:01:52,220
+You'll notice that we have our style div, which is our container, and then deeper inside there will
+
+27
+00:01:52,220 --> 00:01:53,780
+be additional components.
+
+28
+00:01:53,810 --> 00:02:01,250
+This one right here, this component is actually our cart content because it's sibling is the button.
+
+29
+00:02:01,670 --> 00:02:07,040
+So if you remember inside of our checkout, there is a container here that holds all of our car items
+
+30
+00:02:07,370 --> 00:02:09,050
+and then there is a button.
+
+31
+00:02:09,650 --> 00:02:14,750
+So for us inside of this container, right here is the different car items that we have.
+
+32
+00:02:15,350 --> 00:02:19,490
+So depending on your timeline, if you click through it, you will see.
+
+33
+00:02:20,410 --> 00:02:25,330
+There will be more car items added and there will be different interactions that happened during this
+
+34
+00:02:25,330 --> 00:02:25,690
+time.
+
+35
+00:02:26,380 --> 00:02:33,430
+What's happening on this car item is that this car item has a render at each of these interactions.
+
+36
+00:02:33,910 --> 00:02:39,790
+Now what you'll notice is that there are one, two, three, four, five, six, seven, eight, nine
+
+37
+00:02:39,790 --> 00:02:40,660
+interactions.
+
+38
+00:02:41,350 --> 00:02:48,970
+There are nine render interactions because even though we added nine items each time we add an item,
+
+39
+00:02:49,180 --> 00:02:51,250
+this whole list is getting re rendered.
+
+40
+00:02:51,820 --> 00:02:58,450
+The reason it gets re rendered is due to the fact that inside of our CART dropdown component we are
+
+41
+00:02:58,450 --> 00:03:00,010
+updating cart items.
+
+42
+00:03:00,640 --> 00:03:07,960
+Car items inside of select car items is giving us a new array back and react is re rendering through
+
+43
+00:03:07,960 --> 00:03:10,300
+the map every single cart item.
+
+44
+00:03:10,870 --> 00:03:15,670
+As a result, React does not know that this car item doesn't need to re render.
+
+45
+00:03:17,050 --> 00:03:23,290
+Luckily for us, due to the fact that with React, it is smart enough to know that the key value is
+
+46
+00:03:23,290 --> 00:03:29,380
+being tracked and therefore it doesn't have to do all of the rendering process, but it is still wasting
+
+47
+00:03:29,380 --> 00:03:30,430
+extra renders.
+
+48
+00:03:30,940 --> 00:03:36,670
+As we can see, we added nine hats, but each hat is also getting re rendered nine times.
+
+49
+00:03:36,670 --> 00:03:37,720
+It's only the first hat.
+
+50
+00:03:37,750 --> 00:03:42,550
+The first hat that got added in that component is getting re rendered all nine times.
+
+51
+00:03:43,030 --> 00:03:43,960
+So we don't want that.
+
+52
+00:03:44,620 --> 00:03:50,410
+In order for us to improve it, we can actually bring in this memo method that gives us and what we
+
+53
+00:03:50,410 --> 00:03:53,860
+do is we wrap it around our functional component.
+
+54
+00:03:54,430 --> 00:04:00,100
+And as you can guess, with all memorization that we've learned up until this point, unless the actual
+
+55
+00:04:00,100 --> 00:04:04,840
+value changes, then we don't need to re render this component.
+
+56
+00:04:05,320 --> 00:04:11,080
+So now if we come back to the application and what we want to do, we want to clear our profiler.
+
+57
+00:04:11,560 --> 00:04:13,030
+Let's refresh everything.
+
+58
+00:04:14,280 --> 00:04:18,900
+Once it loads in, I'm also going to make sure to clear out the checkout.
+
+59
+00:04:22,090 --> 00:04:24,190
+And now when we come back to our shop.
+
+60
+00:04:25,680 --> 00:04:26,460
+What I'm going to do.
+
+61
+00:04:27,060 --> 00:04:28,290
+I'm going to start profiling.
+
+62
+00:04:28,650 --> 00:04:34,620
+And again, I'm going to add three of the brown from hat, five of the blue beanie and one of the brown
+
+63
+00:04:34,620 --> 00:04:35,040
+cowboy.
+
+64
+00:04:35,910 --> 00:04:38,400
+And now if we go back and we start profiling.
+
+65
+00:04:39,520 --> 00:04:40,540
+Now what we'll do.
+
+66
+00:04:41,020 --> 00:04:43,360
+We already see inside a cart drop down.
+
+67
+00:04:45,130 --> 00:04:47,080
+That once we narrow down.
+
+68
+00:04:47,230 --> 00:04:50,200
+So again, top level container, cart items, container.
+
+69
+00:04:50,530 --> 00:04:56,170
+And this one right here, this is our brown brim hat, the first item if we click on it.
+
+70
+00:04:56,740 --> 00:04:59,680
+Notice now there's only three renders.
+
+71
+00:05:00,280 --> 00:05:05,980
+The reason for that is because when the actual item changes, brown from have of course needs three
+
+72
+00:05:05,980 --> 00:05:06,350
+render.
+
+73
+00:05:06,370 --> 00:05:12,100
+The quantity is updating, but now React is smart enough to know that it does not need to re render
+
+74
+00:05:12,100 --> 00:05:15,940
+this component later on when those other components were added.
+
+75
+00:05:16,510 --> 00:05:22,150
+In fact, if we go back up here and we check later inside of the time cycle.
+
+76
+00:05:22,660 --> 00:05:26,320
+Notice how this is when the second car item got introduced.
+
+77
+00:05:26,770 --> 00:05:28,540
+So of course, that was the first card item.
+
+78
+00:05:28,540 --> 00:05:30,430
+The second card item, then the third card item.
+
+79
+00:05:31,030 --> 00:05:33,130
+These are all, of course, brown brim hat.
+
+80
+00:05:33,520 --> 00:05:37,540
+But the fourth item is when we added in that beanie.
+
+81
+00:05:38,410 --> 00:05:40,570
+So this is the first time the beanie shows up.
+
+82
+00:05:40,930 --> 00:05:44,410
+And notice how there are five renders because we added five beanies.
+
+83
+00:05:45,010 --> 00:05:50,470
+But if we go up, what you'll notice, as are at this instance, when we've moved on to this fourth
+
+84
+00:05:50,470 --> 00:05:53,650
+event, this is our car item.
+
+85
+00:05:54,070 --> 00:05:55,630
+It did not need to render.
+
+86
+00:05:55,810 --> 00:05:57,490
+It even says did not render.
+
+87
+00:05:57,820 --> 00:06:00,550
+So this is how we explicitly know through that memorization.
+
+88
+00:06:00,550 --> 00:06:05,230
+Now we are not unnecessarily additionally rendering our components.
+
+89
+00:06:06,320 --> 00:06:07,850
+So this is one of the advantages.
+
+90
+00:06:07,850 --> 00:06:14,300
+And using this profiler, you are now able to also profile throughout your application and try and see
+
+91
+00:06:14,300 --> 00:06:17,420
+if there are any places where you need additional optimizations.
+
+92
+00:06:18,320 --> 00:06:24,770
+And combined with this memorisation tool, it allows us to properly update the appropriate components
+
+93
+00:06:24,770 --> 00:06:28,940
+and render the appropriate ones we want to target only when they need to be updated.
+
+94
+00:06:29,890 --> 00:06:31,910
+So this is a really handy tool.
+
+95
+00:06:31,930 --> 00:06:33,970
+You pretty much just need memo and the profiler.
+
+96
+00:06:34,600 --> 00:06:39,070
+Check around the application, click around profile some events, read through some of the components,
+
+97
+00:06:39,070 --> 00:06:41,320
+see if there's anything that really needs optimizing.
+
+98
+00:06:41,560 --> 00:06:47,200
+The only other place where this might happen is inside of the check out component, because as we know
+
+99
+00:06:47,200 --> 00:06:53,230
+inside of check out, we do also map through the actual car items for the checkout.
+
+100
+00:06:53,710 --> 00:06:59,260
+So here with the checkout, we can also just simply wrap this inside of a memo.
+
+101
+00:07:02,490 --> 00:07:02,970
+And.
+
+102
+00:07:05,020 --> 00:07:09,760
+I'm going to leave it to you to profile it yourself first before wrapping the memo to see what happens
+
+103
+00:07:09,970 --> 00:07:11,080
+inside of your code base.
+
+104
+00:07:12,290 --> 00:07:17,330
+And just double check to see as you clear items as you increase the items, as you remove the items.
+
+105
+00:07:17,630 --> 00:07:18,980
+What is the profiler telling you?
+
+106
+00:07:19,220 --> 00:07:22,460
+Then once you memorize it, what is the profiler telling you afterwards?
+
+107
+00:07:23,030 --> 00:07:24,440
+Get comfortable with the profiler.
+
+108
+00:07:24,470 --> 00:07:25,640
+It's a pretty handy tool.
+
+109
+00:07:25,970 --> 00:07:30,380
+But again, always remember to not over optimize until you need to.
+
+110
+00:07:31,070 --> 00:07:36,500
+If you sift through the profile, you might even see that some of the initial time is between memorizing
+
+111
+00:07:36,500 --> 00:07:36,800
+and not.
+
+112
+00:07:36,800 --> 00:07:41,150
+Memorizing may increase again because the memorization cost is there.
+
+113
+00:07:42,320 --> 00:07:42,860
+So there we go.
+
+114
+00:07:43,400 --> 00:07:49,250
+Now that we understand how to optimize profile and memoires our functional components, let's move on
+
+115
+00:07:49,250 --> 00:07:49,970
+to the next video.

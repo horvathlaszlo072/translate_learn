@@ -1,0 +1,279 @@
+1
+00:00:02,320 --> 00:00:05,830
+Testing is an important concept in programming.
+
+2
+00:00:07,000 --> 00:00:14,860
+Although we start off writing a simple script file with a few lines of code, when we start getting
+
+3
+00:00:14,860 --> 00:00:20,860
+into the real world, you start getting thousands and millions of lines of code.
+
+4
+00:00:21,960 --> 00:00:23,970
+Hundreds of JavaScript files.
+
+5
+00:00:25,340 --> 00:00:33,610
+Files worked on by many people from different divisions in a company, and most likely all of them starting
+
+6
+00:00:33,630 --> 00:00:41,090
+a different time at the company, all the changes happening over time at different times, as people
+
+7
+00:00:41,090 --> 00:00:49,340
+work on the project, as the complexity of the code and the size of the code increases, it becomes
+
+8
+00:00:49,340 --> 00:00:53,030
+harder and harder for someone to fix a bug that may arise.
+
+9
+00:00:53,990 --> 00:01:00,560
+If you come into a project that has been around for years, you may modify something that may modify
+
+10
+00:01:00,560 --> 00:01:03,590
+another part of the app that you didn't think of.
+
+11
+00:01:05,030 --> 00:01:11,180
+And you start creating all these bugs with new features that you introduce into the app.
+
+12
+00:01:12,910 --> 00:01:19,360
+The longer that code stays in a project, the more likely it is to be touched by different developers.
+
+13
+00:01:20,440 --> 00:01:25,840
+So you see the problem here for companies, this is a huge problem because.
+
+14
+00:01:26,770 --> 00:01:33,760
+You're most likely always growing your product and adding more and more lines of code, that means that
+
+15
+00:01:34,180 --> 00:01:40,270
+there's just going to keep making this giant monster that becomes harder and harder to tame.
+
+16
+00:01:41,260 --> 00:01:44,950
+And bugs costs companies a lot of money.
+
+17
+00:01:46,460 --> 00:01:50,540
+Luckily for us, we have something called testing.
+
+18
+00:01:51,510 --> 00:01:53,570
+Which can help us solve this problem.
+
+19
+00:01:54,970 --> 00:02:02,410
+As the name suggests, testing is a method in software development where individual units of source
+
+20
+00:02:02,410 --> 00:02:11,620
+code assets or programs are tested to see whether they work properly, although it may not be a big
+
+21
+00:02:11,620 --> 00:02:15,010
+part of a coding interview when you first get started.
+
+22
+00:02:16,090 --> 00:02:19,950
+It is a big part of any major software company that you work for.
+
+23
+00:02:21,480 --> 00:02:29,010
+For example, in my case, when I first started out as a developer, I didn't know that much about testing
+
+24
+00:02:29,130 --> 00:02:31,650
+and I got hired without knowing much about testing.
+
+25
+00:02:32,310 --> 00:02:38,070
+But the importance of testing grew more and more as I progressed in my career.
+
+26
+00:02:39,060 --> 00:02:45,840
+And it's one of those things that we often overlook and a lot of junior developers overlook, but if
+
+27
+00:02:45,840 --> 00:02:53,250
+you want to become a senior developer and if you want to have a long lasting career, you really need
+
+28
+00:02:53,250 --> 00:02:54,390
+to master the skill.
+
+29
+00:02:56,150 --> 00:03:01,210
+Remember, every serious company is going to have tests.
+
+30
+00:03:02,520 --> 00:03:07,770
+And they all want you to write tests for your code, so how can we do this?
+
+31
+00:03:09,940 --> 00:03:18,100
+Well, a test is simply another file in your project, this file never runs in production or on a product
+
+32
+00:03:18,100 --> 00:03:18,590
+website.
+
+33
+00:03:19,030 --> 00:03:21,060
+Instead, it runs in development.
+
+34
+00:03:21,370 --> 00:03:28,240
+It's a file that you run to make sure before you release to production that what you just have written.
+
+35
+00:03:29,460 --> 00:03:30,600
+Works as intended.
+
+36
+00:03:32,070 --> 00:03:36,700
+Now, the best way to show you how it works is to demonstrate a test for you.
+
+37
+00:03:37,440 --> 00:03:40,260
+So let's go to our robo friends up.
+
+38
+00:03:42,250 --> 00:03:49,210
+I have the friends up here, but I've included a few test just to demonstrate for you how it works.
+
+39
+00:03:49,650 --> 00:03:54,040
+And by the end of this section, you're going to be able to write this as well, and we're going to
+
+40
+00:03:54,040 --> 00:03:54,750
+write them together.
+
+41
+00:03:55,660 --> 00:03:59,290
+But if I run ampm run test.
+
+42
+00:04:00,670 --> 00:04:09,460
+Again, a command that comes with react up, let's see what happens, I get a a few things saying that
+
+43
+00:04:09,460 --> 00:04:15,040
+no tests found related file file changes since last comment, because I've already run the test.
+
+44
+00:04:15,040 --> 00:04:16,240
+But if I press a.
+
+45
+00:04:19,710 --> 00:04:20,520
+Did you catch that?
+
+46
+00:04:22,290 --> 00:04:30,330
+We have six test suites, 16 tests and five snapshots that past.
+
+47
+00:04:31,320 --> 00:04:32,370
+Hmm, right.
+
+48
+00:04:32,420 --> 00:04:38,440
+What does this all mean and why do all these components have the test file in here?
+
+49
+00:04:38,700 --> 00:04:42,830
+I see a lot of green, which is probably good, but what does this all mean?
+
+50
+00:04:43,940 --> 00:04:47,840
+And don't worry, from here, we're going to unpack it and see how everything works.
+
+51
+00:04:48,110 --> 00:04:53,630
+We're going to learn about what tools we need, what tools we're going to use and how we can become
+
+52
+00:04:53,630 --> 00:04:54,680
+testing ninjas.
+
+53
+00:04:56,150 --> 00:05:04,250
+By the way, you may hear the term TDD or test driven development, that is the idea of writing tests
+
+54
+00:05:04,640 --> 00:05:12,260
+even before you actually write your application code so that you start writing code based on the tests
+
+55
+00:05:12,290 --> 00:05:13,040
+that you provide.
+
+56
+00:05:13,670 --> 00:05:16,070
+And some people really love this way of working.
+
+57
+00:05:16,340 --> 00:05:22,430
+And you can read up on it and decide for yourself if this is something you would want to try up.
+
+58
+00:05:23,540 --> 00:05:24,950
+Now, to get back to the point.
+
+59
+00:05:27,830 --> 00:05:31,160
+We are humans, and as humans, we make mistakes.
+
+60
+00:05:31,400 --> 00:05:32,360
+It's unavoidable.
+
+61
+00:05:33,200 --> 00:05:41,570
+As an application grows, it is impossible to think of all cases in your code and have all the if statements
+
+62
+00:05:41,810 --> 00:05:46,910
+that take care of all use cases, especially not from the very beginning.
+
+63
+00:05:48,080 --> 00:05:54,650
+Although adding tests will definitely decrease our development speed, since now we're writing more
+
+64
+00:05:54,650 --> 00:06:02,600
+code just for tests in the long run, if your project is of a certain size, it's always better to write
+
+65
+00:06:02,600 --> 00:06:05,700
+tests because you avoid bugs in the long term.
+
+66
+00:06:06,350 --> 00:06:06,800
+All right.
+
+67
+00:06:07,520 --> 00:06:10,290
+In this section, we're going to learn all about it.
+
+68
+00:06:10,580 --> 00:06:16,340
+As always, we're going to go through some core concepts and build our foundation, and then we're going
+
+69
+00:06:16,340 --> 00:06:18,620
+to get to coding some of our own tests.
+
+70
+00:06:19,520 --> 00:06:20,260
+Let's get started.

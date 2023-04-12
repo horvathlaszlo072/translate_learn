@@ -1,0 +1,495 @@
+1
+00:00:00,890 --> 00:00:01,790
+Welcome back, everyone.
+
+2
+00:00:02,630 --> 00:00:07,190
+In our last video, we typed out this new overloaded create action.
+
+3
+00:00:08,220 --> 00:00:13,410
+What we want to do now is use it so that we can see this in action, but no pun intended.
+
+4
+00:00:13,860 --> 00:00:18,390
+We need to be able to understand how these overloads work, and I'll make more sense once we actually
+
+5
+00:00:18,390 --> 00:00:22,680
+utilize them inside of our category action creators.
+
+6
+00:00:23,930 --> 00:00:28,610
+So inside here I am going to now continue using create action.
+
+7
+00:00:29,450 --> 00:00:37,910
+But what I'm also going to do is I am going to update this action file so that it works with TypeScript.
+
+8
+00:00:38,390 --> 00:00:43,430
+And here is where we're going to modify the idea of this code a little bit.
+
+9
+00:00:44,420 --> 00:00:45,590
+So first things first.
+
+10
+00:00:46,100 --> 00:00:50,030
+What we need to do is first modify this file so it's a test file.
+
+11
+00:00:50,870 --> 00:00:53,240
+So let's go into our folder.
+
+12
+00:00:54,300 --> 00:00:56,690
+And rename this so that it starts.
+
+13
+00:00:58,640 --> 00:01:06,710
+And now what we're going to do is utilize these errors and these underlines so that we know what new
+
+14
+00:01:06,710 --> 00:01:07,880
+types that we have to create.
+
+15
+00:01:08,960 --> 00:01:14,300
+The first thing we are going to do is we know that we need a categories array.
+
+16
+00:01:15,020 --> 00:01:19,730
+Categories array, as we know, is inside of our database and it has a specific shape.
+
+17
+00:01:20,060 --> 00:01:21,170
+So we need to type this.
+
+18
+00:01:22,410 --> 00:01:27,390
+So here inside when you think about your category item.
+
+19
+00:01:28,350 --> 00:01:34,650
+Category item is a specific type that has specific properties on it.
+
+20
+00:01:35,430 --> 00:01:38,610
+So here I'm going to create that type category.
+
+21
+00:01:41,120 --> 00:01:42,800
+And what it is equal to.
+
+22
+00:01:44,520 --> 00:01:52,110
+Is an object that has a title, which is a string, it has an image URL, which is also a string, and
+
+23
+00:01:52,110 --> 00:01:53,880
+then it has an items array.
+
+24
+00:01:54,600 --> 00:01:58,170
+This items array contains are category items.
+
+25
+00:01:58,290 --> 00:01:59,850
+So we actually need to make that.
+
+26
+00:02:00,660 --> 00:02:03,390
+So I'm going to say export type category item.
+
+27
+00:02:04,860 --> 00:02:09,210
+This is equal to an object that has a number.
+
+28
+00:02:10,110 --> 00:02:13,260
+It has image URL, which is a string.
+
+29
+00:02:14,290 --> 00:02:19,180
+It has the name, which is a string, and then it has the price, which is also a number.
+
+30
+00:02:21,080 --> 00:02:27,800
+So this category item is going to be the type of our items inside of the category.
+
+31
+00:02:29,140 --> 00:02:33,700
+So now that we have these tapes, let's import them into our category action file.
+
+32
+00:02:34,630 --> 00:02:42,580
+So first or import category and category item and we'll use them in order to type out these action creators.
+
+33
+00:02:43,390 --> 00:02:49,480
+The first thing that we need to do is we need to actually create action types for each of these.
+
+34
+00:02:50,230 --> 00:02:54,070
+And we already have those action types created.
+
+35
+00:02:54,100 --> 00:03:01,210
+We have the action and we have action with payload because this one produces an action, but this one
+
+36
+00:03:01,210 --> 00:03:02,980
+produces an action with payload.
+
+37
+00:03:03,790 --> 00:03:08,680
+Now, again, remember, these actions are unique in the sense that their types are tied to whatever
+
+38
+00:03:08,680 --> 00:03:14,080
+this type is, and then the payload is tied to whatever the payload of this return is going to be.
+
+39
+00:03:15,220 --> 00:03:20,230
+So here, in order for us to type these actions, we'll say export type and let's type fetch category
+
+40
+00:03:20,230 --> 00:03:20,860
+start first.
+
+41
+00:03:21,250 --> 00:03:25,570
+So we're saying we have a type of action called fetch categories start.
+
+42
+00:03:26,640 --> 00:03:29,010
+This is equal to action.
+
+43
+00:03:30,190 --> 00:03:34,090
+And this action gets past category actions type.
+
+44
+00:03:36,270 --> 00:03:37,770
+Fetch categories start.
+
+45
+00:03:38,910 --> 00:03:46,140
+So now this action type, we need to say from this function, that's what you're returning.
+
+46
+00:03:46,680 --> 00:03:52,140
+So whenever this function gets called this action creator, notice that what you're guaranteed to get
+
+47
+00:03:52,140 --> 00:03:55,170
+back is the action of fetch category start.
+
+48
+00:03:56,460 --> 00:03:59,520
+So we're going to repeat this for the other two.
+
+49
+00:03:59,550 --> 00:04:03,060
+We're going to say export type fetch categories.
+
+50
+00:04:05,420 --> 00:04:06,080
+Success.
+
+51
+00:04:06,950 --> 00:04:14,210
+This is equal to action with payload because again, we are getting a categories array and then we're
+
+52
+00:04:14,210 --> 00:04:15,120
+setting that as the payload.
+
+53
+00:04:15,560 --> 00:04:18,050
+So here I'm going to say categories.
+
+54
+00:04:18,470 --> 00:04:21,080
+Action types, fetch category success.
+
+55
+00:04:21,770 --> 00:04:25,010
+And what we receive is a category array.
+
+56
+00:04:27,100 --> 00:04:29,470
+Similarly, I'm going to need to type.
+
+57
+00:04:31,660 --> 00:04:32,620
+This parameter.
+
+58
+00:04:33,630 --> 00:04:40,800
+And also tell this that's category success action creator that you're going to create, of course,
+
+59
+00:04:40,800 --> 00:04:43,050
+the category success action type.
+
+60
+00:04:44,000 --> 00:04:50,240
+So now if each category success receives two categories array of type category array fetch category
+
+61
+00:04:50,240 --> 00:04:50,690
+success.
+
+62
+00:04:52,830 --> 00:04:58,740
+The thing is, if you hover over this career action, what you will see is that create action here is
+
+63
+00:04:58,740 --> 00:05:00,630
+inferring those types.
+
+64
+00:05:01,440 --> 00:05:06,840
+You'll notice that what it produces is indeed that action with payload type.
+
+65
+00:05:07,710 --> 00:05:10,680
+Notice how the top definition is create action.
+
+66
+00:05:10,980 --> 00:05:15,100
+But that third line action with payload of type categories.
+
+67
+00:05:15,120 --> 00:05:18,840
+Action types dot fetch category success and category array.
+
+68
+00:05:19,380 --> 00:05:21,090
+That is what it gives us back.
+
+69
+00:05:21,720 --> 00:05:23,610
+Similarly, this top one create action.
+
+70
+00:05:23,640 --> 00:05:27,630
+Notice how instead it gives us back the action of categories.
+
+71
+00:05:27,660 --> 00:05:28,170
+Action type.
+
+72
+00:05:28,170 --> 00:05:28,410
+Stop.
+
+73
+00:05:28,410 --> 00:05:28,680
+Fetch.
+
+74
+00:05:28,680 --> 00:05:29,460
+Category start.
+
+75
+00:05:30,420 --> 00:05:32,160
+So this is how that overload is working.
+
+76
+00:05:34,350 --> 00:05:37,350
+The last one we need to create is the fetch.
+
+77
+00:05:39,260 --> 00:05:41,180
+Categories failed.
+
+78
+00:05:42,200 --> 00:05:46,370
+And this is equal to an action with payload categories.
+
+79
+00:05:46,370 --> 00:05:47,030
+Action type.
+
+80
+00:05:48,570 --> 00:05:51,690
+Fetch categories failed and then an error.
+
+81
+00:05:54,400 --> 00:05:56,750
+And now we know that we receive an error.
+
+82
+00:05:57,580 --> 00:05:59,890
+And here we'll just say the categories failed.
+
+83
+00:06:01,740 --> 00:06:02,310
+And there we go.
+
+84
+00:06:02,940 --> 00:06:04,710
+We've now typed our action creators.
+
+85
+00:06:05,370 --> 00:06:09,720
+Actually, we didn't even need the category item, so let's not import that because we don't need it.
+
+86
+00:06:11,130 --> 00:06:16,530
+So now that we have these three action types, these are going to be the three action types that our
+
+87
+00:06:16,530 --> 00:06:17,940
+reducer can only accept.
+
+88
+00:06:18,630 --> 00:06:22,620
+So in order for us to do that, we want to actually create a union.
+
+89
+00:06:23,160 --> 00:06:26,940
+So here I'm going to say export type category action.
+
+90
+00:06:28,420 --> 00:06:30,550
+And here this is equal to.
+
+91
+00:06:31,790 --> 00:06:33,860
+Fetch category start.
+
+92
+00:06:35,390 --> 00:06:35,930
+Union.
+
+93
+00:06:36,500 --> 00:06:37,000
+Fetch.
+
+94
+00:06:37,580 --> 00:06:38,120
+Category.
+
+95
+00:06:38,120 --> 00:06:38,780
+Success.
+
+96
+00:06:39,410 --> 00:06:40,010
+Union.
+
+97
+00:06:40,670 --> 00:06:41,240
+Fetch.
+
+98
+00:06:42,260 --> 00:06:43,190
+Categories failed.
+
+99
+00:06:45,390 --> 00:06:51,720
+So if we save this now, this category action is what we are going to bring into our category reducer.
+
+100
+00:06:53,090 --> 00:06:56,270
+So first we need to convert this over to a typescript file.
+
+101
+00:06:59,640 --> 00:07:00,720
+And now what we're going to do.
+
+102
+00:07:02,320 --> 00:07:04,780
+Is we are going to import in.
+
+103
+00:07:06,700 --> 00:07:07,600
+Category action.
+
+104
+00:07:09,330 --> 00:07:11,070
+From our category action for.
+
+105
+00:07:13,410 --> 00:07:20,970
+And what we need to do now is we need to figure out how to utilize this category action and pass it
+
+106
+00:07:20,970 --> 00:07:22,380
+as the action type here.
+
+107
+00:07:23,650 --> 00:07:27,160
+This is where you're actually going to use that as a keyword.
+
+108
+00:07:27,880 --> 00:07:35,050
+So here are saying, hey, this action that you receive is only going to be one of these three action
+
+109
+00:07:35,050 --> 00:07:35,440
+types.
+
+110
+00:07:36,070 --> 00:07:40,570
+Now, this pattern is called a discriminating union.
+
+111
+00:07:41,320 --> 00:07:46,690
+Essentially, this union type that we've created for category action is discriminatory because it says
+
+112
+00:07:46,690 --> 00:07:50,020
+that I only want to accept actions of these three types.
+
+113
+00:07:50,050 --> 00:07:53,350
+This reducer only responds to those actions.
+
+114
+00:07:53,800 --> 00:07:59,020
+If you try and call any other type inside of this definition, I'm going to throw you an air because
+
+115
+00:07:59,020 --> 00:08:01,780
+I know this action should only be one of these three types.
+
+116
+00:08:02,230 --> 00:08:08,650
+This is actually a very common pattern you'll see inside of TypeScript enabled Redux projects, but
+
+117
+00:08:08,650 --> 00:08:14,470
+this alone is slightly problematic and we will discuss that after we've typed out the rest of this reducer.
+
+118
+00:08:15,010 --> 00:08:20,560
+So there's a long way to go, but at least so far we are now seeing the fruit of our labor and typing
+
+119
+00:08:20,560 --> 00:08:22,480
+out our action creators in our actions.
+
+120
+00:08:23,050 --> 00:08:28,750
+In the next video we will continue typing out this reducer file and we're going to start by typing out
+
+121
+00:08:28,900 --> 00:08:30,490
+this categories initial state.
+
+122
+00:08:31,060 --> 00:08:32,380
+So our state value here.
+
+123
+00:08:33,070 --> 00:08:34,390
+So that's all we're going to do in the next video.
+
+124
+00:08:34,630 --> 00:08:35,230
+I'll see you there.

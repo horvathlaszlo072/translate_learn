@@ -1,0 +1,559 @@
+1
+00:00:00,500 --> 00:00:01,520
+Welcome back, everyone.
+
+2
+00:00:02,150 --> 00:00:07,490
+So in the last few videos, I keep talking about rendering and re rendering with react and how react
+
+3
+00:00:07,490 --> 00:00:13,520
+does it and why React is doing it the way it's doing it, but we haven't really talked about what it
+
+4
+00:00:13,520 --> 00:00:18,080
+is about re rendering with react that makes react such a good solution.
+
+5
+00:00:18,560 --> 00:00:21,170
+So let's dive deep into this in this lesson.
+
+6
+00:00:21,560 --> 00:00:26,030
+So inside of our application, if I open up our inspect.
+
+7
+00:00:26,750 --> 00:00:31,160
+And instead, what we want to do is look at our elements.
+
+8
+00:00:31,730 --> 00:00:36,560
+What I want you to see is that inside of here we have our HDMI layout.
+
+9
+00:00:37,340 --> 00:00:42,920
+What this represents is actually a tree of elements or a dom tree.
+
+10
+00:00:42,920 --> 00:00:49,640
+So the Dom Tree is essentially our document object model and primarily what it encapsulates is all of
+
+11
+00:00:49,640 --> 00:00:53,360
+the different elements that compose our application or website.
+
+12
+00:00:54,200 --> 00:01:01,040
+It's represented as a tree because inside of these different elements right now, as you can see, we're
+
+13
+00:01:01,040 --> 00:01:03,710
+sitting inside of our component app.
+
+14
+00:01:04,370 --> 00:01:06,500
+This app is reflected as a div.
+
+15
+00:01:06,500 --> 00:01:09,620
+What the class app and inside are three children.
+
+16
+00:01:10,100 --> 00:01:16,220
+There is the H1 class, there is our search box input, and then there is our card list.
+
+17
+00:01:16,700 --> 00:01:24,290
+These three elements are actually siblings to each other because they are live at the same level inside
+
+18
+00:01:24,290 --> 00:01:27,650
+of cardless, though this is actually.
+
+19
+00:01:29,040 --> 00:01:35,760
+Apparent to all of the inside different containers and then inside these card containers, of course,
+
+20
+00:01:35,760 --> 00:01:39,510
+are images which are therefore then children of the card.
+
+21
+00:01:40,350 --> 00:01:43,980
+All of these are represented more as a tree.
+
+22
+00:01:44,400 --> 00:01:48,780
+You can see it as if siblings are branches on the same level.
+
+23
+00:01:49,020 --> 00:01:54,510
+And then children of these different components are further branches down.
+
+24
+00:01:55,590 --> 00:02:00,300
+So let's take a look at a visual representation of this, and what I want you to do is really think
+
+25
+00:02:00,300 --> 00:02:01,680
+about what we've talked about.
+
+26
+00:02:01,860 --> 00:02:08,310
+There's a top level app inside being H one search box and then the card list and then in the card list
+
+27
+00:02:08,310 --> 00:02:12,390
+are the different cards because this is what we're going to reflect as a tree.
+
+28
+00:02:13,760 --> 00:02:18,620
+So here I've drawn out a diagram that reflects this Dom tree that we've been talking about.
+
+29
+00:02:19,600 --> 00:02:25,510
+Right here at the top, you can see that this is representing the app component, which is that big
+
+30
+00:02:25,510 --> 00:02:31,240
+div with the class name app inside of it, there are three children which are three different siblings
+
+31
+00:02:31,240 --> 00:02:31,810
+of each other.
+
+32
+00:02:31,840 --> 00:02:39,320
+We have the H1, we have the search box and we have the card list component inside of the card list.
+
+33
+00:02:39,340 --> 00:02:42,220
+We have the children, which are the cards.
+
+34
+00:02:42,850 --> 00:02:47,500
+I know we have about 10 different cards from our JSON placeholder, which represents the 10 different
+
+35
+00:02:47,500 --> 00:02:48,400
+users that we have.
+
+36
+00:02:48,670 --> 00:02:52,000
+But here I'm just going to show the five to make it easier for us to visualize.
+
+37
+00:02:52,300 --> 00:02:55,810
+But this pretty much reflects a real dom.
+
+38
+00:02:56,260 --> 00:03:00,040
+This is a true representation of our entire application right now.
+
+39
+00:03:00,400 --> 00:03:06,940
+The thing about the real Dom is that it's actually really expensive in order to make changes.
+
+40
+00:03:07,420 --> 00:03:10,090
+What I mean by make changes is something known as reflow.
+
+41
+00:03:10,330 --> 00:03:16,450
+And what that is is essentially, if you were to remove nodes or pieces of the DOM or if you were to
+
+42
+00:03:16,480 --> 00:03:21,910
+update pieces of the DOM, it's very computationally expensive in order to make those changes.
+
+43
+00:03:22,240 --> 00:03:26,830
+It's actually really quick in order to figure out if things need to be changed.
+
+44
+00:03:27,220 --> 00:03:33,310
+But the actual changing process, the process of pulling things off the dom or putting things on the
+
+45
+00:03:33,310 --> 00:03:35,260
+dom or changing things on the Dom.
+
+46
+00:03:35,410 --> 00:03:36,610
+That's pretty expensive.
+
+47
+00:03:36,820 --> 00:03:40,230
+So we don't want to needlessly do that if we don't have to.
+
+48
+00:03:40,990 --> 00:03:47,890
+What react does is that in this case, React makes a duplicate copy of the real Dom, but it does it
+
+49
+00:03:47,890 --> 00:03:49,030
+in JavaScript.
+
+50
+00:03:49,420 --> 00:03:51,100
+So this is a dom tree.
+
+51
+00:03:51,400 --> 00:03:56,590
+But instead of using the real dom elements, it reflects all of these elements in JavaScript.
+
+52
+00:03:56,860 --> 00:04:02,470
+JavaScript is significantly quicker to actually create and reflect these changes.
+
+53
+00:04:02,770 --> 00:04:07,120
+So that process where I was saying call reflow, that's like really easy to do on JavaScript.
+
+54
+00:04:07,810 --> 00:04:11,620
+The only thing is that we need a real dom to actually display to the user.
+
+55
+00:04:11,620 --> 00:04:17,680
+So of course, we can't use a JavaScript tree in order to do that, but we can use this tree to determine
+
+56
+00:04:17,680 --> 00:04:18,520
+what's changed.
+
+57
+00:04:18,700 --> 00:04:21,640
+And this tree is called the virtual dom.
+
+58
+00:04:21,970 --> 00:04:23,600
+So you hear a lot about a virtual dom.
+
+59
+00:04:23,620 --> 00:04:24,280
+That's what it is.
+
+60
+00:04:24,280 --> 00:04:30,310
+It's a JavaScript representation of the real dom tree whenever we were to make some changes.
+
+61
+00:04:30,640 --> 00:04:38,260
+So let's say, for example, a user started typing into our search box, Ellia, as we know what happens
+
+62
+00:04:38,590 --> 00:04:45,250
+is that we will start filtering through our monsters in our application in order to pass those filtered
+
+63
+00:04:45,250 --> 00:04:46,780
+monsters to our cardless component.
+
+64
+00:04:46,990 --> 00:04:50,770
+So what does that look like using these virtual dom and real dom trees?
+
+65
+00:04:50,950 --> 00:04:55,840
+So let's talk about how to react under the hood is going to trigger through this process that we've
+
+66
+00:04:55,840 --> 00:05:00,370
+done numerous times already in order to actually make the changes we want to see in the real DOM.
+
+67
+00:05:00,940 --> 00:05:06,160
+So first, what's going to happen is it's actually going to make another copy of the virtual DOM.
+
+68
+00:05:07,040 --> 00:05:13,250
+And the reason why it does this is because it's going to use that first copy of the virtual Dom as a
+
+69
+00:05:13,250 --> 00:05:14,120
+snapshot.
+
+70
+00:05:14,390 --> 00:05:20,810
+So this is the latest snapshot of what the real Dom looks like before it needs to start actually making
+
+71
+00:05:20,810 --> 00:05:21,530
+these changes.
+
+72
+00:05:22,310 --> 00:05:29,390
+What react is going to do is use this newest virtual dom copy as the actual dom tree that it's going
+
+73
+00:05:29,390 --> 00:05:30,800
+to make these changes against.
+
+74
+00:05:31,340 --> 00:05:35,330
+So remember, what's happening is we're typing into our search box, Leah.
+
+75
+00:05:36,140 --> 00:05:42,710
+So as we remember, this search box is triggering an event for each character being typed in the URL
+
+76
+00:05:42,710 --> 00:05:44,180
+and then the E and then the A.
+
+77
+00:05:44,780 --> 00:05:52,070
+These changes are in turn going to call set state inside of our app, which is represented as that blue
+
+78
+00:05:52,070 --> 00:05:53,530
+note up at the very top.
+
+79
+00:05:53,540 --> 00:05:59,840
+If you remember, I said that that top note is our app component inside of Here Reacts sees Oh, I'm
+
+80
+00:05:59,840 --> 00:06:02,450
+getting set state called three different times.
+
+81
+00:06:03,050 --> 00:06:06,530
+What's happening is that React is actually going to bash these calls together.
+
+82
+00:06:06,530 --> 00:06:10,040
+If they're slow enough or if they're fast enough, it really differs.
+
+83
+00:06:10,040 --> 00:06:14,960
+React has a bunch of different optimizations that it does under the hood by bashing some of these calls
+
+84
+00:06:14,960 --> 00:06:17,660
+together in order to make this process more efficient.
+
+85
+00:06:17,870 --> 00:06:23,150
+Because even though it's in JavaScript, it still wants to be as optimal as possible and reduce the
+
+86
+00:06:23,150 --> 00:06:25,730
+total number of changes it has to do.
+
+87
+00:06:26,330 --> 00:06:32,330
+So what's happening here, either way, is that the earlier string is getting called into our sets date.
+
+88
+00:06:32,990 --> 00:06:34,280
+So this is what's happening.
+
+89
+00:06:34,280 --> 00:06:40,640
+React is saying, Oh, I want to set the state of this note and remember whenever a state is being updated,
+
+90
+00:06:41,060 --> 00:06:42,440
+it is re rendering.
+
+91
+00:06:42,800 --> 00:06:47,480
+So what this does is it's going to re render the app and react is smart enough to say, Oh, I'm going
+
+92
+00:06:47,480 --> 00:06:53,600
+to re render all of the HTML and the GSX that are the children of this component.
+
+93
+00:06:54,380 --> 00:06:59,000
+But it's also going to be smart enough to know that the only components that need to be updated is the
+
+94
+00:06:59,000 --> 00:07:03,260
+card list because the H one is not changing and the search box is not changing.
+
+95
+00:07:03,560 --> 00:07:10,460
+So the cardless needs to update because y what we're doing with that string is we're modifying that
+
+96
+00:07:10,460 --> 00:07:16,010
+monsters array, we're filtering it, which in turn means that we're passing new props into the card
+
+97
+00:07:16,010 --> 00:07:16,340
+list.
+
+98
+00:07:16,730 --> 00:07:21,860
+And remember, whenever new props get past, react is also going to re render that component.
+
+99
+00:07:22,100 --> 00:07:25,910
+So Cardless says, Oh, I've got new props, I need to re render.
+
+100
+00:07:26,060 --> 00:07:32,450
+So what it's going to do is it's going to look inside of its HD html and it's going to render new cards.
+
+101
+00:07:33,050 --> 00:07:36,810
+Maybe in these new cards, there are lesser cards, which we know with our users.
+
+102
+00:07:36,810 --> 00:07:42,380
+That's exactly what's happening because we're filtering out all cards of monsters that don't have Leia
+
+103
+00:07:42,380 --> 00:07:42,860
+in the name.
+
+104
+00:07:43,250 --> 00:07:50,150
+So React sees, Oh, there are these three cards that no longer are necessary because they are no longer
+
+105
+00:07:50,420 --> 00:07:53,270
+matching the filter monsters that I'm receiving.
+
+106
+00:07:53,750 --> 00:07:56,750
+So React is going to say, OK, these needs to be removed.
+
+107
+00:07:56,990 --> 00:08:03,200
+I'm going to literally remove them from my virtual dom tree, so I'm grayed them out, meaning that
+
+108
+00:08:03,200 --> 00:08:04,640
+they've been unmount it.
+
+109
+00:08:05,060 --> 00:08:09,350
+Remember, I'm mounting as that phase where you're pulling things off of the Dom.
+
+110
+00:08:09,530 --> 00:08:10,790
+That's literally what's happening.
+
+111
+00:08:10,800 --> 00:08:14,570
+So they're getting removed from the page or this virtual dom representation of the page.
+
+112
+00:08:15,410 --> 00:08:16,850
+Now what react does the CS?
+
+113
+00:08:16,850 --> 00:08:19,610
+OK, have I updated everything from these changes?
+
+114
+00:08:19,790 --> 00:08:20,570
+Yes, I have.
+
+115
+00:08:20,720 --> 00:08:22,790
+This is the new virtual dom.
+
+116
+00:08:23,270 --> 00:08:25,670
+So this reflects what the Dom should be.
+
+117
+00:08:25,670 --> 00:08:27,380
+After all, these changes have happened.
+
+118
+00:08:27,800 --> 00:08:34,040
+What it's then going to do is it's going to compare this virtual dom copy against the virtual Dom snapshot,
+
+119
+00:08:34,310 --> 00:08:40,280
+and it's going to highlight where things are different once it figures out where those differences are.
+
+120
+00:08:40,550 --> 00:08:48,830
+It's going to actually make those changes onto the real dom because that virtual dom snapshot is a copy
+
+121
+00:08:48,830 --> 00:08:49,970
+of the real Dom.
+
+122
+00:08:50,420 --> 00:08:54,920
+And because what it needs to do in the end, in order for the user actually see these final changes
+
+123
+00:08:55,100 --> 00:08:57,410
+is apply those changes to the real DOM.
+
+124
+00:08:57,500 --> 00:08:59,290
+Now it knows what it has to do.
+
+125
+00:08:59,300 --> 00:09:04,220
+It's already gone through the most complicated process of doing the thing and doing the patching so
+
+126
+00:09:04,220 --> 00:09:11,360
+that this final process, React thinks, is the optimal and fastest final solution of what the current
+
+127
+00:09:11,360 --> 00:09:12,260
+page should look like.
+
+128
+00:09:12,770 --> 00:09:17,630
+So the real Dom is then going to go through the reflow and it's going to remove those components or
+
+129
+00:09:17,630 --> 00:09:21,710
+those different elements on the Dom tree and now are real.
+
+130
+00:09:21,710 --> 00:09:25,700
+Dom is going to take the form of what it finally should be.
+
+131
+00:09:25,790 --> 00:09:29,450
+And this is how we finally see those changes reflected on the page.
+
+132
+00:09:29,990 --> 00:09:33,920
+So it's a pretty lengthy process, but that's really all the virtual Dom is doing.
+
+133
+00:09:34,130 --> 00:09:39,800
+It's just an optimal way for react to figure out what the real Dom needs to look like.
+
+134
+00:09:39,980 --> 00:09:47,420
+And the reason it does this is because pulling off and changing these different nodes on a real dom
+
+135
+00:09:47,420 --> 00:09:48,440
+is expensive.
+
+136
+00:09:48,710 --> 00:09:56,360
+It's easier to do it in JavaScript and save when React is absolutely sure that what is finally supposed
+
+137
+00:09:56,360 --> 00:09:58,610
+to be reflected onto the real Dom.
+
+138
+00:09:59,090 --> 00:10:01,370
+It will then actually make those changes.
+
+139
+00:10:01,880 --> 00:10:06,500
+That's the whole process of using the virtual DOM and react in order to optimize the.
+
+140
+00:10:06,580 --> 00:10:09,820
+Process of figuring out what your dorm should look like.

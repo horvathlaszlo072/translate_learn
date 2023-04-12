@@ -1,0 +1,487 @@
+1
+00:00:00,150 --> 00:00:01,200
+Welcome back, everyone.
+
+2
+00:00:01,980 --> 00:00:05,520
+So in this video, we want to actually start styling our products.
+
+3
+00:00:06,120 --> 00:00:11,820
+So what I'm going to do is I'm going to go into my components and I'm going to create a new folder called
+
+4
+00:00:11,820 --> 00:00:12,510
+product card.
+
+5
+00:00:13,570 --> 00:00:19,180
+So inside a product card, we need to create the usual files, we need to make a product card component
+
+6
+00:00:19,190 --> 00:00:23,470
+Duchess X, and we also need to make a product card styles.
+
+7
+00:00:23,650 --> 00:00:27,730
+So product card dot styles dot SAS.
+
+8
+00:00:29,010 --> 00:00:31,830
+Inside of a product car components, what do we need?
+
+9
+00:00:32,490 --> 00:00:35,430
+Well, first we need to import in that stylesheet that we've created.
+
+10
+00:00:35,850 --> 00:00:36,600
+So let's do that.
+
+11
+00:00:37,380 --> 00:00:41,490
+And as far as the product card itself is concerned, let's think about what we need to do.
+
+12
+00:00:42,150 --> 00:00:48,150
+So we know that we need a product card component, which is just going to be a functional component
+
+13
+00:00:48,150 --> 00:00:48,570
+for now.
+
+14
+00:00:49,560 --> 00:00:53,400
+Then I'm just going to explore out by default, the product cart.
+
+15
+00:00:53,850 --> 00:00:57,810
+So as we normally do, we just scaffolding out this component.
+
+16
+00:00:59,290 --> 00:01:03,460
+Now, what we want to do is just take a quick look at the actual finished product.
+
+17
+00:01:03,760 --> 00:01:05,410
+We have some kind of container.
+
+18
+00:01:06,160 --> 00:01:08,170
+We have this button inside.
+
+19
+00:01:08,230 --> 00:01:09,640
+So we're going to need the button component.
+
+20
+00:01:10,120 --> 00:01:13,210
+Then we have the name, we have the price and we have an image.
+
+21
+00:01:13,930 --> 00:01:15,550
+So let's start building that out here.
+
+22
+00:01:16,270 --> 00:01:21,820
+First, I'm going to make a device that's going to contain all of these elements that I'm talking about.
+
+23
+00:01:21,820 --> 00:01:24,790
+So that top level parent a small component.
+
+24
+00:01:25,330 --> 00:01:28,280
+And I'm going to say that this is the product card container.
+
+25
+00:01:28,360 --> 00:01:30,580
+It's going to contain all of our product card stuff.
+
+26
+00:01:31,150 --> 00:01:37,270
+Then inside is going to be an image, and this image is going to need a source, which we'll figure
+
+27
+00:01:37,270 --> 00:01:37,750
+out later.
+
+28
+00:01:38,950 --> 00:01:44,620
+Inside at the bottom there, we have some kind of a footer, so I'm going to call this div the footer
+
+29
+00:01:44,860 --> 00:01:47,440
+and I'm going to give it the class name of footer.
+
+30
+00:01:48,420 --> 00:01:53,190
+Then inside, we're going to need to list both the name as well as the cost.
+
+31
+00:01:54,120 --> 00:01:56,190
+So for the span, I'm going to call this.
+
+32
+00:01:57,370 --> 00:02:05,380
+The name and then I'm also going to create a duplicate where the class name is going to be the cost
+
+33
+00:02:05,680 --> 00:02:08,380
+or the price, whichever one sounds more intuitive to you.
+
+34
+00:02:08,860 --> 00:02:09,700
+I'm going to use price.
+
+35
+00:02:11,150 --> 00:02:15,650
+After this, we need to use our button, so let's import in our button component.
+
+36
+00:02:17,110 --> 00:02:21,400
+So I want to say I want to impart the button from the button folder.
+
+37
+00:02:22,940 --> 00:02:25,820
+And then I'm just going to apply this button.
+
+38
+00:02:27,660 --> 00:02:28,680
+So this button now.
+
+39
+00:02:29,870 --> 00:02:30,770
+If we remember.
+
+40
+00:02:31,850 --> 00:02:36,200
+This button is white first, then black, unlike our typical button, which is black to white.
+
+41
+00:02:36,290 --> 00:02:43,340
+So this is the invert, so I'm going to say that the button type is equal to the string inverted.
+
+42
+00:02:44,240 --> 00:02:47,480
+And as for the content inside, it's just going to say add to cart.
+
+43
+00:02:49,550 --> 00:02:52,220
+And I'm going to save this, and this is pretty much it.
+
+44
+00:02:52,940 --> 00:02:54,290
+Now what do we need to do?
+
+45
+00:02:55,130 --> 00:02:57,530
+We need to actually fill in these remaining values.
+
+46
+00:02:57,800 --> 00:02:58,730
+What is the image?
+
+47
+00:02:58,910 --> 00:02:59,810
+What is the name?
+
+48
+00:02:59,840 --> 00:03:00,710
+What is the price?
+
+49
+00:03:01,400 --> 00:03:06,350
+So here what I'm going to do is I'm going to assume that for this product cart, you have to pass us.
+
+50
+00:03:06,350 --> 00:03:13,250
+The product and product in this case is going to be the actual product data that we had.
+
+51
+00:03:14,180 --> 00:03:16,160
+So we call it shop data right here.
+
+52
+00:03:17,000 --> 00:03:19,820
+So we know we have ID, name, image, URL and price.
+
+53
+00:03:20,180 --> 00:03:24,050
+So we want to assume those are the same values we're going to get inside of our product cart.
+
+54
+00:03:24,800 --> 00:03:29,210
+So here, what I'm going to do is once I get the product, I want to structure off what I need.
+
+55
+00:03:29,930 --> 00:03:36,650
+So I know that I need the name, I need the price and I need the image URL and this we're going to structure
+
+56
+00:03:36,860 --> 00:03:41,780
+off of our product object, then inside of name.
+
+57
+00:03:42,050 --> 00:03:46,000
+I'm going to call the name inside of price.
+
+58
+00:03:46,010 --> 00:03:47,450
+I'm going to call the price.
+
+59
+00:03:48,170 --> 00:03:53,930
+As for the image, I'm just going to set the source equal to the image URL.
+
+60
+00:03:55,150 --> 00:04:00,340
+Images also need an alt text, and this alt text is primarily for screen readers.
+
+61
+00:04:00,700 --> 00:04:03,490
+So what we can do is for the screen reader value.
+
+62
+00:04:03,700 --> 00:04:09,100
+We can just describe what this object is, so we can say that this is the name because our names for
+
+63
+00:04:09,100 --> 00:04:10,930
+our products are generally pretty descriptive.
+
+64
+00:04:11,850 --> 00:04:12,450
+And that's it.
+
+65
+00:04:12,690 --> 00:04:16,980
+We're going to save this, and now we want to use our product card inside of the shop component.
+
+66
+00:04:17,670 --> 00:04:21,090
+So here I'm going to import in product card from.
+
+67
+00:04:22,220 --> 00:04:28,730
+The appropriate file, so we need to go up through our pages, into our components folder, into our
+
+68
+00:04:28,730 --> 00:04:35,450
+product card and then get the product card component, and then what we'll do is we will replace this
+
+69
+00:04:35,450 --> 00:04:40,840
+entire div with the product card, and we're going to say the key is still the ID.
+
+70
+00:04:41,840 --> 00:04:43,640
+But now we need the whole product.
+
+71
+00:04:43,640 --> 00:04:45,030
+So actually, we can't even do this.
+
+72
+00:04:45,050 --> 00:04:48,560
+We just want the entire product because that's what our component is expecting.
+
+73
+00:04:49,130 --> 00:04:54,980
+So I'm going to say product ID instead of just the ID structure, and then I'm going to pass down the
+
+74
+00:04:54,980 --> 00:04:57,260
+product as a whole into this product cart.
+
+75
+00:04:57,860 --> 00:05:01,220
+So now if we save this and we come to our application.
+
+76
+00:05:02,360 --> 00:05:04,400
+What do we see if we refresh?
+
+77
+00:05:05,850 --> 00:05:08,880
+Well, actually, it looks like we have an error, so let's debug what this errors.
+
+78
+00:05:09,630 --> 00:05:12,180
+Here we see that product card nothing was returned from render.
+
+79
+00:05:12,630 --> 00:05:17,700
+So this means that inside of our product card, we're not actually returning the correct thing.
+
+80
+00:05:18,360 --> 00:05:24,120
+So this is my mistake inside of this component, we need to make sure to return back this value.
+
+81
+00:05:25,730 --> 00:05:28,340
+So now we come back and let's refresh.
+
+82
+00:05:30,670 --> 00:05:33,280
+Here we see that we have our product cards.
+
+83
+00:05:33,940 --> 00:05:37,330
+So this is pretty much in, it's just that we don't have our styling set up.
+
+84
+00:05:37,780 --> 00:05:43,300
+So as you guessed it, inside of product styles, I want you to paste in the product card styles file
+
+85
+00:05:43,300 --> 00:05:45,550
+that I provided for you in your resources folder.
+
+86
+00:05:46,270 --> 00:05:52,120
+Now, once you've pasted this in, if you look inside, what you'll see is that we have some really
+
+87
+00:05:52,120 --> 00:05:52,720
+big cards.
+
+88
+00:05:53,410 --> 00:05:58,450
+Now the reason these are big is because it's adaptable based on the environment that uses them.
+
+89
+00:05:59,320 --> 00:06:01,630
+So where is it that we use our product cards?
+
+90
+00:06:02,080 --> 00:06:04,630
+Well, we're actually using them inside of our shop component.
+
+91
+00:06:05,110 --> 00:06:10,150
+So inside of our shop component, our products are contained in a div, and this div is going to be
+
+92
+00:06:10,150 --> 00:06:12,010
+what actually determines their styling.
+
+93
+00:06:12,490 --> 00:06:18,130
+So let me just show you I'm going to give a class name to this div, which is products container.
+
+94
+00:06:20,180 --> 00:06:25,400
+And then what we're going to do is create a shop that style stores file.
+
+95
+00:06:26,590 --> 00:06:28,240
+And let's make sure to import.
+
+96
+00:06:29,450 --> 00:06:31,310
+That stockpile, so we don't forget about it.
+
+97
+00:06:32,710 --> 00:06:37,420
+And then what we'll do is we'll target this products container that we just created.
+
+98
+00:06:37,930 --> 00:06:42,130
+I'm going to use display grade here because I want to show these in a grid format.
+
+99
+00:06:42,970 --> 00:06:48,220
+I want the columns to be in four equal sizes.
+
+100
+00:06:48,790 --> 00:06:56,290
+So here you'll see that repeat for one half hour just means repeat four times one f r one f r just means
+
+101
+00:06:56,290 --> 00:06:56,810
+one.
+
+102
+00:06:56,830 --> 00:07:00,760
+Evenly distributed and equal distant size.
+
+103
+00:07:01,090 --> 00:07:07,240
+So if you have 100 pixels and you have for what of one f r, then that means that you're dividing that
+
+104
+00:07:07,240 --> 00:07:09,610
+100 by four, giving you 25.
+
+105
+00:07:10,330 --> 00:07:12,100
+So this means that we're saying that is equal.
+
+106
+00:07:12,550 --> 00:07:14,080
+And then I want gaps between.
+
+107
+00:07:14,410 --> 00:07:16,950
+So the column gap, I want it to be ten pixels.
+
+108
+00:07:16,960 --> 00:07:22,210
+So this is the gap between the columns and then the row gap I want as fifty pixels.
+
+109
+00:07:23,200 --> 00:07:28,420
+So now, if I save this and I come back here, we see we have our component.
+
+110
+00:07:29,350 --> 00:07:29,770
+That's it.
+
+111
+00:07:30,880 --> 00:07:35,350
+A lot of this was just some freestyling, but again, I don't want to waste too much time on styling,
+
+112
+00:07:35,350 --> 00:07:38,750
+there's a lot of little details with styling that takes up a lot of time.
+
+113
+00:07:38,770 --> 00:07:41,020
+That is not worth it when it comes to learning react.
+
+114
+00:07:41,990 --> 00:07:49,280
+But in case you are curious about learning some of how KSAZ grid works, I'm going to include a link
+
+115
+00:07:49,460 --> 00:07:53,030
+to general documents around this grid that is really helpful.
+
+116
+00:07:53,450 --> 00:07:56,240
+The best way to learn science as a grid is really just to tinker around with it.
+
+117
+00:07:56,480 --> 00:07:58,350
+And I've given you kind of an environment.
+
+118
+00:07:58,460 --> 00:08:02,780
+You can tweak some of these values, try out some of these values in the docs and just see what the
+
+119
+00:08:02,780 --> 00:08:03,680
+differences lie.
+
+120
+00:08:04,680 --> 00:08:11,340
+So now that we have our product cards, what we want to do next is actually start seeing if we can add
+
+121
+00:08:11,340 --> 00:08:12,810
+this to our cart.
+
+122
+00:08:13,560 --> 00:08:15,570
+So that's what we're going to do in the next video.

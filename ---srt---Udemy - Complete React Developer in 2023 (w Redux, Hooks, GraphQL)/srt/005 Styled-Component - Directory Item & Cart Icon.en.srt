@@ -1,0 +1,567 @@
+1
+00:00:00,390 --> 00:00:01,320
+Welcome back, everyone.
+
+2
+00:00:01,920 --> 00:00:07,860
+In this video, we are going to style out the cart icon with style components, so as normal we are
+
+3
+00:00:07,860 --> 00:00:10,920
+going to first convert our style sheet over to a chair sex.
+
+4
+00:00:11,580 --> 00:00:17,670
+And the key difference in this component is primarily that there is an SPG in here.
+
+5
+00:00:18,780 --> 00:00:25,740
+Now, one thing I want to note about converting and targeting SDGs is that you can even do this without
+
+6
+00:00:25,740 --> 00:00:26,620
+star components.
+
+7
+00:00:27,060 --> 00:00:31,080
+So I'm going to show you how I would tackle styling this specific component.
+
+8
+00:00:32,140 --> 00:00:37,990
+Normally you got to think about your components when it comes to whether or not you want to make a brand
+
+9
+00:00:37,990 --> 00:00:42,910
+new component to wrap it, or if you want to target some other way.
+
+10
+00:00:43,960 --> 00:00:48,970
+So the way that we want to target the shopping icon is we know that there's some styling that's going
+
+11
+00:00:48,970 --> 00:00:50,310
+to be applied on this component.
+
+12
+00:00:50,380 --> 00:00:58,000
+And as I mentioned before, we can actually directly just target our own components, including these
+
+13
+00:00:58,000 --> 00:00:59,560
+SPG components.
+
+14
+00:01:00,070 --> 00:01:07,180
+So here what we can do is we can actually say export contest shopping icon.
+
+15
+00:01:07,810 --> 00:01:12,970
+And instead of this being shopping icon, let's call this shopping SPG because we want shopping icon
+
+16
+00:01:12,980 --> 00:01:15,490
+to be the name of the store component that we expose.
+
+17
+00:01:16,060 --> 00:01:23,830
+I'm going to say styled on this shopping SPG component and then what I'm going to apply is the styling
+
+18
+00:01:23,830 --> 00:01:27,130
+here with the width 24 and the height 24.
+
+19
+00:01:31,520 --> 00:01:34,610
+And then we can just stop everything else as normal.
+
+20
+00:01:35,150 --> 00:01:37,130
+So here I'm going to do.
+
+21
+00:01:38,220 --> 00:01:39,330
+Carl Icahn container.
+
+22
+00:01:44,010 --> 00:01:44,990
+Which is astounding.
+
+23
+00:01:48,950 --> 00:01:50,030
+Let's just fix that.
+
+24
+00:01:50,930 --> 00:01:52,580
+That will have this width.
+
+25
+00:01:53,620 --> 00:01:58,910
+Now, as I mentioned before, instead of doing it this way, you could have also technically targeted
+
+26
+00:01:58,910 --> 00:02:00,310
+it with the SVG.
+
+27
+00:02:00,550 --> 00:02:01,150
+Like so?
+
+28
+00:02:02,390 --> 00:02:09,530
+Which is the typical styling way, but this way I find it a little bit more within the alignment of
+
+29
+00:02:09,530 --> 00:02:11,870
+house style component wants you to write your components.
+
+30
+00:02:12,740 --> 00:02:16,610
+And then the last thing is our item count, which I believe is a span.
+
+31
+00:02:16,730 --> 00:02:17,360
+Yes, it is.
+
+32
+00:02:25,750 --> 00:02:29,050
+So here we can just paste in those styles that we had.
+
+33
+00:02:30,780 --> 00:02:34,650
+And we can save this and now import this into our component.
+
+34
+00:02:35,070 --> 00:02:39,990
+So of course, now we already have this coming from our stylesheet now.
+
+35
+00:02:44,900 --> 00:02:49,910
+So we got our shopping icon, a cart icon container, as well as our item count.
+
+36
+00:02:50,930 --> 00:02:52,940
+So now our shopping icon can stay the same.
+
+37
+00:02:53,660 --> 00:02:55,880
+This will replace the div right here.
+
+38
+00:02:57,620 --> 00:03:00,410
+And then the item count, of course, will replace the spam.
+
+39
+00:03:04,540 --> 00:03:05,140
+And there we go.
+
+40
+00:03:05,950 --> 00:03:10,930
+If we go back to our application, we see that everything here still works.
+
+41
+00:03:12,230 --> 00:03:15,800
+Our icon still has the styling, it's still at the appropriate size.
+
+42
+00:03:17,380 --> 00:03:21,850
+So now let's stall the next thing, and this is our directory item.
+
+43
+00:03:23,110 --> 00:03:27,190
+So the directory item styles are pretty comprehensive.
+
+44
+00:03:27,700 --> 00:03:32,170
+Plus, there's one additional thing that we're going to learn through styling the directory item because
+
+45
+00:03:32,170 --> 00:03:39,340
+right now we actually apply a custom style property using what React gives us as this style prop.
+
+46
+00:03:39,820 --> 00:03:46,390
+We actually don't need this because we can pass props directly into all of our components that we make
+
+47
+00:03:46,390 --> 00:03:47,410
+with style components.
+
+48
+00:03:47,830 --> 00:03:54,400
+And this is actually a very, very powerful thing because now what we can do is we can treat these components
+
+49
+00:03:54,400 --> 00:03:58,420
+as if they were regular components, but there's a little bit of syntax we have to learn.
+
+50
+00:03:58,900 --> 00:04:02,590
+So let me show you so first, we import stuff from style components.
+
+51
+00:04:05,220 --> 00:04:11,640
+And now what we need to do is let's think about what it is exactly that we're trying to do here.
+
+52
+00:04:12,510 --> 00:04:17,160
+So first things first, let's talk about the targeting.
+
+53
+00:04:17,970 --> 00:04:21,510
+This component needs to target a background image class.
+
+54
+00:04:22,200 --> 00:04:27,270
+We can actually make a component for this background image, but we have to make it in the order in
+
+55
+00:04:27,270 --> 00:04:28,920
+which it will get called.
+
+56
+00:04:29,550 --> 00:04:35,310
+So if inside of directory item container, one of our styles targets this component, then we need to
+
+57
+00:04:35,310 --> 00:04:37,350
+have that component already declared.
+
+58
+00:04:37,920 --> 00:04:45,330
+So here I'm going to say Konst background image is equal to a style div, because that's what this background
+
+59
+00:04:45,330 --> 00:04:45,840
+image is.
+
+60
+00:04:46,650 --> 00:04:52,470
+So this style div is going to have a couple styling on it by default.
+
+61
+00:04:53,250 --> 00:04:56,400
+So the first one is going to be all of these styles.
+
+62
+00:04:56,700 --> 00:04:58,020
+So let's just copy this over.
+
+63
+00:05:00,610 --> 00:05:07,540
+And then when it's going to have is typically when you use this background image, as you can see here
+
+64
+00:05:07,540 --> 00:05:10,420
+in this, did we pass the stop, but we can't do this anymore.
+
+65
+00:05:10,450 --> 00:05:16,540
+Instead, what we're going to do is we are going to actually pass this as a value and we can call it
+
+66
+00:05:16,540 --> 00:05:17,290
+image URL.
+
+67
+00:05:17,380 --> 00:05:18,580
+You can call it whatever you want.
+
+68
+00:05:18,610 --> 00:05:25,240
+It's really just the prop name that we're going to access the same way we will later inside of our components.
+
+69
+00:05:25,720 --> 00:05:29,530
+So let's imagine instead, I pass image URL into this component.
+
+70
+00:05:30,220 --> 00:05:37,390
+The way that I can access is I can actually say background image is going to point to and then I'm going
+
+71
+00:05:37,390 --> 00:05:42,700
+to string interpolate because this is just a tactic string.
+
+72
+00:05:43,570 --> 00:05:51,040
+So now I can actually access the different props that get received in just the way that you would like
+
+73
+00:05:51,040 --> 00:05:51,640
+a component.
+
+74
+00:05:51,970 --> 00:05:52,880
+You write a function.
+
+75
+00:05:53,110 --> 00:05:58,480
+And what this will be is props, which means that we can d structure off image URL because that is being
+
+76
+00:05:58,480 --> 00:05:59,920
+passed in as a prop.
+
+77
+00:06:00,670 --> 00:06:08,140
+And now what we can do is we can return back a string that says your URL wrapping the image URL.
+
+78
+00:06:08,860 --> 00:06:14,080
+It's the same thing that we had before, but now we're passing in as a prop and then rendering it within
+
+79
+00:06:14,080 --> 00:06:16,060
+the CSC of our background image.
+
+80
+00:06:16,990 --> 00:06:20,650
+So after this, now we need also to look inside.
+
+81
+00:06:21,100 --> 00:06:23,170
+Notice how we're also targeting a body.
+
+82
+00:06:23,170 --> 00:06:26,300
+We're changing the opacity when this component gets hovered on.
+
+83
+00:06:26,590 --> 00:06:30,550
+So we actually need this body first before we can target it inside the component.
+
+84
+00:06:31,030 --> 00:06:39,640
+So I want to say body is equal to a stop div and this style div is going to accept all of this styling
+
+85
+00:06:39,640 --> 00:06:40,060
+here.
+
+86
+00:06:44,880 --> 00:06:49,620
+And also inside it targets the H2 and the pea tag.
+
+87
+00:06:50,460 --> 00:06:57,510
+So if you're wondering with this H2 and this is it worth creating a new, separate style component for
+
+88
+00:06:57,510 --> 00:06:57,630
+it?
+
+89
+00:06:58,350 --> 00:06:59,730
+Well, this is where you need to think.
+
+90
+00:07:00,060 --> 00:07:06,180
+If you know that your component only has one H2 and one paragraph tank inside of this body div, then
+
+91
+00:07:06,180 --> 00:07:06,990
+you don't need to.
+
+92
+00:07:07,050 --> 00:07:11,670
+If you start adding more tools and you want different styling, then you can start splitting it up more
+
+93
+00:07:11,880 --> 00:07:14,790
+at a granular level into more different style components.
+
+94
+00:07:15,090 --> 00:07:19,560
+But generally speaking, it's based on how you would normally write your CC anyways.
+
+95
+00:07:20,010 --> 00:07:21,030
+So this is one of those things.
+
+96
+00:07:21,030 --> 00:07:26,220
+It's just really a matter of thinking about your composition and what you need and what you don't need.
+
+97
+00:07:26,970 --> 00:07:33,240
+So now that we have both the background image and the body, we can finally do export content directory
+
+98
+00:07:33,240 --> 00:07:34,320
+item container.
+
+99
+00:07:35,450 --> 00:07:37,720
+And here it'll be equal to a stop to.
+
+100
+00:07:39,640 --> 00:07:44,890
+And inside, let's add these styles, so this hover style is very important.
+
+101
+00:07:45,550 --> 00:07:46,750
+We want to take this over.
+
+102
+00:07:48,690 --> 00:07:50,430
+And inside notice on the hover.
+
+103
+00:07:50,880 --> 00:07:58,290
+So here we target a background image instead of what we're going to target is directly the background
+
+104
+00:07:58,290 --> 00:07:58,920
+image.
+
+105
+00:08:00,950 --> 00:08:05,600
+So component that we have and the same thing is going to apply for the body.
+
+106
+00:08:11,430 --> 00:08:12,150
+And that.
+
+107
+00:08:13,610 --> 00:08:16,850
+Is pretty much all we need unless I'm missing some other stuff.
+
+108
+00:08:16,880 --> 00:08:17,840
+Let's just double check.
+
+109
+00:08:18,170 --> 00:08:24,890
+Oh, I'm missing these these styles right here for first child and last child relative within.
+
+110
+00:08:26,840 --> 00:08:33,590
+Side of our directory item container, but I think this is it as far as this large, I actually believe
+
+111
+00:08:33,590 --> 00:08:37,580
+this is not being used anymore, so we actually don't need this styling.
+
+112
+00:08:38,480 --> 00:08:41,510
+So let's just clear out that old CIUSSS.
+
+113
+00:08:42,110 --> 00:08:45,860
+And now let's import this and use it in our directory item component.
+
+114
+00:08:47,700 --> 00:08:49,410
+So here I'm going to import.
+
+115
+00:08:50,360 --> 00:08:53,000
+From our directory item styles.
+
+116
+00:08:55,130 --> 00:08:57,500
+And now what we need is the background image.
+
+117
+00:08:58,040 --> 00:09:01,820
+We need the body and we need the directory item container.
+
+118
+00:09:03,010 --> 00:09:05,980
+So here at the top level, we're going to get rid of the container.
+
+119
+00:09:08,040 --> 00:09:14,230
+For background image, we are going to get rid of this device while making sure to pass the actual image
+
+120
+00:09:14,230 --> 00:09:15,420
+your value still through.
+
+121
+00:09:16,560 --> 00:09:20,820
+And then for the body, let's just get rid of the do.
+
+122
+00:09:23,630 --> 00:09:24,260
+And.
+
+123
+00:09:25,580 --> 00:09:27,470
+It looks like perhaps.
+
+124
+00:09:28,610 --> 00:09:30,320
+There is a bit of an issue here.
+
+125
+00:09:33,970 --> 00:09:36,880
+Oh, oh, I'm missing a opening tag.
+
+126
+00:09:39,080 --> 00:09:39,500
+There we go.
+
+127
+00:09:39,830 --> 00:09:41,930
+OK, let's go back to our application.
+
+128
+00:09:42,500 --> 00:09:46,010
+Let's go to the homepage and there we see we have everything working.
+
+129
+00:09:46,980 --> 00:09:52,050
+We can also capitalize these titles if we want very easily with a little bit of CSI magic.
+
+130
+00:09:52,440 --> 00:09:54,870
+We can just go to the H2.
+
+131
+00:09:56,330 --> 00:10:02,450
+Which is actually inside of the body and here we can say, Tex transform uppercase.
+
+132
+00:10:03,020 --> 00:10:04,880
+And now if we save this and we come back.
+
+133
+00:10:07,130 --> 00:10:10,370
+We should see that all of our titles are now uppercase, cased.
+
+134
+00:10:11,920 --> 00:10:17,380
+OK, so this component, the primary thing I want you to realize is that you can pass whatever props
+
+135
+00:10:17,380 --> 00:10:20,470
+you want into these style components.
+
+136
+00:10:20,950 --> 00:10:26,110
+This gives you a lot more power in deciding what rules you want to generate inside of these components.
+
+137
+00:10:26,350 --> 00:10:31,150
+You can even determine if you want to add additional styling here and there by using this pattern.
+
+138
+00:10:31,720 --> 00:10:35,050
+So this is another great benefit that we get with style components.
+
+139
+00:10:35,170 --> 00:10:37,930
+You can treat them like components and they can receive props.
+
+140
+00:10:38,990 --> 00:10:45,980
+So now after this, the last thing we need to start is going to be actually one of the more complicated
+
+141
+00:10:46,430 --> 00:10:51,110
+components, maybe the most complicated one, which is our form input, and we'll do that in the next
+
+142
+00:10:51,110 --> 00:10:51,440
+video.

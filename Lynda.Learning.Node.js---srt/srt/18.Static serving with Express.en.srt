@@ -1,0 +1,446 @@
+1
+00:00:00.05 --> 00:00:02.04
+- [Instructor] When
+creating a web application,
+
+2
+00:00:02.04 --> 00:00:04.04
+you can think of it as having a division
+
+3
+00:00:04.04 --> 00:00:06.06
+between two responsibilities.
+
+4
+00:00:06.06 --> 00:00:11.02
+You can either host static
+content or dynamic content.
+
+5
+00:00:11.02 --> 00:00:15.04
+Static content can be things
+like HTML files for web sites
+
+6
+00:00:15.04 --> 00:00:18.09
+or images, videos, etc.
+
+7
+00:00:18.09 --> 00:00:22.00
+Dynamic content, on the
+other hand, is served through
+
+8
+00:00:22.00 --> 00:00:26.01
+a web API, or sometimes it's
+used to serve dynamic webpages
+
+9
+00:00:26.01 --> 00:00:29.02
+where the content or the view is composed
+
+10
+00:00:29.02 --> 00:00:31.02
+on the server itself.
+
+11
+00:00:31.02 --> 00:00:34.07
+In our case, we'll look at
+serving a simple HTML file
+
+12
+00:00:34.07 --> 00:00:38.05
+for static files, and then
+we will create a web API
+
+13
+00:00:38.05 --> 00:00:41.08
+to show how we can serve dynamic content.
+
+14
+00:00:41.08 --> 00:00:45.07
+So let's begin by serving some
+static files with Express.js.
+
+15
+00:00:45.07 --> 00:00:47.01
+The first thing we'll need to do
+
+16
+00:00:47.01 --> 00:00:49.02
+is create our project folder.
+
+17
+00:00:49.02 --> 00:00:50.07
+So please go ahead and do that,
+
+18
+00:00:50.07 --> 00:00:52.09
+since we will be working in this folder
+
+19
+00:00:52.09 --> 00:00:54.07
+over multiple videos,
+
+20
+00:00:54.07 --> 00:00:58.00
+and we won't be recreating a
+new project for every video.
+
+21
+00:00:58.00 --> 00:01:01.03
+Then make sure you open up
+that folder inside your editor.
+
+22
+00:01:01.03 --> 00:01:03.08
+Next, let's create our server file.
+
+23
+00:01:03.08 --> 00:01:08.02
+So I'll create a new file
+and call it server.js.
+
+24
+00:01:08.02 --> 00:01:09.07
+One thing to keep in mind
+
+25
+00:01:09.07 --> 00:01:12.02
+is that Express does not come with Node,
+
+26
+00:01:12.02 --> 00:01:14.06
+and so we'll need to install it using npm
+
+27
+00:01:14.06 --> 00:01:18.01
+just like we did for all the
+other third-party packages.
+
+28
+00:01:18.01 --> 00:01:21.02
+But if we want to save
+all of our dependencies
+
+29
+00:01:21.02 --> 00:01:23.02
+that we install, we'll need to create
+
+30
+00:01:23.02 --> 00:01:25.08
+our package.json file first.
+
+31
+00:01:25.08 --> 00:01:29.09
+So just like we did before,
+we'll use npm init to do that.
+
+32
+00:01:29.09 --> 00:01:35.00
+So I'll use npm init --yes.
+
+33
+00:01:35.00 --> 00:01:37.09
+And now we have our package.json file.
+
+34
+00:01:37.09 --> 00:01:40.04
+Next, let's install Express.
+
+35
+00:01:40.04 --> 00:01:44.09
+We'll use the command
+npm install -s to save it
+
+36
+00:01:44.09 --> 00:01:46.08
+to our package.json file,
+
+37
+00:01:46.08 --> 00:01:50.05
+and then we'll type in express.
+
+38
+00:01:50.05 --> 00:01:53.00
+Let's check our package.json file
+
+39
+00:01:53.00 --> 00:01:55.05
+and you can see that under
+the dependencies list,
+
+40
+00:01:55.05 --> 00:02:00.07
+we have express, and in
+our node_modules folder,
+
+41
+00:02:00.07 --> 00:02:04.05
+if we scroll down, you can
+see all of the dependencies
+
+42
+00:02:04.05 --> 00:02:09.08
+that Express came from as well
+as the Express folder itself.
+
+43
+00:02:09.08 --> 00:02:12.03
+So now let's begin by
+requiring it into a variable
+
+44
+00:02:12.03 --> 00:02:19.00
+we'll call express inside
+our server.js file,
+
+45
+00:02:19.00 --> 00:02:21.09
+and then we'll set reference
+to a variable called app
+
+46
+00:02:21.09 --> 00:02:29.02
+from an instance of express.
+
+47
+00:02:29.02 --> 00:02:31.05
+And then let's get the
+Express server started
+
+48
+00:02:31.05 --> 00:02:37.04
+and listening for requests,
+by typing in app.listen,
+
+49
+00:02:37.04 --> 00:02:40.03
+and it will take in a port
+in the first parameter,
+
+50
+00:02:40.03 --> 00:02:42.06
+so I'll type in 3000.
+
+51
+00:02:42.06 --> 00:02:44.00
+So let's save that.
+
+52
+00:02:44.00 --> 00:02:48.08
+Then we'll use a nodemon
+and run server.js.
+
+53
+00:02:48.08 --> 00:02:50.03
+Now if we start our browser,
+
+54
+00:02:50.03 --> 00:02:53.07
+and then go over to localhost 3000
+
+55
+00:02:53.07 --> 00:02:59.01
+and we open up the developer console,
+
+56
+00:02:59.01 --> 00:03:02.05
+and then go to Network tab,
+and once again refresh,
+
+57
+00:03:02.05 --> 00:03:04.03
+we can see we're getting a response
+
+58
+00:03:04.03 --> 00:03:07.09
+but with a status of 404 not found
+
+59
+00:03:07.09 --> 00:03:11.06
+because nothing is being
+hosted or served yet.
+
+60
+00:03:11.06 --> 00:03:15.02
+So now let's serve some
+static content with Express.
+
+61
+00:03:15.02 --> 00:03:19.06
+We'll begin by using the function app.use,
+
+62
+00:03:19.06 --> 00:03:23.08
+and then we'll create an
+HTML file called index.html
+
+63
+00:03:23.08 --> 00:03:26.08
+that will get served through app.use.
+
+64
+00:03:26.08 --> 00:03:30.09
+So above our app.listen,
+I'll set up app.use
+
+65
+00:03:30.09 --> 00:03:34.04
+to get it prepped for our HTML file.
+
+66
+00:03:34.04 --> 00:03:36.08
+Since I'm using nodemon,
+and I've saved this file,
+
+67
+00:03:36.08 --> 00:03:39.03
+we're getting an error,
+since we're not actually
+
+68
+00:03:39.03 --> 00:03:41.08
+defining anything to use yet.
+
+69
+00:03:41.08 --> 00:03:47.06
+So let's create a new
+filed called index.html.
+
+70
+00:03:47.06 --> 00:03:50.09
+And inside here, I'll type in hello.
+
+71
+00:03:50.09 --> 00:03:53.08
+I'll save that, and close out the HTML.
+
+72
+00:03:53.08 --> 00:03:55.04
+Now when ordered to tell Express
+
+73
+00:03:55.04 --> 00:03:57.09
+that we'll be serving a static file,
+
+74
+00:03:57.09 --> 00:04:05.07
+inside our app.use on line
+4, we'll use express.static,
+
+75
+00:04:05.07 --> 00:04:12.00
+and we'll pass in our entire
+directory with __dirname.
+
+76
+00:04:12.00 --> 00:04:16.04
+Let's save that, and then
+try it again in our browser.
+
+77
+00:04:16.04 --> 00:04:18.06
+So I'll refresh, and you
+can see that index page
+
+78
+00:04:18.06 --> 00:04:21.07
+or HTML file is automatically served now
+
+79
+00:04:21.07 --> 00:04:24.06
+and we're getting our
+hello placeholder text.
+
+80
+00:04:24.06 --> 00:04:28.01
+One other change I'd like
+to make is to set a callback
+
+81
+00:04:28.01 --> 00:04:32.04
+on our app.listen,
+
+82
+00:04:32.04 --> 00:04:34.06
+and then we'll pass in a callback
+
+83
+00:04:34.06 --> 00:04:36.07
+that takes in no parameters,
+
+84
+00:04:36.07 --> 00:04:40.02
+and we can type in console.log,
+
+85
+00:04:40.02 --> 00:04:44.07
+server is listening on port,
+
+86
+00:04:44.07 --> 00:04:46.05
+and then we could hard-code the port,
+
+87
+00:04:46.05 --> 00:04:50.02
+or we could get reference
+to that actual port
+
+88
+00:04:50.02 --> 00:04:54.06
+in case it changes once we
+deploy our app on a server,
+
+89
+00:04:54.06 --> 00:04:58.08
+and we can do that by creating
+a variable called server
+
+90
+00:04:58.08 --> 00:05:01.06
+and setting it to our app.listen.
+
+91
+00:05:01.06 --> 00:05:03.02
+And then in our callback,
+
+92
+00:05:03.02 --> 00:05:05.05
+as a second parameter to our console log,
+
+93
+00:05:05.05 --> 00:05:11.03
+what we'll call server.address.port,
+
+94
+00:05:11.03 --> 00:05:13.06
+let's save that and give it a try.
+
+95
+00:05:13.06 --> 00:05:15.02
+And as we can see, we're
+getting our message
+
+96
+00:05:15.02 --> 00:05:19.02
+in our console, server is
+listening on port 3000.
+
+97
+00:05:19.02 --> 00:05:21.03
+Now that our back-end server is running
+
+98
+00:05:21.03 --> 00:05:23.08
+and hosting a static file,
+
+99
+00:05:23.08 --> 00:05:25.05
+let's take a quick look at setting up
+
+100
+00:05:25.05 --> 00:05:29.07
+a front end demo app that
+will work with our back end.
+

@@ -1,0 +1,431 @@
+1
+00:00:01,010 --> 00:00:06,370
+Right, so I'm here on challenge five, as you can see here, it says Set color button shows error.
+
+2
+00:00:06,370 --> 00:00:07,490
+Please fix if you can.
+
+3
+00:00:07,600 --> 00:00:09,580
+This is the description or the objective.
+
+4
+00:00:09,580 --> 00:00:15,760
+And first thing I want to do is actually confirm that setting that color button actually does show an
+
+5
+00:00:15,760 --> 00:00:16,080
+error.
+
+6
+00:00:16,480 --> 00:00:19,570
+So I go into my sandbox mode to open up this sandbox here.
+
+7
+00:00:22,440 --> 00:00:29,400
+So I'm opening here, I'm in the sandbox now, I click the color button and here we go, I get an error.
+
+8
+00:00:29,790 --> 00:00:33,680
+So I've reproduced the issue and I've confirmed that there is an issue here.
+
+9
+00:00:34,080 --> 00:00:39,120
+So the next steps that I'm going to take care of my strategy, guide her to get to gather some clues.
+
+10
+00:00:39,120 --> 00:00:43,160
+So I'm going to basically see that there are errors in the console.
+
+11
+00:00:43,170 --> 00:00:43,740
+There is an error.
+
+12
+00:00:44,130 --> 00:00:47,370
+And so can I trace that stack trace?
+
+13
+00:00:47,910 --> 00:00:52,140
+And as you can see here, I do get that line of code that's causing the issue.
+
+14
+00:00:52,590 --> 00:00:55,950
+And so that's that's a clue here.
+
+15
+00:00:56,340 --> 00:00:57,030
+The next thing.
+
+16
+00:00:57,030 --> 00:00:59,460
+So I've isolated basically where that code is happening.
+
+17
+00:00:59,460 --> 00:00:59,730
+Right.
+
+18
+00:01:00,210 --> 00:01:02,850
+And as you can see, I'm back in here.
+
+19
+00:01:02,850 --> 00:01:05,580
+I've isolated you know, it's been really obvious here.
+
+20
+00:01:05,580 --> 00:01:11,430
+It's telling you exactly where that line of code is and if you were in the console.
+
+21
+00:01:11,580 --> 00:01:17,840
+So if I refresh and just see if that bug also happens in the console and it does not look like it does,
+
+22
+00:01:17,850 --> 00:01:23,070
+let's see if I go into if I highlight this and I go into the actual app, I would like to go into the
+
+23
+00:01:23,070 --> 00:01:27,600
+actual app itself just to show you a realistic example.
+
+24
+00:01:27,600 --> 00:01:27,850
+Right.
+
+25
+00:01:27,870 --> 00:01:37,690
+So if I'm here in the app and I open up the chrome dev tools and then I go and I click on that button,
+
+26
+00:01:38,400 --> 00:01:41,310
+so now I could see I have the error being traced in here.
+
+27
+00:01:41,880 --> 00:01:46,220
+And once again, it's tracing back to that exact file.
+
+28
+00:01:46,230 --> 00:01:49,020
+So it says color is read only.
+
+29
+00:01:49,500 --> 00:01:52,370
+So it's tracing back to that same line that we had here.
+
+30
+00:01:52,800 --> 00:01:57,630
+So I go back here and as you could see, so colors read only.
+
+31
+00:01:57,750 --> 00:02:00,000
+So now I've isolated the line of code.
+
+32
+00:02:00,000 --> 00:02:04,040
+Right now it's time to understand what's going on in that's in that code itself.
+
+33
+00:02:04,530 --> 00:02:13,590
+So this this this exact app right here, if I refresh it, looks like what the intention here is.
+
+34
+00:02:13,590 --> 00:02:19,620
+If I go down and I just read some of this here, I could see we have a button and this button has a
+
+35
+00:02:19,620 --> 00:02:21,840
+click handler which says set color.
+
+36
+00:02:22,320 --> 00:02:29,430
+And there's a function called green, which I believe what's supposed to happen here is that it's supposed
+
+37
+00:02:29,430 --> 00:02:30,960
+to set the color to green.
+
+38
+00:02:30,990 --> 00:02:31,320
+Right.
+
+39
+00:02:31,620 --> 00:02:33,840
+It's trying to set that color equal to green.
+
+40
+00:02:34,350 --> 00:02:35,670
+But this is not working right.
+
+41
+00:02:35,790 --> 00:02:37,500
+It says color is read only.
+
+42
+00:02:37,920 --> 00:02:42,210
+So now I want to understand a couple things here.
+
+43
+00:02:43,220 --> 00:02:49,160
+First, I want to understand what's going on here and this line, because we're setting color equal
+
+44
+00:02:49,160 --> 00:02:50,570
+to green, right?
+
+45
+00:02:50,990 --> 00:02:57,470
+And as you could see, color is then used here in the style tag or the style property of the d'Hiv.
+
+46
+00:02:57,890 --> 00:03:05,260
+So now if we refresh the page, you'll see that the color of this div is blue.
+
+47
+00:03:06,020 --> 00:03:08,750
+So there's some clues here as to what's going on.
+
+48
+00:03:08,780 --> 00:03:15,680
+So it appears that the color is being initialized to blue and then we are trying to set it to green,
+
+49
+00:03:16,130 --> 00:03:17,340
+but we're breaking on that.
+
+50
+00:03:17,840 --> 00:03:22,640
+So that's my my quick analysis of what I think is going on in this app.
+
+51
+00:03:23,180 --> 00:03:28,510
+Now, how I would debug this further is to understand what's going on with this.
+
+52
+00:03:28,790 --> 00:03:31,180
+Now, I see this thing called use state here.
+
+53
+00:03:31,550 --> 00:03:37,520
+Now, if you know anything about react hooks, you know that this is the most common reactant you state.
+
+54
+00:03:38,000 --> 00:03:43,970
+And this is the this if you're not familiar with you state, you could research use state.
+
+55
+00:03:44,160 --> 00:03:48,490
+So if I Google use state, I could see we have using the state hook here.
+
+56
+00:03:49,130 --> 00:03:52,580
+And as you could see, we have a very simple example here.
+
+57
+00:03:52,580 --> 00:04:00,800
+So I could look at this and I could see, OK, I am clicking on this and I have I'm using so I have
+
+58
+00:04:01,280 --> 00:04:02,600
+this, which we'll call count.
+
+59
+00:04:02,640 --> 00:04:10,010
+So basically we are if you you know, I'm not going to so I can do a quick overview of react hooks,
+
+60
+00:04:10,370 --> 00:04:11,270
+but basically.
+
+61
+00:04:11,630 --> 00:04:15,470
+So if you go down here, you could see that we have a hook.
+
+62
+00:04:15,470 --> 00:04:19,910
+So we import that you state hook and then it's it's a special function.
+
+63
+00:04:20,390 --> 00:04:23,930
+And as you could see here, so this is the old way of doing it.
+
+64
+00:04:24,350 --> 00:04:26,480
+And then so here we go.
+
+65
+00:04:26,720 --> 00:04:28,060
+So now this is really the part.
+
+66
+00:04:28,250 --> 00:04:31,760
+So I'm basically I'm looking for where it defines what you state does.
+
+67
+00:04:32,150 --> 00:04:34,420
+So it's calling.
+
+68
+00:04:34,430 --> 00:04:36,350
+So our variable is called count.
+
+69
+00:04:36,800 --> 00:04:41,180
+And then as you can see here, there's a second argument.
+
+70
+00:04:41,190 --> 00:04:44,870
+So as you can see here, it says, what does you state return?
+
+71
+00:04:44,900 --> 00:04:49,290
+It returns a pair of values, the current state and the function that updates it.
+
+72
+00:04:49,640 --> 00:04:53,560
+This is why rewrite const count set count equals use state.
+
+73
+00:04:54,140 --> 00:04:56,600
+So you could research more of this.
+
+74
+00:04:56,600 --> 00:05:01,790
+But now, if you were totally unfamiliar with react, you state you would through Google, you were
+
+75
+00:05:01,790 --> 00:05:05,080
+able to understand what's going on with the U.S. state.
+
+76
+00:05:05,120 --> 00:05:07,250
+Now, that's just an example.
+
+77
+00:05:07,250 --> 00:05:13,190
+So you'd be researching that and then you would realize that, OK, color here is here and set colors
+
+78
+00:05:13,190 --> 00:05:14,480
+here now.
+
+79
+00:05:15,350 --> 00:05:20,630
+So if you know now you know about Riak state, you're wondering, OK, well, this doesn't look like
+
+80
+00:05:20,630 --> 00:05:22,670
+the right way to set react state.
+
+81
+00:05:22,670 --> 00:05:22,980
+Right.
+
+82
+00:05:23,570 --> 00:05:27,240
+So once again, though, what is this actual error happening here?
+
+83
+00:05:27,950 --> 00:05:29,340
+So if you Google this hour.
+
+84
+00:05:29,660 --> 00:05:31,520
+So if I say Read-Only.
+
+85
+00:05:33,180 --> 00:05:35,910
+You could see there's this error here.
+
+86
+00:05:37,080 --> 00:05:46,050
+So this is found I found this here, so this is the first result on Google, so occurs when a global
+
+87
+00:05:46,050 --> 00:05:48,600
+variable is assigned to a read-only property.
+
+88
+00:05:56,760 --> 00:06:03,000
+So those first two articles didn't really help, but then I found this one and it says this is read
+
+89
+00:06:03,000 --> 00:06:03,450
+only.
+
+90
+00:06:03,990 --> 00:06:08,640
+And then I go down here and I see you're defining this with the card statement.
+
+91
+00:06:08,970 --> 00:06:14,690
+CONSED creates a constant, that is to say, a value which cannot be changed after first being initialized.
+
+92
+00:06:15,060 --> 00:06:17,780
+So instead of consed use let or there.
+
+93
+00:06:18,230 --> 00:06:23,340
+So now this is kind of a distraction against the actual issue, which is that you should be using react
+
+94
+00:06:23,340 --> 00:06:23,610
+Hoke's.
+
+95
+00:06:23,610 --> 00:06:25,640
+You shouldn't be setting it like this.
+
+96
+00:06:25,650 --> 00:06:25,940
+Right.
+
+97
+00:06:26,290 --> 00:06:33,120
+So, but that's why we get this error because we're actually we're declaring this concept here and this
+
+98
+00:06:33,120 --> 00:06:36,820
+color is actually consed, so it's unable to be set.
+
+99
+00:06:37,020 --> 00:06:38,360
+So that's why we get this error.
+
+100
+00:06:38,580 --> 00:06:42,610
+But the real way to set react state is to use the set color.
+
+101
+00:06:43,200 --> 00:06:50,220
+So if I change this to say set color green like this passing in that value here, I could set the color
+
+102
+00:06:50,220 --> 00:06:51,420
+and then it turns green.
+
+103
+00:06:51,780 --> 00:06:55,170
+So this is how to solve that issue.
+
+104
+00:06:55,450 --> 00:06:57,690
+As you can see here, green is a function.
+
+105
+00:06:58,020 --> 00:07:03,940
+So I'm declaring this function here and dysfunction is being invoked when we click on that button.
+
+106
+00:07:04,410 --> 00:07:12,540
+So this was just an example of calling a reactive wrong, educating yourself about react hooks and about
+
+107
+00:07:12,540 --> 00:07:16,950
+const variable variable errors and read-only properties.
+
+108
+00:07:17,280 --> 00:07:24,120
+And we were able to debug that by researching reactance and properly using state functionality.

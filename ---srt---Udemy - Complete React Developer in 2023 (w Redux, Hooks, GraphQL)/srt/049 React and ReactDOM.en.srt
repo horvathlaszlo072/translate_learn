@@ -1,0 +1,639 @@
+1
+00:00:00,590 --> 00:00:05,930
+Welcome back, everyone in this video, I'm going to break down what react and react Dom do for us as
+
+2
+00:00:05,930 --> 00:00:11,330
+libraries, because so far really, really used a lot of the syntactic sugar, meaning the much more
+
+3
+00:00:11,480 --> 00:00:14,030
+easy way to write react using GSX.
+
+4
+00:00:14,360 --> 00:00:18,980
+But in order for us to get a good idea of how the react and react dom libraries actually work.
+
+5
+00:00:19,250 --> 00:00:23,330
+I think it's easier if we just learn about both these libraries from scratch.
+
+6
+00:00:23,780 --> 00:00:29,570
+So here what you can do is you can watch me or you can follow along whichever style you prefer to learn.
+
+7
+00:00:29,810 --> 00:00:35,360
+Both are perfectly fine because we're really just going to dive into some of the more top level API
+
+8
+00:00:35,630 --> 00:00:37,880
+that react and react on provide for us.
+
+9
+00:00:37,880 --> 00:00:41,540
+That typically gets obfuscated when you're writing in GSX.
+
+10
+00:00:42,510 --> 00:00:47,820
+So just start with what I'm going to do is I'm going to go into my terminal and I'm just going to create
+
+11
+00:00:47,820 --> 00:00:50,640
+a new directory called Pure React.
+
+12
+00:00:51,470 --> 00:00:57,980
+And then I'm going to come into it and I'm going to touch an index that HDMI Alpha Touch essentially
+
+13
+00:00:57,980 --> 00:00:59,510
+writes this file for us.
+
+14
+00:01:00,020 --> 00:01:04,070
+So then I'm just going to open up my voice code inside of this folder.
+
+15
+00:01:05,420 --> 00:01:10,400
+I'm going to wait a little bit for everything to load, because sometimes when you open up your files,
+
+16
+00:01:10,730 --> 00:01:16,250
+you might notice that it takes a little bit of time for a VSCO to actually start indicating the things
+
+17
+00:01:16,250 --> 00:01:17,060
+that it can do for you.
+
+18
+00:01:17,690 --> 00:01:24,560
+But once you're inside, if you start typing h t l, you should see an auto suggestion.
+
+19
+00:01:25,460 --> 00:01:29,810
+This again, you might have to wait a little bit for your code to start running up and all of these
+
+20
+00:01:29,810 --> 00:01:31,070
+services that become available.
+
+21
+00:01:31,340 --> 00:01:36,380
+But the moment it does, I want you to select HTML five and what this will do.
+
+22
+00:01:36,380 --> 00:01:37,290
+Is it all right for us?
+
+23
+00:01:37,310 --> 00:01:41,570
+A quick template of what the base HTML file should look like.
+
+24
+00:01:42,550 --> 00:01:48,610
+Inside of the body, I'm going to create a div and this div, I'm going to give an ID of root.
+
+25
+00:01:49,620 --> 00:01:54,390
+This is pretty much the exact same index, that HDMI file that we had inside of our Create React app,
+
+26
+00:01:54,660 --> 00:01:57,540
+minus a couple of the optimizations that they create for us.
+
+27
+00:01:57,900 --> 00:02:02,220
+But the key thing that I want you to focus on is the fact that there is a div with the ID root.
+
+28
+00:02:02,580 --> 00:02:08,370
+Remember, before won't react was doing was we were taking our application and we're replacing this
+
+29
+00:02:08,370 --> 00:02:11,080
+Jim with the ID root with our entire application.
+
+30
+00:02:11,100 --> 00:02:12,370
+So we're still going to do the same thing.
+
+31
+00:02:12,390 --> 00:02:14,010
+We're just not going to do a GSX anymore.
+
+32
+00:02:14,280 --> 00:02:20,190
+Now I'm also going to write some code inside of the div so that I know that when my react code mounts,
+
+33
+00:02:20,520 --> 00:02:25,290
+I'm going to actually be aware that React is working and we'll talk about how that works.
+
+34
+00:02:25,680 --> 00:02:31,040
+But first, let's just type in react is not rendered this way.
+
+35
+00:02:31,050 --> 00:02:34,770
+It's very clear to me when react is rendered versus it's not rendered.
+
+36
+00:02:35,220 --> 00:02:39,330
+Right now, this is just a the small file, and we'll do everything in raw JavaScript.
+
+37
+00:02:40,110 --> 00:02:45,840
+But once you've done this, you're going to go into your code and you're just going to open up indexed
+
+38
+00:02:45,840 --> 00:02:48,210
+the HTML inside of your browser.
+
+39
+00:02:49,710 --> 00:02:52,650
+Inside the browser, you will see React is not rendered.
+
+40
+00:02:52,920 --> 00:02:58,950
+So here everything is working as we expect the next thing we need to do is actually bring in both the
+
+41
+00:02:58,950 --> 00:03:01,110
+React and React Dom libraries.
+
+42
+00:03:01,380 --> 00:03:06,420
+Now you might be wondering what is the difference between react and react Dom and why do I need both?
+
+43
+00:03:07,200 --> 00:03:13,260
+Well, you can kind of see the React library as the engine react does a lot of the differing, a lot
+
+44
+00:03:13,260 --> 00:03:19,620
+of the optimizations, a lot of determining what to render and how, whereas react Dom determines what
+
+45
+00:03:19,620 --> 00:03:24,180
+we're trying to render to specifically react Dom renders to the DOM.
+
+46
+00:03:24,270 --> 00:03:29,550
+So really, what you're building is Dom elements react native allows you to build native elements.
+
+47
+00:03:29,700 --> 00:03:31,170
+There might be React VR.
+
+48
+00:03:31,470 --> 00:03:37,590
+Essentially, there's different ways that you might be building specific UI for some device or some
+
+49
+00:03:37,590 --> 00:03:38,850
+platform react.
+
+50
+00:03:38,850 --> 00:03:43,890
+Dom is the one that we use for the browser, but multiple of these different libraries all levers the
+
+51
+00:03:43,890 --> 00:03:46,110
+React engine code under the hood.
+
+52
+00:03:46,290 --> 00:03:49,350
+So that's the difference between React and React, Dom, and we're going to need both.
+
+53
+00:03:50,360 --> 00:03:54,530
+So what I want you to do is go into your resources folder and you're going to see this, you are all
+
+54
+00:03:54,950 --> 00:03:58,880
+this points you directly to the source code of React.
+
+55
+00:03:59,300 --> 00:04:04,160
+This website, called Unpackaged, is a great place that hosts all the actual source code for a lot
+
+56
+00:04:04,160 --> 00:04:05,480
+of these different libraries that we use.
+
+57
+00:04:05,930 --> 00:04:12,590
+So I'm going to copy down this, go back into my application and then I'm going to write a script tag
+
+58
+00:04:12,590 --> 00:04:15,290
+where the source points to react.
+
+59
+00:04:16,190 --> 00:04:20,600
+Next, I'm going to do the exact same thing for the React Dom Library.
+
+60
+00:04:21,050 --> 00:04:22,910
+So here I'm going to get the script started.
+
+61
+00:04:23,420 --> 00:04:28,400
+I'm going to come over and what you're going to do is you are going to copy now the React Dom script
+
+62
+00:04:28,400 --> 00:04:30,800
+that I have for you inside your resources folder as well.
+
+63
+00:04:31,760 --> 00:04:33,950
+And you just add that to your source.
+
+64
+00:04:35,840 --> 00:04:38,240
+And save once you save.
+
+65
+00:04:38,570 --> 00:04:46,160
+Go back to the index HTML document, we had open up your console and also refresh once you refresh.
+
+66
+00:04:46,700 --> 00:04:52,250
+You now actually have both the React and React Dom libraries loaded inside of your console.
+
+67
+00:04:52,250 --> 00:04:57,860
+If you start typing react, you'll see right there that you'll get something, which is the entire package
+
+68
+00:04:57,860 --> 00:05:00,170
+that react is added under the React namespace.
+
+69
+00:05:00,740 --> 00:05:03,170
+Similarly, you'll have React Dom as well.
+
+70
+00:05:03,770 --> 00:05:05,720
+So now we know both react and react.
+
+71
+00:05:05,720 --> 00:05:10,460
+Dom libraries have been added, but they haven't done any code yet because we haven't written any of
+
+72
+00:05:10,460 --> 00:05:11,630
+the code that we need to.
+
+73
+00:05:12,200 --> 00:05:17,660
+So now what we need to do is we need to simulate the behavior that we had before with react.
+
+74
+00:05:18,350 --> 00:05:21,530
+And to do this, what we're going to do is we're going to write a third script.
+
+75
+00:05:22,460 --> 00:05:30,170
+This new script is going to be the way that we actually render our JavaScript code that utilizes react
+
+76
+00:05:30,170 --> 00:05:30,860
+and react on.
+
+77
+00:05:31,580 --> 00:05:37,160
+So to start, what I'm going to do is I'm actually going to define the app component.
+
+78
+00:05:37,790 --> 00:05:45,020
+And if we remember components in React are just functions that return a set of UI instructions that
+
+79
+00:05:45,020 --> 00:05:51,320
+React uses to render HTML, in our particular case, those set of instructions before we were writing
+
+80
+00:05:51,320 --> 00:05:52,220
+in GSX.
+
+81
+00:05:52,550 --> 00:05:54,890
+But now we can actually do this a different way.
+
+82
+00:05:55,730 --> 00:06:05,120
+So what I'm going to do is declare this Konst app and inside of this app, I want to return back, react,
+
+83
+00:06:05,120 --> 00:06:09,890
+creating elements and the way you do this is you use react.
+
+84
+00:06:09,890 --> 00:06:10,820
+OK, create element.
+
+85
+00:06:11,600 --> 00:06:17,360
+GSX is really just a fancy way that react adds syntactic sugar for all this code that we're going to
+
+86
+00:06:17,360 --> 00:06:20,720
+right now using create element and recreate element.
+
+87
+00:06:20,870 --> 00:06:22,940
+This method takes three arguments.
+
+88
+00:06:23,240 --> 00:06:29,240
+The first argument is going to take the component that you want to render so you can either pass it
+
+89
+00:06:29,240 --> 00:06:34,940
+a string or you can pass it a component, meaning it could be a functional component or a class component.
+
+90
+00:06:35,270 --> 00:06:39,830
+We'll figure out more once we actually understand how to use these components, but for now, let's
+
+91
+00:06:39,830 --> 00:06:40,820
+just pass it a string.
+
+92
+00:06:41,680 --> 00:06:46,450
+And as far as the string goes, all I want to write is a div, so by passing the string div rack knows,
+
+93
+00:06:46,480 --> 00:06:47,890
+oh, you want to create a div.
+
+94
+00:06:48,520 --> 00:06:55,390
+The second argument is an object where the key value pairs contain the different attributes we want
+
+95
+00:06:55,390 --> 00:06:55,720
+for this.
+
+96
+00:06:55,900 --> 00:06:59,830
+So Class ID or any other additional properties that we want to add.
+
+97
+00:06:59,980 --> 00:07:03,520
+All would go into this specific object.
+
+98
+00:07:03,640 --> 00:07:04,600
+This is kind of like props.
+
+99
+00:07:04,600 --> 00:07:05,410
+You can see it like that.
+
+100
+00:07:06,730 --> 00:07:11,020
+The third argument is going to be what children do we want to nest inside of it?
+
+101
+00:07:11,290 --> 00:07:13,780
+And typically we pass this as an array.
+
+102
+00:07:14,890 --> 00:07:20,320
+You can pass this also as a text note, what you are going to do for the next child that we add in here
+
+103
+00:07:20,860 --> 00:07:27,250
+because right now it's just an empty death and inside what I want to do is I want to pass in a string
+
+104
+00:07:27,760 --> 00:07:30,130
+and I'm going to pass that string inside of an H1.
+
+105
+00:07:30,640 --> 00:07:31,600
+So how do I do that?
+
+106
+00:07:32,230 --> 00:07:34,300
+Well, I need to make a new one.
+
+107
+00:07:34,600 --> 00:07:40,540
+And you might have guessed it that we need to use React free element again in order to create the H1.
+
+108
+00:07:40,960 --> 00:07:42,370
+So I'm going to call it H1.
+
+109
+00:07:42,940 --> 00:07:48,430
+I'm going to pass it a class, and here you can use class or class name.
+
+110
+00:07:48,460 --> 00:07:49,360
+Both are viable.
+
+111
+00:07:49,960 --> 00:07:55,660
+I'm going to pass a specifically, though a class, and I'm going to say that the class is title.
+
+112
+00:07:56,470 --> 00:08:03,910
+So the reason why in here you can pass it class and not class name, as we saw with Jess X, is because
+
+113
+00:08:03,910 --> 00:08:06,670
+inside of this, this is a key.
+
+114
+00:08:06,880 --> 00:08:09,820
+So React is not treating this as a variable.
+
+115
+00:08:10,240 --> 00:08:14,920
+Remember, when you write your keys, these reactors are going to interpret as a string anyways.
+
+116
+00:08:15,130 --> 00:08:19,360
+So this is actually not protected as long as you use it as a class in your object.
+
+117
+00:08:19,720 --> 00:08:21,580
+You can use class, you can use class name.
+
+118
+00:08:21,580 --> 00:08:25,150
+React will render both over into class.
+
+119
+00:08:26,440 --> 00:08:33,970
+So once I have my class, I am also going to now pass it a text, and here I'm going to say react is
+
+120
+00:08:33,970 --> 00:08:34,450
+rendered.
+
+121
+00:08:35,710 --> 00:08:37,600
+And what I'll do is I will save this.
+
+122
+00:08:38,020 --> 00:08:44,800
+And now we have our app component, but this is not enough to actually render this onto the page as
+
+123
+00:08:44,800 --> 00:08:51,160
+we know before with React React does that code where it takes your app and it actually renders it onto
+
+124
+00:08:51,160 --> 00:08:54,490
+the DOM and it targets this root component.
+
+125
+00:08:54,880 --> 00:08:59,230
+So we have to write the code that will do that and the code that will do that is, I'm going to say
+
+126
+00:08:59,230 --> 00:09:01,540
+React Dom Dom render.
+
+127
+00:09:02,170 --> 00:09:07,390
+And then I'm going to say React, Create Element because I want to create a new element that I'm trying
+
+128
+00:09:07,390 --> 00:09:08,380
+to render to the page.
+
+129
+00:09:08,740 --> 00:09:11,140
+And here I'm going to use my app component.
+
+130
+00:09:11,530 --> 00:09:16,020
+So you actually just directly pass the variable name of your component.
+
+131
+00:09:16,030 --> 00:09:21,480
+So in our particular case, it's called app, so I'm going to pass app through and that's all I need.
+
+132
+00:09:21,490 --> 00:09:22,690
+I don't need any attributes.
+
+133
+00:09:22,690 --> 00:09:26,170
+I don't need these children, and I just want to create this app component element.
+
+134
+00:09:27,170 --> 00:09:32,960
+Then render needs a target, so it needs an element on the page that it can render to.
+
+135
+00:09:33,320 --> 00:09:34,430
+This is where you're going to say.
+
+136
+00:09:34,480 --> 00:09:41,690
+Document Typekit element by ID. The same way that we had it before and I'm going to target the ID of
+
+137
+00:09:41,690 --> 00:09:42,020
+Root.
+
+138
+00:09:42,770 --> 00:09:46,730
+Now I'm going to save this, I'm going to go back to my code and look at that.
+
+139
+00:09:47,330 --> 00:09:49,760
+React is render for a second there.
+
+140
+00:09:49,880 --> 00:09:51,050
+You saw there was a flash.
+
+141
+00:09:51,050 --> 00:09:53,150
+React does not render and then react is rendered.
+
+142
+00:09:53,420 --> 00:09:58,880
+The reason that's happening is because our scripts are waiting to get loaded in first and then our react
+
+143
+00:09:58,880 --> 00:10:00,860
+code that we wrote finally runs.
+
+144
+00:10:01,010 --> 00:10:02,720
+Which is why you see that flash for a second.
+
+145
+00:10:03,640 --> 00:10:08,170
+This is now us being certain that our React code is working.
+
+146
+00:10:09,350 --> 00:10:15,440
+And this is really all it is that React really does for us, if you really think about it, react with
+
+147
+00:10:15,440 --> 00:10:15,740
+jazz.
+
+148
+00:10:15,740 --> 00:10:23,180
+Sex is really just using React ICREA element in place of the jazz sex code that we have, but it's significantly
+
+149
+00:10:23,180 --> 00:10:29,300
+easier for us to write sex, which looks like HTML and absorbs and takes in JavaScript variables, rather
+
+150
+00:10:29,300 --> 00:10:34,250
+than constantly writing this verbose Qurei element where we define what we're looking for, then the
+
+151
+00:10:34,250 --> 00:10:35,690
+attributes and then the children.
+
+152
+00:10:35,900 --> 00:10:38,120
+But that's really all it's doing under the hood.
+
+153
+00:10:38,450 --> 00:10:39,660
+It's really that simple.
+
+154
+00:10:40,010 --> 00:10:45,050
+In the next video, we're going to take a look at a more specific example where we write a bit more
+
+155
+00:10:45,050 --> 00:10:51,770
+of this pure react code so that we can really see and utilize react, create element in order to build
+
+156
+00:10:51,770 --> 00:10:56,030
+out some kind of functionality that looks more similar to the app that we had before.
+
+157
+00:10:56,300 --> 00:10:59,630
+You can actually try it yourself first, play around with this library and really learn it.
+
+158
+00:11:00,170 --> 00:11:03,140
+And in the next video, we'll do a quick little experiment.
+
+159
+00:11:03,140 --> 00:11:04,730
+We'll we'll see how far we can push it.
+
+160
+00:11:05,270 --> 00:11:06,350
+So I'll see in the next video.

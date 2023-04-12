@@ -1,0 +1,787 @@
+1
+00:00:00,870 --> 00:00:02,010
+Now, first things first.
+
+2
+00:00:02,020 --> 00:00:07,650
+I want to take us back to this diagram which showcased our UI components and our Redux store.
+
+3
+00:00:08,130 --> 00:00:10,410
+As a quick refresher, we have components on the left.
+
+4
+00:00:10,620 --> 00:00:14,160
+We have our reducers on the right that combine into a route reducer.
+
+5
+00:00:14,610 --> 00:00:20,760
+Actions get dispatched from our left side components, which then subsequently will update a corresponding
+
+6
+00:00:20,760 --> 00:00:26,220
+reducer, and that reducer will combine into the reducer state, which then gets passed to our components
+
+7
+00:00:26,220 --> 00:00:27,840
+for them to select off of.
+
+8
+00:00:28,350 --> 00:00:30,720
+Where does middleware fit inside this flow?
+
+9
+00:00:31,260 --> 00:00:33,450
+Well, the first thing I need to do is make a little room.
+
+10
+00:00:33,450 --> 00:00:38,640
+So I'm going to remove one of our components just to give us some space, and then I'm going to adjust
+
+11
+00:00:38,640 --> 00:00:40,410
+it so that there's a little space in the top.
+
+12
+00:00:41,040 --> 00:00:44,400
+Right there is actually where middleware sits in this flow.
+
+13
+00:00:45,060 --> 00:00:50,340
+Actions still get dispatched from components, but before they ever make it to the reducers, they all
+
+14
+00:00:50,340 --> 00:00:52,620
+have to pass through the middleware first.
+
+15
+00:00:53,280 --> 00:00:57,930
+So here, let's imagine that we had our Redux lager as our only middleware.
+
+16
+00:00:58,050 --> 00:01:01,680
+You can have multiple, but we just want to look at the one that we have Redux Logger.
+
+17
+00:01:02,490 --> 00:01:06,600
+What happens is that let's say you have this green circle that represents this action.
+
+18
+00:01:07,050 --> 00:01:13,320
+This action gets dispatched from component two into wherever our store lives.
+
+19
+00:01:13,920 --> 00:01:18,690
+This store, of course, now contains the redox logger middleware, and this written logger receives
+
+20
+00:01:18,690 --> 00:01:19,350
+the action.
+
+21
+00:01:19,770 --> 00:01:23,010
+And just like any middleware, it's going to go through a sequence of steps.
+
+22
+00:01:23,280 --> 00:01:29,160
+The first thing that it's going to do is it's going to perform some action with the action or some logic
+
+23
+00:01:29,160 --> 00:01:29,760
+with the action.
+
+24
+00:01:30,270 --> 00:01:34,200
+In this particular case, it's going to log that action in that format that we saw.
+
+25
+00:01:34,950 --> 00:01:37,500
+Then what it's going to do is it's going to call next.
+
+26
+00:01:37,830 --> 00:01:46,650
+And what next does is next will explicitly take this action and pass it down to the remaining flow,
+
+27
+00:01:46,680 --> 00:01:53,100
+whether it's more middleware or into these subsequent reducers which they'll receive the action update
+
+28
+00:01:53,100 --> 00:01:55,860
+accordingly and then the route producer updates.
+
+29
+00:01:56,430 --> 00:01:58,680
+So that is the flow that we are familiar with.
+
+30
+00:01:59,010 --> 00:02:01,770
+Once the action enters into the reducers, we know what happens.
+
+31
+00:02:01,770 --> 00:02:06,150
+The root reducer gets updated depending on the value returned by each individual reducer.
+
+32
+00:02:06,870 --> 00:02:10,920
+So as I mentioned, we did this with Redux Logger, which is just the one middleware.
+
+33
+00:02:11,370 --> 00:02:12,690
+But what if we had to middleware?
+
+34
+00:02:13,230 --> 00:02:14,490
+The flow becomes the same.
+
+35
+00:02:14,670 --> 00:02:17,850
+You have some action that dispatches from component to middleware.
+
+36
+00:02:17,850 --> 00:02:20,250
+One receives it, it does something with it.
+
+37
+00:02:20,250 --> 00:02:22,680
+And then what it does is it calls next.
+
+38
+00:02:22,680 --> 00:02:28,890
+Once it's done now, it might call next when it's finished with the action, or it might do something
+
+39
+00:02:28,890 --> 00:02:31,110
+else after next gets called.
+
+40
+00:02:31,110 --> 00:02:32,910
+But we'll go into that a little later.
+
+41
+00:02:32,910 --> 00:02:38,340
+The key thing you need to know about next is that the action now gets passed on, meaning that whatever
+
+42
+00:02:38,460 --> 00:02:42,390
+comes after next is going to receive that action.
+
+43
+00:02:42,390 --> 00:02:45,720
+Now until next gets called from this middleware.
+
+44
+00:02:46,050 --> 00:02:48,690
+That action is not getting passed further.
+
+45
+00:02:49,260 --> 00:02:53,940
+But now that we call next inside of middleware one middleware to receive the action, it does whatever
+
+46
+00:02:53,940 --> 00:02:55,740
+it needs with it, it'll call next.
+
+47
+00:02:55,890 --> 00:03:01,110
+And then this gets passed on and as we know, the flow with the rest of our reducers, etc., etc..
+
+48
+00:03:01,980 --> 00:03:08,400
+So now that we understand how middleware fits inside of the flow of our redux logic, let's go back
+
+49
+00:03:08,400 --> 00:03:15,030
+to our application and figure out why it is that our radix logger is logging seemingly a little behind
+
+50
+00:03:15,390 --> 00:03:18,030
+the actual updates coming from our reducers.
+
+51
+00:03:19,500 --> 00:03:22,920
+Now here we are inside of our storages, inside of our storage.
+
+52
+00:03:22,950 --> 00:03:26,220
+This is where we generate our middleware and then we add them to the store.
+
+53
+00:03:26,490 --> 00:03:29,370
+And I'm going to show you how easy it is to write your own middleware.
+
+54
+00:03:29,970 --> 00:03:30,870
+So first things first.
+
+55
+00:03:30,870 --> 00:03:35,820
+I'm going to console our logger so that we can make our own logger middleware.
+
+56
+00:03:36,840 --> 00:03:40,380
+The format of a middleware always follows the same signature.
+
+57
+00:03:40,590 --> 00:03:44,850
+It's going to be three functions that return from one another.
+
+58
+00:03:44,970 --> 00:03:46,680
+Now, that sounds confusing.
+
+59
+00:03:47,020 --> 00:03:48,390
+It'll make sense once I write it out.
+
+60
+00:03:48,720 --> 00:03:52,410
+But in order for us to understand this, we need to understand the concept of currying.
+
+61
+00:03:53,010 --> 00:03:59,310
+Now, pure and simple, currying a function is essentially a function that returns you back another
+
+62
+00:03:59,310 --> 00:03:59,790
+function.
+
+63
+00:04:00,360 --> 00:04:04,920
+The reason you do this is because maybe function A receives some variable A.
+
+64
+00:04:05,700 --> 00:04:12,210
+What happens is that the return function here might use a inside of it.
+
+65
+00:04:12,660 --> 00:04:18,630
+But what it does is it depends on maybe two additional properties that you pass to it as new parameters
+
+66
+00:04:18,630 --> 00:04:20,070
+for this function.
+
+67
+00:04:20,760 --> 00:04:26,550
+So what happens here is that if we have some curry func is equal to this.
+
+68
+00:04:27,450 --> 00:04:35,310
+Now I can say, hey, I want a new function that says with a is equal to me calling Curry Funk and then
+
+69
+00:04:35,310 --> 00:04:35,910
+I pass it.
+
+70
+00:04:36,000 --> 00:04:40,260
+Some value here for this placement of a let's say it was the number three.
+
+71
+00:04:41,040 --> 00:04:47,640
+Now inside what I get back for with a with a is going to be equal to some function.
+
+72
+00:04:48,810 --> 00:04:51,240
+Where it still receives B and C.
+
+73
+00:04:51,420 --> 00:04:55,380
+So you still can invoke this function by passing it parameters B and C.
+
+74
+00:04:55,770 --> 00:05:01,410
+But now this value three is where the A was inside of the function definition.
+
+75
+00:05:01,740 --> 00:05:03,170
+So let's say we did something with it.
+
+76
+00:05:03,210 --> 00:05:08,040
+Let's say we added B and then we minus two C, for example.
+
+77
+00:05:08,520 --> 00:05:16,260
+What I happen now is that I can say with A and then passing it to and four and now what happens is that
+
+78
+00:05:16,260 --> 00:05:22,530
+when I call this, what's happening under the hood is it's going to take this calculation where three
+
+79
+00:05:22,530 --> 00:05:25,320
+was passed in when this curried func was called.
+
+80
+00:05:26,160 --> 00:05:29,310
+So now A is equal to three.
+
+81
+00:05:30,000 --> 00:05:35,400
+And then because two and four are added while it's going to add two and then subtract four.
+
+82
+00:05:36,270 --> 00:05:42,180
+So through this, you're able to create this function creator that is actually very dynamic.
+
+83
+00:05:42,540 --> 00:05:45,090
+We can use Corey Funk to make a bunch of different functions.
+
+84
+00:05:45,270 --> 00:05:46,950
+This should sorry, say with three.
+
+85
+00:05:47,220 --> 00:05:52,320
+I can make another one with ten, which is equal to Currie Funk passing the ten value.
+
+86
+00:05:52,680 --> 00:05:58,110
+And now again I can say with ten and then I can pass it different values.
+
+87
+00:05:58,710 --> 00:06:03,380
+It's really just a function generator and it allows us to create reusable function.
+
+88
+00:06:03,390 --> 00:06:08,490
+And in our particular case with middleware, we're creating reusable middleware functions.
+
+89
+00:06:08,820 --> 00:06:11,160
+Now these are changed create functions.
+
+90
+00:06:11,730 --> 00:06:15,690
+So what happens is that the first function receives the store object.
+
+91
+00:06:16,410 --> 00:06:23,430
+This in turn returns another function that receives the next method, as we saw the thing that allows
+
+92
+00:06:23,430 --> 00:06:25,320
+us to pass on the action.
+
+93
+00:06:26,390 --> 00:06:30,950
+Then the next function this returns receives the action.
+
+94
+00:06:31,310 --> 00:06:35,240
+And then finally inside of here is where we write our middleware signature.
+
+95
+00:06:35,690 --> 00:06:38,240
+So this is where we write the code that we want our middleware to do.
+
+96
+00:06:39,100 --> 00:06:44,500
+Now let's think about what we want this middleware to do, because all we want to do is very clearly
+
+97
+00:06:44,500 --> 00:06:48,940
+just simply log out the appropriate actions so we see what's happening.
+
+98
+00:06:48,940 --> 00:06:52,030
+We're just duplicating this logger that we had before.
+
+99
+00:06:52,970 --> 00:06:57,830
+So first, what I'm going to do is I'm going to say, okay, I just want to make sure that if there
+
+100
+00:06:57,830 --> 00:06:59,120
+is no action type.
+
+101
+00:07:00,010 --> 00:07:01,390
+It doesn't come from us sometimes.
+
+102
+00:07:01,420 --> 00:07:05,920
+Sometimes you might receive an action that we may not need to receive.
+
+103
+00:07:06,430 --> 00:07:11,890
+This is oftentimes possible when you're working with things like Redux, Thunk, and whatever.
+
+104
+00:07:12,010 --> 00:07:13,720
+We're just accounting for that.
+
+105
+00:07:13,750 --> 00:07:17,300
+If you're unfamiliar with Redux, I'll explain it in a later video when we cover Redux.
+
+106
+00:07:17,770 --> 00:07:23,020
+For now, just understand there are times with external additional middleware that you pass.
+
+107
+00:07:23,200 --> 00:07:26,050
+You may receive actions that don't have types on them.
+
+108
+00:07:26,350 --> 00:07:30,370
+If that happens, don't worry, or just say, Hey, I'm assuming this is not for me, I'm just going
+
+109
+00:07:30,370 --> 00:07:31,270
+to pass this along.
+
+110
+00:07:31,450 --> 00:07:32,950
+So we call next on action.
+
+111
+00:07:33,220 --> 00:07:33,610
+We're done.
+
+112
+00:07:34,390 --> 00:07:35,950
+We return from this middleware.
+
+113
+00:07:35,980 --> 00:07:41,560
+Nothing happens afterwards, but if there is an action type on it, then we want to console.log it.
+
+114
+00:07:42,070 --> 00:07:45,580
+So first of all, I'm to say is console.log the type.
+
+115
+00:07:46,290 --> 00:07:48,840
+And this is going to also show action type.
+
+116
+00:07:49,470 --> 00:07:54,120
+And I also want to console.log the payload so we see what we're logging.
+
+117
+00:07:54,660 --> 00:07:56,730
+And again, action payload.
+
+118
+00:07:57,600 --> 00:08:03,480
+Now here, what I want to do is I want to console.log the current state.
+
+119
+00:08:04,110 --> 00:08:05,880
+So I'm going to say current state.
+
+120
+00:08:07,240 --> 00:08:11,650
+And here I'm just going to put store bought get state.
+
+121
+00:08:12,840 --> 00:08:17,100
+Get state will give us back the value of the state right now.
+
+122
+00:08:19,070 --> 00:08:19,940
+At this point.
+
+123
+00:08:20,510 --> 00:08:25,940
+This looks like the first half of the lager, which is where it shows us the action and it shows us
+
+124
+00:08:25,940 --> 00:08:26,660
+the previous state.
+
+125
+00:08:27,170 --> 00:08:29,300
+But what it needs to show us is the next state.
+
+126
+00:08:29,300 --> 00:08:31,190
+So how do you drive the next state?
+
+127
+00:08:32,310 --> 00:08:37,500
+Well, it turns out the only way that the logger can actually get this is from the store object.
+
+128
+00:08:37,740 --> 00:08:40,410
+But how does the store actually get us the new state?
+
+129
+00:08:40,680 --> 00:08:46,950
+Well, it will only get us the new state if it's updated once it's run through all of the reducers with
+
+130
+00:08:46,950 --> 00:08:47,850
+the action.
+
+131
+00:08:48,270 --> 00:08:54,150
+And this is where we need to say, hey, I want to call next on the action.
+
+132
+00:08:54,600 --> 00:08:56,610
+I want to pass the action along now.
+
+133
+00:08:56,700 --> 00:09:01,500
+And what I'm waiting for is when that action finally hits the reducers and updates, because all of
+
+134
+00:09:01,500 --> 00:09:06,990
+this is happening synchronously the moment this next call happens, action gets passed on.
+
+135
+00:09:07,020 --> 00:09:09,990
+Subsequent middleware will all run, reducers will all run.
+
+136
+00:09:09,990 --> 00:09:15,450
+And then only when that is complete, will any code after this next fire.
+
+137
+00:09:15,840 --> 00:09:20,640
+So here, if now we say console dot log next state.
+
+138
+00:09:21,660 --> 00:09:22,320
+Like so.
+
+139
+00:09:23,580 --> 00:09:25,740
+And here if we recall.
+
+140
+00:09:26,460 --> 00:09:32,610
+Store bought get states this is where we now see what the new state will be.
+
+141
+00:09:33,960 --> 00:09:38,520
+And this is what we want to pass into our middleware.
+
+142
+00:09:39,300 --> 00:09:43,140
+So let's go back to our application and see this in action.
+
+143
+00:09:44,290 --> 00:09:50,260
+So now when I refresh, what you will see is that we have a different order.
+
+144
+00:09:50,650 --> 00:09:55,540
+We have our in original category component rendering for the first time.
+
+145
+00:09:56,020 --> 00:09:57,400
+Our selector, of course, fires.
+
+146
+00:09:58,060 --> 00:10:00,160
+And then you notice that the effect virus.
+
+147
+00:10:00,700 --> 00:10:02,200
+But look what happens now.
+
+148
+00:10:02,560 --> 00:10:04,480
+The effect fire called set products.
+
+149
+00:10:04,690 --> 00:10:07,810
+But we're not actually updating anything.
+
+150
+00:10:09,120 --> 00:10:15,270
+Our set current user action now dispatches because again our author listener is hooked up.
+
+151
+00:10:15,720 --> 00:10:23,250
+The user object comes in and we see inside of our new logger middleware, which is inside of store jars
+
+152
+00:10:23,250 --> 00:10:28,950
+that we just wrote, we see that we get our user set current state and we get the payload, we get the
+
+153
+00:10:28,950 --> 00:10:29,670
+current state.
+
+154
+00:10:30,090 --> 00:10:37,560
+And now what you notice is that our selector fired and our re render is triggering on this component.
+
+155
+00:10:38,070 --> 00:10:46,350
+The reason why we see this from our category component firing is again because right after this log,
+
+156
+00:10:46,350 --> 00:10:47,940
+this next happens.
+
+157
+00:10:47,940 --> 00:10:50,370
+And as I mentioned, this is synchronous.
+
+158
+00:10:50,730 --> 00:10:55,830
+So this action is now being passed to all the next subsequent middleware and all of the reducers.
+
+159
+00:10:55,830 --> 00:11:01,320
+Only when all this update does finally our next state console.log.
+
+160
+00:11:01,380 --> 00:11:04,260
+That happens on line 17 after this happen.
+
+161
+00:11:05,040 --> 00:11:12,150
+But remember the moment reducers run all of our use selector methods are getting called.
+
+162
+00:11:12,630 --> 00:11:18,000
+So before we ever hit this line, this next call is updating our reducers, which is updating our store
+
+163
+00:11:18,000 --> 00:11:26,460
+object, which in turn is calling use selector on all of our components, even though the user is the
+
+164
+00:11:26,460 --> 00:11:27,180
+one that's updating.
+
+165
+00:11:27,210 --> 00:11:33,420
+As I mentioned, this use selector is still going to run anywhere, regardless of what you're trying
+
+166
+00:11:33,420 --> 00:11:34,230
+to select off of.
+
+167
+00:11:35,010 --> 00:11:43,710
+Now that is why before with the logger you are seeing it fire that log after all of our component code
+
+168
+00:11:43,710 --> 00:11:46,470
+had updated from the reducers being updated.
+
+169
+00:11:47,370 --> 00:11:52,590
+Now the reason why here it's a lot more clear and broken up is because we're not grouping those logs
+
+170
+00:11:52,590 --> 00:11:53,010
+together.
+
+171
+00:11:53,010 --> 00:11:58,890
+Redux Logger is taking the entirety of all these individual logs that we're making and then bundling
+
+172
+00:11:58,890 --> 00:11:59,970
+into one log.
+
+173
+00:12:00,150 --> 00:12:05,100
+Whereas as you notice, we're literally logging every single step so that we can synchronously see what's
+
+174
+00:12:05,100 --> 00:12:05,580
+happening.
+
+175
+00:12:06,030 --> 00:12:07,320
+Redux Logger doesn't do that.
+
+176
+00:12:07,800 --> 00:12:11,820
+So this is one of those things you just got to know about debugging with Redux Logger is that you've
+
+177
+00:12:11,820 --> 00:12:13,800
+got to think about the actions and when they fire.
+
+178
+00:12:13,800 --> 00:12:20,220
+And then if you see the Redux logger, sometimes it may be in conflict with when inside of your functional
+
+179
+00:12:20,220 --> 00:12:22,050
+components and then with your use select hook.
+
+180
+00:12:22,380 --> 00:12:24,990
+Maybe there is some weirdness in the timing.
+
+181
+00:12:25,650 --> 00:12:31,680
+Now of course you can just really easily write your own logger middleware as we've done, but we also
+
+182
+00:12:31,680 --> 00:12:33,840
+get one from Redux logger if you're comfortable with it.
+
+183
+00:12:34,140 --> 00:12:36,810
+It's a very, very popular middleware.
+
+184
+00:12:36,810 --> 00:12:38,490
+So that's why I'm showing it to you as well.
+
+185
+00:12:38,670 --> 00:12:43,530
+But I also wanted to demystify middleware so that you really see it's really not that complicated.
+
+186
+00:12:44,070 --> 00:12:48,420
+You just have something that wants to generate side effects with actions before it hits your reducers,
+
+187
+00:12:48,750 --> 00:12:51,210
+and you can do that inside of this middleware.
+
+188
+00:12:51,690 --> 00:12:54,060
+And again, all it is is just a sequence of create functions.
+
+189
+00:12:54,690 --> 00:12:55,350
+And there we go.
+
+190
+00:12:55,830 --> 00:12:58,320
+Now we see what we get with this logger middleware.
+
+191
+00:12:58,320 --> 00:12:59,820
+We understand what is happening.
+
+192
+00:13:00,330 --> 00:13:06,060
+We can just keep this for now while we continue debugging the remainder of this pattern that we're emerging
+
+193
+00:13:06,060 --> 00:13:08,970
+from using selectors inside of our components.
+
+194
+00:13:09,630 --> 00:13:12,450
+So hopefully this clarifies middleware and logs for you.
+
+195
+00:13:12,990 --> 00:13:17,760
+In the next video, we'll talk about how we can optimize some of our re rendering that's happening in
+
+196
+00:13:17,760 --> 00:13:18,690
+our category component.
+
+197
+00:13:19,230 --> 00:13:20,460
+I'll see you in the next video.

@@ -1,0 +1,207 @@
+1
+00:00:00,180 --> 00:00:00,840
+Hey, everybody.
+
+2
+00:00:01,050 --> 00:00:03,030
+I want to take a quick break here.
+
+3
+00:00:03,300 --> 00:00:05,010
+Go grab a coffee, gravity.
+
+4
+00:00:05,280 --> 00:00:07,890
+Just take a break from all the learning that you just did.
+
+5
+00:00:08,340 --> 00:00:12,750
+And I want to talk to you quickly about imposter syndrome.
+
+6
+00:00:13,140 --> 00:00:19,860
+It's this idea that you're not good enough, that things are too complicated for you to ever achieve
+
+7
+00:00:20,280 --> 00:00:21,390
+what you want to achieve.
+
+8
+00:00:21,540 --> 00:00:27,000
+You look at other people, at other industry experts, and you say, I will never get there.
+
+9
+00:00:27,750 --> 00:00:31,210
+But it's just a symptom of learning.
+
+10
+00:00:31,800 --> 00:00:38,010
+This idea of you not being good enough simply means that, well, you're just not there yet.
+
+11
+00:00:38,130 --> 00:00:41,100
+Things take time if you want to learn a valuable skill.
+
+12
+00:00:41,610 --> 00:00:43,200
+Well, it's hard work.
+
+13
+00:00:43,230 --> 00:00:44,460
+That's why it's valuable.
+
+14
+00:00:45,180 --> 00:00:48,750
+Remember how you felt on the first day of going to school?
+
+15
+00:00:49,080 --> 00:00:50,730
+First day on a job?
+
+16
+00:00:51,420 --> 00:00:57,850
+It's the same experience, but over time, with repetition, with practice, you get comfortable.
+
+17
+00:00:57,870 --> 00:00:59,130
+You get experience.
+
+18
+00:00:59,130 --> 00:01:02,220
+And you slowly start to lose that imposter syndrome.
+
+19
+00:01:02,880 --> 00:01:05,850
+Now, this idea of an imposter syndrome is great.
+
+20
+00:01:05,880 --> 00:01:07,750
+It means you're doing something worthwhile.
+
+21
+00:01:07,800 --> 00:01:09,630
+So don't use it as a negative.
+
+22
+00:01:09,660 --> 00:01:14,700
+Use it as an encouragement that you're doing something good, that you're learning in your stretching
+
+23
+00:01:14,700 --> 00:01:15,240
+your limits.
+
+24
+00:01:15,690 --> 00:01:19,440
+So with this break, I want to propose that we do a quick exercise.
+
+25
+00:01:19,890 --> 00:01:26,940
+I want you to stop the lectures again, grab a coffee, gravity, and head on over to our discord.
+
+26
+00:01:26,970 --> 00:01:30,840
+Now in our Discord server, if you've used it up up until now, that's great.
+
+27
+00:01:30,840 --> 00:01:31,560
+If you haven't.
+
+28
+00:01:31,710 --> 00:01:37,410
+Head on over to the server and I want you to do something that I think it's super important to learning,
+
+29
+00:01:37,770 --> 00:01:43,500
+and that is using what you've learned up until now to actually teach someone or help someone.
+
+30
+00:01:43,530 --> 00:01:50,340
+So you can go all the way to, let's say, the coding and courses section and pick a topic that you
+
+31
+00:01:50,340 --> 00:01:51,360
+want to help somebody in.
+
+32
+00:01:51,450 --> 00:01:57,540
+So let's say you go to the Python channel and in here you'll have other students that are asking Python
+
+33
+00:01:57,540 --> 00:01:58,590
+related questions.
+
+34
+00:01:58,680 --> 00:02:04,050
+Now you can scroll through here and see if you're able to help someone, even though you may not have
+
+35
+00:02:04,050 --> 00:02:05,760
+the experience or the knowledge yet.
+
+36
+00:02:06,060 --> 00:02:12,810
+This idea of practicing and explaining what you've just learned to other people, even if you're not
+
+37
+00:02:12,810 --> 00:02:16,020
+100% certain, actually is beneficial to your learning.
+
+38
+00:02:16,290 --> 00:02:22,230
+Because if you're never teaching, if you're never explaining and vocalizing and showing what you've
+
+39
+00:02:22,230 --> 00:02:25,020
+learned, you'll always be a beginner.
+
+40
+00:02:25,230 --> 00:02:29,430
+This idea of teaching what you learn is a very important concept.
+
+41
+00:02:29,790 --> 00:02:35,580
+So moving forward, as you go through the lectures, any time you feel like taking a break, hop on
+
+42
+00:02:35,580 --> 00:02:38,160
+over to Discord and help somebody.
+
+43
+00:02:38,370 --> 00:02:41,160
+Our motto here is that we're always kind.
+
+44
+00:02:41,160 --> 00:02:42,420
+We don't judge anybody.
+
+45
+00:02:42,420 --> 00:02:44,210
+We're all just beginners here.
+
+46
+00:02:44,220 --> 00:02:45,090
+We're all learning.
+
+47
+00:02:45,300 --> 00:02:47,700
+So don't be afraid to answer things.
+
+48
+00:02:48,000 --> 00:02:50,670
+Because you got to remember, nobody's perfect.
+
+49
+00:02:50,760 --> 00:02:51,540
+Except for Yoda.
+
+50
+00:02:51,600 --> 00:02:52,980
+Yoda is pretty perfect.
+
+51
+00:02:53,520 --> 00:02:55,230
+All right, I'll see you on the next one.
+
+52
+00:02:55,380 --> 00:02:55,770
+Bye bye.

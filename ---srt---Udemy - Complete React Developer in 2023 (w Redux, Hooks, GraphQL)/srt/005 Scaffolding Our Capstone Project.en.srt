@@ -1,0 +1,435 @@
+1
+00:00:00,700 --> 00:00:01,720
+Welcome back, everyone.
+
+2
+00:00:02,410 --> 00:00:06,910
+So let's get started with building out Crown clothing to begin with.
+
+3
+00:00:06,940 --> 00:00:12,070
+We're going to scaffold out and set up a project using Create React app, which you really should be
+
+4
+00:00:12,070 --> 00:00:13,990
+using 90 percent of the time.
+
+5
+00:00:14,380 --> 00:00:19,960
+The only time where you don't want that is when you really want the customizability that comes with
+
+6
+00:00:19,960 --> 00:00:24,070
+Webpack, when you actually want to scaffold a project from scratch.
+
+7
+00:00:24,490 --> 00:00:29,230
+Most of the time, though, you're not going to want that because you'll have to do a lot of those optimizations
+
+8
+00:00:29,230 --> 00:00:35,230
+yourself and create React app is literally a team that's dedicated to figuring that out from tons and
+
+9
+00:00:35,230 --> 00:00:38,890
+tons of different large enterprise projects that are pushing reax boundaries.
+
+10
+00:00:39,460 --> 00:00:44,320
+Generally speaking as well, when it comes to setting up your own custom webpack or setting up a custom
+
+11
+00:00:44,320 --> 00:00:49,870
+babble, you can pretty much just inject those files and still get the benefit of a lot of the default
+
+12
+00:00:49,870 --> 00:00:52,960
+scaffolding set up that you get with create racked up as well.
+
+13
+00:00:53,470 --> 00:00:58,930
+So generally speaking, I would say most of the time always use Create React app to set up your projects.
+
+14
+00:00:59,140 --> 00:01:04,810
+And to do that again, we're just going to run NTPC's, which is just this helper that brings down the
+
+15
+00:01:04,810 --> 00:01:10,150
+library and then installs our project and then gets rid of Create React app so it doesn't take up more
+
+16
+00:01:10,150 --> 00:01:11,160
+memory than it needs to.
+
+17
+00:01:11,830 --> 00:01:16,300
+So you're going to do Ampex Create React app and then the name of your project, which I'm going to
+
+18
+00:01:16,300 --> 00:01:17,560
+name on Crown Clothing.
+
+19
+00:01:17,770 --> 00:01:19,270
+You can name yours whatever you want.
+
+20
+00:01:19,780 --> 00:01:25,540
+You may or may not get this prompt that's going to ask you if you want to install, create, racked
+
+21
+00:01:25,540 --> 00:01:26,050
+up locally.
+
+22
+00:01:26,380 --> 00:01:29,770
+Just say yes, and then you just wait for this to finish.
+
+23
+00:01:32,500 --> 00:01:39,220
+OK, so everything is installed now, and we're we're going to do is just seed into our project and
+
+24
+00:01:39,220 --> 00:01:44,920
+let's open it up so that we can get rid of some of the files that have been generated for us that we
+
+25
+00:01:44,920 --> 00:01:45,520
+don't need.
+
+26
+00:01:46,300 --> 00:01:49,480
+So as we saw before, will get generated this app?
+
+27
+00:01:49,630 --> 00:01:50,050
+Yes.
+
+28
+00:01:50,800 --> 00:01:57,070
+And primarily what we don't want is we don't want everything here inside of our app.
+
+29
+00:01:57,970 --> 00:02:00,820
+Most of this is not really necessary for us.
+
+30
+00:02:01,720 --> 00:02:04,750
+Perhaps we'll keep the divide, but let's just make our own dinner for now.
+
+31
+00:02:05,530 --> 00:02:09,700
+And inside of this divide, let's just also say.
+
+32
+00:02:11,050 --> 00:02:11,860
+Hello, world.
+
+33
+00:02:12,550 --> 00:02:14,290
+So at least we know our application is running.
+
+34
+00:02:16,930 --> 00:02:21,730
+Oh, sorry, this auto tag closure is doing a lot of funky stuff right now.
+
+35
+00:02:23,240 --> 00:02:24,980
+As a result, we also don't need the logo.
+
+36
+00:02:26,590 --> 00:02:34,030
+We also don't need the CSIS, really, we just need our app, and I'm going to change this over to a
+
+37
+00:02:34,030 --> 00:02:39,040
+narrow function just because I'm much more familiar with Essex.
+
+38
+00:02:40,540 --> 00:02:41,740
+And this is it.
+
+39
+00:02:41,950 --> 00:02:47,350
+This is all we need our app to be for now, inside of apps, yes, we don't really need any of this
+
+40
+00:02:47,350 --> 00:02:47,740
+either.
+
+41
+00:02:47,920 --> 00:02:53,920
+And for the remainder of our project were primarily going to write actually in a variation of CSE's
+
+42
+00:02:53,950 --> 00:02:57,880
+known as SAS, which is stylish or sassy CCS.
+
+43
+00:02:58,270 --> 00:03:01,500
+And it's just an easier, more composable way of writing or CSR.
+
+44
+00:03:01,960 --> 00:03:09,430
+In fact, once we learned that SAS writing style of CIUSSS were going to migrate over to a JavaScript
+
+45
+00:03:09,430 --> 00:03:13,810
+CSS library, but we'll discuss all of that later right now, don't worry too much about it.
+
+46
+00:03:14,440 --> 00:03:16,200
+We can keep the indexes.
+
+47
+00:03:16,330 --> 00:03:17,830
+We can also change it later.
+
+48
+00:03:18,400 --> 00:03:19,390
+For now, we can keep it.
+
+49
+00:03:19,400 --> 00:03:20,740
+There's not much significance to it.
+
+50
+00:03:21,430 --> 00:03:26,110
+And then finally, inside of index jazz, here we have everything that we need.
+
+51
+00:03:26,440 --> 00:03:27,250
+We can keep all this.
+
+52
+00:03:27,430 --> 00:03:28,270
+Everything here is good.
+
+53
+00:03:29,820 --> 00:03:36,030
+Primarily speaking now, our project is pretty much set up, so now let's just save everything and start
+
+54
+00:03:36,030 --> 00:03:41,940
+up our application just to make sure that everything is working as expected and the terminal I'm going
+
+55
+00:03:41,940 --> 00:03:42,900
+to run yarn start.
+
+56
+00:03:43,830 --> 00:03:46,500
+This might take a little bit of time to boot up, depending on your computer.
+
+57
+00:03:47,490 --> 00:03:50,670
+And automatically, it should take you to local host 3000.
+
+58
+00:03:51,600 --> 00:03:55,140
+Here we see our Hello world, so we know our application is working as we expect.
+
+59
+00:03:55,600 --> 00:04:00,600
+We want to do now is we want to start setting up the basic outline of our application.
+
+60
+00:04:01,110 --> 00:04:07,100
+So I kind of want to generate these five different category cards per se.
+
+61
+00:04:07,140 --> 00:04:07,850
+Let's call it that.
+
+62
+00:04:07,860 --> 00:04:11,580
+So let's think about what this component might look like.
+
+63
+00:04:11,880 --> 00:04:17,010
+We know that there will be an outer container that is going to hold these five different cards.
+
+64
+00:04:17,820 --> 00:04:23,730
+And in each of these cards themselves, we have what looks to be another container, so this can be
+
+65
+00:04:23,730 --> 00:04:24,420
+another device.
+
+66
+00:04:25,050 --> 00:04:31,500
+Inside of this, there's an image, there is yet another container, and then inside is two different
+
+67
+00:04:31,680 --> 00:04:32,580
+text fields.
+
+68
+00:04:33,360 --> 00:04:34,650
+So let's just build that.
+
+69
+00:04:35,730 --> 00:04:40,890
+So coming back to our application instead, I'm going to generate one outer div.
+
+70
+00:04:42,050 --> 00:04:48,920
+And just so that we can be clear for ourselves, let's also add class names on these that tell us what
+
+71
+00:04:48,920 --> 00:04:50,390
+these different components are.
+
+72
+00:04:51,080 --> 00:04:59,600
+So let's start with class name on this outer div, and I'll call this the categories container because
+
+73
+00:04:59,600 --> 00:05:00,980
+that's pretty much what this is.
+
+74
+00:05:01,700 --> 00:05:04,920
+And then inside we have these five different.
+
+75
+00:05:05,630 --> 00:05:13,160
+So I'm going to create one placeholder for now and this one, I'm going to call it the category container
+
+76
+00:05:13,610 --> 00:05:14,590
+because that's really what it is.
+
+77
+00:05:14,600 --> 00:05:17,540
+It contains all the content in our category.
+
+78
+00:05:18,140 --> 00:05:23,450
+Inside, we have an image, and for now, this doesn't have a source.
+
+79
+00:05:23,840 --> 00:05:26,590
+So let's actually comments it out just to use it as a placeholder.
+
+80
+00:05:26,600 --> 00:05:28,800
+So we know that there is an image eventually.
+
+81
+00:05:29,720 --> 00:05:34,550
+And then within this image, there is yet another container.
+
+82
+00:05:35,520 --> 00:05:38,370
+That is going to hold the two titles that we have.
+
+83
+00:05:39,090 --> 00:05:46,110
+So this one, I want to call this the category body container.
+
+84
+00:05:48,110 --> 00:05:54,770
+And then inside of here, let's say there's an H2 with hats as one of the texts.
+
+85
+00:05:55,160 --> 00:05:58,700
+And then there is also a paragraph tag.
+
+86
+00:05:59,390 --> 00:06:01,220
+And this one will say, Shop now.
+
+87
+00:06:03,320 --> 00:06:05,480
+So we know that there are five of these.
+
+88
+00:06:06,140 --> 00:06:10,460
+So let's copy this and just paste this five different times.
+
+89
+00:06:12,260 --> 00:06:13,760
+And now that we've passed the Senate.
+
+90
+00:06:14,570 --> 00:06:18,680
+Let's see what we have, we have hats, jackets, sneakers, women's and men's.
+
+91
+00:06:19,430 --> 00:06:21,860
+So let's say hats, jackets.
+
+92
+00:06:23,330 --> 00:06:24,350
+Sneakers.
+
+93
+00:06:27,560 --> 00:06:28,250
+Women's.
+
+94
+00:06:30,100 --> 00:06:30,760
+And men's.
+
+95
+00:06:31,670 --> 00:06:32,540
+Let's save this.
+
+96
+00:06:34,030 --> 00:06:36,490
+And let's go back to our obligation and see what we have.
+
+97
+00:06:37,780 --> 00:06:38,510
+Let's refresh.
+
+98
+00:06:38,530 --> 00:06:39,160
+And that was it.
+
+99
+00:06:39,580 --> 00:06:42,700
+We have our hats, we have our jackets, we have our sneakers, we have our women's that we have our
+
+100
+00:06:42,700 --> 00:06:43,030
+men's.
+
+101
+00:06:43,960 --> 00:06:45,880
+So this kind of gives us our layout.
+
+102
+00:06:46,090 --> 00:06:51,820
+We haven't applied any styling to this yet, which we will do in the next video, but you can see how
+
+103
+00:06:51,820 --> 00:06:55,630
+it's pretty much just the exact same way we were starting with our Moses Rolodex.
+
+104
+00:06:55,870 --> 00:06:57,340
+At this point, really, that's all it is.
+
+105
+00:06:57,910 --> 00:07:01,690
+You're going to start your project arguably the same way you start any project you just want to start
+
+106
+00:07:01,690 --> 00:07:02,810
+working from the outside in.
+
+107
+00:07:03,610 --> 00:07:09,010
+But now that we have a project set up, let's start actually styling this and installing in the next
+
+108
+00:07:09,010 --> 00:07:13,120
+video a tool that will help us write easier access.
+
+109
+00:07:13,750 --> 00:07:14,650
+I see in the next lesson.

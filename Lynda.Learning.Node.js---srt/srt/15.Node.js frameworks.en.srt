@@ -1,0 +1,158 @@
+1
+00:00:00.07 --> 00:00:01.08
+- [Instructor] Let's
+take a look at some of
+
+2
+00:00:01.08 --> 00:00:03.09
+the available frameworks for Node.
+
+3
+00:00:03.09 --> 00:00:05.06
+But first, what is a framework?
+
+4
+00:00:05.06 --> 00:00:08.00
+It's sometimes interesting
+when we look at a definition
+
+5
+00:00:08.00 --> 00:00:09.05
+in its generic form.
+
+6
+00:00:09.05 --> 00:00:12.02
+For example, a framework
+is an essential supporting
+
+7
+00:00:12.02 --> 00:00:15.03
+structure of a building,
+vehicle, or object.
+
+8
+00:00:15.03 --> 00:00:18.03
+And in software, it's
+essentially the same thing.
+
+9
+00:00:18.03 --> 00:00:19.06
+It is a supporting structure
+
+10
+00:00:19.06 --> 00:00:21.06
+that allows you to build on top of it.
+
+11
+00:00:21.06 --> 00:00:24.05
+When it comes to web, and
+we want to build large APIs,
+
+12
+00:00:24.05 --> 00:00:26.06
+or maybe HTTP servers,
+
+13
+00:00:26.06 --> 00:00:28.09
+we can leverage web frameworks,
+
+14
+00:00:28.09 --> 00:00:30.09
+and there are several
+options we can look at.
+
+15
+00:00:30.09 --> 00:00:32.09
+Each of these provide
+us with the structure
+
+16
+00:00:32.09 --> 00:00:35.02
+and components you need
+to quickly make serving
+
+17
+00:00:35.02 --> 00:00:38.04
+static files, like
+traditional websites, easy.
+
+18
+00:00:38.04 --> 00:00:42.01
+Or we can put together a web
+API to interact in a web app.
+
+19
+00:00:42.01 --> 00:00:45.02
+A web API is a service that
+allows us to get and save data
+
+20
+00:00:45.02 --> 00:00:46.07
+to our server or back end,
+
+21
+00:00:46.07 --> 00:00:50.08
+such as a web API that allows
+us to maybe create users,
+
+22
+00:00:50.08 --> 00:00:53.07
+serve a list of users, et cetera.
+
+23
+00:00:53.07 --> 00:00:55.06
+Now let's take a look
+at the different options
+
+24
+00:00:55.06 --> 00:00:58.01
+we have for web frameworks for Node.
+
+25
+00:00:58.01 --> 00:00:59.08
+We'll be looking at Express,
+
+26
+00:00:59.08 --> 00:01:01.09
+which is a very traditional framework.
+
+27
+00:01:01.09 --> 00:01:03.02
+It's tried and tested,
+
+28
+00:01:03.02 --> 00:01:04.08
+and it's simple to use.
+
+29
+00:01:04.08 --> 00:01:07.01
+The next framework we'll
+look at is called Sails.
+
+30
+00:01:07.01 --> 00:01:11.03
+It has many sub-frameworks such as an ORM,
+
+31
+00:01:11.03 --> 00:01:13.01
+or object relational mapper,
+
+32
+00:01:13.01 --> 00:01:17.02
+which gives us database access
+and many other rich features.
+
+33
+00:01:17.02 --> 00:01:20.03
+Then there is Koa, which is
+the most modern framework.
+
+34
+00:01:20.03 --> 00:01:22.01
+So let's go ahead and take
+a look at each of these
+
+35
+00:01:22.01 --> 00:01:23.03
+in more detail.
+

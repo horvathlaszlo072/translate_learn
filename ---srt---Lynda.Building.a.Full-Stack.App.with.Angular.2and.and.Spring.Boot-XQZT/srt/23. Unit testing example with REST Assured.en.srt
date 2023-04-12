@@ -1,0 +1,376 @@
+1
+00:00:00.06 --> 00:00:03.07
+Let's talk about options
+for testing your API.
+
+2
+00:00:03.07 --> 00:00:06.08
+In post-band we have a
+two-wall called Runner.
+
+3
+00:00:06.08 --> 00:00:10.04
+If you click on Runner, on
+the upper left-hand side,
+
+4
+00:00:10.04 --> 00:00:14.00
+it will open up a
+Collection Runner interface.
+
+5
+00:00:14.00 --> 00:00:16.06
+A Collection Runner will quickly test
+
+6
+00:00:16.06 --> 00:00:19.05
+all of your API end points.
+
+7
+00:00:19.05 --> 00:00:24.01
+So, let's click on your
+existing reservation collection,
+
+8
+00:00:24.01 --> 00:00:26.03
+set one iteration,
+
+9
+00:00:26.03 --> 00:00:28.03
+and zero delay.
+
+10
+00:00:28.03 --> 00:00:31.04
+You could output a log file, if wanted.
+
+11
+00:00:31.04 --> 00:00:32.03
+Okay?
+
+12
+00:00:32.03 --> 00:00:33.08
+We've selected our collection.
+
+13
+00:00:33.08 --> 00:00:36.01
+Let's click Start Run.
+
+14
+00:00:36.01 --> 00:00:41.01
+You can see it quickly cycled
+through all of our end points.
+
+15
+00:00:41.01 --> 00:00:43.07
+Please make sure that your
+application is running,
+
+16
+00:00:43.07 --> 00:00:46.05
+at the time that you've
+run collection Runner.
+
+17
+00:00:46.05 --> 00:00:51.06
+As you can see, we got a 200
+response for each end point.
+
+18
+00:00:51.06 --> 00:00:54.05
+It will also capture response time,
+
+19
+00:00:54.05 --> 00:00:58.04
+payload size and other metrics.
+
+20
+00:00:58.04 --> 00:01:02.07
+You could export the results as a JSON.
+
+21
+00:01:02.07 --> 00:01:05.08
+You can also test and
+validate a rest service
+
+22
+00:01:05.08 --> 00:01:08.09
+using a JAVA unit test.
+
+23
+00:01:08.09 --> 00:01:11.08
+One library is REST-assured.
+
+24
+00:01:11.08 --> 00:01:13.06
+You can learn more about REST-assured
+
+25
+00:01:13.06 --> 00:01:17.09
+at rest-assured.io
+
+26
+00:01:17.09 --> 00:01:20.07
+Let's stop our JAVA API server.
+
+27
+00:01:20.07 --> 00:01:24.00
+Let's try running a
+REST-assured unit test locally.
+
+28
+00:01:24.00 --> 00:01:27.09
+First, lets grab the great all dependency.
+
+29
+00:01:27.09 --> 00:01:35.06
+Okay, let's do a search
+for io.rest-assured maven.
+
+30
+00:01:35.06 --> 00:01:38.03
+Let's open up MVNrepository,
+
+31
+00:01:38.03 --> 00:01:40.02
+click on the newest version,
+
+32
+00:01:40.02 --> 00:01:43.00
+copy the dependency import,
+
+33
+00:01:43.00 --> 00:01:44.08
+for cradle.
+
+34
+00:01:44.08 --> 00:01:47.03
+Let's open up the bill dock cradle,
+
+35
+00:01:47.03 --> 00:01:52.00
+add in the dependency, then
+let's rebuild our application
+
+36
+00:01:52.00 --> 00:01:54.04
+using the cradle wrapper,
+
+37
+00:01:54.04 --> 00:01:58.06
+let's execute clean and build.
+
+38
+00:01:58.06 --> 00:02:02.08
+Let's open up ReservationResource.
+
+39
+00:02:02.08 --> 00:02:08.08
+Let's right-click on source,
+flesh test, flesh JAVA.
+
+40
+00:02:08.08 --> 00:02:14.02
+Go to new and let's create
+a new JUnit test case.
+
+41
+00:02:14.02 --> 00:02:18.04
+Let's name it, ReservationResource.
+
+42
+00:02:18.04 --> 00:02:23.00
+Click setup so that we
+have a setup method.
+
+43
+00:02:23.00 --> 00:02:25.01
+Now, click finish.
+
+44
+00:02:25.01 --> 00:02:28.03
+Let's add a RunWith annotation,
+
+45
+00:02:28.03 --> 00:02:31.00
+passing in SpringRunner.
+
+46
+00:02:31.00 --> 00:02:33.08
+Let's import the SpringRunner class,
+
+47
+00:02:33.08 --> 00:02:36.09
+then let's import that annotation.
+
+48
+00:02:36.09 --> 00:02:41.01
+Next, let's add a
+SpringBootTest annotation.
+
+49
+00:02:41.01 --> 00:02:46.00
+Okay, let's import it and then
+let's pass in our SpringBoot
+
+50
+00:02:46.00 --> 00:02:52.07
+application class and
+also our webEnvironment.
+
+51
+00:02:52.07 --> 00:02:56.00
+Let's use a RANDOM_PORT
+for our webEnvironment,
+
+52
+00:02:56.00 --> 00:02:59.03
+so that we don't have any port conflicts.
+
+53
+00:02:59.03 --> 00:03:04.08
+This webEnvironment will select
+a random open port to use.
+
+54
+00:03:04.08 --> 00:03:07.02
+Let's create a private int called port
+
+55
+00:03:07.02 --> 00:03:11.00
+and add the annotation @LocalServerPort.
+
+56
+00:03:11.00 --> 00:03:13.05
+Let's import that annotation,
+
+57
+00:03:13.05 --> 00:03:18.07
+then in our setup method,
+let's configure RESTassured.
+
+58
+00:03:18.07 --> 00:03:23.05
+Okay, we set the port, now
+let's set the base path.
+
+59
+00:03:23.05 --> 00:03:29.07
+Let's grab the room reservation constant,
+
+60
+00:03:29.07 --> 00:03:34.07
+let's export it from ResourceConstance,
+
+61
+00:03:34.07 --> 00:03:39.01
+then let's set the baseURI.
+
+62
+00:03:39.01 --> 00:03:41.04
+Let's set it to localhost.
+
+63
+00:03:41.04 --> 00:03:45.01
+The port will be randomized and set here.
+
+64
+00:03:45.01 --> 00:03:47.08
+Now, let's add a test.
+
+65
+00:03:47.08 --> 00:03:50.02
+Let's do a static import
+
+66
+00:03:50.02 --> 00:03:52.07
+of import static
+
+67
+00:03:52.07 --> 00:04:01.01
+io.restassured.RestAssured.given
+
+68
+00:04:01.01 --> 00:04:07.04
+Using that static important,
+let's add the given method call
+
+69
+00:04:07.04 --> 00:04:12.07
+and then a chained when call
+and then a chained get call,
+
+70
+00:04:12.07 --> 00:04:17.01
+passing in slash, plus an expected ID
+
+71
+00:04:17.01 --> 00:04:19.07
+of one of the rooms,
+
+72
+00:04:19.07 --> 00:04:23.03
+which we pre-populate in the database.
+
+73
+00:04:23.03 --> 00:04:26.06
+Then let's add a chained then call,
+
+74
+00:04:26.06 --> 00:04:34.07
+and then let's add an
+expectation of a status code 200.
+
+75
+00:04:34.07 --> 00:04:36.00
+Okay.
+
+76
+00:04:36.00 --> 00:04:38.07
+This statement will
+attempt to execute a call
+
+77
+00:04:38.07 --> 00:04:42.06
+to the baseURI, to this
+path, on this port,
+
+78
+00:04:42.06 --> 00:04:46.03
+trying to get the resource
+
+79
+00:04:46.03 --> 00:04:48.04
+with the ID 1
+
+80
+00:04:48.04 --> 00:04:51.06
+and then it will ensure it
+has a status code of 200.
+
+81
+00:04:51.06 --> 00:04:56.08
+Let's right-click on the
+background, run as JUnit test.
+
+82
+00:04:56.08 --> 00:05:00.06
+Because we added the annotation @RunWith,
+
+83
+00:05:00.06 --> 00:05:03.01
+we're going to run the application
+
+84
+00:05:03.01 --> 00:05:06.09
+with the full application context.
+
+85
+00:05:06.09 --> 00:05:10.06
+If you click on the JUnit
+window, on the right sidebar,
+
+86
+00:05:10.06 --> 00:05:14.06
+you can see that our test
+completed successfully.
+

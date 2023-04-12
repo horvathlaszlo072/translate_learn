@@ -1,0 +1,355 @@
+1
+00:00:00,240 --> 00:00:01,260
+Welcome back, everyone.
+
+2
+00:00:02,040 --> 00:00:08,460
+In this video, we are going to learn about another optimization hook called Use Memo.
+
+3
+00:00:09,520 --> 00:00:16,540
+The way that use memo works is that it allows us to memorize the return value of a function very similar
+
+4
+00:00:16,540 --> 00:00:21,550
+to the way that we have already become familiar with inside of Select.
+
+5
+00:00:22,060 --> 00:00:28,660
+The only thing is that we are not passing parameters all the time inside of our functions in React.
+
+6
+00:00:29,260 --> 00:00:35,080
+A lot of our functional components rely on outside variables, such as variables defined by the state
+
+7
+00:00:35,080 --> 00:00:37,360
+or defined by the scope and the props.
+
+8
+00:00:37,660 --> 00:00:41,350
+So as a result, use memo is a little different.
+
+9
+00:00:42,440 --> 00:00:50,000
+I have here created a function that makes it very easy for us to extend the time it takes for something
+
+10
+00:00:50,000 --> 00:00:50,540
+to finish.
+
+11
+00:00:51,380 --> 00:00:58,880
+So what I can quickly do is create some function and all it does is it just console dot logs, the start.
+
+12
+00:01:00,440 --> 00:01:02,720
+And a console that logs the end.
+
+13
+00:01:03,620 --> 00:01:08,960
+But what it does is it inside will delay for 2 seconds.
+
+14
+00:01:10,820 --> 00:01:15,680
+On top of that, what I also want to do is I want to set some value count.
+
+15
+00:01:17,130 --> 00:01:21,390
+And I'm going to use a used state value here simply to do so.
+
+16
+00:01:23,390 --> 00:01:29,870
+So here instead of our go to check out handler, this is just going to be some function that sets the
+
+17
+00:01:29,870 --> 00:01:32,740
+count value equal to the current count value plus one.
+
+18
+00:01:34,410 --> 00:01:38,790
+What I want to do from this function is I want to return 100 plus the count.
+
+19
+00:01:39,390 --> 00:01:43,200
+So essentially when this function fires, what it's going to do, it's going to log start.
+
+20
+00:01:43,440 --> 00:01:44,490
+It's going to wait 2 seconds.
+
+21
+00:01:44,820 --> 00:01:45,840
+It's going to log the end.
+
+22
+00:01:45,840 --> 00:01:49,720
+And then inside of this func value is going to be restored, 100 count.
+
+23
+00:01:50,370 --> 00:01:55,470
+So we can actually even call it let's call it 100 count just to be even more explicit or hundred count.
+
+24
+00:01:56,430 --> 00:02:00,960
+I don't know if React doesn't like us using numbers inside of our variables.
+
+25
+00:02:02,320 --> 00:02:09,820
+And here I'm just going to say that some content, Val, is equal to us running her account every time
+
+26
+00:02:09,820 --> 00:02:11,080
+this component renders.
+
+27
+00:02:11,260 --> 00:02:17,890
+So again, this is a very computationally expensive function just to give us 100 plus the current count
+
+28
+00:02:17,890 --> 00:02:18,280
+value.
+
+29
+00:02:19,260 --> 00:02:21,480
+And then what I'm going to do is.
+
+30
+00:02:21,480 --> 00:02:22,140
+I'm just going to.
+
+31
+00:02:23,190 --> 00:02:27,330
+Comment on all of our items and just simply render the value here.
+
+32
+00:02:28,140 --> 00:02:31,530
+So if I save this and if I go back to my application.
+
+33
+00:02:32,450 --> 00:02:33,650
+And let's just refresh.
+
+34
+00:02:41,520 --> 00:02:47,670
+So here inside of our application, if I were to click, go to checkout, what happens?
+
+35
+00:02:47,670 --> 00:02:50,760
+Count increases by one and we see the start.
+
+36
+00:02:51,000 --> 00:02:55,410
+There's a delay and then end and then we finally see this number.
+
+37
+00:02:55,440 --> 00:03:01,950
+UPDATE So what we're seeing is that there is a lot of delay because this is a computationally expensive
+
+38
+00:03:01,950 --> 00:03:02,640
+calculation.
+
+39
+00:03:03,630 --> 00:03:10,200
+But the problem with this is that if I add to cart, the component of a render count will not need to
+
+40
+00:03:10,200 --> 00:03:10,680
+update.
+
+41
+00:03:11,130 --> 00:03:17,700
+But in spite of that, as we know with our functions, there is a very expensive calculation that happens
+
+42
+00:03:17,700 --> 00:03:23,010
+before finally the end starts and we saw this application unfreeze.
+
+43
+00:03:23,640 --> 00:03:29,610
+Notice that when I click Add to Cart here, even though I've hovered off, we're still in a hover state
+
+44
+00:03:29,610 --> 00:03:33,060
+inside our product cart because the application is frozen due to our delay.
+
+45
+00:03:33,840 --> 00:03:40,680
+So despite the fact that our account value is not updating, our really expensive function is getting
+
+46
+00:03:40,680 --> 00:03:42,360
+recalculated every time.
+
+47
+00:03:43,050 --> 00:03:49,530
+Now what use memo does is it memorizes the value inside of this hook.
+
+48
+00:03:50,010 --> 00:03:55,040
+So when we pass it this function callback, what will happen is that won't count.
+
+49
+00:03:55,530 --> 00:04:01,980
+Well, initialize use memo will calculate the value inside of this function.
+
+50
+00:04:02,910 --> 00:04:05,380
+And then it will memorize that value somewhere.
+
+51
+00:04:05,640 --> 00:04:14,610
+So any time you reference it, it will now be using that memorized value unless whatever dependency
+
+52
+00:04:15,000 --> 00:04:17,400
+you pass inside, this dependency array changes.
+
+53
+00:04:18,180 --> 00:04:22,770
+So now let's say I add at the count, I'm not going to add the dependency array yet.
+
+54
+00:04:23,460 --> 00:04:27,990
+But here, if I save now, I come back to the application and I refresh.
+
+55
+00:04:32,880 --> 00:04:33,720
+Let's see what happens.
+
+56
+00:04:34,140 --> 00:04:35,810
+So on mount, of course, as I mentioned.
+
+57
+00:04:36,570 --> 00:04:40,800
+Start needs to actually run and runs after the delay.
+
+58
+00:04:40,800 --> 00:04:42,480
+So nothing has changed about the delay.
+
+59
+00:04:43,410 --> 00:04:46,860
+But at the very least, now we have our value.
+
+60
+00:04:47,640 --> 00:04:49,620
+But if I were to add these values.
+
+61
+00:04:50,130 --> 00:04:52,710
+Notice how it's not rerun during our cart.
+
+62
+00:04:53,190 --> 00:04:56,010
+We're also not stuck inside of that delay.
+
+63
+00:04:57,000 --> 00:05:00,030
+So this is essentially what happens every time the component is re rendering.
+
+64
+00:05:00,330 --> 00:05:09,120
+React is going into that use memo hook and whenever it sees that line right here on line 30 and it knows,
+
+65
+00:05:09,120 --> 00:05:13,770
+hey, I've already calculated this value before I was going to give you back whatever you get back from
+
+66
+00:05:13,770 --> 00:05:19,350
+this value, and now I'm always going to get back that initial value.
+
+67
+00:05:20,570 --> 00:05:25,160
+The problem, of course, as we can see, is that even though we're increasing the count, this number
+
+68
+00:05:25,160 --> 00:05:26,120
+is not changing.
+
+69
+00:05:26,660 --> 00:05:32,870
+So this is where you want to add in the dependency array for use memo any of the variables that you
+
+70
+00:05:32,870 --> 00:05:39,050
+want to track so that essentially whenever that variable changes, react will recalculate the output
+
+71
+00:05:39,050 --> 00:05:42,350
+of this very expensive function and then cache that value.
+
+72
+00:05:42,830 --> 00:05:47,510
+So now if we go back to our application, we see our initialization is slow.
+
+73
+00:05:47,810 --> 00:05:55,160
+We have our 100, we hit, go checkout again, delay, and then the end and then finally the value updates.
+
+74
+00:05:55,520 --> 00:05:59,510
+But at the very least, it does not block whenever this component renders.
+
+75
+00:05:59,840 --> 00:06:02,240
+The only time it's blocking and it needs to re compute.
+
+76
+00:06:02,240 --> 00:06:07,370
+Our expensive function is when the actual dependency array values change.
+
+77
+00:06:07,940 --> 00:06:08,540
+And that's it.
+
+78
+00:06:09,140 --> 00:06:10,820
+This is how use memo works.
+
+79
+00:06:11,060 --> 00:06:16,580
+It's primarily for when you have expensive functions that need to re compute and they depend on these
+
+80
+00:06:16,580 --> 00:06:18,380
+values inside of your functional component.
+
+81
+00:06:18,830 --> 00:06:23,180
+If you want to memorize those values and make sure that they don't get interrupted or they don't get
+
+82
+00:06:23,180 --> 00:06:29,270
+rerun unnecessarily during a re render cycle, then you use the use memo hook.
+
+83
+00:06:29,630 --> 00:06:30,260
+So that's a difference.
+
+84
+00:06:30,260 --> 00:06:31,790
+We can use memo and use callback.
+
+85
+00:06:32,120 --> 00:06:34,670
+Use callback memorizes the function itself.
+
+86
+00:06:35,330 --> 00:06:36,290
+Use memo.
+
+87
+00:06:36,290 --> 00:06:39,710
+Memo wise is the return value of the function.
+
+88
+00:06:40,740 --> 00:06:41,760
+So now we understand.
+
+89
+00:06:41,780 --> 00:06:43,170
+Use Mama and use callback.

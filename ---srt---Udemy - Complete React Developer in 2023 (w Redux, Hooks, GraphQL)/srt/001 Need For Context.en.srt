@@ -1,0 +1,419 @@
+1
+00:00:00,300 --> 00:00:01,410
+Welcome back, everyone.
+
+2
+00:00:02,280 --> 00:00:09,000
+And the past few videos we've learned about how to authenticate and also get the user object from Firebase.
+
+3
+00:00:09,300 --> 00:00:13,710
+We've learned how to sync it up with our frontend application by creating these sign in and sign up
+
+4
+00:00:13,710 --> 00:00:19,380
+forms and primarily now that we have the user and we have a way to authenticate them.
+
+5
+00:00:19,920 --> 00:00:25,800
+Let's discuss how to actually leverage that user object that we're getting back inside of our application
+
+6
+00:00:25,920 --> 00:00:29,070
+and think on a higher level about what to do with said user.
+
+7
+00:00:29,760 --> 00:00:35,040
+Now, before we talk about that, let's go back to our terminal and let's just commit our code.
+
+8
+00:00:36,170 --> 00:00:44,300
+So I'm going to say that what we've done and what we have to commit up is that we created authentication
+
+9
+00:00:44,570 --> 00:00:45,440
+page component.
+
+10
+00:00:47,800 --> 00:00:50,650
+Alongside our sign in form.
+
+11
+00:00:52,300 --> 00:00:58,330
+So let's push that up, and then let's discuss what we need and why we need to stop this user.
+
+12
+00:01:00,870 --> 00:01:06,720
+So in order for us to better understand what it is that we want to do with this user object we get from
+
+13
+00:01:06,720 --> 00:01:11,820
+our sign-In, let's think a little bit about our components inside of React.
+
+14
+00:01:12,390 --> 00:01:15,840
+Imagine that this is your component tree up at the top.
+
+15
+00:01:15,840 --> 00:01:20,070
+You have your application down lower and one level.
+
+16
+00:01:20,160 --> 00:01:26,640
+We know that we have our off page and our off page is a child of our top level app component.
+
+17
+00:01:27,030 --> 00:01:33,030
+We know this because authors nested in a root nested inside of our entire application component.
+
+18
+00:01:33,570 --> 00:01:37,440
+Similarly, Orth has two routes both sign in and sign up.
+
+19
+00:01:38,100 --> 00:01:44,640
+Now imagine, for example, we had two other routes that were also children of the app, but they were
+
+20
+00:01:44,640 --> 00:01:45,660
+siblings of Auth.
+
+21
+00:01:46,230 --> 00:01:50,790
+Imagine on the left, we had some kind of settings page on the Settings page.
+
+22
+00:01:50,800 --> 00:01:55,590
+Imagine we had a user page and within the user, maybe we have some profile page.
+
+23
+00:01:56,100 --> 00:02:01,950
+Similarly, on the right side, imagine we had this orders page which kept track of your orders history,
+
+24
+00:02:02,190 --> 00:02:05,910
+but also the returns that that user might have made.
+
+25
+00:02:06,570 --> 00:02:12,030
+So here you can imagine that for these routes on the left and the right, the settings and the orders
+
+26
+00:02:12,270 --> 00:02:18,360
+that both of these need access to this user object that you get from your sign and your sign up.
+
+27
+00:02:18,990 --> 00:02:25,620
+So here the key thing to remember is that based on what we've built so far, we know that when we get
+
+28
+00:02:25,620 --> 00:02:31,590
+that off user object, we either get it in the sign in or we get it in the sign up.
+
+29
+00:02:31,920 --> 00:02:36,630
+These are the two places that we directly get from Firebase.
+
+30
+00:02:36,960 --> 00:02:39,240
+The actual user auth object.
+
+31
+00:02:39,630 --> 00:02:48,330
+From here, though, we can imagine how on this left setting side, that profile needs that user object.
+
+32
+00:02:48,510 --> 00:02:52,500
+Because how else are you going to know what the actual profile of this user is?
+
+33
+00:02:52,950 --> 00:02:57,150
+Maybe on the profile page is how you update display name or you change the email.
+
+34
+00:02:57,480 --> 00:03:04,140
+But the key thing here is that this profile needs access to the data that we got from sign in and sign
+
+35
+00:03:04,140 --> 00:03:04,410
+up.
+
+36
+00:03:05,040 --> 00:03:11,490
+Similarly, you can imagine how on the right side, maybe there's orders and returns and history, and
+
+37
+00:03:11,490 --> 00:03:18,330
+in order for you to know what users returns or history you have access to, you specifically also need
+
+38
+00:03:18,330 --> 00:03:20,280
+the actual user object.
+
+39
+00:03:20,790 --> 00:03:24,830
+So here you can see that what's the history of the orders for which user?
+
+40
+00:03:24,840 --> 00:03:30,690
+Well, we only know that if we pass to our back end, that gives us the order history, the user itself.
+
+41
+00:03:31,720 --> 00:03:34,060
+We can see the same thing might be true for returns.
+
+42
+00:03:34,840 --> 00:03:40,510
+So how would we actually be able to surface up this user data that lives in the sign-In?
+
+43
+00:03:41,020 --> 00:03:47,950
+Well, what we would have to do is we would have to figure out which of these components is the top
+
+44
+00:03:47,950 --> 00:03:51,130
+level common parent denominator.
+
+45
+00:03:51,760 --> 00:03:59,050
+So if you look at this, at what point is there going to be some node that can access data and then
+
+46
+00:03:59,050 --> 00:04:04,330
+distribute it out to the corresponding profile returns and history?
+
+47
+00:04:04,930 --> 00:04:10,780
+Well, that would be the app component because the app component is the highest level parent that can
+
+48
+00:04:10,780 --> 00:04:16,180
+then in turn, actually pass these props down to the corresponding correct children.
+
+49
+00:04:16,750 --> 00:04:21,070
+Sign in, can't pass it directly to profile or returns or history.
+
+50
+00:04:21,430 --> 00:04:26,380
+The reason for this is because, as we've seen with components, we can pass props down into children.
+
+51
+00:04:26,920 --> 00:04:32,350
+In turn, we can find certain ways where we pass callbacks from a parent down to a child so that we
+
+52
+00:04:32,350 --> 00:04:34,480
+can get the data up to the parent.
+
+53
+00:04:35,170 --> 00:04:39,730
+Both ways are pretty cumbersome and pretty tied together, but it can be done.
+
+54
+00:04:40,120 --> 00:04:47,650
+So here you can imagine that by using a similar pattern, we can pass the sign in user data up one level
+
+55
+00:04:47,800 --> 00:04:49,630
+before going back up to the app.
+
+56
+00:04:50,080 --> 00:04:56,530
+Then, in order to give it to the profile, will have to go over to that settings page and then from
+
+57
+00:04:56,530 --> 00:04:59,980
+the Settings component, pass it to its corresponding user child.
+
+58
+00:05:00,130 --> 00:05:03,910
+And then finally, from user, we can finally pass it to the profile.
+
+59
+00:05:04,390 --> 00:05:11,230
+Similarly, on the right side from app again, at the top level, we pass it over to our orders and
+
+60
+00:05:11,230 --> 00:05:13,510
+then from orders we pass it to returns.
+
+61
+00:05:13,660 --> 00:05:16,810
+And similarly, from the orders, we pass it to the history.
+
+62
+00:05:17,530 --> 00:05:22,900
+So here we could see this is a pattern where we'd be able to sign in and get the user data at the sign
+
+63
+00:05:22,900 --> 00:05:23,560
+in and sign up.
+
+64
+00:05:23,860 --> 00:05:28,710
+Pass it all the way up to the app, but then pass it to the profile and pass it to the returns through
+
+65
+00:05:28,720 --> 00:05:34,750
+all of the corresponding parents and children all the way down to those components that need them.
+
+66
+00:05:35,500 --> 00:05:37,810
+But here, I hope you notice a problem.
+
+67
+00:05:38,530 --> 00:05:41,860
+All of these orange nodes do not need the user data.
+
+68
+00:05:42,220 --> 00:05:47,290
+All they served to do is act as a traffic node nodule almost.
+
+69
+00:05:47,500 --> 00:05:53,440
+It's just a path that we have to pass user data through in order to get to the profile.
+
+70
+00:05:53,800 --> 00:05:56,350
+And the way we pass it is we pass it through props.
+
+71
+00:05:56,620 --> 00:06:02,290
+This is actually something known as prop drilling, because in order for you to drill the relevant data
+
+72
+00:06:02,320 --> 00:06:09,430
+down a stream of children to the correct node component that actually needs it, you have to write all
+
+73
+00:06:09,430 --> 00:06:16,720
+these props for all these intermediary components that don't even need that data in the first place.
+
+74
+00:06:17,050 --> 00:06:19,270
+For example, App doesn't need user data.
+
+75
+00:06:19,690 --> 00:06:24,000
+Neither does any of the settings nor the user component.
+
+76
+00:06:24,010 --> 00:06:26,650
+Only the profile component on the left needs it.
+
+77
+00:06:27,190 --> 00:06:29,080
+So here it just makes no sense.
+
+78
+00:06:29,320 --> 00:06:33,730
+You can see how profile returns and history are the only ones that actually need this data.
+
+79
+00:06:34,540 --> 00:06:36,880
+So how do we actually make this work?
+
+80
+00:06:37,330 --> 00:06:39,460
+Let's just focus on the silent component.
+
+81
+00:06:39,890 --> 00:06:43,960
+The signing component we know is the entry point that gets that user data.
+
+82
+00:06:44,350 --> 00:06:47,700
+How do we get this user data to the correct two nodes?
+
+83
+00:06:47,710 --> 00:06:51,070
+Imagine that we just had these two red nodes that needs this.
+
+84
+00:06:51,940 --> 00:06:59,770
+Wouldn't it be great if there was some way where we could actually create some kind of storage place
+
+85
+00:07:00,190 --> 00:07:06,250
+where we could access it anywhere we want, we want to have to drill through props or anything like
+
+86
+00:07:06,250 --> 00:07:06,520
+that.
+
+87
+00:07:06,970 --> 00:07:08,710
+So let's say we sign in with our user.
+
+88
+00:07:09,070 --> 00:07:16,960
+And what we wanted to do is just store this user data from the sign in into this kind of external storage
+
+89
+00:07:16,960 --> 00:07:17,500
+place.
+
+90
+00:07:17,980 --> 00:07:24,220
+And then once the user data is there, it can just directly pass it over to the corresponding nodes
+
+91
+00:07:24,220 --> 00:07:25,000
+that needs it.
+
+92
+00:07:25,360 --> 00:07:27,700
+No need for any of this prop drilling.
+
+93
+00:07:28,420 --> 00:07:35,920
+While this is actually exactly what React context allows us to do and allows us to store our data somewhere
+
+94
+00:07:36,040 --> 00:07:42,340
+so that we don't have to go through this cumbersome process of passing all of the relevant data, we
+
+95
+00:07:42,340 --> 00:07:46,900
+get down from some kind of child all the way up to some common ancestor.
+
+96
+00:07:47,050 --> 00:07:52,870
+And then from that ancestor prop drilled down to all of the relevant and necessary child components,
+
+97
+00:07:52,870 --> 00:07:57,250
+or grandchild components or grand grandchild components that actually need this.
+
+98
+00:07:57,550 --> 00:08:05,170
+Instead, what we can do is just take that sign and pass that data up to some external storage placement
+
+99
+00:08:05,170 --> 00:08:12,940
+and then anyone that needs it can access it from their corresponding place in the actual tree directly
+
+100
+00:08:12,940 --> 00:08:13,960
+from this storage.
+
+101
+00:08:14,440 --> 00:08:15,430
+This is context.
+
+102
+00:08:15,760 --> 00:08:17,800
+So this is what we're going to learn in the next lesson.
+
+103
+00:08:17,800 --> 00:08:23,860
+We're going to learn how to leverage this context in order to both store the user data and also access
+
+104
+00:08:23,860 --> 00:08:24,400
+it later.
+
+105
+00:08:24,910 --> 00:08:26,740
+So let's do that in the next video.

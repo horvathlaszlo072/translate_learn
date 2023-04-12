@@ -1,0 +1,327 @@
+1
+00:00:00,390 --> 00:00:01,410
+Welcome back, everyone.
+
+2
+00:00:02,220 --> 00:00:07,800
+In this video, I want to discuss a little bit more about these rerun ring cycles and how it reinforces
+
+3
+00:00:07,800 --> 00:00:11,280
+what we kind of already know about React and Re rendering.
+
+4
+00:00:11,520 --> 00:00:14,610
+But it's still good to really understand this mental model.
+
+5
+00:00:15,000 --> 00:00:19,770
+So let's walk through this here inside of our navigation component.
+
+6
+00:00:20,070 --> 00:00:24,030
+We know that we're leveraging this current user that we get from use context.
+
+7
+00:00:24,480 --> 00:00:29,310
+But in order for me to show you a couple of things, I'm going to change up how some of these components
+
+8
+00:00:29,310 --> 00:00:30,600
+are calling different things.
+
+9
+00:00:31,140 --> 00:00:32,910
+And you just have to follow me here.
+
+10
+00:00:33,390 --> 00:00:36,300
+I'm going to stop console.log and current user in our navigation.
+
+11
+00:00:37,240 --> 00:00:40,960
+What I'm going to do instead is inside of our sign up form.
+
+12
+00:00:41,380 --> 00:00:44,560
+I'm first going to just console dot log out.
+
+13
+00:00:45,550 --> 00:00:46,810
+The word hit.
+
+14
+00:00:48,040 --> 00:00:52,510
+And what I'm also going to do is show you inside of this component.
+
+15
+00:00:53,500 --> 00:01:00,250
+So when we refresh and run our application for the first time, when our sign up component mounts,
+
+16
+00:01:00,580 --> 00:01:01,930
+we see a hit from sign up.
+
+17
+00:01:02,350 --> 00:01:03,760
+This is perfectly expected.
+
+18
+00:01:04,510 --> 00:01:07,360
+What I also want to do is I want to turn on paint flashing.
+
+19
+00:01:07,780 --> 00:01:09,280
+So this is from the rendering tab.
+
+20
+00:01:09,280 --> 00:01:16,030
+If you remember inside of the three dots down in more tools when you select rendering, this will show
+
+21
+00:01:16,030 --> 00:01:17,830
+up and then I want to click paint flashing.
+
+22
+00:01:19,010 --> 00:01:22,430
+The reason why I want to do this is because I want to show you.
+
+23
+00:01:23,370 --> 00:01:30,810
+Right now, our sign up component, despite being nested inside of our top level context component,
+
+24
+00:01:30,810 --> 00:01:36,330
+remember user provider is wrapping up inside of app is sign in, sign up navigation.
+
+25
+00:01:36,480 --> 00:01:38,370
+Everything is a child of app.
+
+26
+00:01:39,340 --> 00:01:45,880
+But what you'll notice is that despite the fact that when we sign in, we know we're setting user inside
+
+27
+00:01:45,880 --> 00:01:47,470
+of that top level provider.
+
+28
+00:01:48,220 --> 00:01:51,730
+What you see, though, is that hit does not rerun.
+
+29
+00:01:52,000 --> 00:01:55,300
+This is just the initial call when we mounted for the first time.
+
+30
+00:01:55,720 --> 00:01:59,740
+So clearly, this component is not getting called at all.
+
+31
+00:02:02,230 --> 00:02:06,130
+What happens if we actually took into the sign up form?
+
+32
+00:02:06,850 --> 00:02:11,260
+So I'm going to keep the console.log hit, actually, and what I'm going to do is I'm going to bring
+
+33
+00:02:11,260 --> 00:02:15,100
+in the use context hook and I'm also going to bring in.
+
+34
+00:02:16,380 --> 00:02:18,870
+The user context object.
+
+35
+00:02:19,770 --> 00:02:27,390
+And what I want to do is I just want to hook into it something to say Val is equal to use context user
+
+36
+00:02:27,390 --> 00:02:28,080
+context.
+
+37
+00:02:31,460 --> 00:02:32,420
+Now what happens?
+
+38
+00:02:33,230 --> 00:02:36,230
+Well, because now I've hooked into the context.
+
+39
+00:02:36,710 --> 00:02:42,830
+As long as user context values change, this component is going to rerun.
+
+40
+00:02:44,080 --> 00:02:45,160
+So what we should see.
+
+41
+00:02:46,240 --> 00:02:47,770
+Is that when we refresh?
+
+42
+00:02:48,990 --> 00:02:50,760
+Everything mounts for the first time, of course.
+
+43
+00:02:51,710 --> 00:02:55,480
+But we see that initial hit value that comes from our sign up for.
+
+44
+00:02:56,450 --> 00:03:05,420
+And what will also happen is that when I sign in to my user and the provider updates notice that hit
+
+45
+00:03:05,570 --> 00:03:06,770
+gets called again.
+
+46
+00:03:07,250 --> 00:03:14,280
+The reason for this is because the sign up form is hooked into the context using the use context.
+
+47
+00:03:14,630 --> 00:03:19,010
+Even though we didn't do anything with any of those values, React doesn't care.
+
+48
+00:03:19,400 --> 00:03:24,650
+The fact that you're hooked in means that this component needs to rerun this function.
+
+49
+00:03:24,650 --> 00:03:27,140
+At the very least, that represents our sign up component.
+
+50
+00:03:28,010 --> 00:03:37,820
+However, notice that none of the actual portions of the DOM updated despite the fact that React reran
+
+51
+00:03:37,820 --> 00:03:42,800
+the code, it did not actually really render anything on the DOM.
+
+52
+00:03:43,580 --> 00:03:47,270
+And the reason for this, of course, is because nothing changed on the Dom.
+
+53
+00:03:47,960 --> 00:03:53,900
+So this is where that virtual dom and the actual reconciliation steps that we walk the way back in the
+
+54
+00:03:53,900 --> 00:03:56,690
+beginning of this course prove itself again.
+
+55
+00:03:57,320 --> 00:03:58,460
+So this is one important thing.
+
+56
+00:03:58,460 --> 00:04:07,550
+I want you to know if you have multiple components that are all listening to a context, even though
+
+57
+00:04:07,550 --> 00:04:16,310
+they don't use the actual values, for example, just as we see here, we're just initializing the value.
+
+58
+00:04:16,310 --> 00:04:17,780
+We don't actually do anything with it.
+
+59
+00:04:18,200 --> 00:04:22,850
+The fact that you're hooked into the context will cause react to rerun your function.
+
+60
+00:04:23,690 --> 00:04:29,420
+Now, it doesn't mean that it will re render anything to the dump, because it only will, if you're
+
+61
+00:04:29,660 --> 00:04:33,410
+GSX values, actually update based on this value.
+
+62
+00:04:34,240 --> 00:04:40,750
+However, what you still need to think about is the fact that all of the code up until that return statement
+
+63
+00:04:40,750 --> 00:04:42,220
+is still getting called.
+
+64
+00:04:42,850 --> 00:04:45,280
+That is a very important thing to know.
+
+65
+00:04:46,700 --> 00:04:52,640
+The fact that this code is getting called could be a performance problem if you have hundreds of components
+
+66
+00:04:52,640 --> 00:04:54,170
+that are all hooked into a context.
+
+67
+00:04:54,680 --> 00:04:57,410
+So this is just something to really consider and think about.
+
+68
+00:04:58,380 --> 00:05:04,530
+But now that at least we understand that the way that react decides to re render things is still within
+
+69
+00:05:04,530 --> 00:05:12,030
+the exact same knowledge that we had about components and how they re render things, really not much
+
+70
+00:05:12,030 --> 00:05:12,750
+has changed.
+
+71
+00:05:12,990 --> 00:05:21,840
+You can kind of see use context as just a glorified hook into another component that will re render
+
+72
+00:05:22,050 --> 00:05:26,400
+its subsequent hooked components whenever this component updates in some way.
+
+73
+00:05:26,640 --> 00:05:32,730
+And the only way that this component updates is if we trigger it to update using you, state use effect,
+
+74
+00:05:32,730 --> 00:05:38,460
+whatever that we designate, and we'll talk more about this in the next upcoming videos.
+
+75
+00:05:38,640 --> 00:05:45,210
+But I just want to clarify this particular point about components hooking into context and getting recalled
+
+76
+00:05:45,240 --> 00:05:49,350
+or not necessarily rendered, but at least the functions getting rerun.
+
+77
+00:05:50,770 --> 00:05:56,230
+So now the one to stand this, let's get rid of this code that we have here inside of sign up form.
+
+78
+00:05:56,770 --> 00:06:00,940
+We're going to keep this code right here because we will need to update sign up form.
+
+79
+00:06:01,480 --> 00:06:02,770
+But that's my challenge to you.
+
+80
+00:06:03,100 --> 00:06:06,670
+I want you to utilize use context and user context for sign up form.
+
+81
+00:06:06,970 --> 00:06:12,550
+So also set the user when we successfully authenticate with email and password.
+
+82
+00:06:13,390 --> 00:06:15,550
+So do that, and then I'll see you in the next video.

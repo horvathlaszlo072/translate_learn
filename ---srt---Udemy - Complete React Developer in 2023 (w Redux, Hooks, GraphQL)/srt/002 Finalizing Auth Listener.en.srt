@@ -1,0 +1,423 @@
+1
+00:00:00,420 --> 00:00:01,470
+Welcome back, everyone.
+
+2
+00:00:02,220 --> 00:00:08,370
+In the last video, we learned about this new on off state change listener, which runs our call back
+
+3
+00:00:08,370 --> 00:00:10,050
+whenever the off state changes.
+
+4
+00:00:10,560 --> 00:00:16,200
+So now what we want to do is we want to continue centralizing all the code related to authentication
+
+5
+00:00:16,500 --> 00:00:19,080
+into just this one listener now.
+
+6
+00:00:20,130 --> 00:00:27,630
+So in the last video, we modified our sign in form so that our sign in with email and password no longer
+
+7
+00:00:27,630 --> 00:00:30,810
+leverages that call to set current user.
+
+8
+00:00:31,620 --> 00:00:36,840
+So here we can actually get rid of this current user since we don't need it anymore.
+
+9
+00:00:37,560 --> 00:00:44,070
+And similarly, we can also remove any imports that we're making to it inside of the sign and form component.
+
+10
+00:00:44,940 --> 00:00:52,290
+We know that in our sign up form, we do something similar so we can also get rid of this because once
+
+11
+00:00:52,290 --> 00:01:02,040
+again, when a user signs up, we are no longer leveraging our contacts here in order to actually make
+
+12
+00:01:02,040 --> 00:01:05,220
+the update inside of the user context.
+
+13
+00:01:05,670 --> 00:01:12,390
+So one nice advantage we get is that we have now stopped hooking into our user context from both the
+
+14
+00:01:12,390 --> 00:01:14,400
+sign up form and the sign in form.
+
+15
+00:01:14,910 --> 00:01:21,240
+So now whenever this context value updates, we don't need to rerun these functions needlessly.
+
+16
+00:01:21,780 --> 00:01:26,820
+So automatically we get a little bit of a performance boost continuing on.
+
+17
+00:01:27,090 --> 00:01:33,540
+We know that inside of our navigation, we are still also setting the user whenever a user signs out.
+
+18
+00:01:34,140 --> 00:01:39,660
+So we actually don't need to do this anymore because again, the moment a user signs out, our off state
+
+19
+00:01:39,660 --> 00:01:41,670
+change listener is going to catch it.
+
+20
+00:01:42,210 --> 00:01:44,490
+So all we really need is just a call.
+
+21
+00:01:44,500 --> 00:01:52,290
+Sign out user whenever this link is clicked so we can actually get rid of this sign out handler as well
+
+22
+00:01:52,290 --> 00:01:53,580
+as this center function.
+
+23
+00:01:54,700 --> 00:01:59,530
+We do still need the actual current user, though, because based on this value, we determine if we
+
+24
+00:01:59,530 --> 00:02:02,020
+show the sign out link or the sign in link.
+
+25
+00:02:02,800 --> 00:02:07,060
+So here what we're saying is that, hey, whenever you sign out.
+
+26
+00:02:08,330 --> 00:02:15,650
+I essentially want to still show the sign in link and respectively the reverse, and we actually still
+
+27
+00:02:15,650 --> 00:02:20,060
+continue to get this benefit as long as we know what we're getting from this user.
+
+28
+00:02:20,870 --> 00:02:26,180
+So we know that the user that gets passed through is either going to be an authenticated user object
+
+29
+00:02:26,330 --> 00:02:27,590
+or it's going to be null.
+
+30
+00:02:27,980 --> 00:02:30,200
+We get known when the user signs out.
+
+31
+00:02:30,770 --> 00:02:36,770
+So we know that for us, what we want to store inside user context is either going to be null or it's
+
+32
+00:02:36,770 --> 00:02:38,030
+going to be the user object.
+
+33
+00:02:38,390 --> 00:02:45,470
+So essentially here inside of our user effect, we can just call our center and set it to whatever that
+
+34
+00:02:45,470 --> 00:02:46,170
+off change.
+
+35
+00:02:46,170 --> 00:02:51,500
+The value is because both these values will be the correct one for us if a user signed out, we want
+
+36
+00:02:51,500 --> 00:02:52,040
+to store null.
+
+37
+00:02:52,310 --> 00:02:54,740
+If a user signed in, we want to store the object.
+
+38
+00:02:55,340 --> 00:03:02,210
+So here, if we save this and we go back to our application, we'll see that right now our user is indeed
+
+39
+00:03:02,210 --> 00:03:02,990
+signed in.
+
+40
+00:03:03,560 --> 00:03:09,020
+So let me just also console.log out the user just so that we can see and be very clear.
+
+41
+00:03:10,140 --> 00:03:17,280
+So again, my map is going to re initialize, we see that we have our user object because we're authenticated.
+
+42
+00:03:17,790 --> 00:03:23,190
+And now if I sign out, I see that we get null if I sign in again.
+
+43
+00:03:25,170 --> 00:03:30,180
+We see that we have our user object and we see our nav bar correctly reflects this change.
+
+44
+00:03:31,200 --> 00:03:37,410
+So now we've pretty much centralized our sign out and sign in into this listener callback.
+
+45
+00:03:38,100 --> 00:03:44,820
+Now we can actually take this isolation a step further inside of our sign and form within our sign in
+
+46
+00:03:44,820 --> 00:03:45,810
+with Google Method.
+
+47
+00:03:46,140 --> 00:03:51,690
+We are actually taking this user object that we get back from the authentication and we create a user
+
+48
+00:03:51,690 --> 00:03:53,370
+document from this off object.
+
+49
+00:03:53,700 --> 00:03:57,510
+We can now move this into the user context.
+
+50
+00:03:57,690 --> 00:04:02,490
+So I'm just going to cut this function and no longer need to do structure off the user.
+
+51
+00:04:03,210 --> 00:04:08,880
+I'm going to go into my user context, and what I'm going to say is that I only want to create this
+
+52
+00:04:08,880 --> 00:04:12,030
+user document if a user comes through.
+
+53
+00:04:12,630 --> 00:04:18,150
+So here I want to say if user then create user document from off.
+
+54
+00:04:18,720 --> 00:04:21,920
+So we want to import this from our firebase utils.
+
+55
+00:04:23,120 --> 00:04:25,280
+Otherwise, just set the current user.
+
+56
+00:04:26,560 --> 00:04:33,670
+So this here is a method you might be wondering, well, we're centralizing our off, but maybe it's
+
+57
+00:04:33,670 --> 00:04:36,400
+a user that's brand new when they sign in with Google.
+
+58
+00:04:36,640 --> 00:04:39,310
+But maybe it's a user that already exists.
+
+59
+00:04:39,880 --> 00:04:46,330
+Well, luckily for us, inside of our Create user document auth object, we know that we get the snapshot
+
+60
+00:04:46,750 --> 00:04:47,590
+and the snapshot.
+
+61
+00:04:47,590 --> 00:04:52,630
+We'll dig into that place in the database, given the UID we get from the off.
+
+62
+00:04:53,140 --> 00:04:59,110
+And it will determine whether or not based on this object, if it exists or it doesn't exist.
+
+63
+00:04:59,680 --> 00:05:03,970
+So if it doesn't exist, then we create a new instance in our database.
+
+64
+00:05:04,420 --> 00:05:07,300
+If it does exist, then we skip the step altogether.
+
+65
+00:05:07,660 --> 00:05:10,780
+Either way, we get back a valid user talk, ref.
+
+66
+00:05:11,500 --> 00:05:18,100
+So luckily for us, because of this pattern that we wrote, we actually now have this all working.
+
+67
+00:05:18,880 --> 00:05:19,990
+So let's save this.
+
+68
+00:05:20,530 --> 00:05:21,970
+Go back to our application.
+
+69
+00:05:23,060 --> 00:05:23,960
+And let's refresh.
+
+70
+00:05:25,560 --> 00:05:32,970
+And now what I want to do is I want to first go into my crown DB, I'm actually going to delete the
+
+71
+00:05:32,970 --> 00:05:35,760
+user that I have from my.
+
+72
+00:05:37,960 --> 00:05:45,310
+Google sign in because here is actually the best way for me to prove that everything still works, so
+
+73
+00:05:45,310 --> 00:05:51,250
+I'm going to delete that user and inside of my authentication, I'm also going to delete this user.
+
+74
+00:05:53,270 --> 00:05:57,860
+So that now when I go back to my application and I do my sign in with Google Method.
+
+75
+00:05:58,880 --> 00:06:02,990
+And here inside, I'm also going to use my user.
+
+76
+00:06:05,980 --> 00:06:07,300
+We're going to go through that flow.
+
+77
+00:06:07,630 --> 00:06:15,550
+We're going to authenticate my user and what I should see if I refresh this as I see my user and also,
+
+78
+00:06:15,550 --> 00:06:17,860
+more importantly, inside a fire store.
+
+79
+00:06:18,760 --> 00:06:25,240
+I see the user that just got created right here for my Gmail sign-In.
+
+80
+00:06:25,990 --> 00:06:29,060
+So as you can see, everything is still working.
+
+81
+00:06:29,530 --> 00:06:35,530
+But luckily for us now, we have actually centralized the majority of the code that has to do with the
+
+82
+00:06:35,530 --> 00:06:42,460
+thoughts indication into one easy to track place inside of the context that is supposed to manage it
+
+83
+00:06:42,460 --> 00:06:43,270
+in the first place.
+
+84
+00:06:43,990 --> 00:06:49,600
+So this is a great thing that we've managed to do because now any time we need to think about authentication,
+
+85
+00:06:49,990 --> 00:06:54,550
+most of the actual logic placement all lives within this user provider.
+
+86
+00:06:54,550 --> 00:06:58,690
+Now, the only place where we kind of can't do that is with sign up.
+
+87
+00:06:59,080 --> 00:07:01,990
+We still need to create the user doc from here.
+
+88
+00:07:02,440 --> 00:07:05,590
+And the reason why we need this is because we need this display name.
+
+89
+00:07:06,250 --> 00:07:12,130
+There are other ways that we can actually move this so that we can continue to leverage the actual listener
+
+90
+00:07:12,130 --> 00:07:12,860
+for this as well.
+
+91
+00:07:13,540 --> 00:07:16,410
+But this is one place where you know what?
+
+92
+00:07:16,420 --> 00:07:18,190
+It's not that bad for us to do.
+
+93
+00:07:18,220 --> 00:07:25,750
+We need to leverage some fields sometimes from this actual sign up form itself that we need in order
+
+94
+00:07:25,750 --> 00:07:27,580
+for our database to have the up to date value.
+
+95
+00:07:28,210 --> 00:07:33,850
+So it's not the worst thing to do, but at the very least, the majority of our code is now centralized
+
+96
+00:07:33,850 --> 00:07:35,170
+in the user context.
+
+97
+00:07:35,770 --> 00:07:42,190
+So in the last few lessons, we've learned how to utilize this new context in order for us to store
+
+98
+00:07:42,190 --> 00:07:45,700
+some data that our entire application needs to keep track of.
+
+99
+00:07:46,060 --> 00:07:48,490
+In this particular case, it was the user.
+
+100
+00:07:49,180 --> 00:07:56,260
+Well, we've also learned to leverage is this user context pattern in order to centralize code that's
+
+101
+00:07:56,260 --> 00:07:59,110
+related to the user and authentication.
+
+102
+00:07:59,710 --> 00:08:05,560
+So just by learning context, we've actually managed to find a good way to centralize and clean up our
+
+103
+00:08:05,560 --> 00:08:08,020
+architecture of our React application.
+
+104
+00:08:08,560 --> 00:08:14,710
+This user context governed the domain of everything related to users and authentication and the storage
+
+105
+00:08:14,710 --> 00:08:15,510
+of those users.
+
+106
+00:08:16,510 --> 00:08:20,980
+So now that we've done this, let's move on to the next video.

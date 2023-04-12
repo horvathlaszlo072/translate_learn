@@ -1,0 +1,132 @@
+1
+00:00:00.04 --> 00:00:02.07
+- [Instructor] Okay, we have
+built a fully functional
+
+2
+00:00:02.07 --> 00:00:05.00
+full stack application together.
+
+3
+00:00:05.00 --> 00:00:08.00
+To learn more on your own,
+you can implement the PUT
+
+4
+00:00:08.00 --> 00:00:10.01
+and DELETE endpoints.
+
+5
+00:00:10.01 --> 00:00:13.00
+You can also experiment
+with client and server side
+
+6
+00:00:13.00 --> 00:00:16.07
+filtering in our GET
+available rooms endpoint.
+
+7
+00:00:16.07 --> 00:00:20.06
+For example, you could filter
+on fields such as price.
+
+8
+00:00:20.06 --> 00:00:23.05
+In this course, we only
+touched on unit testing.
+
+9
+00:00:23.05 --> 00:00:25.09
+However, it is very important.
+
+10
+00:00:25.09 --> 00:00:29.08
+You want to have automated
+testing in place for all major
+
+11
+00:00:29.08 --> 00:00:31.05
+functionality.
+
+12
+00:00:31.05 --> 00:00:34.05
+You want to be sure to test
+your Java code as well as
+
+13
+00:00:34.05 --> 00:00:37.00
+your AngularJS 2 code.
+
+14
+00:00:37.00 --> 00:00:40.06
+Back-end testing frameworks
+we used include JUnit
+
+15
+00:00:40.06 --> 00:00:42.04
+and Rest Assured.
+
+16
+00:00:42.04 --> 00:00:46.04
+Testing frameworks on the
+front-end provided by AngularJS 2
+
+17
+00:00:46.04 --> 00:00:49.09
+are Karma, Jasmine and Selenium.
+
+18
+00:00:49.09 --> 00:00:52.04
+You have many types of testing.
+
+19
+00:00:52.04 --> 00:00:55.00
+The most basic type is unit testing.
+
+20
+00:00:55.00 --> 00:00:59.02
+Examples of unit testing
+frameworks are JUnit, Karma
+
+21
+00:00:59.02 --> 00:01:00.08
+and Jasmine.
+
+22
+00:01:00.08 --> 00:01:03.04
+Examples of integration testing frameworks
+
+23
+00:01:03.04 --> 00:01:05.07
+are the spring test runner.
+
+24
+00:01:05.07 --> 00:01:09.07
+An example of a end-to-end
+testing framework is Selenium.
+
+25
+00:01:09.07 --> 00:01:12.07
+There are lots of great
+courses on testing here
+
+26
+00:01:12.07 --> 00:01:15.03
+on LinkedIn Learning,
+so go check them out.
+
+27
+00:01:15.03 --> 00:01:18.07
+As we have learned, Spring
+Boot and AngularJS 2
+
+28
+00:01:18.07 --> 00:01:21.06
+are powerful and flexible tools.
+
+29
+00:01:21.06 --> 00:01:25.01
+So I recommend you get out
+there and build something.
+

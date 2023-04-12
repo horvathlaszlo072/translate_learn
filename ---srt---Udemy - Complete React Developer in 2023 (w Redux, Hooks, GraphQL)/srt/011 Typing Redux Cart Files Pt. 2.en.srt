@@ -1,0 +1,371 @@
+1
+00:00:00,590 --> 00:00:01,520
+Welcome back, everyone.
+
+2
+00:00:02,420 --> 00:00:09,530
+In the last video, I challenge you to utilize our new matcher action creators inside of your cart reducer.
+
+3
+00:00:10,340 --> 00:00:18,800
+So there is a little bit of difference in how we do it inside of this code and how we do it inside of
+
+4
+00:00:18,800 --> 00:00:20,060
+our category reducer.
+
+5
+00:00:20,920 --> 00:00:25,120
+To begin with, we need to import in all of the appropriate files.
+
+6
+00:00:25,780 --> 00:00:32,470
+So first we need to import in any action from Redux because that is going to be the type that we receive
+
+7
+00:00:32,470 --> 00:00:33,160
+for our action.
+
+8
+00:00:33,850 --> 00:00:38,710
+And we also need to import in the respective action creators.
+
+9
+00:00:39,490 --> 00:00:49,090
+So here, let's just go into cart action and let's bring in our set items as well as set is cart open.
+
+10
+00:00:50,660 --> 00:00:55,310
+The first thing we want to do is we want to type the actual cart state.
+
+11
+00:00:55,340 --> 00:01:04,760
+So here we'll say export type cart state, which is equal to is cart open, which is a Boolean value.
+
+12
+00:01:05,660 --> 00:01:09,320
+And then cart items is an array of cart items.
+
+13
+00:01:10,070 --> 00:01:12,350
+So we need to bring in our cart item type.
+
+14
+00:01:14,570 --> 00:01:15,110
+Like so.
+
+15
+00:01:16,950 --> 00:01:21,960
+And now we can set this initial value over to our current state.
+
+16
+00:01:23,370 --> 00:01:27,540
+And what we want to do next is we want to also update this action.
+
+17
+00:01:28,540 --> 00:01:34,660
+So one thing that we were doing before is that we were setting this action equal to an empty object
+
+18
+00:01:34,990 --> 00:01:40,540
+because sometimes we might get these reducers called and they may not receive the full action.
+
+19
+00:01:40,540 --> 00:01:45,670
+So we assumed that this might be an empty object by default, so that we can structure something or
+
+20
+00:01:45,670 --> 00:01:47,620
+attempt to so that we don't get errors.
+
+21
+00:01:48,280 --> 00:01:52,780
+But in our new patterns, we don't actually use this structuring anymore.
+
+22
+00:01:53,260 --> 00:01:57,990
+So we actually don't even need this equals we can just go directly.
+
+23
+00:01:58,000 --> 00:02:01,720
+Action is equal to any action.
+
+24
+00:02:03,150 --> 00:02:10,590
+And now we know that we will also always return a cart state from our reducer and then we just need
+
+25
+00:02:10,590 --> 00:02:12,270
+to update our switch cases.
+
+26
+00:02:14,060 --> 00:02:19,280
+So first we just say if our set cart items.
+
+27
+00:02:20,310 --> 00:02:22,140
+Well, actually, let's start with his car open.
+
+28
+00:02:22,800 --> 00:02:24,420
+If this matches the action.
+
+29
+00:02:25,710 --> 00:02:29,130
+Then we know that we can simply.
+
+30
+00:02:32,930 --> 00:02:35,360
+Update the is card open.
+
+31
+00:02:35,390 --> 00:02:36,950
+Actually I copied over the wrong one.
+
+32
+00:02:37,340 --> 00:02:40,160
+Let's update this like so.
+
+33
+00:02:43,680 --> 00:02:45,150
+And then just fix up.
+
+34
+00:02:46,030 --> 00:02:46,330
+Like.
+
+35
+00:02:46,330 --> 00:02:50,020
+So of course we don't have a payload structure.
+
+36
+00:02:50,650 --> 00:02:55,630
+But again, because of our type predicate function, well, notice that our action is definitely going
+
+37
+00:02:55,630 --> 00:02:59,290
+to be set is car open and our payload is definitely going to be a boolean.
+
+38
+00:03:01,580 --> 00:03:08,450
+The next one that we need is our set items match on the action.
+
+39
+00:03:09,620 --> 00:03:12,380
+And similarly, we will return.
+
+40
+00:03:17,580 --> 00:03:24,660
+The appropriate state updates car items, points to action payload and then by default we return the
+
+41
+00:03:24,660 --> 00:03:24,990
+state.
+
+42
+00:03:30,040 --> 00:03:30,580
+And that's it.
+
+43
+00:03:31,860 --> 00:03:32,780
+That's all we need here.
+
+44
+00:03:32,850 --> 00:03:37,410
+We can just remove our action types, and now our cart reducer is also typed.
+
+45
+00:03:37,890 --> 00:03:41,000
+It's much simpler now because again, we've already done this before.
+
+46
+00:03:41,040 --> 00:03:46,740
+The first time we did this with our categories, it took significantly longer because we had to go through
+
+47
+00:03:46,740 --> 00:03:50,400
+all of the learning of how to make these matters and setting this up for the first time.
+
+48
+00:03:50,880 --> 00:03:53,790
+But once you get those repetitions in, it just gets much easier.
+
+49
+00:03:54,270 --> 00:04:00,690
+And here as well, as I mentioned, we no longer need this equals we can just set this equal to any
+
+50
+00:04:00,690 --> 00:04:01,170
+action.
+
+51
+00:04:04,200 --> 00:04:07,560
+Now, one more thing to type for our cart is our selector.
+
+52
+00:04:08,250 --> 00:04:10,140
+So let's update this to teach us.
+
+53
+00:04:11,620 --> 00:04:18,490
+And as I mentioned before, we can't type the state yet because again, we don't have all of our reducers
+
+54
+00:04:18,490 --> 00:04:18,790
+typed.
+
+55
+00:04:18,790 --> 00:04:23,290
+And unless we have them all typed, we actually can't type the reducer which will give us the value
+
+56
+00:04:23,290 --> 00:04:24,550
+for this state type.
+
+57
+00:04:25,240 --> 00:04:27,280
+Instead, we just need to type what we can.
+
+58
+00:04:28,390 --> 00:04:35,290
+So here inside of our select cart, we know that what we're going to get back from select cart reducer
+
+59
+00:04:35,530 --> 00:04:36,790
+is the cart state.
+
+60
+00:04:37,030 --> 00:04:44,020
+So all we do is import in cart state and set it to the output it value from here.
+
+61
+00:04:45,050 --> 00:04:50,870
+And now automatically what we notice is that everything else gives us what we want it to give.
+
+62
+00:04:51,500 --> 00:04:57,950
+So select cart count, of course, returns a number select is cart open returns a boolean select car
+
+63
+00:04:57,970 --> 00:04:59,390
+total returns a number.
+
+64
+00:04:59,900 --> 00:05:07,940
+All of these are now intuitive enough to know based on the inference of the actual top level cart state,
+
+65
+00:05:08,420 --> 00:05:10,700
+what all of the subsequent values are.
+
+66
+00:05:11,120 --> 00:05:17,900
+So this is a very, very powerful thing that comes with our selectors as well as TypeScript due to the
+
+67
+00:05:17,900 --> 00:05:23,360
+natural inference because we've typed what this initial entry reducer gives back, which is the cart
+
+68
+00:05:23,360 --> 00:05:30,560
+state, all of the subsequent derivations are going to be automatically inferred if you reduce over
+
+69
+00:05:30,560 --> 00:05:36,590
+cart items and we know that this is a number, then automatically cart item we're using the quantity,
+
+70
+00:05:36,590 --> 00:05:40,760
+which is a number you can only get back from this, reduce a number.
+
+71
+00:05:41,540 --> 00:05:47,510
+That's the power of this technology with TypeScript and these inference engines that come with the code
+
+72
+00:05:47,780 --> 00:05:50,150
+so easy, it makes our lives so much easier.
+
+73
+00:05:50,570 --> 00:05:53,750
+If you want, you can type them so that it's more explicit and you can see it.
+
+74
+00:05:54,380 --> 00:06:01,460
+But a lot of times I like referring simply to use the actual inference engine so that it makes my life
+
+75
+00:06:01,460 --> 00:06:05,960
+easier and I don't have to type as much, but I still get all the benefits of TypeScript.
+
+76
+00:06:06,930 --> 00:06:13,380
+Now, one thing I do want to mention is that when you switched over from dot jars to dots or even touch
+
+77
+00:06:13,440 --> 00:06:22,350
+ASX two dot TSX, if you were using a import where you were referencing the path of a value for one
+
+78
+00:06:22,350 --> 00:06:29,280
+of these files where you explicitly had said Dot Jazz, what will happen is that now you'll notice that
+
+79
+00:06:29,280 --> 00:06:33,210
+this import will fail because we no longer have car action.
+
+80
+00:06:33,710 --> 00:06:36,990
+Yes, this is now a car action, dots.
+
+81
+00:06:37,440 --> 00:06:44,280
+This is why it's important for you not to include the actual end of the file extension when doing these
+
+82
+00:06:44,280 --> 00:06:44,910
+conversions.
+
+83
+00:06:45,240 --> 00:06:52,620
+We rely essentially on Webpack and Babel to transport our code down and know the correct endings and
+
+84
+00:06:52,620 --> 00:06:54,600
+infer the type of file from that.
+
+85
+00:06:55,350 --> 00:06:58,560
+Again, we'll discuss that later in the Webpack babble section.
+
+86
+00:06:58,980 --> 00:07:03,990
+But for now, if you're noticing that you're not actually able to finish any of your imports as you
+
+87
+00:07:04,200 --> 00:07:09,570
+go through this process of migrating your files over to TypeScript, this is an important thing to keep
+
+88
+00:07:09,570 --> 00:07:09,960
+in mind.
+
+89
+00:07:10,680 --> 00:07:16,140
+So now that we've finished up with our cart store, let's move on to our user store.
+
+90
+00:07:16,470 --> 00:07:17,430
+So try that yourself.
+
+91
+00:07:17,790 --> 00:07:21,690
+You'll probably have to also type the Firebase utils, but just give it a try.
+
+92
+00:07:22,380 --> 00:07:24,300
+And in the next video, we'll do it together.
+
+93
+00:07:24,840 --> 00:07:25,850
+I'll see you in the next video.

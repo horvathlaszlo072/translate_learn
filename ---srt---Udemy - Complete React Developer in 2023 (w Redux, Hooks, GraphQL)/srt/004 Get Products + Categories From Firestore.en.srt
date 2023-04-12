@@ -1,0 +1,471 @@
+1
+00:00:00,660 --> 00:00:04,860
+Now inside what we need to do is we need first the collection reference.
+
+2
+00:00:05,250 --> 00:00:10,710
+So just like we got it before, I'm going to say collection reference is equal to collection passing
+
+3
+00:00:10,710 --> 00:00:14,100
+at the DB, but also the aforementioned collection key.
+
+4
+00:00:14,610 --> 00:00:16,870
+Here, though, we know exactly what the collection key is.
+
+5
+00:00:16,890 --> 00:00:20,280
+It's the categories key because we just made this collection.
+
+6
+00:00:21,060 --> 00:00:26,580
+Then what we want to do next is a little bit more complicated and convoluted, honestly, but unique
+
+7
+00:00:26,580 --> 00:00:27,240
+to our store.
+
+8
+00:00:28,050 --> 00:00:33,210
+What we need is we need to generate a query, and from that query, we need to get docs.
+
+9
+00:00:33,270 --> 00:00:37,800
+So we need to import two new methods from Firestar query and get docs.
+
+10
+00:00:38,610 --> 00:00:43,650
+After I write this, I'm going to explain a little bit about why we set up our code this way, primarily
+
+11
+00:00:43,650 --> 00:00:45,210
+to guard against Firestorm.
+
+12
+00:00:45,810 --> 00:00:51,210
+And this is often not even unique to our store, but front end development as a whole typically falls
+
+13
+00:00:51,210 --> 00:00:52,050
+under this trap.
+
+14
+00:00:52,050 --> 00:00:55,170
+Or you could argue, JavaScript development as a whole falls into this trap.
+
+15
+00:00:55,710 --> 00:01:00,630
+But what we need to do with the query is we need to say, Hey, I'm going to generate a query off of
+
+16
+00:01:00,630 --> 00:01:01,640
+this collection, ref.
+
+17
+00:01:02,070 --> 00:01:05,880
+So I'm going to use the query method by passing in the collection, ref.
+
+18
+00:01:06,210 --> 00:01:10,860
+This gives me some object now that I can get a snapshot from.
+
+19
+00:01:11,130 --> 00:01:15,600
+So I'm going to say query snapshot is equal to a weight of calling.
+
+20
+00:01:15,600 --> 00:01:18,420
+Get docs on cue, so get docs.
+
+21
+00:01:18,420 --> 00:01:25,650
+Here is the asynchronous ability to fetch those document snapshots that we want, because now it's all
+
+22
+00:01:25,740 --> 00:01:27,810
+encapsulated under this query snapshot.
+
+23
+00:01:28,200 --> 00:01:35,970
+From here, we're actually able to access the different documents snapshots off of query snapshot dot
+
+24
+00:01:35,970 --> 00:01:36,510
+docs.
+
+25
+00:01:36,990 --> 00:01:44,070
+This will give us an array of all of those individual documents inside, and the snapshots are the actual
+
+26
+00:01:44,070 --> 00:01:45,000
+data themselves.
+
+27
+00:01:45,000 --> 00:01:47,040
+As we've seen before, we use snapshots.
+
+28
+00:01:47,520 --> 00:01:52,440
+But here, what we want to do is we want to reduce over this to create this structure we've been discussing.
+
+29
+00:01:53,100 --> 00:01:59,430
+So here I'm going to say Konst category map, which is what we're trying to build, is equal to query
+
+30
+00:01:59,430 --> 00:02:02,820
+snapshot dot docs dot reduce.
+
+31
+00:02:03,180 --> 00:02:09,510
+So we're reducing over this array in order to finally end up with an object.
+
+32
+00:02:09,960 --> 00:02:16,050
+So here, for the actual structure of my reduce, my first argument, of course, is the callback that
+
+33
+00:02:16,050 --> 00:02:18,780
+gets invoked on each document snapshot.
+
+34
+00:02:19,200 --> 00:02:22,320
+And then this is the final object we want to create.
+
+35
+00:02:22,320 --> 00:02:26,070
+But this is the initial instance of it, which is an empty object because we're building out the map
+
+36
+00:02:26,070 --> 00:02:26,580
+as we go.
+
+37
+00:02:27,180 --> 00:02:29,800
+The first argument is going to be accumulator.
+
+38
+00:02:30,210 --> 00:02:33,120
+The second argument is going to be dock snapshot.
+
+39
+00:02:35,030 --> 00:02:40,520
+And then from here, what we're going to do is we're going to first need to structure off the values
+
+40
+00:02:40,520 --> 00:02:42,620
+of the data of this stock snapshot.
+
+41
+00:02:42,950 --> 00:02:49,370
+So I want the title and I want the items, and I'm going to say, Hey, take this doc snapshot, give
+
+42
+00:02:49,370 --> 00:02:53,480
+me the data which will be the object and then take off the title and the items.
+
+43
+00:02:54,200 --> 00:03:00,950
+Then what I'm going to do is I'm going to say the accumulator at the title value is also need to be
+
+44
+00:03:00,950 --> 00:03:01,520
+lowercase.
+
+45
+00:03:01,550 --> 00:03:07,550
+If we remember our title is actually, as I mentioned, uppercase, this value is going to be equal
+
+46
+00:03:07,550 --> 00:03:12,410
+to the item and then I return my accumulator now that it's been updated.
+
+47
+00:03:13,310 --> 00:03:20,450
+So now what this will be is the actual category map that we've been building out, and I'm just going
+
+48
+00:03:20,450 --> 00:03:22,940
+to return this, as is.
+
+49
+00:03:24,020 --> 00:03:28,640
+So if you're looking at this and you're like, wow, what are these queries, this get talks, this
+
+50
+00:03:28,640 --> 00:03:31,820
+is async and then we need to reduce over.
+
+51
+00:03:31,820 --> 00:03:35,090
+And yet somehow here on the docs we get like these documents snapshots?
+
+52
+00:03:35,300 --> 00:03:41,510
+I know this seems confusing, and quite frankly, it's changed every single instance major version of
+
+53
+00:03:41,510 --> 00:03:42,110
+Firebase.
+
+54
+00:03:42,380 --> 00:03:47,390
+It's actually one of the more annoying things about how Google builds out Firestar is they do make it
+
+55
+00:03:47,390 --> 00:03:48,400
+backwards compatible.
+
+56
+00:03:48,410 --> 00:03:53,960
+You can use the previous versions if you take in this course before of how you build out these different
+
+57
+00:03:54,230 --> 00:03:54,830
+data models.
+
+58
+00:03:54,830 --> 00:03:55,610
+Fetch this data.
+
+59
+00:03:55,610 --> 00:03:56,410
+Store this data.
+
+60
+00:03:56,810 --> 00:04:02,660
+But here, the main thing that I want to highlight what we're doing is we are creating these helper
+
+61
+00:04:02,660 --> 00:04:09,770
+functions, and the main thing they do is they isolate the areas that are application interfaces with
+
+62
+00:04:09,770 --> 00:04:13,430
+things that might change in this articular case, its third party libraries.
+
+63
+00:04:14,000 --> 00:04:19,340
+The third party library might change their implementation, but at least we're isolating them all into
+
+64
+00:04:19,340 --> 00:04:26,630
+these individual functions rather than directly using these Firestar and authentication methods throughout
+
+65
+00:04:26,630 --> 00:04:27,320
+our application.
+
+66
+00:04:27,620 --> 00:04:32,510
+Because if we did that, then let's say Firebase or Fire Store changes the way they work.
+
+67
+00:04:32,750 --> 00:04:36,590
+Then across our entire application, we need to change all of those different places.
+
+68
+00:04:36,590 --> 00:04:42,290
+Whereas now we've at least isolated them all into this one file into these individual functions that
+
+69
+00:04:42,290 --> 00:04:45,350
+are clearly defined as to what these functions are trying to do.
+
+70
+00:04:46,600 --> 00:04:50,050
+For example, with this one, we're trying to get our category map here.
+
+71
+00:04:50,650 --> 00:04:55,330
+If they change the implementation here, we just need to change this one function.
+
+72
+00:04:55,630 --> 00:05:00,400
+Anywhere that's utilizing the category map is still just going to rely on this one function.
+
+73
+00:05:00,410 --> 00:05:04,930
+So as long as we fix the function, then we know that as long as we're a category man, our code is
+
+74
+00:05:04,930 --> 00:05:08,620
+still going to behave throughout the rest of our application the way we need it to.
+
+75
+00:05:08,980 --> 00:05:10,960
+And that's why we structure our code this way.
+
+76
+00:05:11,470 --> 00:05:15,970
+So this is one important thing you need to remember because unfortunately, the world of JavaScript
+
+77
+00:05:15,970 --> 00:05:17,740
+development moves very quickly.
+
+78
+00:05:18,070 --> 00:05:21,400
+Libraries are constantly changing, patterns are constantly changing.
+
+79
+00:05:21,400 --> 00:05:22,870
+Frameworks are constantly changing.
+
+80
+00:05:23,200 --> 00:05:28,840
+We need to figure out these patterns so that we can at least the best isolate and minimize the impact
+
+81
+00:05:28,840 --> 00:05:31,900
+that these changes have on our code base from working.
+
+82
+00:05:32,650 --> 00:05:33,640
+And this is one of them.
+
+83
+00:05:34,510 --> 00:05:39,250
+So now that we've generated our category map, let's actually see if it is indeed working.
+
+84
+00:05:39,760 --> 00:05:45,490
+I'm going to copy this method that we just made, and I'm going to move it into our product context.
+
+85
+00:05:45,610 --> 00:05:50,230
+So here now, I'm going to replace this ad with our get categories documents.
+
+86
+00:05:50,980 --> 00:05:56,230
+And then what I'm going to do is I am going to call use affect now.
+
+87
+00:05:56,230 --> 00:06:01,720
+Use effect is going to simply just call our get categories.
+
+88
+00:06:02,140 --> 00:06:05,290
+But one thing I want you to know and this is a new thing we're doing with use effect here.
+
+89
+00:06:05,890 --> 00:06:09,490
+This method is an async method, which means we get back a promise.
+
+90
+00:06:09,820 --> 00:06:14,530
+So the promise of this value doesn't resolve until our way of get docs is complete.
+
+91
+00:06:15,100 --> 00:06:18,220
+And then it has start to run through all of this to build the category agreement.
+
+92
+00:06:18,910 --> 00:06:24,370
+When you're using an async function inside of use, the fact you don't want to pass a async callback
+
+93
+00:06:24,370 --> 00:06:31,450
+like this, you want an inside of your anonymous callback, actually create a new async function.
+
+94
+00:06:31,480 --> 00:06:34,660
+So here I'm going to say const get categories.
+
+95
+00:06:34,870 --> 00:06:37,930
+Map is equal to an async function.
+
+96
+00:06:39,690 --> 00:06:44,100
+And inside of this async function, we're going to actually perform the async call.
+
+97
+00:06:44,160 --> 00:06:52,260
+So here again, Conte's category map is what we get back is equal to our a call of categories and documents
+
+98
+00:06:52,890 --> 00:06:55,440
+any async things you need to do inside of a use effect.
+
+99
+00:06:55,590 --> 00:07:01,890
+Wrap it in an async function and then what you need to do is then you call this method at the bottom.
+
+100
+00:07:02,430 --> 00:07:07,620
+So to show you, I'm just going to console.log the map and then after we've defined it, I'm going to
+
+101
+00:07:07,620 --> 00:07:08,190
+invoke it.
+
+102
+00:07:09,000 --> 00:07:12,120
+And of course, I only want to run this when this provider gets mounted.
+
+103
+00:07:13,730 --> 00:07:16,970
+So I've I save this, I go back to our application.
+
+104
+00:07:17,600 --> 00:07:21,800
+What we'll see after it fetches is here we go.
+
+105
+00:07:22,070 --> 00:07:23,570
+This is our categories map.
+
+106
+00:07:23,870 --> 00:07:28,580
+We have an object that contains our hats and our jackets and our men's and our sneakers and our women's.
+
+107
+00:07:29,240 --> 00:07:35,570
+This is exactly what we wanted, and now we have all of the data we need to actually finish flushing
+
+108
+00:07:35,570 --> 00:07:36,440
+out our shop.
+
+109
+00:07:37,350 --> 00:07:40,950
+But again, the main things that we've learned here are two new lessons.
+
+110
+00:07:41,070 --> 00:07:46,080
+One, we got a better understanding of why we set up all these utility functions because we want to
+
+111
+00:07:46,140 --> 00:07:50,850
+minimize the impact that changing third party libraries have on our code base.
+
+112
+00:07:51,180 --> 00:07:56,610
+And secondly, we also learn about using async functions inside of use of that.
+
+113
+00:07:56,910 --> 00:08:00,510
+We want to make our own new async function within the callback.
+
+114
+00:08:01,140 --> 00:08:06,660
+And then what we want to do is we want to call it inside of the same callback after it's been initialized.
+
+115
+00:08:07,230 --> 00:08:12,150
+So now that we have this working category map, we need to actually change up the structure of what
+
+116
+00:08:12,150 --> 00:08:14,850
+we called this provider, as well as make some new components.
+
+117
+00:08:15,270 --> 00:08:16,560
+So that's what we're going to do in the next video.
+
+118
+00:08:17,010 --> 00:08:17,610
+I'll see you there.

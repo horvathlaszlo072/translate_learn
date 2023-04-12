@@ -1,0 +1,219 @@
+1
+00:00:01,480 --> 00:00:09,550
+Let's talk about the final type of test automation tests now, you may also hear the term end to end
+
+2
+00:00:09,730 --> 00:00:12,090
+testing when it comes to automation test.
+
+3
+00:00:12,490 --> 00:00:13,600
+So keep that in mind.
+
+4
+00:00:13,780 --> 00:00:21,790
+Automation tests, like I said before, our UI tests that are always running inside a browser or a browser
+
+5
+00:00:21,790 --> 00:00:22,780
+like environment.
+
+6
+00:00:23,610 --> 00:00:30,930
+Because they need to simulate user behavior in these environments, such as clicking, typing, scrolling,
+
+7
+00:00:31,350 --> 00:00:38,460
+and finally they need to make sure that these scenarios actually work from the point of view of an end
+
+8
+00:00:38,460 --> 00:00:38,790
+user.
+
+9
+00:00:39,570 --> 00:00:40,810
+It's an important test, right?
+
+10
+00:00:41,100 --> 00:00:48,390
+If your checkout process has a bug, the best way to probably test it is to actually go through that
+
+11
+00:00:48,390 --> 00:00:53,020
+checkout flow and make sure that users can purchase whatever you're selling.
+
+12
+00:00:53,760 --> 00:00:57,870
+Now, in an ideal world, we have automation tests everywhere.
+
+13
+00:00:58,110 --> 00:01:01,170
+And if any of them fail, we know that our Web app doesn't work.
+
+14
+00:01:02,450 --> 00:01:10,490
+But it's important to remember that these tests are the hardest to set up, imagine yourself creating
+
+15
+00:01:10,490 --> 00:01:18,170
+an environment to run a test on different machines because users have different computers, different
+
+16
+00:01:18,170 --> 00:01:23,020
+devices, different phones, different browser types, different versions.
+
+17
+00:01:23,840 --> 00:01:25,730
+How can you really test for that?
+
+18
+00:01:25,880 --> 00:01:30,320
+I mean, you can, but it's really, really hard.
+
+19
+00:01:30,710 --> 00:01:35,630
+And this is why there's so many services that provide automation testing for you.
+
+20
+00:01:36,620 --> 00:01:38,180
+Here's an example of a few of them.
+
+21
+00:01:40,090 --> 00:01:47,770
+Yep, these are just a few of them, such as Nightwatch Web Driver, Eye Test Cafe, Nightmare Cyprus,
+
+22
+00:01:47,800 --> 00:01:49,360
+the list really goes on.
+
+23
+00:01:49,720 --> 00:01:56,020
+Automation testing is something you usually only find at bigger companies that have the budget to really
+
+24
+00:01:56,020 --> 00:02:03,670
+spend money on this because there's so many cases and they're so expensive to implement that some developers
+
+25
+00:02:03,670 --> 00:02:06,990
+go their whole career without ever writing an automation test.
+
+26
+00:02:07,300 --> 00:02:10,070
+But I still want to cover it because it is an important topic.
+
+27
+00:02:10,630 --> 00:02:11,950
+Here's a quick lowdown, though.
+
+28
+00:02:12,340 --> 00:02:20,170
+If you just want to get started and not worry about cross browser and have all the tools in one, probably
+
+29
+00:02:20,440 --> 00:02:21,940
+Tesfaye is your best choice.
+
+30
+00:02:22,630 --> 00:02:26,580
+Or if you want the one that has the best documentation online.
+
+31
+00:02:26,590 --> 00:02:29,230
+Well, Web driver Eyo is really great.
+
+32
+00:02:29,860 --> 00:02:37,720
+And if you want really simple ways to automate user actions or do something cool like web scraping,
+
+33
+00:02:37,960 --> 00:02:40,160
+well, nightmare is pretty good.
+
+34
+00:02:40,780 --> 00:02:47,200
+Now, the important thing with automation testing is that like the other name suggests, and to enter
+
+35
+00:02:47,440 --> 00:02:51,790
+testing, you want to test the entire process of your UI.
+
+36
+00:02:53,280 --> 00:02:59,610
+And you might be thinking, why do we get the machine to do it, why can't we just hire people to test
+
+37
+00:02:59,610 --> 00:03:01,220
+for us and do automation testing?
+
+38
+00:03:01,560 --> 00:03:03,030
+And that happens.
+
+39
+00:03:03,390 --> 00:03:09,780
+Many companies, instead of writing these scripts, simply hire people to do automation testing.
+
+40
+00:03:10,470 --> 00:03:16,650
+And at some companies, you have people like testers that do this for you and make sure that the app
+
+41
+00:03:16,650 --> 00:03:18,240
+works as intended.
+
+42
+00:03:19,360 --> 00:03:24,850
+And there's pros and cons to both of these, and that's something that it really depends on your company
+
+43
+00:03:25,030 --> 00:03:26,590
+and your work environment.
+
+44
+00:03:27,370 --> 00:03:33,190
+The main thing I want to suggest, though, is that we want to create two different testing processes,
+
+45
+00:03:33,880 --> 00:03:42,220
+one for a running unit, tests and integration tests, and a completely separate one to run these tests,
+
+46
+00:03:42,250 --> 00:03:43,510
+these automation tests.
+
+47
+00:03:44,380 --> 00:03:47,740
+That's because unit tests take a longer time.
+
+48
+00:03:48,730 --> 00:03:54,580
+Especially if we worry about different browsers and different devices and they also cost a lot more
+
+49
+00:03:54,580 --> 00:04:02,140
+money to run them repeatedly, so you would want to run unit tests and integration tests often probably
+
+50
+00:04:02,470 --> 00:04:09,690
+in your terminal as your saving your changes to your code and your local environment and maybe run UI
+
+51
+00:04:09,730 --> 00:04:17,800
+tests once a day or a couple of times a week or maybe just before you merge into the master branch,
+
+52
+00:04:18,340 --> 00:04:19,870
+before you release it to production.
+
+53
+00:04:20,680 --> 00:04:23,260
+For now, though, that's it for automation testing.
+
+54
+00:04:24,350 --> 00:04:25,310
+I'll see you in the next one.
+
+55
+00:04:25,970 --> 00:04:26,290
+Bye bye.

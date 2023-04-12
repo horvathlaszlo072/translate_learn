@@ -1,0 +1,113 @@
+1
+00:00:00.05 --> 00:00:02.00
+- [Instructor] I've
+downloaded the exercise files
+
+2
+00:00:02.00 --> 00:00:04.00
+and placed the folder on my desktop.
+
+3
+00:00:04.00 --> 00:00:05.07
+Let me show you what's inside.
+
+4
+00:00:05.07 --> 00:00:06.09
+Here we have the folders containing
+
+5
+00:00:06.09 --> 00:00:08.08
+the finished source for each project
+
+6
+00:00:08.08 --> 00:00:10.01
+that we'll be developing.
+
+7
+00:00:10.01 --> 00:00:13.02
+For example, 02_01 contains a source
+
+8
+00:00:13.02 --> 00:00:16.01
+for Chapter 02, Video One.
+
+9
+00:00:16.01 --> 00:00:17.08
+If you would like to load a project
+
+10
+00:00:17.08 --> 00:00:20.04
+from an exercise file
+for the Angular project,
+
+11
+00:00:20.04 --> 00:00:22.01
+you'll have to take an extra step.
+
+12
+00:00:22.01 --> 00:00:24.02
+Let's begin by opening
+up the exercise file
+
+13
+00:00:24.02 --> 00:00:26.01
+inside Visual Studio Code.
+
+14
+00:00:26.01 --> 00:00:29.02
+So I'll open up 05_01.
+
+15
+00:00:29.02 --> 00:00:31.05
+And if it has a package.json file,
+
+16
+00:00:31.05 --> 00:00:33.05
+that means it has dependencies.
+
+17
+00:00:33.05 --> 00:00:39.01
+So I'll use npm install to
+install those dependencies.
+
+18
+00:00:39.01 --> 00:00:41.06
+And it's created a Node Modules folder
+
+19
+00:00:41.06 --> 00:00:43.08
+that contains all of the packages.
+
+20
+00:00:43.08 --> 00:00:45.09
+Once it's finished, you
+can continue developing
+
+21
+00:00:45.09 --> 00:00:47.08
+or exploring the project.
+
+22
+00:00:47.08 --> 00:00:49.03
+Although these exercise files
+
+23
+00:00:49.03 --> 00:00:51.08
+are available, I suggest using them only
+
+24
+00:00:51.08 --> 00:00:54.00
+as a reference if you get stuck.
+
+25
+00:00:54.00 --> 00:00:55.03
+I highly suggest creating everything
+
+26
+00:00:55.03 --> 00:00:57.02
+from start to finish as you follow along
+
+27
+00:00:57.02 --> 00:01:00.01
+in the course, as practice makes perfect.
+

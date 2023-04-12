@@ -1,0 +1,363 @@
+1
+00:00:01,060 --> 00:00:02,020
+Welcome back, everyone.
+
+2
+00:00:03,130 --> 00:00:08,920
+In this video, we are going to talk about a couple performance optimization hooks that React has given
+
+3
+00:00:08,920 --> 00:00:09,730
+us access to.
+
+4
+00:00:10,420 --> 00:00:12,970
+The first one I want to talk about is use callback.
+
+5
+00:00:13,600 --> 00:00:19,750
+And to understand use callback, we need to understand how function declarations inside of a functional
+
+6
+00:00:19,750 --> 00:00:23,890
+component work by understanding how React treats functional components.
+
+7
+00:00:24,790 --> 00:00:31,570
+As I mentioned before, whenever you render or re render a functional component, React is going to
+
+8
+00:00:31,570 --> 00:00:37,210
+go through line by line of this entire function every single time.
+
+9
+00:00:38,490 --> 00:00:44,610
+Hooks by nature are more optimized for this process, but any variables you declare.
+
+10
+00:00:45,090 --> 00:00:49,330
+So if we were to hard code a variable, let's say ABC which equals a string.
+
+11
+00:00:49,350 --> 00:00:58,140
+ABC Whenever this component renders or renders and it hits line 20, react is re initializing this variable
+
+12
+00:00:58,200 --> 00:00:59,250
+with this string.
+
+13
+00:00:59,970 --> 00:01:02,640
+Now with variable casting, this is pretty performant.
+
+14
+00:01:02,640 --> 00:01:06,030
+It's extremely minimal and has very little cost.
+
+15
+00:01:06,750 --> 00:01:13,240
+But when you take something more complex like casting a function, this is definitely more expensive.
+
+16
+00:01:14,040 --> 00:01:20,340
+Even with anonymous functions inside the return call, react is re initializing this function every
+
+17
+00:01:20,340 --> 00:01:24,330
+single time, including our named variables as well.
+
+18
+00:01:24,360 --> 00:01:27,210
+These are also being re initialized every single time.
+
+19
+00:01:27,900 --> 00:01:33,300
+And the reason why this is happening is because React doesn't know whether or not this is something
+
+20
+00:01:33,480 --> 00:01:39,540
+that is brand new or it isn't brand new because it doesn't know if any of the scoped variables inside
+
+21
+00:01:39,540 --> 00:01:40,920
+are referencing new values.
+
+22
+00:01:41,070 --> 00:01:44,790
+React just operates in a way where it just behaves like regular JavaScript.
+
+23
+00:01:45,120 --> 00:01:49,350
+I see a function definition I'm going to define and initialize the function.
+
+24
+00:01:50,220 --> 00:01:54,120
+So for us, generally speaking, this is not that costly.
+
+25
+00:01:54,300 --> 00:01:55,650
+So this harkens back to what I was saying.
+
+26
+00:01:55,650 --> 00:01:59,850
+Last video Do not over optimize your code if you don't need to.
+
+27
+00:02:00,510 --> 00:02:04,500
+But let's say you're working on an application and you have hundreds of components that are rendering
+
+28
+00:02:04,500 --> 00:02:10,260
+on the page and each and every one of them is initializing a function every single time, and numerous
+
+29
+00:02:10,260 --> 00:02:11,640
+of those are constantly re rendering.
+
+30
+00:02:11,940 --> 00:02:18,300
+In that case, these little, little performance bumps may improve your actual overall performance.
+
+31
+00:02:19,050 --> 00:02:20,400
+So how does use callback work?
+
+32
+00:02:21,340 --> 00:02:25,510
+Use callback is a hook that takes two parameters.
+
+33
+00:02:25,930 --> 00:02:33,250
+The first is the actual callback that you want to memorize, and the second is a dependency array that
+
+34
+00:02:33,250 --> 00:02:36,190
+determines when it's time to re memorize this function.
+
+35
+00:02:37,100 --> 00:02:41,420
+Now when we talked about memoirs and we were talking about memoirs, Asian with selectors and the way
+
+36
+00:02:41,420 --> 00:02:48,050
+that we were master selectors was that if the parameters do not change of that function, then you will
+
+37
+00:02:48,050 --> 00:02:52,760
+always give you back the same output that was memorization with selectors.
+
+38
+00:02:53,270 --> 00:02:57,110
+Memorization in this context is that React is doing something similar.
+
+39
+00:02:57,290 --> 00:03:00,830
+Essentially this callback, it does not need to re initialize.
+
+40
+00:03:00,830 --> 00:03:06,740
+As long as this dependency array value does not change, then react will always give you back the same
+
+41
+00:03:06,950 --> 00:03:11,330
+function, not the return of the function, but the actual function itself.
+
+42
+00:03:11,330 --> 00:03:13,430
+React is memorizing the function.
+
+43
+00:03:13,430 --> 00:03:16,100
+React is not memorizing the output of the function.
+
+44
+00:03:16,100 --> 00:03:21,200
+And that's a very key difference to remember because of the fact that React is memorizing this function.
+
+45
+00:03:21,350 --> 00:03:28,040
+Now React does not need to re initialize this function every time it comes and hits line 20 on a render
+
+46
+00:03:28,040 --> 00:03:29,180
+or a re render.
+
+47
+00:03:29,930 --> 00:03:33,980
+The only time it will is if any values inside the dependency array changes.
+
+48
+00:03:34,910 --> 00:03:38,900
+Now here you'll notice that the dependency array mentions that you're missing a dependency which is
+
+49
+00:03:38,900 --> 00:03:39,590
+navigate.
+
+50
+00:03:40,520 --> 00:03:46,430
+This is where it kind of talks more about understanding how React uses references that determine if
+
+51
+00:03:46,430 --> 00:03:47,270
+this value is new.
+
+52
+00:03:48,400 --> 00:03:54,310
+Inside of React and most of the time with these third party libraries that create hooks.
+
+53
+00:03:55,260 --> 00:03:57,220
+When you think about this use navigate hook.
+
+54
+00:03:57,570 --> 00:04:02,550
+It's giving us some function navigate that we can use to navigate to different parts of our application.
+
+55
+00:04:03,440 --> 00:04:08,210
+Generally speaking, unless the structure of your application is constantly changing from a root level
+
+56
+00:04:08,210 --> 00:04:13,610
+in a dynamic manner, this navigate is going to be the exact same reference, which means that every
+
+57
+00:04:13,610 --> 00:04:19,910
+time React renders or renders this cart drop down component and hits line 18 this navigate, it's automatically
+
+58
+00:04:19,910 --> 00:04:21,480
+going to know, Oh, this is the same value.
+
+59
+00:04:21,500 --> 00:04:24,260
+I don't need to get a new one from use navigate.
+
+60
+00:04:24,710 --> 00:04:30,710
+So as a result, navigate is never really changing, so you don't actually need to pass navigate into
+
+61
+00:04:30,710 --> 00:04:32,930
+your dependency array on line 22.
+
+62
+00:04:34,310 --> 00:04:38,520
+React doesn't know that though use effect or use callback most of the time as we notice, we get a lot
+
+63
+00:04:38,520 --> 00:04:41,870
+of these warnings, but they don't know that this reference is doing that.
+
+64
+00:04:42,680 --> 00:04:44,570
+So as a result, React will give you a warning.
+
+65
+00:04:44,570 --> 00:04:46,670
+There is a dependency that's inside that.
+
+66
+00:04:46,670 --> 00:04:49,070
+I'm not sure if it will or will not update.
+
+67
+00:04:49,280 --> 00:04:51,350
+Maybe you'll get some errors if you don't include it.
+
+68
+00:04:52,010 --> 00:04:57,860
+The problem with adding it and it's not really a big problem, but it is a concern and why there's two
+
+69
+00:04:57,860 --> 00:04:58,610
+camps on this.
+
+70
+00:04:59,150 --> 00:05:04,670
+When you add this dependency, it kind of sends a mixed message that you can expect this callback to
+
+71
+00:05:04,670 --> 00:05:11,720
+re initialize this function and that navigate is something that does change or can change or most likely
+
+72
+00:05:11,720 --> 00:05:12,500
+will change.
+
+73
+00:05:12,920 --> 00:05:14,300
+But this is actually not true.
+
+74
+00:05:14,750 --> 00:05:17,780
+Generally speaking, we don't expect navigate to ever change.
+
+75
+00:05:18,260 --> 00:05:20,690
+So this is where two camps sit on this topic.
+
+76
+00:05:21,050 --> 00:05:22,070
+Some people say add it.
+
+77
+00:05:22,250 --> 00:05:24,320
+As long as you understand that navigate something doesn't change.
+
+78
+00:05:24,320 --> 00:05:25,550
+There's no harm in adding it.
+
+79
+00:05:25,880 --> 00:05:30,050
+Other people say that it makes your code a little bit miscommunicated.
+
+80
+00:05:30,050 --> 00:05:34,730
+It's saying that you can anticipate navigate to change, which is why I'm even adding it in the dependency
+
+81
+00:05:34,730 --> 00:05:35,150
+at all.
+
+82
+00:05:35,270 --> 00:05:36,800
+I'm expecting something to change.
+
+83
+00:05:37,310 --> 00:05:42,320
+So again, this is where really it depends on the team and the person that's coding out your code.
+
+84
+00:05:43,190 --> 00:05:48,560
+But the main thing to understand here at the very least with use callback now are function is memorized.
+
+85
+00:05:49,430 --> 00:05:54,020
+We don't really need to add it to the dependency array, but now that we have this memoires function,
+
+86
+00:05:54,440 --> 00:05:59,750
+we can now expect that this cost is not going to be there to re initialize this function every time.
+
+87
+00:06:00,780 --> 00:06:06,000
+But if you miss adding something to this dependency array, you may actually come with a couple of bugs.
+
+88
+00:06:06,240 --> 00:06:07,470
+And that's what we're going to talk about.
+
+89
+00:06:07,590 --> 00:06:12,270
+And through talking about, that will also better understand what's actually happening with use callback.
+
+90
+00:06:12,930 --> 00:06:15,000
+So join me in the next video where we'll discuss that.
+
+91
+00:06:15,270 --> 00:06:15,840
+I'll see you there.

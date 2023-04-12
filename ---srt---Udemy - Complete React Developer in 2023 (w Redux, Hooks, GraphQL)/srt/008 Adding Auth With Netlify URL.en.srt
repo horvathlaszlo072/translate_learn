@@ -1,0 +1,83 @@
+1
+00:00:00,770 --> 00:00:01,640
+Welcome back, everyone.
+
+2
+00:00:02,750 --> 00:00:07,850
+Some of you may have noticed that inside of your deployed application you cannot use the Google sign
+
+3
+00:00:07,850 --> 00:00:07,940
+it.
+
+4
+00:00:08,630 --> 00:00:14,150
+The reason for this is because we have not added our new domain as part of the authorized list to use
+
+5
+00:00:14,150 --> 00:00:15,620
+that authentication service.
+
+6
+00:00:16,280 --> 00:00:21,050
+So here, just copy the actual URL for your website that you've been given for.
+
+7
+00:00:21,050 --> 00:00:29,000
+Now, if I go into your authentication tab in Firebase, go to your sign in method and hit edit for
+
+8
+00:00:29,000 --> 00:00:29,510
+Google.
+
+9
+00:00:30,260 --> 00:00:34,760
+And then down here inside of authorized domains, click add domain.
+
+10
+00:00:35,120 --> 00:00:38,630
+Paste in that URL and now this should work.
+
+11
+00:00:39,480 --> 00:00:41,760
+So now that it's added in, let's go back.
+
+12
+00:00:42,120 --> 00:00:48,750
+And what we can do is open up our application, go to the sign in, hit sign in with Google.
+
+13
+00:00:50,890 --> 00:00:51,490
+And there we go.
+
+14
+00:00:51,880 --> 00:00:56,890
+We can now properly authenticate into our application with Google, sign it.
+
+15
+00:00:57,550 --> 00:00:58,900
+So that's just one quick thing to note.
+
+16
+00:00:59,290 --> 00:01:07,600
+Remember, again, if you ever change the domain or actually want more of your subdomains or whatever,
+
+17
+00:01:07,810 --> 00:01:13,780
+if you choose to end up renaming this website and getting a new actual URL for this, you're going to
+
+18
+00:01:13,780 --> 00:01:15,430
+want to add that domain here as well.
+
+19
+00:01:15,640 --> 00:01:18,730
+This is just those things that you have to do for these authentication services.
+
+20
+00:01:18,940 --> 00:01:20,080
+So remember that keys them.
+
+21
+00:01:20,740 --> 00:01:22,480
+And with that, let's continue with the course.

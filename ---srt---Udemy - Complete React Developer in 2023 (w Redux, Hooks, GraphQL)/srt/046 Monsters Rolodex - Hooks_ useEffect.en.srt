@@ -1,0 +1,583 @@
+1
+00:00:00,390 --> 00:00:01,440
+Welcome back, everyone.
+
+2
+00:00:02,340 --> 00:00:08,130
+So in the last video, we learned about why adding fetch calls that might cost that state can trigger
+
+3
+00:00:08,130 --> 00:00:09,750
+these infinite re render cycles.
+
+4
+00:00:10,110 --> 00:00:16,110
+And how do we simulate this behavior that we know we need inside of our component without causing ourselves
+
+5
+00:00:16,110 --> 00:00:17,280
+to get stuck in that loop?
+
+6
+00:00:17,910 --> 00:00:23,730
+I mentioned that we want to trigger side effects, and we do that using the use effect hook.
+
+7
+00:00:24,390 --> 00:00:27,210
+The use effect hook takes two arguments.
+
+8
+00:00:27,420 --> 00:00:30,430
+The first is going to be a callback function.
+
+9
+00:00:31,140 --> 00:00:34,440
+And the second is going to be an array of dependencies.
+
+10
+00:00:35,010 --> 00:00:36,570
+So let's break down what each of these are.
+
+11
+00:00:38,030 --> 00:00:41,060
+What is going to be this first argument, this callback?
+
+12
+00:00:41,480 --> 00:00:48,320
+Well, this callback is going to be the code or the fact that we want to happen inside of our functional
+
+13
+00:00:48,320 --> 00:00:48,740
+component.
+
+14
+00:00:50,240 --> 00:00:51,980
+What about this second array?
+
+15
+00:00:52,550 --> 00:00:59,210
+Well, the second array contains different dependencies and by dependencies, these are most likely
+
+16
+00:00:59,210 --> 00:01:05,480
+going to be state of values, so either search field or monster in the context of this application or
+
+17
+00:01:05,480 --> 00:01:10,280
+prop values, which will be arguments that get passed in as props to our functional component.
+
+18
+00:01:11,230 --> 00:01:19,030
+What this array says is that whenever any of the values inside of this dependency era change is when
+
+19
+00:01:19,030 --> 00:01:23,440
+I'm going to run this function, this callback function.
+
+20
+00:01:24,340 --> 00:01:28,870
+It's going to run this callback function the very first time this app mounts, because it's the very
+
+21
+00:01:28,870 --> 00:01:31,180
+first time this entire code is going to get run.
+
+22
+00:01:32,560 --> 00:01:39,910
+And then any subsequent re render of this component, I will only run this callback function if the
+
+23
+00:01:39,910 --> 00:01:43,270
+values inside of the dependency ray have changed.
+
+24
+00:01:44,050 --> 00:01:50,800
+So by doing that, we're now able to generate these side effects, which are again effects that come
+
+25
+00:01:50,800 --> 00:01:51,820
+out of our function.
+
+26
+00:01:53,530 --> 00:01:56,740
+In our particular case, a side effect is this fetch call.
+
+27
+00:01:57,400 --> 00:02:02,800
+So by moving this inside of our use effect hook here, we're just saying, hey, there's a callback
+
+28
+00:02:02,800 --> 00:02:05,990
+that creates a fetch call that then sets the monsters.
+
+29
+00:02:06,550 --> 00:02:11,560
+And I only want you to make this call if the values inside of this are a change.
+
+30
+00:02:11,920 --> 00:02:12,910
+Well, let's think about that.
+
+31
+00:02:12,940 --> 00:02:16,690
+When do we want to make a fetch call when this app mounts the first time?
+
+32
+00:02:16,990 --> 00:02:20,950
+And then after eight minutes, do we ever want to fetch from Jason placeholder again?
+
+33
+00:02:21,370 --> 00:02:21,820
+We don't.
+
+34
+00:02:21,820 --> 00:02:23,020
+We only want it to happen once.
+
+35
+00:02:23,470 --> 00:02:25,550
+So what needs to go inside of this array?
+
+36
+00:02:25,810 --> 00:02:26,560
+Well, nothing.
+
+37
+00:02:26,560 --> 00:02:32,680
+We don't ever want to trigger this callback ever again other than the very first time the app mounts.
+
+38
+00:02:33,550 --> 00:02:37,780
+So for that reason, we pass it an empty array as the dependency array.
+
+39
+00:02:38,200 --> 00:02:44,230
+We're essentially saying to this use effect Hey, the only time you should ever call this function is
+
+40
+00:02:44,230 --> 00:02:49,930
+on Mount, because if any of the dependencies change, use effect is going to call this function.
+
+41
+00:02:50,230 --> 00:02:55,090
+But I'm passing, you know, dependencies, which means that nothing is ever going to change.
+
+42
+00:02:55,090 --> 00:03:00,310
+So nothing should ever trigger you to recall this function ever again.
+
+43
+00:03:00,610 --> 00:03:03,760
+Other than the very first time when the function mounts.
+
+44
+00:03:04,760 --> 00:03:10,850
+So now, if we save this and we go back to our application and let's just refresh.
+
+45
+00:03:12,640 --> 00:03:19,240
+We see that we get one render call when we had our empty array and then we have one render call after
+
+46
+00:03:19,240 --> 00:03:22,270
+our fetch request comes back with all of our users.
+
+47
+00:03:22,810 --> 00:03:30,280
+But now what we'll notice is that even as we re render, we are not recreating that fetch call.
+
+48
+00:03:30,940 --> 00:03:37,360
+And just to be clear, let's add a console dot log in here, just so that we're sure that our effect
+
+49
+00:03:37,360 --> 00:03:39,100
+is not firing more than once.
+
+50
+00:03:39,640 --> 00:03:43,420
+I'm just going to say effect fired, and here we come back.
+
+51
+00:03:44,540 --> 00:03:51,410
+We see that we have our initial avec fire, and now as we type, the effect never fires again.
+
+52
+00:03:51,950 --> 00:03:55,250
+And this is exactly what we want out of our use of fact.
+
+53
+00:03:56,120 --> 00:04:01,150
+So here we have an example of what it's like to pass an empty array to our use factbook.
+
+54
+00:04:01,790 --> 00:04:08,420
+Let's take a look at a way that we can actually leverage this function's array so that we can get a
+
+55
+00:04:08,420 --> 00:04:12,590
+better understanding of some more complex use cases of this dependency array.
+
+56
+00:04:13,490 --> 00:04:17,930
+Another thing that we know that we need to do is we need to update the filter monsters.
+
+57
+00:04:19,230 --> 00:04:25,050
+Here is something that is interesting about filtered monsters to those of you that are savvy and have
+
+58
+00:04:25,050 --> 00:04:29,190
+understood what we've talked about when it comes to these functions rendering top to bottom.
+
+59
+00:04:29,760 --> 00:04:37,080
+What we know is that every time this function runs, this filter and monsters array is getting rebuilt.
+
+60
+00:04:37,710 --> 00:04:40,980
+Even if the monster's array has not changed.
+
+61
+00:04:41,960 --> 00:04:47,450
+This is OK, though, because we want to do this essentially whenever monsters change or one of a search
+
+62
+00:04:47,450 --> 00:04:48,020
+for real change.
+
+63
+00:04:48,500 --> 00:04:57,440
+But let's say just for an example that we wanted to trigger some changes as well in this application
+
+64
+00:04:57,440 --> 00:04:58,880
+that also modifies the state.
+
+65
+00:04:59,540 --> 00:05:01,700
+So I'm just going to give you a very quick example.
+
+66
+00:05:02,060 --> 00:05:05,660
+Let's say that I have some Stringfield.
+
+67
+00:05:05,840 --> 00:05:09,080
+This is another field and I just do set Stringfield.
+
+68
+00:05:09,680 --> 00:05:11,540
+And this also stars.
+
+69
+00:05:14,510 --> 00:05:17,330
+And let's just create another search box.
+
+70
+00:05:18,790 --> 00:05:24,490
+And inside, I'm going to generate content on string change.
+
+71
+00:05:25,850 --> 00:05:28,160
+And it's going to be very similar, it gets an event.
+
+72
+00:05:29,150 --> 00:05:34,280
+And all we're going to do is that we are just going to set the Stringfield value.
+
+73
+00:05:37,700 --> 00:05:40,910
+Whenever this event fires target value.
+
+74
+00:05:43,860 --> 00:05:45,960
+And I'm going to pass this into.
+
+75
+00:05:47,420 --> 00:05:52,250
+This second search box, I'm going to call this, in fact, I'm going to get rid of this class name
+
+76
+00:05:52,280 --> 00:05:57,500
+just so that we can visually see something different, and I'm going to set this placeholder as set
+
+77
+00:05:57,500 --> 00:05:57,860
+straight.
+
+78
+00:05:59,810 --> 00:06:03,680
+What I'm also going to do is I'm going to console dot log filtered monsters.
+
+79
+00:06:05,670 --> 00:06:06,870
+And now if I save this.
+
+80
+00:06:09,560 --> 00:06:12,920
+Here we have our search monsters and then we have our set string.
+
+81
+00:06:13,910 --> 00:06:16,730
+What you'll notice is that every time I type this.
+
+82
+00:06:18,260 --> 00:06:24,020
+Even though this searching hasn't changed and this monsters or hasn't changed.
+
+83
+00:06:24,350 --> 00:06:31,490
+I am really filtering through all of these monsters every single time, which is why you see this log
+
+84
+00:06:31,490 --> 00:06:33,650
+of the filter monsters every single time.
+
+85
+00:06:34,800 --> 00:06:40,470
+Even though this Stringfield doesn't do anything to our monsters, our search filters over here, this
+
+86
+00:06:40,470 --> 00:06:43,140
+Stringfield is just a different secondary input.
+
+87
+00:06:43,500 --> 00:06:49,620
+And yet for some reason, as we know, our function is going to re filter through these monsters.
+
+88
+00:06:50,160 --> 00:06:57,780
+This seems like a very inefficient thing, because to filter through these monsters, it costs our application,
+
+89
+00:06:57,780 --> 00:07:00,570
+our JavaScript some time to do this.
+
+90
+00:07:00,990 --> 00:07:04,290
+And over time, this could lead to a lot of inefficiencies.
+
+91
+00:07:04,710 --> 00:07:10,530
+So what we want to do is we only want to filter these monsters whenever the things relevant to filtering
+
+92
+00:07:10,530 --> 00:07:16,920
+monsters has changed, meaning that if the monsters array has changed or if the search field value has
+
+93
+00:07:16,920 --> 00:07:19,320
+changed, both of which live in our state.
+
+94
+00:07:20,070 --> 00:07:25,020
+So what we can do in order to fix this is that we can make another effect.
+
+95
+00:07:26,200 --> 00:07:27,130
+And order to do that.
+
+96
+00:07:27,430 --> 00:07:32,890
+What I'm going to say is that I'm going to initialize a filtered monster's state.
+
+97
+00:07:34,120 --> 00:07:36,160
+And set filter monsters.
+
+98
+00:07:37,490 --> 00:07:42,860
+And this is initial state is going to be the monsters value.
+
+99
+00:07:43,370 --> 00:07:46,550
+So by default, I'm just going to take whatever value was used here.
+
+100
+00:07:47,030 --> 00:07:52,040
+We do this because in case this initial value, as ever something else, we know that the filter on
+
+101
+00:07:52,040 --> 00:07:53,860
+monsters is always based off monsters.
+
+102
+00:07:53,870 --> 00:07:55,100
+So I'm just going to use this value.
+
+103
+00:07:55,580 --> 00:07:58,550
+So to initialize it will be the same empty array.
+
+104
+00:07:59,620 --> 00:08:06,280
+And then what I'm going to do is I am going to call another use effect, I'm going to say use effect.
+
+105
+00:08:07,830 --> 00:08:08,610
+Our callback.
+
+106
+00:08:09,480 --> 00:08:14,700
+And we know that in this callback, what we want to do is we just want to run.
+
+107
+00:08:16,020 --> 00:08:17,610
+This filtered monsters call.
+
+108
+00:08:20,950 --> 00:08:25,720
+And here I'm going to say this is new filtered monsters.
+
+109
+00:08:27,530 --> 00:08:33,080
+And once we filter through and we have that new monster, then we are going to say sets filter monsters
+
+110
+00:08:33,590 --> 00:08:35,420
+to the new filter and monsters.
+
+111
+00:08:38,010 --> 00:08:42,420
+And now filter monsters here is always going to contain the values we want.
+
+112
+00:08:43,650 --> 00:08:47,610
+And what I'm going to do is I'm going to say I want you to filter through these monsters when other
+
+113
+00:08:47,610 --> 00:08:53,610
+either the monsters are changes or whenever the search field changes.
+
+114
+00:08:55,660 --> 00:09:01,690
+And just so that we can see, let's also just add a console.log inside of this effect.
+
+115
+00:09:02,880 --> 00:09:08,580
+To make sure that we're not firing this effect whenever this Stringfield value is being updated.
+
+116
+00:09:08,700 --> 00:09:10,320
+Not a search field, but a string field.
+
+117
+00:09:10,830 --> 00:09:12,630
+So here I'm going to console.log.
+
+118
+00:09:13,050 --> 00:09:15,150
+Effect is firing.
+
+119
+00:09:16,940 --> 00:09:19,700
+I'm going to get rid of this, actually, no, let's keep the render.
+
+120
+00:09:20,180 --> 00:09:22,730
+Let's save this and now let's go back.
+
+121
+00:09:23,570 --> 00:09:24,440
+Let's clear this.
+
+122
+00:09:24,590 --> 00:09:25,370
+Let's refresh.
+
+123
+00:09:28,010 --> 00:09:29,430
+So we see our initial calls.
+
+124
+00:09:29,450 --> 00:09:34,760
+Of course, we see effect is firing twice because we initialize with the empty and then we initialize
+
+125
+00:09:34,760 --> 00:09:35,570
+with the empty string.
+
+126
+00:09:35,690 --> 00:09:37,220
+Remember, there's two fields now.
+
+127
+00:09:38,030 --> 00:09:43,430
+And what we're going to do is let's just validate that everything works with the normal search field.
+
+128
+00:09:43,880 --> 00:09:51,030
+So if I say, hey, we see that our code is working, we fire for each character like a three effect
+
+129
+00:09:51,030 --> 00:09:56,120
+test firing, which is exactly what we want and then three more when we clear out the field.
+
+130
+00:09:56,810 --> 00:10:04,730
+Now, when I type into this Stringfield value, we notice that again, this side effect is now not firing
+
+131
+00:10:04,730 --> 00:10:06,060
+anymore, which is perfect.
+
+132
+00:10:06,080 --> 00:10:07,210
+It's exactly what we want.
+
+133
+00:10:07,970 --> 00:10:10,190
+This Stringfield value is being updated.
+
+134
+00:10:10,610 --> 00:10:18,230
+So this set Stringfield is getting cold, but our side effect here doesn't need to run because monsters
+
+135
+00:10:18,230 --> 00:10:21,290
+and search field are two values that have not changed.
+
+136
+00:10:21,620 --> 00:10:27,560
+And now we know we're not needlessly running additional filters in our cycles whenever that happens.
+
+137
+00:10:29,270 --> 00:10:35,300
+So that's exactly what we want to do, and this is how you want to do the majority of writing your effects.
+
+138
+00:10:35,780 --> 00:10:39,980
+Now let's get rid of all this code that we don't need anymore because it was really just needed to prove
+
+139
+00:10:39,980 --> 00:10:40,640
+this example.
+
+140
+00:10:42,320 --> 00:10:44,080
+And let's get rid of these council logs.
+
+141
+00:10:47,580 --> 00:10:54,660
+And here we've pretty much converted the main class component inside of our application over into one
+
+142
+00:10:54,660 --> 00:11:00,180
+that uses a functional component and hooks, the hardest and most complicated thing is really going
+
+143
+00:11:00,180 --> 00:11:04,470
+to be understanding use effects and composing your code into these effects.
+
+144
+00:11:05,010 --> 00:11:08,700
+But don't worry, we're going to get a lot of practice with that throughout this course.
+
+145
+00:11:09,300 --> 00:11:13,860
+And the next video, we're going to convert the remaining components over into functional components.
+
+146
+00:11:14,160 --> 00:11:15,360
+So I'll see you in the next video.

@@ -1,0 +1,411 @@
+1
+00:00:00,820 --> 00:00:01,870
+Welcome back, everyone.
+
+2
+00:00:02,500 --> 00:00:09,070
+So let's now move the remainder of what we had inside of our objects into its own component.
+
+3
+00:00:10,410 --> 00:00:11,830
+Inside of the components folder.
+
+4
+00:00:12,600 --> 00:00:17,130
+When we think about what we want to name this, you want to kind of pick a name that really captures
+
+5
+00:00:17,130 --> 00:00:22,650
+what this feature will be for us because this feature is not being reused yet.
+
+6
+00:00:22,890 --> 00:00:28,680
+We don't need to overly optimize what the definition of this component really is right now.
+
+7
+00:00:29,250 --> 00:00:32,370
+We know at least it's our directory menu.
+
+8
+00:00:32,700 --> 00:00:40,740
+So I'm just going to call it directory and inside, I'm going to call it directory component dot GSX.
+
+9
+00:00:42,440 --> 00:00:44,360
+And I'm just going to move over.
+
+10
+00:00:48,320 --> 00:00:57,080
+This code, some of the say Konst directory is equal to a functional component that returns back.
+
+11
+00:00:58,230 --> 00:00:58,740
+This to.
+
+12
+00:00:59,940 --> 00:01:03,120
+We know that off the props, we're going to get categories.
+
+13
+00:01:05,880 --> 00:01:10,770
+And then we also know that we're going to export default.
+
+14
+00:01:15,260 --> 00:01:17,420
+We see that we're missing category item.
+
+15
+00:01:18,140 --> 00:01:19,370
+So let's go to Angus.
+
+16
+00:01:20,430 --> 00:01:24,720
+And let's scroll up and take this category item.
+
+17
+00:01:26,290 --> 00:01:31,330
+Because we no longer need it in objects anymore, since we're now putting it up into directory.
+
+18
+00:01:32,880 --> 00:01:35,790
+So here we just need to make sure that our relative import is correct.
+
+19
+00:01:36,510 --> 00:01:38,760
+So from here we go up one.
+
+20
+00:01:40,800 --> 00:01:48,960
+And right now we go from directory up to the components folder and then into category item and the remainder
+
+21
+00:01:48,960 --> 00:01:49,560
+stays the same.
+
+22
+00:01:50,520 --> 00:01:51,690
+So here is our directory.
+
+23
+00:01:52,790 --> 00:01:57,410
+Now what we also need is the styling for this directory, because if you remember, we have a bit of
+
+24
+00:01:57,410 --> 00:01:59,690
+styling in our categories that sees us.
+
+25
+00:02:00,530 --> 00:02:05,180
+So let's make a new file called Directory Dot Styles Dot SAS.
+
+26
+00:02:06,410 --> 00:02:10,190
+And inside, let's just copy over our categories container.
+
+27
+00:02:11,310 --> 00:02:14,790
+You can call this categories as well just to match the styling.
+
+28
+00:02:15,850 --> 00:02:18,890
+For me, I'm going to make this a little bit more clear.
+
+29
+00:02:19,180 --> 00:02:20,950
+I'm going to say directory container.
+
+30
+00:02:22,220 --> 00:02:28,550
+And I'm going to modify the styling inside of directory component here, this class name, so that it's
+
+31
+00:02:28,550 --> 00:02:29,390
+more clear as well.
+
+32
+00:02:31,320 --> 00:02:33,780
+You can easily make these changes on the fly.
+
+33
+00:02:35,210 --> 00:02:40,220
+As you write your code, honestly, sometimes you might feel like you're naming of a component makes
+
+34
+00:02:40,220 --> 00:02:42,560
+more sense as you start writing it out.
+
+35
+00:02:42,890 --> 00:02:47,780
+It's perfectly fine to change these class names and all this stuff when you're in this phase where you're
+
+36
+00:02:47,780 --> 00:02:48,770
+building out a feature.
+
+37
+00:02:50,000 --> 00:02:56,270
+As you start to work with other teams, sometimes you may want to talk about this with your teammates
+
+38
+00:02:56,270 --> 00:03:01,940
+to make sure that everyone understands and agrees that these component names do capture what it is that
+
+39
+00:03:01,940 --> 00:03:02,450
+you're writing.
+
+40
+00:03:03,020 --> 00:03:08,630
+Because one key thing to think about when it comes to variable names, you are writing code for people.
+
+41
+00:03:09,320 --> 00:03:14,390
+Yes, the computer interprets it, but it's developers human people that are reading this code.
+
+42
+00:03:14,870 --> 00:03:19,760
+So you need to be writing these function names and these component names in a way that is intuitive
+
+43
+00:03:19,760 --> 00:03:20,270
+for people.
+
+44
+00:03:20,960 --> 00:03:23,480
+What's intuitive for some may not be intuitive for others.
+
+45
+00:03:23,900 --> 00:03:28,280
+So feel free to rename this whatever you want as well, whatever makes sense to you about what we're
+
+46
+00:03:28,280 --> 00:03:28,710
+building.
+
+47
+00:03:28,820 --> 00:03:30,560
+You can definitely try and name it that way.
+
+48
+00:03:31,010 --> 00:03:31,880
+That's the beautiful thing.
+
+49
+00:03:32,360 --> 00:03:34,070
+I want you to try and see.
+
+50
+00:03:34,430 --> 00:03:38,240
+That's honestly sometimes the best way for you to know whether or not something makes sense or not.
+
+51
+00:03:39,020 --> 00:03:42,920
+So let's go back to our OPG's, and now let's import in our directory.
+
+52
+00:03:44,220 --> 00:03:51,180
+So when you go up to our components into our directory folder, grab directory component file and we'll
+
+53
+00:03:51,180 --> 00:03:53,010
+just replace this whole section here.
+
+54
+00:03:53,980 --> 00:03:59,410
+With our directory and we're going to pass in categories is equal.
+
+55
+00:04:01,720 --> 00:04:02,590
+Two categories.
+
+56
+00:04:05,860 --> 00:04:07,030
+And now let's save this code.
+
+57
+00:04:08,080 --> 00:04:08,920
+Let's go check.
+
+58
+00:04:09,990 --> 00:04:12,480
+This was our hot image, but let's check our application.
+
+59
+00:04:12,570 --> 00:04:13,260
+Let's refresh.
+
+60
+00:04:14,320 --> 00:04:20,320
+Oh, we didn't actually resolve the category style, so we didn't remove that code right here.
+
+61
+00:04:21,350 --> 00:04:23,720
+We no longer have categories, styles because we deleted it.
+
+62
+00:04:24,590 --> 00:04:27,470
+And in our directory, we also did not import it.
+
+63
+00:04:33,160 --> 00:04:38,710
+We just imported our directory styles file that we moved our styles into into our directory component
+
+64
+00:04:39,250 --> 00:04:44,980
+and then yes, we've removed the reference to that category styles file that we removed.
+
+65
+00:04:45,310 --> 00:04:46,240
+And now if we go back.
+
+66
+00:04:47,150 --> 00:04:54,020
+We have one more cannot resolve category item, category item component inside of our directory component.
+
+67
+00:04:54,680 --> 00:04:55,550
+So let's go back here.
+
+68
+00:04:56,150 --> 00:04:57,620
+Let's see what mistake we made here.
+
+69
+00:04:58,760 --> 00:05:04,850
+Ah, here we see inside we've gone up from our Directory folder to our components folder.
+
+70
+00:05:05,390 --> 00:05:10,670
+We went into the category item folder and then we went and tried to find another category item folder.
+
+71
+00:05:11,120 --> 00:05:12,140
+So this is duplicated.
+
+72
+00:05:13,940 --> 00:05:15,570
+So everyone makes mistakes.
+
+73
+00:05:15,590 --> 00:05:18,980
+You're going to make a bunch of typos and you're going to make a bunch of errors when you're coding.
+
+74
+00:05:19,520 --> 00:05:20,970
+Always whenever that happens.
+
+75
+00:05:20,990 --> 00:05:24,920
+Take a breath and just really focus on where do you think the error is coming from?
+
+76
+00:05:25,190 --> 00:05:30,200
+We had Stack Trace, which is what we saw when we saw that error message in our browser that told us
+
+77
+00:05:30,200 --> 00:05:30,920
+where our error was.
+
+78
+00:05:31,310 --> 00:05:33,590
+And then it's just a matter of process of elimination.
+
+79
+00:05:34,370 --> 00:05:35,660
+What are the files that we changed?
+
+80
+00:05:36,020 --> 00:05:39,380
+Where could we most likely expect to see these errors from the stack trace?
+
+81
+00:05:39,380 --> 00:05:44,630
+And then it's just a matter of going back through all the possible cases and most of the time, honestly,
+
+82
+00:05:44,630 --> 00:05:45,920
+90 percent of the time.
+
+83
+00:05:46,610 --> 00:05:49,100
+A lot of our errors are going to be typos.
+
+84
+00:05:50,610 --> 00:05:52,050
+And now here we come back.
+
+85
+00:05:52,530 --> 00:05:55,590
+We see that everything is exactly how it was before.
+
+86
+00:05:56,800 --> 00:05:57,280
+So that's it.
+
+87
+00:05:57,940 --> 00:06:03,400
+We've moved out and made this major companies major components now and now we can start building out
+
+88
+00:06:03,400 --> 00:06:06,010
+the rest of our application and thinking about what else to build.
+
+89
+00:06:06,550 --> 00:06:12,070
+But before we proceed, what I want you to do is I want you to go back to your terminal and now is actually
+
+90
+00:06:12,070 --> 00:06:14,470
+a great time for us to commit our code.
+
+91
+00:06:15,750 --> 00:06:21,450
+So commit your code is just to make a save of your code because you really want to think about when
+
+92
+00:06:21,450 --> 00:06:22,140
+you want to commit.
+
+93
+00:06:22,650 --> 00:06:27,150
+Oftentimes you want to commit when you've done what feels like a contained block of work.
+
+94
+00:06:27,390 --> 00:06:31,050
+And for us, we just built out our directory page, which is a great time to commit this work.
+
+95
+00:06:31,740 --> 00:06:34,020
+So we're just going to say, get, add dash.
+
+96
+00:06:36,220 --> 00:06:46,600
+Get commit and then are commit message, we'll just say updating our directory page with directory component
+
+97
+00:06:47,410 --> 00:06:49,720
+and category item component.
+
+98
+00:06:53,040 --> 00:06:54,840
+And then you can just push this up.
+
+99
+00:06:54,990 --> 00:07:00,660
+You can do get push for me because I'm using Zetia, which is my preferred.
+
+100
+00:07:00,660 --> 00:07:02,310
+I have the shorthand Gigi push.
+
+101
+00:07:04,860 --> 00:07:07,140
+There's a push up, and there we go.
+
+102
+00:07:09,030 --> 00:07:14,550
+Now in the next video, join me while we build out the next major feature in our application.
+
+103
+00:07:15,000 --> 00:07:15,990
+I'll see you in the next video.

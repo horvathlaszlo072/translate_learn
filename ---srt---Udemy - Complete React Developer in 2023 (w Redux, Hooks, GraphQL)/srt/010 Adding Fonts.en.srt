@@ -1,0 +1,523 @@
+1
+00:00:00,560 --> 00:00:01,670
+Welcome back, everyone.
+
+2
+00:00:02,450 --> 00:00:07,580
+In this video, let's update the fonts throughout our application, and let's talk a little bit about
+
+3
+00:00:07,760 --> 00:00:13,010
+some of the more nitty gritty details regarding what it is that we're doing and how it is that we're
+
+4
+00:00:13,010 --> 00:00:13,490
+building.
+
+5
+00:00:13,490 --> 00:00:17,430
+Our application is going to actually convert into our final application.
+
+6
+00:00:18,080 --> 00:00:23,060
+So it's going to get a little bit meta, but it's will be really valuable, at least regarding how you
+
+7
+00:00:23,060 --> 00:00:26,510
+need to think about web applications on the browser itself.
+
+8
+00:00:27,080 --> 00:00:31,190
+So here we're back on Google Fonts and we need to download another font.
+
+9
+00:00:31,520 --> 00:00:36,020
+We've gone through these steps already before, but I'm going to get a little bit more specific as to
+
+10
+00:00:36,020 --> 00:00:39,110
+what exactly is happening when you include these fonts into your application.
+
+11
+00:00:39,680 --> 00:00:41,450
+So here, let's pick a font that we like.
+
+12
+00:00:41,960 --> 00:00:48,830
+Personally, I'm going to use open sans condensed because I think this one looks really modern, but
+
+13
+00:00:48,830 --> 00:00:52,460
+you can really pick whatever font you want to use, and I'll show you how you can include it.
+
+14
+00:00:53,510 --> 00:00:59,990
+So here, once you select the font you want, honestly, Google likes to change up their UI pretty consistently.
+
+15
+00:01:00,500 --> 00:01:03,470
+So what you see here might not be what you see live right now.
+
+16
+00:01:05,000 --> 00:01:10,070
+But essentially, there will be a way for you to add the variation of the one you choose.
+
+17
+00:01:10,160 --> 00:01:15,740
+So for me, there's open sounds condensed, but there's light, 300 light, 300 italic and bold 700.
+
+18
+00:01:16,400 --> 00:01:17,310
+Ignore these numbers.
+
+19
+00:01:17,330 --> 00:01:19,550
+Essentially, what this means is that this is the regular.
+
+20
+00:01:19,820 --> 00:01:22,640
+This is the italic version and this is the bold version.
+
+21
+00:01:23,420 --> 00:01:28,790
+Personally, I want just the regular version because I'm not really going to use the italic or the bold
+
+22
+00:01:28,790 --> 00:01:30,200
+version in the application.
+
+23
+00:01:30,680 --> 00:01:32,330
+But you can include them if you want to use them.
+
+24
+00:01:33,210 --> 00:01:39,000
+Once you have that, you need to click this right button here that shows the different fonts that you've
+
+25
+00:01:39,180 --> 00:01:43,590
+added, because what's going to happen is that Google is going to generate this link for you.
+
+26
+00:01:43,590 --> 00:01:47,430
+That includes all of the different fonts that you want right here.
+
+27
+00:01:48,210 --> 00:01:53,040
+So, for example, let's say that I wanted also the italic and the bolt.
+
+28
+00:01:53,490 --> 00:01:55,760
+When I select these, you'll actually see this update.
+
+29
+00:01:55,770 --> 00:01:56,340
+So here.
+
+30
+00:01:57,030 --> 00:01:59,100
+Notice how this has updated.
+
+31
+00:02:00,160 --> 00:02:06,610
+It now includes the 700 before and included also the 300 what the italicized right, the eye tail,
+
+32
+00:02:06,610 --> 00:02:13,120
+if you'll notice right here, I tell it's just including the variations of this open sans condensed
+
+33
+00:02:13,120 --> 00:02:17,680
+font that we're also going to download, because that's really what's happening here.
+
+34
+00:02:18,630 --> 00:02:20,280
+Now, of course, I mentioned I don't want them.
+
+35
+00:02:21,200 --> 00:02:25,760
+So I'm just going to get rid of them, but you're really showing you what is happening when you're generating
+
+36
+00:02:25,760 --> 00:02:26,600
+these font links.
+
+37
+00:02:27,560 --> 00:02:31,160
+And that's what we're going to do is just going to copy these links and we're going to go back to our
+
+38
+00:02:31,160 --> 00:02:38,930
+application code and we're going to go into our index slot HDMI and we are going to go into our heads
+
+39
+00:02:38,930 --> 00:02:41,720
+section and just paste it right here.
+
+40
+00:02:42,990 --> 00:02:49,470
+And what's happening here is that essentially we're telling our application that when you load this
+
+41
+00:02:49,470 --> 00:02:54,090
+application in the browser, I want you to download these things.
+
+42
+00:02:54,480 --> 00:02:59,490
+In this particular case, what we're actually downloading is this font.
+
+43
+00:02:59,910 --> 00:03:03,750
+So let's copy this off and just see what we are supposed to get back.
+
+44
+00:03:04,500 --> 00:03:07,170
+So if we go back to our browser and we just paste this in.
+
+45
+00:03:08,430 --> 00:03:09,690
+We see this.
+
+46
+00:03:10,560 --> 00:03:14,370
+This is actually a font definition.
+
+47
+00:03:15,090 --> 00:03:19,500
+But if you read it, it's CIUSSS font, family, font, style, font weight.
+
+48
+00:03:19,500 --> 00:03:25,560
+All of these are just definitions for specifically these fonts that we're trying to include and to be
+
+49
+00:03:25,560 --> 00:03:27,240
+able to use them in CSS.
+
+50
+00:03:27,720 --> 00:03:34,650
+So this is really how we're able to define these fonts into our application because Google is giving
+
+51
+00:03:34,650 --> 00:03:40,320
+us a CSV file that allows us to actually define what this open stands condensed is.
+
+52
+00:03:40,800 --> 00:03:47,640
+The source of the actual font is coming from this URL, which is what Google hosts to actually give
+
+53
+00:03:47,640 --> 00:03:49,140
+you the font itself.
+
+54
+00:03:49,650 --> 00:03:56,640
+What we're downloading when we include the link inside of our email is just the CIUSSS rules that allow
+
+55
+00:03:56,640 --> 00:03:58,560
+us to leverage these fonts.
+
+56
+00:03:58,680 --> 00:03:59,910
+So that's an important thing to note.
+
+57
+00:04:01,370 --> 00:04:06,860
+So that's the thing about this casserole that we're adding or the CSV file you'll even notice in the
+
+58
+00:04:07,130 --> 00:04:08,320
+effort, says KSAZ, too.
+
+59
+00:04:09,170 --> 00:04:10,100
+So that's an important thing.
+
+60
+00:04:10,130 --> 00:04:17,330
+This is coming and giving us these font CIUSSS files so that in turn, we can leverage them in our code.
+
+61
+00:04:17,870 --> 00:04:18,680
+How do we do that?
+
+62
+00:04:19,340 --> 00:04:26,600
+Well, let's go into our index stocks here because we're writing says, let's actually convert this
+
+63
+00:04:26,600 --> 00:04:28,790
+to index that says just for consistency.
+
+64
+00:04:30,190 --> 00:04:37,270
+Inside of your index that says what I want you to do is I want you to actually remove these all these
+
+65
+00:04:37,270 --> 00:04:38,200
+different for families.
+
+66
+00:04:38,590 --> 00:04:39,730
+You can keep them if you want.
+
+67
+00:04:39,760 --> 00:04:42,820
+Really, it's just saying, I want you to try this one first.
+
+68
+00:04:42,820 --> 00:04:44,360
+If that's not available, try this one.
+
+69
+00:04:44,410 --> 00:04:45,970
+If that's not available, try this one.
+
+70
+00:04:46,000 --> 00:04:47,200
+If that's not available, try this one.
+
+71
+00:04:47,350 --> 00:04:53,620
+And it just keeps going until eventually it lands on one of these fonts that is applicable for us because
+
+72
+00:04:53,620 --> 00:04:59,080
+I want my entire application to be in the open sans.
+
+73
+00:04:59,560 --> 00:05:00,930
+I'm just going to do this.
+
+74
+00:05:00,940 --> 00:05:02,680
+I'm going to remove all those ones I don't want.
+
+75
+00:05:03,010 --> 00:05:08,890
+We can keep the base sans serif one, but I'm going to say open, sans condensed.
+
+76
+00:05:10,070 --> 00:05:15,590
+One more thing we need to do is update all references to index that caused us to index the SAS.
+
+77
+00:05:15,950 --> 00:05:21,380
+Whenever you update file types inside of your project, you need to make sure that you correspondingly
+
+78
+00:05:21,380 --> 00:05:26,060
+update all references to those previous file types and switch them for the new one.
+
+79
+00:05:26,390 --> 00:05:31,460
+So here in our indexed ungass file, we know we're importing our previous index success, so we need
+
+80
+00:05:31,460 --> 00:05:34,640
+to update this so that it imports indexed SAS.
+
+81
+00:05:35,360 --> 00:05:38,390
+Oftentimes, you will see inside of your web application.
+
+82
+00:05:38,390 --> 00:05:43,220
+If you visit it, it'll tell you that it can't find a certain file, especially if the files rename.
+
+83
+00:05:43,220 --> 00:05:47,540
+Then you know, that's why is because you've updated the name, but you have not updated all of the
+
+84
+00:05:47,540 --> 00:05:48,380
+references to it.
+
+85
+00:05:48,620 --> 00:05:52,160
+So beware of doing these types of changes and keep an eye open for it.
+
+86
+00:05:53,290 --> 00:05:58,510
+Now that we have all of our code required to see if our phone is loaded in, let's go back to our application
+
+87
+00:05:59,020 --> 00:06:05,860
+and here we can clearly see that our fonts are now up to date with all of our newest open sans condensed
+
+88
+00:06:05,860 --> 00:06:06,190
+font.
+
+89
+00:06:06,970 --> 00:06:12,460
+One other thing I want you to notice is if you open up your inspect and you look at these elements here,
+
+90
+00:06:13,300 --> 00:06:16,480
+I want you to open up the head inside of the head.
+
+91
+00:06:16,690 --> 00:06:24,250
+You will see these different three style tags, and inside of them is that CSS code that we wrote.
+
+92
+00:06:25,030 --> 00:06:28,690
+So this is one thing I want you to understand about how SAS works.
+
+93
+00:06:29,320 --> 00:06:36,910
+SAS being a style of CSS or an extension of CSS requires that SAS library that we installed.
+
+94
+00:06:37,450 --> 00:06:43,420
+Because what create React app will do is that Create React app has actually created and leverage this
+
+95
+00:06:43,420 --> 00:06:51,220
+configuration so that it will take in the SAS that we've written and compile it down into Texas by the
+
+96
+00:06:51,220 --> 00:06:53,350
+time it actually ends up in the browser.
+
+97
+00:06:53,590 --> 00:06:57,310
+Because the browser cannot read SAS, the browser can only read access.
+
+98
+00:06:57,610 --> 00:07:03,160
+But inside of here you notice that all of this access code looks like the code we wrote, except it's
+
+99
+00:07:03,160 --> 00:07:08,260
+using all of the typical success non nested a selector behavior.
+
+100
+00:07:08,740 --> 00:07:14,020
+So that's the great thing about Create React app is that instead of us having to set up our applications
+
+101
+00:07:14,020 --> 00:07:18,940
+that it knows how to transform SAS into CSS, SAS will do that for itself.
+
+102
+00:07:18,940 --> 00:07:22,150
+Do to create React Apps configuration for our web pack.
+
+103
+00:07:22,450 --> 00:07:26,830
+We'll talk a lot about Webpack later in the course after we've already built our application, and we
+
+104
+00:07:26,830 --> 00:07:31,270
+want to understand how we can do essentially what it is that create racked up has done for us.
+
+105
+00:07:31,480 --> 00:07:35,230
+But right now, I just wanted to highlight something interesting for you to see, since we're talking
+
+106
+00:07:35,230 --> 00:07:38,290
+about SAS and we're talking about our styling right now.
+
+107
+00:07:38,980 --> 00:07:43,750
+If we go back to our application, one final thing I want to mention is that with Create racked up,
+
+108
+00:07:43,990 --> 00:07:49,280
+it also generated for us a packaged log file because I'm using yarn.
+
+109
+00:07:49,300 --> 00:07:51,400
+I also have a yarn dot log file.
+
+110
+00:07:51,670 --> 00:07:57,430
+If you are not using yarn and you are just using npm, you would see only a package lock file and not
+
+111
+00:07:57,430 --> 00:07:58,360
+a yarn lock file.
+
+112
+00:07:58,780 --> 00:08:00,160
+So what are these log files?
+
+113
+00:08:00,730 --> 00:08:06,670
+These log files are essentially generated by our package managers and PM or yarn, respectively, in
+
+114
+00:08:06,670 --> 00:08:13,330
+order to determine for an application what version of all of these dependencies that we have inside
+
+115
+00:08:13,540 --> 00:08:15,580
+our lock to in this project.
+
+116
+00:08:15,940 --> 00:08:20,860
+The reason why you want this type of consistency is because these different versions might clash if
+
+117
+00:08:21,070 --> 00:08:27,730
+you're using some specific version and then somebody else who is also coding against this library or
+
+118
+00:08:27,730 --> 00:08:34,150
+this project, they might run different versions so your code might not behave the same way between
+
+119
+00:08:34,150 --> 00:08:35,440
+these two different developers.
+
+120
+00:08:35,710 --> 00:08:42,100
+So the log file is a way for us to make sure that all of the libraries that we use as a team are locked
+
+121
+00:08:42,100 --> 00:08:45,430
+to the same versions or at least compatible versions.
+
+122
+00:08:46,180 --> 00:08:47,710
+And typically, you only need one.
+
+123
+00:08:47,980 --> 00:08:51,020
+So because for the remainder of my project, I'm going to use the yarn.
+
+124
+00:08:51,190 --> 00:08:58,000
+I don't need package lock package lock as generated for us because Create React app by default uses
+
+125
+00:08:58,000 --> 00:09:00,310
+npm in order to scaffold and set up this project.
+
+126
+00:09:00,520 --> 00:09:03,490
+But because I'm using yarn, I'm just going to get rid of the package lock file.
+
+127
+00:09:03,850 --> 00:09:08,020
+This is only important if you're also using yarn, if you're not and you're using npm.
+
+128
+00:09:08,200 --> 00:09:09,010
+Don't worry about it.
+
+129
+00:09:09,730 --> 00:09:15,340
+But with this, we have pretty much cleaned up the majority of getting our initial project up and running.
+
+130
+00:09:15,460 --> 00:09:17,920
+We have our fonts and we have our directory set up.
+
+131
+00:09:18,250 --> 00:09:20,620
+So now let's move on with our code base.

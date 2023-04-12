@@ -1,0 +1,492 @@
+1
+00:00:00.04 --> 00:00:03.02
+- Next, let's create a dynamic table
+
+2
+00:00:03.02 --> 00:00:08.02
+to display search results from
+our available room search.
+
+3
+00:00:08.02 --> 00:00:11.08
+We are going to use prebuilt
+Twitter Bootstrap classes
+
+4
+00:00:11.08 --> 00:00:15.01
+to create a mobile,
+responsive, dynamic table
+
+5
+00:00:15.01 --> 00:00:18.06
+that displays the room number, price,
+
+6
+00:00:18.06 --> 00:00:22.03
+a placeholder picture, and also a button
+
+7
+00:00:22.03 --> 00:00:25.04
+to create a reservation for that room.
+
+8
+00:00:25.04 --> 00:00:30.00
+We will use a ngFor directive
+to iterate through a list
+
+9
+00:00:30.00 --> 00:00:34.02
+of room objects populated
+from a JSON array.
+
+10
+00:00:34.02 --> 00:00:37.09
+Let's open up app.component.html.
+
+11
+00:00:37.09 --> 00:00:46.05
+First, let's create a
+row in a 12-column div.
+
+12
+00:00:46.05 --> 00:00:54.05
+Next, let's create a responsive table.
+
+13
+00:00:54.05 --> 00:00:57.05
+Then, let's add a tbody element.
+
+14
+00:00:57.05 --> 00:01:01.00
+Within that tbody, let's add a table row.
+
+15
+00:01:01.00 --> 00:01:06.07
+Within that table row, let's
+add three table columns.
+
+16
+00:01:06.07 --> 00:01:09.07
+In the first row, let's
+add a placeholder picture
+
+17
+00:01:09.07 --> 00:01:10.09
+of the room.
+
+18
+00:01:10.09 --> 00:01:15.05
+Let's copy and paste a sample
+picture into that column.
+
+19
+00:01:15.05 --> 00:01:19.01
+This image will serve as a placeholder.
+
+20
+00:01:19.01 --> 00:01:21.03
+In the next column, we will display
+
+21
+00:01:21.03 --> 00:01:25.03
+the room number and the price.
+
+22
+00:01:25.03 --> 00:01:30.05
+In the final column, let's add
+a button of the type submit.
+
+23
+00:01:30.05 --> 00:01:34.08
+Then, let's add the class
+btn and btn-primary.
+
+24
+00:01:34.08 --> 00:01:37.09
+Let's update the button label to Reserve.
+
+25
+00:01:37.09 --> 00:01:41.00
+Okay, let's save and take a
+look at what we've got so far.
+
+26
+00:01:41.00 --> 00:01:45.00
+Looks like we need to add
+a header to that section.
+
+27
+00:01:45.00 --> 00:01:48.05
+Let's copy and paste
+the Book a Room header
+
+28
+00:01:48.05 --> 00:01:51.03
+and add it to the top of our table.
+
+29
+00:01:51.03 --> 00:01:54.07
+Let's rename it Available Rooms.
+
+30
+00:01:54.07 --> 00:01:59.03
+Also, let's add a line break
+between Room # and Price.
+
+31
+00:01:59.03 --> 00:02:03.06
+Next, let's jump into app.component.ts.
+
+32
+00:02:03.06 --> 00:02:07.07
+Let's create an interface called
+Room that has four fields:
+
+33
+00:02:07.07 --> 00:02:10.07
+id, roomNumber, price, and links.
+
+34
+00:02:10.07 --> 00:02:13.09
+Let's copy the Roomsearch interface,
+
+35
+00:02:13.09 --> 00:02:18.00
+paste it right below,
+and rename it to Room.
+
+36
+00:02:18.00 --> 00:02:20.05
+Let's rename checkin to id.
+
+37
+00:02:20.05 --> 00:02:24.00
+Let's rename checkout to roomNumber.
+
+38
+00:02:24.00 --> 00:02:26.09
+Let's add a string called price
+
+39
+00:02:26.09 --> 00:02:29.05
+and another string called links.
+
+40
+00:02:29.05 --> 00:02:34.01
+Now, let's define a array
+of rooms called rooms.
+
+41
+00:02:34.01 --> 00:02:37.00
+Next, let's create a hardcoded JSON
+
+42
+00:02:37.00 --> 00:02:42.06
+containing a array of rooms.
+
+43
+00:02:42.06 --> 00:02:46.04
+This JSON string is similar
+to what we would get back
+
+44
+00:02:46.04 --> 00:02:49.06
+from a call to the backend REST API.
+
+45
+00:02:49.06 --> 00:02:52.07
+Let's add a id element.
+
+46
+00:02:52.07 --> 00:02:56.08
+Let's add a random string of
+numbers to represent the id.
+
+47
+00:02:56.08 --> 00:03:01.02
+Then, let's add a room number.
+
+48
+00:03:01.02 --> 00:03:03.08
+Next, let's add a price.
+
+49
+00:03:03.08 --> 00:03:07.04
+And then, let's add a
+empty string for the links.
+
+50
+00:03:07.04 --> 00:03:11.03
+Now, let's copy that JSON element
+
+51
+00:03:11.03 --> 00:03:14.04
+and make two more copies.
+
+52
+00:03:14.04 --> 00:03:16.05
+On the second element, let's update
+
+53
+00:03:16.05 --> 00:03:19.05
+the id to a random string.
+
+54
+00:03:19.05 --> 00:03:23.05
+Let's increment the room
+number and change the price.
+
+55
+00:03:23.05 --> 00:03:27.06
+Then, same thing on the third element.
+
+56
+00:03:27.06 --> 00:03:32.01
+We are using this array to
+simulate a response from our API.
+
+57
+00:03:32.01 --> 00:03:35.09
+Okay, next, in the ngOnInit method,
+
+58
+00:03:35.09 --> 00:03:41.07
+let's set the rooms array to
+this hardcoded JSON response
+
+59
+00:03:41.07 --> 00:03:43.05
+we created below.
+
+60
+00:03:43.05 --> 00:03:48.02
+Next, let's head back
+into app.component.html.
+
+61
+00:03:48.02 --> 00:03:53.02
+In the table row element,
+let's add a ngFor directive.
+
+62
+00:03:53.02 --> 00:03:57.02
+This ngFor directive comes from Component.
+
+63
+00:03:57.02 --> 00:04:00.06
+Component is a module in angular/core.
+
+64
+00:04:00.06 --> 00:04:04.05
+Let's set our ngFor directive to iterate
+
+65
+00:04:04.05 --> 00:04:07.04
+through the array of rooms.
+
+66
+00:04:07.04 --> 00:04:12.04
+room will keep track of the
+current room being iterated on.
+
+67
+00:04:12.04 --> 00:04:15.01
+For each iteration, let's display
+
+68
+00:04:15.01 --> 00:04:19.03
+the room number and the room price.
+
+69
+00:04:19.03 --> 00:04:22.03
+Let's add a literal string $
+
+70
+00:04:22.03 --> 00:04:25.06
+to indicate the price in US dollars.
+
+71
+00:04:25.06 --> 00:04:28.08
+Okay, it looks like we may have a typo.
+
+72
+00:04:28.08 --> 00:04:31.07
+Let's look at app.component.ts.
+
+73
+00:04:31.07 --> 00:04:35.01
+It looks like we are
+trying to create an array
+
+74
+00:04:35.01 --> 00:04:37.00
+of the object Rooms.
+
+75
+00:04:37.00 --> 00:04:42.02
+However, we defined
+interface as Room, singular.
+
+76
+00:04:42.02 --> 00:04:44.07
+Let's go ahead and fix that.
+
+77
+00:04:44.07 --> 00:04:47.01
+Let's save our changes,
+
+78
+00:04:47.01 --> 00:04:50.01
+and it looks like webpack
+compiled our changes now.
+
+79
+00:04:50.01 --> 00:04:53.09
+So now, it looks like we are
+populating the data correctly.
+
+80
+00:04:53.09 --> 00:04:58.01
+Next, let's add a on-click
+action to the Reserve button
+
+81
+00:04:58.01 --> 00:05:02.06
+to reserve that room by id.
+
+82
+00:05:02.06 --> 00:05:04.08
+Let's define the click event
+
+83
+00:05:04.08 --> 00:05:08.04
+to trigger the method reserveRoom.
+
+84
+00:05:08.04 --> 00:05:13.02
+reserveRoom will pass in the room id.
+
+85
+00:05:13.02 --> 00:05:17.05
+This id is populated
+dynamically for each iteration.
+
+86
+00:05:17.05 --> 00:05:22.05
+In the app component, let's
+create that reserveRoom method.
+
+87
+00:05:22.05 --> 00:05:26.01
+reserveRoom will accept
+a string parameter.
+
+88
+00:05:26.01 --> 00:05:33.08
+For now, let's go ahead and
+console.log the id passed in.
+
+89
+00:05:33.08 --> 00:05:38.01
+Later, we will create an API
+call to reserve that room.
+
+90
+00:05:38.01 --> 00:05:41.02
+Let's open up the Inspect
+window by right clicking
+
+91
+00:05:41.02 --> 00:05:44.08
+on the background and clicking Inspect.
+
+92
+00:05:44.08 --> 00:05:50.05
+Click on the Console tab and
+then click a Reserve button.
+
+93
+00:05:50.05 --> 00:05:54.02
+It looks like I need to save my changes
+
+94
+00:05:54.02 --> 00:05:56.04
+to see them reflected.
+
+95
+00:05:56.04 --> 00:05:59.09
+You may notice errors sometimes in Eclipse
+
+96
+00:05:59.09 --> 00:06:02.02
+when in a TypeScript file.
+
+97
+00:06:02.02 --> 00:06:06.01
+It looks like the tooling
+is not fully up to date
+
+98
+00:06:06.01 --> 00:06:10.05
+or caught up with all
+TypeScript ES6 features.
+
+99
+00:06:10.05 --> 00:06:14.00
+Let's double check that
+webpack compiled our changes,
+
+100
+00:06:14.00 --> 00:06:16.06
+and then go back to our homepage.
+
+101
+00:06:16.06 --> 00:06:19.00
+Now, let's click on Reserve.
+
+102
+00:06:19.00 --> 00:06:22.01
+It looks like we might have
+a typo in the function name.
+
+103
+00:06:22.01 --> 00:06:25.02
+Let's make sure the function
+defined in the click event
+
+104
+00:06:25.02 --> 00:06:29.04
+in the button matches up
+with the function defined
+
+105
+00:06:29.04 --> 00:06:31.02
+in the app component.
+
+106
+00:06:31.02 --> 00:06:35.01
+Then, let's try out the button again.
+
+107
+00:06:35.01 --> 00:06:39.02
+It looks like we are
+logging the id for each room
+
+108
+00:06:39.02 --> 00:06:43.05
+from app.component.ts as intended.
+
+109
+00:06:43.05 --> 00:06:47.01
+Later, we will create
+a AngularJS 2 service
+
+110
+00:06:47.01 --> 00:06:51.01
+so that our table can be
+populated from a JSON response
+
+111
+00:06:51.01 --> 00:06:53.09
+returned from a backend REST API.
+

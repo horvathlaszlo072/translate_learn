@@ -1,0 +1,431 @@
+1
+00:00:00,720 --> 00:00:01,620
+Welcome back, everyone.
+
+2
+00:00:02,780 --> 00:00:07,460
+So in this video, let's talk about actually getting these monsters that we want to pass in to our cardless
+
+3
+00:00:07,460 --> 00:00:09,530
+that it renders into the card list.
+
+4
+00:00:10,160 --> 00:00:12,770
+As I mentioned in the last video, you're going to do it with props.
+
+5
+00:00:13,190 --> 00:00:13,490
+So what?
+
+6
+00:00:13,500 --> 00:00:14,060
+Our props?
+
+7
+00:00:14,570 --> 00:00:19,820
+Props are pretty much shorthand for properties, which is identical to these different properties that
+
+8
+00:00:19,820 --> 00:00:25,550
+we've already used inside of our other components class, name, type, place, holder on change.
+
+9
+00:00:25,880 --> 00:00:32,930
+These are all props of input and input, as I mentioned, is a react component that simulates and generates
+
+10
+00:00:32,960 --> 00:00:37,010
+a input HTML tag when you actually render it to the page.
+
+11
+00:00:37,850 --> 00:00:41,690
+So similarly, we can pass these monsters into our card list as a prop.
+
+12
+00:00:41,990 --> 00:00:44,350
+Now you might be wondering what is the name of the prop?
+
+13
+00:00:44,360 --> 00:00:48,740
+Because all these other props that we see are props that have been predefined for us.
+
+14
+00:00:48,980 --> 00:00:54,860
+As I mentioned on change is one that React has actually already placed onto this input component so
+
+15
+00:00:54,860 --> 00:01:00,860
+that we can trigger on search change or any other callback that we want to pass to whenever there's
+
+16
+00:01:00,860 --> 00:01:02,690
+a change event on this property.
+
+17
+00:01:03,660 --> 00:01:10,260
+The difference with other props inside of our components that we write is that we can name them technically
+
+18
+00:01:10,260 --> 00:01:16,860
+whatever we want, but we have to make sure that what we pass in is the same thing as what the component
+
+19
+00:01:16,860 --> 00:01:17,730
+is expecting.
+
+20
+00:01:18,420 --> 00:01:19,470
+So what I mean by this?
+
+21
+00:01:19,710 --> 00:01:21,450
+Well, technically, you can pass whatever you want.
+
+22
+00:01:22,020 --> 00:01:26,520
+Let's say, for example, I want to pass these monsters through and I want to call it monsters.
+
+23
+00:01:28,670 --> 00:01:34,310
+This monsters will actually pass, and the way that we can check what I'm going to do first is I'm just
+
+24
+00:01:34,310 --> 00:01:40,100
+going to pass into monsters a string for now, and it's just going to say I am the monsters.
+
+25
+00:01:40,850 --> 00:01:45,110
+I'm not going actually past the array there because I want to show you what's going to happen now inside
+
+26
+00:01:45,110 --> 00:01:46,070
+of Carla's component.
+
+27
+00:01:46,080 --> 00:01:50,840
+We can actually access this as a protected keyword on this.
+
+28
+00:01:51,440 --> 00:01:54,650
+So remember, this references the actual class component itself.
+
+29
+00:01:55,160 --> 00:01:59,000
+And here on this react has given us this special keyword.
+
+30
+00:01:59,000 --> 00:02:06,680
+Props and props will log out all of the props that you have passed this component inside of an object
+
+31
+00:02:06,680 --> 00:02:10,940
+where the key is the name of the prop and the value is the value of the prop that we passed to it.
+
+32
+00:02:11,870 --> 00:02:15,740
+So I'm going to save here, but I'm also going to remove all these other console.log.
+
+33
+00:02:15,740 --> 00:02:18,350
+So we're really clear about what it is that we're seeing.
+
+34
+00:02:21,030 --> 00:02:26,440
+And just in case I'm also going to remove, I think there's one more right here.
+
+35
+00:02:26,520 --> 00:02:31,170
+I'm also going to remove the additional callback that we passed or such state.
+
+36
+00:02:31,980 --> 00:02:36,810
+So now we should just see what happens inside of our component.
+
+37
+00:02:37,620 --> 00:02:42,690
+So here you notice that what we logged out was an object where the key is the name of the prop and the
+
+38
+00:02:42,690 --> 00:02:44,820
+value is the string that we pass to it.
+
+39
+00:02:45,480 --> 00:02:48,330
+For now, I want you to ignore the fact that it's logged twice.
+
+40
+00:02:48,330 --> 00:02:50,820
+We'll talk about why that's happening a little bit later.
+
+41
+00:02:51,810 --> 00:02:53,820
+But for now, just look at this object.
+
+42
+00:02:54,270 --> 00:02:58,920
+So any props that you pass into this component, you will see it inside of this object.
+
+43
+00:02:59,130 --> 00:03:02,460
+So let's just quickly test this theory up down here.
+
+44
+00:03:02,820 --> 00:03:07,650
+I'm going to make another value and I'm just going to call it anything just so that I can prove to you,
+
+45
+00:03:07,650 --> 00:03:10,020
+you can pass in anything you want.
+
+46
+00:03:10,260 --> 00:03:14,640
+And I'm going to pass it and array where inside is a string a.
+
+47
+00:03:15,870 --> 00:03:16,500
+NZ.
+
+48
+00:03:18,190 --> 00:03:20,140
+If I save this, I go back.
+
+49
+00:03:21,330 --> 00:03:22,050
+Here we see.
+
+50
+00:03:23,030 --> 00:03:28,640
+That there is our new prop that we passed in anything with an array that contains a NZ.
+
+51
+00:03:29,300 --> 00:03:34,460
+So this is how you can access props and pass props from one component into another.
+
+52
+00:03:37,140 --> 00:03:42,480
+One important thing to note here now is that because we can pass anything into our props, we can now
+
+53
+00:03:42,480 --> 00:03:44,070
+pass in our monsters.
+
+54
+00:03:44,340 --> 00:03:50,100
+So we want to take a second and we want to think, what do we want to pass into this list of monsters?
+
+55
+00:03:51,000 --> 00:03:57,960
+Well, this is where it's interesting to think do we pass in the filter monsters or do we pass in the
+
+56
+00:03:57,960 --> 00:03:59,640
+full list of monsters?
+
+57
+00:04:00,660 --> 00:04:08,610
+Well, as we know, this cardless component should only display the monsters, the cardless itself shouldn't
+
+58
+00:04:08,610 --> 00:04:15,510
+really have to think about how it's going to filter, because that's really actually up to the search
+
+59
+00:04:15,510 --> 00:04:15,930
+box.
+
+60
+00:04:16,260 --> 00:04:20,250
+The search box is the one that actually modifies the monsters that are being passed into this.
+
+61
+00:04:20,580 --> 00:04:25,230
+For this reason, there's no reason for us to hide that responsibility together.
+
+62
+00:04:25,680 --> 00:04:31,110
+Instead, all our cardless cares about is what am I going to have to display?
+
+63
+00:04:31,590 --> 00:04:35,790
+And what that is is going to be the array of filtered monsters.
+
+64
+00:04:36,120 --> 00:04:38,790
+Now let's save and go back to our project.
+
+65
+00:04:39,570 --> 00:04:42,330
+Clear out all of this and refresh.
+
+66
+00:04:43,840 --> 00:04:50,500
+And what we see or getting in is our monsters array, and as we type, we should see that this will
+
+67
+00:04:50,500 --> 00:04:54,130
+continue to update and give us the correct list of monsters.
+
+68
+00:04:54,340 --> 00:05:00,040
+So even though we can't see it visually as we type in our letters, we do see that the only monster
+
+69
+00:05:00,040 --> 00:05:04,120
+we're receiving is the one that matches the LDI strength.
+
+70
+00:05:04,840 --> 00:05:06,610
+So everything here is still working as expected.
+
+71
+00:05:07,330 --> 00:05:12,430
+In fact, as IRS, we're getting back our full array of monsters.
+
+72
+00:05:12,730 --> 00:05:14,170
+So here again, everything works.
+
+73
+00:05:15,380 --> 00:05:17,900
+Now, what I want to do is we actually want to render these monsters.
+
+74
+00:05:18,380 --> 00:05:22,640
+So what we're going to do is let's go into this component.
+
+75
+00:05:23,740 --> 00:05:30,910
+And let's actually just do the same thing we did before, so we know that what we're getting back is
+
+76
+00:05:30,910 --> 00:05:31,600
+the monsters.
+
+77
+00:05:31,810 --> 00:05:33,100
+So I'm going to say Konst.
+
+78
+00:05:34,210 --> 00:05:37,150
+Monsters, some destruction structuring off of this stuff, props.
+
+79
+00:05:38,240 --> 00:05:43,370
+And the reason we do structure is because if we need to use this in more places than one, it's just
+
+80
+00:05:43,370 --> 00:05:44,240
+easier to do so.
+
+81
+00:05:44,690 --> 00:05:46,700
+And now I can just say monsters dot map.
+
+82
+00:05:47,680 --> 00:05:48,340
+The monster.
+
+83
+00:05:50,190 --> 00:05:51,330
+And just render back.
+
+84
+00:05:52,320 --> 00:05:53,160
+And one.
+
+85
+00:05:54,880 --> 00:05:57,700
+Where the text is monster dot name.
+
+86
+00:05:58,790 --> 00:06:03,980
+And if I save this, we go back, we see here we have it again.
+
+87
+00:06:04,340 --> 00:06:08,540
+We have that warning with a unique key prop, so let's go back and make sure we have it.
+
+88
+00:06:09,980 --> 00:06:15,530
+And here we're going to say Monster ID, which we remember was what we used before to keep track of
+
+89
+00:06:15,530 --> 00:06:17,870
+the unique keys on these H1 tags.
+
+90
+00:06:19,280 --> 00:06:21,650
+And if we care and refresh.
+
+91
+00:06:23,390 --> 00:06:24,230
+We see that it's gone.
+
+92
+00:06:24,830 --> 00:06:28,670
+And again, if I type in, everything works as expected.
+
+93
+00:06:29,390 --> 00:06:34,220
+So just like that, we now have a cardless component that replicates the same behavior we had before.
+
+94
+00:06:35,460 --> 00:06:36,360
+One quick thing to note.
+
+95
+00:06:37,440 --> 00:06:41,190
+What I want to do is I want to console log here.
+
+96
+00:06:41,430 --> 00:06:41,940
+Render.
+
+97
+00:06:44,250 --> 00:06:46,440
+And I want to go back to what we were talking about before.
+
+98
+00:06:47,430 --> 00:06:49,770
+Where what we noticed is that when we refresh.
+
+99
+00:06:50,880 --> 00:06:52,710
+We see that the render is called twice.
+
+100
+00:06:53,220 --> 00:06:57,120
+And here it actually has to do with the way that react renders components.
+
+101
+00:06:57,570 --> 00:07:01,050
+I want to talk about this in the next video, but I want you to take a second to think about it.
+
+102
+00:07:01,170 --> 00:07:06,210
+If you can come up with an answer, that's at least pretty good because it's really important here that
+
+103
+00:07:06,210 --> 00:07:09,510
+you think and try and piece these things about how Iraq renders together.
+
+104
+00:07:09,510 --> 00:07:14,490
+While we're learning this topic this way, you really get to think and really try and understand based
+
+105
+00:07:14,490 --> 00:07:18,750
+on the way that React does things that we've learned so far about why it might be doing these things.
+
+106
+00:07:19,230 --> 00:07:23,010
+So once you have an answer or once you've thought about a little bit, join me in the next video and
+
+107
+00:07:23,010 --> 00:07:23,910
+let's break down why.
+
+108
+00:07:23,910 --> 00:07:25,980
+In our component, we see render twice.

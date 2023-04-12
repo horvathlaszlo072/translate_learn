@@ -1,0 +1,593 @@
+1
+00:00:00.04 --> 00:00:02.00
+- [Instructor] Promises
+give us another option of
+
+2
+00:00:02.00 --> 00:00:04.00
+how to work with asynchronous code.
+
+3
+00:00:04.00 --> 00:00:08.02
+Promises return an object
+which promise to do some work.
+
+4
+00:00:08.02 --> 00:00:10.00
+This object has separate callbacks
+
+5
+00:00:10.00 --> 00:00:12.01
+for success and for failures.
+
+6
+00:00:12.01 --> 00:00:14.04
+This lets us work with asynchronous code
+
+7
+00:00:14.04 --> 00:00:16.05
+in a much more synchronous way.
+
+8
+00:00:16.05 --> 00:00:18.00
+A really nice feature is that
+
+9
+00:00:18.00 --> 00:00:21.02
+Promises can be combined
+into dependency chains.
+
+10
+00:00:21.02 --> 00:00:22.08
+To demonstrate these features,
+
+11
+00:00:22.08 --> 00:00:26.01
+let's convert censor
+example to use Promises
+
+12
+00:00:26.01 --> 00:00:29.03
+so that we can see how it
+cleans up our code a bit.
+
+13
+00:00:29.03 --> 00:00:32.07
+Let's scroll down to our
+message post function,
+
+14
+00:00:32.07 --> 00:00:35.07
+and on line 28, instead
+of passing a callback
+
+15
+00:00:35.07 --> 00:00:37.05
+of the first parameter,
+
+16
+00:00:37.05 --> 00:00:42.00
+we'll pass nothing, and
+then we'll add .then,
+
+17
+00:00:42.00 --> 00:00:44.05
+and this will execute
+if there are no errors.
+
+18
+00:00:44.05 --> 00:00:46.06
+And then we can place our callback
+
+19
+00:00:46.06 --> 00:00:59.04
+inside the then function.
+
+20
+00:00:59.04 --> 00:01:02.06
+And so now, this function, as a callback,
+
+21
+00:01:02.06 --> 00:01:05.03
+is placed inside then.
+
+22
+00:01:05.03 --> 00:01:07.08
+Since we got rid of the error parameter,
+
+23
+00:01:07.08 --> 00:01:11.02
+we'll need to check for
+errors using another method.
+
+24
+00:01:11.02 --> 00:01:16.09
+We can chain on a catch
+function at the end.
+
+25
+00:01:16.09 --> 00:01:20.01
+And then we'll pass on a
+callback to handle our errors
+
+26
+00:01:20.01 --> 00:01:23.08
+so that it will take in an error,
+
+27
+00:01:23.08 --> 00:01:26.01
+and then we can send the response of
+
+28
+00:01:26.01 --> 00:01:31.05
+sendStatus with 500.
+
+29
+00:01:31.05 --> 00:01:33.04
+In this case, we can get
+rid of our error check
+
+30
+00:01:33.04 --> 00:01:38.06
+on line 29 and 30.
+
+31
+00:01:38.06 --> 00:01:42.03
+Then let's return console.error
+
+32
+00:01:42.03 --> 00:01:44.02
+with the error message.
+
+33
+00:01:44.02 --> 00:01:50.03
+Let's save this and give it a try.
+
+34
+00:01:50.03 --> 00:01:52.04
+So I posted the new message.
+
+35
+00:01:52.04 --> 00:01:56.08
+Let's go look at our Integrated Terminal.
+
+36
+00:01:56.08 --> 00:01:58.02
+Upon saving our message,
+
+37
+00:01:58.02 --> 00:02:00.09
+we notice we're getting
+another deprecation warning.
+
+38
+00:02:00.09 --> 00:02:03.05
+It's suggesting that we plug
+in our own Promise library
+
+39
+00:02:03.05 --> 00:02:06.03
+instead of the deprecated
+version for Mongoose.
+
+40
+00:02:06.03 --> 00:02:09.08
+So we can use the built-in
+ES6 Promise library.
+
+41
+00:02:09.08 --> 00:02:13.07
+Let's go up to the top of our file,
+
+42
+00:02:13.07 --> 00:02:17.01
+above our dburl,
+
+43
+00:02:17.01 --> 00:02:22.01
+and add mongoose.promise
+
+44
+00:02:22.01 --> 00:02:25.00
+equals Promise,
+
+45
+00:02:25.00 --> 00:02:26.07
+and we're letting Mongoose know that
+
+46
+00:02:26.07 --> 00:02:28.03
+the Promise library wants to use
+
+47
+00:02:28.03 --> 00:02:31.02
+is the default ES6 Promise library.
+
+48
+00:02:31.02 --> 00:02:36.09
+Let's save that and give it another try.
+
+49
+00:02:36.09 --> 00:02:39.09
+And now we're no longer getting
+the deprecation warning.
+
+50
+00:02:39.09 --> 00:02:42.00
+Now that we've taken care of that warning,
+
+51
+00:02:42.00 --> 00:02:44.04
+let's move back to Promises
+
+52
+00:02:44.04 --> 00:02:46.00
+so we can see that saved message
+
+53
+00:02:46.00 --> 00:02:48.01
+still functions the same way.
+
+54
+00:02:48.01 --> 00:02:49.08
+But there isn't much improvement
+
+55
+00:02:49.08 --> 00:02:51.05
+in the look of our code.
+
+56
+00:02:51.05 --> 00:02:54.02
+We still have those nested callbacks.
+
+57
+00:02:54.02 --> 00:02:57.02
+To solve this, let's look
+into dependency chains.
+
+58
+00:02:57.02 --> 00:02:59.00
+This is where Promises really shines
+
+59
+00:02:59.00 --> 00:03:00.08
+with respect to clean code.
+
+60
+00:03:00.08 --> 00:03:02.08
+I'll start by taking the body of
+
+61
+00:03:02.08 --> 00:03:07.09
+our message save then
+function callback out,
+
+62
+00:03:07.09 --> 00:03:11.06
+and I'll simply add a console.log in here,
+
+63
+00:03:11.06 --> 00:03:15.08
+letting us know saved.
+
+64
+00:03:15.08 --> 00:03:19.03
+Then before I chain on the catch function,
+
+65
+00:03:19.03 --> 00:03:24.03
+I'll chain on another then,
+
+66
+00:03:24.03 --> 00:03:29.04
+and I'll add the catch to the bottom.
+
+67
+00:03:29.04 --> 00:03:33.03
+And then I'll start to stack
+these chained functions.
+
+68
+00:03:33.03 --> 00:03:37.02
+Then, temporarily, I'll paste
+the body below the function,
+
+69
+00:03:37.02 --> 00:03:39.06
+since I'll copying and pasting.
+
+70
+00:03:39.06 --> 00:03:44.07
+So I'll copy the
+Message.findOne call we have
+
+71
+00:03:44.07 --> 00:03:51.02
+and paste it below our console log,
+
+72
+00:03:51.02 --> 00:03:52.04
+and then I'll return that.
+
+73
+00:03:52.04 --> 00:03:55.01
+Since we are returning the Promise,
+
+74
+00:03:55.01 --> 00:03:57.05
+instead of handling it with a callback
+
+75
+00:03:57.05 --> 00:03:59.01
+in the second parameter,
+
+76
+00:03:59.01 --> 00:04:01.09
+the next then that is chained on will take
+
+77
+00:04:01.09 --> 00:04:05.06
+the results of that first
+Promise in a callback.
+
+78
+00:04:05.06 --> 00:04:12.06
+So, in this case, I can
+get access to censored,
+
+79
+00:04:12.06 --> 00:04:17.09
+and, essentially, all the code
+that I had in the callback,
+
+80
+00:04:17.09 --> 00:04:24.01
+I can move inside this new then callback.
+
+81
+00:04:24.01 --> 00:04:31.02
+And then I can get rid
+of this temporary code.
+
+82
+00:04:31.02 --> 00:04:34.05
+Then, if there are no
+censored words found,
+
+83
+00:04:34.05 --> 00:04:39.07
+I can move the rest of this code below it,
+
+84
+00:04:39.07 --> 00:04:41.04
+and we'll send the status 200
+
+85
+00:04:41.04 --> 00:04:43.08
+and emit the message.
+
+86
+00:04:43.08 --> 00:04:45.05
+Let's go ahead and give this a try as is
+
+87
+00:04:45.05 --> 00:04:48.00
+before we carry on.
+
+88
+00:04:48.00 --> 00:04:51.02
+So let's go back to our app
+
+89
+00:04:51.02 --> 00:04:53.01
+and send the new message.
+
+90
+00:04:53.01 --> 00:04:56.07
+We can see it's showing
+up, and if we refresh,
+
+91
+00:04:56.07 --> 00:04:59.09
+it's still showing up, so our
+functionality is maintained
+
+92
+00:04:59.09 --> 00:05:02.09
+as we continue to refactor.
+
+93
+00:05:02.09 --> 00:05:06.07
+Message.remove is the last Promise.
+
+94
+00:05:06.07 --> 00:05:10.09
+So we can go ahead and
+chain that and its response.
+
+95
+00:05:10.09 --> 00:05:14.08
+So I'll take out a callback,
+
+96
+00:05:14.08 --> 00:05:17.05
+and then I'll return this as a Promise,
+
+97
+00:05:17.05 --> 00:05:19.00
+and I won't bother confirming
+
+98
+00:05:19.00 --> 00:05:21.09
+if the censored words were removed
+
+99
+00:05:21.09 --> 00:05:25.08
+in our console log, but
+if there are any errors,
+
+100
+00:05:25.08 --> 00:05:29.05
+the catch at the bottom will catch them,
+
+101
+00:05:29.05 --> 00:05:33.01
+and it will send a sendStatus of 500.
+
+102
+00:05:33.01 --> 00:05:35.02
+And I'll move the first then down so that
+
+103
+00:05:35.02 --> 00:05:38.03
+we can maintain some vertical consistency,
+
+104
+00:05:38.03 --> 00:05:40.04
+and it's a bit easier to read.
+
+105
+00:05:40.04 --> 00:05:42.07
+Now, before we give this a try,
+
+106
+00:05:42.07 --> 00:05:45.02
+I would like to show you that
+this is no longer refactor
+
+107
+00:05:45.02 --> 00:05:47.09
+since the behavior changed slightly
+
+108
+00:05:47.09 --> 00:05:51.03
+because, in our second then,
+
+109
+00:05:51.03 --> 00:05:54.02
+if it did find a censored word,
+
+110
+00:05:54.02 --> 00:05:57.00
+it will return a Message.remove
+
+111
+00:05:57.00 --> 00:05:59.04
+and will never actually emit the message.
+
+112
+00:05:59.04 --> 00:06:03.02
+So let's save that and
+demonstrate how it works.
+
+113
+00:06:03.02 --> 00:06:09.05
+So, if I type in bad in the
+message and then hit Send,
+
+114
+00:06:09.05 --> 00:06:11.05
+we go down, and we can see that
+
+115
+00:06:11.05 --> 00:06:14.04
+it's posted the new message bad.
+
+116
+00:06:14.04 --> 00:06:16.07
+But if I type in badword,
+
+117
+00:06:16.07 --> 00:06:18.05
+we can see that it doesn't even show up
+
+118
+00:06:18.05 --> 00:06:22.00
+the way it did before it was
+removed from the database.
+
+119
+00:06:22.00 --> 00:06:23.09
+And if we refresh, we can see
+
+120
+00:06:23.09 --> 00:06:26.00
+it's not even in the database.
+
+121
+00:06:26.00 --> 00:06:28.07
+So that's a slight
+improvement on functionality
+
+122
+00:06:28.07 --> 00:06:31.00
+as well as in the look of our code
+
+123
+00:06:31.00 --> 00:06:34.09
+because, here, we can clearly
+see the steps our code takes.
+
+124
+00:06:34.09 --> 00:06:36.08
+It tries to do this save.
+
+125
+00:06:36.08 --> 00:06:39.06
+If it fails, it goes into the catch.
+
+126
+00:06:39.06 --> 00:06:43.08
+Then, it tries to find
+a message with badword.
+
+127
+00:06:43.08 --> 00:06:48.02
+Then, if it finds it,
+it tries to remove it,
+
+128
+00:06:48.02 --> 00:06:49.08
+and if it doesn't find it,
+
+129
+00:06:49.08 --> 00:06:52.09
+only then will it emit the message.
+
+130
+00:06:52.09 --> 00:06:56.00
+So Promises do offer an improvement
+
+131
+00:06:56.00 --> 00:06:57.05
+in creating clean code.
+
+132
+00:06:57.05 --> 00:07:00.06
+So, although this code still
+might be difficult to read,
+
+133
+00:07:00.06 --> 00:07:03.00
+it should be a bit easier at a glance.
+
+134
+00:07:03.00 --> 00:07:04.02
+Since the code is now flowing
+
+135
+00:07:04.02 --> 00:07:06.06
+mostly downward and not inwards,
+
+136
+00:07:06.06 --> 00:07:09.00
+as they did with nested callbacks.
+
+137
+00:07:09.00 --> 00:07:10.06
+Next, let's look at improving our code
+
+138
+00:07:10.06 --> 00:07:13.08
+even more with Async 08.
+

@@ -1,0 +1,747 @@
+1
+00:00:00,580 --> 00:00:05,620
+Hello, everyone, and welcome back in the last video, we talked about Firebase.
+
+2
+00:00:05,920 --> 00:00:12,490
+We set up a Firebase instance on the Firebase console, and we also brought in the Firebase Library
+
+3
+00:00:12,490 --> 00:00:15,700
+into our React application in this video.
+
+4
+00:00:15,700 --> 00:00:21,910
+Before we actually get involved with writing more code, I just want to take a conceptual break and
+
+5
+00:00:21,910 --> 00:00:29,140
+understand what is happening behind the scenes when we use Firebase, as well as how that actually interfaces
+
+6
+00:00:29,140 --> 00:00:30,640
+with our frontend application.
+
+7
+00:00:31,120 --> 00:00:36,820
+This is valuable because as frontend react developers or even as full stack react developers, it's
+
+8
+00:00:36,820 --> 00:00:43,330
+very important for us to understand our piece on the stack when it comes to interacting with data.
+
+9
+00:00:44,050 --> 00:00:47,920
+So let's begin with the concept of crud.
+
+10
+00:00:48,580 --> 00:00:54,100
+Now, if you are familiar with backends, if you've done any work with servers or anything even remotely
+
+11
+00:00:54,100 --> 00:00:57,190
+similar, you will know what crud stands for.
+
+12
+00:00:57,310 --> 00:00:58,240
+But in case you don't.
+
+13
+00:00:58,330 --> 00:01:00,820
+Let's break down what crud stands for.
+
+14
+00:01:01,690 --> 00:01:07,120
+So Cron represents the different ways that we can operate on stored data.
+
+15
+00:01:07,690 --> 00:01:10,960
+This stored data usually lives in a database.
+
+16
+00:01:11,410 --> 00:01:17,140
+And generally speaking, you can only perform for actions, which is what crud stands for.
+
+17
+00:01:17,530 --> 00:01:20,880
+The C stands for Create so you can create data.
+
+18
+00:01:20,890 --> 00:01:26,140
+Of course, the R stands for Read Re just means getting data.
+
+19
+00:01:26,410 --> 00:01:29,620
+You don't want to modify the data, you just want to retrieve the data.
+
+20
+00:01:29,920 --> 00:01:31,810
+So think about our front end application.
+
+21
+00:01:32,050 --> 00:01:37,070
+If we want it to fetch some data from a backend, then we're asking to read that data.
+
+22
+00:01:37,090 --> 00:01:39,030
+We're not asking to modify that data.
+
+23
+00:01:39,040 --> 00:01:40,960
+We just want to read the data.
+
+24
+00:01:41,770 --> 00:01:44,050
+Update is updating the data.
+
+25
+00:01:44,230 --> 00:01:49,810
+So if we want to change some of the fields, if we want to change maybe some of the values on a piece
+
+26
+00:01:49,810 --> 00:01:51,760
+of data, then we want to update it.
+
+27
+00:01:52,150 --> 00:01:55,450
+And then, of course, delete just means deleting that data.
+
+28
+00:01:56,020 --> 00:02:02,530
+So these are pretty much the four instances of which you can do in order to operate on stored data.
+
+29
+00:02:04,070 --> 00:02:07,850
+Let's imagine that we had our Web application chronicling on the left here.
+
+30
+00:02:09,030 --> 00:02:13,020
+On the right, you have your Firebase server, which is hosting your database.
+
+31
+00:02:13,770 --> 00:02:18,090
+What you would do is make a request from clown clothing to fetch data.
+
+32
+00:02:18,330 --> 00:02:22,230
+So here we're asking to read for some specific data from Firebase.
+
+33
+00:02:22,440 --> 00:02:23,970
+Maybe this is a user profile.
+
+34
+00:02:24,120 --> 00:02:28,020
+Maybe this is something related to a collection of clothing.
+
+35
+00:02:28,140 --> 00:02:31,140
+Maybe this is even a very specific article of clothing.
+
+36
+00:02:31,260 --> 00:02:32,220
+Maybe it's a receipt.
+
+37
+00:02:32,400 --> 00:02:38,190
+You can imagine that the majority of the data in an application would not live on your front end.
+
+38
+00:02:38,430 --> 00:02:44,160
+The reason for this is because if you think about a frontend, you have different users that log in
+
+39
+00:02:44,160 --> 00:02:45,560
+and log out of your frontend.
+
+40
+00:02:45,570 --> 00:02:48,990
+So as a result, they have specific data that's unique to them that they want.
+
+41
+00:02:49,140 --> 00:02:52,760
+You can't persist this on the front end, you must have this live in some database.
+
+42
+00:02:52,830 --> 00:02:54,360
+So for us, that's going to be Firebase.
+
+43
+00:02:54,690 --> 00:02:57,540
+So when we want that data, we're going to fetch that data.
+
+44
+00:02:57,540 --> 00:03:01,590
+And in turn, Firebase is then going to send back the requested data.
+
+45
+00:03:01,950 --> 00:03:03,000
+This is going to be the same.
+
+46
+00:03:03,000 --> 00:03:06,540
+When you're trying to update some data, you're going to create some data or are you going to delete
+
+47
+00:03:06,540 --> 00:03:13,410
+some data you're still going to send from Crown Clothing your frontend that request to do that to the
+
+48
+00:03:13,410 --> 00:03:19,290
+data to Firebase Firebase will then perform the action and they'll return something back, either the
+
+49
+00:03:19,290 --> 00:03:25,500
+updated data or the created data, or even a confirmation that the data has been successfully deleted.
+
+50
+00:03:25,980 --> 00:03:27,320
+This is the whole basis.
+
+51
+00:03:27,330 --> 00:03:28,320
+It's very simple.
+
+52
+00:03:28,350 --> 00:03:30,740
+You send a request, you get back a response.
+
+53
+00:03:30,780 --> 00:03:33,750
+This is the interaction between a frontend and Firebase.
+
+54
+00:03:34,260 --> 00:03:38,460
+But let's think about some things that make this business case more relevant.
+
+55
+00:03:39,120 --> 00:03:40,740
+Firebase represents our database.
+
+56
+00:03:41,070 --> 00:03:46,890
+Our database is going to store all of our data, whether it be our user data or collection of clothing
+
+57
+00:03:46,890 --> 00:03:52,870
+data, maybe invoices, maybe people's credit cards, maybe even all of the earnings.
+
+58
+00:03:52,890 --> 00:03:56,730
+There's a lot of things that can live in a database for a company.
+
+59
+00:03:57,180 --> 00:04:02,550
+So this means that a lot of this data is really sensitive, and we don't just want anybody to be able
+
+60
+00:04:02,550 --> 00:04:08,190
+to create that data or read that data, update that data and definitely not destroy that data.
+
+61
+00:04:08,610 --> 00:04:11,120
+So what this means is that we need safeguards.
+
+62
+00:04:11,130 --> 00:04:17,400
+We need some method in order for us to prevent the majority of people from doing things that we don't
+
+63
+00:04:17,400 --> 00:04:23,520
+want them to, or we want to make sure that specific pieces of data that are sensitive to somebody such
+
+64
+00:04:23,520 --> 00:04:30,360
+as a person's credit card information should only be accessible by most likely only that person.
+
+65
+00:04:30,840 --> 00:04:33,810
+So this is where authentication becomes important.
+
+66
+00:04:34,440 --> 00:04:36,420
+So let's take a more direct example.
+
+67
+00:04:36,840 --> 00:04:39,510
+Let's say that I'm using Chrome Cleveland.com.
+
+68
+00:04:39,990 --> 00:04:44,760
+What I'm going to do is I'm going to request from Firebase my profile data.
+
+69
+00:04:44,940 --> 00:04:46,050
+Maybe on this profile.
+
+70
+00:04:46,050 --> 00:04:49,050
+It has a list of my orders, like my order history.
+
+71
+00:04:49,170 --> 00:04:51,150
+Maybe it has my credit card information.
+
+72
+00:04:51,360 --> 00:04:56,310
+It might even just have my email, my address and my phone number, all of which are very sensitive
+
+73
+00:04:56,310 --> 00:04:56,790
+data.
+
+74
+00:04:57,270 --> 00:05:03,330
+As a result, Firebase, before it sends me that data and needs me to confirm that I can access this
+
+75
+00:05:03,330 --> 00:05:09,240
+data because Firebase doesn't know how is it going to know that I should be able to access this data?
+
+76
+00:05:09,780 --> 00:05:13,380
+Chances are in order to do that, I need to authenticate with Firebase.
+
+77
+00:05:13,590 --> 00:05:19,830
+I need to confirm to them that I am who I say I am and who I am is somebody who is allowed to access
+
+78
+00:05:19,830 --> 00:05:21,000
+this profile data.
+
+79
+00:05:21,450 --> 00:05:26,520
+So to do this, maybe I sign in with an email or password or in some way, Firebase needs to be able
+
+80
+00:05:26,520 --> 00:05:31,710
+to confirm that I am the person who should be able to access the sensitive data.
+
+81
+00:05:32,010 --> 00:05:36,330
+And once I'm able to do that, then Firebase should give me back my profile data.
+
+82
+00:05:36,840 --> 00:05:39,570
+This is going to be the exact same for another user.
+
+83
+00:05:39,750 --> 00:05:44,160
+Let's say Andre accesses our website and he wants to access his own profile data.
+
+84
+00:05:44,340 --> 00:05:47,070
+He's going to go through the exact same authentication flow.
+
+85
+00:05:47,220 --> 00:05:52,020
+He's going to authenticate with Firebase that he should be the person that should access his own profile
+
+86
+00:05:52,020 --> 00:05:52,410
+data.
+
+87
+00:05:52,650 --> 00:05:55,350
+And once he does, Firebase will return that profile data.
+
+88
+00:05:55,770 --> 00:06:00,240
+But if Andre tries to fetch my profile, data equals profile data.
+
+89
+00:06:00,600 --> 00:06:04,570
+Unless he can authenticate as me, Firebase is going to say, Hey, you know what?
+
+90
+00:06:04,710 --> 00:06:05,520
+There's an error.
+
+91
+00:06:05,520 --> 00:06:11,220
+You are not authorized to get this data, and this is where authentication becomes extremely important.
+
+92
+00:06:11,520 --> 00:06:19,590
+And Firebase has allowed us to leverage both email and password authentication, but also it allows
+
+93
+00:06:19,590 --> 00:06:21,510
+us to use Google sign in.
+
+94
+00:06:22,080 --> 00:06:25,320
+So let's imagine and think about how Google sign works.
+
+95
+00:06:25,860 --> 00:06:32,730
+So here we have our website, we have Firebase and we also have Google servers on Google servers.
+
+96
+00:06:32,940 --> 00:06:39,240
+It has a bunch of different users that it knows to be who they are based on the fact that they pretty
+
+97
+00:06:39,240 --> 00:06:41,070
+much own your Gmail account.
+
+98
+00:06:41,070 --> 00:06:46,950
+Or at least they're aware that when Iowa I'm trying to access, let's say, my own Gmail account are
+
+99
+00:06:46,980 --> 00:06:48,000
+at gmail.com.
+
+100
+00:06:48,450 --> 00:06:51,210
+Google knows, oh, I know who that user is.
+
+101
+00:06:51,450 --> 00:06:57,630
+If you've used any web applications in today's era, you'll pretty much see Google sign in or Facebook
+
+102
+00:06:57,630 --> 00:07:00,170
+sign in, even GitHub sign in everywhere.
+
+103
+00:07:00,180 --> 00:07:04,650
+It's very prevalent because they know that you are some user.
+
+104
+00:07:04,770 --> 00:07:08,460
+They've authenticated you as the person that you say you are and they.
+
+105
+00:07:08,500 --> 00:07:14,170
+We know that the email is unique, so essentially because they know that they can share the fact that
+
+106
+00:07:14,170 --> 00:07:18,040
+they know that you are who you say you are two different applications.
+
+107
+00:07:18,640 --> 00:07:25,690
+So remember, that's really all authentication is is that it's able to authenticate that you are who
+
+108
+00:07:25,690 --> 00:07:27,850
+you say you are to an application.
+
+109
+00:07:28,090 --> 00:07:33,160
+Google knows you are who you say you are because you have to sign into your Google account, meaning
+
+110
+00:07:33,160 --> 00:07:36,340
+that your email and password should be something only, you know.
+
+111
+00:07:36,520 --> 00:07:41,350
+So if you sign into Google, Google is pretty sure that you're probably a person who should be accessing
+
+112
+00:07:41,350 --> 00:07:43,490
+this account at least most of the time.
+
+113
+00:07:44,050 --> 00:07:49,090
+So Google then can lend that to other applications because Google has authenticated you.
+
+114
+00:07:49,360 --> 00:07:55,120
+So really, that's what Google is doing is Google is helping you authenticate to other applications
+
+115
+00:07:55,240 --> 00:07:58,270
+so that you don't have to make an account for those applications.
+
+116
+00:07:58,840 --> 00:08:01,540
+So let's walk through a flow, let's say, for our Crown clothing.
+
+117
+00:08:01,810 --> 00:08:03,580
+I'm trying to access Crown clothing.
+
+118
+00:08:03,970 --> 00:08:06,970
+What I do is I use crown clothings.
+
+119
+00:08:07,120 --> 00:08:08,110
+Google sign in.
+
+120
+00:08:08,320 --> 00:08:11,800
+So we're going to implement this feature next, but we're just going to walk through a high level flow.
+
+121
+00:08:12,460 --> 00:08:17,420
+So I'm going to make a request to Google servers saying, Hey, I want to sign in for this user ecwa
+
+122
+00:08:17,440 --> 00:08:18,490
+at gmail.com.
+
+123
+00:08:18,940 --> 00:08:20,460
+I'm going to send over my credentials.
+
+124
+00:08:20,470 --> 00:08:24,910
+I'm going to either sign in with my email and my password, or if I'm already signed in, I'm just going
+
+125
+00:08:24,910 --> 00:08:27,340
+to tell Google, Hey, I'm trying to sign in.
+
+126
+00:08:27,790 --> 00:08:30,370
+Well, Google will do is say, Oh, are those credentials correct?
+
+127
+00:08:30,550 --> 00:08:32,590
+Yes, I can verify this person.
+
+128
+00:08:32,770 --> 00:08:38,290
+So I'm going to generate an art token, and all token is just a unique, hashed string.
+
+129
+00:08:38,680 --> 00:08:40,750
+It's a string that's really hard to break apart.
+
+130
+00:08:40,840 --> 00:08:47,680
+But essentially on that token is the confirmation that I am who I say I am, which is Yehuda at gmail.com.
+
+131
+00:08:48,220 --> 00:08:50,760
+Google will then send that back to crown clothing.
+
+132
+00:08:50,770 --> 00:08:53,020
+So now Crown Clothing has this art token.
+
+133
+00:08:53,770 --> 00:08:59,620
+Then what's going to happen is I'm going to send this off token to Firebase, meaning the back end or
+
+134
+00:08:59,620 --> 00:09:06,790
+the server that Firebase is representing in order for it to verify whether or not I can access some
+
+135
+00:09:06,790 --> 00:09:09,550
+of the data that I'm trying to access specifically.
+
+136
+00:09:09,560 --> 00:09:13,300
+So Yehuda at gmail.com again, maybe it's my profile data.
+
+137
+00:09:13,450 --> 00:09:14,560
+Maybe it's my order history.
+
+138
+00:09:14,650 --> 00:09:18,580
+Whatever it is, Firebase needs to confirm that I am who I say I am.
+
+139
+00:09:19,270 --> 00:09:24,190
+But with this all token, it's not enough because Firebase doesn't know whether or not this off token
+
+140
+00:09:24,190 --> 00:09:25,030
+is valid.
+
+141
+00:09:25,270 --> 00:09:30,430
+Remember, at this point, Firebase can't trust the source where it got the token somebody could have
+
+142
+00:09:30,430 --> 00:09:32,800
+just copied at some or somewhere and then sent it over.
+
+143
+00:09:33,400 --> 00:09:37,270
+It might just be a random off token, so Firebase needs to confirm.
+
+144
+00:09:37,270 --> 00:09:40,150
+Is this all token of valid off token?
+
+145
+00:09:40,690 --> 00:09:46,840
+So what Firebase will do is it is going to directly ask Google, can you verify this off token?
+
+146
+00:09:47,530 --> 00:09:53,940
+Google takes it and it will check, Oh, is this all token one that I've issued there?
+
+147
+00:09:53,980 --> 00:09:59,620
+Google will be like, OK, if it's true, it's going to say, I have verified this token.
+
+148
+00:09:59,980 --> 00:10:01,780
+If not, it's just going to send back an error.
+
+149
+00:10:01,990 --> 00:10:03,340
+But let's say it's verified.
+
+150
+00:10:03,340 --> 00:10:05,200
+Oh, this off token is valid.
+
+151
+00:10:05,200 --> 00:10:06,490
+I did issue this token.
+
+152
+00:10:07,060 --> 00:10:13,720
+Google will then send back a verification token which confirms that the token that we got was indeed
+
+153
+00:10:13,720 --> 00:10:14,440
+a valid one.
+
+154
+00:10:14,740 --> 00:10:22,300
+So now Firebase is like, OK, that other token that Crown Clothing gave me is indeed valid now because
+
+155
+00:10:22,300 --> 00:10:28,690
+Firebase has authorized this token, it is then now going to create an access token.
+
+156
+00:10:29,320 --> 00:10:37,240
+This access token is going to define what the user should be able to access the user being specific.
+
+157
+00:10:37,660 --> 00:10:45,820
+So this access tells us what Mi UA at gmail.com is able to access inside of the database.
+
+158
+00:10:46,270 --> 00:10:52,090
+So then Firebase sends us back to crown clothing and now me as the user with this access token.
+
+159
+00:10:52,090 --> 00:10:57,280
+If I want to make different credit requests against Firebase, what I'm going to do is I'm going to
+
+160
+00:10:57,280 --> 00:11:00,040
+send the request alongside the access token.
+
+161
+00:11:00,490 --> 00:11:06,520
+Firebase is then going to verify the access token to determine what different things this access token
+
+162
+00:11:06,520 --> 00:11:07,300
+has access to.
+
+163
+00:11:07,600 --> 00:11:11,470
+Meaning what is this access token authorized to do?
+
+164
+00:11:12,160 --> 00:11:19,060
+If it is valid, then it will check the request and say, Oh OK, you are allowed to do and perform
+
+165
+00:11:19,060 --> 00:11:19,960
+this request.
+
+166
+00:11:20,350 --> 00:11:25,390
+So then what's going to happen is that Firebase is going to generate a response, meaning that it's
+
+167
+00:11:25,390 --> 00:11:27,400
+like, OK, you want to create this data.
+
+168
+00:11:27,400 --> 00:11:30,280
+If you're authorized to do it, I'm going to send you back the appropriate response.
+
+169
+00:11:30,490 --> 00:11:34,390
+The same is true for Reid, meaning that I'm going to send you back the data that you want to read,
+
+170
+00:11:34,900 --> 00:11:36,400
+update or destroy.
+
+171
+00:11:36,610 --> 00:11:42,130
+If those are valid, then I'm going to send back the appropriate response if it's invalid, meaning
+
+172
+00:11:42,130 --> 00:11:48,610
+that if you do not have access to perform that specific request that you are trying to make, that will
+
+173
+00:11:48,610 --> 00:11:53,380
+also be in the appropriate response and that response gets returned to crown clothing.
+
+174
+00:11:53,830 --> 00:11:56,150
+And let's assume that it's valid and is what we want.
+
+175
+00:11:56,170 --> 00:12:02,770
+Let's say we want to read some data, then our application will now take this data and in turn, build
+
+176
+00:12:02,770 --> 00:12:04,270
+the website with that data.
+
+177
+00:12:04,750 --> 00:12:08,380
+And much of the communication from this point forward with our database is.
+
+178
+00:12:08,480 --> 00:12:14,870
+Always going to need to access this access token, which is what we need to store on our front end because
+
+179
+00:12:14,870 --> 00:12:21,170
+this access token allows us to skip having to verify every single step there's access token represents
+
+180
+00:12:21,170 --> 00:12:27,140
+something to Firebase that we can indeed make requests against in the database.
+
+181
+00:12:27,890 --> 00:12:33,650
+So this is a seemingly complicated flow because there's a lot of diagrams, but I promise you, once
+
+182
+00:12:33,650 --> 00:12:38,540
+we start building it, it'll be a lot more clear because once we start actually building it and implementing
+
+183
+00:12:38,540 --> 00:12:42,860
+the little pieces on the front end, all of this will click in a more meaningful way.
+
+184
+00:12:43,220 --> 00:12:48,650
+But if you're confused about the flow, just watch it again once you watch it a few times.
+
+185
+00:12:48,650 --> 00:12:53,930
+If this is unclear, it definitely becomes a lot more clear because each step logically has to happen.
+
+186
+00:12:54,110 --> 00:12:59,390
+If you were to authorize a user so now that we understand this, let's actually start implementing this
+
+187
+00:12:59,390 --> 00:13:00,680
+inside of our code base.

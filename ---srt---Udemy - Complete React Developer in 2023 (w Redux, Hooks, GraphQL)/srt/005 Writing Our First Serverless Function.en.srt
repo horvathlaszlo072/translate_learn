@@ -1,0 +1,543 @@
+1
+00:00:00,600 --> 00:00:01,590
+Welcome back, everyone.
+
+2
+00:00:01,830 --> 00:00:05,040
+In this video, we are going to set up a nullify function.
+
+3
+00:00:06,100 --> 00:00:11,530
+So the great thing about net lifetime is that it makes it very easy for us to use these serverless functions.
+
+4
+00:00:12,040 --> 00:00:19,030
+Under the hood they use A.W. Se Lambda function, which is essentially a specific resource on the cloud
+
+5
+00:00:19,030 --> 00:00:24,220
+configuration that allows us to create these functions that run for 10 seconds roughly.
+
+6
+00:00:24,850 --> 00:00:29,710
+So that's just enough time for us to actually create this request, wait for the response and then send
+
+7
+00:00:29,710 --> 00:00:30,160
+it back.
+
+8
+00:00:30,790 --> 00:00:35,110
+And the way that we create them is inside of your root folder.
+
+9
+00:00:35,110 --> 00:00:37,540
+You're going to make a new folder called Net.
+
+10
+00:00:37,540 --> 00:00:43,870
+LFI By default net, Levi is going to look inside of this net file folder for another folder called
+
+11
+00:00:43,870 --> 00:00:44,590
+functions.
+
+12
+00:00:44,950 --> 00:00:50,920
+And any functions that you define inside of here, which are JavaScript files it will build for you
+
+13
+00:00:50,920 --> 00:00:52,540
+during your build step.
+
+14
+00:00:52,810 --> 00:00:58,660
+So we'll actually proposition and create the correct resources so that it can serve up your functions
+
+15
+00:00:58,780 --> 00:01:00,160
+whenever requests get made to them.
+
+16
+00:01:00,820 --> 00:01:01,900
+So this is the first step.
+
+17
+00:01:02,560 --> 00:01:05,350
+The next step is to actually name the function files.
+
+18
+00:01:05,920 --> 00:01:09,400
+So essentially whatever the name of the file is, is whatever the name of the root will be.
+
+19
+00:01:09,820 --> 00:01:13,570
+So here I want to call this create dash payments.
+
+20
+00:01:13,570 --> 00:01:14,530
+Dash intense.
+
+21
+00:01:14,830 --> 00:01:15,250
+Yes.
+
+22
+00:01:16,000 --> 00:01:18,310
+Because what we're making is a payment intents.
+
+23
+00:01:19,290 --> 00:01:23,760
+Now, in order for us to make this work, we need a couple back and specific libraries.
+
+24
+00:01:23,850 --> 00:01:26,700
+Specifically, we need the ones that allow us to work with Stripe.
+
+25
+00:01:27,540 --> 00:01:33,870
+So to do this, what we're going to do with these Netflix functions is they share the same package JSON
+
+26
+00:01:33,870 --> 00:01:35,970
+file as our root application.
+
+27
+00:01:36,360 --> 00:01:40,890
+So we're going to add them to the same exact package JSON.
+
+28
+00:01:41,520 --> 00:01:42,900
+So go back to your terminal.
+
+29
+00:01:44,220 --> 00:01:49,410
+And what we're going to do is we are going to add in through the same package.
+
+30
+00:01:49,410 --> 00:01:56,520
+Jason, remember, you're going to yarn add stripe, which is the stripe library we need for our back
+
+31
+00:01:56,520 --> 00:01:56,700
+end.
+
+32
+00:01:57,760 --> 00:01:59,970
+And then the other one we need is end.
+
+33
+00:02:00,910 --> 00:02:06,730
+Now remember when I mentioned that Crate React app has been under the hood while for us we're not in
+
+34
+00:02:06,730 --> 00:02:12,790
+create app land when we're working with our serverless functions, it's like a brand new node environment.
+
+35
+00:02:12,850 --> 00:02:17,290
+So what we need is going to be as well for this application.
+
+36
+00:02:18,070 --> 00:02:26,050
+So now let's add these in and then what we're going to do is go back to our application and inside of
+
+37
+00:02:26,050 --> 00:02:35,020
+your and file your file net life functions is going to share this same file in local testing.
+
+38
+00:02:35,380 --> 00:02:43,450
+When we actually deploy this internet defined, we will add these variables manually into the environment
+
+39
+00:02:43,450 --> 00:02:47,230
+section of Notify, but we'll talk about that when we get to the hosting section.
+
+40
+00:02:48,190 --> 00:02:50,560
+What I want to do is be able to access this.
+
+41
+00:02:51,100 --> 00:02:56,860
+So to do that, you need to go into your stripe and add your secret key here.
+
+42
+00:02:57,490 --> 00:03:02,050
+So I'm going to call it something a little bit more obvious.
+
+43
+00:03:02,620 --> 00:03:09,250
+So something like Stripe Secret Key, because it's not for react up, but I'm just going to add Stripe
+
+44
+00:03:09,610 --> 00:03:11,380
+key is equal to the string.
+
+45
+00:03:11,860 --> 00:03:13,000
+Now, I don't want to show you mine.
+
+46
+00:03:13,000 --> 00:03:15,280
+You should never show your secret key to anybody.
+
+47
+00:03:15,490 --> 00:03:17,380
+So just paste it and make sure it's a string.
+
+48
+00:03:17,860 --> 00:03:18,970
+Go into.
+
+49
+00:03:20,130 --> 00:03:22,350
+Your developer section of.
+
+50
+00:03:23,370 --> 00:03:26,220
+Your Stripe dashboard and then just copy the secret key.
+
+51
+00:03:26,550 --> 00:03:28,350
+You have to click it to reveal it and then copy it.
+
+52
+00:03:28,710 --> 00:03:29,790
+But that's what I want you to do.
+
+53
+00:03:29,820 --> 00:03:32,790
+I want you to copy it and then paste it into your secret file.
+
+54
+00:03:33,150 --> 00:03:36,060
+And then when you come back, we'll have assumed that you've done that.
+
+55
+00:03:37,580 --> 00:03:38,040
+Okay.
+
+56
+00:03:38,570 --> 00:03:40,430
+So I'm going to assume that you've done what I said.
+
+57
+00:03:40,460 --> 00:03:47,060
+Where you copy your secret key, put it into your file, and now back inside of our server, this function.
+
+58
+00:03:47,630 --> 00:03:51,980
+What we're going to do is we are going to require the moment that this mounts.
+
+59
+00:03:52,340 --> 00:03:55,850
+We're going to require again and we're going to run DHCP config on it.
+
+60
+00:03:56,930 --> 00:04:01,340
+Now you might notice that the code we write here is going to be a little different if you're unfamiliar
+
+61
+00:04:01,340 --> 00:04:05,720
+with Node primarily, we actually aren't using a lot of six features.
+
+62
+00:04:06,200 --> 00:04:11,030
+So this is one of these things that we're kind of going back to writing old school vanilla JavaScript.
+
+63
+00:04:11,480 --> 00:04:15,530
+So if you're unfamiliar, don't worry requires pretty much just an older version of import.
+
+64
+00:04:16,370 --> 00:04:22,880
+So we're requiring the files or essentially importing in the library and we're running config, which
+
+65
+00:04:22,880 --> 00:04:29,030
+will essentially attach all of those secret variables on the M file onto our process environment.
+
+66
+00:04:29,870 --> 00:04:34,010
+Once we have that, what we're going to do is we are also going to get Stripe.
+
+67
+00:04:34,490 --> 00:04:38,180
+So Stripe we're going to say require from stripe.
+
+68
+00:04:39,230 --> 00:04:46,970
+And now once we get this, what we're going to do is we are going to pass it our secret variable.
+
+69
+00:04:46,970 --> 00:04:54,230
+So here we as a process import stripe underscore secret key because that's the name that I gave to my
+
+70
+00:04:54,230 --> 00:04:55,760
+variable that has the secret key.
+
+71
+00:04:56,630 --> 00:05:05,090
+And now that we have this, we can now start working with the actual function, the function that is
+
+72
+00:05:05,090 --> 00:05:06,620
+housed inside of this file.
+
+73
+00:05:07,340 --> 00:05:09,080
+It is the main export.
+
+74
+00:05:09,230 --> 00:05:14,990
+So to do this, you're going to say export stock handler, which is again the old school way of saying
+
+75
+00:05:14,990 --> 00:05:16,250
+export that we're used to.
+
+76
+00:05:17,090 --> 00:05:21,920
+And this handler is equal to an async function that receives an event.
+
+77
+00:05:23,490 --> 00:05:28,470
+And then what it's going to do is that this event is pretty much the request and the response if you've
+
+78
+00:05:28,470 --> 00:05:30,180
+ever worked with expressed before.
+
+79
+00:05:30,360 --> 00:05:32,730
+This is essentially a stripped down version without express.
+
+80
+00:05:33,210 --> 00:05:39,060
+It's just a very basic function that will receive this event request and then do something with it.
+
+81
+00:05:39,870 --> 00:05:42,630
+So here I'm going to write a try catch block.
+
+82
+00:05:45,490 --> 00:05:52,810
+And what I'm going to say is that when you send me this event, I am going to make a payment intent
+
+83
+00:05:52,810 --> 00:05:58,850
+to Stripe using this Stripe library in order for me to make a payment intent, though, there's a couple
+
+84
+00:05:58,850 --> 00:05:59,950
+of things I need to know.
+
+85
+00:06:00,310 --> 00:06:05,740
+I need to know the currency and I need to know the payment method that I'm going to accept as well as
+
+86
+00:06:05,740 --> 00:06:06,700
+the amount.
+
+87
+00:06:07,360 --> 00:06:13,180
+So here I'm going to say, okay, I'm going to assume and this is something we need to know and pass
+
+88
+00:06:13,180 --> 00:06:19,900
+in, we're going to pass the amount as a integer and essentially it's going to be a value.
+
+89
+00:06:20,020 --> 00:06:25,300
+So let's say if it was $100, we would pass in 100, followed by two zeros.
+
+90
+00:06:25,390 --> 00:06:26,890
+So it's essentially incense.
+
+91
+00:06:26,980 --> 00:06:29,140
+There's no decimals, so it's a whole number.
+
+92
+00:06:29,590 --> 00:06:32,200
+So we just got to think about whatever we're passing through.
+
+93
+00:06:32,200 --> 00:06:34,390
+If we're assuming it's dollars, just multiply it by 100.
+
+94
+00:06:35,170 --> 00:06:41,020
+This amount is going to come from the event body, but because it's in JSON, we need to pass it.
+
+95
+00:06:41,230 --> 00:06:43,900
+So we can say Jason pass event dot body.
+
+96
+00:06:44,500 --> 00:06:51,430
+So on that event body is going to be some value amount and that amount is going to be the actual integer
+
+97
+00:06:51,430 --> 00:06:51,880
+we use.
+
+98
+00:06:52,660 --> 00:06:56,560
+Then what we're going to say is, okay, I'm going to make a payment intent.
+
+99
+00:06:56,560 --> 00:07:03,400
+So when you say const payment intent is equal to a weight because again, this is us making a request
+
+100
+00:07:03,400 --> 00:07:05,950
+to the Stripe server to say, Hey, I want to make this payment.
+
+101
+00:07:06,730 --> 00:07:11,230
+We're going to say Stripe dot payment, intense, dot create.
+
+102
+00:07:11,710 --> 00:07:13,840
+So this is from the Stripe library.
+
+103
+00:07:13,900 --> 00:07:18,550
+We're going to create payment intent and pass that an object where we're going to give it the amount,
+
+104
+00:07:19,090 --> 00:07:20,530
+we're going to give it the currency.
+
+105
+00:07:20,530 --> 00:07:28,090
+And here I'm going to say USD and then we're also going to say underscore payment method types.
+
+106
+00:07:29,830 --> 00:07:33,890
+This is going to be an array which accepts the different payment types that we can perform for this.
+
+107
+00:07:34,240 --> 00:07:38,080
+I'm going to say it's just credit card because I'm not taking any other payment types.
+
+108
+00:07:39,390 --> 00:07:42,840
+And then once this is done, we're going to return this back.
+
+109
+00:07:43,290 --> 00:07:48,150
+So we're going to return an object with a status code of 200.
+
+110
+00:07:48,750 --> 00:07:52,530
+And we're also going to pass back a body object.
+
+111
+00:07:52,830 --> 00:07:55,590
+And this is us JSON string flying.
+
+112
+00:07:56,700 --> 00:08:00,990
+An object with a payment intent as the key value.
+
+113
+00:08:02,020 --> 00:08:02,920
+So that's all this is doing.
+
+114
+00:08:03,310 --> 00:08:07,640
+So essentially we're saying, hey, if you give us this value and we succeed in getting a payment out,
+
+115
+00:08:07,690 --> 00:08:08,740
+we're going to send this back to you.
+
+116
+00:08:09,740 --> 00:08:15,950
+If there is an error, what we're going to do is we're going to log the error for ourselves inside of
+
+117
+00:08:15,950 --> 00:08:17,870
+our development environment so that we can see it.
+
+118
+00:08:19,370 --> 00:08:23,570
+And then what we're going to do is return back status 400.
+
+119
+00:08:25,050 --> 00:08:27,630
+And here we're just going to pass back the air.
+
+120
+00:08:31,480 --> 00:08:32,160
+And that's it.
+
+121
+00:08:32,170 --> 00:08:34,030
+That's all we need for this function.
+
+122
+00:08:34,810 --> 00:08:40,750
+Now, in order for actually to test this function, we need to actually leverage something called the
+
+123
+00:08:40,750 --> 00:08:45,970
+net, the seal of the seal, which will allow us to build our entire project in the kind of environment
+
+124
+00:08:45,970 --> 00:08:49,450
+that net life I would, but doing it locally on your own computer.
+
+125
+00:08:50,260 --> 00:08:54,520
+So we have our function set up in order for us to hook this together and test it.
+
+126
+00:08:54,680 --> 00:08:58,750
+We're going to need Net Seelye which we'll learn about in the next video.
+
+127
+00:08:59,260 --> 00:09:05,470
+So again, what we've done now is we have set up a very basic function that receives a request where
+
+128
+00:09:05,470 --> 00:09:07,090
+we expect an amount value.
+
+129
+00:09:07,540 --> 00:09:13,000
+We then pass this into stripe to make a payment intent, which as it sounds like it's an intent to make
+
+130
+00:09:13,000 --> 00:09:14,830
+a payment that stripe registers.
+
+131
+00:09:15,310 --> 00:09:19,540
+And then what happens is that we return that intent back to the front end.
+
+132
+00:09:19,780 --> 00:09:24,130
+If successful, if unsuccessful, we return back a 400 with the error.
+
+133
+00:09:24,520 --> 00:09:25,240
+Very simple.
+
+134
+00:09:25,720 --> 00:09:28,100
+And now we're going to hook this together with the net.
+
+135
+00:09:28,120 --> 00:09:28,810
+If I see a light.
+
+136
+00:09:29,320 --> 00:09:30,280
+So I'll see in the next video.

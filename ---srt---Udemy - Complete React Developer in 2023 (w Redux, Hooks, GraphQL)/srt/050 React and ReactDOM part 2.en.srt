@@ -1,0 +1,359 @@
+1
+00:00:00,560 --> 00:00:01,640
+Welcome back, everyone.
+
+2
+00:00:02,270 --> 00:00:07,820
+In the last video, we learned about how react and rapped on work as base libraries.
+
+3
+00:00:08,210 --> 00:00:12,830
+In this video, we're going to push it a little further before we move on to actually building our application.
+
+4
+00:00:13,040 --> 00:00:15,080
+Back in the world of beautiful jazz sex.
+
+5
+00:00:15,350 --> 00:00:20,660
+But here, I just really want you to become familiar with React as a library of works so that you understand
+
+6
+00:00:20,660 --> 00:00:24,950
+what jazz sex is doing compared to what you would have to do if you didn't have jazz sex.
+
+7
+00:00:25,340 --> 00:00:31,250
+So as we saw we were initialized, are at component, and I typically want to actually make components
+
+8
+00:00:31,250 --> 00:00:33,380
+that are a little bit more interesting.
+
+9
+00:00:33,890 --> 00:00:37,960
+So let's keep this H1, let's say underneath.
+
+10
+00:00:37,970 --> 00:00:41,660
+We wanted to create a few elements that were a little bit more complicated.
+
+11
+00:00:42,140 --> 00:00:46,850
+So what I'm actually going to do is I'm going to create a new component and I'm going to call it person.
+
+12
+00:00:47,570 --> 00:00:49,910
+This person component is a functional component.
+
+13
+00:00:50,510 --> 00:00:54,890
+So here React is smart enough to say, Oh, you're still personally functional components.
+
+14
+00:00:54,890 --> 00:00:56,360
+It's going to behave the exact same.
+
+15
+00:00:56,720 --> 00:01:00,170
+Remember, create element really just replaces GSX.
+
+16
+00:01:00,380 --> 00:01:03,500
+Everything else about our components is still the same.
+
+17
+00:01:04,190 --> 00:01:08,480
+So what I'm going to do is I'm still going to write a functional component that gets props as an object,
+
+18
+00:01:08,930 --> 00:01:14,300
+and instead, I'm just going to return back what I want for this person.
+
+19
+00:01:14,840 --> 00:01:20,060
+And let's say that we know for sure we need a parent level container, so I'm going to use a div.
+
+20
+00:01:20,360 --> 00:01:26,720
+It's going to say React, create elements and it's going to be active and I'm not going to pass it any
+
+21
+00:01:26,750 --> 00:01:28,340
+attributes in this particular case.
+
+22
+00:01:29,150 --> 00:01:33,890
+And inside, I want it to have children and these children that I want.
+
+23
+00:01:34,190 --> 00:01:36,890
+I'm going to say React, create element.
+
+24
+00:01:37,800 --> 00:01:44,120
+Again, the first child should be an H1, and the value inside should be props daughter name.
+
+25
+00:01:44,930 --> 00:01:50,510
+So again, no attributes, but the children and side is just the text note, which is the string strings
+
+26
+00:01:50,510 --> 00:01:54,740
+automatically get converted to text notes, which is really what you see when you look at strings that
+
+27
+00:01:54,740 --> 00:01:58,220
+are wrapped in like a paragraph or inside of a span.
+
+28
+00:01:58,670 --> 00:02:00,290
+Whenever you see those, those are text notes.
+
+29
+00:02:01,160 --> 00:02:03,930
+So I'm saying props on them because I know it'll be a string.
+
+30
+00:02:04,550 --> 00:02:10,730
+And then underneath that, let's just say that for this person, it's both a name that we're going to
+
+31
+00:02:10,730 --> 00:02:13,370
+pass, but also another string, let's say, occupation.
+
+32
+00:02:13,850 --> 00:02:16,010
+It's going to say, React, OK, create element here.
+
+33
+00:02:16,880 --> 00:02:21,070
+And this one, I want to be in a paragraph text again.
+
+34
+00:02:21,080 --> 00:02:24,350
+No more attributes I'm seeing as a prop star occupation.
+
+35
+00:02:26,060 --> 00:02:28,970
+And with this, we have our person component.
+
+36
+00:02:30,060 --> 00:02:35,730
+So what I want to do now is I want to, let's say, create more.
+
+37
+00:02:36,150 --> 00:02:43,110
+So I'm going to do react to create elements and here I'm going to pass it the person.
+
+38
+00:02:44,200 --> 00:02:49,150
+Again, remember, the attributes are the props, that's how you pass props into this component.
+
+39
+00:02:49,660 --> 00:02:52,240
+So here we know that we want to give it a name.
+
+40
+00:02:52,690 --> 00:02:54,850
+So the first one, let's say it's Iowa.
+
+41
+00:02:55,770 --> 00:02:57,540
+As for the occupation?
+
+42
+00:02:59,970 --> 00:03:08,160
+I am an instructor and then inside, I want to pass no children, so you can pass a all or you don't
+
+43
+00:03:08,160 --> 00:03:11,210
+have to pass anything, but I'm going to pass and so we're really explicit about it.
+
+44
+00:03:12,350 --> 00:03:14,270
+Next, let's make two more.
+
+45
+00:03:15,930 --> 00:03:21,840
+So here I'm also going to do Andre, and he is a lead instructor.
+
+46
+00:03:22,930 --> 00:03:24,490
+And he's also going to have no children.
+
+47
+00:03:25,210 --> 00:03:28,330
+And then finally, let's just say there's Emily.
+
+48
+00:03:29,640 --> 00:03:33,420
+And her occupation is a teacher.
+
+49
+00:03:34,760 --> 00:03:38,750
+And now, if we save our application and we go back.
+
+50
+00:03:39,790 --> 00:03:40,990
+And we refresh.
+
+51
+00:03:42,170 --> 00:03:46,460
+We see that we have our three instructors or three people.
+
+52
+00:03:47,330 --> 00:03:53,330
+And here we really saw a little bit more of a verbose example of how we've created two different components
+
+53
+00:03:53,330 --> 00:03:58,490
+both our app component and our person component and how we can leverage react to actually put these
+
+54
+00:03:58,490 --> 00:03:59,480
+elements on the page.
+
+55
+00:04:00,260 --> 00:04:03,530
+With this, you pretty much just seen what it is that GSX does.
+
+56
+00:04:04,280 --> 00:04:09,010
+GSX just simplifies this entire process, but we're still writing functional components.
+
+57
+00:04:09,020 --> 00:04:11,780
+Everything else about these components is the exact same.
+
+58
+00:04:12,050 --> 00:04:19,460
+It's really just the fact that what GSX it looks a lot more like readable HTML as far as dictating what
+
+59
+00:04:19,460 --> 00:04:22,550
+UI we want to render reading, react, create element.
+
+60
+00:04:22,560 --> 00:04:28,640
+This is a lot more difficult on our eyes as developers in order to actually write this code, but it's
+
+61
+00:04:28,640 --> 00:04:29,510
+really simple.
+
+62
+00:04:29,510 --> 00:04:33,140
+It's pretty much just what kind of component are you trying to make?
+
+63
+00:04:33,410 --> 00:04:36,150
+What are the attributes prompt you want to give me?
+
+64
+00:04:36,170 --> 00:04:37,910
+And then what are the children inside?
+
+65
+00:04:38,240 --> 00:04:38,840
+That's it.
+
+66
+00:04:39,230 --> 00:04:40,790
+That's really all it's doing under the hood.
+
+67
+00:04:41,690 --> 00:04:47,510
+In fact, in order to make this easier, what we can do is we can actually copy all of this code.
+
+68
+00:04:48,320 --> 00:04:54,960
+And what we can do is create another file court, AP us and inside our app tags.
+
+69
+00:04:55,010 --> 00:04:56,840
+We can just paste this code that we have.
+
+70
+00:04:57,960 --> 00:04:59,070
+And then what we can do.
+
+71
+00:05:00,630 --> 00:05:08,700
+Is we can just leverage this code inside of our script tag, so here I'm going to save it all.
+
+72
+00:05:08,910 --> 00:05:17,220
+Get rid of this and then this script source is just going to point to the code inside of our relative
+
+73
+00:05:17,220 --> 00:05:17,730
+folder.
+
+74
+00:05:18,240 --> 00:05:21,460
+So I'm going to go dot slash OPG's.
+
+75
+00:05:21,930 --> 00:05:25,830
+And now if I save and I look back and I refresh.
+
+76
+00:05:27,040 --> 00:05:28,000
+My code still works.
+
+77
+00:05:29,070 --> 00:05:32,200
+This is really just a very bare bones.
+
+78
+00:05:32,220 --> 00:05:37,410
+None of the benefits that we get from utilizing web pack that helps build our code.
+
+79
+00:05:37,560 --> 00:05:41,790
+We just wrote all of our code and right now in writes HTML and raw JavaScript.
+
+80
+00:05:42,450 --> 00:05:48,300
+But really, with all these tooling that create racked up gives us and with GSX and all of these bells
+
+81
+00:05:48,300 --> 00:05:49,800
+and whistles, it just makes it.
+
+82
+00:05:49,800 --> 00:05:53,490
+So it's a lot more of a pleasant developer experience.
+
+83
+00:05:53,670 --> 00:05:55,680
+In order for us to write our real code.
+
+84
+00:05:56,010 --> 00:06:00,270
+But I really just want to peel back away, what is GSX, what is really doing?
+
+85
+00:06:00,270 --> 00:06:06,660
+What is Dom doing so that you have a better understanding of how these libraries function so that when
+
+86
+00:06:06,660 --> 00:06:09,840
+you're actually writing code, you have a solid foundation to stand on.
+
+87
+00:06:10,140 --> 00:06:15,270
+But now that we understand what react and react Dom do for us as libraries, it's much easier now moving
+
+88
+00:06:15,270 --> 00:06:17,940
+forward for us to just leverage assets to write our code.
+
+89
+00:06:18,120 --> 00:06:21,880
+So hopefully you understand what we just went through with react and react on.
+
+90
+00:06:22,470 --> 00:06:24,750
+So let's move on with building our application.

@@ -1,0 +1,467 @@
+1
+00:00:00,180 --> 00:00:01,200
+Welcome back, everyone.
+
+2
+00:00:02,010 --> 00:00:07,650
+In this video, we are going to dive into modifying our button component by thinking about how we can
+
+3
+00:00:07,650 --> 00:00:14,700
+leverage style components in order for us to make our code a little bit more solid in other ways than
+
+4
+00:00:14,700 --> 00:00:16,470
+just the styling aspect.
+
+5
+00:00:17,040 --> 00:00:22,560
+So what I'm going to do first is I am going to show you one of the patterns that emerges with style
+
+6
+00:00:22,560 --> 00:00:24,580
+components that you may not have used yet.
+
+7
+00:00:25,260 --> 00:00:30,210
+So inside again, I'm going to convert button styles over to a GSX file.
+
+8
+00:00:30,810 --> 00:00:36,180
+And then what I'm going to do is I'm going to import in styled from styled components.
+
+9
+00:00:37,140 --> 00:00:40,980
+And now what I'm going to do is when thinking about buttons.
+
+10
+00:00:41,370 --> 00:00:48,240
+We know that generally speaking, the button has some base styles and then depending on the class of
+
+11
+00:00:48,240 --> 00:00:54,720
+either Google sign in or inverted or potentially any future additional styling, as we add, they just
+
+12
+00:00:54,720 --> 00:00:56,760
+modify some of these values.
+
+13
+00:00:57,000 --> 00:01:01,890
+But they do inherit a large portion of the base styles for this button.
+
+14
+00:01:02,490 --> 00:01:10,290
+So what I'm going to do is I'm actually going to create a new base button component, and this is going
+
+15
+00:01:10,290 --> 00:01:18,600
+to be a styled button component that has all of the base styles here for what we had before on our button
+
+16
+00:01:18,600 --> 00:01:19,200
+container.
+
+17
+00:01:20,170 --> 00:01:26,530
+So now this bass button is the normal button without any of the additional classes on it.
+
+18
+00:01:27,310 --> 00:01:35,950
+What we can do for another button, let's call it our Google sign in button is we can actually extend
+
+19
+00:01:36,280 --> 00:01:40,630
+on the base button the same way that we were doing it with that link component.
+
+20
+00:01:41,020 --> 00:01:45,610
+So I mentioned before you can take any component and add additional styling on top of it.
+
+21
+00:01:46,060 --> 00:01:51,520
+And because our base button is just the button, we can now say, Hey, this new component extends upon
+
+22
+00:01:51,520 --> 00:01:58,840
+the base button, these additional stylings that are unique to just the actual Google button.
+
+23
+00:01:59,890 --> 00:02:04,000
+And similarly, we want to do the same thing for the inverted styles.
+
+24
+00:02:04,660 --> 00:02:06,100
+So here what I'm going to do.
+
+25
+00:02:06,100 --> 00:02:07,540
+I'm just going to copy this over.
+
+26
+00:02:07,960 --> 00:02:17,350
+And once again, I want to duplicate this button with a new inverted button, which is equal to styled
+
+27
+00:02:17,470 --> 00:02:18,550
+on base button.
+
+28
+00:02:20,070 --> 00:02:23,610
+And inside, I'm going to paste my inverted styling.
+
+29
+00:02:27,460 --> 00:02:28,900
+And then just delete this now.
+
+30
+00:02:30,200 --> 00:02:35,240
+So now we have three types of buttons inverted Google sign in and the base button.
+
+31
+00:02:36,110 --> 00:02:43,160
+Well, we wanted to do inside of our button component is modify and impart the correct style components
+
+32
+00:02:43,160 --> 00:02:43,400
+now.
+
+33
+00:02:43,850 --> 00:02:47,450
+So I want to import in from button styles.
+
+34
+00:02:48,460 --> 00:02:50,260
+I'm going to bring in the base button.
+
+35
+00:02:50,890 --> 00:02:53,680
+I'm going to bring in the Google sign in button.
+
+36
+00:02:55,630 --> 00:02:58,090
+And I'm also going to bring in the inverted button.
+
+37
+00:02:59,820 --> 00:03:06,660
+So now that I have these three buttons, what we had before was this button type classes object.
+
+38
+00:03:07,170 --> 00:03:10,470
+However, we didn't really get to leverage it as well as we want it to.
+
+39
+00:03:10,680 --> 00:03:14,640
+Now what I mean by this is that when you think about this button type.
+
+40
+00:03:15,710 --> 00:03:22,100
+This button type allows us to not have to pass strings, instead, we can directly just use this object,
+
+41
+00:03:22,100 --> 00:03:26,150
+which allows us to leverage auto complete auto complete anywhere.
+
+42
+00:03:26,180 --> 00:03:32,270
+Just means that if you typed button type classes don't, you actually will automatically see that there
+
+43
+00:03:32,270 --> 00:03:35,450
+is Google an inverted as options that you can choose.
+
+44
+00:03:35,990 --> 00:03:41,600
+This makes it a lot easier for us to import in button type classes any time we want to figure out,
+
+45
+00:03:41,750 --> 00:03:46,460
+Hey, what are those different button types that render different styles of buttons?
+
+46
+00:03:46,790 --> 00:03:51,920
+You can just use this object instead of trying to figure out by typing in a string and then coming to
+
+47
+00:03:51,920 --> 00:03:53,090
+this component and checking.
+
+48
+00:03:53,600 --> 00:03:55,980
+I'll show you what I mean once we finish writing this out.
+
+49
+00:03:56,690 --> 00:04:03,560
+So in order for us to leverage this now, what I can do is I can create a new function called Get Button,
+
+50
+00:04:04,160 --> 00:04:09,230
+and what get button should do is it should take the button type string and it should return us back
+
+51
+00:04:09,230 --> 00:04:13,910
+one of these three button components because remember, these are individual components now.
+
+52
+00:04:14,570 --> 00:04:20,000
+So what I'm going to do is say, Hey, I'm going to get back a button type, and by default, I want
+
+53
+00:04:20,000 --> 00:04:25,910
+there to be a base button because the base button is what's going to push to this base button component.
+
+54
+00:04:26,600 --> 00:04:29,420
+So by default, I'm going to say there is a base.
+
+55
+00:04:30,320 --> 00:04:36,080
+Then what I'm going to do is I'm going to say, OK, the button types default value, if none is past
+
+56
+00:04:36,080 --> 00:04:38,570
+is button type classes dot base.
+
+57
+00:04:39,730 --> 00:04:46,540
+And then what I'm going to do is I'm going to return back from a special map object and this map object
+
+58
+00:04:46,540 --> 00:04:49,060
+is going to be past the button type volume.
+
+59
+00:04:49,930 --> 00:04:54,940
+So we're essentially saying, Hey, what I want is off of this button type, return me the specific
+
+60
+00:04:54,940 --> 00:04:59,230
+component that I want and the specific components are going to be mapped here.
+
+61
+00:04:59,620 --> 00:05:05,380
+So first, there's a button type classes like this dot base.
+
+62
+00:05:05,890 --> 00:05:09,010
+If I get base, then I want to return the base button.
+
+63
+00:05:09,490 --> 00:05:12,910
+So here we just want to return the literal functional component right now.
+
+64
+00:05:13,690 --> 00:05:17,440
+Similarly, I'm going to repeat this three times for the other types.
+
+65
+00:05:18,130 --> 00:05:23,110
+If there's Google, then what I want to return is the Google sign in button.
+
+66
+00:05:24,590 --> 00:05:26,630
+And finally, if there is inverted.
+
+67
+00:05:27,730 --> 00:05:30,700
+Then I want to return back the inverted button.
+
+68
+00:05:32,750 --> 00:05:34,310
+And now I'm going to save this.
+
+69
+00:05:35,180 --> 00:05:41,150
+And what you can do now is we can take this get button and come into our button component, and what
+
+70
+00:05:41,150 --> 00:05:45,140
+we'll say is that the actual button that we need to render.
+
+71
+00:05:45,290 --> 00:05:50,630
+So the custom button in this particular case is equal to calling get button and passing it the button
+
+72
+00:05:50,630 --> 00:05:50,960
+type.
+
+73
+00:05:52,980 --> 00:06:01,140
+Now what we do is that this component is now pointing to one of the three relevant buttons so we can
+
+74
+00:06:01,140 --> 00:06:05,490
+take this button and replace it with this current button right here.
+
+75
+00:06:07,460 --> 00:06:10,940
+Like so and now we don't need these class names anymore.
+
+76
+00:06:11,810 --> 00:06:14,180
+All of the other props we still want to spread through.
+
+77
+00:06:14,930 --> 00:06:19,730
+But now what we can do is leverage this button type class anywhere we're using the button.
+
+78
+00:06:20,690 --> 00:06:21,500
+So let me show you.
+
+79
+00:06:22,600 --> 00:06:27,340
+First, let's go into our sign in form component here, we're using a Google button.
+
+80
+00:06:27,610 --> 00:06:32,110
+So in order for us to leverage it, we want to say, Hey, take in the button.
+
+81
+00:06:34,890 --> 00:06:35,460
+Classes.
+
+82
+00:06:36,680 --> 00:06:37,970
+And we're going to come down here.
+
+83
+00:06:38,980 --> 00:06:45,160
+And what we can say is instead of button tape pointing to the string Google, which we can make a mistake
+
+84
+00:06:45,160 --> 00:06:50,650
+on, what we can do now is we can render button type classes dot Google.
+
+85
+00:06:51,190 --> 00:06:58,570
+And now if we save this, if we come back to our application and let's sign out and then go to our signing
+
+86
+00:06:58,570 --> 00:07:02,110
+page, we see that we still have our Google button.
+
+87
+00:07:03,100 --> 00:07:10,930
+Similarly, now let's go to our actual product form, which is where we show our other button type.
+
+88
+00:07:11,950 --> 00:07:13,510
+Here we use inverted.
+
+89
+00:07:13,990 --> 00:07:22,420
+So now if I import in button type classes and instead of button type again, I pass in button Typekit
+
+90
+00:07:22,420 --> 00:07:23,050
+inverted.
+
+91
+00:07:23,740 --> 00:07:26,140
+If I save this, I come back here.
+
+92
+00:07:26,770 --> 00:07:27,610
+I go to the shop.
+
+93
+00:07:28,360 --> 00:07:29,080
+There we see.
+
+94
+00:07:29,080 --> 00:07:30,520
+We have our inverted button.
+
+95
+00:07:31,120 --> 00:07:38,650
+But the main advantage of doing this style of pattern is that now we can really just leverage this object
+
+96
+00:07:38,650 --> 00:07:41,800
+that very easily tells us all the styles of buttons.
+
+97
+00:07:41,950 --> 00:07:43,870
+We don't have to guess for that string.
+
+98
+00:07:44,200 --> 00:07:45,940
+We don't have to mistyped that string.
+
+99
+00:07:46,150 --> 00:07:51,010
+These are all ways to eliminate the error of people, humans writing code.
+
+100
+00:07:51,730 --> 00:07:57,070
+And this is one of the big advantages, and it kind of actually gives us a little insight into a different
+
+101
+00:07:57,070 --> 00:08:03,010
+kind of pattern where it's very intuitive now for us to look at these different components and see them
+
+102
+00:08:03,010 --> 00:08:10,180
+as what kind of styling is relevant because we know, oh, there's based buttons, and then these similar
+
+103
+00:08:10,180 --> 00:08:13,990
+additional components are just additional styling on top of base buttons.
+
+104
+00:08:14,230 --> 00:08:20,140
+It's much more intuitive to look at components than it is to read giant walls of CSS and source code.
+
+105
+00:08:21,220 --> 00:08:26,350
+But this is the new pattern that we really can leverage now utilizing style components.
+
+106
+00:08:27,370 --> 00:08:33,610
+So now that we've learned these two main forms of using style components, we've done it with or navigation
+
+107
+00:08:33,610 --> 00:08:34,690
+and we've done it with the button.
+
+108
+00:08:35,170 --> 00:08:40,420
+My challenge to you is to convert the rest of the application over to style components.
+
+109
+00:08:41,260 --> 00:08:42,610
+So once you've done that.
+
+110
+00:08:43,090 --> 00:08:48,370
+Joining me in the next video where we will discuss perhaps some of the more challenging style components
+
+111
+00:08:48,370 --> 00:08:50,770
+that I found to be ones to convert.
+
+112
+00:08:51,010 --> 00:08:54,280
+There's a lot to go through if you want to compare ahead of time.
+
+113
+00:08:54,520 --> 00:08:59,710
+I'm going to post a repo link inside of your resources folder that will show the entire application
+
+114
+00:08:59,890 --> 00:09:01,720
+migrated over to style components.
+
+115
+00:09:02,290 --> 00:09:07,090
+If not, join me in the next video or discuss some of the ones that I find a little bit more challenging
+
+116
+00:09:07,090 --> 00:09:07,720
+to think about.
+
+117
+00:09:08,170 --> 00:09:09,190
+I'll see you in the next video.

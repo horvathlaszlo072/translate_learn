@@ -1,0 +1,523 @@
+1
+00:00:01,270 --> 00:00:02,410
+Welcome back, everybody.
+
+2
+00:00:03,190 --> 00:00:10,600
+So in the last few sections, I know we didn't work off of our main application because we were mostly
+
+3
+00:00:10,600 --> 00:00:18,760
+implementing in different features that can challenge the existing solutions of react redux inside of
+
+4
+00:00:18,760 --> 00:00:25,630
+our main e-commerce platform by testing out context API and then switching over to graphical and Apollo
+
+5
+00:00:25,630 --> 00:00:26,220
+client.
+
+6
+00:00:26,530 --> 00:00:33,130
+So it's actually been a while since we've worked on our main application, but now that we've finished
+
+7
+00:00:33,130 --> 00:00:39,820
+those tangential sections where we've really deeply explored other alternatives to the React Redux architecture
+
+8
+00:00:39,820 --> 00:00:47,710
+that we already currently have, it's time we come back and start rounding out our application with
+
+9
+00:00:47,710 --> 00:00:52,120
+the last 20 percent that gives our application that extra month.
+
+10
+00:00:52,750 --> 00:00:56,020
+Now, these things might not actually be any features at all.
+
+11
+00:00:56,500 --> 00:01:03,580
+In fact, in the upcoming sections, we are going to round out your skillset as a web developer so that
+
+12
+00:01:03,580 --> 00:01:10,540
+you understand that last kind of mysterious part of what it takes to build an application effectively
+
+13
+00:01:11,020 --> 00:01:13,090
+and have it be performance.
+
+14
+00:01:13,600 --> 00:01:19,970
+So one of the first things that I want to talk about is actually making our website mobile friendly.
+
+15
+00:01:20,800 --> 00:01:23,980
+Now, currently, our website is not mobile friendly.
+
+16
+00:01:24,100 --> 00:01:30,070
+It is a little bit responsive, but it's not fully optimized for the mobile viewing experience.
+
+17
+00:01:30,550 --> 00:01:39,250
+So what we are going to do is actually modify the case in our files to show that they are more aligned
+
+18
+00:01:39,250 --> 00:01:42,160
+with how we would want it to look on a mobile browser.
+
+19
+00:01:42,340 --> 00:01:48,820
+And I'm going to show you that by using media queries now before we actually dive into the code of writing
+
+20
+00:01:48,820 --> 00:01:49,730
+or media queries.
+
+21
+00:01:50,110 --> 00:01:55,300
+One of the main things we have to think about is actually how do we make sure that we can view our application
+
+22
+00:01:55,300 --> 00:01:57,060
+inside of a mobile environment?
+
+23
+00:01:57,850 --> 00:02:01,450
+If you're rolling chrome, it's actually extremely easy to do so.
+
+24
+00:02:01,570 --> 00:02:09,280
+The Chrome browser allows us to just open up the dev tools and click this little tablet looking icon
+
+25
+00:02:09,280 --> 00:02:13,390
+inside at the top of that toolbar, which says Toggle device toolbar.
+
+26
+00:02:14,080 --> 00:02:22,300
+If you click this, you'll actually see your mobile web view be your main view now where your browser
+
+27
+00:02:22,300 --> 00:02:22,990
+was before.
+
+28
+00:02:24,120 --> 00:02:30,660
+You can adjust the size of this and in the top number here, you'll see the actual width and height
+
+29
+00:02:30,660 --> 00:02:31,830
+of your new view.
+
+30
+00:02:31,920 --> 00:02:34,400
+So this pretty much simulates a mobile view.
+
+31
+00:02:35,130 --> 00:02:42,150
+So this is the main way that we are going to use it to see what it is that we are actually going to
+
+32
+00:02:42,150 --> 00:02:45,930
+have as the mobile version of our Web application.
+
+33
+00:02:47,710 --> 00:02:53,560
+Now that we have this, we are going to start leveraging these media queries to modify our code to be
+
+34
+00:02:53,560 --> 00:02:54,560
+more mobile friendly.
+
+35
+00:02:55,210 --> 00:02:56,800
+So let's go back to our application.
+
+36
+00:02:58,050 --> 00:03:05,860
+One of the first things that we need to do is actually change this final access file over to start components.
+
+37
+00:03:06,270 --> 00:03:09,510
+Now, the way that we imported the stylesheet is perfectly fine, right?
+
+38
+00:03:09,610 --> 00:03:16,800
+It's just one aftertax stylesheet that doesn't necessarily have to change when we moved over to Season
+
+39
+00:03:16,800 --> 00:03:17,340
+Jass.
+
+40
+00:03:17,790 --> 00:03:20,270
+But for consistency sake, we might as well do it.
+
+41
+00:03:20,280 --> 00:03:23,130
+And it's really easy in order to implement global styles.
+
+42
+00:03:24,080 --> 00:03:30,170
+All we have to do is use this new function called Creates Global Stars, so in order for us to do that,
+
+43
+00:03:30,200 --> 00:03:35,620
+we're going to make a new folder that will hold the component that represents our global status.
+
+44
+00:03:36,440 --> 00:03:40,670
+So we'll write this new file and we'll call it global dot styles DOT.
+
+45
+00:03:42,580 --> 00:03:50,890
+Now, inside of here, we are going to import in from the Style Components Library, this thing called
+
+46
+00:03:50,890 --> 00:03:52,340
+create global style.
+
+47
+00:03:53,080 --> 00:04:02,290
+So with this, we can actually create this new concept called global style, which is equal to us using
+
+48
+00:04:02,680 --> 00:04:04,290
+this crazy global stuff.
+
+49
+00:04:04,780 --> 00:04:08,440
+And then we pass it, are to build a version of our strength.
+
+50
+00:04:08,530 --> 00:04:10,380
+Right, because we want strong interpolation.
+
+51
+00:04:11,080 --> 00:04:17,950
+And now all we do is we just put all the styles that we had inside of our index access inside of here.
+
+52
+00:04:18,890 --> 00:04:24,980
+If we really wanted to, we could even do it with our index as well, but this is inside of our index
+
+53
+00:04:25,460 --> 00:04:27,450
+and it's not 100 percent necessary.
+
+54
+00:04:27,470 --> 00:04:27,840
+Right.
+
+55
+00:04:27,860 --> 00:04:29,690
+Let's just do it with our access.
+
+56
+00:04:31,440 --> 00:04:37,140
+So once we place the new stars inside of this global star, we'll make sure to export this out.
+
+57
+00:04:38,360 --> 00:04:43,880
+And all we need to do in order to bring it into our application is literally load it at the top level
+
+58
+00:04:43,880 --> 00:04:44,600
+of our app.
+
+59
+00:04:45,600 --> 00:04:53,190
+So what we'll do is we will go back to our objects, will remove this import that we had before and
+
+60
+00:04:53,190 --> 00:04:56,510
+in its place we will import in our global sales.
+
+61
+00:04:57,240 --> 00:05:06,960
+So let's actually move this header up here and say import global style from our new global styles file.
+
+62
+00:05:08,640 --> 00:05:15,930
+And now it's literally just the component that we can put above the header like so and this will apply
+
+63
+00:05:15,930 --> 00:05:18,320
+those styles into our application.
+
+64
+00:05:18,930 --> 00:05:24,420
+So if we go back to our application and we search you back, we'll see that our global style and our
+
+65
+00:05:24,420 --> 00:05:25,530
+padding is still there.
+
+66
+00:05:25,650 --> 00:05:32,280
+In fact, if we inspect this, we see we still have our padding and our body still has the padding code
+
+67
+00:05:32,280 --> 00:05:33,540
+that we had from our global.
+
+68
+00:05:34,800 --> 00:05:40,740
+So it's really convenient to do it this way because now we are pretty consistent with the way that we're
+
+69
+00:05:40,740 --> 00:05:41,450
+writing our code.
+
+70
+00:05:42,370 --> 00:05:47,170
+In fact, now we can get rid of this after successful because we don't need it anymore and we can start
+
+71
+00:05:47,170 --> 00:05:48,820
+leveraging these media queries.
+
+72
+00:05:49,720 --> 00:05:57,300
+So the first thing I want to do is I want to reduce the padding on this mobile view of our application.
+
+73
+00:05:57,940 --> 00:05:58,820
+So how do I do that?
+
+74
+00:05:59,530 --> 00:06:02,980
+Well, I keep talking about media queries, so I'm going to show you what it actually looks like when
+
+75
+00:06:02,980 --> 00:06:03,540
+we write them.
+
+76
+00:06:04,270 --> 00:06:10,660
+You put the media query inside of the CSA selector that you want to modify.
+
+77
+00:06:11,170 --> 00:06:16,450
+So if we have style components, we just make sure to put this media query inside of that style component
+
+78
+00:06:16,450 --> 00:06:16,860
+as well.
+
+79
+00:06:17,820 --> 00:06:22,380
+And the way that a media career looks is it takes the format of this at media.
+
+80
+00:06:23,620 --> 00:06:32,080
+And here what we'll say is scream and and then inside of here, we put certain properties that tell
+
+81
+00:06:32,080 --> 00:06:39,130
+it, at what point do we want this style block to be applied?
+
+82
+00:06:40,400 --> 00:06:46,550
+Now, here you can set things like Menwith and Max with or just one or the other, and all this is saying
+
+83
+00:06:46,550 --> 00:06:52,420
+is pretty much I only want you to render the block here that will put inside of here.
+
+84
+00:06:52,460 --> 00:06:56,080
+So wherever here it is, we'll say there's some scissors inside of here.
+
+85
+00:06:56,120 --> 00:06:56,430
+Right.
+
+86
+00:06:57,050 --> 00:07:02,630
+We only want this to render based on the rules that we write inside of these brackets.
+
+87
+00:07:03,080 --> 00:07:06,920
+So in my case, I'm going to say max width is eight hundred pixel.
+
+88
+00:07:08,530 --> 00:07:16,840
+Meaning that anything below eight hundred and below in terms of the width will get these styles, anything
+
+89
+00:07:16,840 --> 00:07:20,760
+above eight hundred pixels will not get these styles.
+
+90
+00:07:21,580 --> 00:07:23,820
+So our body styles will be applied.
+
+91
+00:07:24,250 --> 00:07:30,310
+But then these media screen max width of eight hundred pixels, this block of access that we're about
+
+92
+00:07:30,310 --> 00:07:36,910
+to write is going to be applied as long as the windows width does not exceed eight hundred pixels.
+
+93
+00:07:38,390 --> 00:07:44,330
+So here, I want to set the panning to 10 pixels all around instead of what we had before where our
+
+94
+00:07:44,330 --> 00:07:47,390
+padding was 20 pixels, top bottom 40 pixels on the left.
+
+95
+00:07:47,390 --> 00:07:52,490
+And right now, if we save when we go back, we see that our padding has shrunk.
+
+96
+00:07:53,180 --> 00:07:57,980
+Now we only have a 10 pixel board or padding around the body.
+
+97
+00:07:59,360 --> 00:08:04,550
+So that is our immediate query now, Ilinka, resource for you guys to see other media queries that
+
+98
+00:08:04,550 --> 00:08:06,500
+you can write because there's so many, right?
+
+99
+00:08:06,530 --> 00:08:08,000
+This is literally just the pixel.
+
+100
+00:08:08,000 --> 00:08:14,000
+Not that I chose to dictate because I find with iPhones there, pixel count based on the new retina's
+
+101
+00:08:14,000 --> 00:08:20,000
+is a little bit challenging so that sometimes the amount of pixels that you think it might be might
+
+102
+00:08:20,000 --> 00:08:20,870
+be a little higher.
+
+103
+00:08:21,710 --> 00:08:25,490
+I find that most browsers do not have a with smaller than just pixels.
+
+104
+00:08:26,030 --> 00:08:32,780
+And if it's a tablet, it's perfectly fine if it responds the same way as we would see for a mobile
+
+105
+00:08:32,780 --> 00:08:35,780
+device if it was inside of a portrait view.
+
+106
+00:08:36,680 --> 00:08:39,770
+So I find a hundred pixels to be one that I'm comfortable with.
+
+107
+00:08:41,370 --> 00:08:46,790
+Of course, you can dictate and set them to whatever else you want, resources that I've linked for
+
+108
+00:08:46,790 --> 00:08:52,210
+you have multiple break points that are also always changing as the technology for phones gets better,
+
+109
+00:08:52,220 --> 00:08:54,090
+screen resolutions get larger.
+
+110
+00:08:54,440 --> 00:09:00,620
+It's literally just completely dictated by whatever you and your team decide to do.
+
+111
+00:09:00,890 --> 00:09:07,220
+I personally like this 800 pixel rule for my max with for a project like this where mobile views are
+
+112
+00:09:07,220 --> 00:09:09,350
+not big is the most important thing to me.
+
+113
+00:09:10,040 --> 00:09:14,140
+But I do want my screen to be responsive and I want my application to be responsive.
+
+114
+00:09:14,900 --> 00:09:16,500
+And it's really just that simple.
+
+115
+00:09:17,060 --> 00:09:23,930
+We have this media query for our mobile view of eight hundred pixels right or below, and then we just
+
+116
+00:09:23,930 --> 00:09:29,570
+make sure to modify the padding or whatever other properties we want to set differently or also add
+
+117
+00:09:29,570 --> 00:09:29,900
+now.
+
+118
+00:09:29,930 --> 00:09:30,210
+Right.
+
+119
+00:09:30,230 --> 00:09:34,250
+So that our screen responds the right way when it's in this mobile view.
+
+120
+00:09:35,510 --> 00:09:42,110
+Now, I'm going to go around and modify a couple more components in the next lesson, but then I do
+
+121
+00:09:42,110 --> 00:09:47,060
+want you guys to try it yourself and tinker around with it, because this is a great chance for you
+
+122
+00:09:47,060 --> 00:09:53,780
+to kind of see and play around with some of the success so you can have it look a way that you want.
+
+123
+00:09:54,410 --> 00:09:55,360
+In the end.
+
+124
+00:09:55,370 --> 00:09:58,180
+It's really just a matter of taste with styling.
+
+125
+00:09:58,790 --> 00:10:03,500
+But I'm going to show you what I'll do for some of these components that I think we'll end up looking
+
+126
+00:10:03,500 --> 00:10:03,800
+nice.
+
+127
+00:10:04,490 --> 00:10:10,490
+So you can either proceed yourself with trying to convert some of these styles yourself first.
+
+128
+00:10:10,520 --> 00:10:13,330
+You can watch the next video and then do it after that.
+
+129
+00:10:13,640 --> 00:10:14,710
+It's entirely up to you.
+
+130
+00:10:15,200 --> 00:10:18,390
+But this section is purely on making our website responsive.
+
+131
+00:10:18,740 --> 00:10:21,430
+So with that, I will see you in the next lesson.

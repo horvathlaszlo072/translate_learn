@@ -1,0 +1,875 @@
+1
+00:00:00,520 --> 00:00:01,540
+Welcome back, everyone.
+
+2
+00:00:02,320 --> 00:00:07,030
+In this video, we are going to set up our email and password sign up.
+
+3
+00:00:07,480 --> 00:00:12,280
+We also want to set up our email and password sign in and we're going to style these so that we can
+
+4
+00:00:12,280 --> 00:00:14,680
+finish off with our authentication page.
+
+5
+00:00:15,460 --> 00:00:22,090
+So in order for us to work on this, we need to first enable a provider that allows us to provide email
+
+6
+00:00:22,090 --> 00:00:24,590
+and password to sign in to our application.
+
+7
+00:00:25,180 --> 00:00:31,690
+Any authentication method that you add is needed as a new provider that you create inside of your authentication.
+
+8
+00:00:32,440 --> 00:00:36,760
+So here's what I'm going to do is create add a new provider, email and password.
+
+9
+00:00:37,360 --> 00:00:44,410
+I'm going to enable this email password, one that allows them to sign up using it and also for email
+
+10
+00:00:44,410 --> 00:00:45,700
+link password list sign.
+
+11
+00:00:45,700 --> 00:00:47,050
+And this one's a little bit extra.
+
+12
+00:00:47,050 --> 00:00:49,480
+I don't really need this one, so I only want email.
+
+13
+00:00:49,480 --> 00:00:53,810
+Password password is sign and you can enable, but there's a lot more configuration required.
+
+14
+00:00:53,830 --> 00:00:57,820
+Essentially, what happens is when they enter in an email, they submit it.
+
+15
+00:00:58,180 --> 00:01:03,940
+They get a link inside of an email that they'll receive for that email, which if they verify that they
+
+16
+00:01:03,940 --> 00:01:06,580
+own it, will take them back to the application and sign them in.
+
+17
+00:01:07,060 --> 00:01:08,210
+But we don't really need that.
+
+18
+00:01:08,230 --> 00:01:10,360
+We just want regular email password signing.
+
+19
+00:01:11,780 --> 00:01:17,270
+So now that we have our email password inside of our application, we need to start building out this
+
+20
+00:01:17,270 --> 00:01:17,630
+form.
+
+21
+00:01:18,380 --> 00:01:22,610
+So here's what I'm going to do inside of our components folder.
+
+22
+00:01:22,640 --> 00:01:28,420
+I'm going to make a new folder and I'm going to call it sign up, because that's what this is.
+
+23
+00:01:28,430 --> 00:01:30,140
+It's essentially our sign up form.
+
+24
+00:01:30,380 --> 00:01:33,950
+We can even be more explicit in calling this sign up form.
+
+25
+00:01:35,310 --> 00:01:42,060
+And then inside, I'm going to make the files required, sign up form dot componente dot GSX.
+
+26
+00:01:43,070 --> 00:01:48,920
+And then once we're inside, we're just going to create a very basic form just so that we know it works.
+
+27
+00:01:49,430 --> 00:01:58,460
+So it's going to be a sign up form, which is equal to a functional component that returns back.
+
+28
+00:01:59,180 --> 00:02:03,500
+And this is where we need to understand a little bit about him all forms.
+
+29
+00:02:03,710 --> 00:02:09,020
+If you're unfamiliar, we'll go through it pretty briefly, but enough that we understand what's going
+
+30
+00:02:09,020 --> 00:02:09,200
+on.
+
+31
+00:02:10,250 --> 00:02:14,240
+So what we need is we need to reflect what this forum will have.
+
+32
+00:02:14,990 --> 00:02:24,890
+So for our basic needs, let's say there's a divide and in the divide is just an H1 or inside it'll
+
+33
+00:02:24,890 --> 00:02:30,260
+say, sign up with your email and password.
+
+34
+00:02:31,890 --> 00:02:34,410
+And then we need a form component.
+
+35
+00:02:35,740 --> 00:02:43,090
+This HDMI form component is essentially something that allows you to make all these text fields inside,
+
+36
+00:02:43,090 --> 00:02:46,270
+do what you need them to do as far as form is required.
+
+37
+00:02:46,720 --> 00:02:52,390
+So this is where you can do things like, let's say with your form, you want certain fields to be required
+
+38
+00:02:52,390 --> 00:02:56,590
+and you don't want the form to be submitted unless they fill out those fields.
+
+39
+00:02:57,070 --> 00:03:02,560
+You can do that very easily using this form component because it all essentially do all of that for
+
+40
+00:03:02,560 --> 00:03:02,770
+you.
+
+41
+00:03:03,550 --> 00:03:06,610
+So let's talk about what goes into them.
+
+42
+00:03:07,180 --> 00:03:10,030
+So we know that for our form, we have four different inputs.
+
+43
+00:03:10,540 --> 00:03:15,220
+So let's create an input and let's make a label.
+
+44
+00:03:16,890 --> 00:03:21,270
+Inside of this label is going to be some text, and we know that these inputs, all four of them are
+
+45
+00:03:21,270 --> 00:03:21,790
+required.
+
+46
+00:03:22,620 --> 00:03:26,040
+So let's copy paste this four times and start filling them out.
+
+47
+00:03:26,670 --> 00:03:29,400
+The first one is going to be the display name.
+
+48
+00:03:30,900 --> 00:03:35,850
+The second one is going to be the email, so I'm just putting them in the label.
+
+49
+00:03:37,060 --> 00:03:39,310
+The third one is going to be password.
+
+50
+00:03:40,470 --> 00:03:43,230
+And the fourth one is going to be confirmed password.
+
+51
+00:03:44,880 --> 00:03:50,160
+Now inside of these inputs, because the required what will happen is the formal validate that if these
+
+52
+00:03:50,160 --> 00:03:52,590
+inputs are empty, then it's invalid.
+
+53
+00:03:53,040 --> 00:03:59,840
+It's only valid as long as there's actual text inside them and also for display name.
+
+54
+00:03:59,910 --> 00:04:00,840
+What are the types?
+
+55
+00:04:01,410 --> 00:04:04,500
+So a type is an attribute that you can give to input.
+
+56
+00:04:05,370 --> 00:04:06,780
+Text is the most basic one.
+
+57
+00:04:06,840 --> 00:04:08,620
+It just means that it takes some string.
+
+58
+00:04:08,640 --> 00:04:13,860
+That's all it is for email, though we can actually use a type called email.
+
+59
+00:04:14,400 --> 00:04:19,840
+This email type will make sure that the text inside validates in the format of an email.
+
+60
+00:04:19,890 --> 00:04:23,140
+Meaning that you've got some string and then you've got an add symbol.
+
+61
+00:04:23,160 --> 00:04:26,520
+You might have more string, you have a dot and then finally, some more string.
+
+62
+00:04:26,850 --> 00:04:29,220
+So pretty much the format that you always see with an email.
+
+63
+00:04:30,230 --> 00:04:32,810
+So that's what's great, we get this at the box.
+
+64
+00:04:33,930 --> 00:04:37,980
+The other great thing, too, is that if a browser does not support email, it will fall back to using
+
+65
+00:04:38,130 --> 00:04:38,910
+a type text.
+
+66
+00:04:39,990 --> 00:04:45,810
+For a password, we can also use a type password, and this will just hide all of the characters that
+
+67
+00:04:45,810 --> 00:04:46,650
+are being typed in.
+
+68
+00:04:46,770 --> 00:04:50,070
+And similarly, for confirmed password, it's also a type password.
+
+69
+00:04:50,550 --> 00:04:56,310
+So we have our four input fields or we also need is the ability to submit this form.
+
+70
+00:04:56,880 --> 00:05:03,270
+So luckily for us, React has bound a event handler called on submit, which runs some callback.
+
+71
+00:05:03,390 --> 00:05:11,730
+Whenever you submit the form and to submit the form, we can actually add inside the form a button child
+
+72
+00:05:11,730 --> 00:05:13,200
+with the type submit.
+
+73
+00:05:13,980 --> 00:05:20,190
+So the form will know that when this button of type submit is clicked, then run this on submit callback
+
+74
+00:05:20,640 --> 00:05:22,620
+and this on submit callback only runs.
+
+75
+00:05:22,620 --> 00:05:28,320
+If all of these validations for these inputs are passing, meaning that these four fields that are required
+
+76
+00:05:28,320 --> 00:05:31,980
+are filled in email is in the valid format that it's in.
+
+77
+00:05:32,430 --> 00:05:34,260
+And I'm just going to say this is of type.
+
+78
+00:05:34,260 --> 00:05:34,740
+Sign up.
+
+79
+00:05:36,030 --> 00:05:38,130
+And for now, let's just export default.
+
+80
+00:05:38,310 --> 00:05:39,300
+This sign up for.
+
+81
+00:05:40,240 --> 00:05:44,320
+So I just want to make sure before we actually add in all the functionality of doing all this, that
+
+82
+00:05:44,320 --> 00:05:46,120
+our form component works.
+
+83
+00:05:46,780 --> 00:05:50,800
+So I want to import in the sign up form from components.
+
+84
+00:05:51,640 --> 00:05:52,510
+Sign up form.
+
+85
+00:05:53,380 --> 00:05:54,580
+Sign up for component.
+
+86
+00:05:55,740 --> 00:05:58,650
+And I'm just going to put this after this button here.
+
+87
+00:05:59,990 --> 00:06:03,020
+So now let's save this go on trial application.
+
+88
+00:06:04,090 --> 00:06:04,660
+And there we go.
+
+89
+00:06:05,350 --> 00:06:11,950
+So I've got some auto filled auto populating fields here inside of my Chrome browser, but this is our
+
+90
+00:06:11,950 --> 00:06:12,250
+form.
+
+91
+00:06:12,250 --> 00:06:13,180
+We see it all here.
+
+92
+00:06:17,040 --> 00:06:22,140
+What we need to do now is bring in that functionality so that this form is actually valid.
+
+93
+00:06:22,800 --> 00:06:29,430
+To do that, we need to track the actual input inside of these inputs into our form component.
+
+94
+00:06:30,030 --> 00:06:36,210
+And if we remember from our monster's Rolodex project, we can do that using use state, which is very
+
+95
+00:06:36,210 --> 00:06:37,830
+similar to our search bar.
+
+96
+00:06:37,860 --> 00:06:39,810
+So I'm going to import you state from React.
+
+97
+00:06:41,360 --> 00:06:49,130
+Now, one way you can do this is you can track all four of these different inputs using four different
+
+98
+00:06:49,130 --> 00:06:50,150
+use state values.
+
+99
+00:06:50,570 --> 00:06:55,280
+But personally, I find that a little cumbersome, especially because I know this is all grouped together
+
+100
+00:06:55,280 --> 00:07:02,360
+anyways as something of a form field so I can actually create an object, and I'm going to call this
+
+101
+00:07:02,360 --> 00:07:04,580
+like form fields, for example.
+
+102
+00:07:05,360 --> 00:07:08,270
+So in fact, this is actually going to be our default form fields.
+
+103
+00:07:09,080 --> 00:07:14,870
+So this is the initialized value for these four values, which should all be empty strings.
+
+104
+00:07:15,590 --> 00:07:18,050
+I'm just going to show you the shape, though, of this object.
+
+105
+00:07:18,380 --> 00:07:23,270
+We're going to have a field called display name, which is an empty object email, which is an empty
+
+106
+00:07:23,270 --> 00:07:29,210
+string, sorry, empty object, empty string emails, also an empty string password, also an empty
+
+107
+00:07:29,210 --> 00:07:34,550
+string confirm password, as you guessed it, also an empty string.
+
+108
+00:07:35,630 --> 00:07:42,410
+So using this value now, what we can do is we can say that I want to use state.
+
+109
+00:07:43,550 --> 00:07:45,990
+And I want that value to be called form fields.
+
+110
+00:07:46,250 --> 00:07:48,980
+And again, the second value that we get back.
+
+111
+00:07:49,810 --> 00:07:50,950
+Is a center function.
+
+112
+00:07:51,880 --> 00:07:55,360
+Now for you state, I'm going to pass it, this default form fields value.
+
+113
+00:07:55,780 --> 00:07:59,680
+So this object is essentially the value for form fields.
+
+114
+00:07:59,950 --> 00:08:00,730
+It's not a string.
+
+115
+00:08:00,940 --> 00:08:03,310
+It's the object of these four exact values.
+
+116
+00:08:04,560 --> 00:08:08,910
+What I'm going to do is I'm going to structure off these four values.
+
+117
+00:08:10,260 --> 00:08:14,340
+The reason why is because we're going to use these values somewhere inside of our code.
+
+118
+00:08:15,300 --> 00:08:19,440
+So I'm going to confirm password and this is equal to form fields.
+
+119
+00:08:20,280 --> 00:08:23,880
+So what's happening is this object is being passed in as the default state for you.
+
+120
+00:08:23,880 --> 00:08:29,850
+State form fields is now some kind of object and destruction of the four values that I want, and then
+
+121
+00:08:29,850 --> 00:08:34,140
+I'm setting them as constants inside this component in case I need them.
+
+122
+00:08:35,780 --> 00:08:42,020
+And then what I'm going to do next is I am now going to actually figure out what happens whenever these
+
+123
+00:08:42,020 --> 00:08:45,530
+values change so that I can update my form fields here.
+
+124
+00:08:45,530 --> 00:08:48,290
+I'm going to create a function called handle change.
+
+125
+00:08:48,620 --> 00:08:54,050
+And this is going to be a general function that takes that input event whenever the text changes.
+
+126
+00:08:55,220 --> 00:08:59,510
+However, in order for us to make this function generic, there's a couple of things we need to be able
+
+127
+00:08:59,510 --> 00:09:05,990
+to do so by generic, I mean that we essentially want to pass this into our input as the on change handler
+
+128
+00:09:06,230 --> 00:09:09,140
+for every single one of our inputs.
+
+129
+00:09:09,500 --> 00:09:10,400
+We wanted the same.
+
+130
+00:09:12,000 --> 00:09:18,120
+In order for us to do this, we need to be able to identify which of these inputs is firing so that
+
+131
+00:09:18,120 --> 00:09:21,900
+we know which of these form fields to update inside of our state.
+
+132
+00:09:22,620 --> 00:09:25,890
+In order to do that, we actually need to append some more values.
+
+133
+00:09:26,580 --> 00:09:31,620
+So on each input, we can give it a name and the name will come through on the event.
+
+134
+00:09:32,280 --> 00:09:40,590
+So for our display name, we want to name them the same as the name of the actual attribute that we're
+
+135
+00:09:40,590 --> 00:09:41,280
+trying to update.
+
+136
+00:09:42,000 --> 00:09:45,000
+So here, because we're just going to be able to structure this off.
+
+137
+00:09:46,030 --> 00:09:52,810
+As name from the event, we're going to utilize this name to tell our set state which of these fields
+
+138
+00:09:52,810 --> 00:09:53,320
+to update.
+
+139
+00:09:54,100 --> 00:09:58,690
+So let's just update all of these different fields with the appropriate name.
+
+140
+00:09:58,990 --> 00:10:07,600
+Email, of course, will be email password will be password and then confirm password will be confirm
+
+141
+00:10:07,870 --> 00:10:08,410
+password.
+
+142
+00:10:10,080 --> 00:10:13,620
+So here, everything matches and lines up with these values.
+
+143
+00:10:15,400 --> 00:10:20,650
+The next thing that we want to do is we actually want to get the appropriate value, the value that
+
+144
+00:10:20,650 --> 00:10:28,690
+gets typed in should be the value that in turn we actually display in the input sonar for just do this,
+
+145
+00:10:29,080 --> 00:10:31,480
+we need to pass in the value here.
+
+146
+00:10:32,660 --> 00:10:38,990
+So for the value of this specific field, we're going to use the appropriate value that we've pulled
+
+147
+00:10:38,990 --> 00:10:40,160
+off of our form fields.
+
+148
+00:10:40,700 --> 00:10:43,670
+So the direction is pretty circular.
+
+149
+00:10:44,090 --> 00:10:50,240
+When you pass a value, you're actually saying, Hey, the value I want inside of this input should
+
+150
+00:10:50,240 --> 00:10:51,620
+be the value in passing you.
+
+151
+00:10:51,980 --> 00:10:55,700
+So if I pass the string ABC, then the value should be ABC.
+
+152
+00:10:56,060 --> 00:10:57,530
+Let's just save this and we'll see.
+
+153
+00:10:58,660 --> 00:11:00,260
+Here, let's refresh.
+
+154
+00:11:00,280 --> 00:11:02,860
+You'll notice that here you actually see display name ABC.
+
+155
+00:11:03,920 --> 00:11:05,630
+So that's what value represents.
+
+156
+00:11:05,930 --> 00:11:12,050
+And the reason we do this is so that our changes are circular, meaning that what happens is that the
+
+157
+00:11:12,050 --> 00:11:15,020
+value from the state is the value that's shown in the input.
+
+158
+00:11:15,410 --> 00:11:23,090
+But when the user types those values in while are on change, trigger effectively pushes that form field
+
+159
+00:11:23,090 --> 00:11:24,350
+into our state.
+
+160
+00:11:24,740 --> 00:11:28,010
+And then again, our state will now actually update the visual here.
+
+161
+00:11:28,400 --> 00:11:33,920
+So the visual aspect of what the user sees in the form field is not determined by the input, but it's
+
+162
+00:11:33,920 --> 00:11:35,450
+actually determined by our value.
+
+163
+00:11:35,750 --> 00:11:41,900
+This way, we can control what those fields are and what we're doing with them through our state itself.
+
+164
+00:11:42,200 --> 00:11:46,370
+I know that sounds a little confusing, but once you put it in and you follow on track, you'll see
+
+165
+00:11:46,370 --> 00:11:47,120
+what I'm talking about.
+
+166
+00:11:48,100 --> 00:11:50,440
+So here I want value to be display name.
+
+167
+00:11:51,220 --> 00:11:54,670
+Of course, I want this next one for email to be.
+
+168
+00:11:56,880 --> 00:11:57,390
+Email.
+
+169
+00:11:59,500 --> 00:12:08,050
+And then I want value for password to be password, and then I want value for confirm password to be
+
+170
+00:12:08,560 --> 00:12:09,150
+confirmed.
+
+171
+00:12:09,250 --> 00:12:09,790
+Password.
+
+172
+00:12:11,560 --> 00:12:17,140
+So in order for us to now appropriately trigger, we can now say, hey, give me the value as well off
+
+173
+00:12:17,140 --> 00:12:20,020
+the event because these will now come in through the event object.
+
+174
+00:12:20,710 --> 00:12:26,140
+And then all we need to do now is just, say, set form fields and what we're going to set.
+
+175
+00:12:26,140 --> 00:12:30,340
+It is an object because we're only going to be updating one input.
+
+176
+00:12:30,820 --> 00:12:35,620
+All I want to do is I want only to update the appropriate form field.
+
+177
+00:12:35,890 --> 00:12:41,290
+So all the other fields that were previously on the state, I want them to be spread on.
+
+178
+00:12:41,590 --> 00:12:47,770
+So this will spread all of the fields and then we're just going to update the appropriate field by using
+
+179
+00:12:47,770 --> 00:12:50,340
+these square brackets inside of our object notation.
+
+180
+00:12:50,350 --> 00:12:56,770
+So this says, Oh, take this value and apply it here from this variable of name and the value will
+
+181
+00:12:56,770 --> 00:12:57,850
+be the value.
+
+182
+00:12:58,900 --> 00:13:02,260
+Oh, you know what, I also noticed a quick error here.
+
+183
+00:13:02,770 --> 00:13:05,770
+We need to make sure that we're actually calling events target.
+
+184
+00:13:06,340 --> 00:13:11,830
+The target is actually going to give us the thing that is emitting the event and the thing in this particular
+
+185
+00:13:11,830 --> 00:13:12,820
+case is the input.
+
+186
+00:13:13,300 --> 00:13:17,560
+So the target here will give us all of the things that are attached to this input.
+
+187
+00:13:17,950 --> 00:13:20,260
+That's what's on the target, not just the event.
+
+188
+00:13:20,920 --> 00:13:26,770
+So here we have our set form fields called and let's also console.log out form fields.
+
+189
+00:13:27,520 --> 00:13:28,450
+So let's save this.
+
+190
+00:13:29,140 --> 00:13:30,490
+Let's go back to our application.
+
+191
+00:13:30,880 --> 00:13:31,660
+That's refresh.
+
+192
+00:13:32,800 --> 00:13:36,910
+And here we see this is our initial empty state default state, far form fields.
+
+193
+00:13:37,360 --> 00:13:42,520
+And as we start typing, we see that our object is updating appropriately.
+
+194
+00:13:42,850 --> 00:13:43,780
+Let's do password.
+
+195
+00:13:44,200 --> 00:13:50,470
+Here we see they're hidden, but inside of our password, we see that we are indeed actually storing
+
+196
+00:13:50,470 --> 00:13:50,590
+it.
+
+197
+00:13:51,310 --> 00:13:55,690
+And then for email, let's just say they're at Gmail.
+
+198
+00:13:56,350 --> 00:13:56,770
+There we go.
+
+199
+00:13:57,280 --> 00:13:58,000
+Everything's working.
+
+200
+00:13:58,510 --> 00:14:00,490
+So all of this code is working as expected.
+
+201
+00:14:01,580 --> 00:14:03,950
+I definitely want to apologize for the length of this video.
+
+202
+00:14:03,980 --> 00:14:05,090
+I know it's rather long.
+
+203
+00:14:05,420 --> 00:14:10,370
+But as you can see, there was a lot of things that we needed to set up just to get the farm working
+
+204
+00:14:10,580 --> 00:14:13,100
+as we need to inside of this component.
+
+205
+00:14:13,730 --> 00:14:16,910
+The key thing here is that we learned a new pattern with you state.
+
+206
+00:14:17,240 --> 00:14:22,910
+We learned about setting an object, but only when that object is always going to be tied together to
+
+207
+00:14:22,910 --> 00:14:24,290
+some specific logic.
+
+208
+00:14:24,680 --> 00:14:27,830
+The main reason for using this object was so that we could generate size.
+
+209
+00:14:27,830 --> 00:14:33,770
+This handle change and primarily what we're trying to do is that we want to spread in this object and
+
+210
+00:14:33,770 --> 00:14:36,660
+then modify one value on this object.
+
+211
+00:14:36,680 --> 00:14:41,450
+And we knew this worked because all of these form fields are essentially duplicated versions of the
+
+212
+00:14:41,450 --> 00:14:42,200
+same state.
+
+213
+00:14:42,650 --> 00:14:48,140
+Their only difference is which of these inputs are being targeted inside of this object.
+
+214
+00:14:48,350 --> 00:14:54,290
+So this pattern only works when you can janiero size and find that common ground between the logic that
+
+215
+00:14:54,290 --> 00:14:56,030
+you need for these states.
+
+216
+00:14:56,330 --> 00:15:00,500
+And in this case, with the form, these inputs are the best example of that.
+
+217
+00:15:01,220 --> 00:15:07,550
+Now that we have learned how to set up this field, let's actually submit it and finish off the authentication
+
+218
+00:15:07,550 --> 00:15:07,790
+here.
+
+219
+00:15:08,330 --> 00:15:09,710
+Let's do that in the next video.

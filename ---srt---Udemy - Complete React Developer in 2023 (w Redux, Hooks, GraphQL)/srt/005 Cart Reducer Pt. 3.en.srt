@@ -1,0 +1,527 @@
+1
+00:00:01,120 --> 00:00:02,080
+Welcome back, everyone.
+
+2
+00:00:03,090 --> 00:00:08,910
+In this video we are going to replace that set is car open function that we had before from a used state
+
+3
+00:00:09,300 --> 00:00:14,340
+into a new action creator that fits inside of our reducer pattern.
+
+4
+00:00:15,060 --> 00:00:18,930
+So here let's first create this method set is cart open.
+
+5
+00:00:20,050 --> 00:00:24,520
+And this is going to be a function that receives a Boolean value.
+
+6
+00:00:25,150 --> 00:00:29,050
+It's this Boolean value that we use to update is car open.
+
+7
+00:00:29,590 --> 00:00:36,640
+So all we need to do is just dispatch a new action object where the type goes to whatever we want to
+
+8
+00:00:36,640 --> 00:00:37,030
+call it.
+
+9
+00:00:37,060 --> 00:00:38,290
+So I'm going to call it set.
+
+10
+00:00:38,290 --> 00:00:39,600
+Is cart open?
+
+11
+00:00:41,220 --> 00:00:44,850
+And the payload is going to be the boolean value.
+
+12
+00:00:49,910 --> 00:00:52,130
+Then we can just pass this function.
+
+13
+00:00:53,360 --> 00:00:54,650
+Through into our value.
+
+14
+00:00:55,830 --> 00:01:00,840
+And now all we need to do is make sure that our producer is prepared to receive this value.
+
+15
+00:01:01,740 --> 00:01:06,090
+So inside, let's just make a new case statement.
+
+16
+00:01:08,940 --> 00:01:15,330
+Where we're listening for set is card open and then what we do instead of spreading payload is we say
+
+17
+00:01:15,330 --> 00:01:19,380
+is card open is going to be the new payload value.
+
+18
+00:01:21,620 --> 00:01:27,710
+Now, as I mentioned before, and some of you might have already done, these statements should be stored
+
+19
+00:01:27,710 --> 00:01:32,150
+in some type of contact somewhere so that we don't make mistakes when we're typing out strings.
+
+20
+00:01:32,810 --> 00:01:34,310
+So let's make a concert.
+
+21
+00:01:35,460 --> 00:01:38,460
+Cart action types object like so.
+
+22
+00:01:39,920 --> 00:01:41,390
+Which is equal to an object.
+
+23
+00:01:41,660 --> 00:01:50,870
+And inside I will receive set car items which goes to a string set car items and set is cart open which
+
+24
+00:01:50,870 --> 00:01:53,090
+goes to a string set is cart open.
+
+25
+00:01:54,520 --> 00:01:57,250
+And now I can just update.
+
+26
+00:02:00,700 --> 00:02:03,250
+All of the places that call the old strings.
+
+27
+00:02:10,830 --> 00:02:14,820
+And now let's save this and let's make sure that everything continues to work.
+
+28
+00:02:15,390 --> 00:02:16,830
+So let's go back to our obligation.
+
+29
+00:02:17,950 --> 00:02:19,030
+And there we go.
+
+30
+00:02:19,270 --> 00:02:21,820
+We see that our set is quite open, still works.
+
+31
+00:02:23,440 --> 00:02:28,120
+We see that adding to CART still works and we see that we can toggle even with CART insight.
+
+32
+00:02:29,130 --> 00:02:30,120
+So that's the migration.
+
+33
+00:02:30,960 --> 00:02:33,570
+It seems a little bit convoluted and complicated.
+
+34
+00:02:33,780 --> 00:02:35,460
+I definitely feel you there.
+
+35
+00:02:35,940 --> 00:02:40,740
+Oftentimes when working with Redux, it does have this weird feeling about it.
+
+36
+00:02:41,220 --> 00:02:42,990
+We're not even actually working on Redux right now.
+
+37
+00:02:43,020 --> 00:02:47,280
+We're working inside of context, just using the use reducer hook.
+
+38
+00:02:48,030 --> 00:02:53,610
+But the primary thing around reducers is really just that there is this added value that we get for
+
+39
+00:02:53,610 --> 00:02:59,070
+being able to separate what sets state into these separate action creators.
+
+40
+00:02:59,640 --> 00:03:05,520
+We kind of had something very similar with our effects, but each effect was calling its own separate
+
+41
+00:03:05,520 --> 00:03:06,120
+set state.
+
+42
+00:03:06,630 --> 00:03:12,660
+Now this is all being handled in one dispatch in order to update three appropriate values.
+
+43
+00:03:13,350 --> 00:03:19,830
+So this new strategy is really just so that we can congregate some of this logic into one separate function.
+
+44
+00:03:19,830 --> 00:03:27,030
+And primarily remember that the good time to use reducer is when one update needs to modify multiple
+
+45
+00:03:27,030 --> 00:03:29,460
+readable values inside of your state somehow.
+
+46
+00:03:29,820 --> 00:03:35,850
+So for us, this is an exact time to use a reducer because we want to update three separate values,
+
+47
+00:03:36,270 --> 00:03:44,370
+because whenever our reducer spits out a new object as the state is, when the provider and the context
+
+48
+00:03:44,370 --> 00:03:46,260
+decides it's time to rerun.
+
+49
+00:03:46,890 --> 00:03:51,690
+Whereas before, every time we were setting state, technically speaking, yes, they were batching
+
+50
+00:03:51,690 --> 00:03:54,000
+together and react is smart enough to know that.
+
+51
+00:03:54,300 --> 00:04:02,370
+But at least now it is a little bit more clear that whenever our set cart is getting call, three values
+
+52
+00:04:02,370 --> 00:04:05,940
+are updating, whereas before we were less certain about what's happening here.
+
+53
+00:04:06,420 --> 00:04:08,010
+Plus, this logic is a lot clearer.
+
+54
+00:04:08,010 --> 00:04:12,750
+You know that it's all happening in one function rather than happening through two different effects
+
+55
+00:04:13,050 --> 00:04:16,250
+and then split over three different other set states.
+
+56
+00:04:17,430 --> 00:04:21,360
+So now that we have this, let's talk about some optimizations we can make.
+
+57
+00:04:22,170 --> 00:04:27,360
+One thing that we noticed is that every time we have to generate this object, what we can do is actually
+
+58
+00:04:27,360 --> 00:04:29,070
+create a helper function.
+
+59
+00:04:30,300 --> 00:04:34,350
+This helper function I'm going to create inside of our utils.
+
+60
+00:04:35,100 --> 00:04:38,460
+So here I'm going to make a new folder called Reducer.
+
+61
+00:04:40,270 --> 00:04:43,540
+And inside I want to make a reducer utils.
+
+62
+00:04:43,540 --> 00:04:44,500
+Doc, just file.
+
+63
+00:04:45,470 --> 00:04:50,900
+This is going to be a create action function that receives a type and a payload.
+
+64
+00:04:52,430 --> 00:04:55,190
+And all it does is it just returns back for us.
+
+65
+00:04:55,190 --> 00:04:58,520
+An object like so very simple.
+
+66
+00:04:59,150 --> 00:05:06,440
+The only reason we do this is so that we don't have to type out the name of these keys, which oftentimes
+
+67
+00:05:06,440 --> 00:05:08,150
+leads a little bit more to human error.
+
+68
+00:05:08,180 --> 00:05:13,010
+So this is really just a more nitpicky kind of optimization we can make.
+
+69
+00:05:13,490 --> 00:05:16,760
+I'm also going to remove these unused hooks that we had before.
+
+70
+00:05:17,760 --> 00:05:23,730
+And of course I'm going to import in our create action from our utils folder.
+
+71
+00:05:27,020 --> 00:05:27,650
+Reducer.
+
+72
+00:05:30,610 --> 00:05:31,480
+Producer Utils.
+
+73
+00:05:32,230 --> 00:05:35,050
+Now, let me just make sure I'm properly exporting this.
+
+74
+00:05:35,080 --> 00:05:35,800
+No, I'm not.
+
+75
+00:05:36,550 --> 00:05:38,560
+So let's just export out cost.
+
+76
+00:05:39,560 --> 00:05:45,080
+And then what we'll do is we will use it in any place where we have to dispatch.
+
+77
+00:05:45,830 --> 00:05:51,770
+So here, instead of generating this object, like so what I'm going to say is that I want to dispatch,
+
+78
+00:05:51,770 --> 00:05:56,420
+create action, passing the type as the first argument.
+
+79
+00:05:57,370 --> 00:05:58,840
+And then this payload object.
+
+80
+00:05:59,970 --> 00:06:02,370
+As the second argument, which is our payload.
+
+81
+00:06:05,280 --> 00:06:06,450
+And then I'm going to remove.
+
+82
+00:06:07,900 --> 00:06:08,710
+This call like.
+
+83
+00:06:08,710 --> 00:06:11,830
+So let's just make sure your brackets are correct.
+
+84
+00:06:14,190 --> 00:06:18,210
+And also I'm going to do the same for this new dispatch here as well.
+
+85
+00:06:23,790 --> 00:06:24,640
+Think the first one.
+
+86
+00:06:26,280 --> 00:06:29,880
+Let's take the bullion here as the second argument.
+
+87
+00:06:31,790 --> 00:06:36,230
+And now let's just once again go back and make sure that our code is still working.
+
+88
+00:06:37,870 --> 00:06:38,380
+Yes, it is.
+
+89
+00:06:38,680 --> 00:06:39,310
+Everything works.
+
+90
+00:06:40,640 --> 00:06:41,300
+Once more.
+
+91
+00:06:41,300 --> 00:06:45,110
+What we're going to do is we are going to go into our.
+
+92
+00:06:46,700 --> 00:06:48,140
+Use our context.
+
+93
+00:06:49,260 --> 00:06:54,630
+And we're going to do the same thing we need to import in our create action.
+
+94
+00:06:56,350 --> 00:06:57,640
+From our utils.
+
+95
+00:06:57,640 --> 00:06:58,240
+Reducer.
+
+96
+00:06:58,240 --> 00:06:59,200
+Reducer, utils.
+
+97
+00:07:00,460 --> 00:07:06,070
+And then what we're going to do is just update the dispatch in the same way we're going to pass the
+
+98
+00:07:06,070 --> 00:07:08,500
+first argument being our action type.
+
+99
+00:07:09,190 --> 00:07:12,010
+And then the second argument is, of course, our payload.
+
+100
+00:07:14,940 --> 00:07:16,050
+And now we save this.
+
+101
+00:07:17,170 --> 00:07:19,450
+And now let's just make sure everything still works.
+
+102
+00:07:20,230 --> 00:07:22,270
+We go back to our application.
+
+103
+00:07:23,050 --> 00:07:24,190
+We see that we're signed out.
+
+104
+00:07:24,760 --> 00:07:25,270
+We sign.
+
+105
+00:07:26,570 --> 00:07:27,740
+Just like that.
+
+106
+00:07:29,220 --> 00:07:29,930
+The sign in.
+
+107
+00:07:30,870 --> 00:07:31,680
+Everything still works.
+
+108
+00:07:31,890 --> 00:07:33,240
+So our code is up to date.
+
+109
+00:07:34,200 --> 00:07:34,890
+And this is it.
+
+110
+00:07:35,550 --> 00:07:39,090
+This is pretty much how you use reducers inside of your context.
+
+111
+00:07:39,480 --> 00:07:43,710
+Now, again, inside of our user provider, do we need to use context?
+
+112
+00:07:43,950 --> 00:07:45,130
+No, not necessarily.
+
+113
+00:07:45,150 --> 00:07:51,240
+But if this were to scale, at least we've already set up the reducer so that it's easier to scale off
+
+114
+00:07:51,240 --> 00:07:51,930
+these values.
+
+115
+00:07:52,710 --> 00:07:57,870
+If we were to do this with car context, this is actually the exact place we should to use the reducer
+
+116
+00:07:57,900 --> 00:08:04,140
+because as I mentioned before, three different readable values update every time we need to update
+
+117
+00:08:04,140 --> 00:08:04,530
+the cart.
+
+118
+00:08:05,430 --> 00:08:10,470
+The only additional consideration that really needs to factor into whether or not you want to use a
+
+119
+00:08:10,470 --> 00:08:13,560
+reducer is also going to be up to your team.
+
+120
+00:08:14,310 --> 00:08:20,280
+Some teams prefer to keep everything in the realm of just react components with you state and use effects.
+
+121
+00:08:21,060 --> 00:08:27,330
+Most though if you're familiar with using redux before will like using reducers because it's a familiar
+
+122
+00:08:27,330 --> 00:08:30,210
+pattern and it has proved that it is scalable.
+
+123
+00:08:31,140 --> 00:08:37,950
+So now that we know how to use our reducers inside of React using the use context as well as the use
+
+124
+00:08:37,950 --> 00:08:42,090
+reducer hook, in the next video, we're going to talk about Redux as a library.
+
+125
+00:08:42,600 --> 00:08:49,050
+Redux as a library takes this concept of reducers and extrapolates it out into an entire Redux based
+
+126
+00:08:49,050 --> 00:08:49,920
+ecosystem.
+
+127
+00:08:50,220 --> 00:08:55,680
+And we're really going to dive deep now that we at least have a good idea of how reducers work into
+
+128
+00:08:55,680 --> 00:09:02,880
+using Redux as a library, as well as the ensuing additional complexity that comes with using a library
+
+129
+00:09:03,030 --> 00:09:04,590
+like Redux for state management.
+
+130
+00:09:04,950 --> 00:09:11,070
+I'm also going to talk about when you want to use context with user reducer versus using Redux in the
+
+131
+00:09:11,070 --> 00:09:12,180
+next video as well.
+
+132
+00:09:12,480 --> 00:09:14,820
+So stay tuned and join me in the next video.

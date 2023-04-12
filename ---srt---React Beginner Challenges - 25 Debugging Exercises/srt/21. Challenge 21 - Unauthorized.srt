@@ -1,0 +1,143 @@
+1
+00:00:00,650 --> 00:00:07,700
+All right, so challenge 21, this example, as you could see here, it says it shows unauthorized and
+
+2
+00:00:07,700 --> 00:00:09,230
+we are unable to access the app.
+
+3
+00:00:09,740 --> 00:00:14,060
+So the intention here was to get you to debug this without writing any code.
+
+4
+00:00:14,060 --> 00:00:14,490
+Right.
+
+5
+00:00:14,960 --> 00:00:16,970
+So if we open up the code sandbox.
+
+6
+00:00:20,370 --> 00:00:28,110
+And we go to the OP in the new window, basically what we we can observe that we're not allowed to access
+
+7
+00:00:28,110 --> 00:00:30,030
+this app, pretty straightforward.
+
+8
+00:00:30,210 --> 00:00:31,590
+There's no errors in the console.
+
+9
+00:00:31,950 --> 00:00:34,470
+But as you can see here, there's a very simple app.
+
+10
+00:00:34,470 --> 00:00:36,000
+So we could debug this quickly.
+
+11
+00:00:36,300 --> 00:00:42,840
+As you can see here, it's locked when the react state is set to react to is locked.
+
+12
+00:00:42,840 --> 00:00:43,130
+Right.
+
+13
+00:00:43,440 --> 00:00:47,730
+While there actually is no react state, this is a function that we're just creating here.
+
+14
+00:00:48,000 --> 00:00:55,080
+And what this function does is it actually looks in local storage for an item called lock.
+
+15
+00:00:55,470 --> 00:00:59,760
+And when that lock is equal to unlocked, it returns false.
+
+16
+00:01:00,060 --> 00:01:00,930
+Elsah returns.
+
+17
+00:01:00,930 --> 00:01:01,280
+True.
+
+18
+00:01:01,500 --> 00:01:06,820
+So as you could see, it's true because if it's true, if we're locked, we return this.
+
+19
+00:01:07,200 --> 00:01:11,030
+So the objective here is to debug this without writing code.
+
+20
+00:01:11,370 --> 00:01:15,210
+So we open up our chrome dev tools here.
+
+21
+00:01:15,690 --> 00:01:24,420
+And because we are looking for the local storage, what you can do here is going to local storage and
+
+22
+00:01:24,420 --> 00:01:26,760
+actually add a key in here to.
+
+23
+00:01:28,240 --> 00:01:34,390
+Be locked, so how to do that is what we're going to do is we were just going to see if we could delete
+
+24
+00:01:34,390 --> 00:01:38,310
+selected so we could do is you could just double click in here and just add a new key.
+
+25
+00:01:38,590 --> 00:01:43,930
+So we're going to add a key equal to lock and then we're going to double click here and set the value
+
+26
+00:01:43,930 --> 00:01:44,920
+to be unlocked.
+
+27
+00:01:45,610 --> 00:01:48,040
+So then we refresh the page.
+
+28
+00:01:49,460 --> 00:01:51,800
+And you've unlocked the app, so that was the solution.
+
+29
+00:01:52,370 --> 00:01:53,240
+So what do we learn here?
+
+30
+00:01:53,250 --> 00:01:58,550
+You may not know that you can actually edit local storage values by double clicking.
+
+31
+00:01:58,850 --> 00:02:04,700
+This is useful if you're testing shared or settings functionality that you know is used in your app,
+
+32
+00:02:05,000 --> 00:02:12,740
+you can then modify that with the value, you know, here without having to use code to set local storage
+
+33
+00:02:12,740 --> 00:02:13,180
+values.
+
+34
+00:02:13,430 --> 00:02:17,210
+You can also clear all your local storage values right here.
+
+35
+00:02:17,360 --> 00:02:20,730
+And then you could see the app then goes back to the lock state.
+
+36
+00:02:21,170 --> 00:02:26,060
+So this is just an exercise in editing and adding local storage values.

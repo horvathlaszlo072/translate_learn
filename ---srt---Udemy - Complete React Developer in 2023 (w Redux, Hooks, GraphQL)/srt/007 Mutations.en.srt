@@ -1,0 +1,319 @@
+1
+00:00:01,050 --> 00:00:01,920
+Welcome back, everyone.
+
+2
+00:00:02,700 --> 00:00:05,520
+So in the last video I showed you an independent query.
+
+3
+00:00:06,240 --> 00:00:10,830
+I just want to mention that inside of this application, I did not create a mutation for you.
+
+4
+00:00:11,340 --> 00:00:15,630
+The reason why is because and unfortunately, in order for me to show you the playground, I had to
+
+5
+00:00:15,630 --> 00:00:18,360
+set up a back playground from scratch.
+
+6
+00:00:18,960 --> 00:00:26,010
+As a result, if I created a mutation for you, then anybody would be able to store data inside a mutation
+
+7
+00:00:26,010 --> 00:00:27,450
+or make modifications.
+
+8
+00:00:27,870 --> 00:00:33,510
+And as a result, the course and the actual server would become inconsistent for all the different students
+
+9
+00:00:33,510 --> 00:00:35,010
+as everybody was making mutations.
+
+10
+00:00:35,610 --> 00:00:40,470
+But I do want to talk about how the mutations work inside of Apollo.
+
+11
+00:00:41,250 --> 00:00:45,300
+So again, the format is pretty much the exact same.
+
+12
+00:00:45,960 --> 00:00:49,370
+Nothing is that different with mutations and query.
+
+13
+00:00:49,380 --> 00:00:56,790
+And that's what's really nice about GraphQL and Apollo is that there is a very streamlined syntax that
+
+14
+00:00:56,790 --> 00:00:59,310
+you have to know in order for you to work with it.
+
+15
+00:00:59,730 --> 00:01:03,990
+I'm going to show you, but we can't see it actually work live again because there's no mutations.
+
+16
+00:01:04,260 --> 00:01:05,760
+But we can take a look at the syntax.
+
+17
+00:01:06,630 --> 00:01:09,960
+So the way it works is you're going to bring in the use mutation hook.
+
+18
+00:01:10,650 --> 00:01:14,070
+And then let's say that we were setting some kind of category.
+
+19
+00:01:14,550 --> 00:01:18,540
+What you would say is, again, you wouldn't make a set category.
+
+20
+00:01:19,050 --> 00:01:20,220
+GQ All blob.
+
+21
+00:01:21,230 --> 00:01:25,940
+And then inside what you would add is the actual mutation.
+
+22
+00:01:26,390 --> 00:01:29,300
+So this would be the object that you want to add.
+
+23
+00:01:29,750 --> 00:01:33,500
+And instead of saying query, you would say mutation.
+
+24
+00:01:35,080 --> 00:01:38,290
+And then it's just a matter of adding the appropriate values.
+
+25
+00:01:38,920 --> 00:01:40,240
+So for example.
+
+26
+00:01:41,290 --> 00:01:47,500
+Let's say in this particular case, this mutation was really just adding a new category item.
+
+27
+00:01:47,950 --> 00:01:57,880
+You could literally say category like so goes to and then the category type that we have inside of our
+
+28
+00:01:57,880 --> 00:01:58,900
+GraphQL types.
+
+29
+00:02:00,380 --> 00:02:03,860
+Then you would just call the literal mutation, add a category.
+
+30
+00:02:04,220 --> 00:02:09,290
+So this mutation name would be inside of our playground in the schema.
+
+31
+00:02:10,010 --> 00:02:15,260
+So up here you see type query, you would just see an additional one type mutation.
+
+32
+00:02:15,380 --> 00:02:19,610
+And then just like you saw here, it would just be a different signature instead of a get, it would
+
+33
+00:02:19,610 --> 00:02:20,060
+be set.
+
+34
+00:02:20,780 --> 00:02:21,710
+It's very similar.
+
+35
+00:02:22,820 --> 00:02:26,720
+So you would just take that value of the actual mutation name.
+
+36
+00:02:27,500 --> 00:02:28,490
+And just like we did.
+
+37
+00:02:28,700 --> 00:02:30,620
+You would just pass the category.
+
+38
+00:02:31,820 --> 00:02:33,230
+Calling the appropriate value.
+
+39
+00:02:35,510 --> 00:02:39,800
+And then it's just a matter of saying what values they're trying to update inside of your store.
+
+40
+00:02:40,370 --> 00:02:43,610
+So it could probably be the exact same as what we have here.
+
+41
+00:02:46,410 --> 00:02:50,670
+And now with this category, in order for you to use it.
+
+42
+00:02:51,790 --> 00:02:54,670
+What you would do is just say Konst.
+
+43
+00:02:55,860 --> 00:02:58,110
+And then you would just pass in.
+
+44
+00:02:59,190 --> 00:03:03,480
+Out of the actual array that you get back the use mutation hook.
+
+45
+00:03:05,310 --> 00:03:06,450
+Giving it category.
+
+46
+00:03:08,280 --> 00:03:13,570
+Then it's just a matter of naming the actual function that you get back.
+
+47
+00:03:13,590 --> 00:03:16,660
+So this is a mutating function because again, we're trying to pass add some data.
+
+48
+00:03:17,190 --> 00:03:19,410
+So this would be ad category.
+
+49
+00:03:19,950 --> 00:03:24,630
+And then as you can imagine, the second argument is the same as what you get here.
+
+50
+00:03:25,080 --> 00:03:29,340
+So you get a loading state, you're getting error, and then you get the data.
+
+51
+00:03:32,100 --> 00:03:36,030
+So let's actually hide this for now so that we can just see this work.
+
+52
+00:03:36,780 --> 00:03:41,580
+And this ad category function is just a function that expects to receive.
+
+53
+00:03:42,660 --> 00:03:46,080
+An object where you pass at the variables.
+
+54
+00:03:47,100 --> 00:03:55,380
+And then it's just a matter of matching the variable category like so to some category object that we're
+
+55
+00:03:55,380 --> 00:03:56,040
+trying to store.
+
+56
+00:03:56,820 --> 00:04:00,430
+So this object, of course, would be the literal object, and that's it.
+
+57
+00:04:00,510 --> 00:04:06,870
+This one would generate the mutation for you, and then you'll see it inside of your actual back end
+
+58
+00:04:06,870 --> 00:04:09,990
+if you were looking at your database, but also the data would come back.
+
+59
+00:04:10,140 --> 00:04:14,850
+The loading values would change as it's loading the actual process of setting the value.
+
+60
+00:04:15,060 --> 00:04:19,290
+If it's successfully set, it comes back with the data and that's it.
+
+61
+00:04:19,440 --> 00:04:20,550
+This is all the mutation is.
+
+62
+00:04:20,970 --> 00:04:22,880
+So again, the signature is very similar.
+
+63
+00:04:22,890 --> 00:04:28,160
+You're just really switching from mutation to query and from query to mutation.
+
+64
+00:04:29,100 --> 00:04:34,500
+But everything else about the GraphQL querying language is very streamlined.
+
+65
+00:04:35,310 --> 00:04:39,900
+So once you've learned it, you really now understand the majority of how to interact with GraphQL.
+
+66
+00:04:40,230 --> 00:04:45,240
+Everything else is really just a matter of tweaking and playing with Apollo so that you might get a
+
+67
+00:04:45,240 --> 00:04:48,210
+couple other additional features that might be helpful for you.
+
+68
+00:04:48,630 --> 00:04:55,020
+One of them being the fact that, as we know inside of our indexes, we are using the in-memory cache.
+
+69
+00:04:55,050 --> 00:04:59,530
+There are some other caching options, but the in-memory cache is 95% time.
+
+70
+00:04:59,550 --> 00:05:05,130
+The one that you want, because it's really just caching what's on that person who's using your application's
+
+71
+00:05:05,310 --> 00:05:08,130
+local computer or local browser, essentially.
+
+72
+00:05:08,520 --> 00:05:13,170
+So it's using their memory to cache those values for that session that they're active for.
+
+73
+00:05:14,540 --> 00:05:15,080
+But that's it.
+
+74
+00:05:15,890 --> 00:05:21,140
+I know, unfortunately, I have not created a mutation for you, but again, the limitation is that
+
+75
+00:05:21,140 --> 00:05:25,760
+this course is being accessed by thousands upon thousands of students at any given time.
+
+76
+00:05:26,060 --> 00:05:30,590
+If I were to open up these mutations, then the back end becomes inconsistent and I don't want that.
+
+77
+00:05:31,250 --> 00:05:34,550
+But again, the signature is very similar, and that's mutations.
+
+78
+00:05:35,420 --> 00:05:42,500
+So now that we understand mutations, let's finish up understanding GraphQL versus other versions of
+
+79
+00:05:42,500 --> 00:05:44,240
+non graphical applications.
+
+80
+00:05:44,510 --> 00:05:45,440
+I'll see you in the next video.

@@ -1,0 +1,747 @@
+1
+00:00:01,870 --> 00:00:02,530
+Welcome back.
+
+2
+00:00:03,010 --> 00:00:10,120
+In this video, let's talk about all the tools we can use to actually run our tests, remember, our
+
+3
+00:00:10,120 --> 00:00:18,370
+tests are just JavaScript, so we could just write simple JavaScript files with maybe if statements
+
+4
+00:00:18,370 --> 00:00:26,410
+that says, you know, if the same function as these two numbers together, then return success or otherwise
+
+5
+00:00:26,410 --> 00:00:28,230
+return test fail.
+
+6
+00:00:28,330 --> 00:00:29,500
+So we could do that.
+
+7
+00:00:29,620 --> 00:00:30,900
+But that's tedious.
+
+8
+00:00:30,910 --> 00:00:38,020
+And as developers, we want to use existing tools to make our experience or our speed of development
+
+9
+00:00:38,020 --> 00:00:38,620
+faster.
+
+10
+00:00:39,890 --> 00:00:42,710
+So this is going to get overwhelming, but let's look at testing tools.
+
+11
+00:00:44,330 --> 00:00:51,680
+I tried to organize for you a way to think about tests and the testing environment and the Web development
+
+12
+00:00:51,690 --> 00:00:53,660
+land, so I'm going to explain this.
+
+13
+00:00:53,810 --> 00:00:57,650
+And if this is a little complicated at first, don't worry.
+
+14
+00:00:57,650 --> 00:01:01,550
+We're going to come back to this and go over this at the end of the section, and it's all going to
+
+15
+00:01:01,550 --> 00:01:02,080
+make sense.
+
+16
+00:01:03,220 --> 00:01:11,020
+So the very first thing we need in a testing tool is something called a testing library, pretty self-explanatory.
+
+17
+00:01:11,260 --> 00:01:18,880
+This is the scaffolding giving us the ability to use some function calls and some new methods for us
+
+18
+00:01:18,880 --> 00:01:20,730
+to actually write our tests.
+
+19
+00:01:21,450 --> 00:01:26,140
+Again, think of this as scaffolding or building the structure around our tests.
+
+20
+00:01:27,460 --> 00:01:34,480
+Probably the top three libraries for that is Jasmyn, there's just and then there's something called
+
+21
+00:01:34,480 --> 00:01:34,960
+Moka.
+
+22
+00:01:36,330 --> 00:01:43,110
+And like I said, these are just npm install libraries, so they're available on NPM and you can add
+
+23
+00:01:43,110 --> 00:01:45,090
+them to build your scaffolding.
+
+24
+00:01:46,320 --> 00:01:51,750
+The next thing that you need right over here is something called an assertion library.
+
+25
+00:01:53,000 --> 00:01:59,840
+And in here we have again Jasmyn that comes with its own assertion library, we have just once again
+
+26
+00:01:59,840 --> 00:02:07,160
+that comes with its own assertion library and then TCHI here that usually gets paired with Moka in order
+
+27
+00:02:07,160 --> 00:02:08,750
+to have an assertion library.
+
+28
+00:02:10,270 --> 00:02:16,250
+An assertion library provides functions that are assertion functions.
+
+29
+00:02:16,270 --> 00:02:17,230
+I know that's confusing.
+
+30
+00:02:17,590 --> 00:02:21,840
+It's essentially a tool to allow you to test that.
+
+31
+00:02:21,850 --> 00:02:24,760
+The variables contain the expected value.
+
+32
+00:02:25,510 --> 00:02:27,010
+Now, that still sounds confusing.
+
+33
+00:02:27,010 --> 00:02:27,790
+So let me show you.
+
+34
+00:02:29,720 --> 00:02:36,140
+We're on the TCHI Assertion Library here, and you can see over here that they use something called
+
+35
+00:02:36,140 --> 00:02:44,990
+BDD or behaviorial driven development, and by installing this library, we can use all these words
+
+36
+00:02:45,440 --> 00:02:47,720
+and they just look like basic English.
+
+37
+00:02:48,960 --> 00:02:57,600
+What an assertion library does is says expect that this object that just contains a equals one and then
+
+38
+00:02:57,600 --> 00:03:02,310
+it chains all these words together to test our assumption.
+
+39
+00:03:02,610 --> 00:03:10,990
+So let's say expect that this object to not have property be it reads like English, right.
+
+40
+00:03:11,520 --> 00:03:15,260
+It simply test condition one against condition two.
+
+41
+00:03:15,690 --> 00:03:21,360
+So this is going to return false because you're right, this object won't have property B.
+
+42
+00:03:22,610 --> 00:03:25,790
+And they have a lot of things that we can add.
+
+43
+00:03:28,870 --> 00:03:36,790
+We see that another one is expect this object to have all keys, A and B. It kind of reads like English
+
+44
+00:03:36,790 --> 00:03:39,700
+and this makes our test really easy to read and understand.
+
+45
+00:03:41,940 --> 00:03:45,780
+The next thing we need for our test is something called a test runner.
+
+46
+00:03:46,820 --> 00:03:55,130
+And a test runner is something that allows us to run our tests, remember, if we go back to our app.
+
+47
+00:03:56,050 --> 00:03:57,370
+We had to do AMPM.
+
+48
+00:03:59,390 --> 00:03:59,900
+Ron.
+
+49
+00:04:01,460 --> 00:04:01,940
+Test.
+
+50
+00:04:03,060 --> 00:04:06,150
+And this runs our test.
+
+51
+00:04:07,490 --> 00:04:12,870
+Let's press a to run all the tests and something is magically running all these tests.
+
+52
+00:04:12,920 --> 00:04:14,720
+That's what a test runner does.
+
+53
+00:04:16,080 --> 00:04:23,010
+Going back to our slide again, we now see that Jasmyn and just include a test runner and their library,
+
+54
+00:04:23,340 --> 00:04:26,310
+and then Moka also has its own test runner.
+
+55
+00:04:26,580 --> 00:04:30,750
+And then I've added another one over here, which is called Karma James.
+
+56
+00:04:31,350 --> 00:04:36,840
+And this allows you to run tests in the browser.
+
+57
+00:04:38,120 --> 00:04:39,770
+Hmm, what does that mean?
+
+58
+00:04:40,790 --> 00:04:44,720
+Well, a test runner can run tests in different environment.
+
+59
+00:04:45,230 --> 00:04:45,890
+Let's have a look.
+
+60
+00:04:46,810 --> 00:04:54,700
+You see, usually our JavaScript works with the DOM to make our Web app what it is.
+
+61
+00:04:56,130 --> 00:05:03,780
+But when we're running tests and and this is what karma does, allows you to run your tests on the browser.
+
+62
+00:05:05,100 --> 00:05:09,120
+But why wouldn't we just always run our tests on the browser?
+
+63
+00:05:09,810 --> 00:05:12,290
+Well, that is because it takes a lot of time.
+
+64
+00:05:12,660 --> 00:05:17,250
+We have to run every single test through the browser using the browser APIs.
+
+65
+00:05:18,600 --> 00:05:25,050
+Ideally, when we run tests, it's super, super quick because most tests are set up so that if a developer
+
+66
+00:05:25,050 --> 00:05:28,700
+hits save on their terminal, it's going to run to the test.
+
+67
+00:05:28,920 --> 00:05:34,500
+If every time they needed to start up the browser and run through everything, well, that would be
+
+68
+00:05:34,500 --> 00:05:35,620
+really, really slow.
+
+69
+00:05:36,390 --> 00:05:43,720
+So other options exist, such as puppeteer by Google, which is what we call a headless browser.
+
+70
+00:05:44,310 --> 00:05:52,240
+It's a node library which provides a high level API to control the headless version of their browser.
+
+71
+00:05:52,590 --> 00:05:58,500
+So think of it as a stripped down browser that makes your tests a little bit faster.
+
+72
+00:05:58,890 --> 00:06:05,460
+But it can also be configured to do things such as generate screenshots, pdf of pages.
+
+73
+00:06:06,030 --> 00:06:13,310
+It can automate form submissions, you can do UI testing with it, you can monitor keyboard input,
+
+74
+00:06:13,410 --> 00:06:14,990
+you can do a lot of cool things with it.
+
+75
+00:06:15,750 --> 00:06:17,990
+And then finally we have something called geston.
+
+76
+00:06:18,420 --> 00:06:24,150
+And just dumb, as the name suggests, is an end JavaScript implementation of the dump.
+
+77
+00:06:24,390 --> 00:06:28,980
+So it's not the real Dom, but a fake JavaScript version of it.
+
+78
+00:06:29,850 --> 00:06:37,740
+And remember, the dam is that tree like structure that shows the nodes on our webpage and that's what
+
+79
+00:06:37,740 --> 00:06:38,660
+makes up our UI.
+
+80
+00:06:39,360 --> 00:06:46,170
+So just dumb implements this in JavaScript so we can have a DOM like API to work without actually needing
+
+81
+00:06:46,170 --> 00:06:46,710
+the browser.
+
+82
+00:06:47,900 --> 00:06:49,880
+If we go back to our tests.
+
+83
+00:06:52,000 --> 00:06:58,450
+And let's run this again, I'm going to run NPM run test, you'll see over here that we asked Scripps
+
+84
+00:06:58,450 --> 00:07:00,040
+Test Dash Dash ENF.
+
+85
+00:07:01,390 --> 00:07:05,200
+It went by quickly by you saw that we are using Jass Don there.
+
+86
+00:07:07,180 --> 00:07:10,570
+So that our test run really, really quick.
+
+87
+00:07:11,290 --> 00:07:11,740
+All right.
+
+88
+00:07:13,830 --> 00:07:15,060
+So that's a test run.
+
+89
+00:07:16,230 --> 00:07:20,160
+Next, we have something called Mock Spies and Stobbs.
+
+90
+00:07:21,440 --> 00:07:25,640
+And in here again, Jasmine and Jess come with their own version.
+
+91
+00:07:26,510 --> 00:07:32,750
+And then if you're using something like Moka, just like you had to add an assertion library, you'll
+
+92
+00:07:32,750 --> 00:07:35,130
+have to add something called sign on.
+
+93
+00:07:36,110 --> 00:07:38,910
+There are obviously other libraries, but this is the most popular.
+
+94
+00:07:39,810 --> 00:07:41,150
+Now, what's all this?
+
+95
+00:07:41,150 --> 00:07:43,700
+Mock Spies and Stubbe business?
+
+96
+00:07:45,200 --> 00:07:53,180
+Well, spies provide for us information about functions, how many times they were called and what cases
+
+97
+00:07:53,180 --> 00:08:01,490
+and by whom, Stubing replaces selected functions with a function to ensure that the expected behavior
+
+98
+00:08:02,360 --> 00:08:02,960
+happens.
+
+99
+00:08:03,530 --> 00:08:11,090
+And then Mock's is kind of like faking a function or a behavior to test different parts of a process.
+
+100
+00:08:11,330 --> 00:08:13,790
+So this might be really, really good for integration tests.
+
+101
+00:08:14,810 --> 00:08:17,420
+Now, I know that can get a little bit confusing.
+
+102
+00:08:17,420 --> 00:08:18,710
+So let's take a look at Sinon.
+
+103
+00:08:20,610 --> 00:08:27,090
+Sign on over here if you go to their documentation, let's click on Stobbs Free scroll down.
+
+104
+00:08:27,090 --> 00:08:30,090
+We see that what is a stop doing?
+
+105
+00:08:30,810 --> 00:08:35,460
+We're simply using the library sign on dot stub, which is a function.
+
+106
+00:08:36,210 --> 00:08:42,030
+Now, we can use it in a way where this function can be called with arguments 40 to.
+
+107
+00:08:43,040 --> 00:08:48,560
+And make a return one so that when we run, call back.
+
+108
+00:08:49,420 --> 00:08:56,510
+Forty two, it returns one and what we do call back dot with arcs, it throws an error.
+
+109
+00:08:57,120 --> 00:09:00,790
+Again, this is something that we'll go over later in the videos.
+
+110
+00:09:01,060 --> 00:09:06,640
+But you see here, that stub is we can fake functions and make them do what they expect.
+
+111
+00:09:08,800 --> 00:09:16,300
+For example, sign on can be used to fake a server during our tests, we don't necessarily want to send
+
+112
+00:09:16,300 --> 00:09:18,880
+request to the server every time we're running tests.
+
+113
+00:09:18,880 --> 00:09:26,110
+But ideally, if a function is using a server, we can fake it with a stub so that the function still
+
+114
+00:09:26,110 --> 00:09:28,720
+runs and we can just test that one piece of code.
+
+115
+00:09:30,680 --> 00:09:36,350
+Like I said, this is really hard to explain without a little bit of a demo, but don't worry, we're
+
+116
+00:09:36,350 --> 00:09:36,950
+going to get there.
+
+117
+00:09:37,760 --> 00:09:42,740
+And then the final piece of the puzzle, we've talked about scaffolding, about assertion libraries.
+
+118
+00:09:43,130 --> 00:09:45,020
+We talked about test runners.
+
+119
+00:09:45,200 --> 00:09:48,490
+We talked about these Stobbs marks and spice.
+
+120
+00:09:48,770 --> 00:09:51,080
+Finally, we have something called code coverage.
+
+121
+00:09:51,860 --> 00:09:55,610
+And code coverage is provided by libraries like Istanbul.
+
+122
+00:09:55,880 --> 00:10:02,180
+Just has code coverage already included, but has actually Istanbul running underneath the hood.
+
+123
+00:10:03,890 --> 00:10:07,040
+And let me show you what a code coverage might look like.
+
+124
+00:10:09,360 --> 00:10:15,390
+Luckily for us, we can just do ampm test, dash, dash, dash coverage and don't worry, we'll talk
+
+125
+00:10:15,390 --> 00:10:18,120
+about how we can do this in our apps.
+
+126
+00:10:18,600 --> 00:10:21,540
+But if I run this, you see the Jazz Domme here.
+
+127
+00:10:23,500 --> 00:10:31,660
+I get an outputted file of the coverage and you see over here that I have my robo friends up and I have
+
+128
+00:10:31,660 --> 00:10:37,780
+some green, some red, some yellows, and this is a test coverage that shows me what percentage of
+
+129
+00:10:37,780 --> 00:10:41,500
+the statements, the branches, the functions are covered with tests.
+
+130
+00:10:42,070 --> 00:10:47,740
+You see here that I've written some tests for the constant stage's file, some actions that just file,
+
+131
+00:10:48,190 --> 00:10:53,860
+and also for some of our components, some of our card lists, components, and that we have one hundred
+
+132
+00:10:53,860 --> 00:10:54,940
+percent coverage for those.
+
+133
+00:10:55,630 --> 00:11:03,610
+But then we also have things like the header file that is missing some test, and it even shows us which
+
+134
+00:11:03,610 --> 00:11:05,200
+lines we're missing testing.
+
+135
+00:11:05,830 --> 00:11:12,010
+And that is Istanbul underneath the hood, giving us a report of where we're missing tests.
+
+136
+00:11:14,180 --> 00:11:21,560
+Now, although these are a lot of libraries, they all have the same goal in mind and they all actually
+
+137
+00:11:21,560 --> 00:11:23,930
+are written in very similar fashion.
+
+138
+00:11:24,620 --> 00:11:29,800
+So once you know one, it is really, really easy to pick up another one.
+
+139
+00:11:30,170 --> 00:11:33,070
+Don't get overwhelmed by this, just like with anything.
+
+140
+00:11:33,080 --> 00:11:36,350
+There's a lot of tools for the job, but we'll come back to this.
+
+141
+00:11:36,350 --> 00:11:38,120
+So it all makes sense in the end.
+
+142
+00:11:38,390 --> 00:11:42,560
+Just keep in mind that the syntaxes are very similar, so you'll be just fine.
+
+143
+00:11:43,520 --> 00:11:49,370
+And I also want to let you know that probably the most popular Jasmyn used to be very popular, but
+
+144
+00:11:49,370 --> 00:11:51,950
+it has now been overtaken by two things.
+
+145
+00:11:52,250 --> 00:11:58,250
+One is, just as you can see, just as nice because it has everything in one place.
+
+146
+00:11:58,250 --> 00:12:04,220
+You can just install this library and have all these little features that you need in a testing framework.
+
+147
+00:12:04,760 --> 00:12:09,830
+Another popular one is Moka, combined with Tchi and Sinon.
+
+148
+00:12:10,960 --> 00:12:17,530
+And this is, again, probably the most popular setup, but that's also because just as Alan you are,
+
+149
+00:12:17,680 --> 00:12:24,400
+most of these libraries follow the idea of behavioral driven development, which is we describe what
+
+150
+00:12:24,400 --> 00:12:28,120
+a function does and say what behavior we expect out of them.
+
+151
+00:12:28,270 --> 00:12:30,660
+You remember the TCHI assertion, right?
+
+152
+00:12:31,540 --> 00:12:38,410
+If object has this properties, we expect it to have this property A.
+
+153
+00:12:40,370 --> 00:12:42,370
+All right, does your head hurt yet?
+
+154
+00:12:43,800 --> 00:12:49,680
+Luckily for us, if it wasn't for Kerry racked up, we would have to npm install all of these again,
+
+155
+00:12:49,680 --> 00:12:55,410
+set them up and add them to our scripts to run all these tests and test coverages.
+
+156
+00:12:56,930 --> 00:12:59,420
+But as you can see with Priore ACTTAB.
+
+157
+00:13:00,610 --> 00:13:02,710
+We have everything out of the box.
+
+158
+00:13:04,000 --> 00:13:09,790
+Again, the best minds in the community are working on maintaining Creary ACTTAB to always keep it up
+
+159
+00:13:09,790 --> 00:13:13,080
+to date as all of these libraries update as well.
+
+160
+00:13:14,300 --> 00:13:18,200
+Don't worry, though, I'll show you in the upcoming videos how to actually set this up yourself as
+
+161
+00:13:18,200 --> 00:13:18,430
+well.
+
+162
+00:13:19,730 --> 00:13:23,270
+One other note in our tests over here.
+
+163
+00:13:24,420 --> 00:13:31,860
+Create react app uses just and that's because just was created by Facebook and if you remember, React
+
+164
+00:13:31,860 --> 00:13:39,480
+was also developed by Facebook, which is kind of nice because they use it in their own production environment
+
+165
+00:13:39,630 --> 00:13:43,230
+and these tools are used together to work really, really nicely.
+
+166
+00:13:45,090 --> 00:13:52,470
+And by the way, there's other testing libraries, we have a VA that does parallelism really, really
+
+167
+00:13:52,470 --> 00:13:55,620
+well, which means Iran tests, runs tests really, really fast.
+
+168
+00:13:55,770 --> 00:14:00,050
+And then you have something like tape that is really low level, simple light library.
+
+169
+00:14:00,600 --> 00:14:02,700
+But as I said before, don't get.
+
+170
+00:14:03,450 --> 00:14:10,290
+In short, if you get anything from this video is that if you just want to get started and looking for
+
+171
+00:14:10,290 --> 00:14:17,370
+a fast framework that can handle everything and has everything in one, well, just use just if you
+
+172
+00:14:17,370 --> 00:14:25,050
+want very flexible extendible configuration where you can plug in some things, then use Moka.
+
+173
+00:14:26,440 --> 00:14:30,790
+Mokas a little harder to set up because of all these things that we need to add on.
+
+174
+00:14:31,830 --> 00:14:35,370
+But it's more flexible and like I said, open to extension's.
+
+175
+00:14:36,540 --> 00:14:42,370
+One last note in our test, we're going to use two things that are sort of unique to react.
+
+176
+00:14:43,170 --> 00:14:49,200
+One is something called snapshot testing that comes with jest, which allows us to do some really cool
+
+177
+00:14:49,200 --> 00:14:51,620
+things that I'm going to show you later on.
+
+178
+00:14:52,440 --> 00:14:59,790
+And then another library called Enzyme, which was created by Airbnb and helps us write tests better
+
+179
+00:14:59,790 --> 00:15:00,940
+for reactor components.
+
+180
+00:15:01,500 --> 00:15:06,210
+Don't worry, I'm not just showing you these things because I think they're cool and trendy.
+
+181
+00:15:07,200 --> 00:15:12,480
+These are implemented and most Riak projects that you're encounter, and it's pretty much become the
+
+182
+00:15:12,480 --> 00:15:15,930
+standard in the react ecosystem to use these libraries.
+
+183
+00:15:15,960 --> 00:15:17,070
+So we're going to use them to.
+
+184
+00:15:17,430 --> 00:15:21,060
+At the end of the day, though, we can agree on one thing.
+
+185
+00:15:21,480 --> 00:15:24,150
+All these libraries have really cool logos.
+
+186
+00:15:24,780 --> 00:15:25,790
+I'll see in the next one.
+
+187
+00:15:26,280 --> 00:15:26,660
+Bye bye.

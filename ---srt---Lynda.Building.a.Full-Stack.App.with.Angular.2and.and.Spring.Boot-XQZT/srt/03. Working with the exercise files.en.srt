@@ -1,0 +1,111 @@
+1
+00:00:00.05 --> 00:00:02.09
+- [Instructor] If you have
+access to the exercise files
+
+2
+00:00:02.09 --> 00:00:06.06
+for this course, you could
+download it to your desktop.
+
+3
+00:00:06.06 --> 00:00:09.05
+Included you will find
+a begin and end state
+
+4
+00:00:09.05 --> 00:00:12.03
+of the project for each video.
+
+5
+00:00:12.03 --> 00:00:15.03
+If you're following along,
+coding with each video,
+
+6
+00:00:15.03 --> 00:00:18.06
+navigate to the exercise files directory.
+
+7
+00:00:18.06 --> 00:00:22.04
+Find the directory for the
+video you're currently on.
+
+8
+00:00:22.04 --> 00:00:25.05
+Then review the project at that state.
+
+9
+00:00:25.05 --> 00:00:28.01
+You can also import the
+project at that state
+
+10
+00:00:28.01 --> 00:00:29.09
+into your IDE.
+
+11
+00:00:29.09 --> 00:00:33.02
+In Eclipse, click on file then import.
+
+12
+00:00:33.02 --> 00:00:35.08
+Select existing cradle project.
+
+13
+00:00:35.08 --> 00:00:37.09
+Click next and next.
+
+14
+00:00:37.09 --> 00:00:41.03
+Then go into browse, find the location
+
+15
+00:00:41.03 --> 00:00:44.07
+where you downloaded the
+exercise files folder.
+
+16
+00:00:44.07 --> 00:00:48.06
+Navigate to the directory of
+the video you're currently on,
+
+17
+00:00:48.06 --> 00:00:52.01
+select your desired state,
+then select the project route,
+
+18
+00:00:52.01 --> 00:00:54.00
+and click open.
+
+19
+00:00:54.00 --> 00:00:55.09
+Then click finish.
+
+20
+00:00:55.09 --> 00:00:58.06
+If you're viewing this
+course on a mobile device,
+
+21
+00:00:58.06 --> 00:01:00.08
+a set top device where your membership
+
+22
+00:01:00.08 --> 00:01:04.09
+does not provide access to the
+exercise files that's okay.
+
+23
+00:01:04.09 --> 00:01:06.09
+I encourage you to still follow along
+
+24
+00:01:06.09 --> 00:01:08.05
+as we go through the course.
+
+25
+00:01:08.05 --> 00:01:10.04
+Now, let's get started.
+

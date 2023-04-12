@@ -1,0 +1,135 @@
+1
+00:00:01,940 --> 00:00:08,240
+Before we dive into coding, let's just talk about each one of the types carefully unit tests should
+
+2
+00:00:08,240 --> 00:00:12,290
+cover all small, pure functions of an application.
+
+3
+00:00:12,470 --> 00:00:18,560
+You may have heard me say that small, pure functions that take an input and return an output and that
+
+4
+00:00:18,560 --> 00:00:22,850
+do one thing really, really well, one thing at a time are the way to go.
+
+5
+00:00:23,510 --> 00:00:26,180
+And it's the main principle in functional programming.
+
+6
+00:00:27,400 --> 00:00:35,110
+Now, the awesome side effect of this is that it allows us to write unit tests really, really easily
+
+7
+00:00:35,530 --> 00:00:41,290
+because our functions are so simple, just give it an input and get an output and just test that based
+
+8
+00:00:41,290 --> 00:00:41,920
+on an input.
+
+9
+00:00:42,220 --> 00:00:43,050
+Do you get this up?
+
+10
+00:00:43,990 --> 00:00:49,600
+And this is one of the biggest benefits of functional programming versus object oriented programming.
+
+11
+00:00:50,020 --> 00:00:56,590
+But to recap, a pure function is a function that has no side effects, like affecting another part
+
+12
+00:00:56,590 --> 00:00:59,740
+of a program and always returns something based on an input.
+
+13
+00:01:00,680 --> 00:01:07,280
+It is deterministic, meaning that you can put in the same input a million times and you'll still get
+
+14
+00:01:07,280 --> 00:01:14,060
+the same output a million times the exact same way, which as you think about it makes testing very
+
+15
+00:01:14,060 --> 00:01:14,360
+easy.
+
+16
+00:01:15,860 --> 00:01:21,710
+And by the way, react components are mostly pure functions, those stateless components that don't
+
+17
+00:01:21,710 --> 00:01:28,820
+have any life cycles or states, well, they get an input which are props, and they return an output,
+
+18
+00:01:28,820 --> 00:01:29,510
+which is a view.
+
+19
+00:01:30,110 --> 00:01:33,980
+Those are really, really easy to test with something like unit test.
+
+20
+00:01:34,990 --> 00:01:40,540
+So unit tests are extremely useful, like I said, these are the things that you'll see 90 percent of
+
+21
+00:01:40,570 --> 00:01:44,510
+the time and most of the time you're going to be a writing unit tests.
+
+22
+00:01:44,560 --> 00:01:46,290
+So we're going to do that, too, in this course.
+
+23
+00:01:47,320 --> 00:01:51,900
+The one thing to keep in mind is that unit tests don't test the contract.
+
+24
+00:01:52,570 --> 00:01:54,160
+And what do I mean by the contract?
+
+25
+00:01:54,460 --> 00:01:56,910
+The contract is the connection between things.
+
+26
+00:01:57,460 --> 00:02:00,580
+It could be a contract between a server and a database.
+
+27
+00:02:00,850 --> 00:02:04,590
+It could be a contract between a function and another function.
+
+28
+00:02:04,930 --> 00:02:09,580
+Maybe my sign and function calls a load profile function.
+
+29
+00:02:10,360 --> 00:02:17,440
+Unit tests would test the site and function and a load function, but not the contract between them,
+
+30
+00:02:17,440 --> 00:02:19,660
+whether they integrate well together.
+
+31
+00:02:21,390 --> 00:02:27,450
+The important takeaway is this when it comes to unit tests, write code that is separated away nicely
+
+32
+00:02:27,750 --> 00:02:34,530
+clean functional components or functions which make it easier to unit tests because everything is small
+
+33
+00:02:34,530 --> 00:02:38,880
+chunks and this is going to lead to nice maintainable code in the long run.
+
+34
+00:02:40,350 --> 00:02:42,330
+I'll see in the next one, bye bye.

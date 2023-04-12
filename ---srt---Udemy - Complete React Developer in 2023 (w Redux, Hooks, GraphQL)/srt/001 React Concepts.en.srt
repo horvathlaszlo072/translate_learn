@@ -1,0 +1,115 @@
+1
+00:00:00,440 --> 00:00:04,520
+Hello and welcome to the best Riak course online.
+
+2
+00:00:05,000 --> 00:00:10,820
+Wow, that's a that's a bit of a bold statement and OK, I may be biased here, but I'm definitely looking
+
+3
+00:00:10,820 --> 00:00:16,880
+forward to us diving into some fun topics and coming out the other end as great react developers.
+
+4
+00:00:17,600 --> 00:00:23,270
+This course tries to build onto each topic and gets more and more advanced as you progress.
+
+5
+00:00:23,720 --> 00:00:28,880
+Trust me, if you go through everything, you will come out the other end confident with react and be
+
+6
+00:00:28,880 --> 00:00:31,970
+able to manage or even lead react projects.
+
+7
+00:00:32,130 --> 00:00:32,720
+Your company.
+
+8
+00:00:33,990 --> 00:00:39,750
+Now, before we dive into Cotting building projects and learning about react, I want to take a moment
+
+9
+00:00:39,750 --> 00:00:47,310
+and understand why React exists, what problem does it solve, why it makes frontin development easier,
+
+10
+00:00:47,430 --> 00:00:53,630
+and also what principles we need to understand to be more than the average reactive up.
+
+11
+00:00:54,300 --> 00:01:00,180
+You see, a lot of times people learn a tool, a library or a framework without understanding the core
+
+12
+00:01:00,180 --> 00:01:02,190
+principles that make it great.
+
+13
+00:01:02,790 --> 00:01:09,270
+By learning these things first will have a foundation as we move through the course and understand what
+
+14
+00:01:09,270 --> 00:01:10,710
+the best practices are.
+
+15
+00:01:11,010 --> 00:01:15,990
+The goal of this course is not to be another Reacher's like thousands of others already out there in
+
+16
+00:01:15,990 --> 00:01:16,540
+existence.
+
+17
+00:01:17,010 --> 00:01:23,220
+The goal is to make you a reactive helper that can think on your own, make good architectural decisions
+
+18
+00:01:23,310 --> 00:01:26,800
+and lead projects instead of only following tutorials.
+
+19
+00:01:27,510 --> 00:01:32,640
+Therefore, in this section, let's dive into the important principles that will help us get through
+
+20
+00:01:32,640 --> 00:01:33,210
+this course.
+
+21
+00:01:33,660 --> 00:01:38,310
+If you are new to react, some of these principles may be hard to understand at first.
+
+22
+00:01:38,670 --> 00:01:42,870
+Rest assured that we will keep revisiting them throughout the course as we learn.
+
+23
+00:01:43,470 --> 00:01:47,340
+For those that have already worked with react, you may learn a thing or two.
+
+24
+00:01:47,340 --> 00:01:48,260
+So hang in there.
+
+25
+00:01:48,750 --> 00:01:53,700
+My goal by the end of this section is for you to be able to explain to other programmers the benefit
+
+26
+00:01:53,700 --> 00:01:56,310
+of react without writing a single line of code.
+
+27
+00:01:57,310 --> 00:02:02,350
+I do recommend that this section is something you come back to after you've watched through the entire
+
+28
+00:02:02,350 --> 00:02:02,770
+course.
+
+29
+00:02:03,760 --> 00:02:05,690
+All right, enough talk, let's get started.

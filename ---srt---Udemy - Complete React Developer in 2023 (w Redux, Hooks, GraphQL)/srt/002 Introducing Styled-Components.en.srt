@@ -1,0 +1,627 @@
+1
+00:00:00,210 --> 00:00:01,230
+Welcome back, everyone.
+
+2
+00:00:02,070 --> 00:00:09,210
+In this video, we are going to discuss and jazz, particularly regarding React as we saw when using
+
+3
+00:00:09,210 --> 00:00:17,400
+CSI, and says there is a high chance that you may rely on your human error to create issues with styles
+
+4
+00:00:17,400 --> 00:00:19,890
+clashing when writing your CSI rules.
+
+5
+00:00:20,610 --> 00:00:27,210
+One of the big advantages of using React is the fact that we're allowed to leverage these new libraries
+
+6
+00:00:27,210 --> 00:00:29,490
+that are called CSI NJ libraries.
+
+7
+00:00:29,910 --> 00:00:35,310
+What they allow us to do is leverage JavaScript to build out the CSC for us.
+
+8
+00:00:35,760 --> 00:00:42,930
+What this means is that the JavaScript will dynamically build out unique class names that are tailored
+
+9
+00:00:42,930 --> 00:00:46,170
+to specifically the components that we're trying to style.
+
+10
+00:00:46,560 --> 00:00:52,800
+What this allows us to do is scope our styling exclusively to components, which gives us a huge advantage
+
+11
+00:00:52,800 --> 00:00:59,670
+of never, ever even having to worry about these issues ever again, with stars clashing between components.
+
+12
+00:01:00,540 --> 00:01:04,850
+In order to get started with star components, we need to install the library.
+
+13
+00:01:05,250 --> 00:01:10,290
+So here we are back in our terminal where we're going to install star components now.
+
+14
+00:01:10,530 --> 00:01:17,250
+Style components, which is the name of the library, is really just one flavor, of course, in jazz.
+
+15
+00:01:17,580 --> 00:01:19,950
+It's arguably the most popular format.
+
+16
+00:01:20,190 --> 00:01:26,130
+There's actually another one called emotion style, but that has arguably almost the exact same structure
+
+17
+00:01:26,130 --> 00:01:27,120
+as style components.
+
+18
+00:01:27,510 --> 00:01:30,000
+If you learn style components, you've learned emotion.
+
+19
+00:01:30,330 --> 00:01:35,790
+The main thing about the difference between the two is which one came first and a couple much more significantly
+
+20
+00:01:35,790 --> 00:01:39,270
+nuanced points that are important for our learning right now.
+
+21
+00:01:39,720 --> 00:01:45,600
+It's not components is most arguably by and far the most common in jazz library that you'll come across
+
+22
+00:01:45,600 --> 00:01:46,800
+in your React development.
+
+23
+00:01:47,040 --> 00:01:49,650
+So it's important that I teach you this specific library.
+
+24
+00:01:50,460 --> 00:01:57,600
+So here inside of our project, what I want to do is I want to replace all of our current SAS styling
+
+25
+00:01:57,780 --> 00:02:02,730
+with style components, and I'm going to walk you through the basics, as well as some of the more advanced
+
+26
+00:02:02,730 --> 00:02:08,250
+usages and architecture patterns that can emerge through the usage of style components.
+
+27
+00:02:08,670 --> 00:02:13,470
+One of the other big advantages that we get is that because we're doing it at this point where we have
+
+28
+00:02:13,470 --> 00:02:18,720
+so many components newly styled, it's very easy to get a lot of practice which you'll definitely get
+
+29
+00:02:18,720 --> 00:02:19,090
+to do.
+
+30
+00:02:19,110 --> 00:02:23,880
+Once we learn some of these basics, so where I want to start is the navigation component.
+
+31
+00:02:24,420 --> 00:02:30,990
+In order for us to transform a sandbar into style components, the first thing we need to do is actually
+
+32
+00:02:30,990 --> 00:02:34,980
+switch it from SAS over to Jess.
+
+33
+00:02:35,430 --> 00:02:37,350
+You can do GSX, you can do Jess.
+
+34
+00:02:37,350 --> 00:02:38,260
+It's really up to you.
+
+35
+00:02:38,280 --> 00:02:43,380
+Personally, I prefer GSX, even though really what we're writing is Jess, but you'll see why.
+
+36
+00:02:43,380 --> 00:02:46,200
+Sometimes Jess is more important here.
+
+37
+00:02:46,200 --> 00:02:51,600
+What's happening is that because we've converted this over, these rules no longer apply because this
+
+38
+00:02:51,600 --> 00:02:52,200
+is SAS.
+
+39
+00:02:52,740 --> 00:03:00,300
+In order to use the library, though, it all comes from this styled keyword that exports from style
+
+40
+00:03:00,300 --> 00:03:00,990
+components.
+
+41
+00:03:02,730 --> 00:03:07,650
+What this stock report allows us to do is generate components, so here I'm going to go, Hey, I want
+
+42
+00:03:07,650 --> 00:03:14,850
+to make a navigation container, which is the div component that this dot navigation was, if you remember
+
+43
+00:03:14,850 --> 00:03:16,680
+inside of our navigation component.
+
+44
+00:03:17,910 --> 00:03:21,360
+This Dave was really the one with the class name of navigation.
+
+45
+00:03:21,630 --> 00:03:26,880
+So our styling was targeting the navigation class name, but now we want to make a new component for
+
+46
+00:03:26,880 --> 00:03:27,000
+it.
+
+47
+00:03:27,480 --> 00:03:33,080
+And the component gets built by saying I want to call style and OnStar.
+
+48
+00:03:33,120 --> 00:03:39,720
+There's a method called Div, and this div will give us back a div that we can then apply styles to
+
+49
+00:03:39,750 --> 00:03:42,210
+using these back text right after.
+
+50
+00:03:42,780 --> 00:03:47,310
+Inside of these back text is where we're going to insert our style code so we can actually directly
+
+51
+00:03:47,310 --> 00:03:50,430
+just cut this right out and place this inside.
+
+52
+00:03:51,150 --> 00:03:54,780
+This is considered valid style components.
+
+53
+00:03:55,500 --> 00:04:00,270
+So before we do anything else, I'm just going to comment this out and show you how you use this.
+
+54
+00:04:00,630 --> 00:04:03,930
+So once you generate this, you actually do need to export this out as well.
+
+55
+00:04:04,440 --> 00:04:07,140
+So let's export our navigation container.
+
+56
+00:04:07,680 --> 00:04:13,380
+Let's copy this and let's comment out this, actually.
+
+57
+00:04:13,410 --> 00:04:18,810
+No, we're going to leverage this because what we need to do is import directly from our note navigation
+
+58
+00:04:19,140 --> 00:04:19,910
+styles file.
+
+59
+00:04:20,250 --> 00:04:22,080
+We don't need the touch ASX.
+
+60
+00:04:23,590 --> 00:04:30,400
+Here with navigation container, what you can now do is actually comments out all of this code because
+
+61
+00:04:30,400 --> 00:04:32,890
+there's a couple of things I want to show you before we even do any of this.
+
+62
+00:04:33,760 --> 00:04:39,010
+What you'll do is replace the div right here with this new navigation container.
+
+63
+00:04:39,610 --> 00:04:42,550
+If we save this, of course, are now bar is going to be empty.
+
+64
+00:04:43,180 --> 00:04:48,940
+But once you go into your application, what you'll see is that it's technically still there as a component.
+
+65
+00:04:49,930 --> 00:04:57,490
+Now, when you inspect it, this div right here is our style component, we see all of the styling that
+
+66
+00:04:57,490 --> 00:04:58,030
+we added.
+
+67
+00:04:58,450 --> 00:05:05,470
+But notice how this says Egg KP Oh, this is a uniquely generated class name.
+
+68
+00:05:05,980 --> 00:05:12,250
+This style gets generated on builds so that when we are working with our style components, there are
+
+69
+00:05:12,250 --> 00:05:17,620
+no clashes that will happen because style components will ensure that every one of these components
+
+70
+00:05:17,620 --> 00:05:20,140
+that we write now has a unique class name.
+
+71
+00:05:20,740 --> 00:05:24,820
+And this way, the styling is also going to be locked in to that class.
+
+72
+00:05:25,300 --> 00:05:32,470
+So by doing this now, we can really be sure that there will be no overlap in our styling with one another.
+
+73
+00:05:33,340 --> 00:05:36,640
+So this is the thing that really gives us this big benefit.
+
+74
+00:05:37,060 --> 00:05:39,700
+Let's unstyled this or uncomment this code.
+
+75
+00:05:39,700 --> 00:05:41,770
+Sorry and continue styling.
+
+76
+00:05:42,700 --> 00:05:44,680
+Next year, we need this logo container.
+
+77
+00:05:45,310 --> 00:05:52,870
+So another great advantage is that you don't have to just leverage this div or dot span or DP, usually
+
+78
+00:05:52,870 --> 00:05:53,460
+on style.
+
+79
+00:05:53,470 --> 00:05:59,860
+It comes with all of the different HTML based elements that you're used to using, like top button dot
+
+80
+00:05:59,860 --> 00:06:00,190
+span.
+
+81
+00:06:00,190 --> 00:06:08,140
+As I mentioned, paragraph H1, H2, H3, they're all here, but let's say you want to see style over
+
+82
+00:06:08,140 --> 00:06:09,520
+an existing component.
+
+83
+00:06:10,000 --> 00:06:12,450
+You can do that by using brackets.
+
+84
+00:06:12,460 --> 00:06:16,510
+So first, let's import Link from React router Dom.
+
+85
+00:06:18,420 --> 00:06:25,350
+And now, in order to use it, all we need to do is copy the component, come down here and create a
+
+86
+00:06:25,350 --> 00:06:26,160
+new component.
+
+87
+00:06:26,520 --> 00:06:29,130
+So I want to call this one logo container.
+
+88
+00:06:29,550 --> 00:06:34,800
+So you're naming convention follows exactly how you name a React component, because that's what they
+
+89
+00:06:34,800 --> 00:06:34,960
+are.
+
+90
+00:06:34,980 --> 00:06:36,630
+They really are just components.
+
+91
+00:06:37,290 --> 00:06:39,030
+And here, I'm going to say styled.
+
+92
+00:06:39,030 --> 00:06:42,240
+And then in order to use the link, I'm going to say bracket link.
+
+93
+00:06:42,300 --> 00:06:45,180
+I'm going to pass the link into styled like this.
+
+94
+00:06:45,570 --> 00:06:50,910
+And now I can add these back techs and once again insert the styling that's relevant.
+
+95
+00:06:51,120 --> 00:06:55,950
+So here I'm just going to copy and paste this over and get rid of that.
+
+96
+00:06:57,250 --> 00:07:00,100
+And now we have our logo container component.
+
+97
+00:07:00,850 --> 00:07:01,690
+So let's continue.
+
+98
+00:07:02,020 --> 00:07:05,140
+We still have a nav link as well as nav links container.
+
+99
+00:07:05,650 --> 00:07:07,810
+So here nav links container.
+
+100
+00:07:08,080 --> 00:07:09,970
+This is a div.
+
+101
+00:07:09,970 --> 00:07:14,470
+If you remember coming back to our navigation component, you'll have to keep going back and forth.
+
+102
+00:07:15,160 --> 00:07:21,160
+Natalie's container is a div that contains all of the links on our right hand side.
+
+103
+00:07:21,910 --> 00:07:29,020
+So here what I'm going to do is I'm going to create export content, navigation or nav links container
+
+104
+00:07:29,050 --> 00:07:29,680
+like this.
+
+105
+00:07:31,830 --> 00:07:34,080
+And this is going to be a style divide.
+
+106
+00:07:35,390 --> 00:07:36,800
+And then I'm going to paste this in.
+
+107
+00:07:39,030 --> 00:07:44,640
+So actually, according to our naming convention, once we're inside, I don't even need to name this
+
+108
+00:07:45,000 --> 00:07:45,600
+container.
+
+109
+00:07:45,990 --> 00:07:48,270
+Now I can just call this now links like this.
+
+110
+00:07:49,110 --> 00:07:55,800
+Similarly, the internal actual nav links I'm going to explore a new component called NAV Link, which
+
+111
+00:07:55,800 --> 00:08:03,540
+is a styled link component that will contain the code that makes them navigation links.
+
+112
+00:08:07,820 --> 00:08:09,890
+And now let's just get rid of this coat.
+
+113
+00:08:10,430 --> 00:08:13,010
+Let's save this and I'll show you how to use them.
+
+114
+00:08:13,490 --> 00:08:17,870
+So what we need to do is import the remaining lower container nav links and nav link.
+
+115
+00:08:18,590 --> 00:08:20,720
+So here, let's import in.
+
+116
+00:08:22,920 --> 00:08:24,840
+We need our Navy links container.
+
+117
+00:08:26,400 --> 00:08:32,000
+For now, links, we need nav link and then finally, we need the logo container.
+
+118
+00:08:35,270 --> 00:08:40,070
+So what we do now is we just replace the corresponding elements, so here.
+
+119
+00:08:40,340 --> 00:08:41,240
+Logo container.
+
+120
+00:08:42,610 --> 00:08:46,390
+Up to the class name, because we don't need that anymore can now be replaced.
+
+121
+00:08:46,720 --> 00:08:50,080
+Like so now links can replace this div.
+
+122
+00:08:51,000 --> 00:08:51,510
+Like so.
+
+123
+00:08:52,600 --> 00:08:57,610
+Now, remember, you still want to keep your methods, what will happen is that even though this is
+
+124
+00:08:57,610 --> 00:09:03,340
+a logo container, it will forward all these props over to the underlying link component.
+
+125
+00:09:04,030 --> 00:09:06,610
+So this will still behave like a link component.
+
+126
+00:09:08,690 --> 00:09:11,870
+Inside here, our link is now enabling.
+
+127
+00:09:12,770 --> 00:09:14,240
+So for these links.
+
+128
+00:09:15,730 --> 00:09:17,530
+This will continue to work.
+
+129
+00:09:18,480 --> 00:09:23,850
+For both these links that have a to property, because these are actually link components.
+
+130
+00:09:24,600 --> 00:09:28,380
+But now you might be wondering, well, you are with the benefit of using the class name, we could
+
+131
+00:09:28,380 --> 00:09:35,310
+apply the styling, but now aren't we look to specifically whatever component it is that we generated,
+
+132
+00:09:35,850 --> 00:09:37,170
+you would be correct here.
+
+133
+00:09:37,410 --> 00:09:44,880
+However, style components has actually given us unique props that can fit into any generated component
+
+134
+00:09:44,880 --> 00:09:53,160
+using styled meaning that because we built this nav link component ourselves using the styled library,
+
+135
+00:09:54,090 --> 00:10:01,350
+what this now allows us to do is actually give it an as keyword and as allows us to pass a string of
+
+136
+00:10:01,350 --> 00:10:03,780
+what component or base HTML element.
+
+137
+00:10:03,930 --> 00:10:05,460
+We want this to be rendered us.
+
+138
+00:10:05,760 --> 00:10:09,540
+So here we want it to be rendered as a span, not as a link.
+
+139
+00:10:10,110 --> 00:10:17,090
+And if we save this now and we go to our application, what we'll see is that everything is working.
+
+140
+00:10:17,100 --> 00:10:18,480
+All our styling is the same.
+
+141
+00:10:18,990 --> 00:10:26,400
+But notice how inside of this component right here again, you see all these uniquely generated classes.
+
+142
+00:10:26,610 --> 00:10:29,480
+Now, of course, these two are the same because they're both nav links.
+
+143
+00:10:29,490 --> 00:10:34,140
+But let's say that we sign in right here, Mike at Gmail.
+
+144
+00:10:34,350 --> 00:10:35,130
+I want to sign in.
+
+145
+00:10:35,640 --> 00:10:43,080
+But notice now that the sign out is indeed a span, so it's smart enough to be able to know, Oh, you
+
+146
+00:10:43,080 --> 00:10:48,390
+want this as a span, I'm going to give it to you instead and change the underlying component to the
+
+147
+00:10:48,390 --> 00:10:50,430
+corresponding element you want.
+
+148
+00:10:50,760 --> 00:10:52,140
+Extremely powerful.
+
+149
+00:10:52,590 --> 00:10:56,490
+So this is one of the beautiful things that we get now with style components.
+
+150
+00:10:56,490 --> 00:11:02,520
+But the main thing again is that now all of these components will uniquely generate class names that
+
+151
+00:11:02,520 --> 00:11:09,300
+we can now leverage in order to properly protect ourselves from having any style clashes.
+
+152
+00:11:10,290 --> 00:11:15,360
+Now that we have this, what I want you to do is start going through all of the components and just
+
+153
+00:11:15,360 --> 00:11:20,820
+start restyling them in the next video, I'm going to talk about one of the emerging patterns we can
+
+154
+00:11:20,820 --> 00:11:24,600
+do by adding stock components to our buttons.
+
+155
+00:11:25,080 --> 00:11:27,060
+So do everything but the buttons.
+
+156
+00:11:27,090 --> 00:11:32,550
+And in the next video, I'll show you how we can do buttons and a new pattern that emerges through stock
+
+157
+00:11:32,550 --> 00:11:33,120
+components.

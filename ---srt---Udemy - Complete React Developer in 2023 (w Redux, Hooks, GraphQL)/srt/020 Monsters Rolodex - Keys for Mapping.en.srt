@@ -1,0 +1,299 @@
+1
+00:00:00,120 --> 00:00:04,920
+Welcome back, everyone, in this video, we're going to break down this warning, which says that each
+
+2
+00:00:04,920 --> 00:00:07,830
+child in a list should have a unique key property.
+
+3
+00:00:08,950 --> 00:00:09,730
+What does this mean?
+
+4
+00:00:10,870 --> 00:00:15,670
+A key property is just a property on the actual.
+
+5
+00:00:15,910 --> 00:00:21,490
+You can see it as a template or you can see it as the element HTML that we're returning from our map.
+
+6
+00:00:21,790 --> 00:00:26,800
+In this particular case, it's the one rack just saying, Hey, I want you to give me a key property,
+
+7
+00:00:26,800 --> 00:00:30,830
+which is some unique string value, or it could be an integer.
+
+8
+00:00:30,850 --> 00:00:31,570
+It doesn't matter.
+
+9
+00:00:31,580 --> 00:00:33,220
+React is going to turn into a string either way.
+
+10
+00:00:33,790 --> 00:00:39,940
+So here, if we know that, let's say, for example, our names are currently unique, then we could
+
+11
+00:00:39,940 --> 00:00:41,350
+pass it a name value.
+
+12
+00:00:42,320 --> 00:00:46,670
+This will work in our current context, but you can imagine that there might be a case where if we had
+
+13
+00:00:46,670 --> 00:00:52,760
+a thousand people, one of these names might overlap, we might have two different monsters named Frank.
+
+14
+00:00:54,140 --> 00:00:56,570
+If that's the case, well, then this is no longer unique.
+
+15
+00:00:56,810 --> 00:01:02,720
+So what we need to do is actually use a unique value, and most of the time a unique value is going
+
+16
+00:01:02,720 --> 00:01:03,500
+to be an ID.
+
+17
+00:01:04,670 --> 00:01:10,940
+So when most projects in most APIs and almost everything where you're getting some kind of data, they'll
+
+18
+00:01:10,940 --> 00:01:14,870
+have an ID value, which is some kind of string that's like very complicated.
+
+19
+00:01:15,110 --> 00:01:22,760
+And usually it's extremely complicated in a way that no two of these strings is identical, making them
+
+20
+00:01:22,760 --> 00:01:24,020
+completely unique.
+
+21
+00:01:24,800 --> 00:01:30,350
+And this is what we're going to use inside of our key value.
+
+22
+00:01:30,360 --> 00:01:32,930
+So instead of monserrat name, we're going to say monstered ID.
+
+23
+00:01:34,690 --> 00:01:36,470
+So you might be wondering, well, you are.
+
+24
+00:01:36,520 --> 00:01:38,200
+Why do we need this key value?
+
+25
+00:01:38,830 --> 00:01:42,100
+This again goes back to react and re rendering.
+
+26
+00:01:43,690 --> 00:01:50,200
+This key value is actually something that REAC uses in order to make it more optimized when it comes
+
+27
+00:01:50,200 --> 00:01:53,320
+to updating and re rendering components on your page.
+
+28
+00:01:54,370 --> 00:02:01,480
+On this page, we now have one app component, yes, but we have four different ones that React has
+
+29
+00:02:01,480 --> 00:02:04,430
+rendered onto the page for us if we inspect.
+
+30
+00:02:04,600 --> 00:02:11,060
+What we see is that inside of our app, which is the div, which is our component, we have these four
+
+31
+00:02:11,260 --> 00:02:11,620
+ones.
+
+32
+00:02:12,400 --> 00:02:18,190
+But React won't actually update this dom directly, as we've seen before, when we, let's say, add
+
+33
+00:02:18,190 --> 00:02:19,810
+more to our components.
+
+34
+00:02:20,770 --> 00:02:25,720
+In this particular case, how does react actually differentiate Linda from Frank, from Jackie, from
+
+35
+00:02:25,720 --> 00:02:27,370
+Andre, these different ones?
+
+36
+00:02:28,030 --> 00:02:31,240
+The only way it can do it is by using the key value.
+
+37
+00:02:31,780 --> 00:02:32,840
+And why is that important?
+
+38
+00:02:32,860 --> 00:02:33,670
+You might be asking.
+
+39
+00:02:34,500 --> 00:02:41,250
+Well, let's say, for example, what we did is we updated the name of Jackie to something else like
+
+40
+00:02:41,490 --> 00:02:42,690
+Yehuda, for example.
+
+41
+00:02:43,600 --> 00:02:49,780
+When react, does that, does that mean that reaction now re render every single one in this entire
+
+42
+00:02:49,780 --> 00:02:50,170
+list?
+
+43
+00:02:50,440 --> 00:02:55,030
+Or should it just re render Jackie so that now it says Iowa?
+
+44
+00:02:56,360 --> 00:03:01,310
+In order for Iraq to do that, it needs to be able to properly differentiate these different components
+
+45
+00:03:01,310 --> 00:03:05,150
+from each other because as I mentioned, these components are all using the same template.
+
+46
+00:03:05,750 --> 00:03:12,650
+So how does react actually differentiate them and know that when Jackie got updated to what only Jackie
+
+47
+00:03:12,650 --> 00:03:13,730
+needs to be up to date?
+
+48
+00:03:14,690 --> 00:03:20,930
+Well, it uses that key value, that unique key value that associates that component to that bit of
+
+49
+00:03:20,930 --> 00:03:21,320
+data.
+
+50
+00:03:21,830 --> 00:03:23,660
+That is the purpose of the key.
+
+51
+00:03:24,560 --> 00:03:28,160
+So we'll talk more about this when we start building a more verbose website.
+
+52
+00:03:28,190 --> 00:03:35,960
+But for now, that's why whenever you use Dot Map and you map out a list of HDMI html elements, you
+
+53
+00:03:35,960 --> 00:03:39,050
+want to make sure that the top level the very highest one.
+
+54
+00:03:39,080 --> 00:03:40,520
+So let's say if this one.
+
+55
+00:03:41,670 --> 00:03:42,990
+Actually, let's make this a div.
+
+56
+00:03:46,870 --> 00:03:50,350
+And inside of this div, we have an H1.
+
+57
+00:03:53,180 --> 00:03:58,940
+We want to make sure that at the highest level of this element, which is the death that we add this
+
+58
+00:03:58,940 --> 00:03:59,210
+key.
+
+59
+00:04:00,290 --> 00:04:01,160
+And I we go back.
+
+60
+00:04:01,970 --> 00:04:10,280
+We'll see that each of these are divs with the ones you might be wondering, well, I added the key,
+
+61
+00:04:10,280 --> 00:04:12,320
+but is it not showing up inside of the elements?
+
+62
+00:04:12,950 --> 00:04:15,590
+Well, this is actually something unique for React.
+
+63
+00:04:15,620 --> 00:04:20,020
+React is going to be the only thing that needs that key value.
+
+64
+00:04:20,840 --> 00:04:26,150
+The regular HTML when it actually gets you built doesn't need the keyboard, so ract takes it off.
+
+65
+00:04:26,450 --> 00:04:29,090
+But it knows under the hood it's keeping track of this key.
+
+66
+00:04:29,960 --> 00:04:35,480
+And using this key again is able to be much more performant and efficient when it comes to differentiating
+
+67
+00:04:35,480 --> 00:04:40,280
+these components from each other and then figuring out which ones to render appropriately when their
+
+68
+00:04:40,280 --> 00:04:41,480
+values update.
+
+69
+00:04:41,930 --> 00:04:43,040
+That's the whole point of the key.
+
+70
+00:04:44,140 --> 00:04:50,590
+So now that we understand this key, let's now move our application towards something that's much more
+
+71
+00:04:50,920 --> 00:04:55,690
+typical of what we would expect instead of hard coding this array of monsters.
+
+72
+00:04:55,930 --> 00:05:00,110
+Let's fetch it from an API somewhere in the next video before we talk about that.
+
+73
+00:05:00,130 --> 00:05:04,870
+I'm going to talk about some of the higher concept of why that's important when it comes to react and
+
+74
+00:05:04,870 --> 00:05:06,070
+single page applications.
+
+75
+00:05:06,400 --> 00:05:07,540
+So I'll see you in the next video.

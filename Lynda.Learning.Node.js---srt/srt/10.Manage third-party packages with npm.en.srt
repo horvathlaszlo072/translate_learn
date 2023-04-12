@@ -1,0 +1,346 @@
+1
+00:00:00.05 --> 00:00:03.02
+- [Narrator] We covered creating
+our own modules for Node,
+
+2
+00:00:03.02 --> 00:00:05.01
+but what about third party modules?
+
+3
+00:00:05.01 --> 00:00:07.07
+Node has something called
+a Node Package Manager,
+
+4
+00:00:07.07 --> 00:00:09.05
+or NPM for short.
+
+5
+00:00:09.05 --> 00:00:13.01
+And packages are one or more
+modules bundled together.
+
+6
+00:00:13.01 --> 00:00:16.02
+One of the more popular
+packages is called Lodash.
+
+7
+00:00:16.02 --> 00:00:18.05
+Let's cover how we can install it,
+
+8
+00:00:18.05 --> 00:00:20.05
+and then how we can make use of it.
+
+9
+00:00:20.05 --> 00:00:23.09
+Let's go over to our console or terminal.
+
+10
+00:00:23.09 --> 00:00:26.02
+And we'll install it using NPM.
+
+11
+00:00:26.02 --> 00:00:33.06
+So let's type in "npm install lodash".
+
+12
+00:00:33.06 --> 00:00:35.06
+And if we take a look in our directory,
+
+13
+00:00:35.06 --> 00:00:39.04
+we can see a new folder was
+created, called "node_modules"
+
+14
+00:00:39.04 --> 00:00:41.08
+and inside there, we'll see "lodash".
+
+15
+00:00:41.08 --> 00:00:45.00
+The folder "lodash" itself
+
+16
+00:00:45.00 --> 00:00:48.00
+has several JavaScript
+files that provide us
+
+17
+00:00:48.00 --> 00:00:51.03
+with all of the functionality
+and features of Lodash.
+
+18
+00:00:51.03 --> 00:00:54.05
+Now that we have it
+installed, let's create a file
+
+19
+00:00:54.05 --> 00:00:56.04
+that we'll use to write our own code
+
+20
+00:00:56.04 --> 00:00:58.04
+which will utilize Lodash.
+
+21
+00:00:58.04 --> 00:01:03.01
+So I'll create the new
+file called "demo.js".
+
+22
+00:01:03.01 --> 00:01:05.06
+Next, we'll use "require"
+just like we did before
+
+23
+00:01:05.06 --> 00:01:08.03
+for our custom module, to bring in Lodash.
+
+24
+00:01:08.03 --> 00:01:11.07
+And I'll set it in a variable called "_".
+
+25
+00:01:11.07 --> 00:01:14.01
+And this is common practice with Lodash,
+
+26
+00:01:14.01 --> 00:01:16.07
+so that we can easily
+access its functionality.
+
+27
+00:01:16.07 --> 00:01:20.06
+And then I'll use "require",
+and specify "lodash".
+
+28
+00:01:20.06 --> 00:01:23.08
+Notice that I didn't have
+to specify a location,
+
+29
+00:01:23.08 --> 00:01:26.01
+since Node already knows
+the default location
+
+30
+00:01:26.01 --> 00:01:27.08
+for its modules.
+
+31
+00:01:27.08 --> 00:01:30.08
+Then let's use a "console.log",
+
+32
+00:01:30.08 --> 00:01:34.03
+and then I'll use the
+"_.", and as we can see,
+
+33
+00:01:34.03 --> 00:01:37.01
+there are many functions
+we have access to.
+
+34
+00:01:37.01 --> 00:01:40.04
+A simple one could be "random".
+
+35
+00:01:40.04 --> 00:01:42.06
+So let's select that, and let's try to get
+
+36
+00:01:42.06 --> 00:01:46.01
+a random number between
+one and one hundred.
+
+37
+00:01:46.01 --> 00:01:48.04
+If we were to do this
+with plain JavaScript,
+
+38
+00:01:48.04 --> 00:01:51.05
+it would take several function
+calls to the math library.
+
+39
+00:01:51.05 --> 00:01:54.09
+But with Lodash, we get
+that functionality built in.
+
+40
+00:01:54.09 --> 00:01:58.00
+So let's save this, and give it a try.
+
+41
+00:01:58.00 --> 00:02:02.06
+So I'll use "node", and specify "demo.js".
+
+42
+00:02:02.06 --> 00:02:05.05
+And we got a value of 53 in our console.
+
+43
+00:02:05.05 --> 00:02:07.07
+Let's try running it one more time.
+
+44
+00:02:07.07 --> 00:02:09.09
+And once again, as you can see,
+
+45
+00:02:09.09 --> 00:02:12.02
+we're getting a random
+value, as we specified,
+
+46
+00:02:12.02 --> 00:02:14.03
+between one and one hundred.
+
+47
+00:02:14.03 --> 00:02:17.09
+There are several different
+types of NPM packages,
+
+48
+00:02:17.09 --> 00:02:21.00
+and some will work as
+command line interfaces.
+
+49
+00:02:21.00 --> 00:02:23.00
+Let's take a look at one of those now,
+
+50
+00:02:23.00 --> 00:02:24.06
+that's called Nodemon.
+
+51
+00:02:24.06 --> 00:02:28.01
+First let's install it.
+
+52
+00:02:28.01 --> 00:02:31.07
+But because it is a command
+line interface package,
+
+53
+00:02:31.07 --> 00:02:34.01
+we'll need to install it
+with the "global" flag.
+
+54
+00:02:34.01 --> 00:02:35.08
+That way, we get access to it
+
+55
+00:02:35.08 --> 00:02:38.09
+regardless of what project we're in.
+
+56
+00:02:38.09 --> 00:02:47.07
+So we'll append "-g"
+inside the install command.
+
+57
+00:02:47.07 --> 00:02:51.03
+If we take a look at our
+"node_modules" folder,
+
+58
+00:02:51.03 --> 00:02:55.03
+we can see that there was
+no installation of Nodemon.
+
+59
+00:02:55.03 --> 00:02:58.01
+Once again, that is because
+it is installed globally,
+
+60
+00:02:58.01 --> 00:03:01.03
+and not in our local
+"node_modules" directory.
+
+61
+00:03:01.03 --> 00:03:06.01
+So to use it, we can type in
+"nodemon" instead of "node".
+
+62
+00:03:06.01 --> 00:03:07.09
+What this allows us to do is
+
+63
+00:03:07.09 --> 00:03:12.07
+automatically execute our "demo.js"
+
+64
+00:03:12.07 --> 00:03:15.01
+anytime there's a change.
+
+65
+00:03:15.01 --> 00:03:18.01
+So we don't have to keep typing in "node"
+
+66
+00:03:18.01 --> 00:03:19.09
+to execute the new changes.
+
+67
+00:03:19.09 --> 00:03:22.09
+So for example, instead
+of getting the range of
+
+68
+00:03:22.09 --> 00:03:25.06
+one to one hundred in our random call,
+
+69
+00:03:25.06 --> 00:03:28.06
+I'd like one to ten.
+
+70
+00:03:28.06 --> 00:03:31.00
+I'll save it by hitting Control-S,
+
+71
+00:03:31.00 --> 00:03:34.04
+and you can see Nodemon
+detects those changes,
+
+72
+00:03:34.04 --> 00:03:37.00
+and automatically executes it.
+
+73
+00:03:37.00 --> 00:03:39.03
+Now, what if we end up installing
+
+74
+00:03:39.03 --> 00:03:42.01
+several third party packages, and we want
+
+75
+00:03:42.01 --> 00:03:44.09
+to keep track of what we have installed
+
+76
+00:03:44.09 --> 00:03:47.05
+and are dependent on in a list somewhere?
+
+77
+00:03:47.05 --> 00:03:50.01
+That's where the
+"package.json" file comes in,
+
+78
+00:03:50.01 --> 00:03:52.02
+so let's take a look at that next.
+

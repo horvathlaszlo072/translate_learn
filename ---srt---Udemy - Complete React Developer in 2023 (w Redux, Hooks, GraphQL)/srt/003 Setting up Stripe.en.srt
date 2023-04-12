@@ -1,0 +1,483 @@
+1
+00:00:00,390 --> 00:00:01,320
+Welcome back, everyone.
+
+2
+00:00:02,130 --> 00:00:07,320
+In this video, we are going to learn about Stripe and integrating with Stripe, as well as setting
+
+3
+00:00:07,320 --> 00:00:11,340
+up stripe so that we can start writing our code to make payments against it.
+
+4
+00:00:12,320 --> 00:00:18,590
+Strava is arguably one of the largest payment platform services ever made, and right now it is one
+
+5
+00:00:18,590 --> 00:00:22,690
+of the most popular, if not the most popular in North America and Europe.
+
+6
+00:00:23,970 --> 00:00:27,570
+In order for you to get started, you need to have a stripe account.
+
+7
+00:00:27,720 --> 00:00:32,810
+So to set up a stripe account, you get the sign in and then inside of the sign in page.
+
+8
+00:00:32,820 --> 00:00:38,160
+If you do not have a stripe account already, you scroll down here and you hit the sign up.
+
+9
+00:00:38,790 --> 00:00:43,830
+Once you've gone through the sign up process, join me back here where we will take a look at the view
+
+10
+00:00:43,830 --> 00:00:45,870
+that we first see with the dashboard.
+
+11
+00:00:46,980 --> 00:00:50,220
+So once you've done that, come back and let's continue.
+
+12
+00:00:51,190 --> 00:00:52,120
+Welcome back, everyone.
+
+13
+00:00:52,630 --> 00:00:56,890
+So once you've signed in and registered, you will see this page.
+
+14
+00:00:57,400 --> 00:01:02,230
+You'll notice that you're asking and being prompted to activate the account.
+
+15
+00:01:02,800 --> 00:01:07,900
+The way to do that is that you have to give it your payment information, as well as your banking information
+
+16
+00:01:07,900 --> 00:01:09,250
+and your business information.
+
+17
+00:01:09,700 --> 00:01:14,170
+So normally when you have a business, this is where that step becomes important, because only when
+
+18
+00:01:14,170 --> 00:01:18,310
+you do that are they allowed to legally let you accept payments.
+
+19
+00:01:19,120 --> 00:01:21,970
+Here, though, we're just working with the actual developer experience.
+
+20
+00:01:22,510 --> 00:01:27,160
+And the only difference is that once you actually have all of this validated and activated, you can
+
+21
+00:01:27,160 --> 00:01:29,680
+flip this from test mode to live production mode.
+
+22
+00:01:29,920 --> 00:01:33,620
+As you can see here, it says, please activate your account to access live data.
+
+23
+00:01:34,240 --> 00:01:35,950
+For us, this does not really matter.
+
+24
+00:01:36,250 --> 00:01:42,640
+The actual coding experience for us is the exact same and all we really need are these two values.
+
+25
+00:01:43,120 --> 00:01:48,070
+If you scroll down here, you'll see for developers there is a publisher of a key and a secret key.
+
+26
+00:01:48,490 --> 00:01:51,190
+These are the two keys that I was talking about earlier.
+
+27
+00:01:51,850 --> 00:01:54,100
+The secret key being actually the most important one.
+
+28
+00:01:54,430 --> 00:01:58,940
+The publishable key, as you can tell, means that you can display this publicly.
+
+29
+00:01:58,960 --> 00:02:02,170
+It's not a concern if people know what that key is.
+
+30
+00:02:02,560 --> 00:02:05,680
+The secret key, though, is something that should be hidden.
+
+31
+00:02:05,950 --> 00:02:09,920
+So this secret key should live on our back end or our serverless functions.
+
+32
+00:02:10,120 --> 00:02:15,400
+What we'll talk about once we get to that section, the main thing I want you to do is remember these
+
+33
+00:02:15,400 --> 00:02:16,240
+two values.
+
+34
+00:02:16,630 --> 00:02:21,130
+We're going to have to go back to them later when we actually start integrating with Stripe.
+
+35
+00:02:22,120 --> 00:02:28,660
+Now the first thing we need to do is install the actual dependencies so our React application can work
+
+36
+00:02:28,660 --> 00:02:29,260
+with Stripe.
+
+37
+00:02:29,800 --> 00:02:37,930
+So let's inside of our terminal run yarn add at stripe slash stripe dash juice, which is the JavaScript
+
+38
+00:02:37,930 --> 00:02:40,420
+library that allows us to make Stripe payments.
+
+39
+00:02:41,020 --> 00:02:45,610
+And then we need add stripe slash, react slash stripe JS.
+
+40
+00:02:46,600 --> 00:02:52,870
+This is the library that gives us the react elements and react bindings so that we can interact with
+
+41
+00:02:52,870 --> 00:02:58,240
+the Stripe library inside of the react environment in a significantly easier way.
+
+42
+00:02:59,250 --> 00:03:03,240
+So as these are installing, let's go back into our application.
+
+43
+00:03:04,210 --> 00:03:10,090
+The first thing we need to do is actually register our application so it knows to use Stripe.
+
+44
+00:03:10,840 --> 00:03:17,140
+Stripe provides us these react components known as Stripe elements that we can use, such as the card
+
+45
+00:03:17,140 --> 00:03:21,790
+component, which is that component we saw when I was typing in the credit card information.
+
+46
+00:03:22,330 --> 00:03:26,440
+Stripe knows how to do that and use that in order to actually perform a payment, making the process
+
+47
+00:03:26,440 --> 00:03:27,730
+significantly easier.
+
+48
+00:03:27,970 --> 00:03:32,110
+But we have to actually register the application the same way that you what a provider.
+
+49
+00:03:32,710 --> 00:03:39,130
+So to do this what we actually need is going to be from the React integration from Stripe.
+
+50
+00:03:39,760 --> 00:03:43,690
+So here I want you to run imports and then elements.
+
+51
+00:03:44,820 --> 00:03:45,300
+From.
+
+52
+00:03:46,410 --> 00:03:46,850
+Stripe.
+
+53
+00:03:46,980 --> 00:03:47,540
+Slash.
+
+54
+00:03:47,610 --> 00:03:48,200
+React.
+
+55
+00:03:48,210 --> 00:03:48,570
+Stripe.
+
+56
+00:03:48,570 --> 00:03:48,960
+Jazz.
+
+57
+00:03:50,050 --> 00:03:54,850
+This elements is a component that you want to wrap around your app.
+
+58
+00:03:56,660 --> 00:03:58,130
+So this is similar to a provider.
+
+59
+00:03:58,740 --> 00:04:00,380
+Any components inside of this?
+
+60
+00:04:00,380 --> 00:04:05,180
+Elements will now have access to the stripe elements that we will use later.
+
+61
+00:04:05,930 --> 00:04:12,350
+But we actually have to pass this elements component something so that stripe knows that this is registered
+
+62
+00:04:12,350 --> 00:04:18,890
+to us, meaning that this React application, when it makes requests, goes to our specific account
+
+63
+00:04:18,890 --> 00:04:19,490
+in Stripe.
+
+64
+00:04:20,180 --> 00:04:25,880
+Now this is where we're going to need that publishable key, and the way we're going to use it is inside
+
+65
+00:04:25,940 --> 00:04:27,680
+of this source folder.
+
+66
+00:04:28,100 --> 00:04:32,030
+I'm going to make a new folder that helps us with Stripe.
+
+67
+00:04:32,630 --> 00:04:36,470
+You can also put it inside of your utils folder.
+
+68
+00:04:37,250 --> 00:04:38,960
+It really does not matter.
+
+69
+00:04:38,960 --> 00:04:42,560
+But since we have a usual folder actually let's use the utils folder here.
+
+70
+00:04:42,590 --> 00:04:48,120
+We're going to make a new stripe folder and inside we're going to make stripe charges or stripe dot
+
+71
+00:04:48,140 --> 00:04:53,900
+utils such as this is going to create and instantiate for us our Stripe instance.
+
+72
+00:04:54,230 --> 00:05:02,550
+So in order to do that, we need to import load stripe from stripe, add stripe, dash, stripe.
+
+73
+00:05:02,560 --> 00:05:09,680
+JS Load Stripe is what runs in order for us to actually know that this is our stripe instance.
+
+74
+00:05:10,280 --> 00:05:18,530
+So here I'm going to export out a contact called Stripe Promise and this is equal to us calling load
+
+75
+00:05:18,530 --> 00:05:21,950
+stripe and here we have to pass it the publishable key.
+
+76
+00:05:22,730 --> 00:05:29,480
+Now as I mentioned, the publishable key is perfectly fine for us to expose, but just for our own security
+
+77
+00:05:29,480 --> 00:05:33,110
+with these keys, we might as well put it inside somewhere safe.
+
+78
+00:05:34,060 --> 00:05:41,590
+This is where we're going to use something called env dot end is a environment file that we can add
+
+79
+00:05:41,590 --> 00:05:46,990
+that makes it so that only our application has access to these files because essentially it puts it
+
+80
+00:05:46,990 --> 00:05:48,160
+on your process environment.
+
+81
+00:05:48,580 --> 00:05:52,600
+It doesn't actually make it expose able anywhere inside of your code repository.
+
+82
+00:05:53,170 --> 00:05:58,810
+So the thing to do that we have to first out of file court and now because this application is made
+
+83
+00:05:58,810 --> 00:06:04,840
+in create racked up by default, the frontend React application allows us to use this dot and it's actually
+
+84
+00:06:04,840 --> 00:06:08,260
+already installed when we installed our Create React application.
+
+85
+00:06:08,980 --> 00:06:13,960
+The only thing though is that in order for us to use it, we need to make sure that any variables we
+
+86
+00:06:13,960 --> 00:06:19,330
+define include starts with react, underscore app, all caps.
+
+87
+00:06:19,780 --> 00:06:27,400
+So here I'm going to say react, underscore app, underscore, stripe, underscore publishable, underscore
+
+88
+00:06:27,400 --> 00:06:32,320
+key is equal to the string value of the publishable key.
+
+89
+00:06:32,920 --> 00:06:39,640
+So here I want you to go back to your application, copy the publishable key value and then paste this
+
+90
+00:06:39,940 --> 00:06:41,800
+into this section right here.
+
+91
+00:06:43,000 --> 00:06:47,080
+So once you've save this, you will now have access to this value.
+
+92
+00:06:47,940 --> 00:06:54,030
+The one thing, though, is that we never want to actually push our file up into GitHub.
+
+93
+00:06:54,420 --> 00:06:58,440
+So what we have to do is in the get ignore add dot env.
+
+94
+00:06:58,860 --> 00:07:00,030
+So now get what?
+
+95
+00:07:00,030 --> 00:07:01,710
+Ignore our environment.
+
+96
+00:07:02,680 --> 00:07:03,250
+Moving on.
+
+97
+00:07:03,260 --> 00:07:06,460
+What we're going to do is go into our stripe utils.
+
+98
+00:07:06,460 --> 00:07:07,020
+Yes.
+
+99
+00:07:07,060 --> 00:07:12,490
+And now we can use this by saying process, dot, environment, dot, react.
+
+100
+00:07:14,780 --> 00:07:17,210
+Well, actually, here you can just directly copy the name.
+
+101
+00:07:17,330 --> 00:07:19,580
+I can't remember sometimes all these variable names.
+
+102
+00:07:20,700 --> 00:07:26,220
+But what happens is that under the hood, react will merge this file with our process environment.
+
+103
+00:07:26,220 --> 00:07:30,110
+So now all of those key value pairs we have are accessible on process.
+
+104
+00:07:30,240 --> 00:07:36,360
+And so now this is essentially going to load our stripe instance with our publishable key, which identifies
+
+105
+00:07:36,360 --> 00:07:39,300
+our application to Stripe as our application.
+
+106
+00:07:39,960 --> 00:07:47,040
+Then we're going to take this Stripe promise and we're going to import it into our index chassis because
+
+107
+00:07:47,280 --> 00:07:53,040
+as you can guess, this is what we need to pass into our elements that we get from React.
+
+108
+00:07:53,130 --> 00:07:53,340
+Right?
+
+109
+00:07:53,970 --> 00:07:58,440
+So here go to utils folder stripe, stripe, utils.
+
+110
+00:07:59,770 --> 00:08:00,820
+Strike promise here.
+
+111
+00:08:00,820 --> 00:08:01,660
+We're going to copy.
+
+112
+00:08:02,140 --> 00:08:09,550
+And then inside of elements right here, we are going to pass it as stripe equals stripe promise and
+
+113
+00:08:09,550 --> 00:08:10,000
+that's it.
+
+114
+00:08:10,540 --> 00:08:15,640
+This is what we need to set up so that we can start working with Stripe now and create the corresponding
+
+115
+00:08:15,640 --> 00:08:16,120
+components.
+
+116
+00:08:16,810 --> 00:08:19,060
+So again, dot end was the new thing.
+
+117
+00:08:19,060 --> 00:08:23,890
+If you want to add more environment variables that are accessible in your frontend application, you
+
+118
+00:08:23,890 --> 00:08:26,410
+want to always add react underscore app.
+
+119
+00:08:27,010 --> 00:08:30,610
+This only works of course in Create React app, but this is.
+
+120
+00:08:30,860 --> 00:08:37,660
+And so now that we have this, let's move on and start actually coding out our new Stripe components.
+
+121
+00:08:38,050 --> 00:08:38,950
+I'll see in the next video.

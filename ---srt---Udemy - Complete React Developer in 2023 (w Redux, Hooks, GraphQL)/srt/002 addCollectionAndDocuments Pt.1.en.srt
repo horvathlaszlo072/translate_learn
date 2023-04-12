@@ -1,0 +1,507 @@
+1
+00:00:00,330 --> 00:00:01,380
+Welcome back, everyone.
+
+2
+00:00:02,390 --> 00:00:09,050
+Currently, inside of your front end, you most likely have this shop Dash data JSON file that we made
+
+3
+00:00:09,050 --> 00:00:12,080
+a couple lessons back in this video.
+
+4
+00:00:12,080 --> 00:00:17,900
+Instead, we're going to replace this with a much more verbose collection of multiple different categories
+
+5
+00:00:18,110 --> 00:00:19,970
+that include different products.
+
+6
+00:00:20,330 --> 00:00:25,010
+So these that we have our all hats, they will now live under a hats object.
+
+7
+00:00:25,760 --> 00:00:31,070
+So what I want to do is actually show you that your data inside of your frontend doesn't even have to
+
+8
+00:00:31,070 --> 00:00:31,730
+be JSON.
+
+9
+00:00:32,120 --> 00:00:39,860
+It can easily be a JavaScript file, and in that JavaScript file, it can contain some variable that
+
+10
+00:00:39,860 --> 00:00:43,220
+points to a JSON like structure with all of the data.
+
+11
+00:00:43,820 --> 00:00:49,360
+So I want you to go into your resources folder, get the Shop Dash Data Dot J.
+
+12
+00:00:49,370 --> 00:00:56,180
+S Code that I have embedded in there, and copy and paste that into this new Shop Dash data file.
+
+13
+00:00:56,660 --> 00:01:03,950
+And here what you will see is that inside I have just some shop data that points to an array of objects
+
+14
+00:01:04,220 --> 00:01:10,190
+which contain the title of the hats and then the items where you see a very similar pattern to what
+
+15
+00:01:10,190 --> 00:01:10,910
+we had before.
+
+16
+00:01:11,660 --> 00:01:13,700
+Except now we have numerous categories.
+
+17
+00:01:13,700 --> 00:01:18,830
+We have the sneakers, we have the jackets, we have the women's and we have the men's.
+
+18
+00:01:19,640 --> 00:01:22,940
+And then what we need to do is just export out by default.
+
+19
+00:01:23,030 --> 00:01:25,190
+This new shop data.
+
+20
+00:01:28,580 --> 00:01:33,760
+And this JavaScript file now we can import into our projects however we want in order to utilize them.
+
+21
+00:01:35,300 --> 00:01:40,580
+Now, in order for us to properly utilize this data, we're going to have to find a way to get this
+
+22
+00:01:40,580 --> 00:01:43,160
+up onto our firestorm.
+
+23
+00:01:43,700 --> 00:01:47,840
+But there's a couple of things we need to do and disable so that our project doesn't break.
+
+24
+00:01:48,020 --> 00:01:56,690
+Because right now, if you remember our products, context is still using this products from the original
+
+25
+00:01:56,690 --> 00:02:00,090
+shop data that JSON file, but we don't have that anymore.
+
+26
+00:02:00,130 --> 00:02:01,670
+Well, now we have a shop data.
+
+27
+00:02:02,120 --> 00:02:02,540
+Yes.
+
+28
+00:02:02,870 --> 00:02:05,210
+And this is now shop data.
+
+29
+00:02:06,020 --> 00:02:11,360
+So what we're going to do is we're going to utilize this shop data as well as this context to actually
+
+30
+00:02:11,360 --> 00:02:13,590
+store the new shop data on there.
+
+31
+00:02:14,330 --> 00:02:19,430
+But because we're still exporting out these products in some way that we have different components that
+
+32
+00:02:19,430 --> 00:02:24,330
+rely on what we need to do is just convert this over into a empty array.
+
+33
+00:02:24,350 --> 00:02:29,030
+So at the very least, everything works, even though you won't see anything anymore on the shop page.
+
+34
+00:02:29,480 --> 00:02:35,840
+If we save this now and we go back to our application, what we see inside a shop is we still have the
+
+35
+00:02:35,840 --> 00:02:40,550
+route working, but there's just no data to display because right now we have an empty array.
+
+36
+00:02:41,180 --> 00:02:46,520
+So that's just setting this up so that our code doesn't break on us or we need to do now is we need
+
+37
+00:02:46,520 --> 00:02:50,300
+to go into firebase utils with these utils.
+
+38
+00:02:50,330 --> 00:02:56,450
+What I'm going to do is I'm going to walk you through creating a method that allows us to upload these
+
+39
+00:02:56,450 --> 00:03:03,650
+categories from that shop data up into the respective collections up in Firestorm.
+
+40
+00:03:04,220 --> 00:03:07,970
+So to do this, we're going to need to bring in a couple methods.
+
+41
+00:03:08,570 --> 00:03:12,740
+The first one that we need is we need the collection.
+
+42
+00:03:13,780 --> 00:03:17,830
+So collection actually is anywhere from Firestar off, it's from Firestorm.
+
+43
+00:03:18,920 --> 00:03:24,140
+Because Firestorm is what governs our database, so we need both the collections method and we need
+
+44
+00:03:24,140 --> 00:03:25,550
+the right batch method.
+
+45
+00:03:25,850 --> 00:03:27,830
+And I'm going to explain to you what both of these are.
+
+46
+00:03:28,810 --> 00:03:30,880
+First, the collection method is the most important.
+
+47
+00:03:31,210 --> 00:03:35,890
+We need the collection method because it'll actually allow us the same way when we work getting a document
+
+48
+00:03:35,890 --> 00:03:40,600
+reference to get a collection reference because we're trying to write to a brand new collection.
+
+49
+00:03:41,410 --> 00:03:50,350
+So here's what I'm going to do is I am going to create a new function and I'm going to call it ad collection
+
+50
+00:03:50,770 --> 00:03:52,930
+and documents, because that's what we're doing.
+
+51
+00:03:53,200 --> 00:03:59,440
+We're adding in some new collection as well as the actual documents inside of that collection.
+
+52
+00:04:00,470 --> 00:04:07,310
+So what I want to call this for my first variable that I'm going to pass in is the collection key.
+
+53
+00:04:08,830 --> 00:04:12,820
+This is going to be that key that we saw inside of our TV.
+
+54
+00:04:13,090 --> 00:04:16,240
+So, for example, this collection has users as the key.
+
+55
+00:04:16,690 --> 00:04:18,850
+We want one that has categories as the key.
+
+56
+00:04:19,000 --> 00:04:20,470
+So we're going to pass that as a strength.
+
+57
+00:04:20,680 --> 00:04:22,720
+But this is just what I'm calling a collection key.
+
+58
+00:04:23,610 --> 00:04:27,840
+And then the next argument is going to be the actual documents that we want to add.
+
+59
+00:04:28,050 --> 00:04:31,500
+So here, let's just call them objects because they're really just based on objects.
+
+60
+00:04:31,650 --> 00:04:33,360
+So I'll call it objects to add.
+
+61
+00:04:34,610 --> 00:04:36,200
+And this is our function.
+
+62
+00:04:36,830 --> 00:04:41,360
+The other thing to remember is because we're adding to an external source, this is most likely going
+
+63
+00:04:41,360 --> 00:04:47,720
+to be a bunch of async behavior because we're essentially calling out up onto an API in order to store
+
+64
+00:04:47,720 --> 00:04:48,080
+data.
+
+65
+00:04:48,290 --> 00:04:49,370
+So this is async.
+
+66
+00:04:50,200 --> 00:04:58,270
+Well, we want to do now is I want to think about how it is that we actually create the collection because
+
+67
+00:04:58,270 --> 00:04:59,440
+right now it doesn't exist.
+
+68
+00:04:59,950 --> 00:05:05,800
+But as we learned with user document references, as long as we try and find something in the database,
+
+69
+00:05:06,460 --> 00:05:12,670
+Firebase is actually going to create one for us, even if it's not populated, because that's what the
+
+70
+00:05:12,670 --> 00:05:15,010
+document references in our particular case.
+
+71
+00:05:15,040 --> 00:05:17,140
+Now we're making a collection reference.
+
+72
+00:05:17,500 --> 00:05:24,910
+So here I'm going to say Konst Collection reference is equal to collection passing in our DB because
+
+73
+00:05:24,910 --> 00:05:28,970
+we're saying, Hey, go with our DB instance, as we know we did with off.
+
+74
+00:05:28,990 --> 00:05:30,660
+This is exactly we're doing with five stores.
+
+75
+00:05:30,670 --> 00:05:35,590
+Well, we have one db singleton instance and we're saying, Hey, get me the collection within the DB
+
+76
+00:05:35,920 --> 00:05:40,030
+and within this DB, what specific collection key are you looking for?
+
+77
+00:05:40,060 --> 00:05:42,580
+Well, this is going to be the collection kit that we pass in.
+
+78
+00:05:43,450 --> 00:05:47,980
+So you can imagine that when we actually call this function, we're going to give it categories.
+
+79
+00:05:49,530 --> 00:05:53,580
+So now that we have our collection reference, what are we going to do with this?
+
+80
+00:05:54,850 --> 00:06:02,650
+Well, now what we have to do is we need to think about how to store each of these objects now inside
+
+81
+00:06:02,650 --> 00:06:07,060
+of this new collection, ref as a new document.
+
+82
+00:06:07,930 --> 00:06:13,780
+Now we are writing multiple different documents into a collection, so for us to do this, we need to
+
+83
+00:06:13,780 --> 00:06:17,320
+actually think about this concept of transactions.
+
+84
+00:06:18,070 --> 00:06:24,800
+A transaction is a word that represents a successful unit of work to a database.
+
+85
+00:06:25,330 --> 00:06:27,390
+Now, a unit of work differs.
+
+86
+00:06:27,400 --> 00:06:34,330
+It might be multiple sets of setting values into a collection for us.
+
+87
+00:06:34,570 --> 00:06:40,720
+We consider a successful right to this collection if all of the documents successfully wrote to that
+
+88
+00:06:40,720 --> 00:06:41,320
+database.
+
+89
+00:06:41,890 --> 00:06:48,100
+This means that there are numerous rights involved in this one single transaction, the single transaction
+
+90
+00:06:48,100 --> 00:06:51,790
+being we stored all of the objects into this collection.
+
+91
+00:06:52,480 --> 00:06:56,530
+The reason why you want to think about transactions like this is easily demonstrated when you think
+
+92
+00:06:56,530 --> 00:06:57,340
+about a bank.
+
+93
+00:06:58,000 --> 00:07:04,630
+If you imagine, and let's just use some examples, let's say that we were a bank and we had a database
+
+94
+00:07:04,630 --> 00:07:10,540
+that included me Ü and any was bank account was $1000 then for Andre.
+
+95
+00:07:10,840 --> 00:07:12,670
+He also had $1000.
+
+96
+00:07:13,240 --> 00:07:15,850
+We are two instances in the bank's database.
+
+97
+00:07:16,360 --> 00:07:21,610
+Let's say that I wanted to transfer $100 from my bank account to Andre's bank account.
+
+98
+00:07:21,970 --> 00:07:28,270
+What needs to happen on the database is that this database needs the C minus one hundred on this value.
+
+99
+00:07:28,540 --> 00:07:31,630
+So setting this value should go to nine hundred.
+
+100
+00:07:32,700 --> 00:07:39,330
+But Andre's bank account needs to see a plus 100, meaning that his value in the database must go up
+
+101
+00:07:39,330 --> 00:07:40,520
+to 11 hundred.
+
+102
+00:07:41,220 --> 00:07:47,370
+As a result, these are two different rights, which means both of these rights have to go through in
+
+103
+00:07:47,370 --> 00:07:53,580
+order for this transaction of me transferring one hundred dollars to Andre to be deemed as a successful
+
+104
+00:07:53,580 --> 00:07:54,240
+transaction.
+
+105
+00:07:54,450 --> 00:08:00,090
+This is considered one unit of work, even though there are two separate right events happening.
+
+106
+00:08:00,330 --> 00:08:05,430
+There is a minus 100 that is writing to the database so that my one thousand becomes nine hundred and
+
+107
+00:08:05,430 --> 00:08:12,960
+there's a separate rights so that Andre's one thousand becomes 1100, if only my minus one happened
+
+108
+00:08:12,960 --> 00:08:15,060
+and Andre's 1000 stays the same.
+
+109
+00:08:15,390 --> 00:08:20,580
+This is not a successful transaction because this means that my account lost money, but Andre did not
+
+110
+00:08:20,580 --> 00:08:22,350
+gain money so that money disappeared.
+
+111
+00:08:22,980 --> 00:08:28,890
+This is the concept of a transaction, meaning that if Andre's right to the database where writing this
+
+112
+00:08:28,890 --> 00:08:37,200
+to 1100 for some reason failed, then this entire transaction failed, meaning that my rights gets overturned
+
+113
+00:08:37,470 --> 00:08:42,150
+so that both accounts are back where they were before the transaction ever started.
+
+114
+00:08:42,780 --> 00:08:45,750
+Only now is it possible for you to attempt.
+
+115
+00:08:45,750 --> 00:08:50,850
+This may be when your network is more secure or whatever issues that cause this to happen is fixed.
+
+116
+00:08:51,060 --> 00:08:53,100
+This is the concept of a transaction.
+
+117
+00:08:53,760 --> 00:08:55,080
+So we want to do the same thing.
+
+118
+00:08:55,080 --> 00:08:59,310
+We want to make sure that all of our objects that we're trying to add to the collection are successfully
+
+119
+00:08:59,310 --> 00:08:59,730
+added.
+
+120
+00:08:59,910 --> 00:09:02,880
+And to do that, we need to use a batch.
+
+121
+00:09:03,720 --> 00:09:09,960
+So a batch is what we get from that right batch method that we also imported from Firestorm.
+
+122
+00:09:10,830 --> 00:09:15,840
+So how to use this and continue building out our ad collection documents is what we're going to cover
+
+123
+00:09:15,840 --> 00:09:16,710
+in the next video.
+
+124
+00:09:17,250 --> 00:09:20,220
+But now all you need to know is that we just created some collection.
+
+125
+00:09:20,490 --> 00:09:21,870
+We got the collection reference.
+
+126
+00:09:21,900 --> 00:09:24,210
+Now it's time to batch write these objects to their.
+
+127
+00:09:24,720 --> 00:09:27,420
+So join me in the next video, where we'll figure out how to use batch.

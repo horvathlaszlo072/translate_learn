@@ -1,0 +1,455 @@
+1
+00:00:00,360 --> 00:00:01,380
+Welcome back, everyone.
+
+2
+00:00:02,250 --> 00:00:04,530
+So let's build our category page.
+
+3
+00:00:05,130 --> 00:00:09,750
+To do that, what we need to do is we need to build a new routes component.
+
+4
+00:00:10,560 --> 00:00:16,560
+This one will be category because that's really what we're showing is the full category listing.
+
+5
+00:00:18,020 --> 00:00:21,920
+I'm going to call this inside category act style that says.
+
+6
+00:00:23,090 --> 00:00:27,200
+And then category act component Dutch asks.
+
+7
+00:00:28,630 --> 00:00:35,560
+Our component, of course, is going to import in our category as well, and then I'm a concert category
+
+8
+00:00:35,560 --> 00:00:41,440
+is equal to this functional component, which we export by default.
+
+9
+00:00:43,040 --> 00:00:46,520
+As for the category itself, what do we need to do?
+
+10
+00:00:47,420 --> 00:00:55,250
+Well, what we need is actually this value from the URL, because if you remember in the final application,
+
+11
+00:00:55,880 --> 00:01:02,240
+when we go to hats, we know that we're on the hot route when we're on jackets.
+
+12
+00:01:02,720 --> 00:01:04,760
+We know where on the jackets.
+
+13
+00:01:05,510 --> 00:01:10,430
+So there's you are all parameter is actually going to be the thing that tells our category component
+
+14
+00:01:10,820 --> 00:01:12,230
+what data to get.
+
+15
+00:01:12,860 --> 00:01:15,170
+And this is a little bit of architecture that we need to think about.
+
+16
+00:01:15,740 --> 00:01:18,890
+So the first thing we need to do is figure out how to get these parameters.
+
+17
+00:01:19,700 --> 00:01:21,630
+So let's start at the root level first.
+
+18
+00:01:21,650 --> 00:01:28,970
+I'm just going to copy this over into my shop component and here I'm just going to duplicate this and
+
+19
+00:01:28,970 --> 00:01:31,400
+reflect the appropriate placement.
+
+20
+00:01:33,090 --> 00:01:33,900
+Like so.
+
+21
+00:01:35,770 --> 00:01:39,460
+And now for the root, it's not an index anymore.
+
+22
+00:01:39,700 --> 00:01:41,230
+It's going to match a path.
+
+23
+00:01:41,950 --> 00:01:46,690
+And what this path will match is actually going to be a unique string.
+
+24
+00:01:47,350 --> 00:01:52,270
+This string only works when you're trying to say, Hey, I want a parameter here, meaning that you
+
+25
+00:01:52,270 --> 00:01:58,120
+can access it from a component and you say semicolon and then the name of the variable.
+
+26
+00:01:58,130 --> 00:01:59,740
+So I'm going to call it category.
+
+27
+00:02:00,430 --> 00:02:03,790
+And what I'm going to render is the category component.
+
+28
+00:02:04,920 --> 00:02:11,430
+Now inside of the category component, in order to access this new parameter, we need to import in
+
+29
+00:02:11,580 --> 00:02:16,080
+the use params hook from Rack Rotterdam.
+
+30
+00:02:19,420 --> 00:02:26,530
+Use params now will allow us to actually get this value, and the way it gives it to us is it actually
+
+31
+00:02:26,530 --> 00:02:28,330
+gives us to as an object.
+
+32
+00:02:28,540 --> 00:02:31,930
+So if there are multiple parameters that match, then we'll get multiple.
+
+33
+00:02:32,290 --> 00:02:38,110
+But for us, because we know there's only category, that's what we call that category, we can structure
+
+34
+00:02:38,110 --> 00:02:38,680
+this off.
+
+35
+00:02:40,010 --> 00:02:41,660
+From the return of use, perhaps.
+
+36
+00:02:43,290 --> 00:02:48,900
+Now what we also need once we get this category value, if you think about it, once we get jackets,
+
+37
+00:02:49,260 --> 00:02:54,720
+well, we need to call jackets on our categories, map to get the associated products to this category.
+
+38
+00:02:55,290 --> 00:02:58,680
+So that means that we need to now bring in the context.
+
+39
+00:02:59,130 --> 00:03:00,960
+So let's bring in use context.
+
+40
+00:03:02,950 --> 00:03:03,620
+From React.
+
+41
+00:03:04,270 --> 00:03:05,710
+And let's also bring in.
+
+42
+00:03:07,000 --> 00:03:08,440
+Are categories context?
+
+43
+00:03:08,770 --> 00:03:09,700
+So many cities.
+
+44
+00:03:11,460 --> 00:03:16,050
+So with our categories context, we can get the categories map.
+
+45
+00:03:21,040 --> 00:03:24,670
+Use context passing in card categories context.
+
+46
+00:03:26,050 --> 00:03:31,690
+And then with categories context, now we want the actual products from this category.
+
+47
+00:03:32,820 --> 00:03:41,010
+So typically what you could do at this point, you could just say Konst products is equal to categories
+
+48
+00:03:41,010 --> 00:03:41,340
+map.
+
+49
+00:03:43,300 --> 00:03:46,360
+Category, you could do this, there's nothing wrong with doing this.
+
+50
+00:03:46,930 --> 00:03:49,690
+Essentially, whatever this component renders, these products will be gotten.
+
+51
+00:03:50,170 --> 00:03:53,140
+But this will happen every time this component renders.
+
+52
+00:03:53,770 --> 00:04:00,550
+So what we instead want to do is bring in you state and use effect because essentially the only time
+
+53
+00:04:00,550 --> 00:04:04,810
+that we want to change these is of the category value changes or categories, map changes.
+
+54
+00:04:05,650 --> 00:04:14,260
+So here we can say we have products and set products which is equal to you, state, which by default
+
+55
+00:04:14,260 --> 00:04:15,370
+has an empty array.
+
+56
+00:04:16,390 --> 00:04:18,790
+And then we'll just say use affect.
+
+57
+00:04:20,300 --> 00:04:24,860
+Whenever category changes and categories map changes.
+
+58
+00:04:26,140 --> 00:04:32,110
+Then what you can do is call set products where we set the value equal to categories map.
+
+59
+00:04:33,610 --> 00:04:34,300
+Category.
+
+60
+00:04:35,830 --> 00:04:42,490
+This way now, if our component renders or anything like that, our products will not update unless
+
+61
+00:04:42,490 --> 00:04:46,660
+category or categories map has changed, that's the only time we will do that.
+
+62
+00:04:47,530 --> 00:04:53,440
+And now what we're going to return back is just our div and us mapping our products through.
+
+63
+00:04:55,820 --> 00:04:58,220
+Using the product card component, which we don't have.
+
+64
+00:04:58,250 --> 00:04:59,480
+So let's import that in as well.
+
+65
+00:05:04,690 --> 00:05:07,510
+So here we'll just say use the product card.
+
+66
+00:05:09,230 --> 00:05:12,320
+And of course, key will be product ID.
+
+67
+00:05:16,730 --> 00:05:17,660
+And the product.
+
+68
+00:05:19,510 --> 00:05:20,740
+Is going to be the product.
+
+69
+00:05:23,050 --> 00:05:29,050
+For this debate, though, we know we need some styling, so I'm going to give it a class name of category
+
+70
+00:05:29,650 --> 00:05:30,430
+container.
+
+71
+00:05:33,120 --> 00:05:39,210
+And inside of category styles, we can just directly style category container.
+
+72
+00:05:40,400 --> 00:05:44,000
+Which is going to be display grid very similar to what you had before.
+
+73
+00:05:44,360 --> 00:05:48,200
+Great template column rows or columns, sorry for columns.
+
+74
+00:05:48,740 --> 00:05:51,830
+So we're going to say repeat for one half hour.
+
+75
+00:05:53,340 --> 00:05:54,540
+I want to call them Gap.
+
+76
+00:05:57,210 --> 00:05:58,590
+Let's say 20 pixels.
+
+77
+00:05:59,770 --> 00:06:03,610
+And then I want to a gap of 50 pixels.
+
+78
+00:06:03,910 --> 00:06:06,250
+You can change these gap values to whatever you want.
+
+79
+00:06:06,790 --> 00:06:12,340
+But now if we come back to our main application and let's say I navigate to slash hats now.
+
+80
+00:06:14,130 --> 00:06:19,320
+Now, when we navigate here, we seem to see that something breaks here, if we screw up, we see cannot
+
+81
+00:06:19,320 --> 00:06:22,890
+read properties of undefined reading map a category.
+
+82
+00:06:23,760 --> 00:06:29,850
+So when we look inside of our categories map at this point, remember our categories, map is saying,
+
+83
+00:06:29,850 --> 00:06:36,540
+Hey, you cannot call map method on undefined, so for some reason our products is undefined.
+
+84
+00:06:37,110 --> 00:06:44,820
+The reason why this is undefined is because we're trying to call category on an empty object when this
+
+85
+00:06:44,820 --> 00:06:45,990
+app first mounts.
+
+86
+00:06:46,290 --> 00:06:52,800
+Remember, our categories context fetches this data asynchronously, but when our application mounts
+
+87
+00:06:52,800 --> 00:06:56,910
+for the first time, it's still trying to actually run this code synchronously.
+
+88
+00:06:57,360 --> 00:07:01,560
+This is happening before we actually get these categories from our fire store.
+
+89
+00:07:02,010 --> 00:07:06,280
+So what we need to do is build in a safeguard in order to do that.
+
+90
+00:07:06,300 --> 00:07:14,790
+What we can do is we can say, Hey, if products is undefined, then don't render it only render products
+
+91
+00:07:14,790 --> 00:07:17,400
+map if products has a value, which means here.
+
+92
+00:07:17,400 --> 00:07:23,640
+In fact, what we can say is that instead of calling this by default with an empty array, we can call
+
+93
+00:07:23,640 --> 00:07:27,750
+categories map at category as the starting value here.
+
+94
+00:07:28,620 --> 00:07:33,600
+With this now, this will still work because we know categories map by default, is an empty object.
+
+95
+00:07:35,030 --> 00:07:40,430
+So now, if we save this and we come back here, let's just get rid of this so that we can at least
+
+96
+00:07:40,430 --> 00:07:45,080
+see now we do see that we are rendering our component without errors.
+
+97
+00:07:45,560 --> 00:07:50,330
+This styling conflict is actually a separate issue that we'll discuss, but I don't want to move on
+
+98
+00:07:50,330 --> 00:07:51,380
+from this topic just yet.
+
+99
+00:07:51,860 --> 00:07:57,500
+Remember, if you have components that rely on asynchronously fetched code, you will need to put in
+
+100
+00:07:57,500 --> 00:08:03,890
+some kind of safeguard so that you only render your component if the actual data is present.
+
+101
+00:08:04,190 --> 00:08:06,010
+And that's exactly what we did here.
+
+102
+00:08:06,020 --> 00:08:10,130
+We defensively programmed against our products being undefined.
+
+103
+00:08:10,940 --> 00:08:14,540
+So now that we have our products in and we have this check in.
+
+104
+00:08:14,930 --> 00:08:16,910
+Let's talk about this styling issue.
+
+105
+00:08:17,920 --> 00:08:20,500
+What I want you to do is actually try and debug it yourself.
+
+106
+00:08:21,010 --> 00:08:24,700
+This is a good chance to see and think about why some of these errors might be happening.
+
+107
+00:08:24,970 --> 00:08:31,450
+So what I want you to do is I want you to take a look into these different elements on the side here
+
+108
+00:08:31,450 --> 00:08:33,490
+and try and identify why we have this issue.
+
+109
+00:08:33,850 --> 00:08:36,250
+If you can't, don't worry, I have the answer.
+
+110
+00:08:36,550 --> 00:08:37,760
+I'll give you a little bit of a hint.
+
+111
+00:08:37,780 --> 00:08:43,810
+If you click on this component right here, you should take to this page and see that this is also broken.
+
+112
+00:08:44,320 --> 00:08:45,310
+Why is this happening?
+
+113
+00:08:45,730 --> 00:08:46,780
+Well, take a look into it.
+
+114
+00:08:47,320 --> 00:08:50,140
+And then in the next video, we'll fix this together.

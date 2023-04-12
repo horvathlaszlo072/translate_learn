@@ -1,0 +1,371 @@
+1
+00:00:00,500 --> 00:00:01,550
+Welcome back, everyone.
+
+2
+00:00:02,510 --> 00:00:07,340
+So in this video, let's actually learn a little bit more about some styling facts with an react.
+
+3
+00:00:07,730 --> 00:00:09,770
+And also, let's add the image.
+
+4
+00:00:10,760 --> 00:00:14,450
+So what I want you to do is go into your resource folder.
+
+5
+00:00:14,720 --> 00:00:21,860
+Get the categories JSON file inside is just an array of JSON, and I want you to paste that in place
+
+6
+00:00:21,860 --> 00:00:23,690
+of your current categories array.
+
+7
+00:00:24,650 --> 00:00:31,910
+All that really changes is that you'll notice now we have this image URL field and it points to a special
+
+8
+00:00:31,910 --> 00:00:37,670
+place where I'm hosting all of the images that we need for our respective different categories.
+
+9
+00:00:38,880 --> 00:00:46,170
+So once you have this in, I want you to also structure off the image URL because we're going to leverage
+
+10
+00:00:46,170 --> 00:00:47,340
+this and it's a strength.
+
+11
+00:00:48,530 --> 00:00:55,970
+What I want you to know is that when you are trying to append, let's say, some additional cases,
+
+12
+00:00:55,970 --> 00:00:56,720
+that's dynamic.
+
+13
+00:00:57,080 --> 00:01:01,880
+You can actually do that in react by passing it as a style object.
+
+14
+00:01:02,420 --> 00:01:09,740
+So on any different component in your GSX, you can actually append custom styles by giving it this
+
+15
+00:01:09,740 --> 00:01:10,700
+style field.
+
+16
+00:01:11,420 --> 00:01:18,420
+This Darvill takes an object where the key is the CIUSSS property that you want to modify.
+
+17
+00:01:18,440 --> 00:01:21,020
+So in our particular case, I want background image.
+
+18
+00:01:22,760 --> 00:01:29,900
+So with background image, the value that we need to pass, it is going to be a string of Earl and in
+
+19
+00:01:29,900 --> 00:01:34,070
+the brackets is the actual U R L string value.
+
+20
+00:01:34,700 --> 00:01:38,660
+So here I'm going to use object restructuring, so I want to use the back picks.
+
+21
+00:01:39,760 --> 00:01:43,390
+And with the object restructuring, I'm going to pass in image URL.
+
+22
+00:01:44,260 --> 00:01:50,800
+If you're unfamiliar with restructuring, all this is really doing is it's just allowing us to use a
+
+23
+00:01:50,800 --> 00:01:52,930
+string variable inside of another string.
+
+24
+00:01:54,030 --> 00:02:01,980
+And this is essentially what will happen is that we will apply a customs style on to this specific HDMI
+
+25
+00:02:01,980 --> 00:02:02,340
+element.
+
+26
+00:02:03,060 --> 00:02:04,350
+So if we save this now?
+
+27
+00:02:05,670 --> 00:02:07,200
+And we go back to the application.
+
+28
+00:02:07,950 --> 00:02:10,590
+We'll see that now we have our images loading in.
+
+29
+00:02:12,030 --> 00:02:16,380
+And that's pretty much it as far as why it's all working stylistically.
+
+30
+00:02:16,410 --> 00:02:19,830
+Of course, it's because I'm already pre-written the styles for you to keep that in mind, but just
+
+31
+00:02:19,830 --> 00:02:23,520
+really focus on the fact that all we really did if we now inspect this image.
+
+32
+00:02:24,800 --> 00:02:30,410
+Is we now have appended this style property and inside, as you remember.
+
+33
+00:02:30,740 --> 00:02:32,970
+You can actually do this in any demo element.
+
+34
+00:02:32,990 --> 00:02:34,310
+You can pass it as a strength.
+
+35
+00:02:34,580 --> 00:02:40,550
+But for us with React React allows us to pass it a JavaScript object, and it will convert it all for
+
+36
+00:02:40,550 --> 00:02:46,340
+us, both from Camel case, which is how we should rate it inside of the JSON object over to the kabob
+
+37
+00:02:46,340 --> 00:02:48,740
+case, which is how it actually gets interpreted.
+
+38
+00:02:48,950 --> 00:02:50,630
+When you're writing rightthere more.
+
+39
+00:02:51,080 --> 00:02:55,850
+So that's the great thing about React as well, is that it will essentially handle all of this for us.
+
+40
+00:02:57,070 --> 00:02:59,680
+So now that we have all of this code working.
+
+41
+00:03:00,820 --> 00:03:08,980
+What we want to do now is really just start moving what is in, it's appropriate one file to its own
+
+42
+00:03:08,980 --> 00:03:09,730
+separate component.
+
+43
+00:03:10,510 --> 00:03:15,820
+So what we know is that we are really just using a category item here.
+
+44
+00:03:16,950 --> 00:03:21,880
+So what we can do is go and create our components folder.
+
+45
+00:03:22,980 --> 00:03:24,330
+And just like we did before.
+
+46
+00:03:24,450 --> 00:03:28,980
+I want to make another folder where we have our category item.
+
+47
+00:03:30,330 --> 00:03:38,940
+Category item is going to be a component, so it needs both a component, Duchess X-File.
+
+48
+00:03:40,930 --> 00:03:49,810
+And it also needs a style file, so category item dot styles, dot s6's.
+
+49
+00:03:51,700 --> 00:03:55,000
+So here, let's just go into our staff.
+
+50
+00:03:55,570 --> 00:04:02,470
+Let's cut out all of the styling that we had, and let's paste it into category item dot styles that
+
+51
+00:04:02,470 --> 00:04:02,860
+says.
+
+52
+00:04:03,930 --> 00:04:08,820
+Inside of category item, let's import in our style file.
+
+53
+00:04:10,790 --> 00:04:16,850
+Let's initialize our category item as a functional component.
+
+54
+00:04:18,520 --> 00:04:23,130
+And let's just remember to export by default out the category item.
+
+55
+00:04:24,980 --> 00:04:34,340
+As far as what we're going to receive, we are probably going to receive the entire object as a prop.
+
+56
+00:04:35,180 --> 00:04:36,800
+So here we can do.
+
+57
+00:04:37,910 --> 00:04:39,200
+Let's call it a category.
+
+58
+00:04:40,260 --> 00:04:46,260
+And that'll be the namespace that we do, and in turn, we just want to return all of that HTML that
+
+59
+00:04:46,260 --> 00:04:47,250
+we had from before.
+
+60
+00:04:47,910 --> 00:04:49,890
+So let's just close these folders.
+
+61
+00:04:51,040 --> 00:04:51,760
+Let's go here.
+
+62
+00:04:52,750 --> 00:04:55,660
+Let's copy this email that we've been using.
+
+63
+00:04:57,380 --> 00:04:58,400
+Let's paste this in here.
+
+64
+00:05:00,190 --> 00:05:03,040
+And now we remember that we cannot use the ID here.
+
+65
+00:05:03,400 --> 00:05:07,360
+We need to put it in the place where we actually call the map.
+
+66
+00:05:07,510 --> 00:05:09,550
+So will remember to do that when we go back to our app?
+
+67
+00:05:09,670 --> 00:05:10,000
+Yes.
+
+68
+00:05:10,720 --> 00:05:13,050
+But we know that we need the image URL.
+
+69
+00:05:13,060 --> 00:05:18,850
+So here we can restructure here or we can restructure directly in the actual prop.
+
+70
+00:05:19,000 --> 00:05:20,920
+It's entirely up to you, whatever you prefer.
+
+71
+00:05:22,060 --> 00:05:24,240
+We need the image URL and we need the title.
+
+72
+00:05:25,700 --> 00:05:29,630
+So here we've pretty much converted this over into its own component.
+
+73
+00:05:30,260 --> 00:05:31,220
+Let's save this.
+
+74
+00:05:31,910 --> 00:05:33,680
+Let's go back to our Angus.
+
+75
+00:05:35,530 --> 00:05:42,520
+Let's import in the component that we need from our components folder.
+
+76
+00:05:43,620 --> 00:05:47,640
+In our category item and our category item component.
+
+77
+00:05:48,900 --> 00:05:50,730
+That's copy the category item.
+
+78
+00:05:52,140 --> 00:05:53,100
+Let's paste this in.
+
+79
+00:05:54,110 --> 00:05:59,810
+And now we know that we need to actually pass the entire category.
+
+80
+00:06:02,160 --> 00:06:06,720
+So here we can do key is equal to category ID.
+
+81
+00:06:07,970 --> 00:06:10,640
+And category is equal to category.
+
+82
+00:06:12,900 --> 00:06:19,740
+And now, if we save and let's go back to our application, we see that everything is still working
+
+83
+00:06:19,770 --> 00:06:20,820
+as we expected to.
+
+84
+00:06:21,830 --> 00:06:22,220
+Awesome.
+
+85
+00:06:22,640 --> 00:06:27,200
+So everything still working, and we've pretty much started suffering out of our different components.
+
+86
+00:06:27,710 --> 00:06:34,670
+What I want you to do is I want you to actually even move this component, which is the entire categories.
+
+87
+00:06:35,730 --> 00:06:41,550
+Into its own component, so you can make this category menu, you can call it directory.
+
+88
+00:06:41,910 --> 00:06:46,080
+Call it whatever you want, but essentially it should not all live within an OPG's.
+
+89
+00:06:46,380 --> 00:06:52,920
+And you also want to move the style that we had here for this categories, so you can move this also
+
+90
+00:06:52,920 --> 00:06:53,670
+into your own component.
+
+91
+00:06:53,730 --> 00:06:54,750
+That's my challenge to you.
+
+92
+00:06:55,350 --> 00:06:56,430
+So do that.
+
+93
+00:06:56,430 --> 00:06:58,310
+And then in the next video, we'll do it together.

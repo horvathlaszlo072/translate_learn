@@ -1,0 +1,285 @@
+1
+00:00:00.04 --> 00:00:01.09
+- [Instructor] In
+asynchronous programming,
+
+2
+00:00:01.09 --> 00:00:03.03
+there is something many programmers
+
+3
+00:00:03.03 --> 00:00:05.03
+refer to as callback hell.
+
+4
+00:00:05.03 --> 00:00:06.07
+It can happen to nearly everyone
+
+5
+00:00:06.07 --> 00:00:08.07
+and it creates very difficult code.
+
+6
+00:00:08.07 --> 00:00:10.02
+Let's take a look at what it is exactly
+
+7
+00:00:10.02 --> 00:00:11.06
+and how we can avoid it.
+
+8
+00:00:11.06 --> 00:00:14.08
+Let's create a very basic bad word filter
+
+9
+00:00:14.08 --> 00:00:17.00
+for our post message function.
+
+10
+00:00:17.00 --> 00:00:19.00
+There are better ways to make this,
+
+11
+00:00:19.00 --> 00:00:21.07
+but we will purposefully
+make the callbacks nested
+
+12
+00:00:21.07 --> 00:00:24.05
+so that you can understand
+the teaching point.
+
+13
+00:00:24.05 --> 00:00:28.08
+So let's go down to our message
+post function on line 25.
+
+14
+00:00:28.08 --> 00:00:32.08
+If a message was successfully
+saved and there was no error,
+
+15
+00:00:32.08 --> 00:00:36.03
+let's check for bad words
+inside the database.
+
+16
+00:00:36.03 --> 00:00:40.05
+So we'll use message.findOne
+
+17
+00:00:40.05 --> 00:00:44.06
+and we'll check for a message
+
+18
+00:00:44.06 --> 00:00:47.04
+that has the word badword in it,
+
+19
+00:00:47.04 --> 00:00:49.08
+and then let's pass a
+callback with an error
+
+20
+00:00:49.08 --> 00:00:58.03
+and the censored word that it finds.
+
+21
+00:00:58.03 --> 00:01:01.07
+If there is a censored word,
+
+22
+00:01:01.07 --> 00:01:10.07
+let's console.log censored words found,
+
+23
+00:01:10.07 --> 00:01:13.09
+and we'll display censored.
+
+24
+00:01:13.09 --> 00:01:18.05
+And if we did find a censored
+word, let's remove it.
+
+25
+00:01:18.05 --> 00:01:21.09
+We'll use message.remove
+
+26
+00:01:21.09 --> 00:01:25.05
+and then pass in the ID.
+
+27
+00:01:25.05 --> 00:01:31.01
+So we'll check for _id
+and we'll use censored.id.
+
+28
+00:01:31.01 --> 00:01:33.09
+If you're not sure where
+the id property came from,
+
+29
+00:01:33.09 --> 00:01:37.07
+since we don't have it as
+part of our model on line 14,
+
+30
+00:01:37.07 --> 00:01:41.00
+it's actually Mongoose
+that manages and creates
+
+31
+00:01:41.00 --> 00:01:46.01
+the ID for us anytime we save
+an object to a collection.
+
+32
+00:01:46.01 --> 00:01:48.01
+So next, let's add a callback to
+
+33
+00:01:48.01 --> 00:01:52.09
+the second parameter
+that takes in an error,
+
+34
+00:01:52.09 --> 00:01:56.06
+and then let's add a console.log
+
+35
+00:01:56.06 --> 00:02:02.07
+saying we've removed censored message.
+
+36
+00:02:02.07 --> 00:02:04.02
+And I'll save that.
+
+37
+00:02:04.02 --> 00:02:10.03
+I'll just fix the typo
+first on badword on line 32.
+
+38
+00:02:10.03 --> 00:02:16.09
+Then let's open up our terminal
+and let's go to our app
+
+39
+00:02:16.09 --> 00:02:20.05
+and type in badword in message.
+
+40
+00:02:20.05 --> 00:02:22.09
+Let's hit submit, then let's
+take a look at our terminal
+
+41
+00:02:22.09 --> 00:02:25.09
+and we can see that a
+censored word was found
+
+42
+00:02:25.09 --> 00:02:30.05
+with message badword and it
+removed the censored message.
+
+43
+00:02:30.05 --> 00:02:33.07
+So if we go back to our app and refresh,
+
+44
+00:02:33.07 --> 00:02:35.08
+we can see it's no longer there.
+
+45
+00:02:35.08 --> 00:02:37.03
+So as mentioned before, that's not
+
+46
+00:02:37.03 --> 00:02:40.00
+the greatest implementation
+of a bad word filter
+
+47
+00:02:40.00 --> 00:02:42.02
+since it posts it first
+before it removes it,
+
+48
+00:02:42.02 --> 00:02:44.05
+but I did that on purpose
+just to demonstrate
+
+49
+00:02:44.05 --> 00:02:49.02
+how complex nested callbacks can get.
+
+50
+00:02:49.02 --> 00:02:51.03
+And if you imagine this two or three
+
+51
+00:02:51.03 --> 00:02:53.06
+times deeper than it currently is,
+
+52
+00:02:53.06 --> 00:02:57.00
+trying to understand this
+now can be confusing.
+
+53
+00:02:57.00 --> 00:03:00.00
+But imagine opening this
+file up a year later
+
+54
+00:03:00.00 --> 00:03:02.05
+and then trying to
+understand it at that point,
+
+55
+00:03:02.05 --> 00:03:04.05
+or for another programmer that hasn't
+
+56
+00:03:04.05 --> 00:03:06.04
+worked with your code trying to understand
+
+57
+00:03:06.04 --> 00:03:08.09
+your code and the amount of overhead
+
+58
+00:03:08.09 --> 00:03:11.05
+it creates in the development process.
+
+59
+00:03:11.05 --> 00:03:15.01
+Our goal then becomes quite
+clear: we want clean code.
+
+60
+00:03:15.01 --> 00:03:17.08
+Something we can quickly
+understand right now
+
+61
+00:03:17.08 --> 00:03:20.06
+or a year from now, and
+there's several tools
+
+62
+00:03:20.06 --> 00:03:23.00
+to allow us to do this that avoid
+
+63
+00:03:23.00 --> 00:03:25.08
+nested callbacks, or callback hell.
+
+64
+00:03:25.08 --> 00:03:27.07
+So let's take a look at
+those solutions next.
+

@@ -1,0 +1,439 @@
+1
+00:00:00,330 --> 00:00:01,500
+Welcome back, everyone.
+
+2
+00:00:02,100 --> 00:00:06,510
+In this video, we are going to talk about adding our products into our cart.
+
+3
+00:00:07,020 --> 00:00:11,730
+So let's take a look at the final format and think about the current data that we have.
+
+4
+00:00:12,710 --> 00:00:19,070
+So inside, we know that we need to show the image, the name, the price.
+
+5
+00:00:19,340 --> 00:00:21,050
+And then this quantity.
+
+6
+00:00:21,710 --> 00:00:30,290
+So really, a core item looks kind of like a encapsulation of our product data, except there is an
+
+7
+00:00:30,290 --> 00:00:32,300
+additional quantity parameter.
+
+8
+00:00:33,140 --> 00:00:40,820
+So how do we transform our data from this over into this accurately as we add more items into the cart?
+
+9
+00:00:42,070 --> 00:00:47,710
+Well, that's actually going to be the meat of the logic, we need to figure out that whenever we add
+
+10
+00:00:47,740 --> 00:00:54,040
+some item into our cart, we have to check if it already exists as in cart item and if it does, then
+
+11
+00:00:54,040 --> 00:00:55,360
+we increase the quantity.
+
+12
+00:00:55,690 --> 00:00:58,600
+But if it doesn't, then we create a new cart item.
+
+13
+00:00:59,020 --> 00:01:01,360
+So that's going to be the logic that we need to tackle.
+
+14
+00:01:01,360 --> 00:01:04,690
+And really, we should do that before we start styling out the cart item.
+
+15
+00:01:05,470 --> 00:01:06,490
+So let's figure that out.
+
+16
+00:01:07,000 --> 00:01:12,550
+First, what I want to do is I want to make a new folder for the cart item, so at least we have something
+
+17
+00:01:12,550 --> 00:01:13,180
+to work with.
+
+18
+00:01:13,900 --> 00:01:20,110
+So here inside, I want to make the cart item, dot styles, dot sass, and maybe we don't fill it out,
+
+19
+00:01:20,110 --> 00:01:21,400
+but we just make the file.
+
+20
+00:01:21,970 --> 00:01:26,030
+And I also want to mark a cart item component dot GSX.
+
+21
+00:01:26,830 --> 00:01:31,120
+So inside, let's think about what we need for this cart item.
+
+22
+00:01:31,420 --> 00:01:33,310
+We most likely will.
+
+23
+00:01:33,700 --> 00:01:40,480
+Let's just first generate the base of the actual file we want to import in our style sheet.
+
+24
+00:01:41,110 --> 00:01:44,770
+We want to create the actual cart item component.
+
+25
+00:01:46,820 --> 00:01:50,030
+And then we want to export as default the cart item.
+
+26
+00:01:52,180 --> 00:01:58,120
+So now that we're inside the card item, let's just return for now, a device that will hold out the
+
+27
+00:01:58,120 --> 00:01:59,470
+actual total.
+
+28
+00:02:00,550 --> 00:02:01,660
+Of the HTML.
+
+29
+00:02:02,410 --> 00:02:08,680
+And then let's put an H2, which will have just the name so that we at least know what item we're looking
+
+30
+00:02:08,680 --> 00:02:08,860
+at.
+
+31
+00:02:09,670 --> 00:02:15,110
+And this name is going to come from, let's just say the item that we pass in here.
+
+32
+00:02:15,250 --> 00:02:17,710
+And then we structure off the name so far.
+
+33
+00:02:22,550 --> 00:02:29,600
+So all I'm saying is that I know that what I'm going to pass in is going to be some kind of version
+
+34
+00:02:29,630 --> 00:02:34,610
+of the product that we already store those product JSON objects.
+
+35
+00:02:35,150 --> 00:02:38,420
+But here we need also somewhere to keep track of quantity.
+
+36
+00:02:38,960 --> 00:02:44,330
+So this is where I'm just going to say that I'm going to assume that what gets passed in will also include
+
+37
+00:02:44,330 --> 00:02:49,010
+the quantity and I'm going to make a span that will show the quantity.
+
+38
+00:02:49,610 --> 00:02:50,150
+Like so.
+
+39
+00:02:51,840 --> 00:02:57,390
+So here all I need to do now is actually put this into the car itself.
+
+40
+00:02:57,630 --> 00:02:59,520
+The car drop down, which is where this olive.
+
+41
+00:03:00,430 --> 00:03:02,170
+So first, let's import in.
+
+42
+00:03:03,230 --> 00:03:04,160
+Our Carte item.
+
+43
+00:03:10,200 --> 00:03:16,800
+And then what we're going to do is we are going to say, OK, how are we going to get these items into
+
+44
+00:03:16,800 --> 00:03:17,760
+our cart dropdown?
+
+45
+00:03:18,870 --> 00:03:21,030
+Well, let's think about this a little bit first.
+
+46
+00:03:22,530 --> 00:03:25,410
+What is it exactly that we need to add?
+
+47
+00:03:26,100 --> 00:03:29,640
+We need to map over some kind of array, we know that.
+
+48
+00:03:30,120 --> 00:03:36,390
+And for every item that we map through, we want to pass this to the cart item like so.
+
+49
+00:03:38,710 --> 00:03:43,930
+So here, this array that we're mapping through is going to be kind of similar.
+
+50
+00:03:45,220 --> 00:03:52,030
+But the only thing is that the way that we get this array, it's not completely like the products,
+
+51
+00:03:52,930 --> 00:03:57,340
+it's going to be some variation of the products, as we mentioned, but with the quantity on it.
+
+52
+00:03:58,150 --> 00:04:02,710
+So to do that, let's think about leveraging our cart context.
+
+53
+00:04:03,400 --> 00:04:07,810
+Our car context already stores things related to our cart.
+
+54
+00:04:08,110 --> 00:04:13,990
+So what we could store is the actual cart items that are inside of our cart, as they're added.
+
+55
+00:04:15,010 --> 00:04:17,860
+So let's think about what the data shape of cart items should be.
+
+56
+00:04:18,310 --> 00:04:25,900
+We know that right now we already have products, so our products essentially are objects that have
+
+57
+00:04:25,900 --> 00:04:31,690
+the shape where there's an ID, there's a name, there's a price and there's an image URL.
+
+58
+00:04:32,470 --> 00:04:37,300
+All of these are same characteristics that we want on a cart item.
+
+59
+00:04:37,780 --> 00:04:41,440
+The only difference is that we also want a quantity.
+
+60
+00:04:42,040 --> 00:04:46,690
+So what we're going to store inside of this car items array is pretty much something that looks like
+
+61
+00:04:46,690 --> 00:04:49,960
+the product, except we also have an additional quantity.
+
+62
+00:04:50,860 --> 00:04:52,930
+So let's actually start fleshing this out.
+
+63
+00:04:54,240 --> 00:05:00,900
+What we want to do is we want to also figure out whenever you add something to this cart items, what
+
+64
+00:05:00,900 --> 00:05:01,710
+are we going to do to it?
+
+65
+00:05:02,490 --> 00:05:08,550
+Well, we know that in order for us to control the quantity, we probably don't want them to set directly.
+
+66
+00:05:08,550 --> 00:05:12,990
+This cart items array the way that we've been doing so with a separate set or function.
+
+67
+00:05:13,620 --> 00:05:19,770
+And then maybe you want to define our own method that we happen to expose something like an ad item
+
+68
+00:05:19,770 --> 00:05:26,310
+to cart where we explicitly control what it is that this item to cart function is going to do.
+
+69
+00:05:27,060 --> 00:05:32,520
+So first, let me initialize the cart items and then the set cart items.
+
+70
+00:05:34,390 --> 00:05:35,470
+You state look.
+
+71
+00:05:36,610 --> 00:05:40,090
+And by default, we're going to use an empty array.
+
+72
+00:05:41,240 --> 00:05:47,900
+What I'm also going to do is I'm going to now trying to find this ad item to cart method.
+
+73
+00:05:48,680 --> 00:05:57,050
+This ad item is a cart method is going to be a function that triggers whenever a user clicks on this
+
+74
+00:05:57,050 --> 00:05:57,770
+add to cart.
+
+75
+00:05:58,940 --> 00:06:05,270
+So that means that what we're going to receive from the product cart is going to be the product to add.
+
+76
+00:06:06,080 --> 00:06:07,520
+So that's the key thing to remember.
+
+77
+00:06:08,150 --> 00:06:11,310
+We're going to receive a product based off this product.
+
+78
+00:06:11,330 --> 00:06:18,470
+We need to decide, OK, do I need to make a new car item if this cart is empty of any of this product
+
+79
+00:06:18,470 --> 00:06:19,340
+that they're trying to add?
+
+80
+00:06:19,820 --> 00:06:26,120
+Or do I find the existing car item for this product and then just increase the quantity by one?
+
+81
+00:06:26,570 --> 00:06:29,960
+That's the logic that we need to add into this.
+
+82
+00:06:30,830 --> 00:06:39,710
+So what we can say is that we know that what we're going to set this cart items value to is the newest
+
+83
+00:06:39,710 --> 00:06:41,000
+up to date array.
+
+84
+00:06:42,270 --> 00:06:49,560
+So here I'm going to create some kind of helper function that's going to help me find inside of my existing
+
+85
+00:06:49,560 --> 00:06:49,860
+array.
+
+86
+00:06:50,520 --> 00:06:54,870
+Any carte items that exist that match the idea of this product.
+
+87
+00:06:55,560 --> 00:06:58,380
+And then if I can find it, I'm going to increment the quantity.
+
+88
+00:06:58,770 --> 00:07:01,410
+Otherwise, I'm going to make a new cart item.
+
+89
+00:07:02,660 --> 00:07:04,820
+So here, let me write out at least some pseudocode.
+
+90
+00:07:05,450 --> 00:07:09,740
+So I want to say, Konst, add cart item like this.
+
+91
+00:07:10,400 --> 00:07:13,220
+What we're going to receive is the cart items array.
+
+92
+00:07:14,320 --> 00:07:18,520
+Because this is what we're going to look through to try and find a matching product.
+
+93
+00:07:18,940 --> 00:07:23,620
+And of course, I'm also going to pass through the product ad because that's essentially what they're
+
+94
+00:07:23,620 --> 00:07:24,520
+trying to ad through.
+
+95
+00:07:25,640 --> 00:07:29,090
+So here I need to do two things.
+
+96
+00:07:29,120 --> 00:07:36,140
+The first is find if carte items contains product to add.
+
+97
+00:07:37,270 --> 00:07:38,170
+That's the first step.
+
+98
+00:07:38,710 --> 00:07:39,610
+Then what we do.
+
+99
+00:07:40,570 --> 00:07:44,650
+Is, if found, increment quantity.
+
+100
+00:07:46,260 --> 00:07:56,280
+And then finally, return new array with modified cart items, slash new cart item.
+
+101
+00:07:57,230 --> 00:08:02,210
+So that's kind of what we need to figure out for this function, because what we're going to do is that
+
+102
+00:08:02,210 --> 00:08:06,920
+this ad car item is going to be what we set our new cart to.
+
+103
+00:08:07,400 --> 00:08:14,510
+So we're going to call set car items calling out of cart item passing through what we have for cart
+
+104
+00:08:14,510 --> 00:08:17,780
+items here, as well as this product to add.
+
+105
+00:08:19,630 --> 00:08:24,580
+So my challenge to you is actually to try and see if you can figure out how to code this.
+
+106
+00:08:25,030 --> 00:08:32,050
+Remember, what we should get back is a new array of car items, except this product to add, has either
+
+107
+00:08:32,050 --> 00:08:37,600
+been added as a new card item or as an existing card item with an increased quantity.
+
+108
+00:08:38,630 --> 00:08:42,800
+So I know it's kind of challenging, but really think about it and really try and figure out if you
+
+109
+00:08:42,800 --> 00:08:43,340
+can do this.
+
+110
+00:08:43,520 --> 00:08:45,410
+And then the next video we'll do it together.

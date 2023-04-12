@@ -1,0 +1,606 @@
+1
+00:00:00.00 --> 00:00:01.07
+- [Male Voice] Next, let's update our
+
+2
+00:00:01.07 --> 00:00:05.02
+AngularJS component and create a form
+
+3
+00:00:05.02 --> 00:00:09.04
+to allow a user to search
+for available rooms
+
+4
+00:00:09.04 --> 00:00:14.03
+by passing in a desired
+check-in and check-out date.
+
+5
+00:00:14.03 --> 00:00:18.06
+Just to clarify, we will
+be using the CSS components
+
+6
+00:00:18.06 --> 00:00:22.08
+from Twitter Bootstrap and
+not the jQuery aspects.
+
+7
+00:00:22.08 --> 00:00:25.01
+Generally, best practice dictates
+
+8
+00:00:25.01 --> 00:00:29.00
+that you should not use
+jQuery and AngularJS 2
+
+9
+00:00:29.00 --> 00:00:33.03
+since they represent different
+programming paradigms.
+
+10
+00:00:33.03 --> 00:00:35.01
+There are several libraries out there
+
+11
+00:00:35.01 --> 00:00:37.04
+that are attempting to
+combine Twitter Bootstrap
+
+12
+00:00:37.04 --> 00:00:40.09
+with AngularJS 2 but many are in alpha
+
+13
+00:00:40.09 --> 00:00:43.04
+and not currently stable.
+
+14
+00:00:43.04 --> 00:00:46.07
+Twitter Bootstrap uses a 12
+column grid-based layout.
+
+15
+00:00:46.07 --> 00:00:48.09
+This allows you to organize your content
+
+16
+00:00:48.09 --> 00:00:52.08
+in a flexible and mobile
+responsive manner.
+
+17
+00:00:52.08 --> 00:00:56.08
+Let's open up app.component.html.
+
+18
+00:00:56.08 --> 00:01:01.09
+Let's add a row and a 12 column div.
+
+19
+00:01:01.09 --> 00:01:04.04
+Next, let's grab the header and drop it
+
+20
+00:01:04.04 --> 00:01:07.08
+in our 12 column div.
+
+21
+00:01:07.08 --> 00:01:12.00
+Let's update the header to Book a Room.
+
+22
+00:01:12.00 --> 00:01:15.03
+Next, let's create a form.
+
+23
+00:01:15.03 --> 00:01:20.00
+Let's use the Twitter Bootstrap
+class form dash horizontal.
+
+24
+00:01:20.00 --> 00:01:21.06
+Next, let's create form group
+
+25
+00:01:21.06 --> 00:01:28.00
+that contains a label and an input field.
+
+26
+00:01:28.00 --> 00:01:32.00
+Let's set the label to column dash 4
+
+27
+00:01:32.00 --> 00:01:34.04
+which will give the label one-third
+
+28
+00:01:34.04 --> 00:01:36.00
+of the available space.
+
+29
+00:01:36.00 --> 00:01:38.09
+Let's name the label Check-In.
+
+30
+00:01:38.09 --> 00:01:41.04
+Let's create a input of a type date
+
+31
+00:01:41.04 --> 00:01:46.06
+in a div with eight columns.
+
+32
+00:01:46.06 --> 00:01:49.08
+Next, let's name that input Check-In
+
+33
+00:01:49.08 --> 00:01:54.00
+then let's associate the
+label with that input.
+
+34
+00:01:54.00 --> 00:01:58.01
+Let's add the class form
+dash control to our input.
+
+35
+00:01:58.01 --> 00:02:01.08
+Now, let's add another
+form group for check out.
+
+36
+00:02:01.08 --> 00:02:04.04
+Let's copy that form group, paste
+
+37
+00:02:04.04 --> 00:02:07.08
+and then update the label to Check-Out.
+
+38
+00:02:07.08 --> 00:02:09.04
+Let's update the ID on the input
+
+39
+00:02:09.04 --> 00:02:11.05
+to Check-Out as well.
+
+40
+00:02:11.05 --> 00:02:13.09
+Finally, let's add one final form group
+
+41
+00:02:13.09 --> 00:02:18.00
+with a Submit button.
+
+42
+00:02:18.00 --> 00:02:21.04
+Let's create a div with
+a offset of two columns
+
+43
+00:02:21.04 --> 00:02:24.03
+and a width of 10.
+
+44
+00:02:24.03 --> 00:02:28.07
+This will offset this section
+two columns from the left.
+
+45
+00:02:28.07 --> 00:02:31.08
+Let's create a button of the type Submit
+
+46
+00:02:31.08 --> 00:02:36.08
+and use the classes BTN, BTN dash primary,
+
+47
+00:02:36.08 --> 00:02:40.05
+and BTN large from Twitter Bootstrap.
+
+48
+00:02:40.05 --> 00:02:44.01
+Then, let's update the label
+on the button to Submit.
+
+49
+00:02:44.01 --> 00:02:46.02
+Okay, let's save our changes.
+
+50
+00:02:46.02 --> 00:02:49.00
+If you have your AngularJS
+2 server running,
+
+51
+00:02:49.00 --> 00:02:52.03
+it will automatically update your changes
+
+52
+00:02:52.03 --> 00:02:54.01
+into the live site.
+
+53
+00:02:54.01 --> 00:02:55.09
+So let's take a look.
+
+54
+00:02:55.09 --> 00:03:00.01
+As you could see we have
+a form with two fields
+
+55
+00:03:00.01 --> 00:03:02.09
+Check-In and Check-Out
+and a submit button.
+
+56
+00:03:02.09 --> 00:03:05.02
+But they are not styled correctly.
+
+57
+00:03:05.02 --> 00:03:08.07
+Let's go ahead and
+update our Bootstrap CSS
+
+58
+00:03:08.07 --> 00:03:14.05
+which we installed using MPM.
+
+59
+00:03:14.05 --> 00:03:15.09
+And then save.
+
+60
+00:03:15.09 --> 00:03:18.05
+And we can see that
+AngularJS 2 and Wetpack
+
+61
+00:03:18.05 --> 00:03:21.09
+have automatically updated our changes.
+
+62
+00:03:21.09 --> 00:03:24.09
+Now our form is formatted correctly.
+
+63
+00:03:24.09 --> 00:03:27.09
+Next, let's build the
+functionality behind our form
+
+64
+00:03:27.09 --> 00:03:30.00
+by updating the typescript.
+
+65
+00:03:30.00 --> 00:03:34.02
+Let's open up the file app.module.ts.
+
+66
+00:03:34.02 --> 00:03:38.01
+Let's import the module
+Reactive Forms Module
+
+67
+00:03:38.01 --> 00:03:40.03
+from Angular Forms.
+
+68
+00:03:40.03 --> 00:03:43.02
+Then, let's update the imports.
+
+69
+00:03:43.02 --> 00:03:46.02
+When updating the app.module.ts file
+
+70
+00:03:46.02 --> 00:03:49.01
+you may see errors pop up.
+
+71
+00:03:49.01 --> 00:03:51.09
+Just give Eclipse a
+couple moments to catch up
+
+72
+00:03:51.09 --> 00:03:55.03
+and recompile and revalidate your code.
+
+73
+00:03:55.03 --> 00:03:59.00
+Now, let's go into app.component.ts.
+
+74
+00:03:59.00 --> 00:04:06.07
+Let's import component, OnInit,
+Form Control and Form Group.
+
+75
+00:04:06.07 --> 00:04:10.05
+Let's implement OnInit
+in our app component.
+
+76
+00:04:10.05 --> 00:04:14.05
+Then let's add a Form
+Group called room search.
+
+77
+00:04:14.05 --> 00:04:16.08
+We could delete this title field
+
+78
+00:04:16.08 --> 00:04:20.01
+which was generated by
+the AngularJS 2 command
+
+79
+00:04:20.01 --> 00:04:22.03
+just to test our application.
+
+80
+00:04:22.03 --> 00:04:25.07
+Let's create a NG OnInit
+method to initialize
+
+81
+00:04:25.07 --> 00:04:30.09
+our form group.
+
+82
+00:04:30.09 --> 00:04:33.07
+Let's add two form controls
+to that form group,
+
+83
+00:04:33.07 --> 00:04:38.09
+check-in and check-out.
+
+84
+00:04:38.09 --> 00:04:42.01
+Then, let's add another
+parameter called submitted
+
+85
+00:04:42.01 --> 00:04:46.03
+on the type boolean to track
+if our form was submitted.
+
+86
+00:04:46.03 --> 00:04:48.08
+Let's set it to public visibility.
+
+87
+00:04:48.08 --> 00:04:52.00
+Then let's create a method
+on submit to trigger
+
+88
+00:04:52.00 --> 00:04:54.08
+when our form is submitted.
+
+89
+00:04:54.08 --> 00:04:57.06
+Let's create a interface, room search
+
+90
+00:04:57.06 --> 00:05:04.06
+that has two fields,
+check-in and check-out.
+
+91
+00:05:04.06 --> 00:05:06.06
+Let's update our on submit method
+
+92
+00:05:06.06 --> 00:05:09.08
+to take in two fields,
+a room search object
+
+93
+00:05:09.08 --> 00:05:15.02
+and a boolean indicating
+whether a form was submitted.
+
+94
+00:05:15.02 --> 00:05:18.03
+In a later video, we will
+create a rest service
+
+95
+00:05:18.03 --> 00:05:21.02
+to make a call to our backend rest API.
+
+96
+00:05:21.02 --> 00:05:24.01
+But for now, let's just use console log
+
+97
+00:05:24.01 --> 00:05:28.03
+to log the value.
+
+98
+00:05:28.03 --> 00:05:31.05
+Let's make sure our interface is declared
+
+99
+00:05:31.05 --> 00:05:38.06
+outside our app component.
+
+100
+00:05:38.06 --> 00:05:40.08
+Okay, then let's save.
+
+101
+00:05:40.08 --> 00:05:45.05
+Next, let's head back
+into app.component.html.
+
+102
+00:05:45.05 --> 00:05:48.00
+Let's update our form to hook into
+
+103
+00:05:48.00 --> 00:05:49.05
+our AngularJS 2 logic.
+
+104
+00:05:49.05 --> 00:05:54.03
+First, let's add a form group
+to our form of room search.
+
+105
+00:05:54.03 --> 00:05:58.05
+Let's set the NG submit
+to the method on submit
+
+106
+00:05:58.05 --> 00:06:02.00
+passing in the room search object.
+
+107
+00:06:02.00 --> 00:06:05.04
+Next, let's update the input check-in
+
+108
+00:06:05.04 --> 00:06:09.01
+with a form control name
+also called check-in.
+
+109
+00:06:09.01 --> 00:06:11.05
+Okay, let's add the
+form control name field
+
+110
+00:06:11.05 --> 00:06:13.05
+to check-out.
+
+111
+00:06:13.05 --> 00:06:15.03
+Then let's save.
+
+112
+00:06:15.03 --> 00:06:18.01
+Looks like we got some errors importing
+
+113
+00:06:18.01 --> 00:06:20.02
+the reactive forms module.
+
+114
+00:06:20.02 --> 00:06:24.02
+It looks like I tried to import
+the reactive forms module
+
+115
+00:06:24.02 --> 00:06:30.04
+from http when I should've
+imported it from forms.
+
+116
+00:06:30.04 --> 00:06:32.06
+Let's save our changes and it looks like
+
+117
+00:06:32.06 --> 00:06:35.00
+that fixed the issue.
+
+118
+00:06:35.00 --> 00:06:38.02
+Okay, it looks like our
+changes were updated.
+
+119
+00:06:38.02 --> 00:06:40.08
+Let's test out the form.
+
+120
+00:06:40.08 --> 00:06:43.05
+Let's open up the inspect
+window by right-clicking
+
+121
+00:06:43.05 --> 00:06:47.02
+on the background and clicking on inspect.
+
+122
+00:06:47.02 --> 00:06:50.09
+Then, let's click on the console tab.
+
+123
+00:06:50.09 --> 00:06:54.03
+Let's test out our form
+by clicking on submit.
+
+124
+00:06:54.03 --> 00:06:56.09
+As you could see, we submitted the object
+
+125
+00:06:56.09 --> 00:07:00.08
+containing the fields
+check-in and check-out.
+
+126
+00:07:00.08 --> 00:07:04.06
+Which was logged out of app.component.ts.
+
+127
+00:07:04.06 --> 00:07:07.00
+So it looks like our
+form's working correctly.
+
+128
+00:07:07.00 --> 00:07:10.03
+So in this case, we used a reactive form.
+
+129
+00:07:10.03 --> 00:07:13.05
+In AngularJS 2 you have an option to use
+
+130
+00:07:13.05 --> 00:07:17.02
+a template driven form or reactive forms.
+
+131
+00:07:17.02 --> 00:07:19.05
+Template driven forms
+are generally simpler
+
+132
+00:07:19.05 --> 00:07:21.08
+and require less Javascript.
+
+133
+00:07:21.08 --> 00:07:25.02
+Reactive forms are much
+easier to unit test
+
+134
+00:07:25.02 --> 00:07:27.06
+because they are model driven.
+
+135
+00:07:27.06 --> 00:07:29.04
+You could test a reactive form
+
+136
+00:07:29.04 --> 00:07:33.01
+using a unit testing
+framework such as Karma.
+
+137
+00:07:33.01 --> 00:07:36.01
+Testing a template
+driven form would require
+
+138
+00:07:36.01 --> 00:07:40.02
+a end-to-end testing
+framework such as Selenium.
+

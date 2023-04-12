@@ -1,0 +1,279 @@
+1
+00:00:01,710 --> 00:00:02,400
+Welcome back.
+
+2
+00:00:02,910 --> 00:00:10,830
+Let's talk about the second point of making a progressive Web app and probably the cutest little icon
+
+3
+00:00:10,860 --> 00:00:15,000
+that I'm going to have in discourse, the app manifest.
+
+4
+00:00:16,220 --> 00:00:24,080
+Now, for a progressive Web app to behave like a native app, we need to mimic not just the function
+
+5
+00:00:24,080 --> 00:00:31,340
+of a native app, but also some of the views that we get with it or the shell.
+
+6
+00:00:31,880 --> 00:00:38,270
+For example, on your phone, you can download an app and have an app icon on Android devices.
+
+7
+00:00:38,270 --> 00:00:40,550
+You have things such as splash screens.
+
+8
+00:00:40,910 --> 00:00:44,810
+The idea is to make the Web app as indistinguishable.
+
+9
+00:00:45,800 --> 00:00:48,980
+As possible to a real mobile app.
+
+10
+00:00:50,480 --> 00:00:56,150
+And we can do that with the app manifest before we get into it, though, the one thing I do want to
+
+11
+00:00:56,150 --> 00:00:56,630
+point.
+
+12
+00:00:57,670 --> 00:01:08,020
+Is that a lot of people forget to include in their index file this line over here and this comes out
+
+13
+00:01:08,020 --> 00:01:12,490
+of the box with a react up, you can see that I'm in the public index folder.
+
+14
+00:01:13,000 --> 00:01:20,020
+And this line, which is the meta tag with viewport, optimises the app for multiple devices.
+
+15
+00:01:20,570 --> 00:01:25,390
+And this might seem super obvious, but a lot of people forget it.
+
+16
+00:01:25,480 --> 00:01:31,750
+And this line helps with adjusting the screen size based on the device.
+
+17
+00:01:32,780 --> 00:01:39,330
+So this is a must and it will warn you if you're missing this line in the Lighthouse report.
+
+18
+00:01:40,250 --> 00:01:47,060
+So now that we have the screen set up for mobile devices, let's talk about the app manifest file.
+
+19
+00:01:47,480 --> 00:01:54,290
+And as you can see in our public folder, again, this is something that we get for free from Creative
+
+20
+00:01:54,290 --> 00:01:54,830
+Reactive.
+
+21
+00:01:56,030 --> 00:02:00,290
+And this is it, this is the manifest Dodgson file.
+
+22
+00:02:01,370 --> 00:02:08,120
+It's a simple JSON file that gives the developers the ability to control how the app should appear to
+
+23
+00:02:08,120 --> 00:02:14,360
+the user in areas where they would expect to see apps such as the mobile device homescreen.
+
+24
+00:02:15,790 --> 00:02:20,860
+And just define how the app is going to launch and how it's going to look.
+
+25
+00:02:21,550 --> 00:02:29,230
+So if you remember in my example over here with this Hacker News app, we had the add to home screen
+
+26
+00:02:29,230 --> 00:02:31,210
+button in the application tab.
+
+27
+00:02:32,110 --> 00:02:37,600
+And you might have noticed that we actually clicked on this thing called Manifest and the application,
+
+28
+00:02:37,990 --> 00:02:40,900
+and that's the manifest dot JSON file.
+
+29
+00:02:42,930 --> 00:02:50,520
+The browser reads this and spits out this little piece of information for us, and if I scroll down,
+
+30
+00:02:50,520 --> 00:02:54,570
+you see that I have icons here that get downloaded.
+
+31
+00:02:56,550 --> 00:03:03,240
+Just like I did for when I downloaded it onto my home screen, and this is the icon that you'll see
+
+32
+00:03:03,240 --> 00:03:10,890
+when you download this app on your mobile phone, and it also gives us this nice little feature to add
+
+33
+00:03:11,250 --> 00:03:12,240
+to homescreen.
+
+34
+00:03:13,770 --> 00:03:16,630
+So this is the app manifest fall and what it does.
+
+35
+00:03:17,460 --> 00:03:20,160
+Now, how do we generate these icons?
+
+36
+00:03:21,390 --> 00:03:26,580
+We see over here that create react AB has generated a Vatican.
+
+37
+00:03:27,600 --> 00:03:29,280
+In the public folder.
+
+38
+00:03:30,300 --> 00:03:32,800
+But we're missing a few things, aren't we?
+
+39
+00:03:32,970 --> 00:03:40,140
+We don't have all these other sized icons for mobile phones because we still need to generate them for
+
+40
+00:03:40,140 --> 00:03:40,710
+our app.
+
+41
+00:03:41,070 --> 00:03:43,170
+And you can see here that they have different sizes.
+
+42
+00:03:44,210 --> 00:03:48,320
+Based on whichever device this gets downloaded on.
+
+43
+00:03:49,990 --> 00:03:54,100
+Luckily for us, there's a great tool that does this very nicely and easily.
+
+44
+00:03:55,220 --> 00:03:56,420
+It's called real.
+
+45
+00:03:57,460 --> 00:03:58,930
+Taddiken generator.
+
+46
+00:04:00,520 --> 00:04:03,850
+And this all we need to do is provide an image.
+
+47
+00:04:05,090 --> 00:04:13,610
+Such as an image of a robot by just clicking on Select Fabricant picture and it will take you through
+
+48
+00:04:13,610 --> 00:04:21,530
+the steps to download these and all we need to do is include them in our public folder, just like the
+
+49
+00:04:21,530 --> 00:04:26,580
+fabric on icon laws and reference them in the manifest DOT JSA.
+
+50
+00:04:27,260 --> 00:04:33,140
+And don't worry, this is exactly where we're going to do in our exercise to turn our robo friends up
+
+51
+00:04:33,380 --> 00:04:35,720
+into a progressive web app.
+
+52
+00:04:36,350 --> 00:04:46,160
+Another thing that this website does for us is previewing and customizing the splash screen for our
+
+53
+00:04:46,160 --> 00:04:46,910
+manifest file.
+
+54
+00:04:48,040 --> 00:04:50,080
+Now, what is a splash screen?
+
+55
+00:04:51,490 --> 00:04:58,990
+In older versions of Chrome for Android tapping on the home screen, icon for an app would often take
+
+56
+00:04:58,990 --> 00:05:06,730
+up to a couple of hundred milliseconds before that screen gets loaded, a user would see a white screen.
+
+57
+00:05:07,830 --> 00:05:15,170
+Which makes the experience a little bit jarring and it looks like the website is loading really slow,
+
+58
+00:05:15,900 --> 00:05:20,400
+so Chrome forty seven and above support this idea of a splash screen.
+
+59
+00:05:21,350 --> 00:05:28,640
+Where you can add a background color when you tap on the app, the progressive Web app, instead of
+
+60
+00:05:28,640 --> 00:05:32,540
+loading the white screen, it's going to load something called a splash screen.
+
+61
+00:05:33,480 --> 00:05:40,650
+Where l have the background color, the name and icon of the web, and it will get that all from our
+
+62
+00:05:40,650 --> 00:05:42,360
+manifest JSON file.
+
+63
+00:05:43,200 --> 00:05:50,580
+And this is all done simply to make your webapp feel a lot closer to what you see with native apps when
+
+64
+00:05:50,580 --> 00:05:55,860
+you click on native apps, even if they're loading, they have some sort of a background and icon to
+
+65
+00:05:55,860 --> 00:05:57,150
+show you that it is loading.
+
+66
+00:05:58,150 --> 00:06:01,270
+Overall, though, that's it, that's pretty simple, right?
+
+67
+00:06:01,450 --> 00:06:06,590
+All we need is some icons and add them to manifest that JSA.
+
+68
+00:06:08,360 --> 00:06:09,140
+That's it for now.
+
+69
+00:06:09,440 --> 00:06:10,410
+I'll see you in the next one.
+
+70
+00:06:11,150 --> 00:06:11,540
+Bye bye.

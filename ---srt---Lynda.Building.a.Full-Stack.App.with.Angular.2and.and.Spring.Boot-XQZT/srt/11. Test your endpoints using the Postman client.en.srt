@@ -1,0 +1,189 @@
+1
+00:00:00.05 --> 00:00:01.09
+- [Instructor] Next, let's download
+
+2
+00:00:01.09 --> 00:00:04.00
+an application called Postman.
+
+3
+00:00:04.00 --> 00:00:07.00
+Postman is a GUI tool
+to make API development
+
+4
+00:00:07.00 --> 00:00:08.05
+faster and easier.
+
+5
+00:00:08.05 --> 00:00:10.07
+It can help you test, document,
+
+6
+00:00:10.07 --> 00:00:12.09
+and share your API endpoints.
+
+7
+00:00:12.09 --> 00:00:17.07
+In a browser, let's
+navigate to getpostman.com
+
+8
+00:00:17.07 --> 00:00:19.07
+Click on the MacOS button,
+
+9
+00:00:19.07 --> 00:00:23.04
+to download the app for macOS.
+
+10
+00:00:23.04 --> 00:00:26.04
+Let's navigate to the Downloaded file,
+
+11
+00:00:26.04 --> 00:00:28.02
+Extract the application,
+
+12
+00:00:28.02 --> 00:00:32.01
+and let's Add it to our
+Applications Directory.
+
+13
+00:00:32.01 --> 00:00:35.02
+Then, let's Double click
+on the Application.
+
+14
+00:00:35.02 --> 00:00:37.04
+The first time you install Postman,
+
+15
+00:00:37.04 --> 00:00:40.06
+you may be prompted to create an account.
+
+16
+00:00:40.06 --> 00:00:42.01
+On the left-hand side,
+
+17
+00:00:42.01 --> 00:00:44.07
+you will see a section called collections.
+
+18
+00:00:44.07 --> 00:00:47.01
+Let's click into the Collections tab,
+
+19
+00:00:47.01 --> 00:00:50.01
+and then click on the
+Add Collection button.
+
+20
+00:00:50.01 --> 00:00:52.04
+Let's name it Reservation.
+
+21
+00:00:52.04 --> 00:00:54.07
+Then, click Create.
+
+22
+00:00:54.07 --> 00:00:58.03
+Navigate to the field
+called Enter Request URL.
+
+23
+00:00:58.03 --> 00:01:10.02
+Enter in
+http://localhost8080/room/reservation/v1,
+
+24
+00:01:10.02 --> 00:01:15.07
+and then add the parameter
+checkin, and let's set it to
+
+25
+00:01:15.07 --> 00:01:23.08
+2017-03-18, then Add a
+second parameter, Checkout,
+
+26
+00:01:23.08 --> 00:01:31.08
+and let's set it to 2017-03-20.
+
+27
+00:01:31.08 --> 00:01:35.05
+On the right-hand side, let's
+navigate to the Save button,
+
+28
+00:01:35.05 --> 00:01:39.02
+and click on the Dropdown,
+and click Save As.
+
+29
+00:01:39.02 --> 00:01:41.08
+Let's clear out the Request Name field.
+
+30
+00:01:41.08 --> 00:01:48.03
+Let's name the request Get
+available room reservations.
+
+31
+00:01:48.03 --> 00:01:52.08
+Then, let's Save it to the
+existing collection Reservation.
+
+32
+00:01:52.08 --> 00:01:53.09
+And click Save.
+
+33
+00:01:53.09 --> 00:01:57.04
+Next, let's make sure our
+application is running.
+
+34
+00:01:57.04 --> 00:01:59.05
+So let's go back to clips.
+
+35
+00:01:59.05 --> 00:02:02.05
+Click on the Root Project directory,
+
+36
+00:02:02.05 --> 00:02:05.05
+click Run As, Spring Boot App.
+
+37
+00:02:05.05 --> 00:02:08.06
+Okay, so now that our
+application is started,
+
+38
+00:02:08.06 --> 00:02:10.04
+let's head back to Postman.
+
+39
+00:02:10.04 --> 00:02:13.09
+Let's click on the Get
+available room reservations
+
+40
+00:02:13.09 --> 00:02:15.09
+request, and click Send.
+
+41
+00:02:15.09 --> 00:02:19.07
+You should notice the status
+code is equal to 200OK,
+
+42
+00:02:19.07 --> 00:02:21.05
+and in the request body,
+
+43
+00:02:21.05 --> 00:02:24.06
+we have a empty reservation response.
+

@@ -1,0 +1,299 @@
+1
+00:00:00,830 --> 00:00:01,850
+Welcome back, everyone.
+
+2
+00:00:02,480 --> 00:00:08,390
+In this video, we are going to start working on actually bringing some products into our application.
+
+3
+00:00:08,780 --> 00:00:14,900
+And also being able to take those products and start adding them into our cart.
+
+4
+00:00:15,470 --> 00:00:16,670
+We haven't built the cart.
+
+5
+00:00:16,850 --> 00:00:18,120
+We haven't built the shop.
+
+6
+00:00:18,140 --> 00:00:19,370
+We don't even have products.
+
+7
+00:00:19,580 --> 00:00:24,920
+But throughout the next series of videos is where we will start tackling that with all of the information
+
+8
+00:00:24,920 --> 00:00:29,780
+and knowledge that we've learned so far and then flexing them so that we can actually start fleshing
+
+9
+00:00:29,780 --> 00:00:34,440
+out and building some really useful and interesting features to begin with.
+
+10
+00:00:34,460 --> 00:00:35,990
+Let's go back to our application.
+
+11
+00:00:36,920 --> 00:00:43,790
+Here, before we begin with putting any products inside of our database, it's easier if we just mock
+
+12
+00:00:43,790 --> 00:00:48,170
+this data inside of our actual code base directly.
+
+13
+00:00:48,860 --> 00:00:54,710
+So what I'm actually going to do is I'm going to make a new file in the source folder called shot data.
+
+14
+00:00:56,080 --> 00:00:56,850
+Dodgson.
+
+15
+00:00:58,110 --> 00:01:04,980
+And inside what I want you to do is copy the shop data, JSON file from your resources folder and paste
+
+16
+00:01:04,980 --> 00:01:05,580
+it in here.
+
+17
+00:01:06,300 --> 00:01:11,610
+It's really just an array that contains some hats, and it's a pretty simple structure.
+
+18
+00:01:11,700 --> 00:01:16,050
+There's an ID, there's a name, there's an image URL, and then there's a price.
+
+19
+00:01:17,180 --> 00:01:24,950
+These are really what we're going to use to populate out a baseline for our actual shop page and then
+
+20
+00:01:24,950 --> 00:01:28,730
+from there we can start actually moving them and reconfiguring them.
+
+21
+00:01:29,150 --> 00:01:34,310
+But what I want to do first is just build in the key functionality before we start worrying about anything
+
+22
+00:01:34,310 --> 00:01:40,340
+more complicated to begin with, what I'm going to do is first set up a actual shop page.
+
+23
+00:01:40,970 --> 00:01:48,430
+So here inside of routes, I want to make a shop folder and inside I'm going to do shop component Dot
+
+24
+00:01:48,440 --> 00:01:49,130
+GSX.
+
+25
+00:01:50,000 --> 00:01:55,910
+The shop component is going to replace the current shop temporary component that we've been using.
+
+26
+00:01:57,370 --> 00:01:59,170
+So as far as the shop component goes.
+
+27
+00:02:00,300 --> 00:02:02,430
+What is it really that it's going to be?
+
+28
+00:02:03,300 --> 00:02:08,910
+Well, if you think about it for now, at the very least, I just want to list out all of the different
+
+29
+00:02:08,910 --> 00:02:10,620
+products that are available.
+
+30
+00:02:10,950 --> 00:02:15,930
+So I'm going to say Konst Shop is equal to a functional component.
+
+31
+00:02:16,890 --> 00:02:22,920
+And what I need to do is I need to import in the actual shop data.
+
+32
+00:02:23,950 --> 00:02:26,290
+So I'm just going to directly import it first.
+
+33
+00:02:26,890 --> 00:02:33,250
+I'm going to say import shop data like this shop underscored data from.
+
+34
+00:02:34,170 --> 00:02:38,520
+And then let's go up to our actual JSON file.
+
+35
+00:02:41,490 --> 00:02:48,060
+Like so, so good thing for us is that with React, it's automatically going to import the entire JSON
+
+36
+00:02:48,060 --> 00:02:49,710
+file and then store it in this data.
+
+37
+00:02:49,980 --> 00:02:52,350
+So here you'll see that it just gives us the array.
+
+38
+00:02:54,020 --> 00:02:58,880
+Now, when I have this shop data, remember we're just going to try and optimize later.
+
+39
+00:02:59,270 --> 00:03:00,320
+I want to make a div.
+
+40
+00:03:01,200 --> 00:03:07,710
+And inside of this div, for now, all I'm going to do is just say shop data dot map.
+
+41
+00:03:08,950 --> 00:03:14,950
+Give me the product, and all I want you to do is just return back.
+
+42
+00:03:16,550 --> 00:03:17,000
+Div.
+
+43
+00:03:18,030 --> 00:03:19,320
+With an H1.
+
+44
+00:03:20,750 --> 00:03:27,830
+And inside of that one, I just want to use the actual title value or the name value, sorry.
+
+45
+00:03:28,460 --> 00:03:32,170
+So let's do it and then let's structure this off of the product.
+
+46
+00:03:34,100 --> 00:03:36,530
+So let's show the name.
+
+47
+00:03:37,860 --> 00:03:43,170
+And the reason we want the idea, of course, is because we need to provide a key for our map.
+
+48
+00:03:44,140 --> 00:03:48,430
+And then I'm going to export the shop as the default export.
+
+49
+00:03:49,740 --> 00:03:58,560
+And then inside of our app, Jess, I am going to replace this concert shop by importing in shop from
+
+50
+00:03:59,400 --> 00:04:04,950
+the roots slash shop slash shop component.
+
+51
+00:04:05,830 --> 00:04:08,140
+So now, as you can tell, it's the same name.
+
+52
+00:04:08,170 --> 00:04:09,220
+So it's still rendering.
+
+53
+00:04:09,970 --> 00:04:10,900
+We can save this.
+
+54
+00:04:11,800 --> 00:04:15,790
+Let's go back to our application and let's go to our shop, right?
+
+55
+00:04:16,480 --> 00:04:20,290
+And here we see that our data is rendering it awesome.
+
+56
+00:04:20,830 --> 00:04:22,420
+So we have all of our data in here.
+
+57
+00:04:23,140 --> 00:04:30,580
+Now what we want to do is we want to start thinking a little bit more about what it is that we want
+
+58
+00:04:30,580 --> 00:04:32,650
+to do with this shop data.
+
+59
+00:04:33,190 --> 00:04:40,750
+So when we think about an application, chances are the shop data is not going to be hardcoded into
+
+60
+00:04:40,750 --> 00:04:43,960
+the application, but we're doing it for now just to make sure everything works.
+
+61
+00:04:43,990 --> 00:04:45,100
+We're just marking that data.
+
+62
+00:04:45,910 --> 00:04:50,590
+Eventually, that shop data is probably going to live in our Firebase fire store.
+
+63
+00:04:51,250 --> 00:04:58,090
+So what we need to do is we need some way of being able to fetch those products down from our outside
+
+64
+00:04:58,090 --> 00:05:04,360
+third party API, and then we want to be able to access it in these different components that need them.
+
+65
+00:05:05,430 --> 00:05:10,410
+Now, doesn't that sound a little familiar to us this concept of storing this data somewhere?
+
+66
+00:05:11,410 --> 00:05:18,700
+So what we can do is we can start setting up the actual storage using react context rather than starting
+
+67
+00:05:18,700 --> 00:05:25,750
+to actually set up the call for the data, just as we did with the user context.
+
+68
+00:05:25,960 --> 00:05:32,530
+We actually set up the actual storage first before we started actually setting up the separate call
+
+69
+00:05:32,530 --> 00:05:33,190
+for that data.
+
+70
+00:05:33,460 --> 00:05:34,540
+So we want to do the same thing.
+
+71
+00:05:35,260 --> 00:05:43,120
+So my challenge to you is to actually build out a similar set up of context using the products so you
+
+72
+00:05:43,120 --> 00:05:49,750
+can call it product context or products, plural context, and then just set it up and make sure that
+
+73
+00:05:49,750 --> 00:05:53,290
+all you're doing is you're using you state in a similar way.
+
+74
+00:05:53,770 --> 00:05:56,800
+But what you're setting is this default shop data.
+
+75
+00:05:57,220 --> 00:06:00,250
+So try that out yourself and then let's do it together in the next video.

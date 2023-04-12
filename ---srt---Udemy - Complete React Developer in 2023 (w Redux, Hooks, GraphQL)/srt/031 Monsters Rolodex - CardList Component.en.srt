@@ -1,0 +1,411 @@
+1
+00:00:00,600 --> 00:00:01,710
+Welcome back, everyone.
+
+2
+00:00:02,550 --> 00:00:08,970
+So let's actually start moving this cardless section of our code into this cardless folder.
+
+3
+00:00:09,540 --> 00:00:11,310
+So let's talk about the file.
+
+4
+00:00:12,000 --> 00:00:15,240
+What we need to make is we need to make a component file.
+
+5
+00:00:15,780 --> 00:00:19,920
+So here I'm going to say card list dot component.
+
+6
+00:00:21,070 --> 00:00:21,970
+Dodgy sex.
+
+7
+00:00:23,850 --> 00:00:29,310
+Now, depending on your project or depending on the files you look at when you are out there reading
+
+8
+00:00:29,310 --> 00:00:35,700
+other React projects, you may see that this file is called instead indexed.
+
+9
+00:00:36,030 --> 00:00:38,460
+Yes, inside of a cardless folder.
+
+10
+00:00:39,370 --> 00:00:41,560
+You may also just see card list.
+
+11
+00:00:43,070 --> 00:00:43,870
+Dodgy assets.
+
+12
+00:00:44,970 --> 00:00:47,650
+All of these are valid ways of naming a file.
+
+13
+00:00:47,760 --> 00:00:52,650
+It's just how you decide to do it for your project or how your senior architect decides to do it for
+
+14
+00:00:52,650 --> 00:00:55,620
+your project so that it's easy to navigate.
+
+15
+00:00:56,310 --> 00:01:01,980
+Personally, I like cardless stock component because it's very clear to me when I'm searching through
+
+16
+00:01:01,980 --> 00:01:04,740
+files using the global search function.
+
+17
+00:01:05,160 --> 00:01:09,930
+What I'm looking for, I can just say I want the card list and I know it's a component.
+
+18
+00:01:11,250 --> 00:01:16,230
+Now you might be wondering, well, isn't it inside of the component folder, as long as you find the
+
+19
+00:01:16,230 --> 00:01:20,370
+Karlis file inside of the component folder, isn't that going to be the file?
+
+20
+00:01:21,030 --> 00:01:26,490
+The problem with this is that there may be numerous files inside of the card list that are all related
+
+21
+00:01:26,490 --> 00:01:27,780
+to the component.
+
+22
+00:01:28,050 --> 00:01:29,630
+This might include styling files.
+
+23
+00:01:29,640 --> 00:01:31,080
+This might include test files.
+
+24
+00:01:31,090 --> 00:01:33,510
+This might include a plethora of other things.
+
+25
+00:01:33,720 --> 00:01:39,750
+Again, depending on how you architecture applications, folder structure, for me personally, this
+
+26
+00:01:39,750 --> 00:01:41,190
+is the way that I prefer to do it.
+
+27
+00:01:41,370 --> 00:01:43,950
+And it's really easy for me to search and this is what I prefer.
+
+28
+00:01:44,280 --> 00:01:47,550
+So this is my justification for why I named my files this way.
+
+29
+00:01:48,090 --> 00:01:53,280
+This actually, I picked this up when I was coding on angular projects of Angular has this type of naming
+
+30
+00:01:53,280 --> 00:01:58,230
+convention, and I thought this was a really great way of navigating through files, and I've just kept
+
+31
+00:01:58,230 --> 00:02:00,210
+it and moved it into my rack project.
+
+32
+00:02:01,460 --> 00:02:08,420
+So here inside of our cardless component file, what we need to do is we need to bring in the relevant
+
+33
+00:02:08,420 --> 00:02:13,520
+component, which is again our class component that we get from React.
+
+34
+00:02:14,030 --> 00:02:17,510
+So we're still writing our class components even for our cardless component.
+
+35
+00:02:18,260 --> 00:02:21,320
+You might be wondering, well, you well, what about functional components?
+
+36
+00:02:21,620 --> 00:02:26,630
+We'll learn about functional components and how to convert this whole master's Rolodex application over
+
+37
+00:02:26,630 --> 00:02:29,330
+to functional components once we finish with our class components.
+
+38
+00:02:29,600 --> 00:02:33,860
+Right now, I still think class components is the best way to really learn about them to begin with
+
+39
+00:02:33,860 --> 00:02:35,510
+because you will see them in projects.
+
+40
+00:02:35,930 --> 00:02:42,320
+And also, it's easier to understand how React does rendering and the concept of rendering overall class
+
+41
+00:02:42,320 --> 00:02:45,710
+components to me are just the most clear again because of those lifecycle methods.
+
+42
+00:02:46,430 --> 00:02:53,240
+So here what we want to do is we want to initialize this card list component, as we did with our app
+
+43
+00:02:53,720 --> 00:02:57,830
+and as we saw, we want to extend our component.
+
+44
+00:03:00,280 --> 00:03:05,800
+And then once we have this, what we want to do now is just render something just so that we can make
+
+45
+00:03:05,800 --> 00:03:07,060
+sure that our component is working.
+
+46
+00:03:07,630 --> 00:03:10,720
+So what I'm going to return is a div.
+
+47
+00:03:11,630 --> 00:03:13,280
+And inside of this do.
+
+48
+00:03:14,590 --> 00:03:17,210
+I wanted to say hello.
+
+49
+00:03:17,350 --> 00:03:20,020
+I'm the cardless component.
+
+50
+00:03:21,300 --> 00:03:22,470
+So let's just save this.
+
+51
+00:03:23,220 --> 00:03:26,040
+And what we need to do is we need to export this.
+
+52
+00:03:26,460 --> 00:03:28,050
+So I want a default export this.
+
+53
+00:03:29,240 --> 00:03:37,040
+And what exporting does is it allows other files to import the code that you write inside of it outside.
+
+54
+00:03:37,760 --> 00:03:42,770
+So this way, what I'm saying is that, hey, I've got this class card list and I want you to export
+
+55
+00:03:42,770 --> 00:03:47,270
+it by default, meaning that if they don't try to disk structure from the file in order to access other
+
+56
+00:03:47,270 --> 00:03:52,490
+things by default, give them whatever this is, which is our cardless class component.
+
+57
+00:03:53,430 --> 00:03:57,750
+So then what I'm going to do, I'm going to go into OPG's and I'm now, I'm going to import it like
+
+58
+00:03:57,750 --> 00:03:58,050
+so.
+
+59
+00:03:58,200 --> 00:04:00,660
+So I'm going to import cardless from.
+
+60
+00:04:02,060 --> 00:04:08,390
+I'm going to go up to the components file, into the cardless folder, into the cardless component file,
+
+61
+00:04:09,110 --> 00:04:11,000
+and now we have access to this component.
+
+62
+00:04:11,480 --> 00:04:16,850
+And as I mentioned, we can use these components the same way that we use any other of these components
+
+63
+00:04:16,850 --> 00:04:20,870
+input device, they're all components, except now we have card list.
+
+64
+00:04:22,190 --> 00:04:27,020
+So one quick thing to note, all of the components that you write, unlike these other components that
+
+65
+00:04:27,020 --> 00:04:29,390
+react has given us that resemble the HDMI tax.
+
+66
+00:04:30,110 --> 00:04:33,770
+Ours must always be cables as the first letter.
+
+67
+00:04:33,980 --> 00:04:38,720
+So it's camel case in the sense that every subsequent word needs to also be capitalized.
+
+68
+00:04:38,730 --> 00:04:41,300
+But the very first letter also needs to be capitalized.
+
+69
+00:04:41,330 --> 00:04:47,450
+This is how REAC can see, Oh, this is a component that is made by the actual developer.
+
+70
+00:04:48,020 --> 00:04:51,140
+So now that we have our cardless, let's just save and see what we see.
+
+71
+00:04:53,340 --> 00:04:55,500
+So inside we see this is our component.
+
+72
+00:04:55,530 --> 00:05:00,330
+Hello, I'm the cardless component, so we know our car list is working and it's rendering onto the
+
+73
+00:05:00,330 --> 00:05:00,690
+page.
+
+74
+00:05:01,140 --> 00:05:07,740
+Now, before we proceed any further, I want to highlight one thing about components inside of our components.
+
+75
+00:05:07,740 --> 00:05:10,830
+So far, we have returned one element.
+
+76
+00:05:11,430 --> 00:05:18,020
+And what I mean by one element is the sense that even though our components might have a lot of similar
+
+77
+00:05:18,060 --> 00:05:20,910
+inside of them, this component is just one div.
+
+78
+00:05:21,240 --> 00:05:27,540
+But you can imagine that if inside of this div, we had perhaps an H1 and.
+
+79
+00:05:28,710 --> 00:05:35,820
+Maybe as a sibling to this one, we had another div, let me just structure this, so it's more clear.
+
+80
+00:05:37,730 --> 00:05:43,220
+And maybe inside of this div, we have a p tag that has some text and there may be beside this.
+
+81
+00:05:43,220 --> 00:05:44,630
+We have some other components.
+
+82
+00:05:45,880 --> 00:05:47,470
+This is all perfectly valid.
+
+83
+00:05:47,710 --> 00:05:53,800
+But the thing to remember is that technically this is all encapsulated in one parental component or
+
+84
+00:05:53,800 --> 00:05:55,150
+parental HTML tag.
+
+85
+00:05:55,990 --> 00:06:02,200
+This is an important thing to remember because all components must be just the one component or the
+
+86
+00:06:02,200 --> 00:06:05,620
+one the parent level holder html tag.
+
+87
+00:06:06,340 --> 00:06:09,550
+If you have siblings, this is actually going to give you an error.
+
+88
+00:06:09,940 --> 00:06:10,900
+You'll see that here.
+
+89
+00:06:11,410 --> 00:06:15,910
+All this is highlighted and I turned off highlighting because it gets annoying when I'm teaching and
+
+90
+00:06:15,910 --> 00:06:17,620
+you see all of the different text file.
+
+91
+00:06:18,160 --> 00:06:19,750
+But this is a very important thing to note.
+
+92
+00:06:20,820 --> 00:06:27,750
+You cannot have multiple different components at the same level returned from a component.
+
+93
+00:06:27,930 --> 00:06:30,240
+You must have one parent level component.
+
+94
+00:06:30,930 --> 00:06:36,660
+Now there are some ways around this which I'll show you in a later lesson when we talk about more,
+
+95
+00:06:36,930 --> 00:06:39,510
+I guess, complicated ways of rendering different components.
+
+96
+00:06:39,780 --> 00:06:45,060
+But for now, this is a very good rule of thumb is that when you return a component, make sure that
+
+97
+00:06:45,060 --> 00:06:48,510
+there's only one top level component that you're returning.
+
+98
+00:06:49,620 --> 00:06:50,700
+So now again.
+
+99
+00:06:51,790 --> 00:06:53,950
+We understand that our cardless component is rendering.
+
+100
+00:06:54,160 --> 00:06:55,930
+We've put it into its own file.
+
+101
+00:06:56,320 --> 00:07:01,810
+What we need to do now is get the monsters that we had before into this component, and we're going
+
+102
+00:07:01,810 --> 00:07:06,850
+to do that using props, which is going to be a new topic with our components.
+
+103
+00:07:07,000 --> 00:07:09,100
+And that's what we'll cover in the next lesson.

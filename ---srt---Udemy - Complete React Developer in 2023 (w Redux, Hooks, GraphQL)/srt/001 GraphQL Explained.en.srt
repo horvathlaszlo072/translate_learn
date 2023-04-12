@@ -1,0 +1,287 @@
+1
+00:00:01,010 --> 00:00:02,900
+Hello, everyone, and welcome back.
+
+2
+00:00:03,680 --> 00:00:07,070
+In this video, we are going to learn about GraphQL.
+
+3
+00:00:08,020 --> 00:00:16,270
+GraphQL is a Facebook created querying language which allows us to ask for data from our backends.
+
+4
+00:00:17,050 --> 00:00:24,370
+Generally speaking, it's actually very simple when it comes to the actual top level view of GraphQL.
+
+5
+00:00:25,150 --> 00:00:30,010
+The part where it gets a little complicated is getting used to the syntax of GraphQL.
+
+6
+00:00:30,220 --> 00:00:36,730
+But first, let's start with the high level concept of how GraphQL works and then how your frontend
+
+7
+00:00:36,730 --> 00:00:38,860
+will interact with a GraphQL backend.
+
+8
+00:00:39,710 --> 00:00:40,400
+To begin.
+
+9
+00:00:40,520 --> 00:00:43,970
+Remember, we have our front end and we have our back end server.
+
+10
+00:00:44,720 --> 00:00:51,290
+And as we typically know, with most back ends, they usually have these routes that are exposed that
+
+11
+00:00:51,290 --> 00:00:55,520
+allow us to make requests to these routes or end points.
+
+12
+00:00:55,820 --> 00:00:57,320
+Those are interchangeable terms.
+
+13
+00:00:58,320 --> 00:01:03,540
+Where our front end will make a request to one of these end points, let's say two slash products.
+
+14
+00:01:03,840 --> 00:01:10,890
+And when we make this request most likely a get request, we will get back a response from that endpoint.
+
+15
+00:01:11,100 --> 00:01:13,530
+For a list of products.
+
+16
+00:01:14,490 --> 00:01:19,200
+These products will usually come in the format that the back end has them stored it.
+
+17
+00:01:19,830 --> 00:01:24,810
+So if there is an ID, if there is a name, then we'll get all of those properties.
+
+18
+00:01:25,470 --> 00:01:31,410
+Now, if there's more, such as there is a price, there is a currency, then we still will get all
+
+19
+00:01:31,410 --> 00:01:34,230
+of those fields, the back end stores, the data.
+
+20
+00:01:34,710 --> 00:01:39,990
+Generally speaking, when it sends back the response, it sends back whatever data the back end wants
+
+21
+00:01:39,990 --> 00:01:40,710
+to send back.
+
+22
+00:01:41,040 --> 00:01:42,990
+Maybe the back end will limit that data.
+
+23
+00:01:43,140 --> 00:01:44,010
+Maybe it won't.
+
+24
+00:01:44,430 --> 00:01:51,600
+At the end of the day, the back end is what determines what is inside of that data that you are requesting.
+
+25
+00:01:52,140 --> 00:01:57,570
+This is a very common pattern and has been around for as long as robust APIs have been a thing.
+
+26
+00:01:59,290 --> 00:02:05,830
+This is where graph Q well is different with graph you are instead of having multiple endpoints that
+
+27
+00:02:05,830 --> 00:02:07,000
+you make requests for.
+
+28
+00:02:07,570 --> 00:02:09,850
+There is just one endpoint.
+
+29
+00:02:10,150 --> 00:02:17,140
+The graph you are endpoints and with this endpoints your front end makes a request, but the request
+
+30
+00:02:17,170 --> 00:02:20,350
+will take the form of a object.
+
+31
+00:02:21,040 --> 00:02:26,290
+So technically you can see it as a graph queue well object or you can see it as a query.
+
+32
+00:02:26,500 --> 00:02:32,620
+But the whole idea is that the front end is going to send in the request, a blob that has essentially
+
+33
+00:02:32,620 --> 00:02:36,650
+all of the rules of what it wants from the graph you are back in.
+
+34
+00:02:37,300 --> 00:02:43,240
+So if you want to query some data, we will send a query request and the query request will hold the
+
+35
+00:02:43,240 --> 00:02:47,350
+shape of what looks like an object where we will define what we're looking for.
+
+36
+00:02:48,340 --> 00:02:55,330
+Now let's imagine that in our back end we had this data set which was known as collections, and the
+
+37
+00:02:55,330 --> 00:03:01,690
+collections is just all of our products, which is pretty much in our Firebase, what our categories
+
+38
+00:03:01,690 --> 00:03:01,930
+is.
+
+39
+00:03:02,560 --> 00:03:08,350
+So let's say we want the collections, we would define once again another object shape.
+
+40
+00:03:08,590 --> 00:03:13,900
+And here you would put all of the keys that you want as part of your collections.
+
+41
+00:03:14,320 --> 00:03:17,230
+So let's say we just want the ID and we want the title.
+
+42
+00:03:17,920 --> 00:03:24,040
+What happens now is that graphic you all takes that request, shape that blob essentially, and it will
+
+43
+00:03:24,040 --> 00:03:31,510
+send you back response where those fields will be the fields in the objects that get sent back to you
+
+44
+00:03:31,660 --> 00:03:33,280
+for what you're asking for.
+
+45
+00:03:33,760 --> 00:03:38,830
+So if we're asking for all the collections and we just say, Hey, I just want ID and title, then that's
+
+46
+00:03:38,830 --> 00:03:39,850
+all you're going to get back.
+
+47
+00:03:40,150 --> 00:03:46,420
+You're just going to get back a collection or an array of all of your collection objects where each
+
+48
+00:03:46,420 --> 00:03:50,080
+object is going to have just the ID and the title.
+
+49
+00:03:50,960 --> 00:03:52,820
+Now if we want to expand upon this.
+
+50
+00:03:53,060 --> 00:03:59,510
+So let's say we made another request, but this time with the collections, we also want the items inside
+
+51
+00:03:59,510 --> 00:03:59,750
+of it.
+
+52
+00:04:00,380 --> 00:04:04,850
+Now items is going to point to a different data table in the back end.
+
+53
+00:04:05,180 --> 00:04:11,480
+All you need to know is that the item stores an additional dataset where these items also have their
+
+54
+00:04:11,480 --> 00:04:14,010
+own shape, just as you might expect.
+
+55
+00:04:14,030 --> 00:04:19,760
+We also need to define from the items what properties we want inside of the items.
+
+56
+00:04:20,060 --> 00:04:24,320
+Let's say we want the I.D. we want the name and the price for each of these items.
+
+57
+00:04:24,890 --> 00:04:32,660
+Once again, GraphQL will take that query blob and it will send back where all the collections will
+
+58
+00:04:32,660 --> 00:04:34,910
+have its title and items.
+
+59
+00:04:35,270 --> 00:04:41,990
+But items will come back as an array where the inside values of each item will match the corresponding
+
+60
+00:04:41,990 --> 00:04:44,780
+keys that we passed into the items portion.
+
+61
+00:04:45,080 --> 00:04:46,970
+So we ask for ID, name and price.
+
+62
+00:04:47,250 --> 00:04:49,910
+We're going to get back ID name and price.
+
+63
+00:04:50,810 --> 00:04:52,850
+So this is how GraphQL works.
+
+64
+00:04:53,090 --> 00:05:00,320
+You can, in this sense, be the one on the front end that dictates what kind of data you want from
+
+65
+00:05:00,320 --> 00:05:03,770
+the back end, what shape you want from it, how you want it.
+
+66
+00:05:04,220 --> 00:05:07,220
+It's a lot more powerful for the frontend in this manner.
+
+67
+00:05:07,940 --> 00:05:14,930
+At the top level, once again, it's very simple and for us to actually start interacting with this,
+
+68
+00:05:14,930 --> 00:05:20,960
+we're going to need to actually practice writing inside of this query language because again, it takes
+
+69
+00:05:20,960 --> 00:05:23,090
+a little getting used to with the syntax.
+
+70
+00:05:24,070 --> 00:05:30,040
+So let's do that in the next video where I have rebuilt the backend for us inside of GraphQL so we can
+
+71
+00:05:30,040 --> 00:05:30,730
+start working with it.
+
+72
+00:05:31,210 --> 00:05:32,260
+I see in the next video.

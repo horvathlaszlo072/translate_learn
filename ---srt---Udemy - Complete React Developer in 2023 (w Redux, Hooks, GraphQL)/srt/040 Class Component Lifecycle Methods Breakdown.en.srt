@@ -1,0 +1,295 @@
+1
+00:00:00,590 --> 00:00:01,550
+Welcome back, everyone.
+
+2
+00:00:02,590 --> 00:00:08,470
+Before we move on to functional components, I want to quickly go over our class component rendering
+
+3
+00:00:08,470 --> 00:00:14,860
+and re rendering because we're relying on a lot of life cycles right now inside of our class components
+
+4
+00:00:14,860 --> 00:00:20,230
+that we need to now understand how a functional component replaces them.
+
+5
+00:00:20,560 --> 00:00:25,620
+So in order to understand that, we need to properly understand all of our life cycles.
+
+6
+00:00:25,660 --> 00:00:30,740
+Once again, we've gone over it a couple of times, but there's actually this great diagram here by
+
+7
+00:00:30,740 --> 00:00:38,800
+a white Ma who I will link inside of your resources folder that has shown this diagram where you can
+
+8
+00:00:38,800 --> 00:00:44,680
+see the breakdown of class components and the rendering and re rendering alongside lifecycles.
+
+9
+00:00:45,070 --> 00:00:47,680
+So let's go through the three most important phases.
+
+10
+00:00:48,490 --> 00:00:50,830
+Mounting, updating and mounting.
+
+11
+00:00:51,950 --> 00:00:57,890
+So when a component mounts, as we saw with a class component, we know it runs the constructor and
+
+12
+00:00:57,890 --> 00:00:59,570
+then it runs the render method.
+
+13
+00:01:00,020 --> 00:01:06,470
+At this point, after these have been called React, we'll update the DOM and in our particular case
+
+14
+00:01:06,470 --> 00:01:12,260
+with mounting it is updating the DOM by mounting our components for the first time.
+
+15
+00:01:12,800 --> 00:01:18,620
+And after that has mounted, then you will see component did mount as the lifecycle method that got
+
+16
+00:01:18,620 --> 00:01:19,700
+calls after.
+
+17
+00:01:20,300 --> 00:01:24,410
+This is all of our code inside of our current app class component.
+
+18
+00:01:24,590 --> 00:01:25,400
+Nothing new here.
+
+19
+00:01:26,150 --> 00:01:33,140
+What happened subsequently is with updating, as we see here, whenever new props come in or whenever
+
+20
+00:01:33,140 --> 00:01:36,560
+set state gets called, render gets called again.
+
+21
+00:01:36,770 --> 00:01:38,540
+This still aligns with what we know.
+
+22
+00:01:38,660 --> 00:01:43,520
+We remember logging out, render and whenever new props came in or sets take, it's called the render
+
+23
+00:01:43,520 --> 00:01:43,760
+method.
+
+24
+00:01:43,760 --> 00:01:44,330
+Get called.
+
+25
+00:01:44,570 --> 00:01:48,380
+Similarly, React will then update the DOM with the new UI.
+
+26
+00:01:48,650 --> 00:01:54,830
+And then there is actually another lifecycle method that you can hook into called component did update
+
+27
+00:01:55,370 --> 00:01:59,430
+so you can run some code inside of this after a re render happens.
+
+28
+00:01:59,450 --> 00:02:03,680
+Meaning when new prompts comes in sets, it gets called react as updated the DOM.
+
+29
+00:02:03,950 --> 00:02:06,590
+Then this method runs just like component did.
+
+30
+00:02:06,590 --> 00:02:09,140
+Mount runs after the Mount update.
+
+31
+00:02:10,490 --> 00:02:14,630
+There's also this force update method where you force the component to re render.
+
+32
+00:02:15,110 --> 00:02:18,590
+This is oftentimes not something you should be calling.
+
+33
+00:02:18,590 --> 00:02:22,430
+It's provided if you have to force your component to update.
+
+34
+00:02:22,820 --> 00:02:28,640
+But typically speaking, you want to rely on react and its component structure understanding when updates
+
+35
+00:02:28,640 --> 00:02:29,570
+are supposed to happen.
+
+36
+00:02:29,930 --> 00:02:32,270
+You should not necessarily always force an update.
+
+37
+00:02:32,540 --> 00:02:37,040
+This more so only happens when you're integrating with third party libraries that don't necessarily
+
+38
+00:02:37,040 --> 00:02:43,400
+have a React based library that hooks in and follows along with the typical update cycles.
+
+39
+00:02:43,880 --> 00:02:46,550
+Then you want to use force update if you have to.
+
+40
+00:02:46,760 --> 00:02:49,580
+But most of the time you just want to rely on what's provided.
+
+41
+00:02:50,710 --> 00:02:57,460
+Finally, there is un mounting, I'm mounting is just when you are taking a component off the page.
+
+42
+00:02:57,940 --> 00:03:03,250
+What this means is sometimes you're navigating to different pages or you're changing your UI where you
+
+43
+00:03:03,250 --> 00:03:05,680
+don't need a component on the page anymore.
+
+44
+00:03:06,100 --> 00:03:08,740
+React will be the one that takes that off the page.
+
+45
+00:03:08,950 --> 00:03:14,020
+And once it takes it off the page, it is now on mountain, so there's no longer existing on the page.
+
+46
+00:03:14,320 --> 00:03:20,920
+And before that happens, there is a component will unmount lifecycle method that runs before the component
+
+47
+00:03:20,920 --> 00:03:21,970
+is finally stripped off.
+
+48
+00:03:22,540 --> 00:03:27,760
+This is typically done when you need to clean up certain things when you think about this, for those
+
+49
+00:03:27,760 --> 00:03:28,610
+of you familiar.
+
+50
+00:03:28,630 --> 00:03:34,960
+This is where you might want to remove any listeners or anything that consumes memory by relying on
+
+51
+00:03:34,960 --> 00:03:37,630
+the component actually being alive.
+
+52
+00:03:38,110 --> 00:03:41,740
+This will run before you actually pull that off so you don't get any memory leaks.
+
+53
+00:03:42,100 --> 00:03:45,640
+We'll definitely talk about this because we will utilize some listeners.
+
+54
+00:03:45,640 --> 00:03:51,250
+If you're unfamiliar with the idea of an event listener or subscriptions, that's another way to think
+
+55
+00:03:51,250 --> 00:03:51,700
+about them.
+
+56
+00:03:51,700 --> 00:03:55,780
+If those you aren't familiar with, don't worry, we'll do them later in the capstone project.
+
+57
+00:03:55,780 --> 00:03:59,320
+But for now, this is mainly where you will do these types of things.
+
+58
+00:03:59,680 --> 00:04:03,160
+This is where you will utilize this lifecycle method on an unmount.
+
+59
+00:04:03,970 --> 00:04:11,830
+Now, this is unique to class components component in mount component IT update and component will unmount.
+
+60
+00:04:12,340 --> 00:04:20,650
+Functional components don't have these lifecycle methods, but they do still follow this same three
+
+61
+00:04:20,650 --> 00:04:22,450
+phases of components.
+
+62
+00:04:22,780 --> 00:04:27,580
+There is a mounting phase, there is an updating phase and there is a UN mounting phase.
+
+63
+00:04:27,790 --> 00:04:33,280
+The only difference is that you don't interact with these three phases the way that we do with the class
+
+64
+00:04:33,280 --> 00:04:38,400
+component where we override the constructor method, the render method component and mount component
+
+65
+00:04:38,410 --> 00:04:40,600
+and update component will unmount methods.
+
+66
+00:04:40,990 --> 00:04:45,730
+Those are what we were doing inside of our class component when whenever we wrote into our constructor
+
+67
+00:04:45,880 --> 00:04:51,020
+or our render or our component did mount lifecycle methods, functional components do not do this.
+
+68
+00:04:51,040 --> 00:04:57,880
+They are completely different, but they follow the exact same structure and that I want to make very
+
+69
+00:04:57,880 --> 00:04:58,270
+clear.
+
+70
+00:04:58,660 --> 00:05:05,170
+It's just that you have to think about how a functional component moves through these three phases based
+
+71
+00:05:05,170 --> 00:05:10,660
+on the concept of a function, and that is what we're going to cover when we dive into our functional
+
+72
+00:05:10,660 --> 00:05:11,170
+components.
+
+73
+00:05:11,710 --> 00:05:15,880
+So go over this chart whenever you need to really understand what's happening.
+
+74
+00:05:16,210 --> 00:05:20,380
+And once you do join me in the next video and let's dive into functional components.

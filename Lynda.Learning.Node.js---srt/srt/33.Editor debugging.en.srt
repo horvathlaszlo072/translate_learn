@@ -1,0 +1,371 @@
+1
+00:00:00.02 --> 00:00:01.07
+- [Instructor] In this
+video, we'll take a look
+
+2
+00:00:01.07 --> 00:00:03.08
+at some of the debugging features
+
+3
+00:00:03.08 --> 00:00:05.06
+that come with Visual Studio Code.
+
+4
+00:00:05.06 --> 00:00:07.05
+I do realize that some
+of you might not be using
+
+5
+00:00:07.05 --> 00:00:10.04
+the same editor, but if your
+editor does come with some
+
+6
+00:00:10.04 --> 00:00:12.09
+of the basic debug feature,
+
+7
+00:00:12.09 --> 00:00:14.05
+they should still be very similar,
+
+8
+00:00:14.05 --> 00:00:17.00
+and the concepts still should apply.
+
+9
+00:00:17.00 --> 00:00:20.08
+Up until now, we've been using
+nodemon to run our server.
+
+10
+00:00:20.08 --> 00:00:23.09
+Let's stop it, so I'll go into terminal,
+
+11
+00:00:23.09 --> 00:00:27.09
+and terminate that job by
+pressing ctrl + c in Windows.
+
+12
+00:00:27.09 --> 00:00:30.09
+Instead we'll be using the
+Visual Studio Code Debug Runner.
+
+13
+00:00:30.09 --> 00:00:33.09
+I'll click on the little
+bug icon on the left,
+
+14
+00:00:33.09 --> 00:00:35.09
+or you could hit ctrl + shift + d.
+
+15
+00:00:35.09 --> 00:00:38.05
+Now we can see a start debugging button.
+
+16
+00:00:38.05 --> 00:00:43.06
+If we hit Play, it will start
+our server GS in debug mode.
+
+17
+00:00:43.06 --> 00:00:45.04
+This gives us several tools.
+
+18
+00:00:45.04 --> 00:00:49.03
+Let's go over to our app
+post messages function
+
+19
+00:00:49.03 --> 00:00:52.08
+on line 27, and then let's
+add a break point on the tri.
+
+20
+00:00:52.08 --> 00:00:55.06
+Let's go back to our web
+app and post a new message.
+
+21
+00:00:55.06 --> 00:00:58.01
+You can see that a break
+point has been triggered.
+
+22
+00:00:58.01 --> 00:01:01.01
+We can now do things like
+see our local variables,
+
+23
+00:01:01.01 --> 00:01:02.08
+hover over any of the variables.
+
+24
+00:01:02.08 --> 00:01:09.09
+We can see our cull stack and trace it.
+
+25
+00:01:09.09 --> 00:01:12.04
+Then, we can just continue.
+
+26
+00:01:12.04 --> 00:01:15.03
+Next, let's post yet another message.
+
+27
+00:01:15.03 --> 00:01:19.04
+If we wanted to follow
+along as the code continues,
+
+28
+00:01:19.04 --> 00:01:21.09
+instead of pressing continue
+
+29
+00:01:21.09 --> 00:01:23.05
+which will just give us the end result
+
+30
+00:01:23.05 --> 00:01:27.02
+as we saw earlier which
+is our error exception,
+
+31
+00:01:27.02 --> 00:01:29.00
+we can step over.
+
+32
+00:01:29.00 --> 00:01:32.04
+This will take us line
+by line through our code,
+
+33
+00:01:32.04 --> 00:01:34.01
+and we can see where we end up.
+
+34
+00:01:34.01 --> 00:01:35.08
+In this case, the next
+line that gets executed
+
+35
+00:01:35.08 --> 00:01:39.05
+is the cache since the
+exception was thrown.
+
+36
+00:01:39.05 --> 00:01:44.00
+At this point, we'll send a status of 500.
+
+37
+00:01:44.00 --> 00:01:47.02
+Then, we'll console log an error.
+
+38
+00:01:47.02 --> 00:01:52.06
+Then, finally, we get
+to our finally block.
+
+39
+00:01:52.06 --> 00:01:53.07
+Let's try that one more time,
+
+40
+00:01:53.07 --> 00:01:57.04
+so we'll post yet another message.
+
+41
+00:01:57.04 --> 00:02:01.04
+This time we'll look at the debug console.
+
+42
+00:02:01.04 --> 00:02:04.08
+We have access to the
+current scope of our code,
+
+43
+00:02:04.08 --> 00:02:07.04
+so if I type in req for the request,
+
+44
+00:02:07.04 --> 00:02:09.09
+we can see the request is
+actually displayed here
+
+45
+00:02:09.09 --> 00:02:13.06
+as if we had console logged it.
+
+46
+00:02:13.06 --> 00:02:17.03
+We can do other things as
+well including execute code.
+
+47
+00:02:17.03 --> 00:02:25.01
+I could type in response.send and type hi.
+
+48
+00:02:25.01 --> 00:02:28.00
+Let's try it one more time.
+
+49
+00:02:28.00 --> 00:02:30.07
+I've restarted our debugger.
+
+50
+00:02:30.07 --> 00:02:34.04
+I will post a new message.
+
+51
+00:02:34.04 --> 00:02:36.08
+Once again the same
+break point will trigger.
+
+52
+00:02:36.08 --> 00:02:40.08
+This time let's look into stepping into.
+
+53
+00:02:40.08 --> 00:02:43.02
+The throw will cause us
+to step into the cache,
+
+54
+00:02:43.02 --> 00:02:45.05
+so that's no different than stepping over,
+
+55
+00:02:45.05 --> 00:02:49.02
+but now if we step into
+response.send status,
+
+56
+00:02:49.02 --> 00:02:53.05
+we'll actually end up in the
+code and function responsible
+
+57
+00:02:53.05 --> 00:02:56.00
+for sending the status.
+
+58
+00:02:56.00 --> 00:03:00.02
+Anytime we end up in a
+function and we step into it,
+
+59
+00:03:00.02 --> 00:03:04.08
+we'll go to that function in our code
+
+60
+00:03:04.08 --> 00:03:13.01
+whether it's code we
+created or code we're using.
+
+61
+00:03:13.01 --> 00:03:15.00
+For now, I'll go back to the top,
+
+62
+00:03:15.00 --> 00:03:17.02
+and I'll take off the break point.
+
+63
+00:03:17.02 --> 00:03:19.06
+Then, I'll take out
+the throw from line 30.
+
+64
+00:03:19.06 --> 00:03:22.01
+In the past as we've been
+developing our demo app,
+
+65
+00:03:22.01 --> 00:03:23.09
+there's been several
+occasions where we've used
+
+66
+00:03:23.09 --> 00:03:27.01
+a console log to test functionality
+
+67
+00:03:27.01 --> 00:03:30.00
+before we continue implementing
+the full functionality.
+
+68
+00:03:30.00 --> 00:03:32.03
+In those cases, it would
+have been good to use
+
+69
+00:03:32.03 --> 00:03:35.08
+the debug tools since we could
+have added a break point.
+
+70
+00:03:35.08 --> 00:03:38.03
+Instead of adding a
+console log, we can see
+
+71
+00:03:38.03 --> 00:03:40.07
+that we hit that break
+point are we getting there.
+
+72
+00:03:40.07 --> 00:03:44.03
+What values are we getting
+by hovering over them?
+
+73
+00:03:44.03 --> 00:03:46.01
+It gives us a lot more information
+
+74
+00:03:46.01 --> 00:03:48.09
+than the console log could ever give us.
+
+75
+00:03:48.09 --> 00:03:51.06
+There's also some nice add-ons
+from Visual Studio Code
+
+76
+00:03:51.06 --> 00:03:54.03
+that allow it to connect with the browser.
+
+77
+00:03:54.03 --> 00:03:59.02
+In that case, we could
+actually debug the java script
+
+78
+00:03:59.02 --> 00:04:01.07
+on our front end, and
+then it would communicate
+
+79
+00:04:01.07 --> 00:04:04.01
+with Visual Studio Code to
+allow us to step through
+
+80
+00:04:04.01 --> 00:04:07.04
+or over or use the other debug tools.
+
+81
+00:04:07.04 --> 00:04:10.02
+Now that we have a good
+idea of exception handling
+
+82
+00:04:10.02 --> 00:04:14.00
+and debugging, next, let's
+take a look at testing.
+

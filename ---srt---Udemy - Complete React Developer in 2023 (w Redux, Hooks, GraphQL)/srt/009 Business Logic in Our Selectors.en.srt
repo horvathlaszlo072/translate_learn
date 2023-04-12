@@ -1,0 +1,455 @@
+1
+00:00:00,180 --> 00:00:01,140
+Welcome back, everyone.
+
+2
+00:00:01,920 --> 00:00:07,860
+In the last minute, we migrate over the context from categories into a reducer in Redux.
+
+3
+00:00:08,370 --> 00:00:12,750
+In this video, I want to talk about one of the new patterns that emerges because we are now working
+
+4
+00:00:12,750 --> 00:00:19,650
+in Redux and where I want to focus our attention to is when we call art, get categories and documents
+
+5
+00:00:19,650 --> 00:00:19,980
+method.
+
+6
+00:00:20,880 --> 00:00:29,100
+Typically, when we worked with our usual flow of data, we put our transformation logic inside of our
+
+7
+00:00:29,100 --> 00:00:31,140
+utility helper in Firebase.
+
+8
+00:00:31,380 --> 00:00:36,180
+The reason why we did this is because whenever we made the fetch statement, we knew that chances are
+
+9
+00:00:36,300 --> 00:00:42,870
+we probably want to extrapolate this data in a format that we'll use, which was the categories map.
+
+10
+00:00:43,710 --> 00:00:47,910
+In this video, though, I want to highlight one of the patterns that emerges with Redux, which is
+
+11
+00:00:47,910 --> 00:00:52,920
+where you essentially pull your data, but you pull it in its most basic form.
+
+12
+00:00:53,520 --> 00:00:56,370
+And what you do is you store that basic form of the data.
+
+13
+00:00:56,370 --> 00:01:03,390
+So in this case you pull just the docs as an array, and then when you store it in your reducer, essentially
+
+14
+00:01:03,390 --> 00:01:11,310
+what you'll do is you will extrapolate the logic that transforms it into a category map into a selector.
+
+15
+00:01:11,910 --> 00:01:18,000
+The reason for this is because our reducer, as I mentioned, should always store the most basic format.
+
+16
+00:01:18,570 --> 00:01:22,080
+Essentially, it is the data that you get from your API.
+
+17
+00:01:22,410 --> 00:01:28,020
+Then with a selector, what you do is you transform that data into the final shape that you want it
+
+18
+00:01:28,020 --> 00:01:28,410
+to be.
+
+19
+00:01:28,650 --> 00:01:33,570
+And the reason you want to do this is because you can have multiple different selectors that perform
+
+20
+00:01:33,570 --> 00:01:38,340
+different transformations on the base format of the data you have.
+
+21
+00:01:38,700 --> 00:01:43,310
+So imagine if we just had the array of the different collections from here.
+
+22
+00:01:43,320 --> 00:01:48,180
+Maybe you want to select just one, or maybe you want to select multiple, or maybe you want to create
+
+23
+00:01:48,180 --> 00:01:49,200
+a category map.
+
+24
+00:01:49,440 --> 00:01:51,750
+Whatever option you want to pursue.
+
+25
+00:01:52,110 --> 00:01:59,910
+By doing it this way, you're now able to extrapolate out this data into a much more targeted manner
+
+26
+00:02:00,210 --> 00:02:06,330
+because now the selectors is where the logic lives and the selector is that thing that transforms what
+
+27
+00:02:06,330 --> 00:02:10,500
+the logic and base data you have into the final desired output.
+
+28
+00:02:11,220 --> 00:02:12,540
+So this is a very important thing.
+
+29
+00:02:12,690 --> 00:02:15,750
+You're selectors is where you do your transformation business logic.
+
+30
+00:02:16,260 --> 00:02:21,180
+So what we're going to do is we are going to migrate our code over so that we follow this pattern.
+
+31
+00:02:21,570 --> 00:02:28,770
+And the first thing that we need to do is we need to simplify the Firebase Utils method that actually
+
+32
+00:02:28,770 --> 00:02:31,350
+gave us our category map before.
+
+33
+00:02:32,130 --> 00:02:39,180
+So here, what I'm going to do is instead of generating the category map, as we've done up until this
+
+34
+00:02:39,180 --> 00:02:42,920
+point, I just want to comment this out for now so that we keep a reference to it.
+
+35
+00:02:43,800 --> 00:02:50,550
+What I'm going to instead do is say, okay, instead I just want to return query snapshot, dot docs,
+
+36
+00:02:51,270 --> 00:02:58,650
+dot map, because essentially we need to map out all of these documents in order for us to get the data.
+
+37
+00:02:59,130 --> 00:03:01,740
+So what I'm going to say is doc snapshot.
+
+38
+00:03:03,110 --> 00:03:07,070
+Should return doc snapshot dot data like this.
+
+39
+00:03:08,150 --> 00:03:14,930
+And now this get categories and documents will give us back the categories as an array.
+
+40
+00:03:16,060 --> 00:03:19,780
+So before we start modifying any of our code, let's just make sure all of this is working.
+
+41
+00:03:20,650 --> 00:03:27,100
+So inside of our shop component, where we make this fetch, this is now a category's array.
+
+42
+00:03:29,900 --> 00:03:33,770
+And before I dispatch anything I want to console log.
+
+43
+00:03:34,340 --> 00:03:37,850
+The categories are right just to make sure that this method is now working.
+
+44
+00:03:38,540 --> 00:03:39,620
+So let's go back here.
+
+45
+00:03:40,550 --> 00:03:42,380
+And what happens is we refresh.
+
+46
+00:03:42,800 --> 00:03:43,370
+We see.
+
+47
+00:03:43,730 --> 00:03:44,260
+There we go.
+
+48
+00:03:44,270 --> 00:03:49,040
+We get the array of our categories that we've got stored on Firebase.
+
+49
+00:03:50,140 --> 00:03:55,750
+So now what we need to do is store this inside of our reducer, this new categories array.
+
+50
+00:03:56,590 --> 00:04:02,110
+So what we'll do is we will tweak our category reducer in order for it to reflect accordingly.
+
+51
+00:04:03,060 --> 00:04:08,970
+So here, what I'm going to do is instead of calling set categories math, I'm just going to say set
+
+52
+00:04:08,970 --> 00:04:09,930
+categories.
+
+53
+00:04:11,230 --> 00:04:20,080
+And then I need to update, of course, the actual reducer, but also the action because the action
+
+54
+00:04:20,080 --> 00:04:21,220
+is now going to call.
+
+55
+00:04:22,860 --> 00:04:24,090
+Set categories.
+
+56
+00:04:25,550 --> 00:04:30,740
+And instead of passing a categories map, we're just going to pass a categories array.
+
+57
+00:04:31,550 --> 00:04:35,660
+Now here you can be very explicit about this being categories array like so.
+
+58
+00:04:36,500 --> 00:04:42,650
+But either way, we're just updating this naming convention and the name of the variable, the actual
+
+59
+00:04:43,130 --> 00:04:44,330
+logic of the function.
+
+60
+00:04:44,570 --> 00:04:45,290
+Exact same.
+
+61
+00:04:45,320 --> 00:04:46,130
+Nothing's changed.
+
+62
+00:04:47,210 --> 00:04:48,290
+Inside of a reducer.
+
+63
+00:04:49,300 --> 00:04:52,390
+Of course we want to update set categories like so.
+
+64
+00:04:53,020 --> 00:04:58,390
+And then instead of categories map being an object, categories will now be an array.
+
+65
+00:05:01,400 --> 00:05:03,680
+And then here we'll just update this like so.
+
+66
+00:05:04,340 --> 00:05:06,200
+So up until this point, just a lot of renaming.
+
+67
+00:05:06,230 --> 00:05:07,520
+Nothing really that different.
+
+68
+00:05:08,120 --> 00:05:15,650
+But where this gets interesting is that instead now select categories, MAP is going to be something
+
+69
+00:05:15,650 --> 00:05:25,130
+that selects state categories, DOT categories, and then we have to transform this array into our final
+
+70
+00:05:25,130 --> 00:05:25,940
+categories map.
+
+71
+00:05:26,920 --> 00:05:33,010
+So here, what I want to do is I want to take that logic that we had commented out, because this is
+
+72
+00:05:33,010 --> 00:05:36,520
+probably where we're going to do that exact transformation that we had before.
+
+73
+00:05:37,150 --> 00:05:41,170
+And that code lived inside of our Firebase Utils.
+
+74
+00:05:42,040 --> 00:05:43,720
+And it's really just this code right here.
+
+75
+00:05:44,680 --> 00:05:47,290
+So I'm just going to copy this.
+
+76
+00:05:48,930 --> 00:05:51,420
+Get rid of this last comment that we don't need.
+
+77
+00:05:52,770 --> 00:05:56,250
+Go back into our categories selector and just paste those in.
+
+78
+00:05:56,970 --> 00:06:01,260
+So essentially what we're saying is, hey, give me the categories and reduce over it.
+
+79
+00:06:01,800 --> 00:06:06,420
+Now, instead of a snapshot, we're going to get the actual category object.
+
+80
+00:06:07,880 --> 00:06:12,380
+And then we no longer need to fetch off of the data because it's already the data.
+
+81
+00:06:13,160 --> 00:06:19,100
+So we get the title, they get the items we accumulate over lowercase the title, set it to the items
+
+82
+00:06:19,100 --> 00:06:19,460
+array.
+
+83
+00:06:20,300 --> 00:06:26,810
+And now if we save this, what'll be interesting is that select categories map is something we're still
+
+84
+00:06:26,810 --> 00:06:28,070
+using throughout the application.
+
+85
+00:06:28,940 --> 00:06:34,370
+So this actually won't need to update wherever we're calling it, because now the selector still will
+
+86
+00:06:34,370 --> 00:06:34,640
+work.
+
+87
+00:06:34,640 --> 00:06:37,910
+Before I was just pulling off the value, now it's transforming the value.
+
+88
+00:06:38,780 --> 00:06:44,580
+But what we want to do here is we want to just make sure that we're updating with the right call.
+
+89
+00:06:44,600 --> 00:06:48,080
+So instead of categories map, now we're calling set categories.
+
+90
+00:06:50,100 --> 00:06:53,880
+Like so and then categories or Ray gets past the set categories.
+
+91
+00:06:55,030 --> 00:06:58,060
+And now if we save this and we'll go back to our application.
+
+92
+00:06:59,200 --> 00:07:02,170
+Let's just refresh to make sure that that error was not our error.
+
+93
+00:07:02,830 --> 00:07:04,720
+But here we see we call subcategories.
+
+94
+00:07:05,320 --> 00:07:11,800
+Categories get stored as this array and then all of our components are still working because our select
+
+95
+00:07:11,800 --> 00:07:19,090
+categories map code is still working because that selector is now transforming it into the categories
+
+96
+00:07:19,090 --> 00:07:20,470
+map, which we can pull.
+
+97
+00:07:21,340 --> 00:07:21,910
+So that's it.
+
+98
+00:07:22,540 --> 00:07:28,210
+This is one very, very common pattern that you have to understand when it comes to using redux and
+
+99
+00:07:28,210 --> 00:07:28,780
+reducers.
+
+100
+00:07:29,230 --> 00:07:34,270
+You can even extrapolate this when you call use reducer in your context, but it's a lot more clear
+
+101
+00:07:34,270 --> 00:07:38,710
+when you actually write out the separated file structure that comes with Redux.
+
+102
+00:07:39,220 --> 00:07:45,220
+The selector file is where this reducer specific transformation business logic is going to live.
+
+103
+00:07:46,240 --> 00:07:52,150
+So one of the things that you may be thinking about now is that, well, you what if every time we call
+
+104
+00:07:52,150 --> 00:07:56,830
+our selector, essentially what we're doing is we are rerunning this reduced function.
+
+105
+00:07:57,340 --> 00:08:02,140
+Is that not going to be the case that every time we make different calls, we are actually going to
+
+106
+00:08:02,140 --> 00:08:09,310
+be re rendering this reduce, which may actually prove to be significantly less performance?
+
+107
+00:08:10,120 --> 00:08:13,300
+Well, this is actually one of those trade offs that we're going to talk about in the next video.
+
+108
+00:08:14,200 --> 00:08:17,080
+There's a couple things that emerge from this pattern.
+
+109
+00:08:17,230 --> 00:08:21,610
+The main thing I want you to realize, though, is the logic of the pattern and the clarity that it
+
+110
+00:08:21,610 --> 00:08:24,370
+brings, as well as the separation of the business logic.
+
+111
+00:08:24,700 --> 00:08:30,130
+Whether or not this format is a little bit less performant than the previous one is a different question.
+
+112
+00:08:30,370 --> 00:08:35,500
+We're going down this path because we need to learn this pattern and we have to learn about why there
+
+113
+00:08:35,500 --> 00:08:38,140
+are indeed certain bottlenecks that come.
+
+114
+00:08:38,680 --> 00:08:40,630
+So that's what we'll cover in the next video.

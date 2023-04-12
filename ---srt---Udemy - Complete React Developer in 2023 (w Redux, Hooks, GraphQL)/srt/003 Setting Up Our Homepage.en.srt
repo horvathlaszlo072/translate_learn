@@ -1,0 +1,631 @@
+1
+00:00:00,570 --> 00:00:01,470
+Welcome back, everyone.
+
+2
+00:00:02,070 --> 00:00:07,740
+So now that we have Iraq, Rotterdam and we have an idea of how routing works, let's just go over with
+
+3
+00:00:07,740 --> 00:00:10,620
+our final application what it is that we need to build.
+
+4
+00:00:11,280 --> 00:00:17,400
+We know that inside of our actual application, we've simply implemented this component.
+
+5
+00:00:17,820 --> 00:00:23,760
+The directory component, what we need to do now is we need to separate the couple pages that we have.
+
+6
+00:00:24,210 --> 00:00:29,520
+We know that this directory component primarily lives on the home page, which is the page that you
+
+7
+00:00:29,520 --> 00:00:31,080
+have when you land on the website.
+
+8
+00:00:31,740 --> 00:00:39,210
+We know that there's also a shop page which will render this directory of all of the different collections
+
+9
+00:00:39,210 --> 00:00:40,020
+that are available.
+
+10
+00:00:40,410 --> 00:00:48,030
+And then we also know that deeper down, we have this further library page that contains the products
+
+11
+00:00:48,030 --> 00:00:49,530
+for a related category.
+
+12
+00:00:50,640 --> 00:00:55,350
+So what we want to do now is we want to think about what we want to break up.
+
+13
+00:00:56,220 --> 00:00:59,370
+So currently we have no pages, no routing set up.
+
+14
+00:00:59,550 --> 00:01:01,680
+Everything lives on the main page.
+
+15
+00:01:01,680 --> 00:01:09,030
+And even on this main page, we notice that this navigation component also is intended to persist while
+
+16
+00:01:09,030 --> 00:01:10,350
+we navigate through the website.
+
+17
+00:01:11,220 --> 00:01:17,610
+So this kind of harkens back to that lesson where we were talking about how routing works and what we're
+
+18
+00:01:17,610 --> 00:01:24,570
+essentially saying is that the home page should be the component that renders when your URL is just
+
+19
+00:01:24,570 --> 00:01:25,430
+the base you are.
+
+20
+00:01:26,620 --> 00:01:33,670
+This navigation bar should always persist, no matter what different page you navigate to, and then
+
+21
+00:01:33,670 --> 00:01:38,290
+at the very least, we'll have a couple of other pages based on this route changing.
+
+22
+00:01:38,800 --> 00:01:42,340
+So let's start implementing some of this stuff with React Router Don.
+
+23
+00:01:43,370 --> 00:01:50,030
+Let's go back to our application in order for us to confirm and tell our application that we want to
+
+24
+00:01:50,030 --> 00:01:51,710
+use React Router Dom.
+
+25
+00:01:52,160 --> 00:01:59,900
+What we need to do is we need to actually wrap this entire application in a broader component that react
+
+26
+00:01:59,900 --> 00:02:00,890
+router Dom gives us.
+
+27
+00:02:01,430 --> 00:02:06,830
+I want to do it in the index chassis because this is where we render the app as its entirety.
+
+28
+00:02:07,100 --> 00:02:09,890
+So I want to wrap it as well in this same file.
+
+29
+00:02:10,400 --> 00:02:17,870
+To do so, we need to first do is we need to import the browser router component.
+
+30
+00:02:19,950 --> 00:02:22,050
+From React router, Dom.
+
+31
+00:02:24,160 --> 00:02:30,040
+If you're wondering why there's a browser router, the browser router is the generic router, it leverages
+
+32
+00:02:30,040 --> 00:02:34,420
+the URL in order to keep track of the history of where the user is navigating through.
+
+33
+00:02:34,420 --> 00:02:39,430
+And it behaves, as you typically would expect, any kind of routing based on URL to behave.
+
+34
+00:02:39,880 --> 00:02:47,290
+There are other forms of routers inside of Iraq, Rotterdam, but you won't really use them a lot.
+
+35
+00:02:47,680 --> 00:02:52,330
+And at least for our application, most of it is going to be working with the browser router.
+
+36
+00:02:52,690 --> 00:02:58,390
+The other variation ones you can take a look at once you understand essentially how routing works overall.
+
+37
+00:02:58,420 --> 00:03:04,240
+There's just a couple nuance detail differences between them, so it's still relevant for you, primarily
+
+38
+00:03:04,240 --> 00:03:06,430
+right now just to focus on the browser router.
+
+39
+00:03:07,270 --> 00:03:11,440
+Now, the browser router, as I mentioned, is a component, so that means it behaves like a component.
+
+40
+00:03:11,440 --> 00:03:13,990
+There's an open tag and a closing tag.
+
+41
+00:03:14,260 --> 00:03:19,120
+And what we want to do is we want to make that the parents of our entire application.
+
+42
+00:03:20,200 --> 00:03:25,600
+So we want to make sure that we save this and what happens now is that because we've wrapped our application
+
+43
+00:03:25,600 --> 00:03:30,910
+component inside of our browser router component, we can access all of the different features that
+
+44
+00:03:30,910 --> 00:03:39,670
+come in rack router Dom specific to this browser router that is now going to control our routing inside
+
+45
+00:03:39,670 --> 00:03:40,870
+of our nested application.
+
+46
+00:03:41,200 --> 00:03:44,650
+If that sounds confusing, don't worry, it'll make sense once we start going through it.
+
+47
+00:03:45,250 --> 00:03:48,120
+So let's start thinking about what we need to break out right now.
+
+48
+00:03:48,130 --> 00:03:50,290
+App represents our entire application.
+
+49
+00:03:50,950 --> 00:03:53,950
+However, it renders the directory directly.
+
+50
+00:03:54,100 --> 00:03:55,090
+We don't want that anymore.
+
+51
+00:03:55,090 --> 00:04:01,390
+Instead, now we want to render a home page and the directory kind of just lives on the home page.
+
+52
+00:04:01,870 --> 00:04:08,050
+So in order to do this, what we want to do is we want to actually set up some components to help us
+
+53
+00:04:08,530 --> 00:04:09,640
+and these components.
+
+54
+00:04:09,640 --> 00:04:14,290
+We're actually going to make a new folder for and we're going to say that these are our roots.
+
+55
+00:04:15,040 --> 00:04:20,830
+Roots is a folder that will hold all of our root top level components.
+
+56
+00:04:21,250 --> 00:04:21,940
+So let's do one.
+
+57
+00:04:21,940 --> 00:04:23,590
+So we understand what we're talking about here.
+
+58
+00:04:24,070 --> 00:04:28,240
+I'm going to make another folder inside of the Roots folder called home, because that's the root we're
+
+59
+00:04:28,240 --> 00:04:32,260
+trying to make, and I'm just going to call this home doc component Dutch RSX.
+
+60
+00:04:33,040 --> 00:04:37,990
+This is not some specific naming structure you have to follow for rack right or Dom to work, but this
+
+61
+00:04:37,990 --> 00:04:40,720
+is just the way that I like to break up this application.
+
+62
+00:04:40,840 --> 00:04:45,400
+So it's very clear to me what the separation of concerns is because the components inside of the roots
+
+63
+00:04:45,550 --> 00:04:46,630
+are related to roots.
+
+64
+00:04:46,840 --> 00:04:50,560
+They're not these generic components that we're building that we can use in numerous places.
+
+65
+00:04:50,890 --> 00:04:56,260
+Essentially, these home components are these root level components are really only used for routing,
+
+66
+00:04:56,680 --> 00:04:59,590
+and I'll talk about more about that once we get to the portion where we use them.
+
+67
+00:05:00,010 --> 00:05:05,500
+But first of all, we want to do inside of our home component that I've just set up here is we want
+
+68
+00:05:05,500 --> 00:05:13,180
+to actually replicate what we had inside of our app because this right now reflects almost the entirety
+
+69
+00:05:13,210 --> 00:05:15,940
+of our application homepage.
+
+70
+00:05:16,450 --> 00:05:19,000
+So just copy this entire file over.
+
+71
+00:05:20,440 --> 00:05:21,190
+Paste this in.
+
+72
+00:05:22,060 --> 00:05:24,280
+And instead of app, let's call this home.
+
+73
+00:05:25,490 --> 00:05:30,200
+Similarly, we want to make sure that we make sure to export home as the default.
+
+74
+00:05:31,230 --> 00:05:32,580
+So nothing new here.
+
+75
+00:05:33,030 --> 00:05:34,470
+This is really the only difference.
+
+76
+00:05:35,220 --> 00:05:40,530
+Another thing we might have to do is we have to fix this relative pally, because right now we're probably
+
+77
+00:05:40,530 --> 00:05:42,930
+not actually going to the correct place.
+
+78
+00:05:43,500 --> 00:05:48,840
+So what we want to do is leverage the auto complete, and from here we know that we're going to see
+
+79
+00:05:48,840 --> 00:05:49,230
+home.
+
+80
+00:05:49,800 --> 00:05:51,780
+What we want to do is go to components.
+
+81
+00:05:52,260 --> 00:05:57,210
+So there we are, pointing to our components folder and then that in turn will point to directory and
+
+82
+00:05:57,210 --> 00:05:58,620
+get the directory component file.
+
+83
+00:05:59,220 --> 00:06:03,480
+So here this home component is really all we're looking for.
+
+84
+00:06:04,200 --> 00:06:09,300
+So just to make sure it's still working, what we're going to do for our entirety of our app now is
+
+85
+00:06:09,300 --> 00:06:10,680
+just import home.
+
+86
+00:06:14,980 --> 00:06:17,590
+Routes, home home component.
+
+87
+00:06:18,760 --> 00:06:22,810
+And instead of rendering all of this, I want to just render.
+
+88
+00:06:24,250 --> 00:06:25,180
+The home component.
+
+89
+00:06:26,140 --> 00:06:31,000
+This is just a test of this component works, remember, even though it's nested inside of the Roots
+
+90
+00:06:31,450 --> 00:06:34,660
+folder, it's still just a generic component.
+
+91
+00:06:34,660 --> 00:06:39,130
+It's just a functional component that returns what we had before inside of our OPG's.
+
+92
+00:06:39,580 --> 00:06:43,470
+But now we're just exporting it as a component and then just returning it.
+
+93
+00:06:43,480 --> 00:06:48,160
+So it's just an extra step of rendering an additional component, but everything is the exact same.
+
+94
+00:06:48,790 --> 00:06:50,320
+Let's just go back to our application.
+
+95
+00:06:50,350 --> 00:06:51,550
+Make sure everything is working.
+
+96
+00:06:52,180 --> 00:06:53,680
+Everything is still working.
+
+97
+00:06:54,460 --> 00:06:55,210
+So let's go back.
+
+98
+00:06:56,020 --> 00:07:03,280
+What we want to do now is we now want to actually leverage routing so that we know how the routing works.
+
+99
+00:07:03,730 --> 00:07:10,060
+With this actually being the thing that only renders when the URL is pointing to home.
+
+100
+00:07:10,870 --> 00:07:18,370
+So to do this, what we need to do is we need to import the roots component from REAC Rotterdam.
+
+101
+00:07:20,060 --> 00:07:23,690
+So Roots is a specific component that we get back.
+
+102
+00:07:24,510 --> 00:07:31,560
+And we also need to import a root component is with these two components that we can actually assemble
+
+103
+00:07:31,560 --> 00:07:34,110
+the routing at our application level.
+
+104
+00:07:34,740 --> 00:07:39,570
+So I want to take roots and just as we did, we want to wrap.
+
+105
+00:07:41,330 --> 00:07:46,370
+Anything that is going to be reportable inside of this Root's component.
+
+106
+00:07:49,010 --> 00:07:51,830
+Let me just fix this bracket here.
+
+107
+00:07:53,180 --> 00:07:53,940
+And fix them in.
+
+108
+00:07:55,350 --> 00:08:02,400
+So what essentially routes does is that it allows this application to register these root level components
+
+109
+00:08:03,000 --> 00:08:08,880
+that will then in turn render a specific component when it matches this specific route that you're looking
+
+110
+00:08:08,880 --> 00:08:09,150
+for.
+
+111
+00:08:09,660 --> 00:08:12,030
+So how do you know what route you're trying to match?
+
+112
+00:08:12,690 --> 00:08:16,500
+Well, the way you do that is you actually give it a specific path.
+
+113
+00:08:16,800 --> 00:08:22,680
+Variable path is going to be a string and the string is going to try to match whatever you give inside
+
+114
+00:08:22,680 --> 00:08:22,890
+of it.
+
+115
+00:08:23,280 --> 00:08:25,980
+So when you want to match, say, just a slash.
+
+116
+00:08:26,490 --> 00:08:32,460
+This, in turn, will say OK when I match path slash, meaning that because this is at the base you
+
+117
+00:08:32,460 --> 00:08:36,870
+are, I'll level when we just land on the URL, then I'm going to match.
+
+118
+00:08:37,470 --> 00:08:41,940
+So you can kind of see slash as in, this is the end of the path we're trying to match there.
+
+119
+00:08:42,450 --> 00:08:44,370
+So this is the relative path.
+
+120
+00:08:45,410 --> 00:08:51,680
+And what I'm going to say here is that the moment this matches, I want you to now render this element
+
+121
+00:08:51,800 --> 00:08:54,020
+element in this particular case is the component.
+
+122
+00:08:54,740 --> 00:09:00,710
+And this is going to take literally a rendered component and I'm going to render in the home component.
+
+123
+00:09:01,770 --> 00:09:03,240
+So now I want to save this.
+
+124
+00:09:03,870 --> 00:09:08,340
+And what we should expect to see in our application is that nothing has changed.
+
+125
+00:09:09,120 --> 00:09:10,830
+So here we see everything still working.
+
+126
+00:09:11,460 --> 00:09:14,550
+Let's just also quickly open up our developer counsel.
+
+127
+00:09:15,150 --> 00:09:18,810
+We see there are some genetic errors for dev tools or not errors, but warnings.
+
+128
+00:09:18,900 --> 00:09:21,120
+So everything is actually still working as we expect.
+
+129
+00:09:21,910 --> 00:09:26,230
+But in case you're a little confused about this, because we learn a lot very quickly and we have to
+
+130
+00:09:26,230 --> 00:09:30,460
+kind of scaffold some of this out before I can deep dive into this topic, let's just take a look at
+
+131
+00:09:30,460 --> 00:09:30,730
+this.
+
+132
+00:09:31,300 --> 00:09:36,640
+As I mentioned, if you want routing to appear in your application here, we have to say, Oh, there
+
+133
+00:09:36,640 --> 00:09:40,590
+are these routes that I'm going to leverage and show you in these components.
+
+134
+00:09:40,630 --> 00:09:45,220
+You're saying that by using this routes component, I expect there to be some routes inside.
+
+135
+00:09:45,610 --> 00:09:52,720
+And the moment you match a route where the path value matches the string, then I want you to render
+
+136
+00:09:52,720 --> 00:09:53,560
+this element.
+
+137
+00:09:53,950 --> 00:09:56,680
+So let's be even more experimental.
+
+138
+00:09:56,980 --> 00:10:02,680
+I want it to specifically be when it's at home, then I want you to render the home element.
+
+139
+00:10:03,220 --> 00:10:04,840
+Here we go back now we actually see.
+
+140
+00:10:05,080 --> 00:10:10,600
+Remember, we're on the base route, which, as I mentioned, is the single slash, as you can see here.
+
+141
+00:10:10,960 --> 00:10:16,480
+We, in fact, even get a warning that says no roots match for location slash, which makes sense because
+
+142
+00:10:16,480 --> 00:10:19,570
+we are not rendering anything for this route.
+
+143
+00:10:20,080 --> 00:10:22,240
+We are trying to match slash home.
+
+144
+00:10:22,780 --> 00:10:27,460
+So if we navigate instead to slash home, here we see the component render.
+
+145
+00:10:28,210 --> 00:10:33,880
+So now we can see how we're rendering specific components based on the route.
+
+146
+00:10:34,120 --> 00:10:38,200
+As in the earlier that we are specifically navigating through.
+
+147
+00:10:38,770 --> 00:10:41,650
+So here we are enabling that functionality.
+
+148
+00:10:41,650 --> 00:10:47,500
+As I mentioned, I want you to render specific components based on the URL, which is exactly what we're
+
+149
+00:10:47,500 --> 00:10:47,800
+doing.
+
+150
+00:10:48,550 --> 00:10:53,350
+So if you're a little confused, don't worry, we'll do a lot more practice and we'll do a lot more
+
+151
+00:10:53,800 --> 00:10:58,480
+experimenting with this library because it's a little complicated if you've never come across routing
+
+152
+00:10:58,480 --> 00:10:58,810
+before.
+
+153
+00:10:59,110 --> 00:11:01,210
+So don't worry if any of this was confusing.
+
+154
+00:11:01,480 --> 00:11:06,860
+Rewatch the parts of this video where we walk through implementing these routes because there's a couple
+
+155
+00:11:06,880 --> 00:11:08,500
+steps and they're all pretty and crucial.
+
+156
+00:11:08,800 --> 00:11:11,110
+We'll definitely explore them, though, in the upcoming videos.
+
+157
+00:11:11,680 --> 00:11:13,600
+So this is how we set up a home page.
+
+158
+00:11:14,080 --> 00:11:15,700
+Let's continue in the next video.

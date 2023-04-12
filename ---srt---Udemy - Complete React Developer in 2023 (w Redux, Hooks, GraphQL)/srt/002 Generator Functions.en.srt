@@ -1,0 +1,439 @@
+1
+00:00:00,800 --> 00:00:09,530
+In this lesson, we are going to explore the most common building block of a saga, which is a generator
+
+2
+00:00:09,530 --> 00:00:10,250
+function.
+
+3
+00:00:11,170 --> 00:00:18,400
+Now, the generator function is a new ish feature that was brought into the JavaScript ecosystem and
+
+4
+00:00:18,400 --> 00:00:19,870
+native to JavaScript now.
+
+5
+00:00:20,860 --> 00:00:26,510
+And what it is, is a function that resembles a sink away.
+
+6
+00:00:27,220 --> 00:00:30,060
+Now, it's not exactly a sink away.
+
+7
+00:00:30,490 --> 00:00:38,170
+It's got almost a different flair to it, but it's very similar in the sense that with our async await
+
+8
+00:00:38,170 --> 00:00:48,280
+functions, we await our asynchronous events, our promise based events, where we pause the execution
+
+9
+00:00:48,280 --> 00:00:51,700
+inside of an async function whenever we see the Wacol.
+
+10
+00:00:52,660 --> 00:00:59,170
+Well, generally, your functions are very similar in the sense that they also pause their execution
+
+11
+00:00:59,500 --> 00:01:06,010
+whenever they see a specific key inside of the function, and that key is called a yield.
+
+12
+00:01:06,700 --> 00:01:10,960
+Now, I'll show you what that looks like when we write our first generator function.
+
+13
+00:01:13,090 --> 00:01:19,030
+In order for us to do it, there's actually a special syntax we actually have to declare with our old
+
+14
+00:01:19,030 --> 00:01:21,820
+school style of writing function declarations.
+
+15
+00:01:21,820 --> 00:01:23,380
+So we actually got a write function.
+
+16
+00:01:23,680 --> 00:01:26,590
+But what we do is we put the star.
+
+17
+00:01:27,590 --> 00:01:33,800
+To declare that this is a generator function and then what we can do is we can name our function, so
+
+18
+00:01:33,800 --> 00:01:38,090
+I'm going to name it again and it's going to take no parameters for now.
+
+19
+00:01:39,010 --> 00:01:43,870
+And all this function does is it calls console dialogue a.
+
+20
+00:01:44,970 --> 00:01:45,840
+Just the letter A.
+
+21
+00:01:46,980 --> 00:01:49,770
+And then a console logs the letter B.
+
+22
+00:01:52,640 --> 00:02:00,200
+Now, when we instantiate this function, meaning that when we invoke it, we actually get back this
+
+23
+00:02:00,200 --> 00:02:05,170
+generator object, which we can cast as some variable G.
+
+24
+00:02:05,630 --> 00:02:05,890
+Right.
+
+25
+00:02:05,930 --> 00:02:11,630
+I'm just going to name this constant G and it's going to be equal to us invoking Djenne, the function.
+
+26
+00:02:12,510 --> 00:02:17,190
+Now, if this is a regular function, the moment I invoke Gen.
+
+27
+00:02:19,090 --> 00:02:26,050
+Console log and console log B will be logged out to our browser and then G would just be set to undefined
+
+28
+00:02:26,050 --> 00:02:29,560
+because functions that don't return anything would just return undefined.
+
+29
+00:02:30,010 --> 00:02:35,650
+But in our case, when we invoke this gen, we see that nothing has happened.
+
+30
+00:02:36,400 --> 00:02:44,260
+In fact, if we were to log, we see we get this weird gen suspended generator kind of object, right.
+
+31
+00:02:44,290 --> 00:02:47,350
+So this is a generator object.
+
+32
+00:02:48,220 --> 00:02:56,230
+And what we do on it is we call DOT next on it and what DOT next will do is it will actually resume
+
+33
+00:02:56,230 --> 00:03:00,130
+the execution inside of our function.
+
+34
+00:03:00,640 --> 00:03:07,390
+So at this point, when we invoked it for the first time, we instantiated this generator object that
+
+35
+00:03:07,390 --> 00:03:10,180
+actually is aware of the code inside of this function.
+
+36
+00:03:10,720 --> 00:03:13,510
+But the execution inside of the function is paused.
+
+37
+00:03:14,110 --> 00:03:16,390
+So until we call Genden next.
+
+38
+00:03:18,270 --> 00:03:20,970
+This function actually will not run our console locks.
+
+39
+00:03:21,780 --> 00:03:28,830
+The moment I do, we see that it does, it logs out A and B, but then you see that we get back this
+
+40
+00:03:28,830 --> 00:03:31,080
+object from calling DOT next.
+
+41
+00:03:31,740 --> 00:03:37,170
+And what it is, is an object with a value prop and a dozen prop.
+
+42
+00:03:37,620 --> 00:03:43,770
+The dumb prop is a boolean telling us if there's anything else in the function to run or has it run
+
+43
+00:03:43,770 --> 00:03:49,170
+through its entire course, which we know it does, because all we did in our function was console log
+
+44
+00:03:49,170 --> 00:03:50,070
+two things.
+
+45
+00:03:50,990 --> 00:03:58,040
+Now, this will change once we start using the yield and the U.S. will also give this value of value
+
+46
+00:03:58,340 --> 00:04:00,380
+and I'm going to show you how that works.
+
+47
+00:04:01,450 --> 00:04:04,210
+Let's refresh and let's make a new function, right?
+
+48
+00:04:04,330 --> 00:04:08,770
+So, again, we're going to call it Jen, but this time we're going to take some integer value.
+
+49
+00:04:09,490 --> 00:04:17,020
+And what we're going to do is we are going to yield the value that we pass in the next call.
+
+50
+00:04:17,050 --> 00:04:19,900
+We're going to yield I plus 10.
+
+51
+00:04:21,560 --> 00:04:26,270
+So that's all we've done is essentially we're saying we write this function, right, Cudgen, it takes
+
+52
+00:04:26,270 --> 00:04:33,020
+some integer value, some number, and then it yields that number that we pastan and also yields then
+
+53
+00:04:33,020 --> 00:04:34,070
+the number plus 10.
+
+54
+00:04:34,670 --> 00:04:41,960
+So now we're going to set some G value equal to Argin initialized with the value of, let's say, actually
+
+55
+00:04:41,960 --> 00:04:42,380
+five.
+
+56
+00:04:45,210 --> 00:04:52,080
+Now, what happens when we call G Dorton, we know that we are going to actually get back that similar
+
+57
+00:04:52,080 --> 00:04:53,330
+object that we saw before.
+
+58
+00:04:53,340 --> 00:04:53,550
+Right.
+
+59
+00:04:53,570 --> 00:04:58,800
+You remember when we logged at the site, when we invoked next the first time that object with the value
+
+60
+00:04:58,800 --> 00:05:00,420
+key and then the Dungey?
+
+61
+00:05:01,320 --> 00:05:04,880
+Well, I'm actually just going to make sure to hold on to that value.
+
+62
+00:05:04,890 --> 00:05:07,350
+So going I call it G obj.
+
+63
+00:05:07,350 --> 00:05:08,010
+Right, right here.
+
+64
+00:05:09,000 --> 00:05:16,080
+And now, when I call it, you'll actually see that when we see what's on our jobs, right, our jobs
+
+65
+00:05:16,080 --> 00:05:23,220
+is equal to that object, except now value is the I value that we yielded out the first time.
+
+66
+00:05:24,450 --> 00:05:29,730
+And we'll also see that done is false, meaning that there's more that we can actually continue the
+
+67
+00:05:29,730 --> 00:05:32,490
+execution on inside of our generator function.
+
+68
+00:05:33,870 --> 00:05:39,850
+If I were to call G Dot next again this time, right, and let's send it to another object, let's call
+
+69
+00:05:39,850 --> 00:05:40,770
+it just George.
+
+70
+00:05:40,770 --> 00:05:41,060
+Right.
+
+71
+00:05:42,260 --> 00:05:48,830
+Well, now we'll see that George has the value of the next yielded value, which is five plus ten,
+
+72
+00:05:48,830 --> 00:05:50,090
+which gives us 15.
+
+73
+00:05:51,110 --> 00:05:54,380
+It also now sees that Dunn is still false.
+
+74
+00:05:55,510 --> 00:06:02,140
+If we were to call next one last time, then we see that the done is true, but there's no value that
+
+75
+00:06:02,140 --> 00:06:03,800
+gets returned in the undefined.
+
+76
+00:06:04,510 --> 00:06:07,260
+Now, this is the main thing to remember with yields.
+
+77
+00:06:08,170 --> 00:06:13,450
+The moment we call yields inside of our generator function, the yield curve is pretty much telling
+
+78
+00:06:13,450 --> 00:06:14,380
+our generator function.
+
+79
+00:06:14,410 --> 00:06:17,260
+OK, I don't want to do anything with this.
+
+80
+00:06:17,260 --> 00:06:17,450
+Right.
+
+81
+00:06:17,470 --> 00:06:18,900
+I'm just going to resolve it.
+
+82
+00:06:18,910 --> 00:06:19,750
+However it is.
+
+83
+00:06:19,750 --> 00:06:22,830
+If it's an asynchronous request, I'm going to resolve the request.
+
+84
+00:06:23,230 --> 00:06:29,770
+I'm going to pass that value out into this object that we get back.
+
+85
+00:06:29,770 --> 00:06:29,900
+Right.
+
+86
+00:06:29,950 --> 00:06:32,170
+And I'm going to set it to the value prop.
+
+87
+00:06:33,610 --> 00:06:38,680
+Now, you might be wondering when it's done, is there a way for us to get a value in this function?
+
+88
+00:06:38,710 --> 00:06:41,730
+Well, actually, there is the way that we would do it, right.
+
+89
+00:06:41,770 --> 00:06:46,540
+Let's just copy this is we would actually cast it as the return value.
+
+90
+00:06:47,760 --> 00:06:55,170
+So the last thing we can do is say return twenty five and now if we did the same thing as we did last
+
+91
+00:06:55,170 --> 00:06:58,740
+time with Gen five, if I do got next.
+
+92
+00:07:00,520 --> 00:07:01,260
+Next, right.
+
+93
+00:07:02,180 --> 00:07:08,900
+We see that this is up to earth second yield, if I got next one more time, while the final value that
+
+94
+00:07:08,900 --> 00:07:13,210
+gets resolved is our return from our function, and then the done is true.
+
+95
+00:07:14,030 --> 00:07:20,240
+But the main benefit is that the yield will invoke the value of whatever it's yielding and return it
+
+96
+00:07:20,240 --> 00:07:21,530
+outside of our generator.
+
+97
+00:07:23,450 --> 00:07:27,060
+This is primarily what generators are used for.
+
+98
+00:07:27,080 --> 00:07:34,550
+It's just if you want to stash multiple executions, but you want to control when you want to move and
+
+99
+00:07:34,550 --> 00:07:38,150
+continue the execution in this function onwards.
+
+100
+00:07:39,440 --> 00:07:48,530
+And this is the basis of Sagas Saga's work on this yield based format, because they need to know and
+
+101
+00:07:48,530 --> 00:07:55,850
+give us control over when we want to continue with an execution of the block of code that we've written.
+
+102
+00:07:56,840 --> 00:07:58,970
+Or we want to do something with the first.
+
+103
+00:07:59,910 --> 00:08:05,700
+Now, it'll make more sense once we start writing it, but I just wanted you to see this generator syntax.
+
+104
+00:08:05,700 --> 00:08:11,070
+I did not want you to be confused by what we're about to write, because what we're about to write is
+
+105
+00:08:11,070 --> 00:08:15,360
+going to look kind of different from code that we've written before.
+
+106
+00:08:15,930 --> 00:08:19,440
+The closest comparison I'm going to draw again is to async away.
+
+107
+00:08:20,040 --> 00:08:24,960
+But now that we've seen this as well, we just need to remember that whenever we see yield, we just
+
+108
+00:08:24,960 --> 00:08:31,800
+need to know that our code is stopping at this point, even if it's asynchronous code, just like async
+
+109
+00:08:31,800 --> 00:08:32,150
+away.
+
+110
+00:08:32,940 --> 00:08:37,800
+So let's dive into implementing sagas into our code base.

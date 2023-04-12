@@ -1,0 +1,415 @@
+1
+00:00:00,910 --> 00:00:01,930
+Welcome back, everyone.
+
+2
+00:00:03,010 --> 00:00:08,740
+In the last video, I challenge you to set up the category selector and migrate the category context
+
+3
+00:00:08,740 --> 00:00:13,120
+code to the appropriate place where we're fetching our categories map.
+
+4
+00:00:14,190 --> 00:00:20,130
+So what I want to do is I want to walk through this with you when it comes to thinking about where we
+
+5
+00:00:20,130 --> 00:00:26,700
+want to put this fetching, especially this API external fetching code inside of your code base.
+
+6
+00:00:28,020 --> 00:00:31,550
+So some of you might have moved this into your app.
+
+7
+00:00:31,560 --> 00:00:38,460
+J.S. Likely where we had previously our subscription to the Offset Change Listener.
+
+8
+00:00:39,500 --> 00:00:42,380
+Technically speaking, there's nothing wrong with doing this.
+
+9
+00:00:42,740 --> 00:00:50,060
+But if you think about it, the app component does not actually need this category's map data.
+
+10
+00:00:50,540 --> 00:00:55,610
+The first component that actually means this category is MAP is actually.
+
+11
+00:00:59,600 --> 00:01:03,920
+Inside of our shop page, we have categories, preview and category.
+
+12
+00:01:04,700 --> 00:01:11,870
+Both of these components, the category preview needs categories map and the category component needs
+
+13
+00:01:11,870 --> 00:01:12,710
+the category map.
+
+14
+00:01:13,430 --> 00:01:16,280
+So their nearest ancestor is the shop component.
+
+15
+00:01:16,670 --> 00:01:23,390
+And the shop page component can actually be the one that matches the code from our categories context,
+
+16
+00:01:23,390 --> 00:01:28,880
+which is to fetch the Firebase API, get down all those documents, create the categories map.
+
+17
+00:01:29,990 --> 00:01:35,390
+So we can actually copy over and paste in that use effect that we had before.
+
+18
+00:01:35,990 --> 00:01:40,490
+Will of course, have to tweak some of these so that they work in the context of Redux instead of in
+
+19
+00:01:40,490 --> 00:01:43,790
+the context of our context API.
+
+20
+00:01:44,000 --> 00:01:45,620
+Forgive my use of the word context here.
+
+21
+00:01:46,940 --> 00:01:50,330
+In order to do that, we need to start bringing in the appropriate methods.
+
+22
+00:01:50,840 --> 00:01:54,740
+So first, let's bring in our use of Factbook from React.
+
+23
+00:01:55,940 --> 00:02:01,310
+Let's also bring in our get categories documents from our firebase utils.
+
+24
+00:02:07,460 --> 00:02:11,660
+Let's go up to r utils file.
+
+25
+00:02:12,320 --> 00:02:14,510
+Firebase, firebase, utils.
+
+26
+00:02:15,470 --> 00:02:19,010
+And then we also need our newly created set categories.
+
+27
+00:02:19,010 --> 00:02:20,420
+Map Action Creator.
+
+28
+00:02:21,020 --> 00:02:23,420
+So let's bring in set categories map.
+
+29
+00:02:25,090 --> 00:02:28,120
+Going up to our store folder.
+
+30
+00:02:29,850 --> 00:02:30,600
+Categories.
+
+31
+00:02:31,990 --> 00:02:32,390
+Oops.
+
+32
+00:02:32,950 --> 00:02:35,610
+Categories and then categories.
+
+33
+00:02:35,620 --> 00:02:36,160
+Action.
+
+34
+00:02:37,370 --> 00:02:42,440
+So this, of course, is an action creator, which means we still need our dispatch which comes.
+
+35
+00:02:45,080 --> 00:02:47,090
+From React Redux.
+
+36
+00:02:48,430 --> 00:02:52,930
+And then it's just a matter of using this hook to get the dispatch.
+
+37
+00:02:58,590 --> 00:03:01,710
+And then wrapping it and calling it on set categories map.
+
+38
+00:03:03,380 --> 00:03:03,950
+So there we go.
+
+39
+00:03:05,150 --> 00:03:10,250
+Now, of course, at this point, we do still have access to our categories context.
+
+40
+00:03:10,910 --> 00:03:15,710
+So this category component and the shop component are still hooked up to that.
+
+41
+00:03:16,340 --> 00:03:23,900
+But if you look inside of this state object, we do see that we do have the appropriate categories reducer
+
+42
+00:03:24,320 --> 00:03:25,850
+with the correct categories map.
+
+43
+00:03:26,690 --> 00:03:29,390
+So now what we need to do is start using it.
+
+44
+00:03:30,110 --> 00:03:35,750
+The first thing I want to do is I want to remove references to this categories.
+
+45
+00:03:36,200 --> 00:03:38,060
+Context inside of index.
+
+46
+00:03:38,060 --> 00:03:38,450
+Just.
+
+47
+00:03:40,700 --> 00:03:45,410
+So here what we can do is just delete the categories provider.
+
+48
+00:03:46,760 --> 00:03:51,140
+And the nice thing about this is once you remove it, your code will stop working because you no longer
+
+49
+00:03:51,140 --> 00:03:52,550
+have access to the context.
+
+50
+00:03:53,270 --> 00:03:59,510
+But what you need to do now is figure out where in your code you're still calling categories context.
+
+51
+00:04:02,950 --> 00:04:08,140
+So clearly here inside of our preview component as well as inside of our categories component.
+
+52
+00:04:09,970 --> 00:04:18,250
+So first, let's start removing any references to this context because we're no longer using use context.
+
+53
+00:04:18,910 --> 00:04:21,640
+Instead, what we're doing is we're using.
+
+54
+00:04:24,020 --> 00:04:26,270
+Our selector, which we have not met.
+
+55
+00:04:27,260 --> 00:04:39,020
+So inside of our categories selector, let's create a contest select categories map which is equal to
+
+56
+00:04:39,320 --> 00:04:40,610
+a function that gets state.
+
+57
+00:04:41,150 --> 00:04:43,730
+And then from the state we pull off categories.
+
+58
+00:04:44,180 --> 00:04:46,400
+Categories map like so.
+
+59
+00:04:47,850 --> 00:04:49,170
+Let's make sure to export this.
+
+60
+00:04:51,700 --> 00:04:55,120
+Import this now into our categories preview component.
+
+61
+00:04:56,470 --> 00:04:58,450
+Going up to our stuff.
+
+62
+00:04:58,450 --> 00:05:00,100
+Order categories.
+
+63
+00:05:01,090 --> 00:05:02,110
+Category selector.
+
+64
+00:05:04,100 --> 00:05:12,740
+And then from re act we no longer need use context, but instead we need use selector from react redux.
+
+65
+00:05:14,130 --> 00:05:20,430
+And we'll just say, okay, I want to get categories map by calling you selector.
+
+66
+00:05:22,090 --> 00:05:23,320
+With Select Categories Map.
+
+67
+00:05:24,420 --> 00:05:24,900
+There we go.
+
+68
+00:05:26,970 --> 00:05:31,350
+So here now this category's preview should be properly selecting categories map.
+
+69
+00:05:32,730 --> 00:05:38,520
+So what we can do is we can go to the shop page and we see that we indeed have our data.
+
+70
+00:05:38,970 --> 00:05:42,000
+But going into deeper, we notice that we have nothing.
+
+71
+00:05:42,570 --> 00:05:44,130
+So this is exactly as expected.
+
+72
+00:05:44,130 --> 00:05:46,290
+We have not migrated over the category component.
+
+73
+00:05:47,040 --> 00:05:48,210
+So let's do that now as well.
+
+74
+00:05:48,600 --> 00:05:55,290
+I'm going to copy this because I know this is pretty much a 1 to 1 change of what we need from the category
+
+75
+00:05:55,290 --> 00:05:55,800
+component.
+
+76
+00:05:58,360 --> 00:06:01,690
+So instead of this, I'm going to put this in.
+
+77
+00:06:02,500 --> 00:06:04,000
+I need use selector.
+
+78
+00:06:10,710 --> 00:06:11,670
+From React Redux.
+
+79
+00:06:12,840 --> 00:06:18,480
+And of course, I also need select categories map from.
+
+80
+00:06:21,760 --> 00:06:22,840
+Our store folder.
+
+81
+00:06:24,320 --> 00:06:25,490
+Our Categories folder.
+
+82
+00:06:27,560 --> 00:06:28,700
+A category selector.
+
+83
+00:06:29,390 --> 00:06:30,170
+Let's say this.
+
+84
+00:06:30,800 --> 00:06:31,700
+And now let's go back.
+
+85
+00:06:32,860 --> 00:06:33,460
+And there we go.
+
+86
+00:06:34,240 --> 00:06:41,080
+Our code is now properly migrated over to using category context and we can now delete the categories
+
+87
+00:06:41,080 --> 00:06:42,250
+contexts such as sex.
+
+88
+00:06:43,860 --> 00:06:50,310
+And as we see nothing in our application breaks because everything is now properly migrated to Redux.
+
+89
+00:06:51,210 --> 00:06:56,490
+So I know there is just a lot of this kind of redundancy that we're going through where we're writing
+
+90
+00:06:56,490 --> 00:07:02,940
+selectors, we're writing reducers, we're writing our action creators, we're bringing in the use dispatch,
+
+91
+00:07:02,940 --> 00:07:04,050
+the use selector hooks.
+
+92
+00:07:04,410 --> 00:07:08,880
+But this is all very important because so much of this is indeed boilerplate and set up.
+
+93
+00:07:09,750 --> 00:07:15,270
+But the main benefit that we get, of course, is going to be still the unit directional data flow,
+
+94
+00:07:15,570 --> 00:07:17,820
+single source of truth for all of our data.
+
+95
+00:07:18,450 --> 00:07:24,180
+And here now as you practice and the more you code this, you will naturally just be able to infer all
+
+96
+00:07:24,180 --> 00:07:26,850
+of the steps that you need and you'll understand why they're necessary.
+
+97
+00:07:27,300 --> 00:07:31,260
+You need actions that actually create updates in the reducers.
+
+98
+00:07:31,560 --> 00:07:36,120
+You need selectors to pull that data down and then you have to set it all up inside of the appropriate
+
+99
+00:07:36,120 --> 00:07:36,990
+store object.
+
+100
+00:07:37,590 --> 00:07:41,040
+So all of this is just a cyclical flow that you have to get familiar with.
+
+101
+00:07:41,820 --> 00:07:46,650
+But now that we've set this up, there's a couple of things that I want to talk about, and that has
+
+102
+00:07:46,650 --> 00:07:52,560
+to do with some of the more optimizations we can make to this set up that we have now that we have two
+
+103
+00:07:52,560 --> 00:07:55,770
+different reducers, which we'll discuss in the next video.
+
+104
+00:07:56,640 --> 00:08:00,320
+So join me in the next video and let's talk about optimizing this code.

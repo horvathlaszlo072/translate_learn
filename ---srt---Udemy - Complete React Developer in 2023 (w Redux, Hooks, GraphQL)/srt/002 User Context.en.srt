@@ -1,0 +1,615 @@
+1
+00:00:00,420 --> 00:00:01,410
+Welcome back, everyone.
+
+2
+00:00:01,830 --> 00:00:08,190
+So let's talk about what it is that we need to do with this user object in a very narrow, focused feature
+
+3
+00:00:08,190 --> 00:00:09,030
+that we want to build.
+
+4
+00:00:09,840 --> 00:00:15,900
+Let's say that inside of our navigation component, what we want to do is that when a user is signed
+
+5
+00:00:15,900 --> 00:00:23,190
+in instead of saying sign in for the link, we want to instead show a sign out link instead so that
+
+6
+00:00:23,190 --> 00:00:25,680
+when the user clicks it, we sign them out of their account.
+
+7
+00:00:26,280 --> 00:00:27,120
+How do we do that?
+
+8
+00:00:27,750 --> 00:00:32,730
+Well, in order to do that, we need to be able to register and figure out whether or not a user is
+
+9
+00:00:32,730 --> 00:00:34,500
+currently signed in or not.
+
+10
+00:00:35,040 --> 00:00:40,950
+And the way we do that is we know that we get back the appropriate user off as a response whenever we
+
+11
+00:00:40,950 --> 00:00:44,520
+sign in successfully or whenever a user signs up.
+
+12
+00:00:44,970 --> 00:00:49,590
+So how do we store this inside of this context that I've talked about?
+
+13
+00:00:50,430 --> 00:00:53,700
+So let me show you how it is to create a context in the first place.
+
+14
+00:00:54,150 --> 00:01:01,740
+It's very similar to a component that wraps around all of your other components that need access to
+
+15
+00:01:01,740 --> 00:01:08,970
+this context context you can kind of see as a storage place, except it's a component that exclusively
+
+16
+00:01:08,970 --> 00:01:09,930
+stores things.
+
+17
+00:01:10,770 --> 00:01:15,720
+So let's build something with context inside of your source folder.
+
+18
+00:01:16,290 --> 00:01:19,260
+I like to make a separate folder for my contexts.
+
+19
+00:01:19,350 --> 00:01:23,400
+So I'm going to say contexts like so and inside.
+
+20
+00:01:23,400 --> 00:01:27,090
+I want to make a user context dot GSX.
+
+21
+00:01:28,090 --> 00:01:32,200
+Remember, it's Dutch asks because we are writing out a component.
+
+22
+00:01:33,200 --> 00:01:41,870
+So in order to use context, we have to first create a context using the create context method that
+
+23
+00:01:41,870 --> 00:01:42,830
+we get from react.
+
+24
+00:01:44,010 --> 00:01:50,250
+Then what we're going to do in order to create this context is first, we need to actually export out
+
+25
+00:01:50,250 --> 00:01:54,990
+the context itself so you can see the context as being two pieces.
+
+26
+00:01:55,560 --> 00:02:01,910
+One is the actual storage thing itself, and this is the literal context.
+
+27
+00:02:01,920 --> 00:02:08,220
+So for us, because it's a user context, I'm going to call it user context and this is equal to calling
+
+28
+00:02:08,220 --> 00:02:12,030
+create context, which will build out a context for us.
+
+29
+00:02:12,660 --> 00:02:19,710
+And what we want to parse to it is the default value, not necessarily the initial value, but kind
+
+30
+00:02:19,710 --> 00:02:20,820
+of like the default value.
+
+31
+00:02:20,850 --> 00:02:21,960
+We'll talk more about this.
+
+32
+00:02:23,360 --> 00:02:27,680
+So actually, before we even start filling it out, let's just discuss the other pieces of it.
+
+33
+00:02:28,040 --> 00:02:35,360
+So this I want you to see as the actual value, as the actual value you want to access.
+
+34
+00:02:36,740 --> 00:02:40,400
+And then there is also going to be a provider.
+
+35
+00:02:40,430 --> 00:02:43,790
+So we want to export both of these, both the context and the provider.
+
+36
+00:02:44,420 --> 00:02:47,870
+So a provider is the actual component.
+
+37
+00:02:48,650 --> 00:02:54,530
+So there's a user provider is going to be this literal functional component.
+
+38
+00:02:55,280 --> 00:02:57,500
+And what we do is we receive children.
+
+39
+00:02:58,220 --> 00:03:04,700
+And what we need to do is we need to return user context dot provider.
+
+40
+00:03:05,210 --> 00:03:11,840
+So on every context that gets built for us, there is a dot provider and the provider is the component
+
+41
+00:03:11,840 --> 00:03:17,450
+that will wrap around any other components that need access to the values inside.
+
+42
+00:03:18,230 --> 00:03:22,040
+In here, we are just going to render the children.
+
+43
+00:03:22,550 --> 00:03:28,250
+So essentially what happens is that let's say you have app, for example, app being our app component,
+
+44
+00:03:28,820 --> 00:03:32,540
+we're going to wrap this in the user provider component.
+
+45
+00:03:33,620 --> 00:03:37,430
+And then inside of app app, of course, will now be the children.
+
+46
+00:03:37,790 --> 00:03:42,080
+So we want to take this children and then put it around our user context provider.
+
+47
+00:03:42,110 --> 00:03:48,170
+This is really just some kind of alias component that allows us to use this user context app provider
+
+48
+00:03:48,170 --> 00:03:49,100
+and wrap the children.
+
+49
+00:03:50,640 --> 00:03:53,880
+So what else do we need to pass to this provider?
+
+50
+00:03:54,360 --> 00:04:00,780
+Well, this provider is where it's going to receive the value, which is going to hold the actual contextual
+
+51
+00:04:00,780 --> 00:04:01,350
+values.
+
+52
+00:04:02,860 --> 00:04:06,730
+So this is where it might get a little confusing, but follow along with me now.
+
+53
+00:04:07,670 --> 00:04:14,060
+What we know is that we want to store a user object, so current user, for example, and what we can
+
+54
+00:04:14,060 --> 00:04:18,650
+do because as a component is leverage all of our hooks that allow us to store things.
+
+55
+00:04:18,860 --> 00:04:23,000
+So we want to store a user state, let's just use the use state hook.
+
+56
+00:04:23,480 --> 00:04:30,440
+And here I'm going to say that current user gets both the actual value, but also the setup function,
+
+57
+00:04:31,070 --> 00:04:34,970
+and I want to be able to initialize this value as null.
+
+58
+00:04:36,010 --> 00:04:40,900
+Next, what I want to do is I want to actually generate the value that I'm going to pass in here, so
+
+59
+00:04:40,900 --> 00:04:47,560
+this is going to be an object that passes the two values that are important, which is both the current
+
+60
+00:04:47,560 --> 00:04:49,660
+user as well as the current user.
+
+61
+00:04:49,750 --> 00:04:53,140
+So both the center function and the actual value.
+
+62
+00:04:53,620 --> 00:04:58,990
+So what you can think about what this provider is that this provider is essentially allowing any of
+
+63
+00:04:58,990 --> 00:05:04,420
+its child components to access the values inside of its used state.
+
+64
+00:05:04,840 --> 00:05:07,000
+So we're just doing you stay as we normally do.
+
+65
+00:05:07,150 --> 00:05:10,390
+We have a value for that, you state, and we have the center for that, you state.
+
+66
+00:05:10,630 --> 00:05:18,460
+But I want to be able to call this setter and get the value anywhere inside of the component tree that
+
+67
+00:05:18,460 --> 00:05:21,640
+is nested within this actual provider value.
+
+68
+00:05:22,390 --> 00:05:28,000
+So then all we do is we pass this value into here and now we go back to this context and remember,
+
+69
+00:05:28,000 --> 00:05:30,790
+we're trying to instantiate the initial point of this.
+
+70
+00:05:31,180 --> 00:05:36,730
+So I know that this value you can see as if well, you're like equals and we pass an initial null value
+
+71
+00:05:36,730 --> 00:05:37,600
+in the current user.
+
+72
+00:05:37,930 --> 00:05:40,520
+We did, but this is for the state.
+
+73
+00:05:40,540 --> 00:05:42,820
+This is not necessarily for the context.
+
+74
+00:05:42,820 --> 00:05:44,800
+The context needs an initial value as well.
+
+75
+00:05:45,100 --> 00:05:48,610
+And we just want to build the base empty state of what this is.
+
+76
+00:05:48,970 --> 00:05:52,390
+So current user being a actual object.
+
+77
+00:05:52,660 --> 00:05:58,060
+Usually, the empty state of an object should be null because you want a null check to define whether
+
+78
+00:05:58,060 --> 00:06:01,450
+or not you have a user existing object or no object.
+
+79
+00:06:01,900 --> 00:06:04,510
+An empty object is still going to add value as true.
+
+80
+00:06:04,870 --> 00:06:11,380
+So we know that there's no context when the current user value is null and then what's the default value
+
+81
+00:06:11,380 --> 00:06:12,730
+of a center function?
+
+82
+00:06:13,240 --> 00:06:17,830
+Well, this is actually just a function that does nothing, so it's an empty function that returns null.
+
+83
+00:06:17,860 --> 00:06:23,920
+It's the most basic type of blank function you can think of, but this is all we need.
+
+84
+00:06:24,640 --> 00:06:31,000
+Essentially, what's happening is we are going to create this user provider and we want to wrap it around
+
+85
+00:06:31,000 --> 00:06:33,010
+the portion of our code that matters.
+
+86
+00:06:33,370 --> 00:06:38,470
+So I'm going to go into index chase and I'm going to wrap the entire app component inside of this.
+
+87
+00:06:39,370 --> 00:06:43,960
+So let's just first shuffle these around so that they're in the right order.
+
+88
+00:06:45,570 --> 00:06:54,480
+And we're going to import in our user provider from our contexts folder, so context, user context.
+
+89
+00:06:56,110 --> 00:07:01,030
+And then all we need to do is wrap our app inside of our user provider.
+
+90
+00:07:01,690 --> 00:07:08,850
+So now any component inside of this user provider nested deep within the app can access the context
+
+91
+00:07:08,870 --> 00:07:11,150
+value inside of the provider itself.
+
+92
+00:07:11,770 --> 00:07:17,830
+So the user provider is solely meant to tell us, Oh, inside of my component tree, which components
+
+93
+00:07:17,830 --> 00:07:19,570
+have access to my context?
+
+94
+00:07:19,870 --> 00:07:23,530
+It's going to be any components inside of the provider.
+
+95
+00:07:23,800 --> 00:07:27,190
+Anything outside will not be able to access the context.
+
+96
+00:07:27,580 --> 00:07:33,610
+So here inside of app, we know that we want our sign in form to be able to access this context because
+
+97
+00:07:33,610 --> 00:07:41,250
+whenever the user signs in, we want to actually take this user object and we want to store it inside
+
+98
+00:07:41,250 --> 00:07:42,010
+of the context.
+
+99
+00:07:42,610 --> 00:07:45,160
+So to do this, we need to use two things.
+
+100
+00:07:45,670 --> 00:07:52,300
+First, we need to use the use context hook, and then we need to bring in the actual context itself.
+
+101
+00:07:52,870 --> 00:08:00,640
+So we're going to go into our context folder and we're going to import in the user context object.
+
+102
+00:08:01,180 --> 00:08:09,340
+This user context object is going to give us back whatever value is passed in for the value, and our
+
+103
+00:08:09,340 --> 00:08:14,800
+value is the current user of you state, as well as the set or function.
+
+104
+00:08:15,220 --> 00:08:18,220
+So this value, we've instantiate it as an object.
+
+105
+00:08:18,370 --> 00:08:24,370
+So we'll get this exact object back with whatever the current user value inside of the user provider's
+
+106
+00:08:24,370 --> 00:08:26,250
+used state is currently set up.
+
+107
+00:08:27,190 --> 00:08:34,720
+So here, in order to utilize this, what we need to do is come down here and we'll say Konst is equal
+
+108
+00:08:34,720 --> 00:08:37,900
+to use context passing in the user context.
+
+109
+00:08:38,440 --> 00:08:43,150
+So as we know, we get back an object and for our sign in form, we just want to set the value.
+
+110
+00:08:43,540 --> 00:08:50,350
+So I'm going to say set current user and I'm going to run that current user whenever this user value
+
+111
+00:08:50,350 --> 00:08:51,160
+comes back.
+
+112
+00:08:51,850 --> 00:08:57,010
+Then what I want to do is that I want to access it inside of my navigation component.
+
+113
+00:08:57,550 --> 00:09:00,520
+So in my navigation component, I'm going to do the same thing.
+
+114
+00:09:00,910 --> 00:09:04,240
+I'm going to import in the use context from React.
+
+115
+00:09:04,660 --> 00:09:11,800
+And then I'm going to import in the user context value from the context user context.
+
+116
+00:09:11,920 --> 00:09:18,430
+But this time, what I want from the user context is the current user value, not the center.
+
+117
+00:09:18,820 --> 00:09:24,580
+So I'm going to call use context on the user context the same way that we saw when we were pulling the
+
+118
+00:09:24,580 --> 00:09:26,860
+center function inside of our sign in form.
+
+119
+00:09:27,340 --> 00:09:30,970
+But this time, I want the actual value of current user.
+
+120
+00:09:31,570 --> 00:09:38,290
+So now if I console.log current user and I save this and I go back to my application here, what I'm
+
+121
+00:09:38,290 --> 00:09:41,200
+going to do is I'm going to pass in and sign in.
+
+122
+00:09:41,860 --> 00:09:47,770
+So as we know, what should happen is that our sign and form signs in gets the response destruction
+
+123
+00:09:47,770 --> 00:09:50,380
+as the user stores it into our context.
+
+124
+00:09:50,740 --> 00:09:55,360
+But then what should happen is that it should log from our navigation component.
+
+125
+00:09:55,990 --> 00:09:57,420
+So here what's happening?
+
+126
+00:09:57,820 --> 00:10:00,340
+Why is it that this component ran?
+
+127
+00:10:00,520 --> 00:10:05,230
+Remember, the fact that we logged it means that our functional component was re rendered.
+
+128
+00:10:05,710 --> 00:10:14,320
+The reason why is because use context as a hook tells this component Oh, whenever a value inside of
+
+129
+00:10:14,320 --> 00:10:17,050
+this context updates re render me.
+
+130
+00:10:17,560 --> 00:10:23,860
+So what's happening here is that because we're leveraging this current user value, we are saying,
+
+131
+00:10:23,860 --> 00:10:31,870
+Oh, I want you to run my functional component again and re render me because this value inside of the
+
+132
+00:10:31,870 --> 00:10:33,580
+user context has updated.
+
+133
+00:10:33,970 --> 00:10:40,120
+And the reason why this triggers is because of you state being called with the center function.
+
+134
+00:10:40,720 --> 00:10:48,190
+So as we remember, a component re renders whenever it's state updates or whenever its props changes
+
+135
+00:10:48,610 --> 00:10:54,550
+here, you can imagine that this you state value center function was called this current user value
+
+136
+00:10:54,550 --> 00:10:55,210
+updates.
+
+137
+00:10:55,540 --> 00:11:04,060
+That means that any component that is listening for current user should in turn update, meaning that
+
+138
+00:11:04,060 --> 00:11:06,520
+it should have re render which our current user does.
+
+139
+00:11:06,520 --> 00:11:12,550
+Because if the current user value updates, we most likely will want to update our assets because as
+
+140
+00:11:12,550 --> 00:11:15,490
+a chance, we're using it as part of our UI.
+
+141
+00:11:16,000 --> 00:11:18,460
+So this is how context works.
+
+142
+00:11:18,760 --> 00:11:25,630
+It seems complicated, but really all it is is that this context is just a glorified component that
+
+143
+00:11:25,630 --> 00:11:27,850
+is really just leveraging you state.
+
+144
+00:11:28,120 --> 00:11:35,050
+And all we're doing is exposing the value as well as the center of this used state value externally,
+
+145
+00:11:35,560 --> 00:11:38,720
+whatever values that you want a component to be able to expose.
+
+146
+00:11:38,740 --> 00:11:43,090
+You can also expose the real context, which we will see later throughout the course.
+
+147
+00:11:43,360 --> 00:11:49,750
+But really, this is all that's happening here is that we created some parent level component at the
+
+148
+00:11:49,750 --> 00:11:55,360
+very top of our app that gives us access to some component inside.
+
+149
+00:11:55,510 --> 00:12:03,400
+You state value then inside of our respective places where either getting and using the center or we're
+
+150
+00:12:03,400 --> 00:12:06,100
+getting and using the actual value.
+
+151
+00:12:06,790 --> 00:12:08,350
+This is use context.
+
+152
+00:12:09,100 --> 00:12:12,850
+So in the next video, what we're going to do is we're going to talk about some of the nuances with
+
+153
+00:12:12,850 --> 00:12:17,440
+the use context in our model of understanding re renders with components.
+
+154
+00:12:17,920 --> 00:12:19,080
+So I'll see you in the next video.

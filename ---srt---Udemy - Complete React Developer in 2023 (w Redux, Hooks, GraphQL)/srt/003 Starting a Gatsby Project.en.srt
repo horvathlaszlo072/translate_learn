@@ -1,0 +1,451 @@
+1
+00:00:00,240 --> 00:00:02,040
+Hello and welcome back.
+
+2
+00:00:02,950 --> 00:00:09,850
+So in the last lesson we learned about what it is that Gatsby does at a high level now in this lesson,
+
+3
+00:00:09,850 --> 00:00:12,250
+let's actually take a look at what we're going to build.
+
+4
+00:00:13,090 --> 00:00:17,870
+So what you'll end up building is just this basic blog website.
+
+5
+00:00:17,920 --> 00:00:24,040
+In this lesson, there's not that much styling to it, because what I'm trying to show you is just the
+
+6
+00:00:24,040 --> 00:00:28,320
+basic concepts in Gatsby in order to get you up and running.
+
+7
+00:00:28,900 --> 00:00:34,750
+Now, how you end up actually styling your blog or adding features to your blog is entirely up to you
+
+8
+00:00:34,750 --> 00:00:37,160
+and definitely part of the coding challenge.
+
+9
+00:00:37,810 --> 00:00:40,330
+Now, the blog itself is very simple.
+
+10
+00:00:40,750 --> 00:00:47,550
+It simply has a list of all of our blog posts that you can navigate to and navigate back from.
+
+11
+00:00:48,340 --> 00:00:55,600
+But the main thing to keep in mind here is that a lot of this content is actually dynamically generated
+
+12
+00:00:55,810 --> 00:00:57,250
+inside of Gatsby.
+
+13
+00:00:57,640 --> 00:00:58,690
+I'll show you what I mean.
+
+14
+00:00:58,690 --> 00:01:05,860
+It's actually really interesting because Gatsby style of setting up this blog is different from how
+
+15
+00:01:05,860 --> 00:01:11,680
+you would typically write it in a react application because of a lot of the plugins and APIs inside
+
+16
+00:01:11,680 --> 00:01:15,400
+of Gatsby in how it generates this static website.
+
+17
+00:01:15,640 --> 00:01:19,690
+Now, we're also going to learn how to host our blog on Nat Lafi.
+
+18
+00:01:20,290 --> 00:01:27,550
+So Nat Lafi is a company that offers this amazing back and service for you to host static websites.
+
+19
+00:01:27,910 --> 00:01:31,260
+And the free tier of net lafi is extremely generous.
+
+20
+00:01:31,270 --> 00:01:33,700
+It's way more than what we need for our blog.
+
+21
+00:01:33,970 --> 00:01:35,830
+And it's incredibly easy.
+
+22
+00:01:36,170 --> 00:01:41,740
+It actually gives us continuous deployment pretty much right out the gate with GitHub.
+
+23
+00:01:42,070 --> 00:01:48,520
+And what that means is that we're able to push our code to GitHub connected to Net Lafi, and whenever
+
+24
+00:01:48,520 --> 00:01:56,470
+we push code to that GitHub repo net, Lafi will automatically redeploy and rebuild our website and
+
+25
+00:01:56,470 --> 00:01:59,440
+update r u r l with our latest code.
+
+26
+00:01:59,920 --> 00:02:06,550
+So that's a really, really great service that we can leverage while using Gatsby because we're building
+
+27
+00:02:06,550 --> 00:02:07,810
+static websites.
+
+28
+00:02:08,800 --> 00:02:14,620
+So now that we know what we're building and where we're going to host it to, let's actually take a
+
+29
+00:02:14,620 --> 00:02:17,060
+look at how to write this code.
+
+30
+00:02:17,110 --> 00:02:22,690
+So let's go to our terminal and what we're going to leverage is The Gatsby, Seelie.
+
+31
+00:02:23,850 --> 00:02:31,050
+So Seelie is a command line interface, which is a tool that we can use to quickly set up and build
+
+32
+00:02:31,050 --> 00:02:36,120
+Gatsby projects pretty much just like create react in order to use it.
+
+33
+00:02:36,150 --> 00:02:43,020
+We're going to leverage aspects which, as you remember, is a new feature that comes with a later version
+
+34
+00:02:43,020 --> 00:02:50,930
+of NPM that allows us to leverage packages without having to download them globally on our computer.
+
+35
+00:02:51,420 --> 00:02:57,930
+So using NPCs, I'm going to say Gatsby New and then Gatsby blog.
+
+36
+00:03:00,630 --> 00:03:08,160
+So what this does is it will initialise and Klown down using the Gadsby starter, a new Gatsby project
+
+37
+00:03:08,160 --> 00:03:08,500
+for me.
+
+38
+00:03:09,060 --> 00:03:13,290
+Now, there's actually a lot of other starter projects you're able to leverage.
+
+39
+00:03:13,500 --> 00:03:20,160
+And all you would do is after seeing Gatsby blog or whatever name you want for your gas project, you
+
+40
+00:03:20,160 --> 00:03:25,170
+say space and then you link the new star that you want to actually leverage.
+
+41
+00:03:25,710 --> 00:03:30,370
+And Gatsby provides all these starters, depending on what kind of website you're looking to build.
+
+42
+00:03:30,810 --> 00:03:38,490
+In fact, there's even a Gatsby blog starter that Dan Abramov, the creator of Redox and a very, very
+
+43
+00:03:38,490 --> 00:03:44,490
+prominent member of the reactor core team, uses to create his new blog, overreacted.
+
+44
+00:03:45,790 --> 00:03:51,130
+Now, you can totally take a look at this afterwards, but let's just get started first to understand
+
+45
+00:03:51,130 --> 00:03:53,820
+all of the nuances in using Gatsby.
+
+46
+00:03:54,430 --> 00:03:59,890
+So once we've actually created our New Gatsby blog repo, let's see into it.
+
+47
+00:04:01,680 --> 00:04:05,670
+And let's just open up the code and see what we have.
+
+48
+00:04:08,420 --> 00:04:16,160
+Now, you'll see right away that our folder structure comes with these different files here inside of
+
+49
+00:04:16,160 --> 00:04:17,220
+the source folder.
+
+50
+00:04:17,240 --> 00:04:22,620
+We have something that we might be used to seeing with our REACT projects, which is a components folder.
+
+51
+00:04:23,330 --> 00:04:28,310
+We have an images folder that holds some images and we have these pages folder.
+
+52
+00:04:28,970 --> 00:04:31,600
+Now we're going to talk about the pages folder.
+
+53
+00:04:31,610 --> 00:04:35,600
+But first, let's just take a look at these four files we have here.
+
+54
+00:04:36,200 --> 00:04:42,830
+The Gatsby browser dodges The Gatsby config, Duchesse Gatsby No Duchesse and Gatsby Ezat.
+
+55
+00:04:43,640 --> 00:04:50,330
+So you can actually get server side rendering with Gatsby if you follow some of the instructions with
+
+56
+00:04:50,330 --> 00:04:52,910
+the gas BSR API dock.
+
+57
+00:04:53,570 --> 00:04:57,890
+Now, we're not actually going to do that in this course, but it's nice to know that you can achieve
+
+58
+00:04:57,890 --> 00:04:58,760
+it with Gatsby.
+
+59
+00:04:59,420 --> 00:05:04,220
+So if you're curious to see how to implement it after this course, you can definitely take a look at
+
+60
+00:05:04,220 --> 00:05:04,850
+these docs.
+
+61
+00:05:05,750 --> 00:05:13,010
+Gatsby Noad we're going to use in order to build out some of the more server required, things that
+
+62
+00:05:13,040 --> 00:05:15,060
+we will definitely explore in this course.
+
+63
+00:05:15,710 --> 00:05:21,050
+So for now, just understand that this is where we end up writing some of our node related code.
+
+64
+00:05:22,230 --> 00:05:29,430
+Now, The Gatsby config is actually the main file that we're going to focus on inside of this lesson,
+
+65
+00:05:29,430 --> 00:05:37,020
+at the very least, that Gatsby config holds a lot of the configuration options that we need in order
+
+66
+00:05:37,020 --> 00:05:38,740
+for Gatsby to know what to do.
+
+67
+00:05:39,450 --> 00:05:46,590
+Now, this site metadata is actually data that we can pull into our components using Graph QR inside
+
+68
+00:05:46,590 --> 00:05:48,010
+of Our Gatsby project.
+
+69
+00:05:48,540 --> 00:05:55,140
+So if we wanted access to a title, this description or the author in any way, we are able to leverage
+
+70
+00:05:55,140 --> 00:06:00,870
+graph and pull this site metadata right out of this Kaspi config object.
+
+71
+00:06:01,770 --> 00:06:09,090
+These plug ins are additional little libraries in Gatsby that allow you to do different things with
+
+72
+00:06:09,090 --> 00:06:10,270
+different files.
+
+73
+00:06:10,860 --> 00:06:12,890
+So we'll definitely explore this later.
+
+74
+00:06:12,900 --> 00:06:19,050
+But you can see these as kind of additional helper libraries that transform the way that we're able
+
+75
+00:06:19,050 --> 00:06:20,270
+to use Gatsby.
+
+76
+00:06:20,610 --> 00:06:24,030
+And we'll take a better look at this in a later lesson.
+
+77
+00:06:24,570 --> 00:06:31,290
+For now, just understand that this plugins array is where we would add any new plugins that we want
+
+78
+00:06:31,440 --> 00:06:33,160
+for Our Gatsby project.
+
+79
+00:06:33,690 --> 00:06:41,790
+Now, Gatsby does have a lot of configuration and a lot of plug ins, so you can definitely take some
+
+80
+00:06:41,790 --> 00:06:48,660
+time and read a lot of the documentation that's available for many of the plugins that come by default
+
+81
+00:06:48,660 --> 00:06:49,490
+with the starter.
+
+82
+00:06:50,280 --> 00:06:54,750
+There's also going to be a lot of Gatsby concepts that we're going to cover.
+
+83
+00:06:54,990 --> 00:07:03,270
+And honestly, you kind of have to just follow through with this lesson in order to understand at the
+
+84
+00:07:03,270 --> 00:07:09,930
+end how all of these pieces come together because there are so many moving parts in order for us to
+
+85
+00:07:09,930 --> 00:07:11,480
+end up building our blog.
+
+86
+00:07:12,000 --> 00:07:15,960
+But Gatsby does try and make it as easy as possible.
+
+87
+00:07:16,350 --> 00:07:22,530
+So as we build out some of these features, we're going to go back to a lot of these files to better
+
+88
+00:07:22,530 --> 00:07:23,940
+understand what they're for.
+
+89
+00:07:24,300 --> 00:07:24,870
+Right now.
+
+90
+00:07:24,870 --> 00:07:29,730
+I just want to introduce you to the base files so that we understand what we're doing.
+
+91
+00:07:30,580 --> 00:07:36,580
+Now, one of the big things is actually to look at a package that Jason and looking at the scripts we
+
+92
+00:07:36,580 --> 00:07:38,920
+see that it does provide us with quite a few.
+
+93
+00:07:39,460 --> 00:07:46,360
+Now, the main one that we want is actually Gatsby develop because Gatsby develop is what we use in
+
+94
+00:07:46,360 --> 00:07:48,820
+order to serve up our website on localhost.
+
+95
+00:07:48,830 --> 00:07:50,680
+So let's actually just test that first.
+
+96
+00:07:51,590 --> 00:07:55,610
+So what we'll do is just run, npm, run, develop.
+
+97
+00:07:56,980 --> 00:08:03,640
+And what this will do is it will build up our New Gatsby application and it'll actually give us two
+
+98
+00:08:03,640 --> 00:08:04,180
+routes.
+
+99
+00:08:04,870 --> 00:08:07,960
+The first one will be localhost eight thousand.
+
+100
+00:08:08,560 --> 00:08:11,340
+That is going to host the actual website.
+
+101
+00:08:12,190 --> 00:08:17,920
+The second you are, all they're going to give us is localhost eight thousand, underscore, underscore,
+
+102
+00:08:17,920 --> 00:08:19,330
+underscore, craft, QOL.
+
+103
+00:08:19,930 --> 00:08:22,990
+And this is going to be a graphical playground.
+
+104
+00:08:23,320 --> 00:08:26,640
+But we'll look at that in the next lesson in this lesson.
+
+105
+00:08:26,650 --> 00:08:32,230
+Let's just navigate to localhost a thousand in order to see what it is that we get.
+
+106
+00:08:33,410 --> 00:08:39,620
+So by default, we get this Gatsby default page and we see that there's some routing that's set up for
+
+107
+00:08:39,620 --> 00:08:45,650
+us, so we load this little astronaut and if we go to page, it takes us to a different page at this
+
+108
+00:08:45,650 --> 00:08:47,900
+route and we can go back to our home page.
+
+109
+00:08:48,320 --> 00:08:50,150
+Really simple, really quick.
+
+110
+00:08:50,150 --> 00:08:53,330
+They've just set up something here for us to just build off of.
+
+111
+00:08:54,310 --> 00:08:59,740
+So now that we see this in the next lesson, let's take a look at how the code actually translates to
+
+112
+00:08:59,740 --> 00:09:00,660
+what we see here.
+
+113
+00:09:01,180 --> 00:09:02,740
+So I'll see you in the next lesson.

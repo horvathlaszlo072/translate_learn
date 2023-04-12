@@ -1,0 +1,447 @@
+1
+00:00:00,030 --> 00:00:00,930
+Welcome back, everyone.
+
+2
+00:00:02,000 --> 00:00:04,760
+In this video, we are going to discuss Redux Saga.
+
+3
+00:00:05,570 --> 00:00:07,610
+Redux Saga is a side effect.
+
+4
+00:00:07,700 --> 00:00:10,280
+State Management Library, just like redux.
+
+5
+00:00:10,280 --> 00:00:15,530
+Thunk, except it allows a lot more patterns and it's a lot more complex.
+
+6
+00:00:16,520 --> 00:00:22,070
+In fact, it might actually be the most complex library within the Redux ecosystem, and the reason
+
+7
+00:00:22,070 --> 00:00:26,810
+for its complexity is due to the power that it brings to your system.
+
+8
+00:00:27,560 --> 00:00:33,560
+You're still within the flux architecture system of Redux, but the main advantage of Redux saga is
+
+9
+00:00:33,560 --> 00:00:40,520
+it allows you to perform very complex coordination of asynchronous side effects inside of Redux.
+
+10
+00:00:41,270 --> 00:00:47,450
+So in this series, I'm going to talk about the high level of how the flow of data changes redux saga.
+
+11
+00:00:47,990 --> 00:00:54,170
+But the main thing that I want you to take away is that the actual implementation will learn once we
+
+12
+00:00:54,170 --> 00:00:55,010
+have to code it.
+
+13
+00:00:55,850 --> 00:01:00,380
+This is just really going to be a flow diagram of what we already know, what actions, but now with
+
+14
+00:01:00,380 --> 00:01:02,090
+Redux Saga inside instead.
+
+15
+00:01:03,430 --> 00:01:10,300
+So looking at our typical Redux flow, we have our middleware sitting in front of our reducers.
+
+16
+00:01:11,140 --> 00:01:17,350
+Read Saga is indeed a middleware, but I want you to understand that it flows differently from how you
+
+17
+00:01:17,350 --> 00:01:20,890
+would typically expect a middleware to flow when they receive actions.
+
+18
+00:01:21,550 --> 00:01:26,350
+Typically, with most middleware actions hit middleware before they hit the reducer.
+
+19
+00:01:26,770 --> 00:01:28,180
+But Saga's is different.
+
+20
+00:01:28,570 --> 00:01:34,510
+The actions will actually hit the reducers first before moving on to the saga.
+
+21
+00:01:35,020 --> 00:01:39,220
+So in this case, it flows after the reducers have updated.
+
+22
+00:01:39,610 --> 00:01:45,610
+So if you think about an action flow, it starts from a component and it moves up and it goes through
+
+23
+00:01:45,610 --> 00:01:48,130
+every other middleware except for the saga.
+
+24
+00:01:48,880 --> 00:01:52,990
+Then it moves through the corresponding reducers and it updates their value.
+
+25
+00:01:53,230 --> 00:01:57,130
+And then do those actions finally hit the saga's?
+
+26
+00:01:57,550 --> 00:02:03,670
+The saga's will respond to these actions and perform certain business logic, certain asynchronous requests,
+
+27
+00:02:03,940 --> 00:02:04,750
+whatever it is.
+
+28
+00:02:04,750 --> 00:02:09,040
+It's just in the realm of writing JavaScript code based on an action.
+
+29
+00:02:09,580 --> 00:02:12,310
+From here, maybe new actions are generated.
+
+30
+00:02:12,310 --> 00:02:16,720
+Maybe the saga does something and it gets a value, and then it's like, Oh, I need to fire off an
+
+31
+00:02:16,720 --> 00:02:20,170
+action so that I can subsequently update the reducers.
+
+32
+00:02:20,500 --> 00:02:21,610
+So that's what the saga will do.
+
+33
+00:02:21,850 --> 00:02:24,520
+They might fire a new action.
+
+34
+00:02:24,700 --> 00:02:28,480
+Those will pass through the middleware and then it'll continue on the flow.
+
+35
+00:02:28,840 --> 00:02:34,120
+But the thing about these actions is that these actions might also flow through the sagas.
+
+36
+00:02:34,120 --> 00:02:40,660
+Again, actions fired by Saga can trigger other sagas, and this is a very important thing to note.
+
+37
+00:02:41,080 --> 00:02:46,510
+So this is Redux saga at a high level, and if this seems confusing, don't worry, it'll make more
+
+38
+00:02:46,510 --> 00:02:48,130
+sense as we write out the code for it.
+
+39
+00:02:48,280 --> 00:02:54,940
+But the main thing I want you to understand about Saga's that's unique to Saga's is that they fire after
+
+40
+00:02:54,940 --> 00:02:56,230
+the reducers have updated.
+
+41
+00:02:56,680 --> 00:03:02,740
+And this becomes relevant when we actually receive an action because if in the saga, when we get the
+
+42
+00:03:02,740 --> 00:03:06,130
+action, we are looking at the status of the store.
+
+43
+00:03:06,280 --> 00:03:12,430
+We will actually have the state of the store after it's been updated by the action that we're responding
+
+44
+00:03:12,430 --> 00:03:12,670
+to.
+
+45
+00:03:12,820 --> 00:03:18,460
+So that's an important thing to remember when you think about your saga writing about what the value
+
+46
+00:03:18,460 --> 00:03:19,300
+in the store will be.
+
+47
+00:03:20,020 --> 00:03:22,030
+So let's go into our application.
+
+48
+00:03:22,990 --> 00:03:27,010
+So the first thing we need to do is include the Redux Saga Library.
+
+49
+00:03:27,490 --> 00:03:30,160
+So we'll say JAAN Ad Redux Saga.
+
+50
+00:03:31,420 --> 00:03:38,350
+As we resolve and include the package, what we'll do is we need to modify our storages so that we can
+
+51
+00:03:38,350 --> 00:03:39,910
+actually run sagas.
+
+52
+00:03:40,870 --> 00:03:46,990
+One way to think about the configuration for Saga is that it's kind of similar to configuring reducers.
+
+53
+00:03:47,590 --> 00:03:54,130
+There is a root reducer when you think about reducers, and there's also a route saga when you think
+
+54
+00:03:54,130 --> 00:03:59,260
+about Saga's, meaning that all of our sagas combine into one saga.
+
+55
+00:03:59,740 --> 00:04:06,520
+So in order for us to make this work, we have to go into our store folder and we make a new file called
+
+56
+00:04:06,520 --> 00:04:08,680
+Root Saga DOT JS.
+
+57
+00:04:09,580 --> 00:04:14,830
+The root saga's entire point is to encapsulate all of the different sagas.
+
+58
+00:04:15,070 --> 00:04:20,350
+And this will make sense once we actually start working with these sagas.
+
+59
+00:04:21,220 --> 00:04:28,240
+We have a couple methods that we import exclusively from Redux Saga and they are the all and the call.
+
+60
+00:04:28,870 --> 00:04:37,360
+So Redux Saga has a bunch of reducer ESC bindings or Redux ESC bindings that allow us to actually interact
+
+61
+00:04:37,360 --> 00:04:41,650
+with the Redux store while we're working within the saga themselves.
+
+62
+00:04:41,890 --> 00:04:46,330
+And the saga's themselves are based off of JavaScript generator functions.
+
+63
+00:04:46,690 --> 00:04:50,110
+If you're unfamiliar with generator functions, do not worry.
+
+64
+00:04:50,110 --> 00:04:52,310
+We will discuss them in the next video.
+
+65
+00:04:52,330 --> 00:04:55,930
+It will be a full lesson breakdown of what generator functions are.
+
+66
+00:04:56,560 --> 00:05:02,020
+What we're doing now is just configuring the actual saga code so that we can actually start working
+
+67
+00:05:02,020 --> 00:05:04,270
+with them before we even write any sagas at all.
+
+68
+00:05:05,170 --> 00:05:13,120
+But what we need to do is we need to say, Hey, I want to import all and call from Redux Saga slash
+
+69
+00:05:13,120 --> 00:05:13,780
+effects.
+
+70
+00:05:14,050 --> 00:05:16,090
+So again, effects, side effects.
+
+71
+00:05:17,370 --> 00:05:22,380
+What we need to do from here is we need to export out a generator function.
+
+72
+00:05:23,100 --> 00:05:27,480
+And that generator function is distinguished by this function signature word.
+
+73
+00:05:27,480 --> 00:05:31,740
+And then the star that is a six generator function.
+
+74
+00:05:32,490 --> 00:05:34,320
+Then we say root saga.
+
+75
+00:05:35,850 --> 00:05:37,980
+And this for now is all we need.
+
+76
+00:05:37,980 --> 00:05:40,620
+We're not going to use the all in call, but we will later.
+
+77
+00:05:40,620 --> 00:05:42,630
+I just want to set this up for now.
+
+78
+00:05:43,660 --> 00:05:47,650
+Once we have the root saga, we're going to come into our storages.
+
+79
+00:05:47,650 --> 00:05:52,720
+And what we're going to do here is we need to import in create saga.
+
+80
+00:05:53,050 --> 00:05:55,570
+So again, sagas replace.
+
+81
+00:05:55,570 --> 00:05:56,080
+Thanks.
+
+82
+00:05:56,320 --> 00:05:59,860
+You mainly want one asynchronous side effect library.
+
+83
+00:05:59,980 --> 00:06:05,650
+You can either choose dunk, you're going to choose Saga or if you're in the flavor of observables,
+
+84
+00:06:05,650 --> 00:06:08,470
+you'll choose Redux, ARX, JS or Redux observable.
+
+85
+00:06:08,950 --> 00:06:12,670
+That one is a lot less common, so I'm not going to discuss that one.
+
+86
+00:06:12,670 --> 00:06:15,970
+But it's another one of these asynchronous state management libraries.
+
+87
+00:06:16,630 --> 00:06:25,360
+But because we're no longer using Thunk, we want to import in instead create Saga middleware from Redux
+
+88
+00:06:25,360 --> 00:06:25,900
+Saga.
+
+89
+00:06:27,810 --> 00:06:29,550
+So what create saga middleware?
+
+90
+00:06:29,790 --> 00:06:35,340
+What we're going to do is we are also going to need the route saga to make it work.
+
+91
+00:06:35,700 --> 00:06:41,310
+So let's import in our root saga from our root saga file.
+
+92
+00:06:43,600 --> 00:06:46,960
+Next, we need to actually create saga middleware.
+
+93
+00:06:47,470 --> 00:06:51,460
+And this is where we call the Create Saga middleware.
+
+94
+00:06:52,770 --> 00:06:56,000
+And then we put this inside of our middle.
+
+95
+00:06:56,010 --> 00:06:56,510
+Whereas.
+
+96
+00:06:57,890 --> 00:06:58,310
+Array.
+
+97
+00:06:59,600 --> 00:07:07,670
+So this middleware array now has the saga middleware and after the store has been instantiated with
+
+98
+00:07:07,670 --> 00:07:10,100
+the actual saga middleware inside.
+
+99
+00:07:10,640 --> 00:07:13,880
+Then what we do is we tell the saga middleware.
+
+100
+00:07:15,570 --> 00:07:16,380
+To run.
+
+101
+00:07:16,830 --> 00:07:20,820
+So you're going to use the run method and you're going to pass it your route saga.
+
+102
+00:07:21,880 --> 00:07:29,500
+So this again is very unique to relook saga's configuration and instantiation, but now we have the
+
+103
+00:07:29,500 --> 00:07:30,250
+saga set up.
+
+104
+00:07:31,370 --> 00:07:36,980
+As far as populating the route saga with the corresponding sagas, this is where we need to really understand
+
+105
+00:07:36,980 --> 00:07:37,880
+generator functions.
+
+106
+00:07:38,420 --> 00:07:43,730
+So again, this function signature that we see here, the function star, that is a generator function.
+
+107
+00:07:44,330 --> 00:07:48,320
+So I'm going to explain what that is in the next video, because right now, at the very least, we've
+
+108
+00:07:48,320 --> 00:07:51,530
+set up the corresponding configuration for Redux saga.
+
+109
+00:07:52,310 --> 00:07:54,530
+So now we can actually start writing out this code.
+
+110
+00:07:55,100 --> 00:07:56,250
+So come with me in the next video.
+
+111
+00:07:56,300 --> 00:07:57,980
+Let's learn all about generators.
+
+112
+00:07:58,490 --> 00:07:59,390
+I'll see you in the next video.

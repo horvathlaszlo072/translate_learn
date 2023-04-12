@@ -1,0 +1,287 @@
+1
+00:00:00,560 --> 00:00:01,580
+Welcome back, everyone.
+
+2
+00:00:02,150 --> 00:00:06,050
+Let's go through continuing to chat through what we're seeing with our console logs.
+
+3
+00:00:06,290 --> 00:00:10,040
+Now that we have a clear, accurate example and knowledge of what's happening.
+
+4
+00:00:10,760 --> 00:00:14,570
+So again, we hit our initial render for our category component.
+
+5
+00:00:15,050 --> 00:00:20,090
+Our selector fire gets called because we're calling you selector for the first time, the effects,
+
+6
+00:00:20,090 --> 00:00:21,770
+fires, calling, set products.
+
+7
+00:00:22,250 --> 00:00:30,200
+And here you might wonder why why is it that are effect fired calling SAP products but then we didn't
+
+8
+00:00:30,200 --> 00:00:30,920
+re render.
+
+9
+00:00:31,520 --> 00:00:38,180
+Well the reason why is because our initial state for products is categories map at category categories
+
+10
+00:00:38,180 --> 00:00:46,160
+map by default gives us a empty object if the array is empty because select categories reduces over
+
+11
+00:00:46,520 --> 00:00:54,140
+categories, the default value for categories is actually an empty array, if you remember inside of
+
+12
+00:00:54,140 --> 00:00:55,760
+our category reducer.
+
+13
+00:00:56,420 --> 00:01:00,710
+So if you reduce over an empty array, you get an empty object.
+
+14
+00:01:01,070 --> 00:01:05,690
+If you call any value on an empty object, what you're going to get back is undefined.
+
+15
+00:01:06,350 --> 00:01:09,740
+So our initial state, of course, is going to be undefined.
+
+16
+00:01:10,400 --> 00:01:15,020
+Similarly with this set products, we're setting it to undefined.
+
+17
+00:01:15,710 --> 00:01:22,190
+So if you set a previous value of undefined to a new value of undefined, well remember React is smart
+
+18
+00:01:22,190 --> 00:01:29,030
+enough that when you're calling set state and you're trying to set it to a value that it using a quality
+
+19
+00:01:29,030 --> 00:01:32,900
+strict a quality determines is true it will not trigger a render.
+
+20
+00:01:33,230 --> 00:01:34,100
+Why would it do so?
+
+21
+00:01:34,520 --> 00:01:38,420
+It's realized that what you're trying to set is something that it already has.
+
+22
+00:01:38,810 --> 00:01:40,910
+That means that it doesn't need to render this component.
+
+23
+00:01:41,480 --> 00:01:43,550
+There's no re rendering that needs to happen.
+
+24
+00:01:44,000 --> 00:01:46,500
+So this is why you might see the effect fire.
+
+25
+00:01:46,520 --> 00:01:52,160
+But again, we're not going to render because set products is not actually re rendering the component.
+
+26
+00:01:52,940 --> 00:01:56,360
+So moving on from here, we then wait and see.
+
+27
+00:01:56,360 --> 00:01:59,870
+Oh, at this point actually the synchronous nature of our code has ended.
+
+28
+00:02:00,350 --> 00:02:06,290
+Our auto listener is actually what's triggering because from our orc listener we are getting from Firebase.
+
+29
+00:02:06,290 --> 00:02:08,510
+Oh, you have a active session.
+
+30
+00:02:09,020 --> 00:02:14,210
+This active session then triggers an action to dispatch set current user with the payload of the user.
+
+31
+00:02:14,930 --> 00:02:22,070
+From here, what happens is that current state of course once again logs inside of our logger we call
+
+32
+00:02:22,070 --> 00:02:28,250
+next and then our reducers update our reducers update re triggering our selectors.
+
+33
+00:02:28,520 --> 00:02:35,690
+But notice here that our selector is causing this component to render despite the fact that we know
+
+34
+00:02:35,690 --> 00:02:40,850
+that only the user object is what has updated from the reducer.
+
+35
+00:02:41,450 --> 00:02:47,480
+The categories reducer has not changed because our categories reducer does not respond to set current
+
+36
+00:02:47,510 --> 00:02:47,870
+user.
+
+37
+00:02:48,900 --> 00:02:51,180
+So here is where you selector.
+
+38
+00:02:51,570 --> 00:02:53,520
+We have to take a little bit of a deep dive into it.
+
+39
+00:02:54,710 --> 00:03:02,600
+Use selector, as I mentioned, runs every time that the state object has updated in the root reducer.
+
+40
+00:03:03,350 --> 00:03:11,990
+However, it only re renders this component if the return of the selector function you passed to it
+
+41
+00:03:12,260 --> 00:03:13,310
+is different.
+
+42
+00:03:14,210 --> 00:03:15,380
+So here you might be wondering.
+
+43
+00:03:15,380 --> 00:03:15,560
+Well.
+
+44
+00:03:15,560 --> 00:03:16,970
+Ü I don't understand.
+
+45
+00:03:17,270 --> 00:03:21,160
+Our selector should be always returning the same value, right?
+
+46
+00:03:21,170 --> 00:03:25,160
+Because the original categories array hasn't changed.
+
+47
+00:03:25,160 --> 00:03:26,360
+It's an empty array.
+
+48
+00:03:27,370 --> 00:03:30,760
+This is where it has to do with the way that we composed our logic.
+
+49
+00:03:31,450 --> 00:03:33,340
+Our logic here, what the produce.
+
+50
+00:03:33,760 --> 00:03:39,310
+What I want you to realize is that reduce is always returning back a new object.
+
+51
+00:03:39,520 --> 00:03:42,400
+The reason why is because after running reduce.
+
+52
+00:03:42,790 --> 00:03:48,130
+What our code says is that I want to build up the accumulator, which is starting with an empty object,
+
+53
+00:03:48,130 --> 00:03:49,930
+and then you return that back.
+
+54
+00:03:50,770 --> 00:03:54,400
+Every time, though, we're using a net new object here.
+
+55
+00:03:55,150 --> 00:03:58,510
+So this is where you need to think a little bit about your code composition.
+
+56
+00:03:59,110 --> 00:04:05,890
+Now, one of the tradeoffs we made when we created this selecting of our categories map to abstract
+
+57
+00:04:05,890 --> 00:04:12,490
+the logic into an selector rather than do it so that we store the categories map when we fetch it from
+
+58
+00:04:12,490 --> 00:04:17,470
+Firebase is that every time the selector runs, we will be rerunning this logic.
+
+59
+00:04:17,890 --> 00:04:23,350
+Now, as I mentioned, as a result of this logic, we're always getting back a new object, which means
+
+60
+00:04:23,350 --> 00:04:29,770
+that our use selector will never be able to properly cache that value past the quality check and therefore
+
+61
+00:04:29,770 --> 00:04:32,110
+not cause any unnecessary renders.
+
+62
+00:04:33,010 --> 00:04:40,930
+Would it not be great if instead we only ran this selector if the categories object changed that we
+
+63
+00:04:40,930 --> 00:04:42,490
+get back from our reducer?
+
+64
+00:04:42,610 --> 00:04:51,790
+Meaning that the only time we should run this logic to derive a new categories map is if our category
+
+65
+00:04:52,300 --> 00:04:58,690
+reducer returned a new object, and that should only happen if the action corresponds to something in
+
+66
+00:04:58,690 --> 00:05:00,460
+our reducer that triggered that change.
+
+67
+00:05:01,400 --> 00:05:05,450
+Well, this is actually where we want to leverage a new library.
+
+68
+00:05:05,780 --> 00:05:11,990
+It's a very popular library called Re Select inside of the Redux ecosystem that specifically addresses
+
+69
+00:05:11,990 --> 00:05:13,370
+this exact topic.
+
+70
+00:05:13,610 --> 00:05:15,680
+And that's what we're going to learn in the next video.
+
+71
+00:05:16,400 --> 00:05:20,480
+So join me and we'll figure out how to tackle this and learn all about re select.
+
+72
+00:05:20,870 --> 00:05:21,890
+I'll see you in the next video.

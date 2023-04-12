@@ -1,0 +1,123 @@
+1
+00:00:01,850 --> 00:00:02,430
+Welcome back.
+
+2
+00:00:02,960 --> 00:00:10,340
+Integration tests are all about cross communication between different units of code, comparing to unit
+
+3
+00:00:10,340 --> 00:00:18,350
+tests, you could probably use something like spies from a mocking library to ensure expected side effects
+
+4
+00:00:18,680 --> 00:00:21,380
+instead of just asserting an output.
+
+5
+00:00:22,750 --> 00:00:31,060
+Or you might use Stobbs to mock and modify parts of a process that are not inside of the specific test.
+
+6
+00:00:32,110 --> 00:00:41,500
+Such as mocking a database call, we can't say run in a test to a function that says gay user to mock
+
+7
+00:00:41,500 --> 00:00:47,350
+the database call and just fake it and return, let's say, a fake user just for the test.
+
+8
+00:00:47,980 --> 00:00:55,660
+Also, as opposed to unit tests, a browser or a browser like environment could help with the processes
+
+9
+00:00:55,660 --> 00:00:58,120
+that are dependent on the window object.
+
+10
+00:00:58,870 --> 00:01:02,950
+And this is especially true when we're working with react and rendering components.
+
+11
+00:01:04,150 --> 00:01:11,020
+Now, integration tests is one of those things that has many different definitions and everybody has
+
+12
+00:01:11,020 --> 00:01:12,540
+their own preference of what it means.
+
+13
+00:01:13,730 --> 00:01:20,060
+Overall, though, think of integration tests as connecting components to see how they work together
+
+14
+00:01:20,270 --> 00:01:28,290
+instead of individual small units, that unit tests test, well, you test the connection between them.
+
+15
+00:01:29,180 --> 00:01:33,830
+The downside with to them is that they're expensive, they're slower.
+
+16
+00:01:34,130 --> 00:01:39,260
+There's more death time involved in thinking them out and writing them compared to unit tests, which
+
+17
+00:01:39,260 --> 00:01:40,140
+are much faster to.
+
+18
+00:01:41,330 --> 00:01:46,880
+And they also have a lot of moving parts, if you change something, well, you'll test will break and
+
+19
+00:01:46,880 --> 00:01:50,230
+you'll have to change those tests that depend on that thing you changed.
+
+20
+00:01:50,930 --> 00:01:56,570
+So integration tests can be what we call brittle, really, really fragile sometimes.
+
+21
+00:01:56,930 --> 00:01:58,720
+And they are much, much harder to write.
+
+22
+00:01:59,240 --> 00:02:04,690
+And unlike unit tests, you can write an infinite amount of integration tests.
+
+23
+00:02:05,420 --> 00:02:11,540
+It's hard to say when you're done writing them or when you have this one hundred percent completion.
+
+24
+00:02:12,630 --> 00:02:17,910
+Because it's impossible to cover everything and every test case and because they're also more expensive,
+
+25
+00:02:17,910 --> 00:02:25,320
+as I just said, they're rare to see a company that has really good integration tests unless they're
+
+26
+00:02:25,320 --> 00:02:31,950
+massive, massive company with a strong engineering team and a ton of money to spend on that engineering
+
+27
+00:02:31,950 --> 00:02:32,150
+team.
+
+28
+00:02:33,140 --> 00:02:38,330
+I recommend, though, to always start off with unit tests and then start incorporating integration
+
+29
+00:02:38,330 --> 00:02:42,920
+tests as well, but they both work well together, just pick your battles.
+
+30
+00:02:43,960 --> 00:02:44,840
+I'll see you in the next one.
+
+31
+00:02:45,370 --> 00:02:45,730
+Bye bye.

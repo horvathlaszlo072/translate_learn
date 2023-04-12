@@ -1,0 +1,559 @@
+1
+00:00:00,530 --> 00:00:01,520
+Welcome back, everyone.
+
+2
+00:00:02,210 --> 00:00:06,800
+In this video, we are going to make our sign out into its own saga.
+
+3
+00:00:07,430 --> 00:00:12,050
+Now, the reason we have, too, is because even though Firebase is signing out the user, we are not
+
+4
+00:00:12,050 --> 00:00:15,530
+aware that Firebase has done so because we don't have an officer anymore.
+
+5
+00:00:16,040 --> 00:00:22,430
+So we need to now make the sign out process part of our actual sign out saga.
+
+6
+00:00:23,150 --> 00:00:28,940
+So to do this, we need to once again create the sign out trio.
+
+7
+00:00:29,510 --> 00:00:31,640
+So we'll have our sign out start.
+
+8
+00:00:33,340 --> 00:00:35,080
+We'll have our sign out.
+
+9
+00:00:35,410 --> 00:00:36,130
+Success.
+
+10
+00:00:39,170 --> 00:00:42,110
+And we'll have our sign out Felt.
+
+11
+00:00:43,680 --> 00:00:47,850
+Using these three, we now need to create the appropriate user actions.
+
+12
+00:00:48,940 --> 00:00:54,220
+So when you think about it with sign out, we actually don't need anything.
+
+13
+00:00:55,030 --> 00:00:59,140
+All of signing out is going to just set everything to null.
+
+14
+00:00:59,800 --> 00:01:04,180
+So as long as we succeed, technically we don't need any payloads.
+
+15
+00:01:04,660 --> 00:01:05,860
+So we'll say sign out.
+
+16
+00:01:05,860 --> 00:01:13,180
+Start is just equal to us creating the action of sign out start.
+
+17
+00:01:17,970 --> 00:01:21,960
+Then our sign out success.
+
+18
+00:01:27,320 --> 00:01:28,970
+Is just us creating.
+
+19
+00:01:30,980 --> 00:01:31,340
+Oops.
+
+20
+00:01:31,700 --> 00:01:32,390
+There we go.
+
+21
+00:01:32,900 --> 00:01:34,220
+Create action.
+
+22
+00:01:34,850 --> 00:01:37,010
+User action types.
+
+23
+00:01:37,250 --> 00:01:39,140
+Sign out.
+
+24
+00:01:39,140 --> 00:01:39,770
+Success.
+
+25
+00:01:40,810 --> 00:01:43,450
+And we need the same thing for our failed.
+
+26
+00:01:46,910 --> 00:01:48,980
+Which is just us saying sign.
+
+27
+00:01:49,970 --> 00:01:51,300
+Out failed.
+
+28
+00:01:51,980 --> 00:01:55,400
+Actually, there should be sign out success.
+
+29
+00:01:58,410 --> 00:01:59,460
+Actually sign out.
+
+30
+00:01:59,460 --> 00:01:59,770
+Fail.
+
+31
+00:01:59,790 --> 00:02:00,600
+We need the error.
+
+32
+00:02:01,140 --> 00:02:01,890
+My apologies.
+
+33
+00:02:02,700 --> 00:02:03,030
+Failed.
+
+34
+00:02:03,030 --> 00:02:04,440
+Always has the error payload.
+
+35
+00:02:05,130 --> 00:02:07,380
+But success doesn't because success.
+
+36
+00:02:07,380 --> 00:02:08,460
+We're just going to set it to null.
+
+37
+00:02:09,030 --> 00:02:11,700
+So let's go into our user reducer.
+
+38
+00:02:13,270 --> 00:02:14,440
+And this is what we're going to say.
+
+39
+00:02:15,190 --> 00:02:17,200
+We want to say that on.
+
+40
+00:02:18,780 --> 00:02:19,770
+User action.
+
+41
+00:02:20,280 --> 00:02:23,740
+Dot sign out failed like.
+
+42
+00:02:23,770 --> 00:02:28,830
+So this actually allows us to multiple match if you stack them like this.
+
+43
+00:02:29,550 --> 00:02:32,090
+In fact we even need sign up fail.
+
+44
+00:02:32,100 --> 00:02:35,430
+That's another failure that we didn't account for like this.
+
+45
+00:02:36,360 --> 00:02:38,700
+And now we've accounted for all three.
+
+46
+00:02:38,730 --> 00:02:40,110
+If sign in success.
+
+47
+00:02:40,530 --> 00:02:41,790
+If sign in fail.
+
+48
+00:02:41,800 --> 00:02:42,330
+Sign out.
+
+49
+00:02:42,330 --> 00:02:42,690
+Fail.
+
+50
+00:02:42,690 --> 00:02:43,620
+Sign up failed.
+
+51
+00:02:45,150 --> 00:02:46,860
+Now we have our reducer set up.
+
+52
+00:02:47,850 --> 00:02:51,750
+So we have our actions, we have our reducers now we need our sagas.
+
+53
+00:02:52,650 --> 00:02:59,640
+So for our sagas, we know that what we need to do is we need to listen for on sign out start.
+
+54
+00:02:59,940 --> 00:03:07,320
+And also we need a call to our firebase so that we can get the method that signs our user.
+
+55
+00:03:08,010 --> 00:03:12,180
+So here what we are going to do is we are going to do a.
+
+56
+00:03:13,900 --> 00:03:26,350
+Entry on sign out start like this yield take latest user action types dot sign out start.
+
+57
+00:03:27,620 --> 00:03:31,040
+And here what we're going to call is sign out.
+
+58
+00:03:32,500 --> 00:03:34,630
+Sign out is going to be.
+
+59
+00:03:37,280 --> 00:03:38,210
+A generator.
+
+60
+00:03:39,540 --> 00:03:42,720
+And this is just going to received nothing as we know.
+
+61
+00:03:43,470 --> 00:03:50,040
+What it's really going to try to do, though, is call our sign out, use our method, which we need
+
+62
+00:03:50,040 --> 00:03:50,910
+to import in.
+
+63
+00:03:52,000 --> 00:03:53,380
+This is what we've been using.
+
+64
+00:03:55,370 --> 00:03:57,080
+Inside of our navigation.
+
+65
+00:03:58,760 --> 00:04:02,570
+So now instead we are going to wrap this inside of our tri catch.
+
+66
+00:04:02,690 --> 00:04:04,910
+So we're going to call sign out user.
+
+67
+00:04:05,420 --> 00:04:09,890
+If this is successful, then we will say that sign out.
+
+68
+00:04:11,220 --> 00:04:11,940
+Success.
+
+69
+00:04:13,500 --> 00:04:15,420
+Which this should have auto imported.
+
+70
+00:04:16,080 --> 00:04:18,690
+If you didn't do it, you need to import it for your user action.
+
+71
+00:04:20,670 --> 00:04:26,130
+And while we're here, actually, let's also bring in sign outfield because we need sign out failed.
+
+72
+00:04:27,500 --> 00:04:29,060
+As part of our catch block.
+
+73
+00:04:34,270 --> 00:04:34,720
+Like so.
+
+74
+00:04:36,520 --> 00:04:37,570
+So that's our saga.
+
+75
+00:04:37,990 --> 00:04:44,890
+We have our sign out, which is being called by our online out start and then we have to call it inside
+
+76
+00:04:44,890 --> 00:04:45,850
+of our user sagas.
+
+77
+00:04:46,780 --> 00:04:53,050
+And then the last thing to do is now to update our navigation component so that sign out user is calling
+
+78
+00:04:53,050 --> 00:04:54,070
+sign out start.
+
+79
+00:04:54,910 --> 00:04:58,060
+So we've got to bring in our use dispatch.
+
+80
+00:04:59,110 --> 00:05:06,190
+And now, instead of calling this Firebase Utils version, we need to bring in the action creator from
+
+81
+00:05:06,850 --> 00:05:07,450
+store.
+
+82
+00:05:08,890 --> 00:05:12,070
+Slash user slash user action.
+
+83
+00:05:13,570 --> 00:05:14,560
+Sign out.
+
+84
+00:05:15,070 --> 00:05:16,150
+Start like so.
+
+85
+00:05:17,700 --> 00:05:18,690
+We need to.
+
+86
+00:05:19,900 --> 00:05:23,080
+Get dispatch from U.S Dispatch.
+
+87
+00:05:24,450 --> 00:05:36,030
+And then what we can say is contact sign user is a function that dispatches out sign out start like
+
+88
+00:05:36,030 --> 00:05:36,270
+so.
+
+89
+00:05:37,570 --> 00:05:43,000
+And now if we go into our application, we see that we are signed in.
+
+90
+00:05:43,390 --> 00:05:46,510
+If we sign out, there we go that updates.
+
+91
+00:05:47,230 --> 00:05:55,120
+But we notice that for some reason, even though our sign out success works, our user is still signed
+
+92
+00:05:55,120 --> 00:05:55,270
+it.
+
+93
+00:05:56,260 --> 00:05:59,980
+So this is where we need to account for it inside of our user reducer.
+
+94
+00:06:00,900 --> 00:06:06,990
+We need to say that case user action types sign out success.
+
+95
+00:06:08,950 --> 00:06:10,000
+We need to return.
+
+96
+00:06:11,370 --> 00:06:14,340
+State current user goes to?
+
+97
+00:06:14,340 --> 00:06:14,550
+No.
+
+98
+00:06:16,150 --> 00:06:19,430
+So oftentimes when you see your code not working the way you expect it to.
+
+99
+00:06:20,020 --> 00:06:26,350
+Chances are you've missed one of these ten different little nuances inside of Redux that prevented it
+
+100
+00:06:26,350 --> 00:06:26,980
+from updating.
+
+101
+00:06:27,520 --> 00:06:29,470
+Honestly, this is a very common thing.
+
+102
+00:06:29,950 --> 00:06:32,530
+Notice how much we're typing, how much boilerplate we're adding.
+
+103
+00:06:32,710 --> 00:06:36,060
+This is honestly one of the most annoying things about using Redux in sagas.
+
+104
+00:06:36,070 --> 00:06:37,930
+It's so much boilerplate.
+
+105
+00:06:38,620 --> 00:06:42,810
+But the main thing is that if something's not working, you know the flow.
+
+106
+00:06:43,390 --> 00:06:46,970
+Actions to reducers, to Saga's, it's going to be in there somewhere.
+
+107
+00:06:46,990 --> 00:06:49,360
+You just have to figure out which one it is that you're missing.
+
+108
+00:06:50,110 --> 00:06:52,900
+And now if we come back, we refresh.
+
+109
+00:06:54,350 --> 00:06:56,540
+Let's just make sure we sign in.
+
+110
+00:06:57,320 --> 00:06:58,850
+We see, we reflecting it.
+
+111
+00:06:59,000 --> 00:06:59,720
+We sign out.
+
+112
+00:07:00,260 --> 00:07:00,800
+There we go.
+
+113
+00:07:00,890 --> 00:07:04,490
+We've signed our successfully user, current user to know.
+
+114
+00:07:05,570 --> 00:07:06,050
+That's it.
+
+115
+00:07:06,860 --> 00:07:13,040
+All of our users have now been migrated over to Saga's and this is the last of migrating our code over
+
+116
+00:07:13,040 --> 00:07:13,580
+to Saugus.
+
+117
+00:07:14,240 --> 00:07:15,200
+I know it's a lot.
+
+118
+00:07:15,620 --> 00:07:17,540
+Honestly, it's overwhelming for me, too.
+
+119
+00:07:18,110 --> 00:07:24,050
+Every time I think about working with sagas again, there is a lot of boilerplate to work through in
+
+120
+00:07:24,050 --> 00:07:25,010
+order to get it to work.
+
+121
+00:07:25,580 --> 00:07:31,010
+But sagas are very powerful for this reason because of so much encapsulation inside of these generators.
+
+122
+00:07:31,280 --> 00:07:32,810
+This coordination is present.
+
+123
+00:07:33,830 --> 00:07:36,310
+Now, if this is challenging, don't worry.
+
+124
+00:07:36,320 --> 00:07:37,610
+I'm completely with you.
+
+125
+00:07:37,640 --> 00:07:39,200
+Sagar's is challenging.
+
+126
+00:07:39,590 --> 00:07:45,470
+A lot of this are very advanced patterns that honestly, most intermediate React developers might not
+
+127
+00:07:45,470 --> 00:07:47,210
+even come across with sagas.
+
+128
+00:07:47,630 --> 00:07:53,150
+So this is just one of those things that it's just part of the path of becoming a very advanced React
+
+129
+00:07:53,150 --> 00:07:58,280
+user is getting familiar with Redux and all of its ecosystem and figuring out when you need these libraries
+
+130
+00:07:58,280 --> 00:07:58,730
+at scale.
+
+131
+00:07:59,090 --> 00:08:05,510
+But you can see how with a lot of this, we're able to now encapsulate and control so much of the flow
+
+132
+00:08:05,510 --> 00:08:07,550
+of data inside of our redux system.
+
+133
+00:08:08,090 --> 00:08:08,630
+So that's it.
+
+134
+00:08:08,870 --> 00:08:10,220
+This is our lesson on Saga's.
+
+135
+00:08:11,180 --> 00:08:16,790
+This is really the last of the more challenging and most potent parts of Redux.
+
+136
+00:08:16,790 --> 00:08:18,650
+That takes the hardest part to learn.
+
+137
+00:08:19,220 --> 00:08:23,660
+So if you made it through, I really want you to pat yourself on the back because this is really challenging
+
+138
+00:08:23,660 --> 00:08:25,160
+to have all done so soon.
+
+139
+00:08:26,190 --> 00:08:26,970
+But now you understand.
+
+140
+00:08:26,970 --> 00:08:29,820
+SAGA'S Let's move on with the rest of the course.

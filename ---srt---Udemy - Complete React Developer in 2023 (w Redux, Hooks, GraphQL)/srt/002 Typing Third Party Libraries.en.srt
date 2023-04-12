@@ -1,0 +1,123 @@
+1
+00:00:00,630 --> 00:00:01,620
+Welcome back, everyone.
+
+2
+00:00:03,180 --> 00:00:10,440
+Inside of any TypeScript project, there is a very likely chance that some of your libraries will throw
+
+3
+00:00:10,440 --> 00:00:17,250
+an error where you will see here, it will say could not find declaration file for module and then the
+
+4
+00:00:17,250 --> 00:00:19,770
+name of your third party library.
+
+5
+00:00:20,520 --> 00:00:27,390
+What this means is that for that library you need to most likely install a separate types library,
+
+6
+00:00:27,750 --> 00:00:36,030
+which essentially will add TypeScript and typing to all of the specific required exports or modules
+
+7
+00:00:36,030 --> 00:00:37,830
+or whatever inside of that library.
+
+8
+00:00:38,550 --> 00:00:40,330
+So that's generally very simple.
+
+9
+00:00:40,350 --> 00:00:46,830
+Most libraries have a at two types, and in fact, you'll even see that they will tell you to suggest
+
+10
+00:00:47,100 --> 00:00:51,310
+to try and save inside this specific library.
+
+11
+00:00:52,140 --> 00:00:58,800
+So they always begin with at types slash and then the name of the third party library if it's not automatically
+
+12
+00:00:58,800 --> 00:01:01,410
+included in the library as a dev dependency.
+
+13
+00:01:01,860 --> 00:01:06,690
+A lot of projects due the popularity of TypeScript will automatically install those for us.
+
+14
+00:01:07,050 --> 00:01:14,340
+In fact, if we go into our package dot JSON, we will see that we already have a couple of these types
+
+15
+00:01:14,340 --> 00:01:14,790
+files.
+
+16
+00:01:15,210 --> 00:01:21,090
+And the reason for this is because when we included Create React Out, it installed a lot of these typescript
+
+17
+00:01:21,090 --> 00:01:22,230
+files for us by default.
+
+18
+00:01:22,650 --> 00:01:28,200
+So all we need to do in order to get rid of this error is yarn add at types.
+
+19
+00:01:29,680 --> 00:01:31,570
+Slash redux lager.
+
+20
+00:01:34,670 --> 00:01:42,320
+And now once TypeScript has finished resolving this, we can now just rerun our nullified dev just to
+
+21
+00:01:42,320 --> 00:01:43,820
+make sure that everything is working.
+
+22
+00:01:48,840 --> 00:01:51,060
+And now that we've saved this and we go back.
+
+23
+00:01:51,980 --> 00:01:52,490
+There we go.
+
+24
+00:01:53,090 --> 00:01:54,980
+We see that the issue has gone away.
+
+25
+00:01:55,730 --> 00:02:01,450
+If we go back into our starts, we also see that Redux Lager has also been resolved.
+
+26
+00:02:02,640 --> 00:02:03,240
+And that's it.
+
+27
+00:02:03,540 --> 00:02:09,510
+If you ever encounter any of these type issues again, most likely just look inside the docs for that
+
+28
+00:02:09,510 --> 00:02:11,400
+specific third party library.
+
+29
+00:02:11,730 --> 00:02:16,710
+Chances are there is a correlated TypeScript module for that library that you need to install.
+
+30
+00:02:17,160 --> 00:02:21,310
+So that's just one additional thing about TypeScript migrations that you've got to keep in mind.
+
+31
+00:02:21,870 --> 00:02:22,830
+I'll see you in the next video.

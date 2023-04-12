@@ -1,0 +1,179 @@
+1
+00:00:00,750 --> 00:00:01,710
+Welcome back, everyone.
+
+2
+00:00:02,760 --> 00:00:07,890
+In this video series, we are going to talk about performance optimization in React.
+
+3
+00:00:08,580 --> 00:00:15,060
+Now, performance optimization React is a interesting topic because a lot of people want to write code
+
+4
+00:00:15,060 --> 00:00:16,110
+that is performant.
+
+5
+00:00:16,380 --> 00:00:21,960
+In fact, that is the main goal for a lot of developers is to make sure that not only is your application
+
+6
+00:00:22,230 --> 00:00:26,340
+working, but it's very performance and provides a good user experience.
+
+7
+00:00:27,240 --> 00:00:28,950
+But I do want to talk about a few things.
+
+8
+00:00:29,580 --> 00:00:35,850
+The first thing being that you do not want to over optimize your code when you start writing it.
+
+9
+00:00:36,720 --> 00:00:41,970
+This is an incredibly important point that I want you to understand as a React developer.
+
+10
+00:00:42,890 --> 00:00:48,230
+You only want to start improving the performance of your code or optimizing your code.
+
+11
+00:00:48,590 --> 00:00:51,710
+Once you see there is a performance bottleneck.
+
+12
+00:00:52,620 --> 00:00:59,370
+If you do not notice any slowdowns in your code, there is no reason to start optimizing ahead of time.
+
+13
+00:00:59,790 --> 00:01:03,870
+The reason for this is because these optimizations have a cost.
+
+14
+00:01:04,410 --> 00:01:06,210
+That is a very important thing to note.
+
+15
+00:01:06,450 --> 00:01:08,280
+Optimizations are not free.
+
+16
+00:01:08,280 --> 00:01:09,570
+There are tradeoffs.
+
+17
+00:01:10,290 --> 00:01:15,150
+When you optimize your code, you are essentially saying, I'm going to spend more time, not just your
+
+18
+00:01:15,150 --> 00:01:21,720
+time, but the computer's processing and resourcing time to improve the performance of some part of
+
+19
+00:01:21,720 --> 00:01:24,630
+my code so that later it's more efficient.
+
+20
+00:01:26,210 --> 00:01:28,970
+A good example of this is when we think about our selectors.
+
+21
+00:01:29,840 --> 00:01:35,300
+When you think about the fact that we're memorizing these selectors, this create selector call has
+
+22
+00:01:35,300 --> 00:01:39,260
+a cost on the memory and it has a cost on the rendering time.
+
+23
+00:01:40,580 --> 00:01:47,090
+When re select as memorizing this selector, it's literally storing the output value in memory somewhere.
+
+24
+00:01:47,540 --> 00:01:50,510
+And to do that storage, it also takes time.
+
+25
+00:01:51,500 --> 00:01:55,970
+However, the reason why we think it's optimized is because we're going to make the selector call multiple
+
+26
+00:01:55,970 --> 00:02:01,670
+times, and every time our component renders, we might actually end up calling the selector every single
+
+27
+00:02:01,670 --> 00:02:01,940
+time.
+
+28
+00:02:02,240 --> 00:02:08,420
+So if that's the case, then by memorizing this selector function, yes, the initial step might be
+
+29
+00:02:08,420 --> 00:02:14,210
+a little bit slower, but in the long run it's way faster because every subsequent call doesn't require
+
+30
+00:02:14,210 --> 00:02:17,420
+us to read, determine what the value of that selector is.
+
+31
+00:02:18,490 --> 00:02:21,160
+So there you can see already where the trade off wise.
+
+32
+00:02:21,160 --> 00:02:25,030
+We trade off in the beginning so that we get more optimized calls later on.
+
+33
+00:02:25,750 --> 00:02:28,420
+So this is a very important thing I want to talk about.
+
+34
+00:02:28,990 --> 00:02:34,750
+A lot of the patterns that we've been coding in and learning in throughout this course are designed
+
+35
+00:02:34,750 --> 00:02:37,450
+already to give you very optimal code.
+
+36
+00:02:38,230 --> 00:02:45,370
+The React library and the React team is constantly working fervently on figuring out how to make their
+
+37
+00:02:45,370 --> 00:02:47,800
+application also more performance.
+
+38
+00:02:48,640 --> 00:02:51,160
+So this is the thing you need to know about React Library.
+
+39
+00:02:51,400 --> 00:02:57,310
+It's got a ton of stuff under the hood to try and optimize and get around a lot of these issues anyways.
+
+40
+00:02:58,150 --> 00:03:04,420
+So knowing that, it's very crucial that, you know, moving throughout this video series that you only
+
+41
+00:03:04,420 --> 00:03:07,360
+optimize when you see a performance problem.
+
+42
+00:03:07,600 --> 00:03:10,930
+If there is no performance problem, do not optimize.
+
+43
+00:03:11,680 --> 00:03:17,260
+Now, despite that, there are some tools that React has given us to optimize the code inside of these
+
+44
+00:03:17,260 --> 00:03:19,870
+components, and we'll discuss that in the next video.
+
+45
+00:03:20,200 --> 00:03:20,800
+So I'll see that.

@@ -1,0 +1,727 @@
+1
+00:00:00,180 --> 00:00:06,390
+All right, so in this challenge, challenge seven, we see ad user button doesn't work, please see
+
+2
+00:00:06,390 --> 00:00:09,540
+if you could fix as usual, I'm going to open up my sandbox.
+
+3
+00:00:12,000 --> 00:00:16,320
+And first thing I'm going to do is I'm going to confirm that issue, so I click on this button.
+
+4
+00:00:16,470 --> 00:00:17,370
+Nothing's happening.
+
+5
+00:00:18,060 --> 00:00:18,540
+So.
+
+6
+00:00:19,480 --> 00:00:24,070
+I've confirmed I've reproduced the issue and I'm not really sure what's going on with this, right,
+
+7
+00:00:24,070 --> 00:00:24,960
+it's a brand new app.
+
+8
+00:00:25,630 --> 00:00:30,440
+So what's my mindset here to understand what's going on in this app now?
+
+9
+00:00:30,460 --> 00:00:35,500
+I assume that ad user, Budden is supposed to actually add a user somewhere in here, and that's not
+
+10
+00:00:35,500 --> 00:00:35,910
+happening.
+
+11
+00:00:36,250 --> 00:00:38,030
+So very simple.
+
+12
+00:00:38,050 --> 00:00:39,760
+Looks like we have a very simple app here.
+
+13
+00:00:40,060 --> 00:00:43,330
+I'm looking through the code and I don't see many files.
+
+14
+00:00:43,330 --> 00:00:44,680
+I just see outguess.
+
+15
+00:00:45,130 --> 00:00:47,980
+So and nothing is even being rendered in here.
+
+16
+00:00:47,980 --> 00:00:51,610
+So we don't really need to go into how to search for this file.
+
+17
+00:00:52,120 --> 00:00:54,610
+I assume that you guys know how to do that already at this point.
+
+18
+00:00:54,880 --> 00:00:57,360
+If you don't, we'll just do that real quick.
+
+19
+00:00:57,370 --> 00:01:02,800
+You know, you can open up the dev tools, search for that app dogs, or you could also use the react
+
+20
+00:01:02,800 --> 00:01:07,930
+to dev tools here and understand this app is coming from this code.
+
+21
+00:01:08,200 --> 00:01:08,590
+Right.
+
+22
+00:01:08,980 --> 00:01:11,560
+Click view source for this element and the reactive tools.
+
+23
+00:01:11,800 --> 00:01:15,610
+And it's going to point you right over to this app, so.
+
+24
+00:01:16,990 --> 00:01:20,500
+That's step one, really, in our strategy guide, if you remember our strategy guide, we're going
+
+25
+00:01:20,500 --> 00:01:21,700
+to go and open that up.
+
+26
+00:01:22,620 --> 00:01:26,610
+She could see we want to reproduce that issue, we did that, there's no errors, right?
+
+27
+00:01:26,620 --> 00:01:28,140
+So that's the next thing we got to check.
+
+28
+00:01:28,140 --> 00:01:28,980
+We didn't check that yet.
+
+29
+00:01:29,220 --> 00:01:31,730
+We're clicking and we're not getting any errors in the console.
+
+30
+00:01:32,040 --> 00:01:35,670
+So once again, it looks like it could be a rendering issue.
+
+31
+00:01:35,700 --> 00:01:38,250
+So related to unexpected react state.
+
+32
+00:01:38,250 --> 00:01:38,550
+Right.
+
+33
+00:01:38,880 --> 00:01:40,740
+So that's our clue here.
+
+34
+00:01:40,740 --> 00:01:43,620
+If you read this this guide, it's going to it's going to help you.
+
+35
+00:01:43,620 --> 00:01:45,420
+So isolate what files.
+
+36
+00:01:45,420 --> 00:01:50,520
+So we know that it's pretty obvious we have Applegate's here and we have no error.
+
+37
+00:01:50,530 --> 00:01:53,760
+So we want to determine why this happened.
+
+38
+00:01:53,760 --> 00:01:59,310
+So once again, there isn't really exact instructions here in this guide on what to do next.
+
+39
+00:01:59,700 --> 00:02:03,030
+But we do have a clue that it's unexpected react state.
+
+40
+00:02:03,450 --> 00:02:07,110
+So as you could see here, I'm going to read the rendering method here.
+
+41
+00:02:08,130 --> 00:02:10,080
+So let's go and really dive into this rendering method.
+
+42
+00:02:11,330 --> 00:02:19,430
+As you could see, we have a div, we have a header that says ad users, we have a button here and then
+
+43
+00:02:19,430 --> 00:02:26,450
+we have another header that says there are users, users at length zero users.
+
+44
+00:02:26,750 --> 00:02:32,480
+So we could see here as we have users, that length is being added here.
+
+45
+00:02:32,480 --> 00:02:34,840
+So we could say, OK, users must be an array.
+
+46
+00:02:34,880 --> 00:02:35,950
+It's a JavaScript array.
+
+47
+00:02:35,960 --> 00:02:39,310
+Right, because that length is property of the array.
+
+48
+00:02:39,650 --> 00:02:46,610
+So we could see, OK, users is represents then the users array and let's go ahead and see what that
+
+49
+00:02:46,610 --> 00:02:46,820
+is.
+
+50
+00:02:46,820 --> 00:02:47,200
+Right.
+
+51
+00:02:47,360 --> 00:02:52,250
+A good strategy here would be to put a breakpoint, see what that actually is, to just confirm and
+
+52
+00:02:52,250 --> 00:02:53,720
+just examine data in the app.
+
+53
+00:02:54,260 --> 00:02:57,200
+And then we see up here we have that button that says add user.
+
+54
+00:02:57,620 --> 00:02:59,810
+And then we go up and we see this function here.
+
+55
+00:03:00,860 --> 00:03:06,980
+And you could see here we have users push and we're adding in an object that has the name of that user.
+
+56
+00:03:08,330 --> 00:03:13,940
+So that's my idea, so I this looks you know, it looks on the surface, looks good, right?
+
+57
+00:03:14,630 --> 00:03:16,130
+But we want to dig deeper.
+
+58
+00:03:16,130 --> 00:03:17,180
+We want to understand more.
+
+59
+00:03:17,180 --> 00:03:19,890
+So let's go ahead and put a breakpoint in.
+
+60
+00:03:20,420 --> 00:03:26,480
+So once again, I'm going to just you know, we could just open up the dev tools in here.
+
+61
+00:03:26,480 --> 00:03:27,470
+It's going to be the same thing.
+
+62
+00:03:27,620 --> 00:03:30,950
+I usually open up into another window, but we can also just keep it in here.
+
+63
+00:03:31,220 --> 00:03:33,560
+So we're in a search for APJ and the source map.
+
+64
+00:03:34,190 --> 00:03:37,100
+And we're going to do is we're going to put a breakpoint right in the render method.
+
+65
+00:03:37,130 --> 00:03:41,540
+So this is actually just the whole thing is a render method because it's a functional component.
+
+66
+00:03:41,570 --> 00:03:46,990
+Now, if you were just at the last challenge, you know, that was the Class-Based react component.
+
+67
+00:03:47,750 --> 00:03:52,070
+So we put a breakpoint here where it's returning the DOM and then here we could actually look at what's
+
+68
+00:03:52,070 --> 00:03:52,520
+going on.
+
+69
+00:03:53,060 --> 00:03:55,010
+So what we do is we click add user.
+
+70
+00:03:56,520 --> 00:03:59,520
+Or we can actually just refresh the apsos, refresh the app.
+
+71
+00:04:00,820 --> 00:04:06,040
+All right, we get a break point here, so we're stopped here now, we could do is we could hover over
+
+72
+00:04:06,040 --> 00:04:07,360
+certain attributes.
+
+73
+00:04:07,360 --> 00:04:11,440
+So we want to hover over users just to see what that is.
+
+74
+00:04:12,630 --> 00:04:20,340
+We hover over that and we see it's an array, it's zero, so the zeroth index andexanet array is undefined
+
+75
+00:04:20,700 --> 00:04:24,880
+and the first element or the one element is a function.
+
+76
+00:04:25,590 --> 00:04:26,840
+So this is odd.
+
+77
+00:04:26,850 --> 00:04:28,780
+This doesn't really look like user's right.
+
+78
+00:04:29,100 --> 00:04:31,320
+So something must be going on here.
+
+79
+00:04:31,650 --> 00:04:33,090
+Now, this isn't really the issue.
+
+80
+00:04:33,090 --> 00:04:33,490
+Right.
+
+81
+00:04:33,540 --> 00:04:37,330
+What is the issue is that users aren't being added.
+
+82
+00:04:37,830 --> 00:04:41,070
+So if I go here and I go in to add users.
+
+83
+00:04:42,460 --> 00:04:43,510
+I click add user.
+
+84
+00:04:44,490 --> 00:04:51,630
+I see we're pushing on to this kind of weird structure here, and we're pushing this user's name, and
+
+85
+00:04:51,630 --> 00:04:54,930
+then I go down here and I resume.
+
+86
+00:04:55,910 --> 00:05:01,100
+So if I if I click on here again, I notice it's not triggering this breakpoint, so that's a good clue.
+
+87
+00:05:01,100 --> 00:05:04,940
+They're saying, hey, wait, if I if I click on this, nothing is actually happening.
+
+88
+00:05:05,420 --> 00:05:06,920
+It's not returning to this breakpoint.
+
+89
+00:05:06,920 --> 00:05:07,220
+Right.
+
+90
+00:05:08,590 --> 00:05:13,090
+So with that, I'm going to say, OK, well, what's going on, let's keep going up.
+
+91
+00:05:13,430 --> 00:05:15,170
+Let's look at all of the code here.
+
+92
+00:05:15,170 --> 00:05:16,300
+Let's look at user.
+
+93
+00:05:16,320 --> 00:05:18,910
+So what is actually users saying use state?
+
+94
+00:05:19,690 --> 00:05:21,860
+So it's being initialized from your state.
+
+95
+00:05:22,270 --> 00:05:26,860
+Now, if, you know, if you looked at one of our previous challenges, you know that we also looked
+
+96
+00:05:26,860 --> 00:05:31,450
+at you state you should know that this is not the right way to initialize you state.
+
+97
+00:05:31,990 --> 00:05:37,360
+So what we what we know is you state is actually a Arae.
+
+98
+00:05:37,360 --> 00:05:42,760
+So it's an array, right, where the first value is the current value in the second argument in that
+
+99
+00:05:42,760 --> 00:05:46,350
+array or the second value in that array is the setar.
+
+100
+00:05:46,840 --> 00:05:51,970
+So if you remember when we put a breakpoint in there, we saw that the first value was nothing.
+
+101
+00:05:52,570 --> 00:05:55,940
+And that can be explained because we initialize that you state with nothing.
+
+102
+00:05:56,470 --> 00:05:59,140
+So basically what we were doing is we were not de structuring that array.
+
+103
+00:05:59,150 --> 00:06:00,910
+We were not doing this right.
+
+104
+00:06:02,010 --> 00:06:06,540
+So if I go back and code sandbox, first thing I would do is just say, well, this is not the right
+
+105
+00:06:06,540 --> 00:06:08,940
+way to call you state at all.
+
+106
+00:06:08,940 --> 00:06:16,250
+Right, so we need to be always using an array here so users set users would be the best way to do this.
+
+107
+00:06:16,770 --> 00:06:23,040
+Now, also, so you could see here now we click this and we get push of undefined.
+
+108
+00:06:23,340 --> 00:06:25,170
+So users is undefined here.
+
+109
+00:06:25,930 --> 00:06:27,930
+And so.
+
+110
+00:06:29,020 --> 00:06:34,120
+This is, you know, more more errors, but basically what we want to do here is, is this the right
+
+111
+00:06:34,120 --> 00:06:35,730
+way to set users on the app?
+
+112
+00:06:35,740 --> 00:06:36,120
+Right.
+
+113
+00:06:36,340 --> 00:06:41,530
+So how to set an array, how to set an array in the app is what we want to understand.
+
+114
+00:06:41,530 --> 00:06:41,810
+Right.
+
+115
+00:06:42,160 --> 00:06:50,290
+So if we Google how to set an array with react hooks or even better, Google search would be how to
+
+116
+00:06:50,290 --> 00:06:59,500
+add an item to an array, how to add how to add an item to an array with react hooks.
+
+117
+00:07:00,190 --> 00:07:07,420
+And as you could see here, we get Google right away, stack overflow, telling us you can update the
+
+118
+00:07:07,420 --> 00:07:08,600
+method for the state item.
+
+119
+00:07:09,160 --> 00:07:12,080
+So and then you can add a new element.
+
+120
+00:07:12,400 --> 00:07:14,050
+So basically.
+
+121
+00:07:15,080 --> 00:07:16,100
+As you could see.
+
+122
+00:07:17,310 --> 00:07:21,090
+We're getting we even have a code snippet here, so.
+
+123
+00:07:22,920 --> 00:07:28,050
+This is, as you can see here, by this large number, a lot of people thought this was a good answer
+
+124
+00:07:28,050 --> 00:07:34,700
+to this person's question, which is how to push an element inside you, state you array using react
+
+125
+00:07:34,710 --> 00:07:36,300
+huc so.
+
+126
+00:07:38,170 --> 00:07:41,240
+This is a similar problem to what we're trying to solve, right?
+
+127
+00:07:41,680 --> 00:07:43,620
+We're trying to add a user onto this array.
+
+128
+00:07:44,080 --> 00:07:49,050
+So if we go down here, we could see that when you use your state, you can get the update method.
+
+129
+00:07:49,270 --> 00:07:51,880
+So we have the array and then we have set the array.
+
+130
+00:07:52,800 --> 00:07:55,260
+And then we have an initial array, so.
+
+131
+00:07:56,570 --> 00:08:04,400
+You set the array, you have the old array using the spread function, spread functionality here, which
+
+132
+00:08:04,400 --> 00:08:07,220
+basically just flattens out that array for each value.
+
+133
+00:08:07,790 --> 00:08:09,300
+And then we have that new element here.
+
+134
+00:08:09,920 --> 00:08:14,560
+Now we go down here to this exact example we are using.
+
+135
+00:08:14,570 --> 00:08:17,630
+So we say you state we have to pass in that initial array here.
+
+136
+00:08:17,640 --> 00:08:18,350
+That's very important.
+
+137
+00:08:18,680 --> 00:08:27,070
+And that's why we were getting that push of undefined because users is an undefined object.
+
+138
+00:08:27,140 --> 00:08:27,530
+Right.
+
+139
+00:08:28,670 --> 00:08:32,810
+So we have to initialize that state with an empty array.
+
+140
+00:08:33,110 --> 00:08:37,940
+We do that, nothing happens here because we're not actually calling the set users.
+
+141
+00:08:38,300 --> 00:08:45,140
+So now we have to set users and we go back here to the stack overflow example and we see.
+
+142
+00:08:46,650 --> 00:08:50,430
+That we are setting the array with the old array being passed in.
+
+143
+00:08:51,370 --> 00:08:57,940
+And then we have the older I hear spread and then we have the Nuray here, so let's go ahead and do
+
+144
+00:08:57,940 --> 00:08:58,570
+that now.
+
+145
+00:08:58,570 --> 00:09:03,300
+So if we go here to add user, we want to set users to an array.
+
+146
+00:09:03,310 --> 00:09:03,640
+Right.
+
+147
+00:09:03,670 --> 00:09:08,650
+So it's going to be an array and then we're going to spread those existing users and then we're going
+
+148
+00:09:08,650 --> 00:09:10,030
+to put the new user.
+
+149
+00:09:10,990 --> 00:09:16,720
+So the new user was this this object here, it doesn't have to be anything important.
+
+150
+00:09:16,720 --> 00:09:17,040
+Right.
+
+151
+00:09:17,050 --> 00:09:18,570
+So it's just just an example.
+
+152
+00:09:18,970 --> 00:09:24,790
+So we do this, we save this, and then now we're initializing to an empty array.
+
+153
+00:09:24,790 --> 00:09:25,720
+So that's correct.
+
+154
+00:09:25,870 --> 00:09:30,450
+We add a user and then just like that, we are correctly incrementing that.
+
+155
+00:09:30,730 --> 00:09:32,640
+So what did we learn here?
+
+156
+00:09:32,830 --> 00:09:33,580
+We learned that.
+
+157
+00:09:34,450 --> 00:09:37,880
+You can't render without calling the set user's callback.
+
+158
+00:09:38,200 --> 00:09:41,390
+You can't just push objects onto the value.
+
+159
+00:09:41,410 --> 00:09:44,200
+You have to actually use the react hook to set that.
+
+160
+00:09:44,680 --> 00:09:46,870
+We also learn the right way to call you state.
+
+161
+00:09:47,170 --> 00:09:49,720
+You can't just put in a variable here.
+
+162
+00:09:49,720 --> 00:09:51,480
+You have to restructure with an array.
+
+163
+00:09:52,390 --> 00:09:56,380
+We learn to initialize you state with an empty array.
+
+164
+00:09:57,070 --> 00:10:04,150
+We also learned, most importantly, outargue is to Google or stack overflow what exactly you want to
+
+165
+00:10:04,150 --> 00:10:04,480
+do.
+
+166
+00:10:05,110 --> 00:10:11,770
+And if it's something common, turn your problem into a common Google query like how to add an item
+
+167
+00:10:11,770 --> 00:10:13,570
+on an array with react hooks.
+
+168
+00:10:14,300 --> 00:10:17,190
+And we found plenty of examples for how to do that.
+
+169
+00:10:17,980 --> 00:10:21,980
+So we learned how to be resourceful and we learned how to fix our issue.
+
+170
+00:10:22,630 --> 00:10:27,040
+So with that, we're going to go back to our strategy guide, see what we did here.
+
+171
+00:10:27,490 --> 00:10:30,490
+Again, we we reproduced the issue.
+
+172
+00:10:30,490 --> 00:10:33,400
+We saw an error at some point in our journey.
+
+173
+00:10:33,400 --> 00:10:39,640
+But really, we we followed, you know, we search for the elements, but we ended up having to research,
+
+174
+00:10:39,940 --> 00:10:42,280
+do a little bit of research and fix some syntax.
+
+175
+00:10:42,670 --> 00:10:43,090
+So.
+
+176
+00:10:44,000 --> 00:10:50,330
+With that, you know, we ended up having to revert to more or less a clean example from some documentation,
+
+177
+00:10:50,990 --> 00:10:53,620
+and we had to do some more research on use state.
+
+178
+00:10:54,050 --> 00:10:55,650
+So that's how we debug this.
+
+179
+00:10:56,520 --> 00:10:58,190
+I hope that this was helpful.
+
+180
+00:10:58,190 --> 00:11:03,830
+And I know reactance isn't as obvious as you might think, but if you Google, there's plenty of resources
+
+181
+00:11:03,830 --> 00:11:05,360
+out there to help you fix that.
+
+182
+00:11:05,360 --> 00:11:07,490
+So that's this challenge.

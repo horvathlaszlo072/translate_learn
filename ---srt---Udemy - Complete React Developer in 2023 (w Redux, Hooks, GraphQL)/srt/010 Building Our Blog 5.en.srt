@@ -1,0 +1,503 @@
+1
+00:00:00,300 --> 00:00:01,290
+Welcome back, everyone.
+
+2
+00:00:02,160 --> 00:00:07,010
+So in this lesson, we are just going to add some finishing touches to our blog code.
+
+3
+00:00:07,500 --> 00:00:15,120
+So in our index, we currently need to sort the actual blog posts themselves so that their order is
+
+4
+00:00:15,120 --> 00:00:16,200
+more based on the date.
+
+5
+00:00:16,890 --> 00:00:19,390
+Having the latest be the ones at the top.
+
+6
+00:00:20,010 --> 00:00:24,300
+Now, how we can do this is we can actually use a sort method.
+
+7
+00:00:24,990 --> 00:00:31,860
+The sort method is inside of graphical as well, and as allows us to sort by some specific field value.
+
+8
+00:00:32,730 --> 00:00:36,630
+And in our case, the one that we want to sort off of is our front matter.
+
+9
+00:00:37,410 --> 00:00:39,780
+Underscore, underscore, underscore, date.
+
+10
+00:00:41,100 --> 00:00:44,490
+And the order that we want it to be in is descending order.
+
+11
+00:00:44,970 --> 00:00:48,210
+Now, if this is confusing, you can actually see this as well inside of.
+
+12
+00:00:49,500 --> 00:00:56,220
+So if we were to take are all mark down remarks and here we check to sort it.
+
+13
+00:00:57,360 --> 00:01:02,970
+Inside of here, we see on our sort that we sought by some field and if the field that we want to sort
+
+14
+00:01:02,970 --> 00:01:08,640
+by is date, what we have to do is say that it's based off of front matter date you see right here,
+
+15
+00:01:08,640 --> 00:01:10,650
+this autocomplete underscore, underscore date.
+
+16
+00:01:11,040 --> 00:01:15,840
+That's how we access a property that sits inside of an object on the field.
+
+17
+00:01:17,000 --> 00:01:21,800
+Now, after this, we want to sort by the order and we can do descending or ascending.
+
+18
+00:01:22,010 --> 00:01:23,160
+So that's what it is.
+
+19
+00:01:23,570 --> 00:01:29,480
+So by this automatically now this is sorted by descending order, we can double check by checking the
+
+20
+00:01:29,480 --> 00:01:30,800
+front matter, date value.
+
+21
+00:01:33,850 --> 00:01:36,370
+And now we see that the latest ones are at the top.
+
+22
+00:01:36,730 --> 00:01:37,740
+So that's all we're doing here.
+
+23
+00:01:37,780 --> 00:01:39,330
+We're just sorting this by this order.
+
+24
+00:01:40,420 --> 00:01:46,270
+Now that we have all of the data, the other thing that we want to do is be able to link to our pages
+
+25
+00:01:46,270 --> 00:01:47,360
+from these components.
+
+26
+00:01:48,100 --> 00:01:54,220
+So what we can do is we can also pluck off the field and grab the slug from the node itself, because,
+
+27
+00:01:54,220 --> 00:01:55,570
+as we know, we've added it in now.
+
+28
+00:01:57,430 --> 00:02:02,290
+One other thing that we might want to do is actually style this page so that it looks a little better,
+
+29
+00:02:02,890 --> 00:02:07,300
+the way that I'm going to suggest you do it is with style components, but you can totally do it with
+
+30
+00:02:07,300 --> 00:02:10,630
+any other styling that you're comfortable with inside of react.
+
+31
+00:02:11,350 --> 00:02:15,920
+So in order to actually add in style components to Gatsby.
+
+32
+00:02:16,300 --> 00:02:22,470
+There is a Gatsby plugin that allows us to add style components really easily to our Gatsby folder.
+
+33
+00:02:22,960 --> 00:02:27,130
+So what we'll do is we will let's just cancel our server first.
+
+34
+00:02:27,130 --> 00:02:32,610
+And just like before using the package manager that you've been using up until now for you, it's either
+
+35
+00:02:32,620 --> 00:02:34,410
+yarn or or NPM.
+
+36
+00:02:34,750 --> 00:02:35,590
+I'm using yarn.
+
+37
+00:02:35,590 --> 00:02:37,180
+Just add in these three packages.
+
+38
+00:02:37,570 --> 00:02:45,670
+So I'm going to say yarn, add Gatsby, plug in styled components, which is The Gatsby plug in.
+
+39
+00:02:45,670 --> 00:02:48,800
+First of all, components, we need style components itself.
+
+40
+00:02:48,820 --> 00:02:55,690
+So this is the stock components library and then I need the babble plug in styled components.
+
+41
+00:02:57,880 --> 00:03:03,430
+So we need these three in order to properly run stock components inside of our application and once
+
+42
+00:03:03,430 --> 00:03:08,710
+it's finished installing, what we're going to do is modify our Gatsby config.
+
+43
+00:03:10,240 --> 00:03:16,450
+So that it includes our Gatsby stock components, plug in and all we do is we just add it somewhere
+
+44
+00:03:16,450 --> 00:03:16,850
+here.
+
+45
+00:03:17,260 --> 00:03:18,460
+I'm just going to put it right here.
+
+46
+00:03:19,510 --> 00:03:27,520
+And it's going to be our Gatsby plug in styled components, and now we're able to load style components
+
+47
+00:03:27,520 --> 00:03:28,610
+into our application.
+
+48
+00:03:29,410 --> 00:03:32,370
+So what I want to do is write style components for my index.
+
+49
+00:03:33,280 --> 00:03:36,630
+Now, in order to use the components, we just need to bring it in.
+
+50
+00:03:37,420 --> 00:03:45,070
+So we are going to import in styled import in style from style components.
+
+51
+00:03:46,410 --> 00:03:53,730
+And then what we're going to write is we are going to make our blog link so we've imported in the slug,
+
+52
+00:03:53,730 --> 00:03:57,420
+we now actually need to allow our title to be clickable in that way.
+
+53
+00:03:57,630 --> 00:04:00,680
+Now, the first component I'm going to make is a blog link.
+
+54
+00:04:01,200 --> 00:04:06,660
+So this is pretty much just us using the style component library, wrapping around the link component
+
+55
+00:04:06,660 --> 00:04:07,890
+that we get from Gatsby.
+
+56
+00:04:08,460 --> 00:04:14,070
+And what I'm going to say is I want to apply the styling of having no text decoration.
+
+57
+00:04:14,580 --> 00:04:19,450
+The reason for this is because the link is actually just in a tag with some modifications on it.
+
+58
+00:04:19,830 --> 00:04:24,530
+So in our case, I don't want any of the styling that comes with an attack.
+
+59
+00:04:25,140 --> 00:04:33,630
+After that, I'm going to use it to actually just wrap around the actual span tag that we have here.
+
+60
+00:04:34,810 --> 00:04:37,360
+So I'm just going to put in my blog link.
+
+61
+00:04:38,880 --> 00:04:43,380
+And this is just going to navigate us to our noad.
+
+62
+00:04:44,630 --> 00:04:45,590
+Fields, that slug.
+
+63
+00:04:46,860 --> 00:04:51,960
+So now our blog link actually points us to our blog feel that we have.
+
+64
+00:04:53,190 --> 00:04:56,910
+After that, I'm going to make another one called blog title.
+
+65
+00:04:58,860 --> 00:05:02,880
+And this blog title is just going to be a styled H3.
+
+66
+00:05:05,960 --> 00:05:12,380
+And on this component, I am going to put a, uh, let's just say a margin bottom of 20.
+
+67
+00:05:16,550 --> 00:05:20,690
+Let's actually make it blue as well, just so that we can see the changes and then I'm going to replace
+
+68
+00:05:20,690 --> 00:05:21,650
+this span with it.
+
+69
+00:05:23,160 --> 00:05:26,430
+Now, if I save and we go back to our application.
+
+70
+00:05:27,530 --> 00:05:32,600
+We'll see that our links are now clickable and they take us to our respective blog post.
+
+71
+00:05:34,070 --> 00:05:37,830
+That's pretty much all that we need to do in order to actually build out our blog.
+
+72
+00:05:38,540 --> 00:05:41,990
+Now, the last thing that you might want to do is host this somehow.
+
+73
+00:05:42,860 --> 00:05:48,620
+Gatsby's actually really great with another service called Net Lafi that VI allows us to host static
+
+74
+00:05:48,620 --> 00:05:51,670
+websites and get continuous development pretty much for free.
+
+75
+00:05:52,100 --> 00:05:57,800
+And the easiest way to do that is you just first instantiate a GitHub repo that you put your code into.
+
+76
+00:05:58,430 --> 00:06:03,230
+So we're going to make a new repo and I'm just going to call it New Gatsby blog.
+
+77
+00:06:07,050 --> 00:06:12,220
+I am going to just copy this key, so if you don't have access that up, just use https.
+
+78
+00:06:12,270 --> 00:06:13,110
+It's about the same.
+
+79
+00:06:14,130 --> 00:06:19,170
+And then I'm just going to make sure to run get Adarsh a get commit.
+
+80
+00:06:20,480 --> 00:06:21,830
+Adding all.
+
+81
+00:06:23,660 --> 00:06:27,110
+Our new blog code for Gatsby set up.
+
+82
+00:06:29,190 --> 00:06:37,020
+And then I'm going to get add remote origin and then paste in that key that we just covid.
+
+83
+00:06:38,080 --> 00:06:41,590
+Website, get remote, add origin and then paste that key.
+
+84
+00:06:42,840 --> 00:06:48,510
+So now that we have a remote origin, I'm going to run, get push origin master with the new code that
+
+85
+00:06:48,510 --> 00:06:48,960
+we have.
+
+86
+00:06:52,800 --> 00:07:00,390
+And now that we have the set up, what we're going to do is we simply go to net Lafi now on net Lafi
+
+87
+00:07:00,390 --> 00:07:01,200
+you have to sign up.
+
+88
+00:07:01,200 --> 00:07:03,240
+If you haven't signed up, just make sure to do so.
+
+89
+00:07:03,780 --> 00:07:10,010
+Once you've signed up, just make a log in and now it's so incredibly easy to actually set this up.
+
+90
+00:07:10,560 --> 00:07:15,570
+So what you need to do is just make sure that your code is actually on the new site that you've got
+
+91
+00:07:15,570 --> 00:07:16,330
+in your repo.
+
+92
+00:07:16,770 --> 00:07:20,160
+So we see that my code is now inside of my New Gatsby blog repo.
+
+93
+00:07:20,730 --> 00:07:23,220
+And what I'm going to do is just click this news site from Gett.
+
+94
+00:07:23,820 --> 00:07:26,610
+I'm going to select GitHub for the continuous deployment option.
+
+95
+00:07:28,090 --> 00:07:32,950
+And it's going to ask to authorize me now, you probably have to allow it to authorize you to connect
+
+96
+00:07:32,950 --> 00:07:38,110
+to your GitHub and what you're going to do is just find the name of your actual repo.
+
+97
+00:07:41,390 --> 00:07:44,310
+Once you have it, you click it by default.
+
+98
+00:07:44,450 --> 00:07:45,890
+All of these settings should be good.
+
+99
+00:07:46,250 --> 00:07:50,200
+It's going to run The Gatsby build and once you click deploy, that's it.
+
+100
+00:07:50,780 --> 00:07:53,540
+It's in the process of building and deploying your website.
+
+101
+00:07:53,990 --> 00:07:59,510
+And once your website's finished, it's going to give you the actual link that tells you what your site
+
+102
+00:07:59,510 --> 00:08:00,200
+is hosted to.
+
+103
+00:08:00,450 --> 00:08:02,750
+So let's just wait for our website to finish deploying.
+
+104
+00:08:04,440 --> 00:08:09,210
+OK, so now that it's finished, we see that we get are you, Earl, we simply click it.
+
+105
+00:08:09,750 --> 00:08:12,300
+And now we are live with our blog.
+
+106
+00:08:14,050 --> 00:08:18,940
+So if you actually want to make any changes, it's super easy because all you do is you just write the
+
+107
+00:08:18,940 --> 00:08:24,730
+code, you push to get hub and automatically net Lafi will restart and reboot and redeploy your website.
+
+108
+00:08:25,180 --> 00:08:27,460
+So here I actually did add in any posts.
+
+109
+00:08:27,460 --> 00:08:32,470
+So what I'm going to do right here is I'm just going to add the word posts.
+
+110
+00:08:33,100 --> 00:08:35,740
+I'm going to save I'm going to get add.
+
+111
+00:08:37,590 --> 00:08:40,950
+Added word posts I'm going to push.
+
+112
+00:08:43,420 --> 00:08:49,900
+And once this pushes up to my GitHub again, if you go back to nullify, you might actually see when
+
+113
+00:08:49,900 --> 00:08:55,550
+you scroll down here and production deploys that there's this new second tab for another production.
+
+114
+00:08:55,870 --> 00:09:01,270
+So this is actually a list of all of the deployments that are being made now, yours might say include
+
+115
+00:09:01,270 --> 00:09:02,660
+or it might see in progress.
+
+116
+00:09:02,950 --> 00:09:04,100
+Mine just got published.
+
+117
+00:09:04,120 --> 00:09:07,640
+So now if I go back to my blog and I refresh, I see the word up there.
+
+118
+00:09:07,960 --> 00:09:13,510
+So this is awesome because I just immediately gives you tenuous development right off the gate with
+
+119
+00:09:13,510 --> 00:09:14,380
+your GitHub account.
+
+120
+00:09:14,530 --> 00:09:15,940
+And it was so simple to set up.
+
+121
+00:09:16,330 --> 00:09:18,790
+So with this, you pretty much have your blog.
+
+122
+00:09:19,240 --> 00:09:20,320
+All the code is written.
+
+123
+00:09:20,530 --> 00:09:25,270
+You can pretty much use stock components or any other styling system you want and tackle the coding
+
+124
+00:09:25,270 --> 00:09:26,590
+challenge as you please.
+
+125
+00:09:27,160 --> 00:09:28,300
+So good luck, everybody.
+
+126
+00:09:28,600 --> 00:09:31,150
+And I hope you enjoyed this lesson on how to use Gatsby.

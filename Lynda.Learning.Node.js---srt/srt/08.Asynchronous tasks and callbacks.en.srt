@@ -1,0 +1,375 @@
+1
+00:00:00.04 --> 00:00:02.02
+- [Narrator] When you
+execute a task synchronously,
+
+2
+00:00:02.02 --> 00:00:04.01
+you wait for it to finish before moving on
+
+3
+00:00:04.01 --> 00:00:07.05
+to another task which
+is what causes blocking.
+
+4
+00:00:07.05 --> 00:00:10.01
+On the other hand, when you
+execute tasks asynchronously,
+
+5
+00:00:10.01 --> 00:00:11.08
+you can move on to another task
+
+6
+00:00:11.08 --> 00:00:15.01
+without having to wait for
+the previous task to finish.
+
+7
+00:00:15.01 --> 00:00:17.05
+For example, if you've
+ever used an application
+
+8
+00:00:17.05 --> 00:00:20.01
+or a website where you
+had to submit a form
+
+9
+00:00:20.01 --> 00:00:22.01
+and everything went
+gray until the response
+
+10
+00:00:22.01 --> 00:00:24.04
+was received, that's
+the background process
+
+11
+00:00:24.04 --> 00:00:27.06
+running synchronously and
+blocking the responsiveness
+
+12
+00:00:27.06 --> 00:00:30.04
+of the user interface until it completes.
+
+13
+00:00:30.04 --> 00:00:32.02
+If we were to make a
+list of all the things
+
+14
+00:00:32.02 --> 00:00:34.01
+you could do on a
+computer and ordered them
+
+15
+00:00:34.01 --> 00:00:36.00
+based on their completion time,
+
+16
+00:00:36.00 --> 00:00:37.05
+there would be two that require
+
+17
+00:00:37.05 --> 00:00:39.05
+relatively long waiting times:
+
+18
+00:00:39.05 --> 00:00:42.03
+networking access and file system access.
+
+19
+00:00:42.03 --> 00:00:43.09
+And with a web app, these are some
+
+20
+00:00:43.09 --> 00:00:45.06
+of the most common functions.
+
+21
+00:00:45.06 --> 00:00:49.00
+This is why Node performs
+so well for web apps.
+
+22
+00:00:49.00 --> 00:00:50.07
+The most common way to get started
+
+23
+00:00:50.07 --> 00:00:53.01
+with asynchronous code is to do callbacks.
+
+24
+00:00:53.01 --> 00:00:54.08
+So let's take a look at some code.
+
+25
+00:00:54.08 --> 00:00:57.02
+You could type this out in
+the editor of your choice.
+
+26
+00:00:57.02 --> 00:01:01.00
+I'll be using Visual Studio code.
+
+27
+00:01:01.00 --> 00:01:04.02
+With this demo app, we're
+loading the filesystem,
+
+28
+00:01:04.02 --> 00:01:07.06
+and then we're reading the
+directories from drive C.
+
+29
+00:01:07.06 --> 00:01:09.07
+Once that completes, it then executes
+
+30
+00:01:09.07 --> 00:01:12.03
+the next line and so on.
+
+31
+00:01:12.03 --> 00:01:14.00
+And so, when I execute this,
+
+32
+00:01:14.00 --> 00:01:16.05
+we should see the
+console log that displays
+
+33
+00:01:16.05 --> 00:01:18.04
+the directory list, and then we'll see
+
+34
+00:01:18.04 --> 00:01:21.09
+the next console log which
+says "this comes after."
+
+35
+00:01:21.09 --> 00:01:24.02
+I'll be trying that now,
+and you could follow along
+
+36
+00:01:24.02 --> 00:01:27.02
+if you like or just watch as I explain.
+
+37
+00:01:27.02 --> 00:01:28.07
+If you're following along, you could use
+
+38
+00:01:28.07 --> 00:01:31.09
+a terminal or a command
+prompt to execute the code.
+
+39
+00:01:31.09 --> 00:01:33.09
+Or if you're using Visual Studio code,
+
+40
+00:01:33.09 --> 00:01:36.02
+you can use the integrated terminal
+
+41
+00:01:36.02 --> 00:01:41.00
+by going to View, Integrated Terminal.
+
+42
+00:01:41.00 --> 00:01:44.01
+And then I'll use Node and type out
+
+43
+00:01:44.01 --> 00:01:50.08
+the filename, sync-demo.js.
+
+44
+00:01:50.08 --> 00:01:53.07
+So the first thing we will
+see is the console log
+
+45
+00:01:53.07 --> 00:01:55.04
+of the directory list.
+
+46
+00:01:55.04 --> 00:01:57.07
+And then as expected, we will then see
+
+47
+00:01:57.07 --> 00:01:59.00
+"this comes after."
+
+48
+00:01:59.00 --> 00:02:01.01
+So now, let's take a look
+at a different version
+
+49
+00:02:01.01 --> 00:02:06.01
+of this code using asynchronous code.
+
+50
+00:02:06.01 --> 00:02:09.07
+I'll go ahead and run
+this before I even explain
+
+51
+00:02:09.07 --> 00:02:18.07
+what it will do and how it works.
+
+52
+00:02:18.07 --> 00:02:22.00
+We can see that the
+directory listing is shown.
+
+53
+00:02:22.00 --> 00:02:25.05
+And if we scroll up, we can see the text
+
+54
+00:02:25.05 --> 00:02:32.04
+"this comes after" before
+our directory listing.
+
+55
+00:02:32.04 --> 00:02:36.01
+So let's take a look at why
+this occurred in reverse.
+
+56
+00:02:36.01 --> 00:02:38.07
+Even though the console
+log for "this comes after"
+
+57
+00:02:38.07 --> 00:02:42.07
+is on the last line, it
+still executes first.
+
+58
+00:02:42.07 --> 00:02:44.09
+And the reason is because of this callback
+
+59
+00:02:44.09 --> 00:02:48.04
+which I have defined on
+line three as a function.
+
+60
+00:02:48.04 --> 00:02:50.04
+And I pass it into the
+filesystem for reading
+
+61
+00:02:50.04 --> 00:02:53.03
+the directory on line seven.
+
+62
+00:02:53.03 --> 00:02:55.00
+So instead of the execution waiting
+
+63
+00:02:55.00 --> 00:02:58.03
+for readdir to finish, it continues
+
+64
+00:02:58.03 --> 00:03:00.02
+and goes to the next line.
+
+65
+00:03:00.02 --> 00:03:02.04
+And then once readdir finishes,
+
+66
+00:03:02.04 --> 00:03:05.02
+it calls this function
+which is our callback,
+
+67
+00:03:05.02 --> 00:03:08.05
+and then it executes the
+console log on line nine.
+
+68
+00:03:08.05 --> 00:03:10.02
+You might be wondering why I called
+
+69
+00:03:10.02 --> 00:03:11.08
+our callback phoneNumber.
+
+70
+00:03:11.08 --> 00:03:14.04
+Well, a good analogy for callbacks is
+
+71
+00:03:14.04 --> 00:03:17.02
+calling technical support
+for your Internet provider.
+
+72
+00:03:17.02 --> 00:03:19.02
+For most companies, you
+have to wait on hold
+
+73
+00:03:19.02 --> 00:03:21.03
+and put your day on hold until an agent
+
+74
+00:03:21.03 --> 00:03:23.03
+is available to take your call.
+
+75
+00:03:23.03 --> 00:03:25.02
+But some companies have something
+
+76
+00:03:25.02 --> 00:03:26.08
+that's also called a callback
+
+77
+00:03:26.08 --> 00:03:28.08
+because it functions in the same way.
+
+78
+00:03:28.08 --> 00:03:30.08
+Once you register with your phone number
+
+79
+00:03:30.08 --> 00:03:32.08
+for a callback, you can hang up
+
+80
+00:03:32.08 --> 00:03:34.03
+and carry on with your day.
+
+81
+00:03:34.03 --> 00:03:36.01
+And then, the agent will call you back
+
+82
+00:03:36.01 --> 00:03:37.04
+when they are available
+
+83
+00:03:37.04 --> 00:03:40.00
+in much of the same way that readdir calls
+
+84
+00:03:40.00 --> 00:03:42.06
+our phoneNumber callback
+which is described
+
+85
+00:03:42.06 --> 00:03:46.05
+on line seven or defined
+as the function above.
+

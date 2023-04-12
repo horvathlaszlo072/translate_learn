@@ -1,0 +1,507 @@
+1
+00:00:00,520 --> 00:00:01,330
+Welcome back, everyone.
+
+2
+00:00:02,140 --> 00:00:09,040
+In this video, we are going to create the sign in with email and password and sign in with Google Sagas
+
+3
+00:00:09,040 --> 00:00:09,250
+now.
+
+4
+00:00:09,970 --> 00:00:10,720
+So it's a start.
+
+5
+00:00:10,720 --> 00:00:16,480
+What we want to do is we want to create the entry point sagas.
+
+6
+00:00:17,140 --> 00:00:23,110
+So these are the ones that trigger based on the start action of the corresponding email sign in or the
+
+7
+00:00:23,110 --> 00:00:24,880
+corresponding Google, sign them.
+
+8
+00:00:25,970 --> 00:00:33,470
+So here, let's start by saying export function for our saga on Google sign in start.
+
+9
+00:00:34,720 --> 00:00:35,980
+And this will yield.
+
+10
+00:00:35,980 --> 00:00:36,970
+Take latest.
+
+11
+00:00:38,180 --> 00:00:44,180
+Of our user action types dot google sign and start here.
+
+12
+00:00:44,210 --> 00:00:50,510
+We're probably going to use some method which is on Google sign in or we can call it even something
+
+13
+00:00:50,510 --> 00:00:52,580
+more specific like sign in with Google.
+
+14
+00:00:52,910 --> 00:00:54,530
+Actually, I like that nomenclature better.
+
+15
+00:00:55,010 --> 00:01:01,250
+This is we're going to use we're going to say export function sign in with Google and this is what's
+
+16
+00:01:01,250 --> 00:01:03,050
+going to trigger our Google pop up.
+
+17
+00:01:03,740 --> 00:01:08,600
+So if you remember, we had already created the utility functions for ourselves inside of Firebase Utils.
+
+18
+00:01:09,200 --> 00:01:15,710
+So here we're going to say sign in with Google pop up is what we want to import in and we want to try.
+
+19
+00:01:16,970 --> 00:01:17,840
+And Catch block.
+
+20
+00:01:19,740 --> 00:01:21,080
+Inside of our try.
+
+21
+00:01:21,570 --> 00:01:28,320
+What we're going to try and do is trigger the pop up and then take that authentication object, pull
+
+22
+00:01:28,320 --> 00:01:33,840
+off the user, which is the user off, and then run that through our get snapshot from user off.
+
+23
+00:01:34,380 --> 00:01:40,920
+So here I want to yield call on ah, google sign and pop up method.
+
+24
+00:01:42,010 --> 00:01:45,610
+This value is going to return us that off object if you remember.
+
+25
+00:01:45,700 --> 00:01:53,560
+And on it is a user keyword which gives us the actual user off object that we use so far inside of.
+
+26
+00:01:54,530 --> 00:01:54,980
+Saga.
+
+27
+00:01:55,940 --> 00:02:02,480
+So with this value, what we're going to do is we are going to call our get snapshot from user off.
+
+28
+00:02:03,560 --> 00:02:11,480
+So here we are going to yield our calling are get snapshot from user off passing in the user.
+
+29
+00:02:12,560 --> 00:02:17,900
+This should now work, but we can't test it yet without setting up the rest of our catch.
+
+30
+00:02:18,500 --> 00:02:26,570
+So here we're going to yield put sign we're using sign in failed because we have the same failure action
+
+31
+00:02:26,570 --> 00:02:27,980
+for all of our signing failures.
+
+32
+00:02:28,970 --> 00:02:31,460
+So we're also going to pass error like so.
+
+33
+00:02:33,180 --> 00:02:39,780
+And then we're going to now pass this on Google Sign and start into our user saga.
+
+34
+00:02:40,140 --> 00:02:42,810
+So we're hooking it into all of our saga flows.
+
+35
+00:02:43,780 --> 00:02:49,300
+Now, in order for us to actually trigger Google Sign and start, we have to dispatch the Google sign
+
+36
+00:02:49,300 --> 00:02:50,140
+and start action.
+
+37
+00:02:50,680 --> 00:02:53,020
+And we're going to do that inside of our sign in form.
+
+38
+00:02:53,710 --> 00:03:00,550
+So instead of actually manually calling the utility method, we are now going to dispatch, which means
+
+39
+00:03:00,550 --> 00:03:04,780
+that we need to import in use dispatch from React Redux.
+
+40
+00:03:05,590 --> 00:03:09,280
+And we also need to bring in the action creator.
+
+41
+00:03:09,880 --> 00:03:12,490
+So let's import in from.
+
+42
+00:03:13,700 --> 00:03:17,900
+Our store folder, our user and then user action.
+
+43
+00:03:18,890 --> 00:03:21,140
+And this should be a Google sign and start.
+
+44
+00:03:22,250 --> 00:03:28,220
+And then inside of signing with Google, we just dispatch, which we get back from.
+
+45
+00:03:29,710 --> 00:03:30,670
+Use dispatch.
+
+46
+00:03:34,450 --> 00:03:38,500
+And now we can dispatch the appropriate Google sign and start.
+
+47
+00:03:40,260 --> 00:03:42,240
+So now let's test to make sure everything works here.
+
+48
+00:03:43,460 --> 00:03:45,890
+Now here we are back inside of our Web site.
+
+49
+00:03:46,580 --> 00:03:48,410
+You'll notice that we have our sign out.
+
+50
+00:03:49,070 --> 00:03:50,510
+Some of you may still be signed in.
+
+51
+00:03:50,540 --> 00:03:51,410
+Some of you might not.
+
+52
+00:03:52,400 --> 00:03:55,760
+If you notice, when you click sign up, nothing happens.
+
+53
+00:03:56,270 --> 00:04:01,310
+But under the hood, we've actually still triggered our fire based sign out method, which does sign
+
+54
+00:04:01,310 --> 00:04:01,760
+us up.
+
+55
+00:04:02,000 --> 00:04:04,640
+It's just that we haven't actually connected the components.
+
+56
+00:04:04,910 --> 00:04:10,220
+But if you click sign out and then you refresh, you will notice that we are now not signed it.
+
+57
+00:04:11,030 --> 00:04:12,890
+So now we can navigate to sign in.
+
+58
+00:04:13,250 --> 00:04:14,840
+We can hit sign in with Google.
+
+59
+00:04:15,260 --> 00:04:17,450
+And there we see user a Google sign and start.
+
+60
+00:04:17,840 --> 00:04:23,030
+It triggers our pop up, which we can now use to actually sign in successfully.
+
+61
+00:04:23,810 --> 00:04:26,360
+And if we look inside, there we go.
+
+62
+00:04:26,600 --> 00:04:28,310
+We see we sign in with the correct user.
+
+63
+00:04:28,940 --> 00:04:29,930
+So everything works for me.
+
+64
+00:04:31,080 --> 00:04:34,230
+Now what we want to do is do the same thing for our email sign in.
+
+65
+00:04:34,740 --> 00:04:40,950
+So in order to set this up, it's pretty much going to be the exact same steps, except using the actual
+
+66
+00:04:40,950 --> 00:04:42,930
+sign in with email and password.
+
+67
+00:04:43,920 --> 00:04:48,870
+So first, let's start with creating the entry point saga.
+
+68
+00:04:49,650 --> 00:04:55,920
+So again, I'm going to need an export function and this time it'll be on email.
+
+69
+00:04:55,920 --> 00:04:57,300
+Sign in.
+
+70
+00:04:57,450 --> 00:04:57,960
+Start.
+
+71
+00:04:59,870 --> 00:05:01,280
+This is going to yield.
+
+72
+00:05:01,430 --> 00:05:05,390
+Take latest on user action types.
+
+73
+00:05:08,390 --> 00:05:08,870
+Dot.
+
+74
+00:05:10,220 --> 00:05:11,300
+Email sign and start.
+
+75
+00:05:12,670 --> 00:05:14,230
+All the way up here.
+
+76
+00:05:17,250 --> 00:05:20,250
+And here I am going to call this on.
+
+77
+00:05:20,790 --> 00:05:21,690
+Let's think of a name.
+
+78
+00:05:21,720 --> 00:05:25,200
+Thinking of names is honestly sometimes one of the hardest things.
+
+79
+00:05:25,890 --> 00:05:28,830
+Let's just call it sign in with email.
+
+80
+00:05:30,500 --> 00:05:34,610
+And this is going to be a new generator function.
+
+81
+00:05:37,750 --> 00:05:39,490
+And here we're going to try.
+
+82
+00:05:40,840 --> 00:05:42,010
+With what we need.
+
+83
+00:05:42,790 --> 00:05:45,490
+So let's think about this sign in with email.
+
+84
+00:05:46,630 --> 00:05:49,330
+This is going to receive the full action.
+
+85
+00:05:49,780 --> 00:05:54,010
+So when you call this, the action actually gets passed in like this.
+
+86
+00:05:55,130 --> 00:06:01,820
+So the action has the payload and on the payload is going to be the email and the password.
+
+87
+00:06:02,930 --> 00:06:08,210
+So when we think about what we're passing in, we need to look at the user action.
+
+88
+00:06:08,810 --> 00:06:12,760
+The user action is passing us email and password as an object.
+
+89
+00:06:13,220 --> 00:06:20,210
+So here we can actually de structure this off like so we can say I want the payload and then off of
+
+90
+00:06:20,210 --> 00:06:25,580
+the payload I want the email and password as two separate parameters.
+
+91
+00:06:26,360 --> 00:06:31,790
+And then what we're going to do with that is we are going to very similarly get the user off of the
+
+92
+00:06:31,790 --> 00:06:32,450
+off object.
+
+93
+00:06:32,450 --> 00:06:39,080
+We get back from yielding to calling the sign in off user with email and password.
+
+94
+00:06:39,620 --> 00:06:44,720
+Now that's a method that, if you remember, we also made before from Firebase Utils.
+
+95
+00:06:45,620 --> 00:06:53,300
+So this method we are going to call and we're going to pass it email and password like so.
+
+96
+00:06:55,390 --> 00:07:01,180
+Then once we get the user object, just like we did before, we're going to call get snapshot from user
+
+97
+00:07:01,180 --> 00:07:06,130
+off, which we're going to pass the actual user off object.
+
+98
+00:07:07,520 --> 00:07:15,770
+And then we're just going to catch the air and on the air we are going to yield are put sign in failed.
+
+99
+00:07:18,050 --> 00:07:23,870
+So now with our sign in with email, we need to make sure that we add this into our appropriate saga.
+
+100
+00:07:25,940 --> 00:07:33,170
+And also we need to set up this sign in form component so that we trigger it with the appropriate email
+
+101
+00:07:33,170 --> 00:07:33,860
+and password.
+
+102
+00:07:34,960 --> 00:07:38,890
+So here, if I remember, it's email, sign and start.
+
+103
+00:07:40,060 --> 00:07:46,960
+And down here where we were originally actually calling signing user off, we will now be dispatching
+
+104
+00:07:46,960 --> 00:07:47,470
+instead.
+
+105
+00:07:48,850 --> 00:07:52,390
+And we're going to dispatch with the email and the password.
+
+106
+00:07:54,320 --> 00:07:56,990
+And now this is pretty much it.
+
+107
+00:07:57,530 --> 00:08:00,260
+Let's just get rid of this unused import.
+
+108
+00:08:00,270 --> 00:08:02,660
+Now go back to the application.
+
+109
+00:08:03,290 --> 00:08:04,160
+We'll hit sign out.
+
+110
+00:08:04,820 --> 00:08:05,630
+We'll refresh.
+
+111
+00:08:07,160 --> 00:08:08,570
+We'll see that we're no longer signed in.
+
+112
+00:08:09,930 --> 00:08:11,400
+We have the appropriate fields.
+
+113
+00:08:11,580 --> 00:08:12,420
+We had sign in.
+
+114
+00:08:12,960 --> 00:08:15,150
+They were go sign and success properly.
+
+115
+00:08:16,260 --> 00:08:18,540
+And again, the user is the correct user.
+
+116
+00:08:19,730 --> 00:08:21,200
+So we have everything that we need.
+
+117
+00:08:22,580 --> 00:08:25,040
+Again if you have not done this before.
+
+118
+00:08:25,940 --> 00:08:31,340
+If you watch me do it, it's honestly relatively straightforward because the hardest part was really
+
+119
+00:08:31,340 --> 00:08:33,770
+setting up this get user snapshot from user off.
+
+120
+00:08:33,800 --> 00:08:38,930
+And a lot of it was just rethinking about how we coordinate Firebase to do this for us anyways.
+
+121
+00:08:39,950 --> 00:08:45,830
+So now my challenge to you is to finish the rest with the sign up, the sign up, and also the sign
+
+122
+00:08:45,830 --> 00:08:46,070
+up.
+
+123
+00:08:46,610 --> 00:08:50,330
+Currently, we just call the sign out method, but I want to see if you can figure out how to set up
+
+124
+00:08:50,330 --> 00:08:51,080
+a sign outside.
+
+125
+00:08:51,080 --> 00:08:57,050
+Also fits within this float because sign out itself is also an asynchronous API call because we're calling
+
+126
+00:08:57,050 --> 00:08:59,420
+off to sign us out of Firebase.
+
+127
+00:09:00,590 --> 00:09:03,920
+So do that and then join me in the next video or we'll do it together.

@@ -1,0 +1,407 @@
+1
+00:00:00,330 --> 00:00:01,290
+Welcome back, everyone.
+
+2
+00:00:02,130 --> 00:00:06,330
+In this video, we're going to talk about re rendering inside of components.
+
+3
+00:00:06,720 --> 00:00:11,850
+And we're also going to understand how it extends into this new component structure that we have because
+
+4
+00:00:11,850 --> 00:00:13,020
+now we have two components.
+
+5
+00:00:13,770 --> 00:00:18,930
+So when we first looked at our component before this was saying console log render.
+
+6
+00:00:19,170 --> 00:00:22,410
+I've updated this to say console dot log render from card.
+
+7
+00:00:22,770 --> 00:00:28,800
+And I did this just so that we can be clear that the render log is coming from the cardless component.
+
+8
+00:00:30,390 --> 00:00:33,420
+Hear what I'm going to do is I'm actually going to comment this out for now.
+
+9
+00:00:33,450 --> 00:00:37,170
+We're going to use this later, but outside of that comes it out comes a lot.
+
+10
+00:00:37,230 --> 00:00:38,190
+There's no more console.log.
+
+11
+00:00:38,580 --> 00:00:45,300
+So going back to our application, if we refresh, what we see is that we see that we're calling render
+
+12
+00:00:45,300 --> 00:00:46,560
+from cardless twice.
+
+13
+00:00:47,830 --> 00:00:51,110
+Now, at this point, I want you to pause and think about why this might be happening.
+
+14
+00:00:51,130 --> 00:00:53,350
+Really think about the flow of all your components.
+
+15
+00:00:54,340 --> 00:00:57,760
+Once you've thought about that, let's explain why this is happening.
+
+16
+00:00:58,210 --> 00:01:02,410
+Render is going called twice inside of our cardless component.
+
+17
+00:01:03,620 --> 00:01:11,360
+Before when we looked at Angus, when do we see that render gets called render gets called when we initialize
+
+18
+00:01:11,360 --> 00:01:15,350
+the application because constructor gets called first and then render gets called.
+
+19
+00:01:16,280 --> 00:01:21,890
+And then when we called component did Mount and we actually did the fetch we call a set stay and remember
+
+20
+00:01:21,890 --> 00:01:24,890
+whenever set stick, it's called render gets called again.
+
+21
+00:01:26,030 --> 00:01:27,560
+So we can predict that.
+
+22
+00:01:28,930 --> 00:01:34,600
+If I just comment out that and we just look at this render from Angus and I refresh.
+
+23
+00:01:36,280 --> 00:01:41,710
+We saw that we initialize the app we call render from Afghans jazz and then component did Mount happens?
+
+24
+00:01:42,160 --> 00:01:44,560
+And then we do the fetch we call the set state again.
+
+25
+00:01:44,560 --> 00:01:45,700
+Renderer map just happens.
+
+26
+00:01:47,120 --> 00:01:50,420
+So we know that sets state will trigger a render from calling.
+
+27
+00:01:51,610 --> 00:01:56,110
+However, components will also render when prompts change.
+
+28
+00:01:56,260 --> 00:02:02,530
+And this is a very important thing because it's just like said state, whenever props is different or
+
+29
+00:02:02,530 --> 00:02:04,870
+components will also re render.
+
+30
+00:02:05,830 --> 00:02:09,760
+So how does the props change inside of cardless?
+
+31
+00:02:09,970 --> 00:02:12,010
+Well, that's console.log this stop props.
+
+32
+00:02:12,160 --> 00:02:16,570
+And then let's just console.log our actual value inside of props so that we see.
+
+33
+00:02:19,270 --> 00:02:19,990
+Let's refresh.
+
+34
+00:02:21,860 --> 00:02:26,960
+When we first render our card list, we are getting past an empty array.
+
+35
+00:02:28,150 --> 00:02:32,230
+This is the initial state value inside of A.j.'s.
+
+36
+00:02:33,180 --> 00:02:34,770
+Of are monsters.
+
+37
+00:02:35,190 --> 00:02:40,770
+It's an empty array that is being passed into cardless initially.
+
+38
+00:02:41,610 --> 00:02:44,880
+So Carlos is getting rendered and it's getting rendered with an empty array.
+
+39
+00:02:45,660 --> 00:02:52,350
+And then what happens is that we call set state with the full list of users in our component did mount
+
+40
+00:02:53,100 --> 00:02:53,910
+and here.
+
+41
+00:02:54,060 --> 00:02:58,680
+That's why we see the second time that this array is now a full array.
+
+42
+00:02:59,100 --> 00:03:00,080
+Well, how does react?
+
+43
+00:03:00,090 --> 00:03:00,830
+Actually, no.
+
+44
+00:03:00,830 --> 00:03:02,120
+Oh, I've gotten new values.
+
+45
+00:03:02,370 --> 00:03:09,540
+I need to probably re render in case the UI is based on our props, which is exactly what's happening.
+
+46
+00:03:09,930 --> 00:03:15,870
+This is why all of these are now updated because React is saying, Oh, I have new props, let me re
+
+47
+00:03:15,870 --> 00:03:19,140
+render the component with the new props are props.
+
+48
+00:03:19,140 --> 00:03:27,090
+As we know from our code directly actually gives us the new monsters we map over the monsters, which
+
+49
+00:03:27,090 --> 00:03:31,860
+is our props, and that's how we see the UI update with all of these monsters.
+
+50
+00:03:32,520 --> 00:03:37,360
+This is an important thing about components, components we render based on two conditions.
+
+51
+00:03:37,710 --> 00:03:45,420
+When set state gets called and when props are updated, this is how primarily react determines that
+
+52
+00:03:45,420 --> 00:03:50,100
+you want to re render because only when those things happen does react.
+
+53
+00:03:50,100 --> 00:03:55,830
+Actually update the DOM and try and see, Oh, what are these components and what are the new things
+
+54
+00:03:55,830 --> 00:03:57,570
+that we need to return from them?
+
+55
+00:03:58,610 --> 00:04:01,850
+That's why you see render from cardless get called twice.
+
+56
+00:04:02,660 --> 00:04:06,980
+And this goes into a deeper thing when we think about this new componentry.
+
+57
+00:04:08,300 --> 00:04:13,610
+When I see a componentry, what I mean is that you have these parent components and inside there are
+
+58
+00:04:13,610 --> 00:04:14,510
+child components.
+
+59
+00:04:15,920 --> 00:04:18,770
+If we think about it, react always renders from the top down.
+
+60
+00:04:19,190 --> 00:04:25,850
+So what I mean by Top-Down, if you look at index chess index chess shows us the very top level component,
+
+61
+00:04:25,850 --> 00:04:27,110
+which is our app component.
+
+62
+00:04:27,530 --> 00:04:32,030
+So what it's going to do is it's going to attempt to render the app component first, meaning it goes
+
+63
+00:04:32,030 --> 00:04:35,540
+to the constructor and then it calls the render call of our app.
+
+64
+00:04:35,700 --> 00:04:36,020
+Yes.
+
+65
+00:04:36,410 --> 00:04:41,420
+When it's going through a render as it goes line by line runs all of our code and then it goes into
+
+66
+00:04:41,420 --> 00:04:42,080
+this return.
+
+67
+00:04:42,500 --> 00:04:44,960
+And inside here it now sees card list.
+
+68
+00:04:45,650 --> 00:04:51,830
+Once it sees cardless as a component, then it's going to try and run this card list components different
+
+69
+00:04:51,830 --> 00:04:52,670
+lifecycle methods.
+
+70
+00:04:53,060 --> 00:04:57,440
+So from the cardless component, it's going to call the constructor, which even though we haven't written
+
+71
+00:04:57,440 --> 00:04:58,730
+it, it's running it under the hood.
+
+72
+00:04:59,600 --> 00:05:03,440
+And then it's going to run the render and actually render out what's inside.
+
+73
+00:05:03,980 --> 00:05:09,410
+If we had another component here, imagine we have a third component and we call it third component.
+
+74
+00:05:10,490 --> 00:05:14,900
+At this point, after running through the render and the constructor, then it's going to go into another
+
+75
+00:05:14,900 --> 00:05:19,040
+component and it's going to do the same thing, it's going to run this components constructor.
+
+76
+00:05:19,040 --> 00:05:22,520
+This components render and any subsequent children are going to do the same thing.
+
+77
+00:05:22,670 --> 00:05:24,500
+So it's going from top down.
+
+78
+00:05:25,130 --> 00:05:31,940
+And this is the idea of a component tree where the top of the tree is your parent component and then
+
+79
+00:05:31,940 --> 00:05:38,870
+each level down is any children that there are and subsequent children and subsequent children and et
+
+80
+00:05:38,870 --> 00:05:39,590
+cetera, et cetera.
+
+81
+00:05:40,400 --> 00:05:46,670
+Well, definitely talk about this more, but this is the way that react renders things so very important
+
+82
+00:05:46,670 --> 00:05:46,880
+thing.
+
+83
+00:05:46,880 --> 00:05:55,130
+Remember, react renders on mounts and re renders whenever props change and set state gets called.
+
+84
+00:05:55,130 --> 00:05:57,170
+And here we've seen two examples.
+
+85
+00:05:57,170 --> 00:06:01,370
+Now we've seen set state where we're calling it, and we saw the render get called.
+
+86
+00:06:02,120 --> 00:06:03,920
+And we're seeing one new props come in.
+
+87
+00:06:04,040 --> 00:06:05,240
+Render gets called.
+
+88
+00:06:05,840 --> 00:06:08,060
+So that's a very important thing to think about.
+
+89
+00:06:08,060 --> 00:06:11,870
+When you're looking at your components and thinking about, how do I update my components one, that's
+
+90
+00:06:11,870 --> 00:06:12,380
+how you do it.
+
+91
+00:06:12,380 --> 00:06:17,150
+You either have to make sure that that state is getting cold and you're updating the states or your
+
+92
+00:06:17,150 --> 00:06:17,930
+props are changing.
+
+93
+00:06:18,410 --> 00:06:21,140
+Those are the main ways that you want your components to update.
+
+94
+00:06:21,740 --> 00:06:27,440
+If your component is not updating, then you're probably not either updating props or using set state.
+
+95
+00:06:28,510 --> 00:06:33,040
+So we'll talk about how to leverage this when we want our UI to update, when we make changes and we
+
+96
+00:06:33,040 --> 00:06:34,240
+build complex applications.
+
+97
+00:06:34,360 --> 00:06:40,200
+But this is a very important groundwork to understand about how React determines when it needs to re
+
+98
+00:06:40,210 --> 00:06:43,390
+render the application and it needs to re render components.
+
+99
+00:06:44,020 --> 00:06:48,580
+So hopefully now you understand at least the basis of how these components render and render.
+
+100
+00:06:49,060 --> 00:06:55,240
+This will get us through the majority of a lot of the rest of building this application and future applications.
+
+101
+00:06:55,360 --> 00:06:59,920
+We just really need to understand this about React and these components rendering and rendering.
+
+102
+00:07:00,760 --> 00:07:04,600
+So now that we understand this, let's build out the rest of our application.

@@ -1,0 +1,419 @@
+1
+00:00:00,360 --> 00:00:01,440
+Welcome back, everyone.
+
+2
+00:00:03,400 --> 00:00:09,010
+In this video, let's actually migrate out what we have left inside of this component, which is the
+
+3
+00:00:09,010 --> 00:00:09,760
+card list.
+
+4
+00:00:10,210 --> 00:00:13,810
+So let's uncomment out that part of our code and put this in.
+
+5
+00:00:14,770 --> 00:00:17,530
+And here what we need is filtered monsters.
+
+6
+00:00:18,710 --> 00:00:25,370
+In order to get the filter monsters, let's think about what we need inside of this part of the code,
+
+7
+00:00:25,880 --> 00:00:30,950
+which was our old class component that actually returned us the filter and monsters.
+
+8
+00:00:32,740 --> 00:00:37,870
+What we need here is we need a monsters to filter from.
+
+9
+00:00:39,080 --> 00:00:40,700
+And this monsters before.
+
+10
+00:00:41,750 --> 00:00:46,400
+What's inside of our state, which was initialized as an empty array, so let's do that first.
+
+11
+00:00:46,790 --> 00:00:53,090
+Let's first initialize a new state, so konst monsters and then set monsters.
+
+12
+00:00:53,510 --> 00:00:58,490
+Remember, it's the value and then the center value, and I'm going to say you state and I'm going to
+
+13
+00:00:58,490 --> 00:00:59,030
+pass it.
+
+14
+00:00:59,300 --> 00:01:01,700
+The initial value, which is an empty array.
+
+15
+00:01:03,760 --> 00:01:10,030
+Now that we have this, what we need now is to figure out how to actually get the values from Jason
+
+16
+00:01:10,030 --> 00:01:12,580
+placeholder into this app component.
+
+17
+00:01:13,240 --> 00:01:20,350
+What we had before is that we had this component did Mount call component did mount is some lifecycle
+
+18
+00:01:20,350 --> 00:01:25,750
+method as we know that fires only when the component mounts, that's the only time we need to fetch
+
+19
+00:01:25,750 --> 00:01:26,830
+this initial data.
+
+20
+00:01:27,280 --> 00:01:29,230
+After that, we don't need to ever fetch it again.
+
+21
+00:01:29,770 --> 00:01:37,390
+But this might pose a problem for us because let's just look at if we copy this fetch and let's comment
+
+22
+00:01:37,390 --> 00:01:38,170
+this out back again.
+
+23
+00:01:38,980 --> 00:01:42,460
+And let's just say put this inside of our application.
+
+24
+00:01:44,380 --> 00:01:51,970
+If we just made this call and what we did is right here instead of such state, we said monsters.
+
+25
+00:01:53,180 --> 00:02:00,140
+And instead of passing it a function, we can just pass in the value that we want the monsters to be
+
+26
+00:02:00,140 --> 00:02:00,680
+set to.
+
+27
+00:02:01,220 --> 00:02:02,180
+So which is our users?
+
+28
+00:02:02,960 --> 00:02:08,660
+Now before I save this and before you save this, what I want you to do is I want you to also add a
+
+29
+00:02:08,660 --> 00:02:10,010
+console dot log render.
+
+30
+00:02:10,430 --> 00:02:14,790
+Remember, I'm trying to show you that this is not the way that you want it actually fetch.
+
+31
+00:02:14,810 --> 00:02:18,710
+There are a couple weird things that are going to happen, and we're going to dive deep into why that
+
+32
+00:02:18,710 --> 00:02:19,130
+happens.
+
+33
+00:02:19,790 --> 00:02:24,350
+So if you save this fetch now and you go to your application, let's refresh.
+
+34
+00:02:25,080 --> 00:02:25,950
+What are we going to see?
+
+35
+00:02:26,310 --> 00:02:27,330
+We see the render call.
+
+36
+00:02:27,630 --> 00:02:33,810
+We do see our content, but lotus, how this render is constantly firing over and over and over and
+
+37
+00:02:33,810 --> 00:02:34,710
+over and over again.
+
+38
+00:02:35,190 --> 00:02:36,810
+Why does it keep doing this?
+
+39
+00:02:37,650 --> 00:02:41,340
+Well, this actually has to do with the way that functional components work.
+
+40
+00:02:41,700 --> 00:02:42,350
+So what?
+
+41
+00:02:42,360 --> 00:02:46,260
+You don't have to do an art to break this is you're going to have to go into your windows and go down.
+
+42
+00:02:46,260 --> 00:02:47,220
+It's your task manager.
+
+43
+00:02:47,220 --> 00:02:52,140
+Open this, find your application right here and end this process.
+
+44
+00:02:53,930 --> 00:02:57,830
+Only by doing that, you prevent the stack from continually recalling.
+
+45
+00:02:58,220 --> 00:02:59,390
+So why did that happen?
+
+46
+00:03:00,490 --> 00:03:02,440
+What do we know about our functional components?
+
+47
+00:03:03,100 --> 00:03:09,490
+Whenever the state updates, if there's a different value for the state value as there was in the previous
+
+48
+00:03:09,490 --> 00:03:16,820
+state, then it will re render and to re render, we need to run this entire functional component.
+
+49
+00:03:16,840 --> 00:03:17,950
+Top to bottom again.
+
+50
+00:03:19,310 --> 00:03:28,010
+Fetch is fetching from some foreign API, some specific value in our particular case, it is the user's
+
+51
+00:03:28,010 --> 00:03:28,400
+array.
+
+52
+00:03:29,300 --> 00:03:37,160
+This array, because it comes from outside of our browser, is going to give us an array that is different
+
+53
+00:03:37,160 --> 00:03:39,770
+in memory than the one that we have stored.
+
+54
+00:03:40,460 --> 00:03:48,560
+Even if the values inside of this array is the exact same because we know we get the same 10 user objects
+
+55
+00:03:48,560 --> 00:03:53,150
+back in this array every time we call this API URL.
+
+56
+00:03:53,930 --> 00:04:00,980
+But because it comes from outside of our browser, it is a different array in memory.
+
+57
+00:04:01,490 --> 00:04:03,680
+Every time this check happens.
+
+58
+00:04:04,620 --> 00:04:12,720
+Or set monsters is seeing that this users array is a different one, a memory, so the a quality check
+
+59
+00:04:12,720 --> 00:04:17,300
+fails, meaning that React thinks it's going to be a different array, which it is.
+
+60
+00:04:17,310 --> 00:04:20,010
+It's a different array, even if the values inside of the same.
+
+61
+00:04:20,040 --> 00:04:25,860
+Remember, it's not about the values in the array, it's about whether or not that array points to the
+
+62
+00:04:25,860 --> 00:04:27,630
+same reference in memory.
+
+63
+00:04:27,840 --> 00:04:31,560
+And every time this happens, it is a different array in memory.
+
+64
+00:04:32,370 --> 00:04:37,470
+So as a result, what happens is that every single time this set monsters is getting called, it is
+
+65
+00:04:37,470 --> 00:04:39,630
+re rendering this entire function.
+
+66
+00:04:39,960 --> 00:04:45,630
+And this function, as I told you with all JavaScript functions, will run through every single line.
+
+67
+00:04:45,930 --> 00:04:48,690
+It cannot just isolate one part of this function.
+
+68
+00:04:48,690 --> 00:04:51,030
+It has to run every line in the function.
+
+69
+00:04:51,270 --> 00:04:56,910
+So it's going to refresh every single time, which puts us in a circular loop.
+
+70
+00:04:57,360 --> 00:05:04,200
+We are going to re render in turn, we are going to fetch again, get a new set of users and then update.
+
+71
+00:05:04,500 --> 00:05:07,650
+The state state is updated React Re renders.
+
+72
+00:05:07,650 --> 00:05:12,750
+This function fetches again, gets different users, sets monsters and then reruns.
+
+73
+00:05:12,870 --> 00:05:18,570
+And now we're stuck in this loop where we're just constantly refreshing over and over and over and over
+
+74
+00:05:18,570 --> 00:05:18,870
+again.
+
+75
+00:05:19,200 --> 00:05:20,940
+And that is why this is happening.
+
+76
+00:05:21,510 --> 00:05:28,260
+As a result, what we need to do is we need to stop fudging somehow inside of this functional component
+
+77
+00:05:28,260 --> 00:05:32,880
+every time and the way we do that is actually using side effects.
+
+78
+00:05:33,420 --> 00:05:38,910
+Side effects can be generated from functional components using the use effect hook.
+
+79
+00:05:40,830 --> 00:05:49,260
+If you remember, a side effect is some behavior that we trigger from our functions that affects something
+
+80
+00:05:49,260 --> 00:05:51,240
+that exists outside of the scope of the function.
+
+81
+00:05:51,540 --> 00:05:59,130
+It's either that we modify or we rely on some value that exists outside of what's within scope of our
+
+82
+00:05:59,130 --> 00:06:01,890
+function or component in this particular case.
+
+83
+00:06:02,190 --> 00:06:04,290
+Any such call is a side effect.
+
+84
+00:06:04,380 --> 00:06:08,970
+So we need to use the use of that took and this hook is a little complicated.
+
+85
+00:06:09,660 --> 00:06:15,720
+But right now, before we move on to utilizing this use effect, I want you to really understand this
+
+86
+00:06:15,720 --> 00:06:18,900
+specific thing that happened in our functional component.
+
+87
+00:06:19,320 --> 00:06:25,200
+It's incredibly important because through this, will you actually understand how functional components
+
+88
+00:06:25,200 --> 00:06:30,510
+really work and how React determines using functional components that it needs to render?
+
+89
+00:06:32,150 --> 00:06:32,750
+So remember.
+
+90
+00:06:33,650 --> 00:06:39,560
+Functional components, any time it renders or re renders, runs the code inside of this function.
+
+91
+00:06:39,740 --> 00:06:41,690
+Top to bottom every single time.
+
+92
+00:06:42,750 --> 00:06:47,070
+So if you have some weird bug, whenever you're coding out react components and you notice that you're
+
+93
+00:06:47,070 --> 00:06:50,070
+stuck in a random loop, think about what's happening.
+
+94
+00:06:50,250 --> 00:06:51,930
+Think about all the steps that to three rendering.
+
+95
+00:06:52,230 --> 00:06:54,360
+Think about the fact that this function runs top to bottom.
+
+96
+00:06:54,690 --> 00:06:56,850
+Look at the variables in your states.
+
+97
+00:06:57,120 --> 00:07:00,570
+Are they different variables or are they the same variables?
+
+98
+00:07:01,140 --> 00:07:06,540
+These are very important things to really know about when it comes to react and coding at this level
+
+99
+00:07:06,540 --> 00:07:12,120
+with React, React has come a long way, and as a result, you have to really have solid foundational
+
+100
+00:07:12,120 --> 00:07:18,990
+understanding of JavaScript in order to properly code react components and understand how to optimize
+
+101
+00:07:18,990 --> 00:07:19,680
+your React code.
+
+102
+00:07:20,400 --> 00:07:25,380
+But now that we understand what's happening inside of app and why we were stuck in that infinite render
+
+103
+00:07:25,380 --> 00:07:25,680
+loop.
+
+104
+00:07:26,310 --> 00:07:30,600
+Let's move on to utilizing use a fact hook to get around this issue.
+
+105
+00:07:30,930 --> 00:07:31,920
+I'll see you in the next video.

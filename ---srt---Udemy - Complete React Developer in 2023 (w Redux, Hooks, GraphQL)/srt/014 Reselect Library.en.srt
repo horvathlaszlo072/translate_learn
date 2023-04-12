@@ -1,0 +1,759 @@
+1
+00:00:00,520 --> 00:00:01,450
+Welcome back, everyone.
+
+2
+00:00:01,990 --> 00:00:05,260
+In this video, let's learn about the resell like library.
+
+3
+00:00:05,830 --> 00:00:09,850
+So first we need to add the select library into our application.
+
+4
+00:00:10,780 --> 00:00:16,930
+While this is fetching, what I'm also going to do is I am going to restart the server because once
+
+5
+00:00:16,930 --> 00:00:22,420
+this is installed, we need to make sure that our server has the latest libraries.
+
+6
+00:00:22,750 --> 00:00:27,970
+This is most likely the most common time when you want to restart your development server is when you
+
+7
+00:00:27,970 --> 00:00:29,560
+know you have new libraries.
+
+8
+00:00:30,340 --> 00:00:36,880
+So I'm just going to rerun your and start here and then I'm going to go back to my application and I'm
+
+9
+00:00:36,880 --> 00:00:39,520
+going to explain to you how re select works.
+
+10
+00:00:40,270 --> 00:00:46,330
+Now the basis of re select is that it creates for us this concept of a memorised selector.
+
+11
+00:00:47,140 --> 00:00:50,170
+So let's talk about what a memorize selector is.
+
+12
+00:00:51,190 --> 00:00:59,080
+Memorization is the process in which you cache the previous value of something so that if the input
+
+13
+00:00:59,080 --> 00:01:02,800
+has not changed, then you just return back the same output.
+
+14
+00:01:03,280 --> 00:01:05,080
+This works when you have a pure function.
+
+15
+00:01:05,500 --> 00:01:12,310
+For example, if we had some function called AD, which takes some value A and B and it returns you
+
+16
+00:01:12,310 --> 00:01:19,780
+A plus B, we know that because this function is pure, if we call ad of three and six, this gives
+
+17
+00:01:19,780 --> 00:01:22,360
+us back a value of nine.
+
+18
+00:01:23,560 --> 00:01:25,480
+If you call, add three and six.
+
+19
+00:01:26,110 --> 00:01:30,190
+Does this mean that you need to run A plus B every single time?
+
+20
+00:01:30,700 --> 00:01:31,600
+No, of course not.
+
+21
+00:01:31,630 --> 00:01:35,890
+You know that if you receive the same input because of the function as pure, you should always get
+
+22
+00:01:35,890 --> 00:01:37,000
+back the same output.
+
+23
+00:01:37,270 --> 00:01:43,870
+So why waste the extra resources to recalculate something that you already have calculated before?
+
+24
+00:01:44,540 --> 00:01:48,460
+Memorization is that extra step inside that does that for you.
+
+25
+00:01:49,360 --> 00:01:52,380
+So create selector does that with selectors.
+
+26
+00:01:52,390 --> 00:01:57,730
+It memorizes them, assuming that as long as the inputs have not changed, then your output should always
+
+27
+00:01:57,730 --> 00:01:58,300
+be the same.
+
+28
+00:01:59,110 --> 00:02:02,650
+Now how do we extend that into selectors?
+
+29
+00:02:03,310 --> 00:02:08,590
+The way it works is that we have to create what are known as input selectors and output selectors.
+
+30
+00:02:09,220 --> 00:02:14,440
+Inputs selectors are selectors that give us the parameters that we need in order to determine what our
+
+31
+00:02:14,440 --> 00:02:15,250
+output should be.
+
+32
+00:02:15,430 --> 00:02:18,100
+If that sounds confusing, I know it absolutely is.
+
+33
+00:02:18,250 --> 00:02:21,220
+Let's write some examples so we get an idea of what we're doing.
+
+34
+00:02:22,210 --> 00:02:28,660
+First, what I'm going to do is I'm going to create a initial selector that gives us back just that
+
+35
+00:02:28,660 --> 00:02:32,740
+slice of the reducer that we need, which is the category reducer.
+
+36
+00:02:33,280 --> 00:02:35,750
+So here I'm going to say select category.
+
+37
+00:02:35,770 --> 00:02:41,200
+Reducer is equal to some function that receives the state.
+
+38
+00:02:41,500 --> 00:02:42,490
+It's a selector function.
+
+39
+00:02:42,500 --> 00:02:44,080
+It gets the entire read of state.
+
+40
+00:02:44,500 --> 00:02:50,050
+And then from this, we just want the category's slice of the Redux store.
+
+41
+00:02:51,070 --> 00:02:51,430
+Next.
+
+42
+00:02:51,430 --> 00:02:56,050
+What we're going to do is we're going to use this inside of a memoir selector.
+
+43
+00:02:56,740 --> 00:03:01,360
+So in order to create a memoir selector, we need to first declare what it is.
+
+44
+00:03:01,750 --> 00:03:04,240
+So this is select categories.
+
+45
+00:03:04,930 --> 00:03:10,780
+Select categories gives us back the categories array that lives on the category slice of our redux state.
+
+46
+00:03:11,760 --> 00:03:19,230
+So here, in order to select this, we have to say, hey, I want to use the create selector method.
+
+47
+00:03:19,800 --> 00:03:23,370
+This method creates a memoir selector and it takes two arguments.
+
+48
+00:03:23,640 --> 00:03:30,270
+The first is an array of input selectors, and the second is going to be the output selector.
+
+49
+00:03:30,960 --> 00:03:38,790
+The input selector is going to be What do I want as part of the parameters that I'm going to use to
+
+50
+00:03:38,790 --> 00:03:41,100
+produce what the selector should return back?
+
+51
+00:03:41,850 --> 00:03:49,890
+So what are the slices that I want from Redux so that I can use them to produce something new outside?
+
+52
+00:03:50,730 --> 00:03:59,520
+Here, I want to get the category's slice because off of the category's slice, which we will receive
+
+53
+00:03:59,520 --> 00:04:03,480
+as the arguments inside of the output array.
+
+54
+00:04:03,810 --> 00:04:11,700
+So whatever this is, whatever the output of this will be the argument that is in the same place inside
+
+55
+00:04:11,700 --> 00:04:12,780
+of the output array.
+
+56
+00:04:13,290 --> 00:04:20,820
+So if, for example, we had another selector, let's say it was select current user, this output is
+
+57
+00:04:20,820 --> 00:04:25,650
+going to now be the second argument of our output.
+
+58
+00:04:29,130 --> 00:04:31,440
+But we only need, of course, the one for this.
+
+59
+00:04:35,420 --> 00:04:37,340
+So now we're going to take categories.
+
+60
+00:04:38,850 --> 00:04:40,700
+And we're going to say, okay, you know what?
+
+61
+00:04:40,710 --> 00:04:44,280
+Actually, let me rename this category reducer so that it's more clear.
+
+62
+00:04:44,940 --> 00:04:45,900
+Or category slice.
+
+63
+00:04:46,350 --> 00:04:47,040
+I like that more.
+
+64
+00:04:48,830 --> 00:04:52,490
+I want to take Calgary Slice and I want to get off the category value.
+
+65
+00:04:53,590 --> 00:04:56,870
+Now this selector is a memoir selector.
+
+66
+00:04:57,760 --> 00:05:05,350
+The only time where this will run is if this category slice object that we get back from this selector
+
+67
+00:05:05,350 --> 00:05:06,190
+is different.
+
+68
+00:05:06,580 --> 00:05:14,800
+Because if this input value of categories is different, only then does re select determine.
+
+69
+00:05:14,800 --> 00:05:17,470
+Oh, we need to rerun this method.
+
+70
+00:05:18,480 --> 00:05:25,020
+If this category's value is always the same again with the strict equality triple equal, then I know
+
+71
+00:05:25,020 --> 00:05:29,700
+that the previously cash competitive value is going to be enough because these functions are pure.
+
+72
+00:05:30,630 --> 00:05:36,900
+So as long as this categories object is always the same in memory, which it will be as long as categories
+
+73
+00:05:36,900 --> 00:05:38,400
+reducer has not updated.
+
+74
+00:05:39,330 --> 00:05:43,440
+Then that means now, suddenly this value will always be the same one.
+
+75
+00:05:44,040 --> 00:05:48,150
+Now, this becomes extremely powerful when you think about what we were trying to do with our categories
+
+76
+00:05:48,150 --> 00:05:53,700
+map because we didn't want to run this reduce if categories had never changed.
+
+77
+00:05:54,150 --> 00:05:59,520
+So in order for us to memorize this, all we need to say is that, hey, I'm going to create a selector
+
+78
+00:05:59,940 --> 00:06:04,260
+here and this selector is going to receive select categories.
+
+79
+00:06:04,770 --> 00:06:06,240
+You can notice they're composable.
+
+80
+00:06:07,170 --> 00:06:14,130
+If we pass this structure selector in as the input, it will in turn memorize here already and then
+
+81
+00:06:14,130 --> 00:06:15,150
+memoirs here again.
+
+82
+00:06:16,490 --> 00:06:19,610
+So now we know that we're getting the categories.
+
+83
+00:06:21,390 --> 00:06:26,130
+Which is the categories array with this categories array.
+
+84
+00:06:26,790 --> 00:06:29,220
+I want to of course, reduce over it.
+
+85
+00:06:30,850 --> 00:06:32,140
+So I'm going to copy this over.
+
+86
+00:06:33,500 --> 00:06:35,420
+And now I can get rid of this code.
+
+87
+00:06:37,880 --> 00:06:39,170
+Fix this typing here.
+
+88
+00:06:40,320 --> 00:06:45,960
+And now a pretty memorise selector for this mapping that I've made.
+
+89
+00:06:46,770 --> 00:06:53,550
+What's happening here is that we're saying, Hey, as long as the categories array does not change,
+
+90
+00:06:54,300 --> 00:06:56,430
+do not rerun this method.
+
+91
+00:06:56,610 --> 00:07:03,000
+Of course you want to reduce once, but after that, as long as it has not changed, don't even bother
+
+92
+00:07:03,000 --> 00:07:03,540
+rerunning it.
+
+93
+00:07:03,840 --> 00:07:07,050
+Just give me back the previously calculated value.
+
+94
+00:07:07,990 --> 00:07:13,990
+And because the previous he calculated value was the previous return of reduce, which is an object
+
+95
+00:07:13,990 --> 00:07:14,530
+in memory.
+
+96
+00:07:15,890 --> 00:07:22,340
+What you'll notice is that use selector now works, that triple equals is going to see hey that previously
+
+97
+00:07:22,340 --> 00:07:26,240
+cash value is actually the same value the same categories map.
+
+98
+00:07:26,240 --> 00:07:30,530
+Now unless the categories array value is different.
+
+99
+00:07:31,100 --> 00:07:36,410
+Then what will always happen is we'll just get back the previously generated object.
+
+100
+00:07:36,770 --> 00:07:43,160
+In fact, to prove it to you, I'm just going to add an additional console.log here so that we can see
+
+101
+00:07:43,160 --> 00:07:44,840
+what happens when we relook at our flow.
+
+102
+00:07:44,930 --> 00:07:48,440
+I'm going to say selector fired so we know that we're firing our selector.
+
+103
+00:07:49,400 --> 00:07:52,940
+If I go back to the application, I want to clear this out.
+
+104
+00:07:52,940 --> 00:07:55,310
+I don't want to talk about the initial mounting step yet.
+
+105
+00:07:55,310 --> 00:07:56,930
+I just want to show you what happens.
+
+106
+00:07:56,930 --> 00:08:01,910
+If you remember previously, what happened is that we would sign out this trigger set current user,
+
+107
+00:08:01,920 --> 00:08:04,100
+set current user updates our Redux store.
+
+108
+00:08:04,280 --> 00:08:10,190
+And of course, because our Redux story is rendering our selectors get called from the use selector
+
+109
+00:08:10,190 --> 00:08:11,600
+hook of React Redux.
+
+110
+00:08:11,990 --> 00:08:15,260
+This in turn will do the equality check and see if there's anything.
+
+111
+00:08:15,710 --> 00:08:20,180
+Before we were noticing that our components were getting rendered because we were not being able to
+
+112
+00:08:20,180 --> 00:08:22,370
+properly do the check due to the reduced call.
+
+113
+00:08:22,580 --> 00:08:25,310
+But now if we sign out, what do we see?
+
+114
+00:08:25,790 --> 00:08:32,300
+We see that current user gets called, we see that our payload gets called, we see that our current
+
+115
+00:08:32,300 --> 00:08:35,690
+state is getting updated, but this is all within our logger.
+
+116
+00:08:36,200 --> 00:08:38,990
+We're not actually even seeing this component getting trigger.
+
+117
+00:08:39,620 --> 00:08:41,810
+Now, why is it that our selector didn't even fire?
+
+118
+00:08:42,530 --> 00:08:48,590
+This is because we didn't even make it this far into this select categories map this select categories
+
+119
+00:08:48,590 --> 00:08:49,940
+call here didn't even run it.
+
+120
+00:08:49,940 --> 00:08:53,120
+Just return what was already cached, which is an output.
+
+121
+00:08:53,690 --> 00:09:00,260
+And the reason for this is because of course, once again, this is all memorized.
+
+122
+00:09:00,680 --> 00:09:05,930
+If we even go up here and we say, hey, is this even getting called?
+
+123
+00:09:06,710 --> 00:09:09,500
+So I'm actually going to be more specific selector one here.
+
+124
+00:09:09,500 --> 00:09:15,110
+This is selector to if I save this and I come back here and I refresh.
+
+125
+00:09:16,490 --> 00:09:18,170
+Let's re trigger our flow.
+
+126
+00:09:18,230 --> 00:09:18,830
+Sign in.
+
+127
+00:09:20,280 --> 00:09:20,850
+Clear out.
+
+128
+00:09:21,690 --> 00:09:26,880
+If I had the sign out still you notice I'm still not even getting our selectors.
+
+129
+00:09:27,720 --> 00:09:31,770
+The reason once again is because this is also a memoir selector.
+
+130
+00:09:32,580 --> 00:09:35,900
+This selector is actually the only one getting run.
+
+131
+00:09:35,910 --> 00:09:38,010
+And this one is in itself.
+
+132
+00:09:38,310 --> 00:09:40,920
+What is being cached at this input level?
+
+133
+00:09:41,430 --> 00:09:49,410
+So now if I move this console.log up here, set this one to selector two and then this one to selector
+
+134
+00:09:49,410 --> 00:09:49,800
+three.
+
+135
+00:09:50,190 --> 00:09:50,910
+If I save.
+
+136
+00:09:52,210 --> 00:09:54,190
+Let's reset up our application.
+
+137
+00:09:55,440 --> 00:09:56,070
+Clear this out.
+
+138
+00:09:56,310 --> 00:09:56,880
+Refresh.
+
+139
+00:10:00,390 --> 00:10:00,810
+Let's.
+
+140
+00:10:03,340 --> 00:10:05,620
+Now we see selector one fired.
+
+141
+00:10:05,980 --> 00:10:07,090
+That's as far as it got.
+
+142
+00:10:07,750 --> 00:10:13,010
+So inside of our category component when current user got updated and our user selector updated.
+
+143
+00:10:13,300 --> 00:10:15,580
+Of course all use selectors are getting fired.
+
+144
+00:10:16,330 --> 00:10:17,470
+Select Categories Map.
+
+145
+00:10:17,470 --> 00:10:19,330
+As far as that went, was it determined?
+
+146
+00:10:19,330 --> 00:10:23,020
+Hey, what's the current value of categories?
+
+147
+00:10:23,680 --> 00:10:27,280
+Now categories is output from our category reducer.
+
+148
+00:10:27,850 --> 00:10:32,020
+This object, of course, has not updated only the user reducer has updated.
+
+149
+00:10:32,350 --> 00:10:39,490
+Therefore, it doesn't even determine the need to fire this logic, let alone this logic.
+
+150
+00:10:39,730 --> 00:10:46,540
+It's just going to take what was returned from the last calculation of this entire compose chain, which
+
+151
+00:10:46,540 --> 00:10:50,770
+was the previously calculated, reduced down categories map.
+
+152
+00:10:51,040 --> 00:10:53,890
+And it just returns that as the value.
+
+153
+00:10:54,310 --> 00:10:58,840
+And that value, of course, is the same value that this use selector had previously.
+
+154
+00:10:59,140 --> 00:11:02,230
+Therefore, this category component does not render.
+
+155
+00:11:03,250 --> 00:11:11,830
+Now, if that is confusing, I understand we learn a lot today, but really this is one of the most
+
+156
+00:11:11,860 --> 00:11:16,720
+powerful aspects and why the Redux ecosystem is so fleshed out.
+
+157
+00:11:17,050 --> 00:11:20,530
+Because React is constantly going through this render battle.
+
+158
+00:11:21,040 --> 00:11:26,680
+All of these elements, all of these steps that we're taking are just all of the ways that we scale
+
+159
+00:11:26,680 --> 00:11:28,150
+out a redux application.
+
+160
+00:11:28,900 --> 00:11:34,600
+Every single step that we're doing here is a different way that all of the different tool makers and
+
+161
+00:11:34,600 --> 00:11:39,190
+this redux ecosystem has developed because of this separation of the logic.
+
+162
+00:11:39,760 --> 00:11:44,380
+We want to make sure that in our selectors we have all of our business logic, but at the same time
+
+163
+00:11:44,380 --> 00:11:50,920
+we want to make sure that we're not messing with any of its own render cycles.
+
+164
+00:11:51,100 --> 00:11:56,200
+So there's all of these tools that were really thought out and very careful and intentional about how
+
+165
+00:11:56,200 --> 00:11:57,670
+this all works together.
+
+166
+00:11:58,480 --> 00:12:01,420
+But hopefully here now through this flow, you saw what we were doing.
+
+167
+00:12:02,540 --> 00:12:10,130
+We now have memoir selectors which are very intelligent in being able to determine, hey, if nothing's
+
+168
+00:12:10,130 --> 00:12:12,800
+changed, just don't even bother re rendering.
+
+169
+00:12:13,940 --> 00:12:18,380
+So let me get rid of all of those console logs because now we have.
+
+170
+00:12:20,270 --> 00:12:21,470
+A working example.
+
+171
+00:12:23,390 --> 00:12:24,550
+Of our memoir selected.
+
+172
+00:12:27,280 --> 00:12:27,730
+There we go.
+
+173
+00:12:28,630 --> 00:12:34,180
+So hopefully you learned a lot through this process of migrating away from the categories context into
+
+174
+00:12:34,180 --> 00:12:35,230
+category reducer.
+
+175
+00:12:35,950 --> 00:12:41,680
+There was a shifting of the logic, the architecture and a lot of these additional pieces that we learned
+
+176
+00:12:41,680 --> 00:12:48,070
+in order to fully flesh out our understanding of how all of these different pieces and Redux play together
+
+177
+00:12:48,220 --> 00:12:49,660
+and how we can optimize it.
+
+178
+00:12:50,470 --> 00:12:57,400
+So if this was challenging and confusing, redo this yourself because only through that process and
+
+179
+00:12:57,400 --> 00:13:02,950
+just console.log every step of the way in order for you to really understand what's happening in these
+
+180
+00:13:02,950 --> 00:13:03,730
+interactions.
+
+181
+00:13:04,300 --> 00:13:06,580
+I know it's really, really challenging.
+
+182
+00:13:06,580 --> 00:13:11,470
+Redux has a very notorious reputation, as I've mentioned, for having a very steep learning curve for
+
+183
+00:13:11,470 --> 00:13:12,460
+this exact reason.
+
+184
+00:13:12,730 --> 00:13:14,200
+There's so much boilerplate to set up.
+
+185
+00:13:14,560 --> 00:13:19,000
+There's all of these additional libraries in the ecosystem that help us to understand what's happening.
+
+186
+00:13:19,450 --> 00:13:24,910
+But the benefit, of course, is the unit directional data flow that we get with this type of architecture.
+
+187
+00:13:25,970 --> 00:13:32,090
+So now that we've done this, my challenge to you is to migrate over the remaining context to Redux.
+
+188
+00:13:32,480 --> 00:13:35,510
+And that context, of course, is the CART context.
+
+189
+00:13:36,290 --> 00:13:37,190
+So do that.
+
+190
+00:13:37,190 --> 00:13:40,790
+And then in the next video, we'll do it together and I'll see you in the next video.

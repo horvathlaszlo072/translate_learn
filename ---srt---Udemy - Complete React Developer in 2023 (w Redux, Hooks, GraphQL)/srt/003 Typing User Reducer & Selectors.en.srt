@@ -1,0 +1,379 @@
+1
+00:00:00,330 --> 00:00:01,290
+Welcome back, everyone.
+
+2
+00:00:02,370 --> 00:00:08,460
+So now that we've typed out all of the appropriate actions, let's import them in so that we can utilize
+
+3
+00:00:08,460 --> 00:00:10,620
+them inside of our reducer.
+
+4
+00:00:11,550 --> 00:00:17,970
+Now, we don't necessarily need all of them because our reducer only responds to sign in.
+
+5
+00:00:18,240 --> 00:00:18,780
+Failed.
+
+6
+00:00:19,110 --> 00:00:24,330
+Sign up failed as well as sign.
+
+7
+00:00:26,090 --> 00:00:27,080
+Out failed.
+
+8
+00:00:28,360 --> 00:00:31,300
+And then we have sign out success.
+
+9
+00:00:32,990 --> 00:00:35,300
+And we also have sine in success.
+
+10
+00:00:36,050 --> 00:00:40,220
+So these are the five actions that our reducer response to.
+
+11
+00:00:40,820 --> 00:00:48,110
+We know that our action needs to be of the any action type, so we'll import in any action from Redux.
+
+12
+00:00:49,280 --> 00:00:52,040
+And here we can just cast it like so.
+
+13
+00:00:54,150 --> 00:00:55,950
+We also want to type out.
+
+14
+00:00:57,710 --> 00:00:58,820
+Our initial state.
+
+15
+00:00:58,820 --> 00:01:07,340
+So our user state, which is going to be current user, which is some user data and user data of course
+
+16
+00:01:07,340 --> 00:01:09,440
+comes from our Firebase Utils.
+
+17
+00:01:12,760 --> 00:01:18,340
+But it's going to be user data or it's going to be null because both are valid states that we can receive.
+
+18
+00:01:19,360 --> 00:01:27,520
+As well as our initialization state as well as loading is going to be a boolean, an error is going
+
+19
+00:01:27,520 --> 00:01:30,900
+to be of type error or no.
+
+20
+00:01:31,930 --> 00:01:34,380
+Now as mentioned, these are read only.
+
+21
+00:01:35,350 --> 00:01:39,160
+So let's make sure to make these also read only.
+
+22
+00:01:40,450 --> 00:01:44,980
+I may have missed this actually inside of our previous reducer for the cart.
+
+23
+00:01:45,490 --> 00:01:46,960
+So if I did, we'll go back.
+
+24
+00:01:46,960 --> 00:01:47,920
+We'll update them later.
+
+25
+00:01:49,360 --> 00:01:55,060
+But here inside of this reducer, we're going to get rid of this, the structure.
+
+26
+00:01:56,150 --> 00:02:01,190
+And then we're also going to cast the initial state to be one of the user state.
+
+27
+00:02:03,290 --> 00:02:05,660
+And that it's just a matter of doing the correct switches.
+
+28
+00:02:05,690 --> 00:02:08,620
+So first we're going to say sign in success.
+
+29
+00:02:08,630 --> 00:02:10,550
+Don't match our action.
+
+30
+00:02:11,240 --> 00:02:13,460
+Then we are going to return.
+
+31
+00:02:15,760 --> 00:02:16,630
+The current state.
+
+32
+00:02:18,490 --> 00:02:20,110
+With action, not payload like so.
+
+33
+00:02:22,700 --> 00:02:27,440
+Similarly, if sign out success don't match.
+
+34
+00:02:28,650 --> 00:02:29,460
+What the action.
+
+35
+00:02:30,720 --> 00:02:33,540
+We will return with current user set to know.
+
+36
+00:02:35,810 --> 00:02:38,090
+And now for these three sign out.
+
+37
+00:02:38,090 --> 00:02:41,300
+Failed, sign in failed and sign up failed.
+
+38
+00:02:41,840 --> 00:02:43,430
+How are we going to write this?
+
+39
+00:02:44,030 --> 00:02:48,200
+Well, this we're going to match with just a bunch of your statements.
+
+40
+00:02:48,350 --> 00:02:56,720
+So we'll say if sign in failed, don't match on this action or sign up failed.
+
+41
+00:02:57,650 --> 00:03:03,920
+Don't match on this action or sign out failed.
+
+42
+00:03:05,000 --> 00:03:07,020
+Dot match on this action.
+
+43
+00:03:07,760 --> 00:03:13,070
+If any of these match, then we are going to just spread this through.
+
+44
+00:03:14,080 --> 00:03:16,180
+Pass the payload because it's going to be an error.
+
+45
+00:03:18,440 --> 00:03:19,790
+And then it's just a matter.
+
+46
+00:03:21,140 --> 00:03:23,120
+Of keeping the return state.
+
+47
+00:03:24,690 --> 00:03:25,950
+As the default fallback.
+
+48
+00:03:27,190 --> 00:03:27,730
+And that's it.
+
+49
+00:03:28,210 --> 00:03:29,950
+This is now our user reducer.
+
+50
+00:03:30,940 --> 00:03:34,090
+So the last thing to type is the user selector.
+
+51
+00:03:35,840 --> 00:03:42,980
+So of course, as we can see from our selector here, this is just pulling off the user, recurrent
+
+52
+00:03:42,980 --> 00:03:43,400
+user.
+
+53
+00:03:44,090 --> 00:03:51,470
+We can actually even improve upon this by importing the create selector from where you select.
+
+54
+00:03:52,790 --> 00:03:55,070
+We can import in user state.
+
+55
+00:03:57,390 --> 00:04:05,160
+From our new definition and we'll export content select user reducer, which is equal to something that
+
+56
+00:04:05,160 --> 00:04:06,630
+gets us the root state.
+
+57
+00:04:08,050 --> 00:04:09,370
+And we're going to return back.
+
+58
+00:04:09,730 --> 00:04:10,420
+These are state.
+
+59
+00:04:11,720 --> 00:04:16,310
+And we're just going to pluck off that state value and select current user here.
+
+60
+00:04:16,940 --> 00:04:19,130
+It's just going to be a new selector.
+
+61
+00:04:21,360 --> 00:04:25,200
+That is going to not receive that object.
+
+62
+00:04:25,230 --> 00:04:34,050
+Instead, we're going to say select user reducer and we'll get back is the user state upon which we
+
+63
+00:04:34,050 --> 00:04:37,560
+will pluck off the current user like so.
+
+64
+00:04:39,920 --> 00:04:42,230
+Create selector I spelt wrong.
+
+65
+00:04:42,350 --> 00:04:42,770
+There we go.
+
+66
+00:04:44,010 --> 00:04:47,160
+And now here, this is not in a typescript file.
+
+67
+00:04:47,160 --> 00:04:49,140
+So let me quickly remedy that.
+
+68
+00:04:54,080 --> 00:05:00,380
+Again, we know that we have not type state, but at the very least we have now modified our user selector
+
+69
+00:05:00,620 --> 00:05:05,720
+so that essentially we have this entry point into the user slice and then we create a selector to pluck
+
+70
+00:05:05,720 --> 00:05:06,560
+off the current user.
+
+71
+00:05:07,190 --> 00:05:09,200
+So earlier we didn't have that, but now we do.
+
+72
+00:05:10,280 --> 00:05:10,940
+And there we go.
+
+73
+00:05:11,360 --> 00:05:15,680
+We have typed out the majority of this user store file.
+
+74
+00:05:16,890 --> 00:05:21,810
+So very quickly, let me remedy that issue that I mentioned where inside of our cart reduce our type
+
+75
+00:05:21,810 --> 00:05:22,390
+definition.
+
+76
+00:05:22,410 --> 00:05:25,770
+I did not make these read only as I should have.
+
+77
+00:05:27,540 --> 00:05:29,340
+So that is also done now.
+
+78
+00:05:29,760 --> 00:05:34,320
+And we make them read only, of course, because we just want to say, Hey, these values will never
+
+79
+00:05:34,320 --> 00:05:35,520
+update the state.
+
+80
+00:05:35,520 --> 00:05:37,050
+Value should not be beautiful.
+
+81
+00:05:37,110 --> 00:05:39,990
+It should only update if you return a new object.
+
+82
+00:05:40,260 --> 00:05:43,590
+So this just prevents anybody from coming in here and modifying it.
+
+83
+00:05:43,590 --> 00:05:51,870
+Like so saying state dot, for example, state dot is open like this is equal to false.
+
+84
+00:05:52,080 --> 00:05:53,400
+You'll notice that it throws an error.
+
+85
+00:05:53,730 --> 00:05:56,280
+This assignment cannot be done because it is real only.
+
+86
+00:05:56,610 --> 00:05:57,510
+So that's why we do this.
+
+87
+00:05:57,510 --> 00:06:03,270
+Because it really enforces that pattern that we want these state to be completely immutable.
+
+88
+00:06:04,480 --> 00:06:10,900
+So now that we have typed out all of these reducers, we can finally now address this type issue where
+
+89
+00:06:10,900 --> 00:06:12,760
+this state is not typed up.
+
+90
+00:06:13,450 --> 00:06:18,550
+And that's what we're going to do in the next video where we will finally start typing out the last
+
+91
+00:06:18,550 --> 00:06:20,620
+touches inside of Redux.
+
+92
+00:06:20,950 --> 00:06:24,900
+So we're going to type out our source and then we're going to type out some of our middleware.
+
+93
+00:06:25,660 --> 00:06:28,540
+And even after that, we'll type out our sagas.
+
+94
+00:06:29,380 --> 00:06:31,960
+So join me in the next video where we'll tackle those topics together.
+
+95
+00:06:32,140 --> 00:06:33,130
+I'll see you in the next video.

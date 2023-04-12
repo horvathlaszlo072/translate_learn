@@ -1,0 +1,283 @@
+1
+00:00:02,170 --> 00:00:02,830
+Welcome back.
+
+2
+00:00:03,430 --> 00:00:09,820
+In this video, we're going to talk about this first point https and why we need it for progressive
+
+3
+00:00:09,820 --> 00:00:12,460
+Web apps now, progressive web apps.
+
+4
+00:00:13,730 --> 00:00:20,900
+Have a certain checklist you can check out on the progressive web app checklist, and I know I know
+
+5
+00:00:20,900 --> 00:00:23,020
+I said that there isn't a checklist.
+
+6
+00:00:23,030 --> 00:00:23,600
+Think of it.
+
+7
+00:00:23,760 --> 00:00:26,300
+Think of progressive Web apps as a running list.
+
+8
+00:00:26,810 --> 00:00:31,370
+But that's because these are probably going to get constantly updated and changed.
+
+9
+00:00:32,290 --> 00:00:37,670
+Now, this checklist, as you go through it does look a little bit overwhelming.
+
+10
+00:00:38,810 --> 00:00:44,780
+But we've been following good practices while building our apps, just like we did with robo friends
+
+11
+00:00:44,780 --> 00:00:47,840
+out, and you've actually done most of these things.
+
+12
+00:00:48,500 --> 00:00:50,660
+So that's why instead of showing you this.
+
+13
+00:00:52,740 --> 00:01:01,880
+We only really need to focus on three main things that a progressive Web app needs to do now besides
+
+14
+00:01:01,880 --> 00:01:08,280
+these, there's a few features, but the adoption for them, such as push notifications, haven't been
+
+15
+00:01:08,760 --> 00:01:12,900
+that smooth or are still in the works.
+
+16
+00:01:13,500 --> 00:01:19,590
+So for now, we're going to focus on things that you can implement right now fully and be confident
+
+17
+00:01:19,590 --> 00:01:21,150
+that they're going to work in your app.
+
+18
+00:01:22,170 --> 00:01:32,310
+So https https, as you know, since we mentioned it a little bit in the SSA section, prevents bad
+
+19
+00:01:32,310 --> 00:01:38,370
+actors from tampering with communications between our app and browser.
+
+20
+00:01:39,410 --> 00:01:47,270
+So that if we're sending, let's say, a username and password to our server, we can encrypt it so
+
+21
+00:01:47,270 --> 00:01:55,040
+that that message that includes our password travels to the server in an encrypted fashion so that if
+
+22
+00:01:55,040 --> 00:02:03,680
+Bob, the evil third party hacker, is trying to intercept the messages and read them, even if he intercepts
+
+23
+00:02:03,680 --> 00:02:07,350
+the message, he won't understand it because it's encrypted.
+
+24
+00:02:08,030 --> 00:02:11,060
+And again, this is something that we talked about in my previous course.
+
+25
+00:02:11,900 --> 00:02:17,270
+Now, Google is really pushing for this https encryption.
+
+26
+00:02:17,720 --> 00:02:19,670
+And if we go back to our websites.
+
+27
+00:02:21,600 --> 00:02:27,060
+We see that we have this little nice lock icon with secure.
+
+28
+00:02:28,250 --> 00:02:29,100
+That's a good sign.
+
+29
+00:02:29,630 --> 00:02:35,750
+Chrome has actually updated so that if you have any sort of forms on your website and they're not https,
+
+30
+00:02:35,930 --> 00:02:42,040
+it'll show up here as not secure, pretty much shaming websites for not using GPS.
+
+31
+00:02:42,590 --> 00:02:48,620
+So any time you're sending data from the client to the server, you should be using https.
+
+32
+00:02:49,190 --> 00:02:52,220
+Now, why do we need that, though, for progressive Web apps?
+
+33
+00:02:53,120 --> 00:02:58,400
+And that is because progressive Web apps use some features that we're going to talk about in other videos
+
+34
+00:02:59,270 --> 00:03:03,380
+that require https for security reasons.
+
+35
+00:03:03,950 --> 00:03:11,180
+Although this is a requirement for progressive web app in general, you should always serve your websites
+
+36
+00:03:11,450 --> 00:03:15,890
+if there's any sort of communication with the server through https.
+
+37
+00:03:17,290 --> 00:03:23,110
+And if we go to our lighthouse report, you see that when we scroll to progressive Web app and we check
+
+38
+00:03:23,110 --> 00:03:30,340
+out the nine past audits that we had, we have uses https as one of the requirements.
+
+39
+00:03:30,730 --> 00:03:32,700
+But how did that happen?
+
+40
+00:03:32,710 --> 00:03:34,420
+How do we have a GPS already?
+
+41
+00:03:34,900 --> 00:03:39,520
+And luckily for us, we get this out of the box with GitHub pages.
+
+42
+00:03:39,640 --> 00:03:43,200
+You can see over here that this link that was generated is a.
+
+43
+00:03:45,100 --> 00:03:52,630
+So any time you put a website on GitHub pages, we automatically get this encryption, which is fantastic.
+
+44
+00:03:53,690 --> 00:03:54,020
+But.
+
+45
+00:03:54,960 --> 00:03:59,140
+Not all websites can be hosted on GitHub pages.
+
+46
+00:03:59,190 --> 00:04:02,490
+You probably want to have your own server, your own domain name.
+
+47
+00:04:03,570 --> 00:04:10,020
+Well, the easiest way to get https is probably through, let's encrypt.
+
+48
+00:04:11,950 --> 00:04:19,330
+Let's encrypt is a free and it says over here it's a free, automated and open certificate authority
+
+49
+00:04:19,870 --> 00:04:27,560
+and they're fantastic to use and a certificate authority is just this authority that says, I'll give
+
+50
+00:04:27,560 --> 00:04:29,590
+you a certificate to certify that.
+
+51
+00:04:29,740 --> 00:04:31,540
+Yes, you are indeed.
+
+52
+00:04:31,720 --> 00:04:38,880
+Whoever you say you are, whatever your domain name is, and let's encrypt gives you free certificates.
+
+53
+00:04:39,160 --> 00:04:41,050
+That is really, really easy to set up.
+
+54
+00:04:41,050 --> 00:04:43,210
+And they have great documentation for you to use.
+
+55
+00:04:43,870 --> 00:04:45,030
+I highly recommend them.
+
+56
+00:04:45,970 --> 00:04:54,370
+You also have something like CloudFlare and Carfare is a CDN or a content delivery network, which we're
+
+57
+00:04:54,370 --> 00:04:57,130
+going to talk about in later sections.
+
+58
+00:04:57,610 --> 00:05:03,880
+But for now, you can think of them as a server that you can put your files on in just like GitHub pages
+
+59
+00:05:03,880 --> 00:05:06,700
+that hosts your files on their servers.
+
+60
+00:05:07,030 --> 00:05:11,740
+CloudFlare hosts your site on their pages.
+
+61
+00:05:12,830 --> 00:05:20,390
+And automatically through them, you get a GPS and if you go to their pricing, they're actually very,
+
+62
+00:05:20,390 --> 00:05:26,690
+very generous and there's a free plan for personal blog posts and any simple websites that you have.
+
+63
+00:05:27,530 --> 00:05:29,150
+Again, I highly recommend them.
+
+64
+00:05:29,150 --> 00:05:33,050
+And they actually do improve your performance of the website as well.
+
+65
+00:05:33,110 --> 00:05:39,300
+Again, something that we'll get into in the performance Part three section going back to our website.
+
+66
+00:05:39,890 --> 00:05:42,170
+This is something that we get out of the box.
+
+67
+00:05:43,510 --> 00:05:49,690
+Our app is going to work with all the other features of progressive web app because it's on GitHub pages
+
+68
+00:05:50,020 --> 00:05:59,710
+and we automatically get this awesome and we can double check over here with Prepacked Hacker News that
+
+69
+00:05:59,710 --> 00:06:04,300
+yep, indeed they are using https as well.
+
+70
+00:06:05,630 --> 00:06:06,950
+All right, that's it for now.
+
+71
+00:06:07,580 --> 00:06:09,580
+I'll see in the next one, bye bye.

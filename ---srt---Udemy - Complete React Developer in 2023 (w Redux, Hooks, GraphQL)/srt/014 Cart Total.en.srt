@@ -1,0 +1,211 @@
+1
+00:00:00,420 --> 00:00:01,440
+Welcome back, everyone.
+
+2
+00:00:02,540 --> 00:00:06,620
+So let's set the total inside of our cart provider.
+
+3
+00:00:07,780 --> 00:00:12,340
+So first, let's make a new value of total, which by default is zero.
+
+4
+00:00:13,150 --> 00:00:15,250
+And this is going to be very similar to the count.
+
+5
+00:00:15,850 --> 00:00:22,210
+Essentially, it's almost the same thing, except what we're doing is we're really just changing the
+
+6
+00:00:22,210 --> 00:00:23,740
+value of the.
+
+7
+00:00:24,810 --> 00:00:31,830
+Total price, by accumulating it rather than the quantity, it's arguably pretty much the exact same
+
+8
+00:00:31,830 --> 00:00:34,320
+code as the actual count.
+
+9
+00:00:35,160 --> 00:00:38,790
+So what we're going to do is we can duplicate this use effect.
+
+10
+00:00:39,570 --> 00:00:44,100
+Some of you may be wondering, why don't we just put both effects into the same effect?
+
+11
+00:00:44,850 --> 00:00:50,730
+Typically, one of the best practices when using use effect is to make sure that it just governs one
+
+12
+00:00:50,740 --> 00:00:52,170
+singular responsibility.
+
+13
+00:00:52,710 --> 00:00:54,600
+You can have a multiple use effects running.
+
+14
+00:00:54,960 --> 00:00:58,320
+It's kind of like how you want your functions to be single responsibility.
+
+15
+00:00:58,680 --> 00:01:04,680
+You want the same thing for your use effect so that it's not so convoluted and difficult to read here.
+
+16
+00:01:04,680 --> 00:01:11,520
+Inside of this use effect, what we're going to do is we're going to say new cart total is equal to
+
+17
+00:01:11,520 --> 00:01:18,750
+reducing over our car items, and we're just going to add the total value equal to the cart item quantity
+
+18
+00:01:18,810 --> 00:01:21,810
+multiplied by the cart item price.
+
+19
+00:01:23,450 --> 00:01:24,800
+And this is pretty much it.
+
+20
+00:01:26,540 --> 00:01:31,940
+Once you have that, you can just set the new cart total by calling set cart total.
+
+21
+00:01:34,120 --> 00:01:40,330
+And then we can just pass this car as the value, so actually, instead of total up here, I need to
+
+22
+00:01:40,330 --> 00:01:42,110
+also update this to cart total.
+
+23
+00:01:42,130 --> 00:01:44,950
+So that's a lot more clear as to what this value represents.
+
+24
+00:01:45,850 --> 00:01:49,210
+And then we can just attach this over onto the value.
+
+25
+00:01:50,300 --> 00:01:57,140
+And inside of our checkout component, we can just pull off the cart total and then render it right
+
+26
+00:01:57,140 --> 00:02:05,060
+here like so and we can just put a little dollar sign so that we're much more clear about the fact that
+
+27
+00:02:05,060 --> 00:02:10,040
+this is in U.S. dollars or Canadian dollars or whatever currency you want it to be in.
+
+28
+00:02:11,080 --> 00:02:11,920
+So let's save this.
+
+29
+00:02:12,040 --> 00:02:12,700
+Let's go back.
+
+30
+00:02:13,120 --> 00:02:14,230
+We have zero dollars.
+
+31
+00:02:15,370 --> 00:02:16,600
+Let's add some items.
+
+32
+00:02:17,540 --> 00:02:19,490
+Come back, go to check out.
+
+33
+00:02:20,180 --> 00:02:20,790
+Scroll down.
+
+34
+00:02:21,350 --> 00:02:27,860
+There's our total if we add two more grey brooms, this total should increase by 50 dollars, which
+
+35
+00:02:27,860 --> 00:02:29,210
+it does to two twenty four.
+
+36
+00:02:29,630 --> 00:02:36,560
+If we get rid of this issue reduced by $70 to one for which it also does so everything is working with
+
+37
+00:02:36,560 --> 00:02:37,040
+our total.
+
+38
+00:02:38,060 --> 00:02:38,700
+So there we go.
+
+39
+00:02:38,720 --> 00:02:44,390
+We have pretty much the majority of the complex features that we need built in based on our cart.
+
+40
+00:02:44,960 --> 00:02:46,910
+It's already looking really good.
+
+41
+00:02:47,600 --> 00:02:53,250
+So now what we need to do is we've primarily done this for a bunch of our hats.
+
+42
+00:02:53,290 --> 00:02:57,170
+But what about all of our other actual data?
+
+43
+00:02:57,680 --> 00:03:00,440
+In fact, this is all still hardcoded into our system.
+
+44
+00:03:01,040 --> 00:03:07,280
+What we want to do is we want to figure out how to improve this structure by adding more items into
+
+45
+00:03:07,280 --> 00:03:12,410
+our overall project, but also figuring out how to fetch them from a back end.
+
+46
+00:03:12,890 --> 00:03:17,630
+So we're going to move on to the next section, which is where we need to work with fetching data from
+
+47
+00:03:17,630 --> 00:03:20,180
+a backend in order to populate our website.
+
+48
+00:03:20,660 --> 00:03:23,750
+But before we do that, let's first commit our code.
+
+49
+00:03:24,080 --> 00:03:25,340
+So go back to your terminal.
+
+50
+00:03:27,450 --> 00:03:33,990
+And then what you're going to do is just add your changes and what we're going to say is created checkout
+
+51
+00:03:33,990 --> 00:03:43,920
+page along with checkout items and checkout cart functionality, and then just push this up.
+
+52
+00:03:45,340 --> 00:03:50,230
+And now join me in the next video where we're going to start working more with product data.
+
+53
+00:03:50,740 --> 00:03:51,760
+I'll see you in the next video.

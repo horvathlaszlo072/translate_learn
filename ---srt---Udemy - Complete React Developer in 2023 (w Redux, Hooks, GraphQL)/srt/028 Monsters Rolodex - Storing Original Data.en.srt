@@ -1,0 +1,519 @@
+1
+00:00:00,810 --> 00:00:01,800
+Welcome back, everyone.
+
+2
+00:00:02,430 --> 00:00:08,070
+In the last video, we learned how to implement a search bar into our application, and we learned how
+
+3
+00:00:08,070 --> 00:00:12,990
+to filter out these different monsters that we have based on what gets typed in.
+
+4
+00:00:13,590 --> 00:00:22,230
+However, what we noticed is that while we did implement a case insensitive filtering system, the problem
+
+5
+00:00:22,230 --> 00:00:28,090
+is that as we get rid of the characters, we are left with this filtered list.
+
+6
+00:00:28,140 --> 00:00:33,870
+We cannot get back a new list based on the characters that are actually in the search bar.
+
+7
+00:00:34,560 --> 00:00:35,310
+Why is that?
+
+8
+00:00:36,230 --> 00:00:40,040
+So let's go back to our application when we look at the code.
+
+9
+00:00:40,640 --> 00:00:45,170
+What will notice is that we are directly modifying this monster's array.
+
+10
+00:00:45,650 --> 00:00:51,920
+However, whenever this change event happens, we are just using the current monster's array, meaning
+
+11
+00:00:51,920 --> 00:00:57,050
+that every time we're filtering, we're not filtering off the original list of monsters while filtering
+
+12
+00:00:57,050 --> 00:01:00,110
+off of the currently filtered list of monsters.
+
+13
+00:01:00,770 --> 00:01:02,790
+In case that is a little confusing.
+
+14
+00:01:02,810 --> 00:01:05,480
+Let's make this clear by console logging this out.
+
+15
+00:01:06,050 --> 00:01:09,260
+So here I'm going to console dot log.
+
+16
+00:01:10,160 --> 00:01:13,810
+I'm going to say that this is the starting array, actually.
+
+17
+00:01:13,820 --> 00:01:15,200
+Let's let's make this more clear.
+
+18
+00:01:15,290 --> 00:01:19,310
+I'm going to make an object and I'm going to say starting array.
+
+19
+00:01:21,870 --> 00:01:29,010
+Goes to this dot state dot monsters, because this is the monsters array in our state that we have when
+
+20
+00:01:29,010 --> 00:01:30,090
+this event first fires.
+
+21
+00:01:30,600 --> 00:01:32,550
+And then what happens is we modify it.
+
+22
+00:01:33,090 --> 00:01:39,540
+So following set state, I am going to pass it a callback once the state is updated.
+
+23
+00:01:40,020 --> 00:01:44,340
+And here, instead of calling it starting array, I'm going to call it ending array.
+
+24
+00:01:45,970 --> 00:01:49,540
+And this is just easy for me, because using this object, we see these keys.
+
+25
+00:01:50,260 --> 00:01:51,400
+So if we go to our code.
+
+26
+00:01:52,470 --> 00:01:54,330
+What we see when we start typing.
+
+27
+00:01:55,410 --> 00:02:00,600
+L e a, we noticed that when we went in the first time for the L.
+
+28
+00:02:01,110 --> 00:02:04,410
+We saw that there was a certain area of 10 and then an ending array of nine.
+
+29
+00:02:05,130 --> 00:02:09,660
+And then when we tied the E, there was a starting area of nine and then an ending array of five.
+
+30
+00:02:09,990 --> 00:02:14,760
+And then finally, when we type the A, we had the stunning array of five and the ending array of one.
+
+31
+00:02:15,210 --> 00:02:17,910
+So this is expected because we're filtering down the list to one.
+
+32
+00:02:18,360 --> 00:02:23,010
+But now, as we remove what we notice is that our starting array is one.
+
+33
+00:02:24,240 --> 00:02:29,280
+Every single time the starting array is the same array as are filtered list.
+
+34
+00:02:29,730 --> 00:02:33,330
+So no wonder we're not getting back all of our monsters from before.
+
+35
+00:02:33,600 --> 00:02:36,000
+We don't have that stored anywhere anymore.
+
+36
+00:02:36,210 --> 00:02:38,010
+That list is completely gone.
+
+37
+00:02:38,610 --> 00:02:42,900
+So this actually brings us to a very important best practice.
+
+38
+00:02:43,590 --> 00:02:47,700
+If you are going to modify any kind of data inside of your state.
+
+39
+00:02:48,650 --> 00:02:51,350
+Such as filtering it out based on user input or whatever.
+
+40
+00:02:52,160 --> 00:02:56,360
+If you're going to go back to it and most of the time you want to go back to it and at least keep some
+
+41
+00:02:56,360 --> 00:02:58,640
+kind of reference to that original list.
+
+42
+00:02:59,120 --> 00:03:08,900
+What you want to do is you want to actually keep your state equal to the original list of whatever it
+
+43
+00:03:08,900 --> 00:03:09,900
+is that you're keeping track of.
+
+44
+00:03:09,920 --> 00:03:11,300
+So for us, it's the users.
+
+45
+00:03:11,300 --> 00:03:13,370
+We want to keep that original list of users.
+
+46
+00:03:13,640 --> 00:03:18,170
+We don't actually want to modify the states and use that value.
+
+47
+00:03:18,170 --> 00:03:22,610
+Instead, we want to filter that value and then pass it into wherever we need it to be.
+
+48
+00:03:22,940 --> 00:03:23,990
+So how do we do this?
+
+49
+00:03:24,290 --> 00:03:26,000
+How do we modify our code to do so?
+
+50
+00:03:27,090 --> 00:03:30,120
+So here, what I'm going to do is get rid of these console.log.
+
+51
+00:03:34,580 --> 00:03:40,340
+And what we're going to do is we're going to keep this search string because this is still useful and
+
+52
+00:03:40,340 --> 00:03:45,740
+we're going to keep this filtered monster's list because essentially this is a new array.
+
+53
+00:03:45,770 --> 00:03:46,730
+Remember what I told you?
+
+54
+00:03:46,740 --> 00:03:49,040
+Dot filter gives you back a new array.
+
+55
+00:03:49,460 --> 00:03:50,660
+That means that this starts.
+
+56
+00:03:50,660 --> 00:03:56,780
+State dot monsters is untouched because any filtering happens in the new array we get back.
+
+57
+00:03:56,780 --> 00:04:00,590
+The original array is completely unmodified.
+
+58
+00:04:00,740 --> 00:04:02,300
+And this is exactly what we want.
+
+59
+00:04:02,780 --> 00:04:11,060
+The question now is with this filtered monsters, how do we actually use it inside of our rendering
+
+60
+00:04:11,480 --> 00:04:13,910
+because we now want to render this filtered monster's list?
+
+61
+00:04:14,060 --> 00:04:18,500
+We want the same functionality we had before, except instead of acting on the state, we want to access
+
+62
+00:04:18,500 --> 00:04:19,490
+it where we filtered it.
+
+63
+00:04:20,360 --> 00:04:26,240
+Well, this is actually where we should move some of this code out into the render, and maybe this
+
+64
+00:04:26,240 --> 00:04:27,980
+will make it more helpful for us.
+
+65
+00:04:28,550 --> 00:04:34,010
+We can either move it out of the render or we can move it out into a method, and there is a little
+
+66
+00:04:34,010 --> 00:04:36,260
+bit of optimization here that we're going to have to talk about.
+
+67
+00:04:36,710 --> 00:04:42,290
+But first, what I want to do is let's just move it out into this render because it's the easiest way.
+
+68
+00:04:43,190 --> 00:04:46,820
+So what we're going to do is we are going to create.
+
+69
+00:04:48,260 --> 00:04:50,600
+This filtered monster's list.
+
+70
+00:04:51,660 --> 00:04:55,170
+Out here inside of the render, but outside of the return.
+
+71
+00:04:57,040 --> 00:04:59,260
+So here I have access to filtered monsters.
+
+72
+00:05:00,220 --> 00:05:02,050
+But the problem is, I don't have access to search string.
+
+73
+00:05:02,980 --> 00:05:06,970
+And in order for me to get access to search string, I need access to this event.
+
+74
+00:05:07,840 --> 00:05:17,050
+So what we should do is we should actually stop this search string value inside of our state because
+
+75
+00:05:17,050 --> 00:05:20,620
+then we have access to it anywhere in our component right now.
+
+76
+00:05:20,860 --> 00:05:28,010
+This search string is only available inside of this callback, but not actually inside of our component.
+
+77
+00:05:28,030 --> 00:05:32,860
+So in order for us to get access to it in our component, we need to move it into our component.
+
+78
+00:05:33,130 --> 00:05:35,050
+And the best way to do that is to put it into state.
+
+79
+00:05:35,920 --> 00:05:39,730
+So inside of state here, I'm going to say there is a search field.
+
+80
+00:05:40,920 --> 00:05:46,530
+And this to start, as I mentioned before, is equal to the null case or the empty case of what this
+
+81
+00:05:46,530 --> 00:05:46,890
+will be.
+
+82
+00:05:46,980 --> 00:05:48,120
+And this is going to be a string.
+
+83
+00:05:48,390 --> 00:05:50,610
+So the empty case of that is an empty string.
+
+84
+00:05:51,640 --> 00:05:57,790
+Then what we're going to do is we are now going to get access to this search string value.
+
+85
+00:05:59,080 --> 00:06:02,800
+So what we want to do is we actually want to update this in our state.
+
+86
+00:06:03,460 --> 00:06:10,420
+So instead, in our on change of settings state of Monsters, we're going to update this search field.
+
+87
+00:06:10,570 --> 00:06:14,980
+So here I'm going to change this to search field instead of search string.
+
+88
+00:06:17,250 --> 00:06:21,330
+And by doing this now, I can get rid of that code.
+
+89
+00:06:21,660 --> 00:06:24,420
+And this is just a quick shorthand when you're writing objects.
+
+90
+00:06:24,960 --> 00:06:31,830
+If you use a variable as the only field, then what JavaScript is going to do and he asks, is it's
+
+91
+00:06:31,830 --> 00:06:36,480
+going to say, OK, you know, the key is going to be the name of this variable and the value is going
+
+92
+00:06:36,480 --> 00:06:37,830
+to be the value of this variable.
+
+93
+00:06:38,430 --> 00:06:42,210
+And by doing this now we are updating this search field value.
+
+94
+00:06:43,050 --> 00:06:49,470
+And here I'm going to do is I'm going to change this now to our newly stored this dot state dot search
+
+95
+00:06:49,470 --> 00:06:49,740
+field.
+
+96
+00:06:51,790 --> 00:06:54,340
+So now filtered monsters should be.
+
+97
+00:06:55,770 --> 00:07:00,030
+Using this state search field because we're updating it in the same way, so you'll notice that we're
+
+98
+00:07:00,030 --> 00:07:01,260
+just moving some things around.
+
+99
+00:07:02,540 --> 00:07:08,930
+And instead of mapping over this dot state dot monsters, let me just map over filtered monsters.
+
+100
+00:07:09,290 --> 00:07:10,460
+So if I save this now?
+
+101
+00:07:13,210 --> 00:07:21,580
+Here you'll notice that we have our original list of monsters, and then I'm going to say Ali A.
+
+102
+00:07:22,680 --> 00:07:29,790
+So this filters out as we saw before, but now as we type back, we get back our original list.
+
+103
+00:07:30,030 --> 00:07:32,850
+So everything now works the way we want it to.
+
+104
+00:07:33,660 --> 00:07:39,780
+Now I know we covered a couple bigger concepts in this video, so some of this might be a little confusing,
+
+105
+00:07:39,780 --> 00:07:40,950
+and that's perfectly fine.
+
+106
+00:07:41,250 --> 00:07:42,780
+Let's just quickly go over what we did.
+
+107
+00:07:43,790 --> 00:07:49,580
+What we knew was that as we were filtering monsters, we needed the original list of monsters to display
+
+108
+00:07:49,670 --> 00:07:54,920
+because any future filters that we wanted to make should be made on the full list of monsters.
+
+109
+00:07:54,930 --> 00:08:00,200
+It shouldn't be made on the filter list of monsters, especially when we start removing characters.
+
+110
+00:08:00,380 --> 00:08:03,900
+And we want to get back to that state of our original full list of monsters.
+
+111
+00:08:04,370 --> 00:08:08,450
+So remember, whenever you're filtering down a list, you always want a filter from the full list.
+
+112
+00:08:08,690 --> 00:08:12,980
+And if that's the case, what you want to do is you want to keep track of that somewhere, and the best
+
+113
+00:08:13,070 --> 00:08:14,690
+place for that is in the state.
+
+114
+00:08:15,260 --> 00:08:19,220
+So after you've updated state with the full original list, don't modify that.
+
+115
+00:08:19,490 --> 00:08:27,920
+Modify that somewhere else inside of our input because we want to access that input value.
+
+116
+00:08:28,520 --> 00:08:33,440
+We want to store that somewhere where the rest of the component has access to it, not just in the callback,
+
+117
+00:08:33,440 --> 00:08:37,670
+because remember, with JavaScript, all of our variables are locally scoped.
+
+118
+00:08:38,330 --> 00:08:43,460
+So with that in mind, what we need to do in order to make that more accessible to the rest of the component
+
+119
+00:08:43,460 --> 00:08:48,200
+is we have to move it to something where the rest of the component is access to, and that is the state.
+
+120
+00:08:48,620 --> 00:08:54,200
+So what we did is that we stored the value that we wanted, so we don't store the event, we store the
+
+121
+00:08:54,200 --> 00:08:56,840
+actual thing that matters for us, which is just the string.
+
+122
+00:08:57,320 --> 00:09:01,910
+And we want to modify it in a way where it's useful for the rest of the application, which is where
+
+123
+00:09:01,910 --> 00:09:02,660
+it's lowercase.
+
+124
+00:09:02,930 --> 00:09:07,370
+So here what we're doing is we're storing that inside of our state.
+
+125
+00:09:08,330 --> 00:09:14,120
+So once we have this search field now inside of the render, we are able to filter it down from the
+
+126
+00:09:14,120 --> 00:09:17,060
+original list of monsters using the search field.
+
+127
+00:09:18,070 --> 00:09:22,660
+There's a couple little optimizations that I'm going to show you in the next video, and we're going
+
+128
+00:09:22,660 --> 00:09:27,970
+to deep dive into that so that you can learn a little bit more about the render cycles about React and
+
+129
+00:09:27,970 --> 00:09:28,810
+these glass components.
+
+130
+00:09:28,990 --> 00:09:31,570
+Join me in the next video or we'll talk about that.

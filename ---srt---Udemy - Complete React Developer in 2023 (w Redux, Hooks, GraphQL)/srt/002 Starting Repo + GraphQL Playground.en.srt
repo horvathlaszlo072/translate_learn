@@ -1,0 +1,427 @@
+1
+00:00:01,060 --> 00:00:01,960
+Welcome back, everyone.
+
+2
+00:00:02,890 --> 00:00:06,100
+In this video, we are going to pick up our graph you, Alison.
+
+3
+00:00:07,140 --> 00:00:14,880
+So this repository inside of your resource folder contains a repo that I have made for you, which is
+
+4
+00:00:14,880 --> 00:00:21,390
+branched off roughly from lesson 25, which is where we had just finished setting up everything for
+
+5
+00:00:21,390 --> 00:00:21,930
+nullify.
+
+6
+00:00:22,900 --> 00:00:29,220
+The reason why we branched off from here is because there are a couple differences and nuances of GraphQL
+
+7
+00:00:29,230 --> 00:00:34,570
+that we want to implement that directly correspond to what we do later.
+
+8
+00:00:35,520 --> 00:00:38,590
+So GraphQL is actually a replacement for Redux.
+
+9
+00:00:38,610 --> 00:00:43,350
+It's very rare that you will utilize both GraphQL and Redux.
+
+10
+00:00:43,620 --> 00:00:48,930
+The reason being that GraphQL has its own way of keeping track of the data and typically speaking,
+
+11
+00:00:48,940 --> 00:00:52,770
+graph quality data querying kind of runs in conflict with Redux.
+
+12
+00:00:53,340 --> 00:00:56,400
+Now we'll discuss that more once we get to the actual implementation section.
+
+13
+00:00:56,820 --> 00:01:04,770
+But inside of this repo, I want you to copy the repo and then I want you to go to your actual application
+
+14
+00:01:05,400 --> 00:01:09,040
+and I want you to clone it down into a new folder.
+
+15
+00:01:09,060 --> 00:01:14,790
+Make sure that you're not in your previous crown closing folder so you can just clone that down.
+
+16
+00:01:16,540 --> 00:01:22,210
+And then just make sure you go into your new folder.
+
+17
+00:01:23,340 --> 00:01:24,330
+Once you finished it.
+
+18
+00:01:26,510 --> 00:01:33,470
+Now, once you're inside of your repo, what I want you to do is I want you to yarn add in two packages.
+
+19
+00:01:33,860 --> 00:01:38,510
+The first is at Apollo slash client.
+
+20
+00:01:39,200 --> 00:01:47,540
+Apollo is going to be a frontend client that allows us to make requests for GraphQL as well as receive
+
+21
+00:01:47,540 --> 00:01:49,040
+responses for GraphQL.
+
+22
+00:01:49,250 --> 00:01:55,300
+And it comes with a bunch of bindings for React so that we can actually get GraphQL data and make GraphQL
+
+23
+00:01:55,320 --> 00:01:57,530
+requests within our components.
+
+24
+00:01:57,830 --> 00:01:58,580
+That's the first thing.
+
+25
+00:01:59,330 --> 00:02:03,020
+The next thing I want you to add is the GraphQL library itself.
+
+26
+00:02:03,620 --> 00:02:09,590
+So with these two different libraries, we are now going to be able to actually utilize it inside of
+
+27
+00:02:09,590 --> 00:02:10,340
+our application.
+
+28
+00:02:10,610 --> 00:02:15,200
+While all of this is installing, I want to talk about GraphQL and the syntax.
+
+29
+00:02:15,560 --> 00:02:19,850
+So to do this, what we're going to do is go back to our.
+
+30
+00:02:21,000 --> 00:02:21,810
+Web browser.
+
+31
+00:02:22,410 --> 00:02:28,080
+And I want you to go into your resources folder and look for this graphical playground link.
+
+32
+00:02:28,590 --> 00:02:34,800
+This will take you to crown dash clothing dot com where I have made this website for you, which is
+
+33
+00:02:34,800 --> 00:02:36,630
+known as a graphical playground.
+
+34
+00:02:37,530 --> 00:02:44,490
+A graphical playground is a place where you can make queries in the graphical language directly against
+
+35
+00:02:44,490 --> 00:02:49,500
+the database or the graphical server that's connected to the database graph.
+
+36
+00:02:49,510 --> 00:02:57,210
+Q All sits between the database and the server, and what it does is it allows you to format your requests
+
+37
+00:02:57,210 --> 00:03:03,930
+in the manner that we discussed in the previous video where we pass it some object that looks roughly
+
+38
+00:03:03,930 --> 00:03:05,310
+like the data you want.
+
+39
+00:03:05,730 --> 00:03:09,150
+Now, let me show you what is inside of this playground.
+
+40
+00:03:09,870 --> 00:03:11,300
+Over on this side.
+
+41
+00:03:11,310 --> 00:03:16,890
+Here is where you will enter in the information that tells graphic your what you want.
+
+42
+00:03:17,580 --> 00:03:18,630
+So here you'll see.
+
+43
+00:03:18,630 --> 00:03:21,150
+Write your query or mutation online.
+
+44
+00:03:21,150 --> 00:03:24,480
+One A query is a request for data.
+
+45
+00:03:24,660 --> 00:03:28,530
+A mutation is a request to modify or add data.
+
+46
+00:03:29,010 --> 00:03:33,540
+That's mainly the two different things that you can do inside of GraphQL.
+
+47
+00:03:33,540 --> 00:03:40,020
+It's all queries where you request data and it's all mutations where you ask to update or create or
+
+48
+00:03:40,020 --> 00:03:40,920
+delete data.
+
+49
+00:03:41,550 --> 00:03:45,270
+So you can see these kind of like your rest API in a way.
+
+50
+00:03:46,500 --> 00:03:51,660
+Down here is where you include any additional variables, which we'll discuss when we start talking
+
+51
+00:03:51,660 --> 00:03:53,940
+about doing queries and mutations.
+
+52
+00:03:54,570 --> 00:03:58,860
+Over here is where you will get a response when you hit this play button.
+
+53
+00:03:58,860 --> 00:04:02,970
+Once you have a correct query or mutation, the data will show up here.
+
+54
+00:04:03,980 --> 00:04:09,320
+This is also going to tell you if you have an incorrect query or mutation.
+
+55
+00:04:09,800 --> 00:04:12,280
+Any response back is all going to happen here.
+
+56
+00:04:13,260 --> 00:04:15,450
+There are also two additional tabs here.
+
+57
+00:04:16,170 --> 00:04:18,480
+The first one I want to talk about is the schema.
+
+58
+00:04:19,200 --> 00:04:24,600
+The schema represents everything that you can make inside of GraphQL.
+
+59
+00:04:25,380 --> 00:04:31,470
+So we have queries and queries define the different types of requests you can ask for.
+
+60
+00:04:31,950 --> 00:04:38,250
+Remember, we have to tell GraphQL what we want, and the name of what you are asking for is actually
+
+61
+00:04:38,250 --> 00:04:40,380
+defined by the person who wrote the server.
+
+62
+00:04:40,620 --> 00:04:45,870
+So these queries I created, you'll see that I made three different queries for you.
+
+63
+00:04:46,290 --> 00:04:50,670
+There is collections where you get back an array of collections.
+
+64
+00:04:50,700 --> 00:04:52,230
+Now, what is a collection?
+
+65
+00:04:52,830 --> 00:04:55,860
+A collection you can see down here as the type.
+
+66
+00:04:56,250 --> 00:04:59,430
+This is very similar to what we wrote in TypeScript.
+
+67
+00:05:00,330 --> 00:05:05,970
+Collection actually replaces category, as you know, inside of our main application.
+
+68
+00:05:06,180 --> 00:05:09,120
+The category, of course, represents the collection of clothing.
+
+69
+00:05:09,120 --> 00:05:13,020
+And inside of a category, there were category items here.
+
+70
+00:05:13,020 --> 00:05:15,150
+Instead, I have called it a collection.
+
+71
+00:05:15,450 --> 00:05:17,760
+And in a collection there are items.
+
+72
+00:05:18,760 --> 00:05:25,330
+So if you look at this definition signature of the type, you'll see that we have I.D. So the idea is
+
+73
+00:05:25,330 --> 00:05:26,280
+any identifier.
+
+74
+00:05:26,290 --> 00:05:33,190
+But in GraphQL, there is capitalize ID to signify that this is specifically meant to be unique.
+
+75
+00:05:33,340 --> 00:05:35,800
+It's in the format of a string, but it's also unique.
+
+76
+00:05:35,980 --> 00:05:38,560
+That's why it is I.D. in caps.
+
+77
+00:05:39,430 --> 00:05:42,220
+You'll also notice that there is this exclamation mark.
+
+78
+00:05:42,520 --> 00:05:45,850
+The exclamation mark signifies that this field is mandatory.
+
+79
+00:05:45,850 --> 00:05:47,740
+This is not a optional field.
+
+80
+00:05:47,800 --> 00:05:49,270
+Without it, then it's optional.
+
+81
+00:05:50,510 --> 00:05:56,230
+There is a title which points to strength and the strength similarly is also not optional.
+
+82
+00:05:56,240 --> 00:05:57,290
+It is mandatory.
+
+83
+00:05:58,350 --> 00:06:05,730
+Next you will see items, items points to an item type, meaning that this is going to hold a collection
+
+84
+00:06:05,730 --> 00:06:07,920
+of items or an array of items.
+
+85
+00:06:08,820 --> 00:06:16,110
+The array is designated by the square brackets and inside will state what that type inside the array
+
+86
+00:06:16,110 --> 00:06:16,530
+will be.
+
+87
+00:06:16,530 --> 00:06:20,970
+So of course they are items also necessary and the array also necessary.
+
+88
+00:06:20,970 --> 00:06:22,440
+So that's another thing.
+
+89
+00:06:23,480 --> 00:06:27,500
+Coming down here, you will see the type of item and here you will see again.
+
+90
+00:06:27,680 --> 00:06:29,510
+Identifier must be unique.
+
+91
+00:06:29,750 --> 00:06:33,950
+Hence the capital ID name of string price.
+
+92
+00:06:33,950 --> 00:06:37,490
+A float float is a number.
+
+93
+00:06:37,490 --> 00:06:43,730
+The only thing is that it can be decimal place, which is why you will see float also necessary image
+
+94
+00:06:43,730 --> 00:06:48,200
+url which is a string and then collection a collection.
+
+95
+00:06:48,200 --> 00:06:54,710
+And the reason why there is this is so that GraphQL can connect an item so that it belongs to a specific
+
+96
+00:06:54,710 --> 00:06:55,190
+collection.
+
+97
+00:06:55,850 --> 00:06:58,190
+It's really just the way that graphic glass sets up on the back end.
+
+98
+00:06:58,760 --> 00:07:03,620
+Primarily, you will not usually be querying for this collection, but you can if you wanted to.
+
+99
+00:07:03,620 --> 00:07:08,030
+If you are fetching an item and you wanted to know the collection it was in, you could also reference
+
+100
+00:07:08,030 --> 00:07:08,570
+the collection.
+
+101
+00:07:09,670 --> 00:07:14,530
+So this again defines for you what the types will be and then ask for the queries.
+
+102
+00:07:15,100 --> 00:07:19,880
+We'll talk about that in the next video where we'll actually start querying GraphQL for some data.
+
+103
+00:07:19,910 --> 00:07:24,940
+But for now, I just want you to know that if at any point you wanted to look at what your data that
+
+104
+00:07:24,940 --> 00:07:29,710
+you can ask for, it looks like, because again, we're asking for very specific parts of the data.
+
+105
+00:07:30,250 --> 00:07:32,620
+Always open up the schema to see what you have.
+
+106
+00:07:33,280 --> 00:07:37,360
+Okay, let's jump into the next video where we will start working with the queries.
+
+107
+00:07:37,690 --> 00:07:38,590
+I'll see you in the next video.

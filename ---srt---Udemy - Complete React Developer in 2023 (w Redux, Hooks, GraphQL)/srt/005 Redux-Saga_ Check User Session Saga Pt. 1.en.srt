@@ -1,0 +1,635 @@
+1
+00:00:00,590 --> 00:00:01,490
+Welcome back, everyone.
+
+2
+00:00:02,150 --> 00:00:05,420
+In the last video, we created this get current user method.
+
+3
+00:00:06,020 --> 00:00:11,540
+In this video, we're going to set up our actions so that we can utilize it inside of our sagas.
+
+4
+00:00:12,170 --> 00:00:19,580
+So what I want to do is I want to go into the user types and here we're going to start adding some additional
+
+5
+00:00:19,580 --> 00:00:23,360
+types to replicate all of these different methods we need to encapsulate.
+
+6
+00:00:23,930 --> 00:00:25,220
+So let's think about what we have.
+
+7
+00:00:25,700 --> 00:00:32,030
+We know we now have this new check user session, which is going to call that method that we just created
+
+8
+00:00:32,030 --> 00:00:32,450
+together.
+
+9
+00:00:33,350 --> 00:00:40,790
+Additionally, we also know that we have different forms of sign in, such as our Google sign in which
+
+10
+00:00:40,790 --> 00:00:42,890
+we're going to create our Google sign and start for.
+
+11
+00:00:46,280 --> 00:00:48,550
+And we also have that email sign in.
+
+12
+00:00:49,130 --> 00:00:51,860
+So similarly, we're going to do an email sign and start.
+
+13
+00:00:56,220 --> 00:01:02,370
+One thing I do want you to understand, though, let's go back to the code we have for Google sign and
+
+14
+00:01:02,370 --> 00:01:05,040
+start email sign is start as well as check user session.
+
+15
+00:01:06,000 --> 00:01:11,550
+So previously let me just undo this so that we can at least see the code that we had before.
+
+16
+00:01:13,220 --> 00:01:21,350
+So here inside, we have now encapsulated this method inside of our new get current user method.
+
+17
+00:01:22,280 --> 00:01:26,210
+The thing here is primarily this create user document from off.
+
+18
+00:01:26,510 --> 00:01:33,200
+Essentially what we do whenever a user signs in, signs out or signs in with Google, we are passing
+
+19
+00:01:33,200 --> 00:01:35,690
+them through this create user document from off.
+
+20
+00:01:36,530 --> 00:01:40,220
+This methodology is now going to live inside of our saga.
+
+21
+00:01:40,970 --> 00:01:48,080
+The thing, though, is that no matter how the user signs in or signs up, they all pass through, create
+
+22
+00:01:48,080 --> 00:01:49,460
+user document from off.
+
+23
+00:01:50,060 --> 00:01:55,670
+All of our off updates get triggered inside of here, which is what actually stores the user inside
+
+24
+00:01:55,670 --> 00:02:00,080
+of Firebase in one of our tables, and then we extract it as a user document.
+
+25
+00:02:00,800 --> 00:02:07,610
+So this means that all of our Google sign and star email sign in check user session, these are all
+
+26
+00:02:07,640 --> 00:02:10,880
+actually flowing through the same sign in.
+
+27
+00:02:11,270 --> 00:02:18,350
+So here what I'm going to make is actually a sign in success, just a generic one, which whenever you
+
+28
+00:02:18,350 --> 00:02:24,560
+successfully sign in with email or Google, you're going to pass through the same sign in Success Saga.
+
+29
+00:02:24,980 --> 00:02:29,330
+So we want to trigger a signing success with that user object that we receive.
+
+30
+00:02:30,140 --> 00:02:38,030
+Similarly, this means that we also want a sign in failure, a generic one as well for any failures
+
+31
+00:02:38,030 --> 00:02:39,290
+in our ability to sign in.
+
+32
+00:02:40,160 --> 00:02:45,050
+So this is enough for us to at least start with some of our base sagas.
+
+33
+00:02:45,320 --> 00:02:50,660
+Now, of course, we can always add more as we go, but I'm going to copy these five over as well because
+
+34
+00:02:50,660 --> 00:02:52,610
+I want to make new action creators for them.
+
+35
+00:02:52,970 --> 00:02:56,150
+So in order to keep track, I'm just going to put them here.
+
+36
+00:02:57,020 --> 00:03:01,130
+And the new action creators we're going to make is one corresponding for each of these actions.
+
+37
+00:03:01,850 --> 00:03:11,090
+So I want to say export content check user session is equal to create action and then us passing in
+
+38
+00:03:11,090 --> 00:03:13,070
+our user action types.
+
+39
+00:03:15,430 --> 00:03:16,780
+Dot check user session.
+
+40
+00:03:18,780 --> 00:03:19,080
+Next.
+
+41
+00:03:19,080 --> 00:03:21,450
+What we also need is the Google sign and start.
+
+42
+00:03:22,050 --> 00:03:23,430
+So I'm going to export content.
+
+43
+00:03:23,460 --> 00:03:33,900
+Google sign in start is equal to a create action passing in user action types dot google sign and start.
+
+44
+00:03:35,050 --> 00:03:38,860
+Well also going to need a similar one for email sign and start.
+
+45
+00:03:41,230 --> 00:03:42,190
+Which is equal.
+
+46
+00:03:43,640 --> 00:03:46,340
+To us saying this action.
+
+47
+00:03:47,080 --> 00:03:51,730
+Create action and then user action, dot, email, sign and start.
+
+48
+00:03:52,510 --> 00:03:57,880
+The thing that we know about email, sign and start though is that we need an email and a password.
+
+49
+00:03:58,600 --> 00:04:03,070
+So these we're going to pass through as a payload inside of an object.
+
+50
+00:04:04,360 --> 00:04:08,860
+Similarly, we know we need sign in success and sign in failed as well.
+
+51
+00:04:09,520 --> 00:04:11,120
+So let's say sign in.
+
+52
+00:04:11,140 --> 00:04:16,600
+Success is equal to us receiving some user object or user off.
+
+53
+00:04:16,750 --> 00:04:18,670
+We'll figure that out once we start coding it out.
+
+54
+00:04:19,240 --> 00:04:27,850
+But we use a placeholder for now and we'll say Create action using user action types dot sign in success.
+
+55
+00:04:29,060 --> 00:04:31,640
+And then we'll pass the user through as the payload.
+
+56
+00:04:32,240 --> 00:04:36,230
+And of course we have a similar sign in failed.
+
+57
+00:04:38,030 --> 00:04:45,110
+This, instead of giving us the user will give us an error and we will call sign in failure.
+
+58
+00:04:46,840 --> 00:04:47,500
+With the air.
+
+59
+00:04:49,240 --> 00:04:49,990
+Actually, you know what?
+
+60
+00:04:49,990 --> 00:04:54,280
+Let's call the sign in failed instead of failure like that.
+
+61
+00:04:56,790 --> 00:04:57,210
+There we go.
+
+62
+00:04:58,080 --> 00:05:03,720
+So let's copy this over and let's update the corresponding action as well.
+
+63
+00:05:05,120 --> 00:05:06,950
+So there's our new action creators.
+
+64
+00:05:07,760 --> 00:05:10,610
+As for the reducer, we need to update as well.
+
+65
+00:05:12,140 --> 00:05:13,250
+Inside of the reducer.
+
+66
+00:05:13,520 --> 00:05:17,090
+We are now again no longer setting this onset current user.
+
+67
+00:05:17,600 --> 00:05:20,240
+Additionally, we also need to add is loading.
+
+68
+00:05:22,060 --> 00:05:23,710
+Because now we're going to be fetching as well.
+
+69
+00:05:25,510 --> 00:05:29,860
+We should also probably add the error states which will default by now.
+
+70
+00:05:32,010 --> 00:05:37,230
+And now what we want to do for this case, user action types set current user.
+
+71
+00:05:37,830 --> 00:05:44,400
+We still set current user, but now what we want to do is we want to attach it to most likely sign in
+
+72
+00:05:44,400 --> 00:05:45,090
+success.
+
+73
+00:05:46,110 --> 00:05:49,020
+So here we can say user action type start.
+
+74
+00:05:50,470 --> 00:05:51,400
+SIMON Success.
+
+75
+00:05:52,610 --> 00:05:56,300
+Modify the state's current user with the payload.
+
+76
+00:05:57,400 --> 00:06:00,370
+Now whenever we get a sign in failure.
+
+77
+00:06:03,090 --> 00:06:03,360
+Here.
+
+78
+00:06:03,360 --> 00:06:07,440
+We'll say sign in, failed and we'll return back.
+
+79
+00:06:08,360 --> 00:06:09,140
+With the state.
+
+80
+00:06:10,960 --> 00:06:14,170
+We can set error equal to the payload.
+
+81
+00:06:16,060 --> 00:06:16,960
+And there we go.
+
+82
+00:06:17,020 --> 00:06:22,540
+This is at least enough for us now to begin checking to make sure if our users are going in or if our
+
+83
+00:06:22,540 --> 00:06:23,350
+errors are going in.
+
+84
+00:06:24,440 --> 00:06:29,990
+So let's go into our user folder and make a user dot saga, dot as.
+
+85
+00:06:31,910 --> 00:06:37,430
+In order for us to write our sagas we know we need are four different generators we need.
+
+86
+00:06:37,430 --> 00:06:38,180
+Take latest.
+
+87
+00:06:38,360 --> 00:06:39,140
+We need put.
+
+88
+00:06:39,470 --> 00:06:40,340
+We need all.
+
+89
+00:06:40,340 --> 00:06:41,370
+And we need call.
+
+90
+00:06:41,840 --> 00:06:43,060
+From Redux.
+
+91
+00:06:43,070 --> 00:06:44,930
+Saga slash effects.
+
+92
+00:06:46,030 --> 00:06:48,460
+We also need our user action types.
+
+93
+00:06:51,820 --> 00:06:54,670
+Additionally, we now need some of our actions.
+
+94
+00:06:55,000 --> 00:06:56,380
+So let's bring in the ones we made.
+
+95
+00:06:56,800 --> 00:06:59,230
+We made a sign in success.
+
+96
+00:07:01,140 --> 00:07:03,540
+We made a sign in.
+
+97
+00:07:03,660 --> 00:07:04,260
+Failed.
+
+98
+00:07:08,160 --> 00:07:15,060
+We also made a Google sign in initials or a Google sign and start as well as email password sign and
+
+99
+00:07:15,060 --> 00:07:15,330
+start.
+
+100
+00:07:15,960 --> 00:07:22,290
+Now those though, we're probably going to dispatch from our sign up form and our sign in form respectively.
+
+101
+00:07:22,950 --> 00:07:27,630
+So we don't need to make those in here because those actions will be dispatched from the components.
+
+102
+00:07:28,650 --> 00:07:33,510
+Finally, what we also need is probably some utility functions from our firebase, but again, we'll
+
+103
+00:07:33,510 --> 00:07:36,600
+figure those out once we start actually coding out what's necessary.
+
+104
+00:07:37,230 --> 00:07:43,860
+So the first thing we want to do is start instantiating our actual aggregator function for users.
+
+105
+00:07:44,280 --> 00:07:48,300
+So here I'm going to say function star user sagas.
+
+106
+00:07:50,690 --> 00:07:54,110
+And inside, as you know, we say yield all.
+
+107
+00:07:55,310 --> 00:07:57,290
+Call and then whatever.
+
+108
+00:07:57,320 --> 00:07:58,100
+So I guess we write.
+
+109
+00:07:59,330 --> 00:07:59,780
+Upside.
+
+110
+00:07:59,780 --> 00:08:00,640
+We don't need the constant.
+
+111
+00:08:00,650 --> 00:08:02,000
+Just export function.
+
+112
+00:08:02,330 --> 00:08:03,020
+User sagas.
+
+113
+00:08:04,640 --> 00:08:08,420
+And here now we want to set up the different entry sagas we have.
+
+114
+00:08:09,200 --> 00:08:13,700
+So let's start with just the one that we made the on check user session.
+
+115
+00:08:14,240 --> 00:08:15,560
+So here I'm going to say export.
+
+116
+00:08:18,230 --> 00:08:21,080
+Our generator function on check.
+
+117
+00:08:21,320 --> 00:08:22,520
+User session.
+
+118
+00:08:25,030 --> 00:08:27,100
+This method is going to yield.
+
+119
+00:08:27,730 --> 00:08:31,090
+Take latest off of our user action types.
+
+120
+00:08:31,400 --> 00:08:32,650
+Check User Session.
+
+121
+00:08:33,730 --> 00:08:41,410
+When this triggers what we are going to call is a thing that will run that new function.
+
+122
+00:08:41,410 --> 00:08:43,870
+We create it inside of our Firebase Utils.
+
+123
+00:08:44,380 --> 00:08:45,310
+So let's bring that in.
+
+124
+00:08:50,860 --> 00:08:51,660
+Utils.
+
+125
+00:08:52,510 --> 00:08:53,260
+Firebase.
+
+126
+00:08:54,220 --> 00:08:54,700
+Firebase.
+
+127
+00:08:54,700 --> 00:08:55,150
+Useful.
+
+128
+00:08:56,840 --> 00:09:00,140
+And the method is the last one we just made here.
+
+129
+00:09:00,980 --> 00:09:01,760
+Get current user.
+
+130
+00:09:04,370 --> 00:09:08,330
+So here we're going to make a new saga that will call our get current user.
+
+131
+00:09:09,260 --> 00:09:10,850
+So let's think about what we want to call this.
+
+132
+00:09:11,600 --> 00:09:17,090
+Let's call it something like it is user authenticated because then at least we'll know whether or not
+
+133
+00:09:17,090 --> 00:09:18,860
+there's an authenticated user in our system.
+
+134
+00:09:19,640 --> 00:09:22,760
+So let's export out a saga.
+
+135
+00:09:23,270 --> 00:09:25,430
+Is user authenticated?
+
+136
+00:09:26,880 --> 00:09:27,390
+Like this.
+
+137
+00:09:29,690 --> 00:09:32,690
+And then inside is going to be a tri catch block.
+
+138
+00:09:36,030 --> 00:09:41,100
+Now I want you to take a second and think, what are we getting back from our get current user?
+
+139
+00:09:41,900 --> 00:09:45,560
+If you remember, we get back this user off object.
+
+140
+00:09:45,980 --> 00:09:51,170
+So here what we can say is cost user off is equal to yield.
+
+141
+00:09:51,680 --> 00:09:54,590
+And then we can say call, get current user.
+
+142
+00:09:55,740 --> 00:09:59,570
+Because we are not actually passing in any parameters.
+
+143
+00:09:59,580 --> 00:10:01,410
+We don't have to pass any subsequent arguments.
+
+144
+00:10:01,650 --> 00:10:03,840
+But this is still going to call this just with no parameters.
+
+145
+00:10:04,380 --> 00:10:07,050
+What we'll get back, though, is the user off if successful.
+
+146
+00:10:07,710 --> 00:10:08,790
+If it's successful.
+
+147
+00:10:10,200 --> 00:10:16,830
+And user off is not equal to not because remember user off can also be null null being there is no signed
+
+148
+00:10:16,830 --> 00:10:23,640
+in or authenticated user such as when we sign out or if we are signed out, then if that case we don't
+
+149
+00:10:23,640 --> 00:10:27,810
+really want to do anything because there's nothing to do with this null object.
+
+150
+00:10:28,080 --> 00:10:30,750
+We only want to use it if there is a value.
+
+151
+00:10:31,410 --> 00:10:38,040
+Now what we want to do with this user auth is essentially pass it to a new saga which will handle creating
+
+152
+00:10:38,040 --> 00:10:44,490
+a object for us inside of our firebase, which was what we did before inside of our listener.
+
+153
+00:10:45,030 --> 00:10:47,010
+But now we're going to move it to a saga.
+
+154
+00:10:47,700 --> 00:10:50,100
+So I want you to take a second and think about how to do that.
+
+155
+00:10:50,100 --> 00:10:51,930
+In fact, try and do it yourself.
+
+156
+00:10:52,860 --> 00:10:53,700
+In the next video.
+
+157
+00:10:53,700 --> 00:10:59,310
+We will move on from this and then tie all of the other methods of email sign and Google sign in to
+
+158
+00:10:59,310 --> 00:11:00,480
+that same saga.
+
+159
+00:11:01,290 --> 00:11:03,480
+So join me in the next video where we'll do that together.

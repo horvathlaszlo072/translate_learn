@@ -1,0 +1,655 @@
+1
+00:00:00,880 --> 00:00:01,990
+Welcome back, everyone.
+
+2
+00:00:03,240 --> 00:00:07,080
+In the last video, we learned how to utilize our collections query.
+
+3
+00:00:07,560 --> 00:00:12,870
+In this video, I'm going to show you how to use a different query where you can pass it a variable
+
+4
+00:00:12,870 --> 00:00:13,980
+inside of our code.
+
+5
+00:00:14,760 --> 00:00:22,080
+Now we've already seen our collection query by ID, but inside of our application there's a chance that
+
+6
+00:00:22,080 --> 00:00:29,550
+we don't actually have the ID or we do have is a URL parameter that contains the actual title that we
+
+7
+00:00:29,550 --> 00:00:30,720
+can also query by.
+
+8
+00:00:31,200 --> 00:00:34,530
+And you'll notice that I made you this method get collections by title.
+
+9
+00:00:35,250 --> 00:00:38,370
+So I know it says collections plural, but really it's singular.
+
+10
+00:00:38,370 --> 00:00:44,010
+When you look at the definition, it's a single collection and what you pass to it is a title string.
+
+11
+00:00:44,100 --> 00:00:45,960
+So the title is what has to match.
+
+12
+00:00:46,710 --> 00:00:52,880
+So in order for us to use this new method, first of all, we're going to update our variable from I.D.
+
+13
+00:00:52,890 --> 00:00:59,250
+to title, and then the actual value will use hats, which we know is a working title.
+
+14
+00:01:00,030 --> 00:01:07,200
+Then what we'll do is update the actual variable in the query to title, and from an ID it goes to a
+
+15
+00:01:07,200 --> 00:01:07,650
+string.
+
+16
+00:01:08,920 --> 00:01:14,680
+Then it's just a matter of updating this collection from title to our title variable.
+
+17
+00:01:15,310 --> 00:01:20,620
+And then instead of collection, we need to get collections by title as the actual method.
+
+18
+00:01:21,670 --> 00:01:27,930
+And now once we have this, we can fire this off and we'll notice that we get the appropriate data.
+
+19
+00:01:27,940 --> 00:01:30,820
+But it's mapped under this get collections by title.
+
+20
+00:01:31,660 --> 00:01:34,240
+The key thing though, that we want is really this query.
+
+21
+00:01:34,900 --> 00:01:40,690
+So what we're going to do is take this query in order to understand how it is that it works.
+
+22
+00:01:41,650 --> 00:01:44,260
+So let's go back to our application.
+
+23
+00:01:45,290 --> 00:01:53,270
+Inside of our category code, we know that we have access to the title through the parameter category.
+
+24
+00:01:53,930 --> 00:02:01,460
+So we want to utilize this category parameter as the variable that we pass in when we fetch for collection
+
+25
+00:02:01,460 --> 00:02:02,090
+by title.
+
+26
+00:02:03,380 --> 00:02:03,650
+Now.
+
+27
+00:02:03,650 --> 00:02:05,060
+How do we do this?
+
+28
+00:02:06,100 --> 00:02:11,710
+So first off, we're going to still need to leverage, use query and GQ URL.
+
+29
+00:02:12,310 --> 00:02:13,990
+So let's bring in the appropriate.
+
+30
+00:02:15,440 --> 00:02:16,100
+Library.
+
+31
+00:02:16,310 --> 00:02:18,080
+So it's Apollo clients.
+
+32
+00:02:18,890 --> 00:02:25,040
+And here directly inside of this component, we can use GCL as well as use query.
+
+33
+00:02:26,270 --> 00:02:32,570
+So essentially by the independent component, we are not using the context anymore in order to fetch
+
+34
+00:02:32,570 --> 00:02:33,170
+this value.
+
+35
+00:02:33,860 --> 00:02:39,680
+So first, what I'm going to do is I'm actually going to get rid of this use context just so that we
+
+36
+00:02:39,680 --> 00:02:42,200
+know what's happening inside of our code.
+
+37
+00:02:43,390 --> 00:02:48,070
+I'm just going to remove this so that we know we have to replace all of this code anyways.
+
+38
+00:02:48,580 --> 00:02:50,500
+And I'm just going to remove the use context.
+
+39
+00:02:53,410 --> 00:02:59,410
+So all we have so far is just the category which we know is a string of the titles that we need to update.
+
+40
+00:03:00,750 --> 00:03:01,200
+Next.
+
+41
+00:03:01,200 --> 00:03:08,610
+What we're going to do is we are going to first initialize in the use query.
+
+42
+00:03:09,610 --> 00:03:12,550
+We're not going to talk about what we're going to do yet.
+
+43
+00:03:13,670 --> 00:03:19,170
+We just need to make sure that we know the signature so we know that we're passing into the use query
+
+44
+00:03:19,190 --> 00:03:22,610
+some kind of graphical blob object.
+
+45
+00:03:23,610 --> 00:03:28,710
+So here I am going to say contest get category.
+
+46
+00:03:30,010 --> 00:03:35,420
+Is equal to GCL and then the back ticks an inside.
+
+47
+00:03:35,920 --> 00:03:41,620
+I'm just going to paste the full query block that we had copied from our graphical playground.
+
+48
+00:03:42,930 --> 00:03:47,670
+Now all we're going to do is pass that into use query.
+
+49
+00:03:48,900 --> 00:03:56,190
+And in order to pass a variable in for title, we actually pass a second parameter to use query.
+
+50
+00:03:56,370 --> 00:03:59,550
+And this is going to be a configuration object.
+
+51
+00:04:00,550 --> 00:04:01,780
+Inside the object.
+
+52
+00:04:01,780 --> 00:04:04,930
+You want to tell it with the key variables.
+
+53
+00:04:05,530 --> 00:04:05,950
+What?
+
+54
+00:04:05,950 --> 00:04:10,450
+The different variables that this blob can expect to see will be.
+
+55
+00:04:11,110 --> 00:04:12,790
+So that will be another object.
+
+56
+00:04:13,240 --> 00:04:18,220
+Now it's just a matter of passing the actual values into the query right here.
+
+57
+00:04:18,880 --> 00:04:22,330
+So we can say that the variable that we're passing in is title.
+
+58
+00:04:22,810 --> 00:04:23,740
+What is the title?
+
+59
+00:04:23,890 --> 00:04:25,870
+Well, it's the category value.
+
+60
+00:04:26,740 --> 00:04:28,690
+And then what do we get back from this query?
+
+61
+00:04:29,200 --> 00:04:31,270
+Just like before we'll get a loading state.
+
+62
+00:04:31,570 --> 00:04:34,720
+Any potential errors as well as the data.
+
+63
+00:04:37,530 --> 00:04:43,020
+And for now, what we're do is we can just actually log out the values.
+
+64
+00:04:43,620 --> 00:04:48,960
+So here what I'm going to show you is just I'm going to replace that with an empty array so that our
+
+65
+00:04:48,960 --> 00:04:50,010
+code actually passes.
+
+66
+00:04:51,170 --> 00:04:55,140
+And then I'm just going to console.log out the data so we can see the shape.
+
+67
+00:04:56,000 --> 00:04:56,900
+So let's save this.
+
+68
+00:04:57,470 --> 00:04:59,900
+Let's go back into our application.
+
+69
+00:05:01,010 --> 00:05:04,010
+And now we saw it, we got undefined.
+
+70
+00:05:04,460 --> 00:05:11,810
+And then we got the object where the query is the actual name under which our data is nested.
+
+71
+00:05:12,710 --> 00:05:18,140
+So here, going back inside of our code, we need to modify this data so that we can get the products,
+
+72
+00:05:18,140 --> 00:05:21,380
+which is what will matter in order to do that.
+
+73
+00:05:22,220 --> 00:05:29,600
+We can say directly inside of a user effect because we want to run a use effect whenever we want to
+
+74
+00:05:29,600 --> 00:05:35,720
+modify our data and we'll run it every time category changes and every time the data changes.
+
+75
+00:05:37,080 --> 00:05:41,550
+And here we'll see if data because as we know, data can be undefined.
+
+76
+00:05:42,580 --> 00:05:50,740
+We're going to pluck off the get collections by Title Key, which is the name of our query.
+
+77
+00:05:51,580 --> 00:05:55,210
+And off of this is going to be the full category.
+
+78
+00:05:56,290 --> 00:06:00,310
+We only need the actual value.
+
+79
+00:06:01,120 --> 00:06:05,410
+So here what we're going to say is that the items is what we want.
+
+80
+00:06:06,700 --> 00:06:07,720
+These items.
+
+81
+00:06:10,060 --> 00:06:13,240
+Are going to all be nested on this data object.
+
+82
+00:06:14,170 --> 00:06:16,660
+And then it's just a matter of running set products.
+
+83
+00:06:17,740 --> 00:06:18,550
+On the items.
+
+84
+00:06:18,910 --> 00:06:20,910
+So we're doing a nested de structure here.
+
+85
+00:06:20,920 --> 00:06:26,210
+We're saying First D structure got collections by title and then off of this object, I want you to
+
+86
+00:06:26,440 --> 00:06:27,910
+structure off items.
+
+87
+00:06:28,660 --> 00:06:33,280
+So it's a nested D structure in order for us to set up our flow of data.
+
+88
+00:06:34,360 --> 00:06:37,900
+And now if we save our code, we once again go back.
+
+89
+00:06:38,710 --> 00:06:39,460
+Let's refresh.
+
+90
+00:06:41,340 --> 00:06:44,460
+We see our loading spinner and then we see our appropriate data.
+
+91
+00:06:45,460 --> 00:06:46,030
+So that's it.
+
+92
+00:06:46,480 --> 00:06:51,940
+The main key challenge in using this use query is just understanding that when you want to pass in these
+
+93
+00:06:51,940 --> 00:06:54,730
+variables, it has to be passed into the use query hook.
+
+94
+00:06:55,060 --> 00:06:59,830
+You're going to have to use some kind of configuration object under which you pass the variables as
+
+95
+00:06:59,830 --> 00:07:05,860
+an object, where you then match the appropriate values to the appropriate parameters inside of your
+
+96
+00:07:05,860 --> 00:07:06,250
+query.
+
+97
+00:07:08,460 --> 00:07:12,360
+One of the advantages of using this independent query style.
+
+98
+00:07:13,300 --> 00:07:19,090
+And as I mentioned before, that with GraphQL and Apollo, you actually replace Redux.
+
+99
+00:07:19,600 --> 00:07:25,930
+The reason why is when we start looking at our fetch costs and I mentioned earlier that there are caching
+
+100
+00:07:25,930 --> 00:07:27,250
+that is happening under the hood.
+
+101
+00:07:27,970 --> 00:07:30,250
+So let's look at our network tab and refresh.
+
+102
+00:07:31,430 --> 00:07:34,130
+We see a bunch of requests for different files.
+
+103
+00:07:34,160 --> 00:07:37,790
+The bundle here is the bundle of all of our JavaScript code.
+
+104
+00:07:38,060 --> 00:07:41,480
+The CC is all of our access relevant for this page.
+
+105
+00:07:41,960 --> 00:07:44,660
+I want you to look down here at this crown clothing.
+
+106
+00:07:44,660 --> 00:07:44,870
+One.
+
+107
+00:07:45,530 --> 00:07:51,900
+The reason why I want you to focus on this one is because this is actually the call to our graphic.
+
+108
+00:07:51,920 --> 00:07:53,090
+You all server's URL.
+
+109
+00:07:53,780 --> 00:08:00,050
+If you click on this, you'll notice that inside of headers there's a couple with request options.
+
+110
+00:08:00,590 --> 00:08:02,960
+The request options one you don't have to worry about.
+
+111
+00:08:02,960 --> 00:08:04,850
+It's mainly the post request.
+
+112
+00:08:04,850 --> 00:08:10,100
+One that is important because if you look at the payload, we're getting back the actual value.
+
+113
+00:08:10,340 --> 00:08:18,710
+So this is literally showing us our initial query and what will receive back from GraphQL server for
+
+114
+00:08:18,710 --> 00:08:20,150
+the actual JSON payload.
+
+115
+00:08:22,200 --> 00:08:24,210
+So this is the request itself.
+
+116
+00:08:25,680 --> 00:08:31,560
+You'll notice, though, that we also have all of these different flavor icons and pngs.
+
+117
+00:08:32,100 --> 00:08:35,280
+The PNGs are the actual literal images.
+
+118
+00:08:35,280 --> 00:08:41,280
+Remember that we pass them as strings and then once RAK loads it fetches the image from the respective
+
+119
+00:08:41,370 --> 00:08:42,300
+URL past.
+
+120
+00:08:43,280 --> 00:08:47,390
+But now what I want you to notice is that if I navigate away.
+
+121
+00:08:48,840 --> 00:08:50,670
+I want you to ignore all these other calls.
+
+122
+00:08:50,760 --> 00:08:51,720
+Those are not important.
+
+123
+00:08:52,530 --> 00:08:54,660
+If we go back to hats.
+
+124
+00:08:55,990 --> 00:08:59,890
+You see that the only thing that we re fetch is the images.
+
+125
+00:09:00,190 --> 00:09:04,930
+We don't make another call to the Crown Clothing GraphQL server.
+
+126
+00:09:05,650 --> 00:09:11,800
+The reason for that is because this query for this page has already been cached.
+
+127
+00:09:12,760 --> 00:09:16,110
+GraphQL and Apollo know that we don't need to re fetch this.
+
+128
+00:09:16,120 --> 00:09:17,530
+I've already stored it.
+
+129
+00:09:17,920 --> 00:09:21,850
+And the reason I don't need to re fetch this is because the variables in the query hasn't changed.
+
+130
+00:09:22,090 --> 00:09:23,380
+You're just giving me hats again.
+
+131
+00:09:24,100 --> 00:09:29,020
+But if we go to jackets there, we see we make a new request.
+
+132
+00:09:29,320 --> 00:09:31,560
+So again, the first one is the options.
+
+133
+00:09:31,570 --> 00:09:33,580
+The second one is the actual request.
+
+134
+00:09:34,180 --> 00:09:37,750
+And there in the payload, we see the actual values that we want.
+
+135
+00:09:39,440 --> 00:09:42,050
+So you can imagine that if we go back to hats.
+
+136
+00:09:43,210 --> 00:09:45,610
+Notice how we just fetch the hat images?
+
+137
+00:09:45,790 --> 00:09:47,050
+No graph q all request.
+
+138
+00:09:47,680 --> 00:09:50,050
+And similarly, we go back to jackets again.
+
+139
+00:09:50,050 --> 00:09:54,010
+Just the images, not the actual graphical request.
+
+140
+00:09:54,730 --> 00:09:59,560
+So again, we're just caching those values and this makes our code much more performant.
+
+141
+00:10:00,850 --> 00:10:07,120
+So if you were wondering earlier when we were on our hats and when we refreshed why, we saw that there
+
+142
+00:10:07,120 --> 00:10:09,610
+were two sets of crown clothing, fetch calls.
+
+143
+00:10:10,180 --> 00:10:16,030
+Now, the reason for this is because our context is still fetching the full list of collections.
+
+144
+00:10:16,570 --> 00:10:22,810
+So we're making one request for the full collections from our category context, and then we're making
+
+145
+00:10:22,810 --> 00:10:27,520
+an independent call to get collections by title inside of our category component.
+
+146
+00:10:27,910 --> 00:10:30,850
+Remember, both are mounting, so two requests are going through.
+
+147
+00:10:31,240 --> 00:10:38,470
+But as a result, what I want you to realize is that GraphQL and Apollo are not caching by the actual
+
+148
+00:10:38,470 --> 00:10:39,010
+items.
+
+149
+00:10:39,280 --> 00:10:45,220
+They're caching by the query, which is why even though we're fetching the full collections, we're
+
+150
+00:10:45,220 --> 00:10:51,280
+still making a separate fetch for the independent collection, even though that collection lives inside
+
+151
+00:10:51,280 --> 00:10:53,500
+of the bigger collections as a whole.
+
+152
+00:10:54,130 --> 00:10:57,940
+So this caching does not happen at the item level.
+
+153
+00:10:58,420 --> 00:11:00,100
+Again, let's go to sneakers.
+
+154
+00:11:00,460 --> 00:11:01,870
+We notice that we make a call.
+
+155
+00:11:02,350 --> 00:11:08,200
+We know these sneakers do live inside of our larger collections call, but we still need a fetch.
+
+156
+00:11:08,680 --> 00:11:15,740
+So again, what Apollo caches is the query, not the actual items themselves.
+
+157
+00:11:15,760 --> 00:11:17,380
+So that's an important thing to remember.
+
+158
+00:11:18,380 --> 00:11:25,250
+So now that we understand how GraphQL works now and how caching works now, you can actually pretty
+
+159
+00:11:25,250 --> 00:11:30,530
+much use this as the basis for interacting with Apollo for the majority, 80, 90% of what you're going
+
+160
+00:11:30,530 --> 00:11:35,270
+to do inside of your actual Apollo project in GraphQL.
+
+161
+00:11:36,050 --> 00:11:42,230
+In the next video, I'm going to tidy this up and we'll talk about why you would prioritize using GraphQL
+
+162
+00:11:42,260 --> 00:11:48,140
+versus a normal rest API and then some of the advantages disadvantages as well as other things you can
+
+163
+00:11:48,140 --> 00:11:48,410
+do.
+
+164
+00:11:48,980 --> 00:11:50,060
+So I'll see you in the next video.

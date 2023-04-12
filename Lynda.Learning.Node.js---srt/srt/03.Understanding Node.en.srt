@@ -1,0 +1,106 @@
+1
+00:00:00.04 --> 00:00:01.06
+- [Instructor] Node is an open-source,
+
+2
+00:00:01.06 --> 00:00:03.07
+cross-platform runtime environment
+
+3
+00:00:03.07 --> 00:00:06.07
+for service-side and
+networking applications.
+
+4
+00:00:06.07 --> 00:00:08.08
+It's built on top of Chrome's JavaScript
+
+5
+00:00:08.08 --> 00:00:11.03
+runtime, the V8 engine.
+
+6
+00:00:11.03 --> 00:00:15.04
+And so applications for Node
+are written in JavaScript.
+
+7
+00:00:15.04 --> 00:00:17.04
+This is why many developers like Node,
+
+8
+00:00:17.04 --> 00:00:18.08
+because it's lightweight and you can write
+
+9
+00:00:18.08 --> 00:00:21.07
+your front-end and backend
+in the same language.
+
+10
+00:00:21.07 --> 00:00:23.08
+But we'll cover more on that later.
+
+11
+00:00:23.08 --> 00:00:26.03
+If we head over to nodejs.org,
+
+12
+00:00:26.03 --> 00:00:29.01
+we can see the different
+sections we have access to.
+
+13
+00:00:29.01 --> 00:00:31.08
+And one in particular
+you might find useful.
+
+14
+00:00:31.08 --> 00:00:35.08
+In the top navigation, let's
+go ahead and click on Docs.
+
+15
+00:00:35.08 --> 00:00:39.05
+And then let's click on
+Docs for Version 8.6.0,
+
+16
+00:00:39.05 --> 00:00:41.02
+or the latest version.
+
+17
+00:00:41.02 --> 00:00:42.04
+Here, we'll be able to see all
+
+18
+00:00:42.04 --> 00:00:44.07
+the systems available to Node.
+
+19
+00:00:44.07 --> 00:00:46.07
+So if you ever run into any problems,
+
+20
+00:00:46.07 --> 00:00:49.03
+or would like to know
+the parameters needed
+
+21
+00:00:49.03 --> 00:00:51.08
+for a function, such as the file system,
+
+22
+00:00:51.08 --> 00:00:53.09
+which we'll be using later in this course,
+
+23
+00:00:53.09 --> 00:00:56.03
+the API docs is a great
+place to learn more
+
+24
+00:00:56.03 --> 00:01:00.00
+about the systems and
+modules Node has to offer.
+

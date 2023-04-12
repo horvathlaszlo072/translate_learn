@@ -1,0 +1,435 @@
+1
+00:00:01,650 --> 00:00:07,110
+Now, that came out in 2013, but what do we have before then, before react?
+
+2
+00:00:07,800 --> 00:00:11,220
+Well, the front end landscape was very different.
+
+3
+00:00:11,730 --> 00:00:21,000
+Initially back in the 90s and early 2000s, we just had basic HMO access and JavaScript HTML displayed
+
+4
+00:00:21,000 --> 00:00:27,450
+the text on our Web pages, CSFs, the styles and JavaScript allows us to have some interactivity in
+
+5
+00:00:27,450 --> 00:00:27,930
+a website.
+
+6
+00:00:28,410 --> 00:00:34,410
+And initially it just started with simple forms where we send from the back end.
+
+7
+00:00:34,410 --> 00:00:42,630
+When we go to a URL, all these files and when a user, lets say, submits a form, we simply send that
+
+8
+00:00:42,930 --> 00:00:46,290
+back to the server to store that information.
+
+9
+00:00:47,070 --> 00:00:54,420
+Now, if a user clicked on, let's say, a link in the page, well, once again, we simply request
+
+10
+00:00:54,420 --> 00:00:59,970
+the new HTML file and the new page from the server and that gets sent to the front end.
+
+11
+00:01:01,220 --> 00:01:03,560
+And that's how websites worked for many years.
+
+12
+00:01:04,790 --> 00:01:12,680
+But there's a problem here, you see all these websites where they run on different browsers and all
+
+13
+00:01:12,680 --> 00:01:19,340
+these browsers where worked on by different group of developers, so each one of these browsers implemented
+
+14
+00:01:19,970 --> 00:01:21,290
+while their browser differently.
+
+15
+00:01:21,740 --> 00:01:28,610
+So what happened was, as we wanted to use more and more JavaScript in our Web pages, we had to account
+
+16
+00:01:28,610 --> 00:01:34,910
+for all these browsers that sometimes worked differently from each other and we had to accommodate JavaScript
+
+17
+00:01:34,910 --> 00:01:37,400
+to work with these different browsers.
+
+18
+00:01:37,940 --> 00:01:45,920
+Now, eventually, we had Jaquie come out, which allowed developers to easily interact with the DOM
+
+19
+00:01:45,920 --> 00:01:53,120
+or the document object model across all these browsers you see back in the day, if we went to, let's
+
+20
+00:01:53,120 --> 00:02:00,590
+say, hacker news over here, clicked on views, developer and then developer tools, and we went to
+
+21
+00:02:00,590 --> 00:02:01,260
+elements here.
+
+22
+00:02:01,970 --> 00:02:03,200
+This is the Dom.
+
+23
+00:02:03,200 --> 00:02:05,810
+The Dom that well, is our page.
+
+24
+00:02:06,200 --> 00:02:08,840
+It displays exactly how our page should look like.
+
+25
+00:02:09,080 --> 00:02:11,360
+And it's a tree like structure.
+
+26
+00:02:12,650 --> 00:02:19,280
+And JavaScript, all it does is modify this dump, you can remove elements, you can update elements,
+
+27
+00:02:19,910 --> 00:02:27,770
+and although there's now more similarities and compatibility across different browsers, back in the
+
+28
+00:02:27,770 --> 00:02:28,980
+day we didn't have that.
+
+29
+00:02:29,030 --> 00:02:39,110
+So Jaquie made developers happy because it had a unified, easy API that kind of look like this instead
+
+30
+00:02:39,110 --> 00:02:44,900
+of a developer trying to think about how to work with the DOM in each of the different browsers.
+
+31
+00:02:45,160 --> 00:02:48,500
+The jury said, hey, we'll take care of that complexity for you.
+
+32
+00:02:48,800 --> 00:02:52,880
+Just this is a syntax we'll use that works across all browsers.
+
+33
+00:02:53,270 --> 00:02:58,940
+And you can manipulate the front end or the DOM however you want.
+
+34
+00:02:59,940 --> 00:03:00,680
+So that was great.
+
+35
+00:03:01,600 --> 00:03:09,130
+But would this power developers started building bigger and bigger applications instead of just something
+
+36
+00:03:09,130 --> 00:03:15,700
+small, we started getting these massive, massive applications like Facebook where you got to log in,
+
+37
+00:03:15,700 --> 00:03:17,890
+look at the news feed message friends.
+
+38
+00:03:18,520 --> 00:03:25,810
+And as websites turn into these full applications that people can interact with, besides just requesting
+
+39
+00:03:25,810 --> 00:03:27,520
+more and more pages like a blog.
+
+40
+00:03:28,120 --> 00:03:35,170
+Well, libraries like Backbone just came out because, well, our JavaScript files started getting bigger
+
+41
+00:03:35,170 --> 00:03:36,610
+and bigger and bigger.
+
+42
+00:03:37,090 --> 00:03:42,150
+Libraries like Backboned allowed us to organize these JavaScript files.
+
+43
+00:03:42,520 --> 00:03:50,190
+And because it became easier and easier to work with the DOM, we had the birth of a single page application.
+
+44
+00:03:50,650 --> 00:03:58,300
+You see, traditionally we just had e-mail files for each page and every time we moved to a different
+
+45
+00:03:58,300 --> 00:04:04,240
+page, we would request from the server, well, the email file, the access file and the JavaScript
+
+46
+00:04:04,240 --> 00:04:08,650
+file, which usually contains Jaquie for each time we clicked on a link.
+
+47
+00:04:09,650 --> 00:04:17,090
+But with more advancement like we had with Jaquie Backbone and something called Ajax, we now had a
+
+48
+00:04:17,090 --> 00:04:17,890
+different system.
+
+49
+00:04:18,380 --> 00:04:23,920
+What generally happened now is we focus less on HTML and a lot more in JavaScript.
+
+50
+00:04:24,350 --> 00:04:26,990
+You only load the application code once.
+
+51
+00:04:28,040 --> 00:04:31,640
+Instead of us making new requests to the server.
+
+52
+00:04:32,550 --> 00:04:39,840
+Where we returned a new document instead, now our applications acted more like a desktop application,
+
+53
+00:04:39,840 --> 00:04:46,740
+where we stay on the same page the entire time and the JavaScript file simply changes or updates the
+
+54
+00:04:46,770 --> 00:04:50,460
+e-mail file or the DOM to display new things.
+
+55
+00:04:51,180 --> 00:04:57,180
+So you were able to sign into an application and interact with that application without ever speaking
+
+56
+00:04:57,180 --> 00:04:58,460
+to the server anymore.
+
+57
+00:04:59,660 --> 00:05:07,100
+And this way of writing applications or single page applications became really, really popular, and
+
+58
+00:05:07,100 --> 00:05:15,800
+in 2010, Angela J.S., which was created by Google, really became the standard way of building applications
+
+59
+00:05:15,800 --> 00:05:16,400
+this way.
+
+60
+00:05:17,350 --> 00:05:24,880
+Now, unlike Jacqui, Angular allowed developers to build these large applications by forming these
+
+61
+00:05:24,880 --> 00:05:33,430
+containers that well wrapped your project, and because it was created by Google, it had a lot of power
+
+62
+00:05:33,430 --> 00:05:36,420
+because people said, well, this is the way that we should build things.
+
+63
+00:05:36,460 --> 00:05:37,790
+Everything's organized.
+
+64
+00:05:37,900 --> 00:05:42,580
+We have these large JavaScript files, but we can organize them this way.
+
+65
+00:05:44,390 --> 00:05:53,240
+You had code now that now had better containers where you had things like controllers views and models,
+
+66
+00:05:53,390 --> 00:06:00,290
+and this idea of a model view controller where each part of the application or each JavaScript file
+
+67
+00:06:00,500 --> 00:06:03,080
+was divided into different things that it did.
+
+68
+00:06:04,050 --> 00:06:10,290
+This idea of organizing our large code so they're easier to work with as teams get larger and larger,
+
+69
+00:06:10,830 --> 00:06:18,150
+really made angular JS popular, but there was a problem, you see, things started getting more and
+
+70
+00:06:18,150 --> 00:06:20,640
+more complex because of this.
+
+71
+00:06:21,090 --> 00:06:24,560
+As things get bigger and bigger, more things have to happen.
+
+72
+00:06:24,840 --> 00:06:31,950
+Users are clicking on this button, which changes this area, which in turn changes this area, which
+
+73
+00:06:31,950 --> 00:06:34,350
+now has to display this information.
+
+74
+00:06:35,190 --> 00:06:41,190
+We have more and more complexity, you know, and although frameworks like Angular JS came out, people
+
+75
+00:06:41,190 --> 00:06:46,950
+started to notice, it's getting harder and harder to find bugs in the code and understand how each
+
+76
+00:06:46,950 --> 00:06:48,960
+part of the app was affecting the other.
+
+77
+00:06:49,530 --> 00:06:56,160
+Meanwhile, Facebook developers were finding it hard as well on their end to maintain their app, especially
+
+78
+00:06:56,160 --> 00:06:57,330
+their Facebook ads.
+
+79
+00:06:58,110 --> 00:07:01,710
+You see, the Facebook ads app got more and more features.
+
+80
+00:07:02,010 --> 00:07:04,150
+More and more people were added to the team.
+
+81
+00:07:04,590 --> 00:07:11,310
+Now the growing number of lines of code, the growing number of people working on the app, their app
+
+82
+00:07:11,310 --> 00:07:13,620
+became really, really difficult to handle.
+
+83
+00:07:13,980 --> 00:07:21,030
+And each update would cause more and more issues where you had all these arrows relating to each other,
+
+84
+00:07:21,030 --> 00:07:21,960
+pointing to each other.
+
+85
+00:07:22,170 --> 00:07:27,840
+And after a while, the engineers of Facebook just couldn't keep up with the way that they had created
+
+86
+00:07:27,840 --> 00:07:28,290
+this app.
+
+87
+00:07:28,830 --> 00:07:30,980
+They needed to upgrade their code base.
+
+88
+00:07:31,440 --> 00:07:34,940
+And this isn't just special in the front end world.
+
+89
+00:07:35,130 --> 00:07:36,690
+This is all over programming.
+
+90
+00:07:36,960 --> 00:07:39,270
+It's why we need good architecture.
+
+91
+00:07:39,300 --> 00:07:47,370
+We need to think about how we organize our code, how we manipulate data, and how that data flows through
+
+92
+00:07:47,370 --> 00:07:48,150
+our programs.
+
+93
+00:07:48,690 --> 00:07:54,510
+So Facebook came up with a solution and that solution worked really, really well for them, that in
+
+94
+00:07:54,510 --> 00:08:01,560
+2013 they released react to the developer community at discomfit twenty thirteen.
+
+95
+00:08:02,070 --> 00:08:05,850
+And their solution was really, really good.
+
+96
+00:08:06,150 --> 00:08:12,120
+And it took off because react devolved a whole new way to build front end applications.
+
+97
+00:08:12,630 --> 00:08:19,770
+Now, it also happened that in 2014, angular JS realized that the way that they've architected their
+
+98
+00:08:19,770 --> 00:08:24,510
+framework just didn't allow good applications to be built anymore.
+
+99
+00:08:24,840 --> 00:08:31,170
+So they decided in 2014 that they're going to rewrite the entire library, call it angular, but because
+
+100
+00:08:31,410 --> 00:08:36,270
+they wanted to do an entire rewrite, a lot of people during that time move to react.
+
+101
+00:08:36,990 --> 00:08:43,440
+So combined with the fact that Angular JS was getting a complete new rewrite, Facebook was backing
+
+102
+00:08:43,680 --> 00:08:50,790
+react and the great principals that React introduced made it what it is today.
+
+103
+00:08:51,700 --> 00:08:58,330
+That is, it became the most popular and tool with the most job demand across the world and being used
+
+104
+00:08:58,330 --> 00:09:06,940
+by very large companies like Airbnb, Uber, Netflix, Twitter, Reddit, Pinterest, Wick's PayPal
+
+105
+00:09:07,060 --> 00:09:09,310
+stripe, Tumblr, Walmart.
+
+106
+00:09:09,970 --> 00:09:13,380
+However, what made react so great?
+
+107
+00:09:13,570 --> 00:09:20,620
+What were these principles that made it jump from something that Facebook used to, something that developers
+
+108
+00:09:20,620 --> 00:09:21,730
+all over the world use?
+
+109
+00:09:22,240 --> 00:09:23,680
+Let's find out in the next video.

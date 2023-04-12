@@ -1,0 +1,455 @@
+1
+00:00:00,240 --> 00:00:06,410
+All right, so four, challenge 14, this one is going to involve a little more research than past issues.
+
+2
+00:00:06,450 --> 00:00:14,400
+So as you can see here, we have an app that shows the height in pixels and it's open up this in the
+
+3
+00:00:14,400 --> 00:00:15,330
+sandbox over here.
+
+4
+00:00:15,340 --> 00:00:21,780
+You could see here we have basically some code here, not a whole lot of code, but the idea is that
+
+5
+00:00:22,110 --> 00:00:23,640
+the height here is not being shown.
+
+6
+00:00:24,090 --> 00:00:27,060
+And so the first thing is to say, well, what is this height?
+
+7
+00:00:27,240 --> 00:00:32,210
+And as you can see here in the description, we don't have a lot of details about this issue.
+
+8
+00:00:32,730 --> 00:00:38,490
+So as you could see here, the height that we're actually setting is set here and it looks like it's
+
+9
+00:00:38,490 --> 00:00:42,780
+intended to be setting here in this use effect here.
+
+10
+00:00:43,110 --> 00:00:46,400
+And what are we actually looking at as far as height?
+
+11
+00:00:46,410 --> 00:00:49,200
+We're looking at the ref and the ref is this container.
+
+12
+00:00:49,590 --> 00:00:54,810
+So the container is going to be the actual elements here inside of it.
+
+13
+00:00:54,820 --> 00:01:00,570
+So the objective of this whole code that we need to figure out is to how to actually get the height
+
+14
+00:01:00,570 --> 00:01:01,740
+of this element here.
+
+15
+00:01:02,220 --> 00:01:05,550
+Now, as you can see here, we're going to be using react refs.
+
+16
+00:01:05,880 --> 00:01:11,580
+So if you're not familiar with refs, then you would have Google that in terms of what is ref or what
+
+17
+00:01:11,580 --> 00:01:12,570
+is react ref.
+
+18
+00:01:12,840 --> 00:01:16,900
+And you would find this documentation here for refs and the dome.
+
+19
+00:01:16,920 --> 00:01:24,480
+So this is just a guide on react refs and they provide a way to access dom nodes or react elements created
+
+20
+00:01:24,480 --> 00:01:25,290
+in the render method.
+
+21
+00:01:25,710 --> 00:01:32,700
+Now, as they say here, typically and react, you don't want to use refs, you want to actually render
+
+22
+00:01:32,700 --> 00:01:37,230
+things, you know, just as they can be declaratively rendered.
+
+23
+00:01:37,230 --> 00:01:37,500
+Right.
+
+24
+00:01:37,510 --> 00:01:45,360
+So you don't want to actually use query selectors and remove elements or access elements and manipulate
+
+25
+00:01:45,360 --> 00:01:49,800
+them, you know, with the DOM node API.
+
+26
+00:01:49,800 --> 00:01:50,080
+Right.
+
+27
+00:01:50,100 --> 00:01:55,410
+So REACT is going to handle all the DOM node API under the hood, but occasionally you actually will
+
+28
+00:01:55,410 --> 00:01:57,030
+need to access the DOM nodes.
+
+29
+00:01:57,030 --> 00:01:57,300
+Right.
+
+30
+00:01:57,690 --> 00:02:00,920
+So REACT provides an escape hatch for that.
+
+31
+00:02:01,380 --> 00:02:06,660
+So let's say you want to manage focus, you want to call focus on an input element or doing things like
+
+32
+00:02:06,660 --> 00:02:06,840
+that.
+
+33
+00:02:06,840 --> 00:02:07,140
+Right.
+
+34
+00:02:07,680 --> 00:02:12,030
+Animation's things that actually require more visual type of manipulation.
+
+35
+00:02:12,030 --> 00:02:12,220
+Right.
+
+36
+00:02:12,240 --> 00:02:15,540
+So in our example, we're going to use a ref to get the height.
+
+37
+00:02:15,540 --> 00:02:15,890
+Right.
+
+38
+00:02:16,410 --> 00:02:18,000
+And as you can see here.
+
+39
+00:02:19,090 --> 00:02:24,860
+We we can get so the current is the current DOM node, right?
+
+40
+00:02:25,210 --> 00:02:28,730
+So a reference to the node is actually in current.
+
+41
+00:02:29,110 --> 00:02:31,100
+So that is what current is.
+
+42
+00:02:31,120 --> 00:02:31,900
+So we gave you that.
+
+43
+00:02:31,900 --> 00:02:35,390
+We gave you refought current as far as getting the current DOM node.
+
+44
+00:02:35,740 --> 00:02:38,790
+Now, we could put a breakpoint there and actually find that.
+
+45
+00:02:38,800 --> 00:02:44,950
+So if we open this up in a new window, we can then just confirm that we have some things being rendered
+
+46
+00:02:44,950 --> 00:02:45,160
+here.
+
+47
+00:02:45,190 --> 00:02:48,970
+So if we go here, I'll move this over a little bit.
+
+48
+00:02:50,790 --> 00:02:57,660
+And I open up my terminal and then I find the code, so it's going to be an apt James and I'm just going
+
+49
+00:02:57,660 --> 00:03:00,990
+to go and put a breakpoint there and then I'll refresh the page.
+
+50
+00:03:03,790 --> 00:03:10,390
+And as you can see, Reft Current is a d'Hiv, so this is the DOM node and you see there's a lot of
+
+51
+00:03:10,390 --> 00:03:11,590
+things on the domino, right?
+
+52
+00:03:13,170 --> 00:03:21,720
+So this is more or less a regular TML issue because we're bypassing react, we're getting right to the
+
+53
+00:03:21,720 --> 00:03:26,580
+source of the HTML and that is the reference to that HTML element.
+
+54
+00:03:26,580 --> 00:03:26,880
+Right.
+
+55
+00:03:27,360 --> 00:03:34,140
+So now you could try and figure this out by just scrolling down here and just looking at what you can
+
+56
+00:03:34,140 --> 00:03:34,590
+look at.
+
+57
+00:03:34,590 --> 00:03:34,850
+Right.
+
+58
+00:03:34,950 --> 00:03:36,090
+What you can access.
+
+59
+00:03:36,390 --> 00:03:41,050
+You could see there that right there we did see client height.
+
+60
+00:03:41,490 --> 00:03:42,600
+So that's one clue.
+
+61
+00:03:42,930 --> 00:03:46,620
+And then that's pretty much, you know, that's just a way of looking at that.
+
+62
+00:03:46,620 --> 00:03:51,540
+You could then but really what you would want to do, one thing that you could do is just continue researching,
+
+63
+00:03:51,540 --> 00:03:52,350
+Googling, right.
+
+64
+00:03:52,350 --> 00:03:54,550
+So you could say how to get the.
+
+65
+00:03:55,530 --> 00:03:58,860
+This is an issue I found by searching react ref's height.
+
+66
+00:03:59,370 --> 00:04:01,110
+And then I brought me to here.
+
+67
+00:04:01,500 --> 00:04:03,540
+And as you can see, they use client height.
+
+68
+00:04:04,170 --> 00:04:07,340
+They people, you know, are talking about that.
+
+69
+00:04:07,380 --> 00:04:10,100
+So you could read about this, which we'll talk about.
+
+70
+00:04:10,380 --> 00:04:13,620
+So this is just you're finding clues for things that you could try out.
+
+71
+00:04:14,100 --> 00:04:17,490
+So client height was something we pretty much confirmed might work.
+
+72
+00:04:17,730 --> 00:04:23,610
+But also, you see, you need to use get get bounding client rect so.
+
+73
+00:04:24,560 --> 00:04:29,780
+We have another code thing that we could try here, which might work so.
+
+74
+00:04:31,060 --> 00:04:37,390
+As you can see here, he links us to that so we could see get client get bounding client racked to returns
+
+75
+00:04:37,390 --> 00:04:40,270
+the size of the element and its position relative to the viewport.
+
+76
+00:04:41,750 --> 00:04:43,120
+So that's a good clue.
+
+77
+00:04:43,130 --> 00:04:48,830
+Now, maybe we could search for client Highton here and see if that's also defined, which is not on
+
+78
+00:04:48,830 --> 00:04:49,310
+this page.
+
+79
+00:04:49,310 --> 00:04:57,050
+But we can go to this related topic and see this provides zero read only property zero four elements
+
+80
+00:04:57,050 --> 00:04:58,070
+with no success.
+
+81
+00:04:58,070 --> 00:05:00,020
+Otherwise, it's the inner height of an element.
+
+82
+00:05:00,410 --> 00:05:01,520
+So it's slightly different.
+
+83
+00:05:01,520 --> 00:05:03,480
+It's the inner height of the element in pixels.
+
+84
+00:05:03,980 --> 00:05:09,200
+Now, to continue going, you might say, well, what's the difference between client height and the
+
+85
+00:05:09,230 --> 00:05:11,090
+get client bounding wrecked?
+
+86
+00:05:11,390 --> 00:05:16,940
+And for that I did another Google search client high versus get bounding client wrecked.
+
+87
+00:05:17,480 --> 00:05:19,250
+And we got this thread over here.
+
+88
+00:05:20,300 --> 00:05:26,960
+Which you can see that somebody commented on this, this person is basically asking the difference between
+
+89
+00:05:26,960 --> 00:05:30,800
+them and as you can see down here, this person explains it really well.
+
+90
+00:05:31,490 --> 00:05:34,460
+The client width is how much space do I have available?
+
+91
+00:05:34,640 --> 00:05:40,000
+And client and get bounden client rest is how much space does the element occupy on the screen.
+
+92
+00:05:40,610 --> 00:05:46,520
+So basically, as you can see here, you know, that's kind of the general idea of this.
+
+93
+00:05:46,880 --> 00:05:48,500
+They return different purposes.
+
+94
+00:05:48,860 --> 00:05:54,260
+The the get bound and client Recht considers transforms and returns the dimensions of the element as
+
+95
+00:05:54,260 --> 00:05:55,250
+it is actually rendered.
+
+96
+00:05:55,670 --> 00:06:00,650
+So this so basically you could use either one end of the end.
+
+97
+00:06:00,800 --> 00:06:02,810
+At the end of the day, they return different things.
+
+98
+00:06:03,110 --> 00:06:05,540
+Client height is sort of the inner elements.
+
+99
+00:06:05,720 --> 00:06:09,780
+And bounding client RACT is how much space as an occupy on the screen.
+
+100
+00:06:10,160 --> 00:06:14,630
+So in general, you would probably want to use client height.
+
+101
+00:06:14,900 --> 00:06:17,180
+So that is the answer that we're going to go with.
+
+102
+00:06:17,360 --> 00:06:19,900
+We're going to try it out by doing current client height.
+
+103
+00:06:20,180 --> 00:06:21,220
+We already know it's there.
+
+104
+00:06:21,230 --> 00:06:24,410
+So this should be as simple as that.
+
+105
+00:06:24,600 --> 00:06:29,230
+We could refresh the page because we're not going to get that update right away.
+
+106
+00:06:31,470 --> 00:06:35,880
+And so just like that, by changing it to client height, we were able to fix the issue.
+
+107
+00:06:38,990 --> 00:06:43,670
+Now, also, you could see here, you could then confirm that it works by increasing the height of that
+
+108
+00:06:43,670 --> 00:06:46,570
+element, by adding another element and you could see it does update.
+
+109
+00:06:47,060 --> 00:06:48,740
+So hope that was useful.
+
+110
+00:06:50,890 --> 00:07:02,740
+You can also type in get client bounding recht and then do height or get bounding client rect.
+
+111
+00:07:04,070 --> 00:07:12,410
+Dr. Height, and that will give you the not rounded version of that, which includes the actual rendered
+
+112
+00:07:12,410 --> 00:07:16,720
+screen, so actual rendered space on that screen.
+
+113
+00:07:16,820 --> 00:07:22,010
+So I recommend doing client height just because that's going to give you probably closer to what you
+
+114
+00:07:22,010 --> 00:07:22,250
+want.

@@ -1,0 +1,91 @@
+1
+00:00:01,420 --> 00:00:09,850
+This advice works not just with react, but in programming in general, and right here I say trim the
+
+2
+00:00:09,850 --> 00:00:10,260
+fat.
+
+3
+00:00:10,630 --> 00:00:18,100
+But what I really mean is that breaking down things into small, simple units is a good way of programming.
+
+4
+00:00:18,520 --> 00:00:22,690
+You have a giant component with a lot of good.
+
+5
+00:00:22,840 --> 00:00:27,410
+Then most likely why you want to do is break that into smaller components.
+
+6
+00:00:28,180 --> 00:00:33,250
+Sure, it might be more JavaScript files, you might say, oh, that's going to get a little too messy.
+
+7
+00:00:33,280 --> 00:00:34,470
+Too many JavaScript files.
+
+8
+00:00:34,480 --> 00:00:38,940
+Well, then I argue that perhaps you should organize your files in a better system.
+
+9
+00:00:40,030 --> 00:00:45,970
+Because although, yeah, we might have more JavaScript files will have more components, what we do
+
+10
+00:00:45,970 --> 00:00:53,260
+by breaking things down is that we make things easier to test, easier to understand and less likely
+
+11
+00:00:53,260 --> 00:00:54,160
+to break.
+
+12
+00:00:54,160 --> 00:00:54,580
+Right.
+
+13
+00:00:54,760 --> 00:01:01,480
+If things are just small units that just concern themselves with one specific thing they're less likely
+
+14
+00:01:01,480 --> 00:01:01,980
+to break.
+
+15
+00:01:02,440 --> 00:01:04,740
+They're also easier for people to understand.
+
+16
+00:01:04,750 --> 00:01:07,720
+They open up a file and you have 30 lines of code.
+
+17
+00:01:07,810 --> 00:01:12,880
+That's easy to read than a giant component that you have to go line by line to figure out what's happening.
+
+18
+00:01:13,510 --> 00:01:19,930
+So ninety nine percent of the time, if you think that component can be broken down into smaller components,
+
+19
+00:01:20,650 --> 00:01:22,210
+yeah, go ahead and do it.
+
+20
+00:01:23,020 --> 00:01:26,380
+Although it just may generate more files.
+
+21
+00:01:26,380 --> 00:01:34,030
+A code in the end, as projects get larger and larger, the idea of having reusable components becomes
+
+22
+00:01:34,180 --> 00:01:35,470
+more and more important.
+
+23
+00:01:35,710 --> 00:01:37,690
+So trim the fat people.

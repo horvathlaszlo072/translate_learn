@@ -1,0 +1,719 @@
+1
+00:00:00,790 --> 00:00:04,840
+All right, so for this challenge, you could see here we have numbers are not appearing when clicking
+
+2
+00:00:04,840 --> 00:00:06,580
+on cells, please see if you could fix.
+
+3
+00:00:07,030 --> 00:00:13,270
+So this is a fork of a minesweeper game that I found and I tweaked it so that there is a bug in here.
+
+4
+00:00:13,280 --> 00:00:19,720
+So basically, as you click, there is just no numbers appearing, which makes this game impossible
+
+5
+00:00:19,720 --> 00:00:20,150
+to play.
+
+6
+00:00:20,530 --> 00:00:23,130
+So we're going to make this game fun again.
+
+7
+00:00:23,170 --> 00:00:26,350
+We're going to debug this and let's jump into it.
+
+8
+00:00:26,360 --> 00:00:28,600
+So we're going to go to open sandbox.
+
+9
+00:00:29,230 --> 00:00:33,100
+This is going to open up the sandbox, as you know, and.
+
+10
+00:00:34,030 --> 00:00:40,810
+Let's get started by opening up in a new window here so we can actually get the game here and we're
+
+11
+00:00:40,810 --> 00:00:42,310
+going to open up our dev tools.
+
+12
+00:00:43,810 --> 00:00:44,860
+So as you could see.
+
+13
+00:00:45,940 --> 00:00:48,260
+We have some errors already.
+
+14
+00:00:48,670 --> 00:00:52,070
+These are generally not something we're going to look at right now.
+
+15
+00:00:52,090 --> 00:00:55,980
+These are just warnings basically for the app.
+
+16
+00:00:55,990 --> 00:01:00,160
+So when we click, we are also not getting any errors.
+
+17
+00:01:00,160 --> 00:01:07,060
+So we can basically we can we have some more errors in here or we have some more logs as well right
+
+18
+00:01:07,060 --> 00:01:07,320
+here.
+
+19
+00:01:07,630 --> 00:01:10,000
+So as you could see, here we are.
+
+20
+00:01:10,390 --> 00:01:13,470
+We are getting some distracting information that's not helping us.
+
+21
+00:01:13,480 --> 00:01:19,090
+Right, because we click we're not getting anything about that, causing an error in the console.
+
+22
+00:01:19,420 --> 00:01:23,220
+So we could do then is actually just start researching how this component works.
+
+23
+00:01:23,560 --> 00:01:30,580
+So if you go to react components, you could see here, this is going to tell us basically where these
+
+24
+00:01:30,580 --> 00:01:32,130
+components are in the app.
+
+25
+00:01:32,380 --> 00:01:38,110
+You could also just inspect the element and read, you know, the class names and search for those in
+
+26
+00:01:38,110 --> 00:01:38,760
+your code base.
+
+27
+00:01:39,130 --> 00:01:40,630
+So let's go here.
+
+28
+00:01:40,870 --> 00:01:42,580
+And we want to look for a cell.
+
+29
+00:01:42,580 --> 00:01:46,420
+Right, because the cell is really what's giving us that data.
+
+30
+00:01:47,260 --> 00:01:51,400
+As you can see here, I know that it's a cell by hovering over it.
+
+31
+00:01:52,180 --> 00:01:54,010
+So I'm hovering over it.
+
+32
+00:01:54,040 --> 00:01:56,710
+I'm clicking here view source for this element.
+
+33
+00:01:57,580 --> 00:02:01,330
+And as you can see here we are in the cell component in our app.
+
+34
+00:02:02,880 --> 00:02:08,640
+So without knowing much else about this app, I was able to find the component that I want, if I go
+
+35
+00:02:08,640 --> 00:02:13,810
+here, I could see here more, you know, how they actually render it within the game and the cell.
+
+36
+00:02:14,070 --> 00:02:16,170
+So this is the game class.
+
+37
+00:02:16,200 --> 00:02:17,580
+This is the source map for the game.
+
+38
+00:02:17,590 --> 00:02:18,600
+So there's a constructor.
+
+39
+00:02:18,600 --> 00:02:20,790
+Looks like it looks like there's a lot of things going on.
+
+40
+00:02:20,970 --> 00:02:22,560
+It renders the board.
+
+41
+00:02:22,800 --> 00:02:25,230
+And then we could see there's a board over here.
+
+42
+00:02:25,410 --> 00:02:27,420
+You could trace that by where it's imported.
+
+43
+00:02:27,420 --> 00:02:31,080
+So dot dot means go up a little bit and then go back into board.
+
+44
+00:02:31,350 --> 00:02:33,630
+You could see we have index here.
+
+45
+00:02:33,810 --> 00:02:36,720
+The board is going in rendering all of this stuff.
+
+46
+00:02:37,020 --> 00:02:41,020
+So you might be thinking, how am I going to figure out how that cell gets its value?
+
+47
+00:02:41,040 --> 00:02:43,440
+Well, we're going to just stick to what we were doing.
+
+48
+00:02:43,440 --> 00:02:44,910
+I'm just kind of tracing it up for you.
+
+49
+00:02:44,910 --> 00:02:48,660
+But here where you could see the the grid finally renders the board.
+
+50
+00:02:50,040 --> 00:02:56,430
+Or the board finally renders the cells right, so just by researching, lightly scrolling and seeing
+
+51
+00:02:56,430 --> 00:02:58,620
+what's rendered in each file is always good practice.
+
+52
+00:02:58,980 --> 00:03:02,380
+But you can see here it renders the cell with a value.
+
+53
+00:03:02,400 --> 00:03:05,060
+So looking through the properties is really important.
+
+54
+00:03:05,340 --> 00:03:11,130
+But if I go back to the cell where I was originally, you could see also right here that there's a render
+
+55
+00:03:11,130 --> 00:03:13,800
+method and there's props.
+
+56
+00:03:13,800 --> 00:03:16,130
+That value is a mine.
+
+57
+00:03:16,140 --> 00:03:21,030
+So you're kind of getting some different types of class names that are being rendered.
+
+58
+00:03:21,060 --> 00:03:23,580
+So just figuring out the clues that are in this file.
+
+59
+00:03:24,900 --> 00:03:32,040
+And then finally, you could see here we have a div that means, you know, a divide HTML element,
+
+60
+00:03:32,280 --> 00:03:34,470
+and inside of that div is get value.
+
+61
+00:03:34,680 --> 00:03:38,430
+Now, if you saw we were rendering those bombs, right, let's see that bomb.
+
+62
+00:03:38,460 --> 00:03:43,090
+So what does that bomb actually is that is that part of the cells that another component.
+
+63
+00:03:43,410 --> 00:03:43,810
+Right.
+
+64
+00:03:44,130 --> 00:03:46,500
+So you going to want to go and let's just check what a bomb is.
+
+65
+00:03:46,530 --> 00:03:51,210
+So if we go over a bomb, you could see that I'm not getting any more real components in there.
+
+66
+00:03:51,570 --> 00:03:52,570
+So what does that tell you?
+
+67
+00:03:52,950 --> 00:03:56,600
+That means that it could be just the contents of that element.
+
+68
+00:03:56,610 --> 00:03:56,910
+Right.
+
+69
+00:03:57,270 --> 00:03:59,430
+So if I go here and I say value.
+
+70
+00:04:01,190 --> 00:04:08,510
+I could see this just some more react props for that sell, but let's go ahead and just confirm what
+
+71
+00:04:08,510 --> 00:04:10,280
+is actually needing to be rendered here.
+
+72
+00:04:10,280 --> 00:04:14,870
+So if I go back to the sources, it looks like get value is my main function.
+
+73
+00:04:14,880 --> 00:04:16,760
+So that's the that's going to be the root cause.
+
+74
+00:04:17,030 --> 00:04:21,350
+The source of my issue is it looks like a rendering issue.
+
+75
+00:04:21,350 --> 00:04:21,670
+Right.
+
+76
+00:04:21,830 --> 00:04:23,180
+There's no errors in the console.
+
+77
+00:04:23,180 --> 00:04:24,380
+So it's a rendering issue.
+
+78
+00:04:24,710 --> 00:04:27,530
+So get value is what determines the value.
+
+79
+00:04:27,530 --> 00:04:27,840
+Right.
+
+80
+00:04:28,280 --> 00:04:35,210
+So I could see here this if statements that say if it's not revealed, you can and it's flag, you can
+
+81
+00:04:35,210 --> 00:04:35,900
+show a flag.
+
+82
+00:04:35,900 --> 00:04:38,660
+So I could see if that works by right.
+
+83
+00:04:38,660 --> 00:04:40,340
+Clicking So if I restart and I right.
+
+84
+00:04:40,340 --> 00:04:42,620
+Click the flag still work.
+
+85
+00:04:43,010 --> 00:04:44,840
+So this works else.
+
+86
+00:04:44,840 --> 00:04:49,600
+If it's a mine it's going to show the bomb or else if it's empty we're going to show an empty string.
+
+87
+00:04:50,120 --> 00:04:52,060
+So what else am I missing here?
+
+88
+00:04:52,070 --> 00:04:55,130
+Well, I'm missing the part where it returns the number.
+
+89
+00:04:55,130 --> 00:04:55,430
+Right.
+
+90
+00:04:55,940 --> 00:04:58,640
+So where would it when would it return a number?
+
+91
+00:04:58,640 --> 00:05:00,560
+Under what circumstances would it return?
+
+92
+00:05:00,560 --> 00:05:06,230
+A number that's getting into a little bit more hairy situation of trying to understand all the business
+
+93
+00:05:06,230 --> 00:05:09,470
+logic of like, well, how does this app actually work and all of that?
+
+94
+00:05:09,800 --> 00:05:10,820
+And that's really important.
+
+95
+00:05:10,820 --> 00:05:16,040
+But for now, let's just debug see if there's any no no data on this value.
+
+96
+00:05:16,310 --> 00:05:24,020
+So if I click and this just happens to be a number, then perhaps there's a number on there.
+
+97
+00:05:24,230 --> 00:05:29,060
+And as you could see here, we have in being defined here, we don't know what that is yet.
+
+98
+00:05:29,060 --> 00:05:32,150
+But, you know, spoiler alert, that's that's actually it.
+
+99
+00:05:32,420 --> 00:05:36,590
+But how would we know that if we didn't, you know, know about this game?
+
+100
+00:05:36,950 --> 00:05:38,470
+Well, we had Propp types here.
+
+101
+00:05:39,410 --> 00:05:42,200
+So going back up, remember, we talked about the board earlier.
+
+102
+00:05:42,590 --> 00:05:45,380
+The board renders the grid cell.
+
+103
+00:05:45,380 --> 00:05:47,330
+The grid cell is the value.
+
+104
+00:05:47,330 --> 00:05:49,010
+So the value is actually grid cell.
+
+105
+00:05:49,020 --> 00:05:54,410
+So it's kind of confusing how they turn a grid cell into something else called value naming is really
+
+106
+00:05:54,410 --> 00:05:54,940
+important.
+
+107
+00:05:55,430 --> 00:05:59,450
+So grid cells are just inside of a row, right?
+
+108
+00:05:59,450 --> 00:06:02,840
+Because the row is mapping the grid cells and then.
+
+109
+00:06:03,770 --> 00:06:05,030
+What else is happening in here?
+
+110
+00:06:05,060 --> 00:06:08,310
+Well, the grid, so what is the grid cell?
+
+111
+00:06:08,340 --> 00:06:11,620
+So let's go up and see if there's anything about the grid cell in here.
+
+112
+00:06:12,020 --> 00:06:15,410
+And as you could see, there are some things about grid cells.
+
+113
+00:06:15,410 --> 00:06:17,140
+But what about the number?
+
+114
+00:06:17,330 --> 00:06:19,520
+What can I learn about the number?
+
+115
+00:06:20,390 --> 00:06:22,880
+You know, we're just trying to learn more about the data in here.
+
+116
+00:06:23,480 --> 00:06:28,430
+And it's possible that, you know, the the grid cell.
+
+117
+00:06:28,580 --> 00:06:31,750
+Would you be able to determine the number or just learn more about it?
+
+118
+00:06:32,180 --> 00:06:41,860
+So as you can see here, we used the DOT MN, so we use the end here to increment the the neighbor cells.
+
+119
+00:06:42,440 --> 00:06:49,280
+So if you know, you have a bomb that's detected, you know, you can the number is supposed to show
+
+120
+00:06:49,280 --> 00:06:50,350
+how many bombs are around it.
+
+121
+00:06:50,360 --> 00:06:50,610
+Right.
+
+122
+00:06:50,960 --> 00:06:55,550
+So that in the you you know, so you could see here the mine.
+
+123
+00:06:55,550 --> 00:06:56,990
+So it, it collects.
+
+124
+00:06:57,830 --> 00:07:02,660
+So does it get random mines is the name of this function, as you could see here.
+
+125
+00:07:02,840 --> 00:07:08,500
+This looks like this could be determining the number of mines as well with that end.
+
+126
+00:07:08,750 --> 00:07:11,690
+So we're we're just getting random mines.
+
+127
+00:07:11,690 --> 00:07:15,980
+We're getting that end and we are then returning those mines here.
+
+128
+00:07:16,100 --> 00:07:16,850
+I'm not sure of that.
+
+129
+00:07:16,850 --> 00:07:20,270
+Totally helped us to understand the number on that element.
+
+130
+00:07:20,630 --> 00:07:23,300
+So, again, this would just be something you keep researching.
+
+131
+00:07:23,300 --> 00:07:24,920
+So we say grid.
+
+132
+00:07:25,100 --> 00:07:27,110
+So we see create new board.
+
+133
+00:07:27,620 --> 00:07:32,390
+And you can see here, this is where we create the rose, not pop star width, which.
+
+134
+00:07:33,490 --> 00:07:38,740
+You know, this looks like it's creating the roads here we go through, we create that grid cell, so
+
+135
+00:07:38,800 --> 00:07:40,200
+we create the grid cell right here.
+
+136
+00:07:41,080 --> 00:07:44,080
+Now as grid cell defined in here, we're getting closer.
+
+137
+00:07:44,080 --> 00:07:47,880
+We're getting closer to understanding whether or not that's the number or not.
+
+138
+00:07:48,280 --> 00:07:49,330
+So we say.
+
+139
+00:07:50,200 --> 00:07:51,280
+Griselle here.
+
+140
+00:07:52,570 --> 00:07:59,650
+And you could see here we create a new grid cell and if we go to reveal bored.
+
+141
+00:08:01,150 --> 00:08:05,440
+So if you search for grid cell in this class, you will find this class down here, which is grid cell,
+
+142
+00:08:05,710 --> 00:08:12,270
+and then you could see here there is a constructor and not a whole lot of other information, actually.
+
+143
+00:08:12,280 --> 00:08:14,680
+Well, you could see mine's so around that.
+
+144
+00:08:14,690 --> 00:08:16,010
+So you do have mines in here.
+
+145
+00:08:16,300 --> 00:08:18,610
+So is mines.
+
+146
+00:08:18,910 --> 00:08:19,960
+You could see this.
+
+147
+00:08:19,960 --> 00:08:21,750
+That is mine equals is mine.
+
+148
+00:08:22,030 --> 00:08:22,690
+You could see this.
+
+149
+00:08:22,690 --> 00:08:26,790
+That equals zero is empty is an equal zero.
+
+150
+00:08:27,190 --> 00:08:33,850
+So we're kind of drilling into exactly the root cause of this issue, which is that OK, and is seems
+
+151
+00:08:33,850 --> 00:08:35,270
+to be the amount of number.
+
+152
+00:08:35,440 --> 00:08:38,760
+It seems to be the number of data that we that we want on this object.
+
+153
+00:08:39,190 --> 00:08:43,030
+Let's go ahead and return the number from the value.
+
+154
+00:08:43,270 --> 00:08:44,580
+So that's the solution to this.
+
+155
+00:08:44,590 --> 00:08:52,390
+Basically, you need to go back here and you need to find the grid cell and then in the get value,
+
+156
+00:08:52,540 --> 00:08:55,070
+we're going to end up returning value.
+
+157
+00:08:56,350 --> 00:09:01,150
+So this would return the number as a default case.
+
+158
+00:09:01,330 --> 00:09:05,630
+So default as we were turning the empty object, now we are returning the number.
+
+159
+00:09:06,250 --> 00:09:10,210
+So this was a kind of complicated thing that you needed to debug.
+
+160
+00:09:10,210 --> 00:09:15,940
+You had to learn about business logic of a specific domain that you've never seen before, researching
+
+161
+00:09:15,940 --> 00:09:22,240
+the different files and folders to understand the flow of data and rendering and then reverse engineer
+
+162
+00:09:22,420 --> 00:09:30,790
+how to render that data and then fix that rendering method to return the expected data that you've confirmed
+
+163
+00:09:30,790 --> 00:09:31,590
+is correct.
+
+164
+00:09:32,080 --> 00:09:32,590
+So.
+
+165
+00:09:33,840 --> 00:09:39,330
+You know, this was this this was an example of something that could have been infinitely more difficult,
+
+166
+00:09:39,330 --> 00:09:39,640
+right?
+
+167
+00:09:39,660 --> 00:09:45,060
+Like, I could have had you figure out how to calculate these and write a big function like that.
+
+168
+00:09:45,060 --> 00:09:46,860
+But this is a debugging course.
+
+169
+00:09:46,860 --> 00:09:51,360
+You want to debug what's wrong, not necessarily reimplement a bunch of features.
+
+170
+00:09:51,360 --> 00:09:56,130
+That'd be a different course would be like how to implement this feature using recursion or something
+
+171
+00:09:56,130 --> 00:09:57,360
+like that that they use here.
+
+172
+00:09:57,750 --> 00:09:59,460
+But this is just debugging you.
+
+173
+00:09:59,670 --> 00:10:03,930
+You know, you're being resourceful and you're you're kind of expecting that the app is already in a
+
+174
+00:10:03,930 --> 00:10:04,860
+functioning state.
+
+175
+00:10:05,070 --> 00:10:10,710
+You're just trying to understand the app and then return, you know, fix it, getting back to a fixable
+
+176
+00:10:10,710 --> 00:10:14,910
+state quickly so you could see most of my challenges or one line fixes.
+
+177
+00:10:15,210 --> 00:10:21,840
+And that's intentional is to get you to understand as much as you can about the app without doing a
+
+178
+00:10:21,840 --> 00:10:24,810
+big, you know, project on top of it.
+
+179
+00:10:24,960 --> 00:10:25,350
+So.
+
+180
+00:10:26,260 --> 00:10:27,510
+I hope this was helpful.

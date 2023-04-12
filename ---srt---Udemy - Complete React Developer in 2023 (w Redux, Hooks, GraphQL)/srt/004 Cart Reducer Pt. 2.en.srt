@@ -1,0 +1,415 @@
+1
+00:00:00,630 --> 00:00:01,590
+Welcome back, everyone.
+
+2
+00:00:02,520 --> 00:00:08,130
+So in the last video I talked about separating out this new function that will allow us to dispatch
+
+3
+00:00:08,130 --> 00:00:14,100
+the appropriate payload so that we can update our reducer with the correct value.
+
+4
+00:00:15,060 --> 00:00:18,270
+So in this video, we're going to talk about how to actually generate those values.
+
+5
+00:00:18,690 --> 00:00:21,240
+And also, let's think about where we're going to use this function.
+
+6
+00:00:22,170 --> 00:00:26,160
+So what I'm going to do is I'm just going to write a little comment here so I know what I want to do
+
+7
+00:00:26,160 --> 00:00:26,880
+with this function.
+
+8
+00:00:27,720 --> 00:00:34,860
+In the end, what I want to do is dispatch new action with payload that looks like this object.
+
+9
+00:00:35,100 --> 00:00:36,630
+We should have new car items.
+
+10
+00:00:39,110 --> 00:00:45,140
+We should have the new cart total, and we should have the new cart count.
+
+11
+00:00:47,980 --> 00:00:50,830
+Once we're inside, though, we need to figure out how to get these values.
+
+12
+00:00:51,610 --> 00:00:54,520
+As I mentioned, the actual optical items reducer.
+
+13
+00:00:54,530 --> 00:00:59,050
+This is a generic function that should already be receiving the new car items hint, hint, nudge,
+
+14
+00:00:59,050 --> 00:00:59,380
+nudge.
+
+15
+00:00:59,380 --> 00:01:01,150
+That kind of tells us where we're going to use this.
+
+16
+00:01:01,150 --> 00:01:06,460
+But in the interim, we need to figure out how to get the new car total and the new car count from the
+
+17
+00:01:06,460 --> 00:01:07,180
+new car items.
+
+18
+00:01:07,780 --> 00:01:09,580
+So that's really another thing we need to get.
+
+19
+00:01:09,760 --> 00:01:15,700
+We need to generate new heart total and we need to generate new heart.
+
+20
+00:01:19,140 --> 00:01:23,520
+So utilizing these three things, let's actually build out this function.
+
+21
+00:01:25,100 --> 00:01:30,140
+So first we have to figure out how to get these new items into update cart items reducer.
+
+22
+00:01:30,800 --> 00:01:37,820
+So here we already have these three different helper functions that explicitly, as we know, give us
+
+23
+00:01:37,820 --> 00:01:39,560
+the new cart items.
+
+24
+00:01:40,370 --> 00:01:47,210
+So here, instead of setting them, let's just cast them to a variable called new car items inside of
+
+25
+00:01:47,210 --> 00:01:47,720
+the function.
+
+26
+00:01:49,850 --> 00:01:50,780
+And similarly.
+
+27
+00:01:52,490 --> 00:01:55,640
+We're going to do that in each of these areas like so.
+
+28
+00:02:05,310 --> 00:02:10,410
+So now that we have the new card items, let's just also run our function, passing them through.
+
+29
+00:02:12,330 --> 00:02:15,510
+And we can pass this to each of our three functions.
+
+30
+00:02:17,280 --> 00:02:22,470
+And now the card items that we receive we know will be the correct card items because we've already
+
+31
+00:02:22,470 --> 00:02:24,990
+made sure that our functions do exactly that.
+
+32
+00:02:24,990 --> 00:02:27,630
+They give us the new array for what these cards should be.
+
+33
+00:02:28,900 --> 00:02:35,560
+Then we want to do is we want to generate the new car total and the new car using these new card items.
+
+34
+00:02:36,250 --> 00:02:39,640
+And luckily for us, we kind of already have the code that does that.
+
+35
+00:02:40,480 --> 00:02:48,340
+So here we can actually just copy this from our effects, because what they do is they work off of car
+
+36
+00:02:48,340 --> 00:02:52,300
+items changing whenever it changes to the newer car times that we need.
+
+37
+00:02:52,930 --> 00:02:58,540
+So instead of reducing over car items, we now can just reduce over the new car items that were getting
+
+38
+00:02:58,540 --> 00:03:01,480
+in to get the new car count and the new car total.
+
+39
+00:03:03,720 --> 00:03:08,970
+Now that we saw these two, the last thing we need to do is dispatch the new action with the appropriate
+
+40
+00:03:08,970 --> 00:03:09,450
+payload.
+
+41
+00:03:10,440 --> 00:03:15,360
+So here, what I want to do is instead of using all of these values.
+
+42
+00:03:17,550 --> 00:03:18,690
+I am going to.
+
+43
+00:03:21,190 --> 00:03:23,590
+Figure out how to use use reducer to help us do this.
+
+44
+00:03:24,280 --> 00:03:26,830
+So first, let's think about use reducer.
+
+45
+00:03:27,810 --> 00:03:32,400
+User reducer, as we know, is where we're going to get the actual dispatch that we need.
+
+46
+00:03:33,210 --> 00:03:39,330
+So to do that, I know that I get state and I get what's dispatch like, so.
+
+47
+00:03:40,330 --> 00:03:47,260
+And then from use reducer I need to pass it both our cart reducer as well as our initial state.
+
+48
+00:03:52,190 --> 00:03:53,180
+As for dispatch.
+
+49
+00:03:54,620 --> 00:03:59,300
+Now we can actually just dispatch away the new action that we want to generate.
+
+50
+00:03:59,990 --> 00:04:04,430
+The type here is going to be set car items as a string.
+
+51
+00:04:07,000 --> 00:04:11,500
+And the payload is going to be an object where car items.
+
+52
+00:04:12,990 --> 00:04:14,430
+Is new car items.
+
+53
+00:04:17,950 --> 00:04:21,250
+Where the cart total is the new cart total.
+
+54
+00:04:23,640 --> 00:04:24,930
+And the cart count.
+
+55
+00:04:26,470 --> 00:04:28,360
+Is going to be new cart count.
+
+56
+00:04:30,560 --> 00:04:31,040
+And that's it.
+
+57
+00:04:32,350 --> 00:04:33,220
+That's all we really need.
+
+58
+00:04:34,210 --> 00:04:35,740
+Now we can get rid of this.
+
+59
+00:04:37,950 --> 00:04:43,290
+But here we actually noticed that we need our car items from our new use reducer.
+
+60
+00:04:43,860 --> 00:04:46,950
+So to do that, we can strip off cart.
+
+61
+00:04:47,980 --> 00:04:48,430
+Items.
+
+62
+00:04:49,480 --> 00:04:55,690
+In fact, we know that we have to pass both items car count, cart total and is cart open all through
+
+63
+00:04:55,690 --> 00:04:57,550
+into our context value.
+
+64
+00:04:58,270 --> 00:05:02,110
+So let's actually structure off all those values that we have anyways.
+
+65
+00:05:03,410 --> 00:05:07,970
+So we also need card count and we also need cart total.
+
+66
+00:05:09,610 --> 00:05:14,770
+Now, if we save this, we see that our warnings are gone, but we still have set.
+
+67
+00:05:14,770 --> 00:05:15,970
+Is carp open?
+
+68
+00:05:17,010 --> 00:05:20,220
+So this is going to be a new function that we have.
+
+69
+00:05:22,330 --> 00:05:27,850
+But we'll figure that out after we finish cleaning up what we have inside of our car provider.
+
+70
+00:05:29,130 --> 00:05:30,600
+So we finished setting up our method.
+
+71
+00:05:31,110 --> 00:05:35,100
+We finished setting up our action, create our functions, if you want to call them that.
+
+72
+00:05:36,410 --> 00:05:39,680
+And we finished setting up this reducer that has set items.
+
+73
+00:05:40,810 --> 00:05:43,300
+Let's just make sure to test that all of this is working.
+
+74
+00:05:43,810 --> 00:05:50,740
+And the best way is to just quickly make sure for now this is always going to be true.
+
+75
+00:05:52,650 --> 00:05:57,330
+Because by doing this now, technically, it's unstoppable, which is perfectly fine.
+
+76
+00:05:57,870 --> 00:05:58,170
+Oops.
+
+77
+00:05:58,380 --> 00:05:58,890
+Actually.
+
+78
+00:05:59,160 --> 00:05:59,430
+Sorry.
+
+79
+00:05:59,450 --> 00:06:00,960
+Let's just set an empty function.
+
+80
+00:06:02,490 --> 00:06:06,000
+And let's set is cart open to true by default.
+
+81
+00:06:07,460 --> 00:06:11,990
+Because I want to be able to see the car to make sure that all of my methods here are working now that
+
+82
+00:06:11,990 --> 00:06:12,980
+we've converted them over.
+
+83
+00:06:14,480 --> 00:06:14,690
+So.
+
+84
+00:06:14,690 --> 00:06:14,890
+Yep.
+
+85
+00:06:14,900 --> 00:06:15,560
+We see our cart.
+
+86
+00:06:15,980 --> 00:06:16,820
+Let's go into shop.
+
+87
+00:06:17,390 --> 00:06:18,170
+We add items.
+
+88
+00:06:19,250 --> 00:06:20,300
+We see that everything works.
+
+89
+00:06:20,450 --> 00:06:21,410
+We go to our checkout.
+
+90
+00:06:22,280 --> 00:06:23,750
+We see that our remove item works.
+
+91
+00:06:24,290 --> 00:06:25,910
+And we see that a clear item works.
+
+92
+00:06:26,270 --> 00:06:27,860
+So all our code is still working.
+
+93
+00:06:28,790 --> 00:06:31,320
+But now we need to make sure that we do our is card open.
+
+94
+00:06:32,150 --> 00:06:37,370
+So here before if you remember we had a center function that we were using with you state.
+
+95
+00:06:37,970 --> 00:06:46,310
+Now instead we need to create and dispatch a new action that will set the actual is cart open value.
+
+96
+00:06:47,150 --> 00:06:49,490
+So here I'm going to flip this back to false.
+
+97
+00:06:50,680 --> 00:06:52,930
+And this is going to be my challenge to you.
+
+98
+00:06:53,260 --> 00:06:58,120
+I want you to update this cart reducer and create a set is cart open method.
+
+99
+00:06:59,170 --> 00:07:06,040
+That is going to be a function that will update our card reducer with the appropriate value for our
+
+100
+00:07:06,040 --> 00:07:06,310
+card.
+
+101
+00:07:07,470 --> 00:07:12,510
+So do that for me and then join me in the next video where we will tidy up this car context as well
+
+102
+00:07:12,510 --> 00:07:18,960
+as figure out some minor optimizations and utility functions that will make modifying our reducers easier
+
+103
+00:07:18,960 --> 00:07:19,680
+in the long run.
+
+104
+00:07:20,250 --> 00:07:21,180
+I'll see you in the next video.

@@ -1,0 +1,547 @@
+1
+00:00:02,040 --> 00:00:02,650
+Welcome back.
+
+2
+00:00:03,270 --> 00:00:07,860
+Let's start to actually write a test for the Google search function.
+
+3
+00:00:08,390 --> 00:00:15,030
+The first thing we want to do is obviously have access to this Google search function, but in our test
+
+4
+00:00:15,030 --> 00:00:15,330
+file.
+
+5
+00:00:16,310 --> 00:00:22,910
+And that's simple, this is simply just JavaScript, we can just export this function and import it
+
+6
+00:00:22,910 --> 00:00:31,340
+in here now because this is node and we're not running and the browser or using Bable or Watpac, we
+
+7
+00:00:31,340 --> 00:00:34,280
+don't have the import and export statements yet.
+
+8
+00:00:34,580 --> 00:00:35,900
+Node is working on that.
+
+9
+00:00:36,020 --> 00:00:43,400
+But for now, they're still using common G.S., which, as you might know, has the syntax module that
+
+10
+00:00:44,000 --> 00:00:46,010
+exports equals.
+
+11
+00:00:46,550 --> 00:00:48,800
+And we'll just do the Google search.
+
+12
+00:00:50,540 --> 00:00:58,130
+We're going to explore this and then finally, we can import this at the very top of this test by saying
+
+13
+00:00:58,400 --> 00:01:00,890
+Consed Google search.
+
+14
+00:01:03,070 --> 00:01:03,640
+He calls.
+
+15
+00:01:05,140 --> 00:01:05,830
+Require.
+
+16
+00:01:07,750 --> 00:01:09,820
+From the script for.
+
+17
+00:01:13,310 --> 00:01:18,140
+Let's save that and just to test it, Liz, just console log this.
+
+18
+00:01:19,800 --> 00:01:24,540
+And do a Google search, safe run and test.
+
+19
+00:01:27,170 --> 00:01:37,880
+All right, so we have our consul log of Google Search that's on script, but also in the test we see
+
+20
+00:01:37,880 --> 00:01:42,710
+that we're logging out function Google search, which is great.
+
+21
+00:01:43,170 --> 00:01:43,820
+I'm going to.
+
+22
+00:01:44,870 --> 00:01:47,370
+Comment, that's all for now, because we know it's working.
+
+23
+00:01:47,390 --> 00:01:53,690
+We don't want to cancel long, but you might have also noticed that it's kind of annoying running AMPM
+
+24
+00:01:53,690 --> 00:01:56,410
+test over and over and over.
+
+25
+00:01:56,660 --> 00:02:00,170
+And luckily for us with Jess, we can do a nice, easy command.
+
+26
+00:02:01,800 --> 00:02:08,400
+Dash, dash, watch, and then we give it what to watch for, in our case, all JavaScript files, so
+
+27
+00:02:08,400 --> 00:02:12,210
+any time we make changes to any JavaScript files.
+
+28
+00:02:13,240 --> 00:02:18,910
+Just is going to watch out for those and have the test running constantly.
+
+29
+00:02:19,930 --> 00:02:20,650
+Let's see what I mean.
+
+30
+00:02:20,830 --> 00:02:21,820
+I'm going to save this.
+
+31
+00:02:23,740 --> 00:02:25,240
+And run npm.
+
+32
+00:02:26,280 --> 00:02:26,790
+Test.
+
+33
+00:02:28,960 --> 00:02:36,850
+And if you're wondering why I can run AMPM test and not ampm run test, that's just the default of AMPM.
+
+34
+00:02:36,850 --> 00:02:42,910
+If you do ampm start or ampm test, you can run those two commands without the wrong word.
+
+35
+00:02:43,030 --> 00:02:49,870
+But if you do anything that you created yourself like ampm bake a cake you have to do npm run bake a
+
+36
+00:02:49,870 --> 00:02:50,200
+cake.
+
+37
+00:02:51,380 --> 00:02:58,800
+All right, so now it's running, if I change anything in here to let's just have save it.
+
+38
+00:02:59,270 --> 00:03:01,250
+You see that it's now changing.
+
+39
+00:03:01,250 --> 00:03:07,850
+If I change this, it's constantly updating with the new test, but nothing is happening in here yet.
+
+40
+00:03:08,180 --> 00:03:11,630
+So let's write an actual test that we can use.
+
+41
+00:03:11,750 --> 00:03:15,250
+Now that we have the Google search function, we want to test it.
+
+42
+00:03:15,290 --> 00:03:26,900
+We want to say Google search, give us some sort of a dummy input, let's say test test and somehow
+
+43
+00:03:26,900 --> 00:03:31,430
+say whatever this returns should match whatever.
+
+44
+00:03:31,610 --> 00:03:33,650
+And remember, that's an assertion library.
+
+45
+00:03:33,660 --> 00:03:38,060
+What we want to make an assertion and you may notice one issue here.
+
+46
+00:03:38,750 --> 00:03:40,310
+What about the database?
+
+47
+00:03:41,240 --> 00:03:46,130
+Well, we'll have to export this database as well.
+
+48
+00:03:46,310 --> 00:03:46,730
+Right.
+
+49
+00:03:47,390 --> 00:03:48,740
+And we totally can.
+
+50
+00:03:48,740 --> 00:03:52,370
+We could do a Google database and added to the module exports.
+
+51
+00:03:53,210 --> 00:03:55,190
+But is that realistic?
+
+52
+00:03:55,550 --> 00:04:03,140
+You see, in real life, you're not going to just export the database and imported into a test and have
+
+53
+00:04:03,140 --> 00:04:05,140
+the test to actually go through the database.
+
+54
+00:04:05,300 --> 00:04:08,870
+That's really expensive, really slow and a huge headache.
+
+55
+00:04:09,320 --> 00:04:16,310
+Ideally, you want to market, you want to pretend that we have a database in here so that it makes
+
+56
+00:04:16,310 --> 00:04:17,780
+tests run faster.
+
+57
+00:04:18,840 --> 00:04:26,970
+Let me show you how we can do that, we can just say, Debe, mock a database moch and this mock will
+
+58
+00:04:26,970 --> 00:04:34,410
+have some dummy database, which isn't actually our real database, just something that we can test
+
+59
+00:04:34,410 --> 00:04:34,570
+on.
+
+60
+00:04:34,800 --> 00:04:37,410
+So let's say this one has dog dotcom.
+
+61
+00:04:37,800 --> 00:04:38,760
+It has.
+
+62
+00:04:40,220 --> 00:04:42,440
+Cheese, puff, dotcom.
+
+63
+00:04:47,060 --> 00:04:55,280
+It has, let's say, Disney, dotcom, and it has dog pictures, dotcom.
+
+64
+00:04:56,460 --> 00:04:59,280
+So completely different from our real database.
+
+65
+00:05:00,990 --> 00:05:07,980
+All right, so we have this now, but the problem is, well, Google search up until this point was
+
+66
+00:05:07,980 --> 00:05:10,290
+using the Google database.
+
+67
+00:05:10,860 --> 00:05:17,160
+And if we run this function and script, that test that goes well, we don't have access to that database.
+
+68
+00:05:17,160 --> 00:05:24,600
+We'd have to manually change the function and make sure that it filters through the DB mark.
+
+69
+00:05:25,680 --> 00:05:31,350
+And a good way of solving this issue and the way you want to write your functions is, again, you want
+
+70
+00:05:31,350 --> 00:05:37,410
+them to be pure and you also want to add things to them, like a database through something called dependency
+
+71
+00:05:37,410 --> 00:05:38,040
+injection.
+
+72
+00:05:38,400 --> 00:05:46,560
+That is in order for us to make this reusable and use it in other parts of our code base, have the
+
+73
+00:05:46,560 --> 00:05:55,350
+database injected into Google search so that anybody using it can, like I am in the test, can inject
+
+74
+00:05:55,380 --> 00:05:58,680
+this Dimmock instead of the real database.
+
+75
+00:05:59,860 --> 00:06:07,180
+And that's really easy to do, all we need to do is pass it a parameter of, let's say, DB and I'm
+
+76
+00:06:07,180 --> 00:06:13,030
+going to change this into DB and now this Google search is more extensible.
+
+77
+00:06:13,270 --> 00:06:16,000
+We can add whatever database we want to filter.
+
+78
+00:06:16,030 --> 00:06:23,410
+Now, all we need to do is in our when we call the function is to add a single parameter of.
+
+79
+00:06:25,190 --> 00:06:27,050
+Google database.
+
+80
+00:06:30,160 --> 00:06:31,930
+If we comment that out.
+
+81
+00:06:33,490 --> 00:06:38,950
+And go back to our test file, we can enter the.
+
+82
+00:06:41,140 --> 00:06:43,750
+DB Moch database.
+
+83
+00:06:45,120 --> 00:06:47,540
+Let's save now and see what happens.
+
+84
+00:06:49,090 --> 00:06:56,770
+All right, test is passing, but we're not really testing anything right now, we're just returning
+
+85
+00:06:56,770 --> 00:07:00,840
+things and running this function, but that's not where we want to test.
+
+86
+00:07:00,850 --> 00:07:03,080
+It's not very meaningful that we run this function.
+
+87
+00:07:03,460 --> 00:07:07,030
+We want to assert that this does what we expect it to do.
+
+88
+00:07:09,350 --> 00:07:16,760
+And again, just like we had the IT keyboard just gives us a nice little function for us to use.
+
+89
+00:07:18,430 --> 00:07:26,740
+If you go to using matchers, we see that in their documentation, they have the expect and to be and
+
+90
+00:07:26,740 --> 00:07:33,280
+they have a few other things that you can use to be define to be defined, to be falsey, truthy, and
+
+91
+00:07:33,280 --> 00:07:34,390
+they have a ton.
+
+92
+00:07:36,020 --> 00:07:40,550
+For now, let's comment this out and say that we expect.
+
+93
+00:07:42,620 --> 00:07:45,620
+Hello to be.
+
+94
+00:07:47,730 --> 00:07:49,420
+Hello, hello to you.
+
+95
+00:07:49,620 --> 00:07:49,980
+Hello.
+
+96
+00:07:50,640 --> 00:07:52,970
+All right, let's save that, all right.
+
+97
+00:07:53,010 --> 00:07:54,300
+Everything is passing.
+
+98
+00:07:55,320 --> 00:08:06,270
+But if I change just to know and save, oh, I get a failed test, it says it expected the no value
+
+99
+00:08:06,270 --> 00:08:10,290
+but received hello and it's got pretty nice output.
+
+100
+00:08:10,320 --> 00:08:16,470
+It shows you which line failed and what the test failed that using that logic.
+
+101
+00:08:18,600 --> 00:08:24,000
+Let's change now the Google search to have expect.
+
+102
+00:08:25,070 --> 00:08:28,820
+And you know what, let's keep this test, because I like this test will do.
+
+103
+00:08:29,000 --> 00:08:29,420
+Hello.
+
+104
+00:08:30,050 --> 00:08:30,560
+Hello.
+
+105
+00:08:30,560 --> 00:08:32,300
+And calls this it.
+
+106
+00:08:33,360 --> 00:08:35,280
+Is a silly test.
+
+107
+00:08:36,720 --> 00:08:46,140
+And create another test again, we can just have as many as we want, and this one will say it is searching
+
+108
+00:08:46,140 --> 00:08:46,620
+Google.
+
+109
+00:08:47,940 --> 00:08:50,460
+And in here will have the function.
+
+110
+00:08:53,970 --> 00:08:55,500
+Let's outerspace here because.
+
+111
+00:08:56,790 --> 00:08:59,940
+That looks nicer and we'll say that we expect.
+
+112
+00:09:01,850 --> 00:09:05,060
+Google search, and we can just copy this.
+
+113
+00:09:08,350 --> 00:09:15,430
+We expect Google search and we're running that function with test test DB Mark, and here we can use
+
+114
+00:09:15,430 --> 00:09:19,060
+instead of to B, we can also do two equal.
+
+115
+00:09:20,420 --> 00:09:26,630
+And within the two eagle, now let me just create a new line just so you can see it, it's going to
+
+116
+00:09:26,630 --> 00:09:32,960
+say we expected to equal an empty array because there's no test test here.
+
+117
+00:09:33,200 --> 00:09:33,740
+Let's save.
+
+118
+00:09:36,680 --> 00:09:42,950
+Oh, and I forgot a little bracket here, we want the expect to have the result of this, so we need
+
+119
+00:09:42,950 --> 00:09:44,570
+an extra bracket over here.
+
+120
+00:09:44,600 --> 00:09:46,940
+So make sure you get that right, a save.
+
+121
+00:09:48,290 --> 00:09:54,980
+Oh, and you don't need that now, perfect again, maybe not having it on two lines is better so we
+
+122
+00:09:54,980 --> 00:09:55,370
+can see.
+
+123
+00:09:56,330 --> 00:09:59,390
+So we have the exact function that runs this.
+
+124
+00:09:59,840 --> 00:10:05,090
+And to equal to test that, this equals an empty array.
+
+125
+00:10:06,230 --> 00:10:15,620
+We can now add another line and let's say that now we want to expect Google to test dog and if dog exists,
+
+126
+00:10:15,800 --> 00:10:20,120
+we wanted to include these two websites so we can add.
+
+127
+00:10:22,370 --> 00:10:29,740
+Dog come to this area and also dog pictures dotcom to this day.
+
+128
+00:10:33,230 --> 00:10:34,430
+And let's save.
+
+129
+00:10:38,950 --> 00:10:47,560
+All right, this is running and passing, we still have to test because, well, the it there's only
+
+130
+00:10:47,560 --> 00:10:48,040
+two of them.
+
+131
+00:10:48,400 --> 00:10:50,560
+But if I change this to let's say that just.
+
+132
+00:10:52,660 --> 00:10:55,780
+I'll get in there because we got something.
+
+133
+00:10:57,300 --> 00:10:59,940
+Different than what we expected, we expected a different array.
+
+134
+00:11:01,920 --> 00:11:02,530
+There you go.
+
+135
+00:11:02,790 --> 00:11:05,130
+We have our very first test.
+
+136
+00:11:06,740 --> 00:11:07,830
+I'll see you in the next video.
+
+137
+00:11:08,570 --> 00:11:08,930
+Bye bye.

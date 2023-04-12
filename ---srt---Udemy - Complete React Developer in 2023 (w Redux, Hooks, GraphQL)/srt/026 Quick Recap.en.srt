@@ -1,0 +1,115 @@
+1
+00:00:01,090 --> 00:00:01,700
+Welcome back.
+
+2
+00:00:02,440 --> 00:00:09,520
+I wanted to take a second here before we keep going with testing our robo friends up to just go over
+
+3
+00:00:09,520 --> 00:00:13,090
+what we've learned from our slides and how it all makes sense now.
+
+4
+00:00:14,070 --> 00:00:20,550
+We learned that now we have just that we can install that provides for us a test framework, something
+
+5
+00:00:20,550 --> 00:00:28,830
+that we can run tests in, and this just also comes with an assertion library where we can use expect
+
+6
+00:00:29,070 --> 00:00:38,460
+DOT to be equal or to have or all these things that we can do that we saw in our cheat sheet to assert
+
+7
+00:00:38,460 --> 00:00:41,190
+something to make sure that this equals this.
+
+8
+00:00:41,790 --> 00:00:48,870
+And then we also saw that just comes with a test runner, something that we're able to run the tests
+
+9
+00:00:48,870 --> 00:00:49,080
+in.
+
+10
+00:00:49,080 --> 00:00:50,780
+And you saw that in my terminal.
+
+11
+00:00:50,910 --> 00:00:57,310
+I always have those tests running and checking and making sure that things are always passing.
+
+12
+00:00:58,050 --> 00:01:02,910
+We also saw that we have mocking functions that we can use.
+
+13
+00:01:04,200 --> 00:01:11,700
+We saw that in our example where we built our Star Wars API, where we got all those people that we
+
+14
+00:01:11,700 --> 00:01:17,670
+could mock the fetch function and make sure that it was called, again, something that comes with just.
+
+15
+00:01:18,890 --> 00:01:23,690
+Sinon is another popular one that it works very, very similar that you're going to see as well.
+
+16
+00:01:24,020 --> 00:01:31,490
+And then finally we saw that we can do code coverage by running NPM test, dash, dash, dash, dash
+
+17
+00:01:31,490 --> 00:01:31,930
+coverage.
+
+18
+00:01:32,360 --> 00:01:38,200
+And it gives us a coverage of where we have tests and where we don't so that we can improve our app.
+
+19
+00:01:38,870 --> 00:01:42,440
+I told you this is going to make sense and we're not even done yet.
+
+20
+00:01:42,950 --> 00:01:53,030
+We saw that we can test our app programmatically, but if we need any time to use some dumb APIs, we
+
+21
+00:01:53,030 --> 00:01:54,020
+have those three options.
+
+22
+00:01:54,020 --> 00:01:56,510
+We can use the actual DOM.
+
+23
+00:01:56,930 --> 00:02:02,450
+We can use something like puppeteer for a headless browser or something like just dump, which if we're
+
+24
+00:02:02,450 --> 00:02:07,820
+using the mount, rendering an enzyme, we can set up as well.
+
+25
+00:02:08,450 --> 00:02:14,120
+Again, there's this set up is fairly simple and you can check it out on the enzyme documentation.
+
+26
+00:02:16,060 --> 00:02:21,730
+Oh, yeah, and we also learned that in React, we can use enzyme and snapshot testing to make our tests
+
+27
+00:02:21,730 --> 00:02:23,680
+super, super easy again.
+
+28
+00:02:23,690 --> 00:02:27,390
+Another reason that I love using, just especially with Riak projects.
+
+29
+00:02:28,950 --> 00:02:33,900
+That was a quick break, back decoding, we go in the next video seen on that one by.

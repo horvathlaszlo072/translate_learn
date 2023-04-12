@@ -1,0 +1,399 @@
+1
+00:00:00,530 --> 00:00:01,670
+Welcome back, everyone.
+
+2
+00:00:02,240 --> 00:00:07,880
+In this video, let's style the rest of our components, what we want to do is we want to turn these
+
+3
+00:00:08,180 --> 00:00:14,420
+ones that represent our individual monsters into these different monster cards that we see here.
+
+4
+00:00:15,290 --> 00:00:16,610
+So how are we going to do that?
+
+5
+00:00:18,000 --> 00:00:19,740
+Well, let's go back to our code.
+
+6
+00:00:20,710 --> 00:00:26,950
+Inside of our code, I want to navigate to this cardless component, and what we want to do is actually
+
+7
+00:00:26,950 --> 00:00:30,070
+create the template that will reflect the cart.
+
+8
+00:00:30,940 --> 00:00:37,390
+So instead of H1, we are going to make a card component and it starts with a div.
+
+9
+00:00:37,870 --> 00:00:43,150
+So a div is going to hold all of the actual content for this card.
+
+10
+00:00:43,480 --> 00:00:50,680
+And I'm going to give this a class name of card container because I'm going to style it using that classic.
+
+11
+00:00:52,010 --> 00:00:55,400
+What else I'm going to do is I know that there needs to be an image.
+
+12
+00:00:56,350 --> 00:01:00,130
+And here we're going to give it the alt text of Monster.
+
+13
+00:01:01,360 --> 00:01:08,410
+Because that's really what it's for, the alt text is for accessibility and essentially on screen readers
+
+14
+00:01:08,410 --> 00:01:09,880
+will mention what this is.
+
+15
+00:01:10,360 --> 00:01:12,160
+And here we can say that it's a monster.
+
+16
+00:01:12,190 --> 00:01:13,660
+We can get more specific if we want.
+
+17
+00:01:13,960 --> 00:01:18,880
+If we wanted to say that not only is it a monster, but there's a name to the monster and we can do
+
+18
+00:01:18,880 --> 00:01:21,100
+that by again using string interpolation.
+
+19
+00:01:21,550 --> 00:01:25,120
+And then here I can say monster dot name like this.
+
+20
+00:01:27,090 --> 00:01:28,680
+But now I need to give it a source.
+
+21
+00:01:29,340 --> 00:01:36,960
+The source is going to be a web site actually called Ro Hash robot hash is awesome because it allows
+
+22
+00:01:36,960 --> 00:01:41,430
+us to generate these images that we're going to use and I want to use the monsters.
+
+23
+00:01:41,880 --> 00:01:49,410
+So in order to do this, what robot hash does is that after Robot Hash Dawg, after the slash, you
+
+24
+00:01:49,410 --> 00:01:50,880
+can type whatever you want.
+
+25
+00:01:51,420 --> 00:01:57,780
+For me, I know that with our IDs that we're getting back from JSON placeholder the numbers and the
+
+26
+00:01:57,780 --> 00:01:58,770
+increment by one.
+
+27
+00:01:59,340 --> 00:02:08,190
+So if we say slash one and here following the actual monstrosity, we add this you are all parameter
+
+28
+00:02:08,190 --> 00:02:08,700
+set.
+
+29
+00:02:09,720 --> 00:02:14,500
+I can say that set two is the one I want, which is the monsters.
+
+30
+00:02:14,520 --> 00:02:16,860
+If you actually save this, you'll see that right here.
+
+31
+00:02:16,890 --> 00:02:18,270
+This is our monster.
+
+32
+00:02:19,110 --> 00:02:23,340
+If I increment this ID, I'll get a different monster.
+
+33
+00:02:23,940 --> 00:02:29,760
+So using this, we can generate all the different monsters we want to use for the images inside of our
+
+34
+00:02:29,760 --> 00:02:30,420
+application.
+
+35
+00:02:31,560 --> 00:02:36,600
+The additional great benefits of this is that there's another URL parameter you can add, which is size,
+
+36
+00:02:36,600 --> 00:02:38,580
+and you can tell it how big you want it to be.
+
+37
+00:02:39,030 --> 00:02:42,900
+So I want it to be a 180 by 180 pixels.
+
+38
+00:02:44,690 --> 00:02:46,520
+And there you can see that this will be my image.
+
+39
+00:02:47,180 --> 00:02:49,220
+So that is the dynamic of all you want.
+
+40
+00:02:49,230 --> 00:02:50,480
+So let's just copy this.
+
+41
+00:02:50,480 --> 00:02:54,980
+And again, you can just find this inside of your resources folder.
+
+42
+00:02:56,100 --> 00:03:01,050
+Go back to our application, and I want to say that source is going to be equal.
+
+43
+00:03:02,970 --> 00:03:05,070
+To string interpolation.
+
+44
+00:03:06,660 --> 00:03:10,950
+And instead of this, no, I'm going to say Monster I.D..
+
+45
+00:03:12,610 --> 00:03:13,210
+And now.
+
+46
+00:03:14,290 --> 00:03:17,650
+That we have that, let's also make sure that we have.
+
+47
+00:03:18,560 --> 00:03:19,430
+An H2.
+
+48
+00:03:20,500 --> 00:03:22,300
+That will have the name of the monster.
+
+49
+00:03:24,570 --> 00:03:31,620
+And let's also make sure that we have a paragraph tag that contains the email of the monster.
+
+50
+00:03:33,710 --> 00:03:40,430
+And let's not forget, because we're mapping over, we need to make sure we also include a key so that
+
+51
+00:03:40,430 --> 00:03:42,620
+key value was monstered ideas well.
+
+52
+00:03:43,960 --> 00:03:45,340
+And here, if I save this.
+
+53
+00:03:46,940 --> 00:03:48,830
+If I go back to my application.
+
+54
+00:03:50,240 --> 00:03:52,100
+I'll see that we have our card.
+
+55
+00:03:53,660 --> 00:03:57,470
+Now, it doesn't have all the styling of our card, but it's the beginning of it, it's already resembling
+
+56
+00:03:57,470 --> 00:04:00,470
+much closer to what this final application looks like.
+
+57
+00:04:01,990 --> 00:04:03,190
+One quick thing I want to note.
+
+58
+00:04:04,100 --> 00:04:10,130
+One improvement that you'll notice here is that we are actually calling Monster Dot name twice and we're
+
+59
+00:04:10,130 --> 00:04:12,230
+calling Monster I.D. twice.
+
+60
+00:04:12,920 --> 00:04:17,660
+Whenever you see this, this is a good time to do structure because essentially what happens is that
+
+61
+00:04:17,870 --> 00:04:23,720
+you can imagine, perhaps as a chance, that later down the road how you get this name is different.
+
+62
+00:04:24,470 --> 00:04:26,930
+Or let's say monster name is no longer monster name.
+
+63
+00:04:26,930 --> 00:04:27,740
+It's username.
+
+64
+00:04:28,430 --> 00:04:31,490
+You would have to change this in multiple places in your file.
+
+65
+00:04:31,580 --> 00:04:32,900
+And that's a little inconvenient.
+
+66
+00:04:33,200 --> 00:04:39,050
+The way that the restructuring works is that we cast it as a variable and then we just use that variable.
+
+67
+00:04:39,080 --> 00:04:40,010
+We've already done it before.
+
+68
+00:04:40,550 --> 00:04:42,260
+So here, let's just make sure we do that as well.
+
+69
+00:04:42,530 --> 00:04:44,570
+So I'm going to use these curly braces.
+
+70
+00:04:45,530 --> 00:04:50,250
+So that I can actually structure off the properties I want off of Monster.
+
+71
+00:04:50,810 --> 00:04:53,810
+And this way, wherever I reference it, I can just change it on one place.
+
+72
+00:04:54,290 --> 00:04:57,740
+So I know that I want the name, I want the email and I want the ID.
+
+73
+00:04:58,610 --> 00:05:00,200
+And now if I just.
+
+74
+00:05:01,450 --> 00:05:06,280
+Go through and remove the monster dot and I save.
+
+75
+00:05:07,450 --> 00:05:09,700
+And then I go back to my application.
+
+76
+00:05:10,240 --> 00:05:12,370
+I see that everything is still working.
+
+77
+00:05:13,390 --> 00:05:15,040
+So that's a nice little optimization.
+
+78
+00:05:16,940 --> 00:05:23,040
+Now, let's stall the card list and the card component, so we are going to make another file card less
+
+79
+00:05:23,040 --> 00:05:24,530
+start style sports.
+
+80
+00:05:24,550 --> 00:05:32,390
+Yes, us an inside, we know what we need to do is we need to style this card list container that contains
+
+81
+00:05:32,390 --> 00:05:33,110
+all our cards.
+
+82
+00:05:33,440 --> 00:05:36,830
+And we also need to style the individual cards themselves.
+
+83
+00:05:38,100 --> 00:05:46,260
+So again, go into your resources folder, get the card list, CSC file and paste it inside of here.
+
+84
+00:05:47,940 --> 00:05:54,180
+Once you paste in your styles, don't forget to go back to the cardless component and import in the
+
+85
+00:05:54,180 --> 00:05:56,760
+styling file that we just created.
+
+86
+00:05:59,060 --> 00:06:01,550
+So now if we save and we go back to our application.
+
+87
+00:06:02,630 --> 00:06:06,950
+We'll see that we have the same styles as our main application.
+
+88
+00:06:08,190 --> 00:06:11,010
+So this is pretty much the majority of the application.
+
+89
+00:06:11,220 --> 00:06:15,540
+There's one more header to add from Monster's Rolodex, but you'll notice that your app pretty much
+
+90
+00:06:15,540 --> 00:06:16,380
+looks the same now.
+
+91
+00:06:16,380 --> 00:06:21,240
+And if we do and type, we see that everything works as it did before.
+
+92
+00:06:22,680 --> 00:06:26,070
+One quick thing that I want to challenge you to do and really think about here.
+
+93
+00:06:26,970 --> 00:06:32,910
+Some of you were looking at this application might actually notice and optimization.
+
+94
+00:06:33,770 --> 00:06:41,450
+That optimization is to take this code for this card and actually move it into its own card component.
+
+95
+00:06:42,510 --> 00:06:44,760
+So that's actually what I'm going to challenge you to do.
+
+96
+00:06:44,940 --> 00:06:50,730
+I want you to just take this component that we have inside of card list and move it into its own card
+
+97
+00:06:50,730 --> 00:06:51,180
+component.
+
+98
+00:06:51,540 --> 00:06:55,110
+Move the styling, move all the relevant code and then get it there.
+
+99
+00:06:55,530 --> 00:06:58,470
+And once you've done that in the next video, let's do it together.
+
+100
+00:06:58,770 --> 00:07:00,000
+So I'll see you in the next video.

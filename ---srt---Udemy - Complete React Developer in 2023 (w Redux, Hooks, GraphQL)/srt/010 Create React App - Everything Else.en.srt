@@ -1,0 +1,339 @@
+1
+00:00:00,570 --> 00:00:01,590
+Welcome back, everyone.
+
+2
+00:00:02,340 --> 00:00:06,570
+In this video, we are going to dive into the meat of the actual real code finally.
+
+3
+00:00:07,320 --> 00:00:11,160
+So what we're going to do as we're looking at the app file.
+
+4
+00:00:11,850 --> 00:00:17,700
+As I mentioned, the app DXC file, if you think back to our Index Dogs Farm, we were importing app
+
+5
+00:00:18,240 --> 00:00:19,950
+from this app file.
+
+6
+00:00:19,950 --> 00:00:26,910
+So app here is actually the App Dogs and what App Dogs is that represents our entire React application.
+
+7
+00:00:28,020 --> 00:00:33,330
+So we're going to dive deep into how this one file doesn't actually contain the entire application as
+
+8
+00:00:33,330 --> 00:00:33,770
+we build it.
+
+9
+00:00:33,960 --> 00:00:39,240
+It's just that right now this is the main bulk of what the application represents because the application
+
+10
+00:00:39,240 --> 00:00:39,870
+is very simple.
+
+11
+00:00:39,870 --> 00:00:43,560
+It's really much just this part of the website.
+
+12
+00:00:44,430 --> 00:00:51,210
+So if you look at it, all it is with react is that we are importing the logo, which is the logo to
+
+13
+00:00:51,330 --> 00:00:55,640
+SVG, and we are also importing our Abduct CSV file.
+
+14
+00:00:55,650 --> 00:01:01,800
+So this is also generated for us and it's what makes the logo spin and gives the background color and
+
+15
+00:01:01,800 --> 00:01:03,810
+then makes these the certain sizes that they are.
+
+16
+00:01:04,080 --> 00:01:06,030
+That's all the CSS that's listed in here.
+
+17
+00:01:06,690 --> 00:01:09,120
+So by importing it, we're saying, Oh, I want you to apply this.
+
+18
+00:01:09,120 --> 00:01:09,600
+Yes.
+
+19
+00:01:09,960 --> 00:01:11,910
+So that's being applied to this website now.
+
+20
+00:01:13,250 --> 00:01:19,790
+Here you'll notice that there is this function, and this is very important because in React React is
+
+21
+00:01:19,790 --> 00:01:24,200
+pretty much just using functions to return the amount.
+
+22
+00:01:24,380 --> 00:01:25,010
+That's all it is.
+
+23
+00:01:25,790 --> 00:01:30,830
+This code is just some generic function called app that returns you.
+
+24
+00:01:30,890 --> 00:01:38,960
+This specific HTML that represents this function of app, and you can see this app function as a component.
+
+25
+00:01:39,590 --> 00:01:41,000
+So what is a component?
+
+26
+00:01:41,270 --> 00:01:49,280
+A component is pretty much a self-contained piece of code that returns some visual UI representation
+
+27
+00:01:49,280 --> 00:01:54,230
+of HTML UI being this thing that we can see and interact with.
+
+28
+00:01:54,830 --> 00:01:59,780
+Now, as we know with websites, anything we interact with is a combination of HMRC, RSS and JavaScript.
+
+29
+00:01:59,960 --> 00:02:00,950
+So this is no different here.
+
+30
+00:02:01,100 --> 00:02:04,370
+It's just that all of this is contained within this function.
+
+31
+00:02:05,180 --> 00:02:08,330
+So inside of here, if you look at this, this is pretty much just basic HMO.
+
+32
+00:02:08,340 --> 00:02:13,580
+We have a div, we have a header, we have an image and this image is being passed the source of our
+
+33
+00:02:13,580 --> 00:02:14,120
+logo.
+
+34
+00:02:14,360 --> 00:02:18,500
+So our logo as which is just this icon that is spinning.
+
+35
+00:02:19,580 --> 00:02:23,690
+And this image is being rendered inside of this header HDMI component.
+
+36
+00:02:24,050 --> 00:02:29,180
+And then there are some p tag here with some text inside, and then there's an anchor tag that points
+
+37
+00:02:29,180 --> 00:02:35,020
+to learn react very simple HTML and this function is essentially returning this demo.
+
+38
+00:02:35,870 --> 00:02:41,480
+So that's really all that's happening is that inside of index, Jess React is just saying, Oh, I want
+
+39
+00:02:41,480 --> 00:02:46,400
+you to render this app, and here this looks like an HDMI tag.
+
+40
+00:02:46,700 --> 00:02:53,690
+And the reason for that is because using React Dom were saying, Oh OK, this HTML tag is some function
+
+41
+00:02:53,690 --> 00:02:56,330
+code that will return us more.
+
+42
+00:02:56,570 --> 00:03:01,290
+Him, which is exactly what app JS is, it's returning us HD marker.
+
+43
+00:03:02,360 --> 00:03:06,710
+So what we're looking at here is really just the HTML that's being rendered on the page.
+
+44
+00:03:07,190 --> 00:03:13,370
+And if we update this, let's say I update this tag to say hello, my name is Yehovah.
+
+45
+00:03:13,910 --> 00:03:21,200
+If I save this now, if I go back here again, create racked up is just rebuilding and it is updating
+
+46
+00:03:21,200 --> 00:03:23,780
+this text now to say Hello, my name is e.y.
+
+47
+00:03:23,780 --> 00:03:29,960
+You saw it's pretty automatic, but here what we're just seeing is that that's really all react is really
+
+48
+00:03:30,440 --> 00:03:36,620
+it's just code, so a function or a class, which we'll learn about later, that returns us back.
+
+49
+00:03:37,010 --> 00:03:37,370
+HTML.
+
+50
+00:03:38,180 --> 00:03:44,780
+That's really all react is if you really want to think about the very barebones of React, it's just
+
+51
+00:03:45,110 --> 00:03:47,810
+these helper functions that help us return HTML.
+
+52
+00:03:47,810 --> 00:03:56,180
+So it allows us to build websites and these UI in a very efficient componentes way components once again
+
+53
+00:03:56,180 --> 00:04:01,490
+being the self-contained representations of HTML, CSS and JavaScript.
+
+54
+00:04:02,370 --> 00:04:04,520
+So this is really all that's happening here.
+
+55
+00:04:05,470 --> 00:04:10,780
+So with that, you pretty much understand actually all that React app has given us some of the more
+
+56
+00:04:10,780 --> 00:04:13,880
+nuanced things that go on, such as tests and the progressive web app stuff.
+
+57
+00:04:13,900 --> 00:04:18,760
+We'll explain later, but as far as the main bulk of what we're going to work on when we start converting
+
+58
+00:04:18,760 --> 00:04:24,400
+this create racked up application over to the Monster Rolodex project is just going to be around writing
+
+59
+00:04:24,400 --> 00:04:29,260
+these functions are these classes that return us back each demo, and that's all it is.
+
+60
+00:04:30,160 --> 00:04:32,200
+So now that you understand what create React app does?
+
+61
+00:04:32,290 --> 00:04:34,840
+There is one caveat I must mention before moving forward.
+
+62
+00:04:35,170 --> 00:04:39,220
+So a lot of the videos were done using an older version of Create React app.
+
+63
+00:04:39,520 --> 00:04:43,630
+Right now, I'm actually speaking to you in the present with the latest version of Create racked up.
+
+64
+00:04:44,080 --> 00:04:48,520
+So when you go through, you'll notice that some of these files are slightly different, but honestly,
+
+65
+00:04:48,520 --> 00:04:51,640
+it's so insignificant it's pretty much all the exact same.
+
+66
+00:04:51,850 --> 00:04:54,970
+It's just that a couple of things have been tweaked and the placements are a little different.
+
+67
+00:04:54,970 --> 00:04:59,500
+But all the concepts you learn and everything that you see is going to largely remain the same.
+
+68
+00:04:59,500 --> 00:05:01,930
+So definitely don't get scared if you see it.
+
+69
+00:05:02,260 --> 00:05:08,080
+Just understand that all the core concepts that you have are already now fully explained as to what
+
+70
+00:05:08,080 --> 00:05:09,070
+create React app is doing.
+
+71
+00:05:09,220 --> 00:05:10,960
+The older versions are doing the exact same thing.
+
+72
+00:05:10,970 --> 00:05:16,180
+It's just that create React app and Facebook like to change the way that they build things every once
+
+73
+00:05:16,180 --> 00:05:16,630
+in a while.
+
+74
+00:05:16,870 --> 00:05:21,520
+Not necessarily because it's more optimized, but sometimes just because they want to introduce some
+
+75
+00:05:21,520 --> 00:05:22,590
+things or remove some things.
+
+76
+00:05:22,750 --> 00:05:24,190
+But nothing is that significant.
+
+77
+00:05:24,460 --> 00:05:28,060
+99 percent of everything is largely the exact same.
+
+78
+00:05:28,780 --> 00:05:34,780
+So now that you understand this, let's start actually building out our monster's Rolodex project and
+
+79
+00:05:34,780 --> 00:05:37,810
+getting really into the meat of our React application.
+
+80
+00:05:38,620 --> 00:05:45,400
+So before we start doing that, once again, Andre is going to just quickly dive into why you should
+
+81
+00:05:45,400 --> 00:05:47,740
+not eject by showing you what happens when you eject.
+
+82
+00:05:48,190 --> 00:05:51,100
+Once again, this is just a better understanding of what it is that our code is doing.
+
+83
+00:05:51,640 --> 00:05:57,520
+But here again, you understand that all react is is just functions that return a demo.
+
+84
+00:05:57,820 --> 00:05:58,690
+That's really all it is.
+
+85
+00:05:59,470 --> 00:06:02,320
+So with that, let's move to the next video.

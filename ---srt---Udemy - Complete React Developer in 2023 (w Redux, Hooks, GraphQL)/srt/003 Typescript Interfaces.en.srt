@@ -1,0 +1,511 @@
+1
+00:00:00,360 --> 00:00:01,200
+Welcome back, everyone.
+
+2
+00:00:01,890 --> 00:00:08,430
+In the last video we learned about how to type values in this video, we are going to start typing out
+
+3
+00:00:08,550 --> 00:00:12,330
+this actual component where we're receiving these props.
+
+4
+00:00:13,620 --> 00:00:18,960
+So one thing I want to talk about is typing objects as well as typing functions.
+
+5
+00:00:19,560 --> 00:00:20,880
+Let's start with typing functions.
+
+6
+00:00:21,480 --> 00:00:27,720
+When we think about this functional component, this is really, as we know, a function that has a
+
+7
+00:00:27,720 --> 00:00:30,780
+specific return of some kind of HDMI element.
+
+8
+00:00:31,590 --> 00:00:35,790
+Other than that, nothing prevents it from being just a normal function.
+
+9
+00:00:36,760 --> 00:00:38,050
+When you want to type a function.
+
+10
+00:00:39,380 --> 00:00:41,510
+The way that you have to type the signature.
+
+11
+00:00:41,960 --> 00:00:44,840
+So here, let's say we were typing some kind of function.
+
+12
+00:00:47,280 --> 00:00:49,530
+We don't actually know what this function returns yet.
+
+13
+00:00:49,560 --> 00:00:51,180
+This is just a placeholder for now.
+
+14
+00:00:51,690 --> 00:00:53,010
+But as we know, we're typing.
+
+15
+00:00:53,130 --> 00:00:54,210
+We use the colon.
+
+16
+00:00:54,450 --> 00:00:58,140
+And then here we need to define the actual function itself.
+
+17
+00:00:58,770 --> 00:01:04,170
+So if you think about the conditions of a function, important things of the function are the parameters
+
+18
+00:01:04,170 --> 00:01:07,740
+that it receives and then the return value of the function.
+
+19
+00:01:08,710 --> 00:01:13,030
+A function only cares about the types internally to itself.
+
+20
+00:01:13,150 --> 00:01:18,910
+When it receives properties, it has to receive the actual types that it's expecting to receive.
+
+21
+00:01:19,300 --> 00:01:24,820
+So you want to type the parameters coming in as far as TypeScript is concerned.
+
+22
+00:01:24,940 --> 00:01:28,450
+Whatever happens in the function is not TypeScript business.
+
+23
+00:01:28,750 --> 00:01:33,940
+But what comes out of that function as a return value, that is TypeScript business, because TypeScript
+
+24
+00:01:33,940 --> 00:01:39,580
+needs to ensure that whatever you're returning from the function matches the type that you tell is going
+
+25
+00:01:39,580 --> 00:01:40,120
+to return.
+
+26
+00:01:40,930 --> 00:01:48,910
+So the actual syntax of typing is going to be a curly bracket representing the parameters and then a
+
+27
+00:01:48,910 --> 00:01:52,210
+fat arrow followed by the actual return type.
+
+28
+00:01:52,960 --> 00:01:58,390
+Now let's say we have a function and this function gets three values A, B and C.
+
+29
+00:02:00,130 --> 00:02:05,890
+Similarly, what you're going to type is going to also be A, B and C.
+
+30
+00:02:06,400 --> 00:02:11,440
+But here, what you're going to do is you are going to define the types themselves for these parameter
+
+31
+00:02:11,440 --> 00:02:12,010
+values.
+
+32
+00:02:12,580 --> 00:02:17,770
+So first, we actually need to match each variable in the parameter A, B and C.
+
+33
+00:02:18,910 --> 00:02:25,660
+What you're then going to do is for these parameters, you're also going to use a colon, and this colon
+
+34
+00:02:25,660 --> 00:02:28,870
+is going to say what these values are expected to be.
+
+35
+00:02:29,650 --> 00:02:34,270
+So here, let's say for a it's a string, let's say for B, it's a number.
+
+36
+00:02:34,720 --> 00:02:38,590
+And let's say for C, it's a Boolean value.
+
+37
+00:02:40,020 --> 00:02:45,420
+What you need to return from this is now dependent on what the actual return of the function is.
+
+38
+00:02:46,080 --> 00:02:51,720
+Let's say, for example, after all of these different calculations, what we return back is also a
+
+39
+00:02:51,720 --> 00:02:52,290
+boolean.
+
+40
+00:02:52,590 --> 00:02:54,420
+Let's say it's true, for example.
+
+41
+00:02:55,850 --> 00:03:02,690
+What you need to do here is that you need to return a boolean so you can just state that the value you
+
+42
+00:03:02,690 --> 00:03:06,200
+can expect to come back from this function is going to be a boolean.
+
+43
+00:03:07,100 --> 00:03:09,500
+But we also have functions that don't have returns.
+
+44
+00:03:10,250 --> 00:03:13,670
+Sometimes we just run a function and it doesn't actually return anything.
+
+45
+00:03:14,360 --> 00:03:18,410
+If that's the case, then what we want to say is that we returned back.
+
+46
+00:03:18,410 --> 00:03:20,810
+Void and with void.
+
+47
+00:03:21,020 --> 00:03:25,910
+Void is a special type that essentially says, Hey, this is going to be nothing.
+
+48
+00:03:26,000 --> 00:03:28,490
+It's very much like undefined in JavaScript.
+
+49
+00:03:28,940 --> 00:03:32,630
+You just expect no return back, no specific type.
+
+50
+00:03:33,440 --> 00:03:37,010
+And now with this, that's how you type A function.
+
+51
+00:03:37,670 --> 00:03:42,320
+There are more complexities of typing functions that we will uncover as we go along, but this is pretty
+
+52
+00:03:42,320 --> 00:03:44,270
+much the basics as far as we are concerned.
+
+53
+00:03:45,230 --> 00:03:51,200
+So now the reason why we need to learn how to type a function is because we have these three types where
+
+54
+00:03:51,200 --> 00:03:54,350
+the third one is a function because it's a handler.
+
+55
+00:03:55,880 --> 00:04:03,770
+But what you'll also notice is that this is actually a structure statement inside of our function.
+
+56
+00:04:04,580 --> 00:04:09,260
+So what we're de structuring off is actually one variable called props.
+
+57
+00:04:09,920 --> 00:04:12,700
+And props, as we know, is a object.
+
+58
+00:04:12,710 --> 00:04:14,570
+So how do we type objects?
+
+59
+00:04:15,990 --> 00:04:20,700
+Inside of TypeScript, you have two options for typing objects, and they're very unique.
+
+60
+00:04:21,600 --> 00:04:26,940
+You actually have to define them ahead of time as either a type or as a interface.
+
+61
+00:04:27,950 --> 00:04:30,800
+Now timezone interfaces are very similar.
+
+62
+00:04:30,830 --> 00:04:36,860
+They used to be more different when TypeScript first came out, but over time their overlap is significantly
+
+63
+00:04:37,340 --> 00:04:38,000
+greater now.
+
+64
+00:04:39,430 --> 00:04:45,700
+The key golden rule to remember about types versus interfaces is that interfaces are extendable very
+
+65
+00:04:45,700 --> 00:04:47,750
+similar to class components.
+
+66
+00:04:48,340 --> 00:04:54,280
+If you remember with class components, you can extend one class component from another and inherit
+
+67
+00:04:54,310 --> 00:04:57,820
+all of that class components, original methods.
+
+68
+00:04:58,390 --> 00:05:01,750
+Similarly with interfaces, you can actually do the same thing.
+
+69
+00:05:02,290 --> 00:05:04,360
+So let's say we were to define an interface.
+
+70
+00:05:04,780 --> 00:05:10,000
+First, use the keyword interface and then you have to write the name of this interface that you want
+
+71
+00:05:10,000 --> 00:05:10,420
+to call it.
+
+72
+00:05:10,450 --> 00:05:16,180
+So for us, if it was search box properties, then we would say I because all interfaces start with
+
+73
+00:05:16,180 --> 00:05:18,940
+an AI to designate that they are a interface.
+
+74
+00:05:19,540 --> 00:05:22,600
+I search box props.
+
+75
+00:05:23,050 --> 00:05:24,790
+This is some kind of object.
+
+76
+00:05:25,510 --> 00:05:31,630
+Then you put a curly braces defining to this typescript file that this is now interface.
+
+77
+00:05:32,170 --> 00:05:37,810
+The inside is going to represent the shape of the actual object you're trying to define.
+
+78
+00:05:38,500 --> 00:05:44,080
+So here, because we're looking at class named placeholder and on change handler, we would say class
+
+79
+00:05:44,080 --> 00:05:44,410
+name.
+
+80
+00:05:45,720 --> 00:05:52,350
+Now class name needs to point not to a value, but the actual type, which we know is a string.
+
+81
+00:05:54,460 --> 00:06:00,610
+So that is going to be how you type these key value pairs inside of TypeScript with an interface.
+
+82
+00:06:01,060 --> 00:06:03,220
+Similarly, we could say placeholder.
+
+83
+00:06:04,550 --> 00:06:06,320
+Which is also a string.
+
+84
+00:06:07,900 --> 00:06:12,970
+Now, if this place holder is an optional property, you can put a question mark here.
+
+85
+00:06:13,300 --> 00:06:19,930
+This will now tell TypeScript that what you can get here is either string or null.
+
+86
+00:06:20,470 --> 00:06:26,890
+It's essentially the equivalent because with an optional placeholder value, we're essentially declaring
+
+87
+00:06:26,920 --> 00:06:31,720
+to TypeScript, Hey, you can expect a string, but I might not always give it to you.
+
+88
+00:06:33,610 --> 00:06:37,210
+Now as for the actual on chain Chandler.
+
+89
+00:06:38,240 --> 00:06:43,400
+The reason why I started this conversation about types and interfaces is because I was talking about
+
+90
+00:06:43,670 --> 00:06:45,650
+interfaces are extensible.
+
+91
+00:06:46,640 --> 00:06:47,780
+So what I mean by this.
+
+92
+00:06:47,960 --> 00:06:50,240
+Okay, here we have our props.
+
+93
+00:06:50,510 --> 00:06:51,610
+We've typed two of them.
+
+94
+00:06:51,620 --> 00:06:53,360
+We haven't typed the on change handler.
+
+95
+00:06:53,750 --> 00:06:59,210
+We have this interface that defines the object shape and the corresponding values that we're expecting
+
+96
+00:06:59,660 --> 00:07:01,490
+if we do colon.
+
+97
+00:07:01,610 --> 00:07:03,770
+And then I search box props here.
+
+98
+00:07:04,070 --> 00:07:09,230
+So we're saying that the props that you're going to receive is of this type of I search box props.
+
+99
+00:07:09,620 --> 00:07:14,360
+You'll notice that we see on change handler does not exist on our type.
+
+100
+00:07:15,300 --> 00:07:21,240
+What we could do, of course, is simply just add it as the third parameter here inside of this interface.
+
+101
+00:07:21,780 --> 00:07:28,770
+But when I say that you can extend essentially you can do this actually a couple of ways.
+
+102
+00:07:29,700 --> 00:07:34,710
+Let's say, for example, we had some random additional interface.
+
+103
+00:07:34,800 --> 00:07:37,350
+Let's call it change handler.
+
+104
+00:07:37,860 --> 00:07:41,610
+So I change handler props.
+
+105
+00:07:42,360 --> 00:07:45,990
+And this takes some on change handler.
+
+106
+00:07:48,030 --> 00:07:54,340
+As a prop and what it receives is some actual function definition.
+
+107
+00:07:54,360 --> 00:07:58,950
+So let's say it's a which is a string and then it returns back void.
+
+108
+00:07:59,550 --> 00:08:00,780
+Let's use that as the example.
+
+109
+00:08:01,730 --> 00:08:10,160
+What you can do is you can actually say interface I search box prompts extends I change handler and
+
+110
+00:08:10,160 --> 00:08:17,150
+now what you'll see happens is that this I search box Bob is now passing because what happens is that
+
+111
+00:08:17,540 --> 00:08:26,180
+or I search box props is extending what ever was inside of here so this is actually getting added into
+
+112
+00:08:26,180 --> 00:08:28,880
+this I search box props props as well.
+
+113
+00:08:29,150 --> 00:08:33,980
+So we're inheriting whatever additional props were on this.
+
+114
+00:08:33,980 --> 00:08:36,650
+I change handler props as far as typing is concerned.
+
+115
+00:08:38,370 --> 00:08:43,890
+Another thing that you can do with interfaces is you can actually overload them.
+
+116
+00:08:44,490 --> 00:08:52,440
+So if we write this twice, TypeScript under the hood, it is going to also combine these together so
+
+117
+00:08:52,440 --> 00:08:57,540
+that your AI search box prompts now contains all three of these values.
+
+118
+00:08:58,700 --> 00:09:05,960
+This is designed pretty much mostly for object oriented programming style inside of JavaScript.
+
+119
+00:09:06,230 --> 00:09:12,260
+So most likely you're writing Node or you're writing some angular code, which is also more object oriented.
+
+120
+00:09:12,710 --> 00:09:19,100
+But the main idea with TypeScript here is that it's giving you this ability to write interfaces that
+
+121
+00:09:19,100 --> 00:09:25,670
+are extensible as well as composable through this overloading, which is where you're saying, hey,
+
+122
+00:09:25,850 --> 00:09:27,920
+I'm going to define this more than one time.
+
+123
+00:09:27,920 --> 00:09:31,670
+I just want you to combine all of them together into one final shape.
+
+124
+00:09:32,770 --> 00:09:34,180
+This is interfaces.
+
+125
+00:09:34,690 --> 00:09:37,180
+The alternative is to write types.
+
+126
+00:09:37,400 --> 00:09:42,940
+Types are very similar to interfaces, but we lack both of these functionalities.
+
+127
+00:09:43,210 --> 00:09:47,830
+We do not have the ability to overload and we do not have the ability to extend.
+
+128
+00:09:48,490 --> 00:09:50,830
+So we'll talk about types in the next video.

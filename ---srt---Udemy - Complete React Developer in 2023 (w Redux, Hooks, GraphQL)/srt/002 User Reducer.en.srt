@@ -1,0 +1,1023 @@
+1
+00:00:00,270 --> 00:00:01,180
+Welcome back, everyone.
+
+2
+00:00:01,890 --> 00:00:05,730
+In this video, we are going to learn about how reducers look as code.
+
+3
+00:00:06,240 --> 00:00:10,920
+We're going to start slowly replacing our contexts to reducers for the practice.
+
+4
+00:00:11,310 --> 00:00:18,810
+And then we're going to really understand how we can use reducers inside of our context to improve upon
+
+5
+00:00:18,810 --> 00:00:19,980
+what we already have.
+
+6
+00:00:20,670 --> 00:00:22,050
+Sometimes it's an improvement.
+
+7
+00:00:22,350 --> 00:00:27,540
+Sometimes it's really just the equivalent of what we already have inside of contexts.
+
+8
+00:00:27,720 --> 00:00:33,210
+But the key thing is that we want to understand reducers, so we know their place inside of our ecosystem
+
+9
+00:00:33,990 --> 00:00:34,650
+to begin with.
+
+10
+00:00:34,650 --> 00:00:38,880
+Conceptually, reducers as code are very simple.
+
+11
+00:00:39,390 --> 00:00:43,890
+They're pretty much just functions that return back an object.
+
+12
+00:00:44,370 --> 00:00:45,930
+So here are constant.
+
+13
+00:00:46,050 --> 00:00:53,700
+User reducer is just a function and what it will do is give us back some object that has the shape of
+
+14
+00:00:53,700 --> 00:00:55,470
+the data that we want to store.
+
+15
+00:00:56,220 --> 00:01:00,570
+In our particular case with this object, we want to store anything related to the user.
+
+16
+00:01:01,110 --> 00:01:03,270
+So for us, we already store current user.
+
+17
+00:01:03,690 --> 00:01:10,710
+So we can just make sure that current user is a property that we also store and return inside of this
+
+18
+00:01:10,710 --> 00:01:11,160
+object.
+
+19
+00:01:11,760 --> 00:01:15,810
+So it could be now it could be some object with whatever values.
+
+20
+00:01:16,200 --> 00:01:17,910
+All of that is up to you.
+
+21
+00:01:18,480 --> 00:01:23,970
+But for us, we know that our current user is either going to be null or that user object that we get
+
+22
+00:01:23,970 --> 00:01:25,290
+back from Firebase.
+
+23
+00:01:25,770 --> 00:01:31,380
+So for us, we know that that's what we'll want to store and we want to make sure then that current
+
+24
+00:01:31,380 --> 00:01:37,980
+user is on this object and that this object reflects whatever the actual current value is going to be.
+
+25
+00:01:38,370 --> 00:01:39,480
+Nothing difference over.
+
+26
+00:01:41,000 --> 00:01:47,180
+The thing about reducers is that these reducers change the object that we get back on the properties
+
+27
+00:01:47,180 --> 00:01:51,020
+and the values inside them based on the action.
+
+28
+00:01:51,920 --> 00:01:56,450
+But we also received something else, which is the current state.
+
+29
+00:01:57,080 --> 00:01:59,900
+So as I mentioned, reducers return, turn back an object.
+
+30
+00:02:00,050 --> 00:02:02,990
+This object is the state in the reducer.
+
+31
+00:02:03,770 --> 00:02:08,390
+So what we get back is actually this current value from the reducer.
+
+32
+00:02:08,750 --> 00:02:13,520
+And the reason why is sometimes you want to reference these values in order to derive what the next
+
+33
+00:02:13,520 --> 00:02:14,330
+value should be.
+
+34
+00:02:14,840 --> 00:02:21,230
+So the reducer gives that to you, and based off the state and the action is how we can determine,
+
+35
+00:02:21,230 --> 00:02:26,690
+oh, what type of object do we return or not, what type, but what are the values on this object that
+
+36
+00:02:26,690 --> 00:02:27,530
+we want to give back?
+
+37
+00:02:28,130 --> 00:02:29,270
+And that's really all it is.
+
+38
+00:02:29,570 --> 00:02:32,960
+Reducers are just these functions that always return a new object.
+
+39
+00:02:33,740 --> 00:02:38,690
+And as we know, the reason why we always return a new object is because that is how React determines
+
+40
+00:02:38,690 --> 00:02:39,920
+that something has changed.
+
+41
+00:02:40,130 --> 00:02:43,550
+So if your reducers change, then this object must be different.
+
+42
+00:02:44,760 --> 00:02:45,300
+Makes sense.
+
+43
+00:02:45,330 --> 00:02:46,980
+Okay, let's move on.
+
+44
+00:02:47,880 --> 00:02:51,690
+So how do we utilize these reducers inside of our context?
+
+45
+00:02:52,170 --> 00:02:58,080
+Well, it turns out we actually get a use reducer hook and the user reducer hook is very similar to
+
+46
+00:02:58,080 --> 00:02:58,710
+you state.
+
+47
+00:02:59,430 --> 00:03:03,430
+So let's start commenting this out so that we can start utilizing.
+
+48
+00:03:04,400 --> 00:03:05,480
+In order for this to work.
+
+49
+00:03:05,840 --> 00:03:12,440
+Remember, context still is context, because the context is what values that we expose.
+
+50
+00:03:13,310 --> 00:03:17,460
+The only difference now is that how we are storing current user is a little different.
+
+51
+00:03:17,480 --> 00:03:19,880
+We're not using use state to store that value anymore.
+
+52
+00:03:20,330 --> 00:03:22,310
+We're now using a reducer.
+
+53
+00:03:22,820 --> 00:03:27,770
+So the first thing we need to do is we need to create a reducer function.
+
+54
+00:03:28,250 --> 00:03:35,150
+So I'm going to say user reducer is equal to a function that gets the state and the action, as I mentioned.
+
+55
+00:03:36,050 --> 00:03:39,800
+And then it's going to return back some object.
+
+56
+00:03:40,370 --> 00:03:41,270
+So let's figure that out.
+
+57
+00:03:42,140 --> 00:03:43,010
+First things first.
+
+58
+00:03:43,430 --> 00:03:47,510
+We know that on the action there are only two possible properties.
+
+59
+00:03:47,660 --> 00:03:48,560
+There's either a type.
+
+60
+00:03:49,680 --> 00:03:51,210
+And then there's maybe an optional payload.
+
+61
+00:03:51,570 --> 00:03:53,700
+So let's structure those off the action.
+
+62
+00:03:55,310 --> 00:04:02,030
+Now what we need to do is we need to conditionally return back an object with those values depending
+
+63
+00:04:02,030 --> 00:04:02,630
+on the type.
+
+64
+00:04:03,410 --> 00:04:07,040
+So let's talk about what kind of actions we have, because that's what the type represents.
+
+65
+00:04:08,010 --> 00:04:14,910
+We know that we have some action that is set current user because when we get that current user, what
+
+66
+00:04:14,910 --> 00:04:20,160
+we want to do is want to say, hey, I want you to give me back an object where the current user is
+
+67
+00:04:20,160 --> 00:04:26,790
+equal to the payload because as I mentioned, the payload is going to store the value that is important
+
+68
+00:04:26,850 --> 00:04:31,230
+for this reducer to know what to update this state value with.
+
+69
+00:04:31,770 --> 00:04:35,730
+So if we're saying, hey, I want you to set current user, well, what am I going to sell it to?
+
+70
+00:04:36,390 --> 00:04:40,980
+Any information related to what to set that to is going to be in the payload or the payload itself.
+
+71
+00:04:42,180 --> 00:04:44,820
+So here what we can really think about is that okay.
+
+72
+00:04:46,470 --> 00:04:49,740
+We want to say based off this type, I want to return some object.
+
+73
+00:04:49,740 --> 00:04:51,540
+And as I mentioned, there's some set current user.
+
+74
+00:04:52,140 --> 00:04:54,780
+So what will use is what's known as a switch statement.
+
+75
+00:04:55,590 --> 00:04:59,760
+Now a switch statement is a special block of code where you pass the switch.
+
+76
+00:04:59,760 --> 00:05:03,990
+Some value or passing type in this particular case are type string.
+
+77
+00:05:04,560 --> 00:05:09,060
+What it will do is then it'll say, okay, inside you can give me a bunch of different cases.
+
+78
+00:05:09,600 --> 00:05:13,560
+A case being what you expect, the value of what you passed me to be.
+
+79
+00:05:14,070 --> 00:05:19,620
+So in our particular case, we can say, hey, if type is of the string set current user.
+
+80
+00:05:20,690 --> 00:05:24,230
+Then what I want you to do for me is run the code right here.
+
+81
+00:05:26,080 --> 00:05:32,200
+And then you also have a default case, which is to say, hey, if none of these cases match the type
+
+82
+00:05:32,210 --> 00:05:34,690
+value that I got, then run the default.
+
+83
+00:05:36,120 --> 00:05:41,700
+So here inside of our case, we're going to say, hey, if the case is set current user, then what
+
+84
+00:05:41,700 --> 00:05:44,040
+I want you to do is return for me.
+
+85
+00:05:44,040 --> 00:05:45,270
+Current user.
+
+86
+00:05:46,730 --> 00:05:47,840
+Which is equal to the payload.
+
+87
+00:05:48,050 --> 00:05:50,360
+So it's a new object returned by this object.
+
+88
+00:05:50,450 --> 00:05:52,100
+Current user equals payload.
+
+89
+00:05:53,920 --> 00:05:55,900
+So what about the default value here?
+
+90
+00:05:57,070 --> 00:06:04,270
+Well, what we know is that reducer, this user reducer should only be receiving types that it recognizes.
+
+91
+00:06:04,540 --> 00:06:10,540
+If for some reason we get a type that doesn't match any of our case statements, then we need to throw
+
+92
+00:06:10,540 --> 00:06:15,100
+an error because we need to tell our code somehow.
+
+93
+00:06:15,100 --> 00:06:18,610
+Hey, for some reason, you gave me a type that I've never seen before.
+
+94
+00:06:19,620 --> 00:06:26,700
+And we want to do this because this reducer should only be receiving actions with types that we recognize.
+
+95
+00:06:27,000 --> 00:06:30,060
+Otherwise, it's some kind of silent error.
+
+96
+00:06:30,930 --> 00:06:37,290
+So here I'm going to say, hey, there is an error of the unknown handle type in the user reducer.
+
+97
+00:06:38,160 --> 00:06:41,730
+So this will just help us track whenever we see something like this.
+
+98
+00:06:43,750 --> 00:06:47,080
+Now, if we wanted to have more cases, we can definitely do so.
+
+99
+00:06:47,110 --> 00:06:50,770
+But for now, we don't even have that many different cases to work with.
+
+100
+00:06:51,190 --> 00:06:52,180
+This is enough for us.
+
+101
+00:06:53,920 --> 00:06:56,950
+So what about this state object?
+
+102
+00:06:57,160 --> 00:06:58,510
+What do we do with the state object?
+
+103
+00:06:59,050 --> 00:07:03,730
+Sometimes you can use the state object to derive your next value.
+
+104
+00:07:04,120 --> 00:07:08,440
+Like, let's say, for example, you imagine we have some kind of increment counter.
+
+105
+00:07:08,470 --> 00:07:13,300
+Let's say this just kept track, for example, of a number.
+
+106
+00:07:13,780 --> 00:07:20,200
+And if you increment and what you're keeping track of is some value that's equal to zero or whatever
+
+107
+00:07:20,200 --> 00:07:20,710
+integer.
+
+108
+00:07:21,310 --> 00:07:26,500
+If you're increasing, then what you want to do is you probably want to increase the previous value
+
+109
+00:07:26,500 --> 00:07:27,220
+by one.
+
+110
+00:07:27,400 --> 00:07:29,320
+So that's what you're setting the new value to.
+
+111
+00:07:29,380 --> 00:07:32,410
+That's one case where the state might be valuable.
+
+112
+00:07:33,160 --> 00:07:37,630
+Another is that on our state, we might actually have multiple values.
+
+113
+00:07:38,080 --> 00:07:42,910
+So imagine if we have some state object where we have yes.
+
+114
+00:07:42,910 --> 00:07:48,730
+Current user, which is equal to null or some kind of Google off object.
+
+115
+00:07:48,730 --> 00:07:49,020
+Right.
+
+116
+00:07:49,030 --> 00:07:49,690
+We know that.
+
+117
+00:07:50,050 --> 00:07:55,210
+But what if we were also keeping track of first name, which might be a string and a last name which
+
+118
+00:07:55,210 --> 00:07:55,960
+might be a string.
+
+119
+00:07:56,500 --> 00:07:59,080
+All important values that are related to a user.
+
+120
+00:07:59,770 --> 00:08:02,680
+On this particular case, if these were values.
+
+121
+00:08:02,800 --> 00:08:06,790
+If we're setting current user, probably first name, last name, we don't want to modify.
+
+122
+00:08:07,120 --> 00:08:10,190
+So then we don't want this to be set in here somehow.
+
+123
+00:08:10,210 --> 00:08:10,480
+Right?
+
+124
+00:08:10,990 --> 00:08:15,730
+So to do that, we're just going to say, okay, I want to spread through the previous state.
+
+125
+00:08:15,730 --> 00:08:20,710
+And what this will do is this will spread in all of the current values for your object, because remember,
+
+126
+00:08:20,710 --> 00:08:26,050
+you're returning a new object and you want all of the previous values except for the ones you modify.
+
+127
+00:08:26,440 --> 00:08:31,090
+So what you're doing here is you're saying, Hey, give me the same values on the previous state object
+
+128
+00:08:31,090 --> 00:08:36,160
+that you had, but anything afterwards I'm going to overwrite and that's really what this is doing.
+
+129
+00:08:37,960 --> 00:08:38,650
+So now.
+
+130
+00:08:39,690 --> 00:08:42,700
+This is how we should always write our cases.
+
+131
+00:08:42,720 --> 00:08:45,330
+Always return an object that spreads to the previous state.
+
+132
+00:08:45,330 --> 00:08:47,940
+And then just update the relevant values that you care about.
+
+133
+00:08:48,830 --> 00:08:53,780
+And then the last thing that we need to do, which I've started up here, is we need to keep track of
+
+134
+00:08:53,810 --> 00:09:00,140
+these variables, these string values, because we don't want to rely on human error to remember what
+
+135
+00:09:00,170 --> 00:09:01,170
+all of these cases are.
+
+136
+00:09:01,190 --> 00:09:06,620
+We want to keep these as some kind of constant that we can access.
+
+137
+00:09:07,130 --> 00:09:10,280
+And I'm going to call this user action types.
+
+138
+00:09:11,090 --> 00:09:16,880
+And this is just an object which has these key value pairs where it's the actual.
+
+139
+00:09:17,830 --> 00:09:18,400
+Value.
+
+140
+00:09:18,400 --> 00:09:22,270
+Some say that current user is equal to the string set.
+
+141
+00:09:22,450 --> 00:09:23,710
+Current user.
+
+142
+00:09:26,940 --> 00:09:33,300
+So now in order to use this, I'm just going to say, hey, if the case is equal to my user action types
+
+143
+00:09:33,420 --> 00:09:34,830
+dot set current user.
+
+144
+00:09:35,750 --> 00:09:38,570
+If this is the case, then do what you need to do.
+
+145
+00:09:39,470 --> 00:09:42,320
+Now, how do we actually utilize our user reducer?
+
+146
+00:09:43,370 --> 00:09:44,290
+So utilize it.
+
+147
+00:09:44,300 --> 00:09:48,650
+We're just going to say, okay, I want to use the use reducer hook.
+
+148
+00:09:49,340 --> 00:09:52,490
+This use reducer hook takes two arguments.
+
+149
+00:09:52,730 --> 00:09:57,380
+The first one is are user reducer or some reducer?
+
+150
+00:09:58,420 --> 00:10:02,200
+And then the second argument is the initial value for the state.
+
+151
+00:10:02,920 --> 00:10:11,560
+In our particular case, our initial state is going to be an object and current user is equal to null
+
+152
+00:10:11,650 --> 00:10:14,770
+because when we initialize our application, we have no current user.
+
+153
+00:10:16,160 --> 00:10:19,430
+And now what do we get back from user reducer?
+
+154
+00:10:20,180 --> 00:10:24,080
+Well, this gives us always two arguments.
+
+155
+00:10:24,470 --> 00:10:26,930
+The first one is the state object.
+
+156
+00:10:27,440 --> 00:10:30,680
+So the current values that's being stored by this reducer.
+
+157
+00:10:31,310 --> 00:10:34,240
+The second is a dispatch function.
+
+158
+00:10:35,160 --> 00:10:36,840
+This dispatch function.
+
+159
+00:10:36,870 --> 00:10:43,500
+The way that it works is that it's a function that whenever you call it, you pass it an action object.
+
+160
+00:10:43,800 --> 00:10:49,890
+So if you want this user reducer to receive an action, you have to call dispatch and dispatch will
+
+161
+00:10:49,890 --> 00:10:55,260
+take that action and then pass it in, where I will then run through the switch statement and update
+
+162
+00:10:55,260 --> 00:10:56,610
+the reducer accordingly.
+
+163
+00:10:57,570 --> 00:11:04,950
+So just for our own sake, let's just modify what we have from use date over so current use it before
+
+164
+00:11:04,950 --> 00:11:06,060
+was being stored on state.
+
+165
+00:11:06,090 --> 00:11:07,500
+Now this is an object.
+
+166
+00:11:07,500 --> 00:11:08,700
+State is a whole object.
+
+167
+00:11:08,790 --> 00:11:16,470
+So we need a structure of current user so we can say const current user is equal to state.
+
+168
+00:11:16,650 --> 00:11:22,530
+Like this we can also de structure directly right off the state like this as well.
+
+169
+00:11:22,860 --> 00:11:23,910
+Both are equally valid.
+
+170
+00:11:25,570 --> 00:11:29,170
+And now our current user function that we're also sharing from our context.
+
+171
+00:11:29,710 --> 00:11:36,580
+Now we need to define it so we can say contacts set current user is equal to some function that gets
+
+172
+00:11:36,580 --> 00:11:38,230
+a user value.
+
+173
+00:11:38,260 --> 00:11:41,530
+This could be null, this could be the auth object or whatever.
+
+174
+00:11:42,220 --> 00:11:45,490
+What we're going to do is that this function dispatches out.
+
+175
+00:11:46,730 --> 00:11:52,730
+A object which has the type of user action type start set current user.
+
+176
+00:11:53,820 --> 00:11:56,280
+And then a payload value of the user.
+
+177
+00:11:57,600 --> 00:12:01,170
+And this is what we need in order for this to work.
+
+178
+00:12:02,230 --> 00:12:09,400
+Now, the main thing, though, about this user provider is that we still get some subscription value
+
+179
+00:12:09,640 --> 00:12:11,680
+for the off state changes from Firebase.
+
+180
+00:12:11,680 --> 00:12:14,470
+And then once that happens, we call that current user.
+
+181
+00:12:14,650 --> 00:12:17,650
+So all of this will still work.
+
+182
+00:12:18,850 --> 00:12:22,510
+It's just that instead of using you state, we're now using a reducer.
+
+183
+00:12:23,980 --> 00:12:25,600
+So let's just get rid of these variables.
+
+184
+00:12:26,800 --> 00:12:28,300
+And now let's save this.
+
+185
+00:12:29,080 --> 00:12:31,090
+And just to make sure that everything's working.
+
+186
+00:12:31,120 --> 00:12:34,030
+Let's also console.log out the current user.
+
+187
+00:12:35,570 --> 00:12:37,370
+And just for safe measure.
+
+188
+00:12:37,380 --> 00:12:38,740
+So we understand our reducer.
+
+189
+00:12:38,750 --> 00:12:41,420
+Let's also console.log out the action.
+
+190
+00:12:45,470 --> 00:12:47,540
+And here I'm also going to log.
+
+191
+00:12:48,560 --> 00:12:50,900
+A string that says dispatched.
+
+192
+00:12:51,170 --> 00:12:56,690
+So now we know every time our views are reduced runs, it's because we have called dispatch somewhere.
+
+193
+00:12:58,110 --> 00:12:59,280
+So going back to our code.
+
+194
+00:13:00,660 --> 00:13:01,080
+Here.
+
+195
+00:13:01,080 --> 00:13:06,450
+What we see is when our app initializes we get no, of course because current user initializes with
+
+196
+00:13:06,450 --> 00:13:08,280
+that null value for current user.
+
+197
+00:13:08,970 --> 00:13:16,830
+And then because of our actual author listener, what happens is that our user, because they're signed
+
+198
+00:13:16,830 --> 00:13:21,450
+in, will get signed in because their off state is being kept for us by Firebase.
+
+199
+00:13:22,020 --> 00:13:28,500
+So then what happens is that it dispatches out a new action of set current user with the payload being
+
+200
+00:13:28,500 --> 00:13:29,370
+the user object.
+
+201
+00:13:29,760 --> 00:13:30,900
+And that's what we see here.
+
+202
+00:13:31,320 --> 00:13:38,520
+Then are current user updates because use reducer as a hook knows oh my reducer values updated because
+
+203
+00:13:38,520 --> 00:13:41,080
+of this action type, I'm responding to that current user.
+
+204
+00:13:41,940 --> 00:13:48,600
+I am then going to generate out a new state object and then this user reducer hook is going to be like,
+
+205
+00:13:48,600 --> 00:13:55,590
+Oh, there's a new reducer value for this actual state object rerun, this whole functional component,
+
+206
+00:13:56,010 --> 00:14:02,760
+which in turn then dispatches out a current user update to all of the listeners that are hooked into
+
+207
+00:14:02,760 --> 00:14:03,360
+this context.
+
+208
+00:14:04,140 --> 00:14:05,520
+So this is the flow.
+
+209
+00:14:06,000 --> 00:14:07,320
+It's very similar to use state.
+
+210
+00:14:07,680 --> 00:14:13,230
+Whenever set state gets called, state gets updated and the functional component runs with reducer.
+
+211
+00:14:13,230 --> 00:14:20,160
+Whenever dispatch gets called and a new state object is returned, then we also will rerun this functional
+
+212
+00:14:20,160 --> 00:14:20,550
+component.
+
+213
+00:14:21,030 --> 00:14:22,770
+So all of this is pretty much the same.
+
+214
+00:14:23,520 --> 00:14:29,160
+And one quick thing I also want to do is I want to show you what happens if we run the incorrect type.
+
+215
+00:14:29,280 --> 00:14:33,390
+So I'm just going to say this as a string of not handled type.
+
+216
+00:14:34,730 --> 00:14:40,640
+If I save this now, again, we're going to go through the same flow, but we throw an error.
+
+217
+00:14:41,000 --> 00:14:46,910
+So here we see an error that says that, hey, there's an or type of not handle type in our user reducer.
+
+218
+00:14:47,420 --> 00:14:51,770
+So exactly what we want to see because we should never have code that will fire on handle types.
+
+219
+00:14:55,230 --> 00:14:55,800
+And that's it.
+
+220
+00:14:56,130 --> 00:14:58,050
+Now our code is working.
+
+221
+00:14:59,240 --> 00:15:04,520
+Now you might be wondering to yourself, why did I include all of this boilerplate?
+
+222
+00:15:04,550 --> 00:15:08,700
+Why did we write all this additional stuff when you state was doing it so easily for us?
+
+223
+00:15:08,720 --> 00:15:11,150
+It seems like this is much more convoluted.
+
+224
+00:15:11,930 --> 00:15:15,860
+Now, again, as I mentioned, I just picked a simple user context for us to learn.
+
+225
+00:15:16,190 --> 00:15:21,080
+And the reason for this, of course, is because there's so much here we learned about action types.
+
+226
+00:15:21,080 --> 00:15:22,850
+We learn about the reducer function.
+
+227
+00:15:23,120 --> 00:15:25,250
+We learned about use reducer as a hook.
+
+228
+00:15:25,250 --> 00:15:27,110
+We learned about dispatching actions.
+
+229
+00:15:27,110 --> 00:15:31,250
+There's so many little things that we have to learn just to get this reducer working.
+
+230
+00:15:31,550 --> 00:15:34,850
+So I wanted to pick the most basic example, and you're absolutely right.
+
+231
+00:15:34,940 --> 00:15:40,970
+Most of the time, for a context, this simple or just one current user and one setter function, you
+
+232
+00:15:40,970 --> 00:15:45,320
+don't want to use reducer, you can just use you state perfectly fine.
+
+233
+00:15:45,950 --> 00:15:53,810
+But the value of using reducers becomes more apparent in more complex cases, such as our cart context
+
+234
+00:15:54,350 --> 00:16:00,200
+and reducers have actually been proven to scale quite well when it comes to state management, hence
+
+235
+00:16:00,200 --> 00:16:02,600
+the popularity of libraries like Redux.
+
+236
+00:16:03,260 --> 00:16:08,990
+So my challenge to you is actually to take what you've learned in this video and try and modify the
+
+237
+00:16:08,990 --> 00:16:13,190
+car context yourself before moving on to the subsequent videos where we will do it together.
+
+238
+00:16:13,640 --> 00:16:18,620
+And don't worry, reducers have a notorious reputation for being difficult to learn.
+
+239
+00:16:18,980 --> 00:16:21,620
+For me, it was very difficult when I first picked it up as well.
+
+240
+00:16:21,890 --> 00:16:27,620
+But again, I've seen the benefits and I've worked on numerous projects at massive scale in enterprise
+
+241
+00:16:27,620 --> 00:16:31,150
+applications where it really proves itself to be incredibly useful.
+
+242
+00:16:31,160 --> 00:16:36,020
+So it's a very, very valuable tool to learn and a very valuable pattern to understand.
+
+243
+00:16:36,380 --> 00:16:37,910
+All of the pieces are there already.
+
+244
+00:16:37,910 --> 00:16:39,890
+We've gone through it with our user reducer.
+
+245
+00:16:40,040 --> 00:16:42,920
+It's up to you to see if you can figure out how to piece it together.
+
+246
+00:16:43,160 --> 00:16:44,600
+And struggle is good.
+
+247
+00:16:44,600 --> 00:16:49,550
+If it's challenging, you'll definitely learn little nuances in it while you're trying to convert the
+
+248
+00:16:49,550 --> 00:16:52,790
+car context over to utilizing reducers.
+
+249
+00:16:53,240 --> 00:16:54,110
+So please try it.
+
+250
+00:16:54,710 --> 00:16:57,390
+If any of this was challenging, rewatch this video.
+
+251
+00:16:57,420 --> 00:16:58,730
+Understand all these pieces.
+
+252
+00:16:58,970 --> 00:17:04,220
+All of these interactions make sense between every one of these different parts that we've added.
+
+253
+00:17:04,550 --> 00:17:06,980
+You just need to be able to put this flow together.
+
+254
+00:17:07,460 --> 00:17:08,180
+So that's my challenge.
+
+255
+00:17:08,210 --> 00:17:12,230
+You try yourself and then join me in the next video where we will do it together.
+
+256
+00:17:12,530 --> 00:17:13,220
+I'll see you soon.

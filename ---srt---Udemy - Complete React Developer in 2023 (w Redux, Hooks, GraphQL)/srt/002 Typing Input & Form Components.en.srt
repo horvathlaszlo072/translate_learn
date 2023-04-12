@@ -1,0 +1,531 @@
+1
+00:00:00,450 --> 00:00:01,350
+Welcome back, everyone.
+
+2
+00:00:02,270 --> 00:00:04,490
+Let's start typing out our form input component.
+
+3
+00:00:05,060 --> 00:00:12,320
+To begin, we want to convert this over from Gsx to TSX, both the form input component as well as these
+
+4
+00:00:12,320 --> 00:00:12,830
+styles.
+
+5
+00:00:14,220 --> 00:00:18,900
+And first you'll notice immediately that our form input label has a type error.
+
+6
+00:00:19,410 --> 00:00:25,470
+The reason is that shrink is a nickel, and the reason for this is because the form input component
+
+7
+00:00:25,650 --> 00:00:30,840
+for form input label is a component and we have not defined any props on it.
+
+8
+00:00:31,110 --> 00:00:34,920
+So we're trying to use props on this component despite the fact that the props are not defined.
+
+9
+00:00:35,950 --> 00:00:43,120
+So here, defining props for these style components is the exact same as defining props for any component,
+
+10
+00:00:43,120 --> 00:00:45,430
+because these are really just components.
+
+11
+00:00:45,940 --> 00:00:48,790
+So here we'll say type form input.
+
+12
+00:00:48,970 --> 00:00:56,260
+Label props is going to be equal to us receiving some shrink value, which is optional.
+
+13
+00:00:56,830 --> 00:00:58,750
+And this is a boolean.
+
+14
+00:01:00,080 --> 00:01:05,870
+And what we'll say is that form input label props needs to be passed to this component as the props.
+
+15
+00:01:06,470 --> 00:01:12,190
+So the great thing about style components is that you can just pass it as a generic to the style dot
+
+16
+00:01:12,200 --> 00:01:14,450
+label because by default that's the definition.
+
+17
+00:01:14,510 --> 00:01:20,970
+They take some generic value and then add it as the actual props that it expects to receive.
+
+18
+00:01:21,590 --> 00:01:24,980
+And now you'll see that shrink is indeed a boolean value.
+
+19
+00:01:25,850 --> 00:01:31,850
+So now we can save this and then go back to our form input component and start typing this out.
+
+20
+00:01:32,750 --> 00:01:38,420
+So as you can tell, as I mentioned before, we are really just leveraging the underlying input component
+
+21
+00:01:38,420 --> 00:01:41,810
+in order for us to extend all of these additional features onto it.
+
+22
+00:01:42,140 --> 00:01:48,200
+But the input component, just like the button component, has corresponding attributes that we want
+
+23
+00:01:48,200 --> 00:01:48,830
+from React.
+
+24
+00:01:49,370 --> 00:01:53,150
+So we're going to import in input HTML attributes.
+
+25
+00:01:54,120 --> 00:01:58,710
+And we're also going to implement EFSI because we need this to be a functional component.
+
+26
+00:02:00,520 --> 00:02:04,300
+All going to do now is we're going to type out these form input props.
+
+27
+00:02:04,840 --> 00:02:13,270
+So this is going to be first the label value, which is our unique value, which we expect to be a string.
+
+28
+00:02:14,270 --> 00:02:19,940
+And then from here we are going to create an intersection with input HDMI attributes.
+
+29
+00:02:20,030 --> 00:02:26,090
+So we want all of the input HDMI attributes of a HTML input element.
+
+30
+00:02:28,590 --> 00:02:35,100
+And now we are going to say that form input is of type functional component with the form input prompts.
+
+31
+00:02:35,910 --> 00:02:38,550
+So now we've solved our props issue for the type.
+
+32
+00:02:39,210 --> 00:02:46,020
+However, the problem here is that if you look at this, there's a chance that the other props object
+
+33
+00:02:46,020 --> 00:02:47,010
+is undefined.
+
+34
+00:02:47,430 --> 00:02:49,890
+Assuming that no props are passed.
+
+35
+00:02:50,460 --> 00:02:58,740
+So here, what we can say is that first, if this is the case, what we want to do is we want to ensure
+
+36
+00:02:58,860 --> 00:03:04,890
+that this shrink always receives a boolean because shrink is receiving essentially a Boolean value.
+
+37
+00:03:05,520 --> 00:03:09,090
+So what we can do is we can say Boolean on.
+
+38
+00:03:10,160 --> 00:03:13,490
+This value like so and the first thing will check.
+
+39
+00:03:13,970 --> 00:03:15,410
+Is there other props?
+
+40
+00:03:15,680 --> 00:03:17,690
+So is other props value?
+
+41
+00:03:17,930 --> 00:03:18,800
+Is this exist?
+
+42
+00:03:19,640 --> 00:03:23,630
+If it does, then can we render other props that value?
+
+43
+00:03:24,200 --> 00:03:30,170
+Well now will notice that length might not exist because on this particular case we don't know what
+
+44
+00:03:30,170 --> 00:03:30,890
+we could get back.
+
+45
+00:03:30,890 --> 00:03:37,250
+Length might not exist on the value coming back as a number because inputs can receive both strings
+
+46
+00:03:37,250 --> 00:03:37,700
+and numbers.
+
+47
+00:03:37,700 --> 00:03:43,940
+So if that's the case, then we need to do another check to ensure is this going to be a string.
+
+48
+00:03:44,630 --> 00:03:46,520
+So here we'll say is type of.
+
+49
+00:03:47,550 --> 00:03:51,930
+Other prompts value equal to a strength.
+
+50
+00:03:53,280 --> 00:03:58,110
+If it's equal to a string as well, then finally, I want you to check if there's a line.
+
+51
+00:03:59,200 --> 00:04:04,720
+And now we are now correctly passing and properly typing through our form input.
+
+52
+00:04:05,750 --> 00:04:09,890
+Now that we've done our form input, let's think about where they might get used.
+
+53
+00:04:10,400 --> 00:04:15,590
+The places where we insert inputs is in both the sign and form and the sign up form.
+
+54
+00:04:16,190 --> 00:04:17,660
+So let's type out these forms.
+
+55
+00:04:18,080 --> 00:04:22,250
+So again, we are going to convert this over to a TSX file.
+
+56
+00:04:26,990 --> 00:04:32,420
+Now first off, to begin, we can check in our sign informed on styles and we see that none of our stock
+
+57
+00:04:32,420 --> 00:04:33,740
+components receive props.
+
+58
+00:04:34,010 --> 00:04:35,210
+So we don't need to type any of these.
+
+59
+00:04:35,600 --> 00:04:39,740
+We can focus exclusively on our sign informed component.
+
+60
+00:04:40,960 --> 00:04:46,570
+So here we also noticed that our sign in form doesn't receive props, but our handle submits and our
+
+61
+00:04:46,570 --> 00:04:48,340
+handle change do receive props.
+
+62
+00:04:48,730 --> 00:04:49,870
+Now we need to type these.
+
+63
+00:04:50,470 --> 00:04:55,510
+We've already typed handle change before, which essentially is what we passed the on change of an input.
+
+64
+00:04:56,230 --> 00:05:01,960
+So we can expect similarly then that handle submits is going to follow a similar pattern where we received
+
+65
+00:05:01,960 --> 00:05:04,210
+some kind of event from React.
+
+66
+00:05:04,810 --> 00:05:06,050
+What kind of event is it?
+
+67
+00:05:06,070 --> 00:05:11,830
+We can just convert this over to a function signature and we can just put e hover over it.
+
+68
+00:05:12,070 --> 00:05:18,670
+We see that it is of type form event, so we need to import inform event in order for us to actually
+
+69
+00:05:18,760 --> 00:05:20,080
+type these two fields.
+
+70
+00:05:20,740 --> 00:05:26,230
+So first, we're going to come up here and we're going to say, give me the form event and also for
+
+71
+00:05:26,230 --> 00:05:28,570
+the change handler, give me the change event.
+
+72
+00:05:29,530 --> 00:05:36,910
+Using these two now we can say that the event that we receive from handle submit will be of type form
+
+73
+00:05:36,910 --> 00:05:37,480
+event.
+
+74
+00:05:38,900 --> 00:05:41,060
+And we're going to pass it as always.
+
+75
+00:05:41,390 --> 00:05:43,580
+HTML form element most likely.
+
+76
+00:05:44,150 --> 00:05:45,530
+And that's exactly what we see.
+
+77
+00:05:46,470 --> 00:05:51,150
+Similarly for our handle change, we are going to pass in change event.
+
+78
+00:05:52,630 --> 00:05:57,730
+With HDMI input elements being the type of change event that we're registering.
+
+79
+00:05:58,990 --> 00:06:05,050
+Now we save this, we see we have no more type arrows for our sign and form so we can move on to our
+
+80
+00:06:05,050 --> 00:06:05,980
+sign up form.
+
+81
+00:06:06,760 --> 00:06:10,480
+So let's first convert these files over to TSX files.
+
+82
+00:06:11,170 --> 00:06:13,380
+We notice they're inside of our styles.
+
+83
+00:06:13,390 --> 00:06:16,840
+There are no props, so we don't need to worry about typing this one.
+
+84
+00:06:17,470 --> 00:06:19,630
+We can now just do our sign up form component.
+
+85
+00:06:20,730 --> 00:06:26,070
+With our sign up form component, we notice that we actually have some leftovers that we aren't using
+
+86
+00:06:26,070 --> 00:06:27,240
+from our inputs.
+
+87
+00:06:27,240 --> 00:06:29,130
+We can just get more of that.
+
+88
+00:06:30,210 --> 00:06:34,230
+And now again, we see that there are two different type areas.
+
+89
+00:06:34,710 --> 00:06:38,460
+Have the two different events first, cement and for channel change.
+
+90
+00:06:38,850 --> 00:06:40,890
+And we also see we get an error code.
+
+91
+00:06:41,760 --> 00:06:44,610
+Now, the first one I want to tackle is just the event.
+
+92
+00:06:45,480 --> 00:06:50,220
+So as always, just like we did with React, we are going to bring in two events.
+
+93
+00:06:50,400 --> 00:06:52,590
+One is the form events for the summit.
+
+94
+00:06:52,620 --> 00:06:54,840
+One is the change event for the input.
+
+95
+00:06:55,620 --> 00:07:02,580
+So I'm going to say that this handle events is a form event of the h html form.
+
+96
+00:07:03,920 --> 00:07:04,400
+Element.
+
+97
+00:07:08,010 --> 00:07:11,850
+And then for our handle change, this is going to be.
+
+98
+00:07:13,040 --> 00:07:14,090
+A change event.
+
+99
+00:07:15,730 --> 00:07:17,860
+For a simple input element.
+
+100
+00:07:21,070 --> 00:07:22,390
+Now what about this error code?
+
+101
+00:07:22,990 --> 00:07:25,330
+So here you might be thinking, what is this error?
+
+102
+00:07:25,750 --> 00:07:31,660
+Well, we're actually catching this error inside of our author start, which is what sign up start gives
+
+103
+00:07:31,660 --> 00:07:32,620
+us back if we catch.
+
+104
+00:07:33,370 --> 00:07:37,390
+So this is where we may not actually get the error that we expect.
+
+105
+00:07:38,490 --> 00:07:42,870
+What we need to do is we need to get the off air.
+
+106
+00:07:44,440 --> 00:07:53,050
+So this is where inside we can say, okay, if we get some kind of authentication error, we need to
+
+107
+00:07:53,050 --> 00:07:57,130
+import in most likely some kind of error from Firebase.
+
+108
+00:07:58,120 --> 00:07:59,200
+And the chances are.
+
+109
+00:08:00,520 --> 00:08:02,230
+It's actually something that exists.
+
+110
+00:08:02,380 --> 00:08:04,510
+So inside of Firebase Slash Auth.
+
+111
+00:08:05,460 --> 00:08:06,570
+There are two types.
+
+112
+00:08:06,600 --> 00:08:08,550
+One is the author's r-type.
+
+113
+00:08:09,470 --> 00:08:12,350
+And here we see there's even off error codes.
+
+114
+00:08:13,040 --> 00:08:20,840
+So what's great about this is that we can take this off air and we can actually directly modify the
+
+115
+00:08:20,840 --> 00:08:24,110
+code here so that we're not even hard coding these values.
+
+116
+00:08:24,470 --> 00:08:28,640
+We actually get these directly from Firebase.
+
+117
+00:08:29,480 --> 00:08:35,210
+So the first thing we need to do is say that this error code is a specific type of error.
+
+118
+00:08:35,210 --> 00:08:39,920
+So error as off error because we know this is an error from Firebase on.
+
+119
+00:08:40,790 --> 00:08:44,780
+Decode must exist on the author because that's where we're reading it from.
+
+120
+00:08:45,410 --> 00:08:51,260
+And now, instead of matching this string ourselves, we can say off error codes, dots.
+
+121
+00:08:51,740 --> 00:08:56,090
+And then now we can just find the one that we had before, which is email exists.
+
+122
+00:08:56,750 --> 00:08:58,610
+As you can see when hovering over this.
+
+123
+00:08:59,620 --> 00:09:03,700
+This was the same string that we had earlier off email already in use.
+
+124
+00:09:04,300 --> 00:09:05,140
+So amazing.
+
+125
+00:09:05,320 --> 00:09:09,670
+We don't even have to now reference our own dependency of figuring out what that string was.
+
+126
+00:09:10,270 --> 00:09:14,350
+We can save this now and now we have our forms also fully typed.
+
+127
+00:09:15,160 --> 00:09:16,710
+So that is really great.
+
+128
+00:09:16,720 --> 00:09:17,680
+We've typed our forms.
+
+129
+00:09:17,680 --> 00:09:18,670
+We've typed our inputs.
+
+130
+00:09:18,670 --> 00:09:20,380
+We've also typed our buttons.
+
+131
+00:09:21,190 --> 00:09:25,690
+So now that we've typed this, let's start typing something else that might be a little challenging,
+
+132
+00:09:25,690 --> 00:09:27,430
+which is our SVG icons.
+
+133
+00:09:28,150 --> 00:09:29,620
+So let's tackle that in the next video.

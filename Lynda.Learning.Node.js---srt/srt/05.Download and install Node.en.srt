@@ -1,0 +1,116 @@
+1
+00:00:00.04 --> 00:00:02.03
+- [Instructor] Let's
+continue by installing node.
+
+2
+00:00:02.03 --> 00:00:04.05
+Head over to nodejs.org
+
+3
+00:00:04.05 --> 00:00:08.02
+and then in the top navigation
+bar select downloads.
+
+4
+00:00:08.02 --> 00:00:11.03
+If you see an option
+between LTS and current,
+
+5
+00:00:11.03 --> 00:00:13.01
+select current so that
+we get the latest version
+
+6
+00:00:13.01 --> 00:00:17.00
+and at the time of this
+production, it's version 8.6.
+
+7
+00:00:17.00 --> 00:00:19.00
+Then download the installer
+for the operating system
+
+8
+00:00:19.00 --> 00:00:20.04
+which makes sense for you.
+
+9
+00:00:20.04 --> 00:00:23.03
+Afterwards, let's go ahead
+and start the installer.
+
+10
+00:00:23.03 --> 00:00:25.01
+Once the installer initializes,
+
+11
+00:00:25.01 --> 00:00:28.04
+let's go through the different sections.
+
+12
+00:00:28.04 --> 00:00:30.01
+We'll accept the terms.
+
+13
+00:00:30.01 --> 00:00:32.05
+Leave the default installation directory.
+
+14
+00:00:32.05 --> 00:00:35.05
+And leave the default features enabled.
+
+15
+00:00:35.05 --> 00:00:38.08
+Then I'll hit install.
+
+16
+00:00:38.08 --> 00:00:41.05
+Since I'm updating node on my end,
+
+17
+00:00:41.05 --> 00:00:44.04
+the status might have
+looked slightly different.
+
+18
+00:00:44.04 --> 00:00:45.05
+I'll hit finish.
+
+19
+00:00:45.05 --> 00:00:48.05
+And now let's test that node
+has successfully installed
+
+20
+00:00:48.05 --> 00:00:51.08
+by opening up your
+terminal or command prompt.
+
+21
+00:00:51.08 --> 00:00:54.05
+So I've launched the
+command prompt on Windows
+
+22
+00:00:54.05 --> 00:00:58.00
+and I'll type in node dash v for version.
+
+23
+00:00:58.00 --> 00:01:01.08
+And as we can see, it's
+the correct version 8.6.
+
+24
+00:01:01.08 --> 00:01:03.07
+If this is still not working for you,
+
+25
+00:01:03.07 --> 00:01:05.09
+you can go ahead and restart your computer
+
+26
+00:01:05.09 --> 00:01:07.09
+and give it another shot.
+

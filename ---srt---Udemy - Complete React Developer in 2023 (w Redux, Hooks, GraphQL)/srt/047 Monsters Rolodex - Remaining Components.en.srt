@@ -1,0 +1,327 @@
+1
+00:00:01,060 --> 00:00:01,990
+Welcome back, everyone.
+
+2
+00:00:02,710 --> 00:00:07,870
+In this video, we are going to convert our cardless component card component and search box component
+
+3
+00:00:08,200 --> 00:00:11,830
+over from a class component to a functional component.
+
+4
+00:00:12,400 --> 00:00:17,440
+So to start, let's get rid of our class import because we won't need it anymore.
+
+5
+00:00:18,040 --> 00:00:23,470
+And what we're going to do is we're going to say Konst card list is equal to a functional component
+
+6
+00:00:24,280 --> 00:00:31,420
+and then what we'll do is get rid of this render statement so that we can have it like this so that
+
+7
+00:00:31,420 --> 00:00:34,780
+we are now returning the actual GSX.
+
+8
+00:00:35,930 --> 00:00:37,850
+We also need to get rid of this stop props.
+
+9
+00:00:38,270 --> 00:00:42,830
+So how is it inside of our parameters that we get our props?
+
+10
+00:00:43,490 --> 00:00:44,510
+Well, react.
+
+11
+00:00:44,510 --> 00:00:47,340
+Functional components actually only get two arguments.
+
+12
+00:00:47,360 --> 00:00:50,420
+You get the prop and you get something called the Forward ID.
+
+13
+00:00:50,420 --> 00:00:50,810
+Ref.
+
+14
+00:00:51,530 --> 00:00:57,080
+The Florida ref is something that you are honestly only going to use maybe two, three, four percent
+
+15
+00:00:57,080 --> 00:00:58,070
+of the time max.
+
+16
+00:00:58,490 --> 00:01:02,900
+It's something that we'll explore later because it's honestly a little bit more complicated, given
+
+17
+00:01:02,900 --> 00:01:04,940
+that we haven't really seen it in context.
+
+18
+00:01:05,300 --> 00:01:10,800
+Most of the time he was using use props, and those props is the exact same as this props.
+
+19
+00:01:10,820 --> 00:01:17,630
+It's an object that has all of the different parameters and properties essentially that are being passed
+
+20
+00:01:17,630 --> 00:01:18,410
+into this component.
+
+21
+00:01:18,560 --> 00:01:22,640
+It's just that instead of this is not props, it's going to be the first parameter that gets passed
+
+22
+00:01:22,640 --> 00:01:23,900
+into this functional component.
+
+23
+00:01:24,710 --> 00:01:29,330
+Similarly, because we know that this will always be the first parameter, we actually don't need to
+
+24
+00:01:29,330 --> 00:01:30,500
+do the restructuring structuring here.
+
+25
+00:01:30,590 --> 00:01:37,940
+We can do the structuring right inside of the parameter itself, like so and now instead of doing this
+
+26
+00:01:37,940 --> 00:01:44,540
+return because we have nothing else to return, we can switch this to a implicit return.
+
+27
+00:01:45,940 --> 00:01:48,250
+And there we have our card list component.
+
+28
+00:01:49,410 --> 00:01:56,400
+So let's go back to our application, and we see that everything still works as we expected to.
+
+29
+00:01:57,730 --> 00:01:59,020
+So let's do this now.
+
+30
+00:01:59,050 --> 00:02:01,420
+Same thing for our card and our search box.
+
+31
+00:02:01,870 --> 00:02:03,490
+If you want, you can do this yourself.
+
+32
+00:02:03,820 --> 00:02:06,490
+Just take some time and convert these.
+
+33
+00:02:07,120 --> 00:02:10,360
+Pause the video and then once you're done, come back.
+
+34
+00:02:11,260 --> 00:02:14,970
+OK, so if you've done this, you can skip the section.
+
+35
+00:02:14,980 --> 00:02:16,690
+If not, let's just do this together.
+
+36
+00:02:17,650 --> 00:02:23,890
+So what we're going to do is, again, say Konst Card is equal to this functional component.
+
+37
+00:02:24,880 --> 00:02:26,980
+We don't need this component.
+
+38
+00:02:28,370 --> 00:02:31,250
+Class anymore, we get rid of the render.
+
+39
+00:02:34,530 --> 00:02:36,480
+And then let's just fix our indents.
+
+40
+00:02:38,540 --> 00:02:41,270
+And now we know we're getting this stop, props that monster.
+
+41
+00:02:41,540 --> 00:02:48,220
+So I'm going to structure off the monster and instead of doing this further destruction like so I'm
+
+42
+00:02:48,290 --> 00:02:50,330
+going to do structure like this.
+
+43
+00:02:52,320 --> 00:02:54,360
+And here we see code still works.
+
+44
+00:02:55,600 --> 00:02:57,640
+And let's do our final one, which is our search box.
+
+45
+00:02:58,750 --> 00:03:00,100
+So I'm going to get rid of the render.
+
+46
+00:03:04,260 --> 00:03:08,050
+Cornstarch box equals a functional component.
+
+47
+00:03:10,160 --> 00:03:12,770
+And similarly, here, let's get rid of this component.
+
+48
+00:03:15,020 --> 00:03:16,070
+Get rid of the return.
+
+49
+00:03:20,430 --> 00:03:23,880
+Since we're probably just going to do a implicit return right here.
+
+50
+00:03:25,390 --> 00:03:30,700
+And now, as far as what we need off of our props, we need class name.
+
+51
+00:03:31,720 --> 00:03:35,350
+We need placeholder and we need on change handler.
+
+52
+00:03:39,410 --> 00:03:41,900
+And then let's just get rid of this, not props.
+
+53
+00:03:42,530 --> 00:03:43,310
+Let's save this.
+
+54
+00:03:44,180 --> 00:03:45,530
+Let's go back to our application.
+
+55
+00:03:46,830 --> 00:03:49,710
+Make sure that our search box still has all of those fields.
+
+56
+00:03:50,550 --> 00:03:53,730
+We have the class name, which is massive search box 10:18.
+
+57
+00:03:53,940 --> 00:03:57,840
+We have our placeholder and are on chain handler works.
+
+58
+00:03:58,940 --> 00:04:05,540
+So that's the most complicated thing that difference between a class and a functional component is really
+
+59
+00:04:05,540 --> 00:04:11,610
+just doing the deal, structuring off of the actual argument itself rather than doing it off of this
+
+60
+00:04:11,760 --> 00:04:13,400
+props inside of the component.
+
+61
+00:04:14,120 --> 00:04:21,890
+But you'll notice in the card we did it like, so we can theoretically also go one step deeper, which
+
+62
+00:04:21,890 --> 00:04:30,920
+is an even further version of restructuring like so if you want to do this instead of doing the deal,
+
+63
+00:04:30,980 --> 00:04:32,300
+structuring within the code.
+
+64
+00:04:33,330 --> 00:04:36,690
+You'll notice that if we do this, our code still works.
+
+65
+00:04:37,910 --> 00:04:41,960
+But personally, I think this is a little bit harder to read.
+
+66
+00:04:42,800 --> 00:04:50,030
+I would personally just prefer to say, OK, we've restructured off this specific parameter and then
+
+67
+00:04:50,030 --> 00:04:52,700
+further, the structuring happens within the functional component.
+
+68
+00:04:53,150 --> 00:04:54,470
+But this is really a preference.
+
+69
+00:04:55,070 --> 00:04:56,030
+But there you have it.
+
+70
+00:04:56,660 --> 00:04:59,690
+We've converted all of our class components over to functional components.
+
+71
+00:05:00,380 --> 00:05:04,940
+And if you're a little confused about functional components, don't worry, we'll get a lot of practice
+
+72
+00:05:04,940 --> 00:05:09,110
+using functional components and hooks throughout this course and definitely throughout the capstone
+
+73
+00:05:09,110 --> 00:05:09,530
+project.
+
+74
+00:05:10,040 --> 00:05:14,900
+But for now, I just really want you to think about the core lessons we had on functional components
+
+75
+00:05:15,110 --> 00:05:20,690
+rendering and rendering, as well as class components and rendering and rendering with lifecycle methods.
+
+76
+00:05:21,230 --> 00:05:24,980
+This is going to be probably some of the most challenging parts of understanding react.
+
+77
+00:05:25,610 --> 00:05:28,700
+But other than that, react is generally pretty simple.
+
+78
+00:05:28,700 --> 00:05:34,220
+Once you have those concepts down in the next few videos, we're going to dive even deeper into how
+
+79
+00:05:34,230 --> 00:05:40,130
+React actually works under the hood in order to help us determine what it's going to render and render
+
+80
+00:05:40,220 --> 00:05:41,870
+and why it does it the way it does.
+
+81
+00:05:42,470 --> 00:05:48,530
+So join me in the next video and we'll get a really good understanding of how react and react Dom works
+
+82
+00:05:48,530 --> 00:05:49,250
+under the hood.

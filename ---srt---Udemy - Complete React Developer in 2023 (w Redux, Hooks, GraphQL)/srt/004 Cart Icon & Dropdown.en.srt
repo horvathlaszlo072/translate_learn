@@ -1,0 +1,479 @@
+1
+00:00:00,210 --> 00:00:01,200
+Welcome back, everyone.
+
+2
+00:00:01,770 --> 00:00:07,260
+In this video, we're going to learn how to leverage our products that we've inserted into our shop
+
+3
+00:00:07,260 --> 00:00:10,170
+page in order to build out our cart.
+
+4
+00:00:10,680 --> 00:00:13,440
+Our car is primarily comprised of two things.
+
+5
+00:00:13,680 --> 00:00:18,780
+We have our car icon with a number inside that tells us the quantity.
+
+6
+00:00:19,140 --> 00:00:24,030
+And we also have the car dropdown, which contains different items inside of it.
+
+7
+00:00:24,540 --> 00:00:31,080
+As we add, items will notice that the numbers will increase, as well as the total quantity.
+
+8
+00:00:31,110 --> 00:00:37,980
+If we add the same item in order to build this, we need to take this product and actually transform
+
+9
+00:00:37,980 --> 00:00:44,310
+it, potentially into a format that this cart is able to take so that it can accurately account for
+
+10
+00:00:44,310 --> 00:00:45,060
+the quantity.
+
+11
+00:00:45,330 --> 00:00:48,930
+There's numerous ways to do that, but we'll talk about it in a little bit later.
+
+12
+00:00:49,200 --> 00:00:55,800
+First, let's just initialize and set up our cart icon, and we can start with building out the dropdown
+
+13
+00:00:55,800 --> 00:00:56,190
+as well.
+
+14
+00:00:57,120 --> 00:01:06,690
+So inside of your project, I want you to go to your assets folder and add in the shopping bag SVG icon
+
+15
+00:01:06,690 --> 00:01:09,210
+that I've included for you in your resources folder.
+
+16
+00:01:09,660 --> 00:01:11,910
+So here you'll see what the SPG looks like.
+
+17
+00:01:12,900 --> 00:01:19,620
+So what we want to do now is actually create a new cart icon component that is going to contain both
+
+18
+00:01:19,620 --> 00:01:22,980
+the count of the cart items as well as the SPG itself.
+
+19
+00:01:23,850 --> 00:01:29,810
+So let's make a new folder called cart icon, and let's add the relevant files.
+
+20
+00:01:29,820 --> 00:01:37,470
+We need a cart icon, dot style dot size and we need a cart icon dock component Dargis X.
+
+21
+00:01:38,430 --> 00:01:43,860
+Inside of the car icon component, we need to import in our styles file, of course.
+
+22
+00:01:44,760 --> 00:01:49,530
+And then we need to initialize the car icon functional component.
+
+23
+00:01:50,720 --> 00:01:54,500
+And then we just need to export default, this cart icon.
+
+24
+00:01:56,200 --> 00:02:03,850
+Next, what we also need is we need to import in the SVG, so as we did with our logo, we say react
+
+25
+00:02:03,850 --> 00:02:06,630
+component as and then whatever we want to call it.
+
+26
+00:02:06,640 --> 00:02:12,010
+I'm going to call it shopping icon and we want to import it directly from the file location.
+
+27
+00:02:15,720 --> 00:02:21,300
+Once I have this shopping icon now, let's think about what our car icon itself should return.
+
+28
+00:02:21,780 --> 00:02:30,570
+We want to return back a div that contains both the SVG of the shopping icon and also a span that holds
+
+29
+00:02:30,570 --> 00:02:34,260
+the actual number, which is the count of items we have so far.
+
+30
+00:02:34,530 --> 00:02:36,390
+So let's initialize it as 10 for now.
+
+31
+00:02:37,420 --> 00:02:42,340
+And what we also want to do is we want to make sure that the styling of this works so that the number
+
+32
+00:02:42,340 --> 00:02:45,410
+overlaps with the shopping icon in order to do that.
+
+33
+00:02:45,430 --> 00:02:49,960
+We need to provide some class names that make these elements targetable by our CST.
+
+34
+00:02:50,410 --> 00:02:53,290
+So here I'm going to call this the car icon container.
+
+35
+00:02:53,800 --> 00:02:56,640
+I'm going to call this shopping icon with the class name.
+
+36
+00:02:57,600 --> 00:02:59,220
+Of shopping icon.
+
+37
+00:03:00,850 --> 00:03:06,430
+And as for the span, let's call it with a class name of item count.
+
+38
+00:03:08,990 --> 00:03:12,260
+So now let's save this and then inside of Kodak on styles.
+
+39
+00:03:12,440 --> 00:03:17,870
+I want you to paste in the icon styles file that I've also included in your resources folder.
+
+40
+00:03:18,350 --> 00:03:23,960
+Now, once you've pasted this in, what we're going to do is we're going to add this into our navigation
+
+41
+00:03:23,960 --> 00:03:24,410
+component.
+
+42
+00:03:25,070 --> 00:03:31,580
+So here inside of navigation bar, what we want to do is we want to import in our new car icon component.
+
+43
+00:03:32,300 --> 00:03:36,170
+So let's just figure out where this could go.
+
+44
+00:03:36,470 --> 00:03:38,240
+Let's say it before the contexts.
+
+45
+00:03:38,720 --> 00:03:43,940
+Let's import in the car icon from our correct placement.
+
+46
+00:03:44,420 --> 00:03:52,340
+Go up to the components folder inside of components or go to card icon and then card icon component.
+
+47
+00:03:53,930 --> 00:04:02,570
+So as far as the icon itself is concerned, we want to place this inside of the actual options container
+
+48
+00:04:02,900 --> 00:04:06,920
+because it sits right beside all of the options that we have.
+
+49
+00:04:07,700 --> 00:04:14,000
+So here this is actually one of those cases where you kind of want to think about the structure of what
+
+50
+00:04:14,000 --> 00:04:14,420
+you have.
+
+51
+00:04:15,450 --> 00:04:19,770
+We can place it right after our last sign and link.
+
+52
+00:04:20,920 --> 00:04:25,450
+Like so and then if we save this, we go to our application.
+
+53
+00:04:26,900 --> 00:04:28,400
+What do we see when we refresh?
+
+54
+00:04:29,470 --> 00:04:31,660
+There we go, there is our icon.
+
+55
+00:04:31,960 --> 00:04:35,530
+So right now, there's no interaction with it, but it's placed in the right place.
+
+56
+00:04:36,610 --> 00:04:42,310
+One other thing that is different in our application and the final output is that there is this additional
+
+57
+00:04:42,310 --> 00:04:44,470
+padding around the entire application.
+
+58
+00:04:45,010 --> 00:04:46,720
+So let's also add that in.
+
+59
+00:04:47,230 --> 00:04:54,100
+To do that, what we're going to do is go into our top level style sheet, which is our index, not
+
+60
+00:04:54,100 --> 00:04:54,580
+SAS.
+
+61
+00:04:55,330 --> 00:05:00,760
+And then inside of body, I'm going to add padding 20 pixels, 480 pixels.
+
+62
+00:05:01,240 --> 00:05:06,610
+So what this is saying is I want 20 pixels on the top and the bottom, and I want 40 pixels on the left
+
+63
+00:05:06,610 --> 00:05:07,240
+and the right side.
+
+64
+00:05:07,720 --> 00:05:09,230
+So now there we go.
+
+65
+00:05:09,670 --> 00:05:12,430
+We get a little bit of padding, so it looks a little bit better.
+
+66
+00:05:14,060 --> 00:05:21,620
+After this, what we need now is to actually build the down, so similarly, what I want to do is I
+
+67
+00:05:21,620 --> 00:05:28,430
+want to go into my components and I want to create a new folder called Cart Drop Down.
+
+68
+00:05:29,760 --> 00:05:33,700
+And inside of car drop down, I'm going to make both the relevant files.
+
+69
+00:05:33,720 --> 00:05:42,440
+So the car drop down dot styles dot SAS, as well as the cart drop down dock component such as sex.
+
+70
+00:05:43,640 --> 00:05:47,000
+Inside again, let's import our stylesheet.
+
+71
+00:05:48,230 --> 00:05:51,920
+Let's initialize the cart drop down component.
+
+72
+00:05:53,260 --> 00:05:59,170
+Just the base scaffolding, and then let's export as default, the cart drop down.
+
+73
+00:06:02,260 --> 00:06:06,040
+As for what we want to return for now, let's just create this div.
+
+74
+00:06:07,200 --> 00:06:15,060
+And inside of this car drop down, really all we need is before we think about what's actually inside,
+
+75
+00:06:15,420 --> 00:06:17,940
+let's just do a basic div.
+
+76
+00:06:19,100 --> 00:06:22,130
+And let's give it a class name of cart drop down.
+
+77
+00:06:24,170 --> 00:06:24,890
+Container.
+
+78
+00:06:27,050 --> 00:06:33,860
+We'll have some area here where we'll just make a temporary div just so that we hold the place, and
+
+79
+00:06:33,860 --> 00:06:40,160
+let's just say that what this will contain is are cart items, for example.
+
+80
+00:06:41,290 --> 00:06:48,520
+And then after that, we want a button that will allow the user to go to the checkout page, which is
+
+81
+00:06:48,520 --> 00:06:51,160
+what we have inside of our final application.
+
+82
+00:06:51,430 --> 00:06:53,200
+So we're just recreating this structure here.
+
+83
+00:06:54,260 --> 00:06:58,070
+So this means that we need to import in the button component.
+
+84
+00:06:58,580 --> 00:07:01,040
+So let's import in button from.
+
+85
+00:07:02,510 --> 00:07:02,930
+Button.
+
+86
+00:07:04,220 --> 00:07:04,670
+Component.
+
+87
+00:07:05,660 --> 00:07:11,100
+And here we just place the button and inside, we'll just say go to checkout.
+
+88
+00:07:11,480 --> 00:07:13,550
+Like, so so let's save this.
+
+89
+00:07:14,210 --> 00:07:20,450
+And now inside, as you guessed it, with cart drop down dot styles, I've also included your final
+
+90
+00:07:20,450 --> 00:07:23,330
+third stylesheet for this video in your resources folder.
+
+91
+00:07:23,360 --> 00:07:25,730
+So just take the cart, drop that style sheet, paste it in.
+
+92
+00:07:26,480 --> 00:07:32,750
+Now, once we've pasted this in, what we need to do now is we need to move this into the correct place
+
+93
+00:07:32,750 --> 00:07:36,710
+so that when we actually interact with it, we can see it.
+
+94
+00:07:37,580 --> 00:07:42,920
+So the place that this needs to go is also into the navigation component because it's essentially going
+
+95
+00:07:42,920 --> 00:07:45,380
+to live relative to the navigation bar.
+
+96
+00:07:46,560 --> 00:07:51,780
+So here I'm also going to import in our cart drop down from.
+
+97
+00:07:52,860 --> 00:07:53,910
+The components.
+
+98
+00:07:56,870 --> 00:07:57,800
+Components.
+
+99
+00:07:59,000 --> 00:08:04,190
+And then the car to drop down car drop down component.
+
+100
+00:08:05,930 --> 00:08:13,220
+And where I want to place this is I want to place this outside of this actual options container, so
+
+101
+00:08:13,220 --> 00:08:14,330
+all of these nav links.
+
+102
+00:08:14,390 --> 00:08:19,880
+These are not important to me, but I still want this to be within the actual navigation.
+
+103
+00:08:20,360 --> 00:08:22,640
+So here I'm just going to add it right after.
+
+104
+00:08:23,420 --> 00:08:27,230
+And now if I save this and I go back to the application.
+
+105
+00:08:28,340 --> 00:08:29,270
+If I refresh.
+
+106
+00:08:30,620 --> 00:08:32,510
+We should see it up here, right here.
+
+107
+00:08:33,200 --> 00:08:33,800
+So that's good.
+
+108
+00:08:34,040 --> 00:08:35,120
+This is what we're looking for.
+
+109
+00:08:36,020 --> 00:08:42,890
+So we want to now add the functionality where we can toggle the actual showing of this card.
+
+110
+00:08:44,090 --> 00:08:49,730
+This is where I want you to make yet another context, because that context is going to contain the
+
+111
+00:08:49,730 --> 00:08:54,680
+information regarding the items into the car, as well as whether or not it's open or not.
+
+112
+00:08:55,250 --> 00:08:58,310
+So that is another challenge I want to issue to you.
+
+113
+00:08:58,850 --> 00:09:08,270
+I want you to create some way for us to be able to store the state of whether or not this cart draw
+
+114
+00:09:08,300 --> 00:09:09,830
+dropdown is open or not.
+
+115
+00:09:10,220 --> 00:09:11,960
+And I want you to trigger it on click.
+
+116
+00:09:12,500 --> 00:09:13,430
+So give that a try.
+
+117
+00:09:13,670 --> 00:09:19,010
+Figure out how to create that context using the knowledge that we have so far and then buying the ability
+
+118
+00:09:19,010 --> 00:09:21,530
+to turn it on and off or hide and show this.
+
+119
+00:09:21,740 --> 00:09:23,480
+Using that logic.
+
+120
+00:09:23,960 --> 00:09:27,290
+So do that and then join me in the next video where we'll do it together.

@@ -1,0 +1,291 @@
+1
+00:00:00,120 --> 00:00:01,080
+Welcome back, everyone.
+
+2
+00:00:01,920 --> 00:00:08,400
+In the last video, we discussed accessibility of data based on context, API and Redux.
+
+3
+00:00:08,790 --> 00:00:14,430
+In this video we are going to reinforce that, but primarily also discuss the flow of data and how the
+
+4
+00:00:14,430 --> 00:00:16,710
+structure of our code changes.
+
+5
+00:00:16,890 --> 00:00:22,200
+Even the high level concepts change a little bit, which we'll cover inside of this video.
+
+6
+00:00:23,110 --> 00:00:25,120
+So let's start with context.
+
+7
+00:00:25,570 --> 00:00:29,770
+Context, we can mainly see as being separated into two portions.
+
+8
+00:00:30,040 --> 00:00:33,700
+We have UI components and then we have contexts with reducers.
+
+9
+00:00:34,000 --> 00:00:39,010
+These context reducers are of course the components that wrap the corresponding UI components.
+
+10
+00:00:39,460 --> 00:00:43,870
+So imagine if we had three different components in our app component one, component two and component
+
+11
+00:00:43,870 --> 00:00:44,260
+three.
+
+12
+00:00:44,920 --> 00:00:52,120
+And then we are two different contexts context A and context B, let's say that context wraps around
+
+13
+00:00:52,120 --> 00:00:53,530
+component one and component two.
+
+14
+00:00:53,710 --> 00:00:59,290
+As we saw in our last video, let's say Context B wraps around component three.
+
+15
+00:01:00,010 --> 00:01:05,470
+Now, let's say respectively, each of these contexts also have their own reducer, which they're using
+
+16
+00:01:05,470 --> 00:01:06,460
+for state management.
+
+17
+00:01:06,730 --> 00:01:10,900
+So this is what we wrote in the last few videos where we use the use reducer hook.
+
+18
+00:01:11,780 --> 00:01:11,990
+Here.
+
+19
+00:01:11,990 --> 00:01:18,560
+The flow of data for context A is we're going to have a dispatch that fires actions into reducer.
+
+20
+00:01:18,560 --> 00:01:23,660
+A because user reducer, as we know, gives us a dispatch unique to that reducer.
+
+21
+00:01:24,170 --> 00:01:30,290
+So we might pass that dispatch directly to components one and two, or we might create action generator
+
+22
+00:01:30,290 --> 00:01:33,470
+functions as we did inside of our contacts and then pass that down.
+
+23
+00:01:33,710 --> 00:01:37,520
+Remember, that was our set current user or that was our set is open.
+
+24
+00:01:37,520 --> 00:01:40,670
+Those are all dispatch action based creators.
+
+25
+00:01:41,180 --> 00:01:46,100
+So component one, a component to of course will then in turn potentially dispatch actions that update
+
+26
+00:01:46,100 --> 00:01:49,130
+reducer, a reducer, a state.
+
+27
+00:01:49,220 --> 00:01:54,440
+Then we'll have some values which get consumed by component one and component two.
+
+28
+00:01:54,890 --> 00:01:56,360
+So this is the flow of data.
+
+29
+00:01:56,720 --> 00:02:01,550
+The components drive actions into the reducers, the reducers then drive their corresponding values
+
+30
+00:02:01,550 --> 00:02:02,900
+to their components.
+
+31
+00:02:03,590 --> 00:02:05,960
+This is going to be the same flow with context.
+
+32
+00:02:05,990 --> 00:02:11,570
+BE You're going to have component three dispatching actions to reduce or be using reducer bees, unique
+
+33
+00:02:11,570 --> 00:02:16,820
+dispatch and then reducer be of course is going to pass those values to component three, which is what
+
+34
+00:02:16,820 --> 00:02:18,500
+context be wraps around.
+
+35
+00:02:19,250 --> 00:02:24,080
+So this is pretty much the flow of data that we've seen with our context.
+
+36
+00:02:25,260 --> 00:02:27,270
+Now let's talk about Redux.
+
+37
+00:02:27,540 --> 00:02:30,180
+With Redux, we still have UI components.
+
+38
+00:02:30,180 --> 00:02:32,670
+So let's imagine that we still have the same three components.
+
+39
+00:02:33,240 --> 00:02:39,270
+But now we also have this Redux store, and the Redux store structure is going to have three separate
+
+40
+00:02:39,270 --> 00:02:39,840
+reducers.
+
+41
+00:02:40,050 --> 00:02:45,480
+These are still functions that return objects and those objects just carry the state of that reducer.
+
+42
+00:02:45,720 --> 00:02:46,770
+So nothing here has changed.
+
+43
+00:02:47,130 --> 00:02:49,620
+Everything you know about reducers is exactly the same.
+
+44
+00:02:50,370 --> 00:02:53,190
+The difference, though, is that we have three different reducers.
+
+45
+00:02:53,670 --> 00:02:55,500
+For example, you can have more, you can have less.
+
+46
+00:02:55,500 --> 00:02:56,190
+It doesn't matter.
+
+47
+00:02:56,640 --> 00:02:59,280
+But the idea is that you have A, B and C reducer.
+
+48
+00:02:59,910 --> 00:03:04,320
+These reducers all combine together into something known as the root reducer.
+
+49
+00:03:04,620 --> 00:03:09,300
+The root reducer takes each of these and combined them into one giant reducer.
+
+50
+00:03:10,020 --> 00:03:16,110
+From this reducer we will then pass state into component one, component two and component three.
+
+51
+00:03:16,410 --> 00:03:18,510
+You passed the entire state object.
+
+52
+00:03:18,810 --> 00:03:22,230
+You don't just pass reducer A's value or reducer B's value.
+
+53
+00:03:22,410 --> 00:03:27,300
+You pass the entire state object through to component one, component two and component three.
+
+54
+00:03:28,110 --> 00:03:33,450
+And then similarly, what will happen is that these components of course, are going to dispatch actions,
+
+55
+00:03:33,720 --> 00:03:35,520
+but it's one dispatch method.
+
+56
+00:03:35,880 --> 00:03:42,750
+Remember with context, each use reducer gives you a new dispatch that goes specifically to the respective
+
+57
+00:03:42,750 --> 00:03:44,250
+use reducer hook.
+
+58
+00:03:45,000 --> 00:03:48,600
+Here with Redux we have one dispatch, one dispatch action.
+
+59
+00:03:49,380 --> 00:03:55,110
+Essentially you're going to dispatch actions using the one dispatch, and all of these reducers are
+
+60
+00:03:55,110 --> 00:03:57,210
+all going to receive those actions.
+
+61
+00:03:57,540 --> 00:04:02,280
+But what happens is that we have to determine in the corresponding reducer what to update.
+
+62
+00:04:02,520 --> 00:04:07,560
+So these actions may update reducer, a may update reducer be or update reducer see.
+
+63
+00:04:07,950 --> 00:04:14,430
+In fact, the same action can update all three reducers if these three reducers choose to update based
+
+64
+00:04:14,430 --> 00:04:15,150
+on that action.
+
+65
+00:04:15,570 --> 00:04:18,450
+But this is the different flow of Redux.
+
+66
+00:04:18,720 --> 00:04:23,850
+So the main thing to understand is that there is a much more singular story.
+
+67
+00:04:24,300 --> 00:04:29,820
+So as a result there's a singular dispatch, and then it's up to our individual reducers A, B and C
+
+68
+00:04:29,820 --> 00:04:33,000
+to determine if they want to update their state appropriately.
+
+69
+00:04:33,780 --> 00:04:37,980
+So in the next video, what we're going to do is we're going to take all of these concepts and we're
+
+70
+00:04:37,980 --> 00:04:41,850
+going to focus on working with them in the code base.
+
+71
+00:04:42,330 --> 00:04:48,780
+So join me in the next video where we will take all of these high level concepts and push them into
+
+72
+00:04:48,810 --> 00:04:49,500
+Redux CO.
+
+73
+00:04:50,010 --> 00:04:50,940
+LC see in the next video.

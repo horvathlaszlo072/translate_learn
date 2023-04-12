@@ -1,0 +1,163 @@
+1
+00:00:06,020 --> 00:00:13,040
+And you can already start to see some things that we can clean up here, we can just copy and paste
+
+2
+00:00:13,040 --> 00:00:19,790
+this, let's just create one more instance and says filters robot correctly to.
+
+3
+00:00:21,600 --> 00:00:26,520
+We'll say that the will say three for now just to keep this clean.
+
+4
+00:00:27,610 --> 00:00:35,220
+I will say that the concert filter or filtered robots.
+
+5
+00:00:37,060 --> 00:00:45,610
+Should equal an empty array, and this time we're searching for the letter, which doesn't exist in
+
+6
+00:00:45,610 --> 00:00:50,950
+name, and we expect the filtered robots to.
+
+7
+00:00:51,950 --> 00:00:52,730
+He called the.
+
+8
+00:00:54,440 --> 00:00:56,750
+Dummy filtered robots that we gave it.
+
+9
+00:01:00,040 --> 00:01:00,730
+Let's save.
+
+10
+00:01:03,660 --> 00:01:05,460
+And we see that something is failing.
+
+11
+00:01:08,330 --> 00:01:13,100
+Because Mark, props to is not defined, we need to give it three.
+
+12
+00:01:14,720 --> 00:01:24,410
+And there you have it, we've now tested our main page, at least the main page method of filtered robots.
+
+13
+00:01:27,140 --> 00:01:32,390
+And we also have some snapshot testing as well, so let's just look at our code coverage for now.
+
+14
+00:01:33,110 --> 00:01:37,400
+Let's just run NPM run test dash, dash.
+
+15
+00:01:38,530 --> 00:01:39,670
+Dash dash coverage.
+
+16
+00:01:44,150 --> 00:01:48,620
+And again, this is always with testing, there's always many more things they can do.
+
+17
+00:01:48,830 --> 00:01:56,860
+We see that main page has a hundred percent, but there is a branch percentage.
+
+18
+00:01:56,870 --> 00:01:59,810
+We're only testing 50 percent of the branch.
+
+19
+00:01:59,990 --> 00:02:04,460
+And you see that the uncovered line is on 28 if we go back.
+
+20
+00:02:06,790 --> 00:02:14,180
+We can go to main page and see that we have a is pending on line twenty eight.
+
+21
+00:02:14,200 --> 00:02:14,800
+How cool is that?
+
+22
+00:02:14,800 --> 00:02:23,350
+The test says, all right, we're testing that the card list is rendering because we're always testing
+
+23
+00:02:23,350 --> 00:02:25,480
+with spending is true.
+
+24
+00:02:26,750 --> 00:02:28,670
+As you can see here in our.
+
+25
+00:02:30,640 --> 00:02:36,660
+In our mock props, we always have is pending default, so we might want to test is pending to true
+
+26
+00:02:36,670 --> 00:02:37,140
+as well.
+
+27
+00:02:37,420 --> 00:02:43,780
+And I'm going to leave that up to you to add the important concept here is that there are so many ways
+
+28
+00:02:43,780 --> 00:02:44,470
+to test.
+
+29
+00:02:45,220 --> 00:02:51,250
+You can always use the covers you report as a reference, but try to be smart about your tests and make
+
+30
+00:02:51,250 --> 00:02:57,940
+sure that you spend your time wisely because you're just going to have infinite things that you can
+
+31
+00:02:57,940 --> 00:02:58,420
+do.
+
+32
+00:02:58,450 --> 00:03:00,520
+But you only have limited time.
+
+33
+00:03:01,950 --> 00:03:08,940
+That's it for now, I hope you have a better understanding of how container and components testing can
+
+34
+00:03:08,940 --> 00:03:12,510
+be enhanced with enzyme and snapshot testing.
+
+35
+00:03:12,660 --> 00:03:18,720
+And obviously the tools that come with just the rest of the test is something I'm leaving up to you
+
+36
+00:03:18,720 --> 00:03:20,720
+to complete four components and containers.
+
+37
+00:03:21,000 --> 00:03:25,350
+But let's get to actions, constants and reducers.
+
+38
+00:03:26,130 --> 00:03:28,240
+We're going to want to test those as well.
+
+39
+00:03:29,010 --> 00:03:31,050
+So in the next video, we're going to do just that.
+
+40
+00:03:31,930 --> 00:03:32,630
+I'll see in that one.
+
+41
+00:03:33,250 --> 00:03:33,810
+Bye bye.

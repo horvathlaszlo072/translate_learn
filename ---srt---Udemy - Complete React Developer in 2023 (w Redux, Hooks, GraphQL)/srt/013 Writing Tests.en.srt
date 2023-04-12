@@ -1,0 +1,271 @@
+1
+00:00:00,900 --> 00:00:01,560
+Welcome back.
+
+2
+00:00:02,100 --> 00:00:09,570
+Let's finish up testing our Google search functionality, because with tests, the more you have, the
+
+3
+00:00:09,780 --> 00:00:16,140
+better it is in most cases anyway, because these are never going to go into production is just for
+
+4
+00:00:16,140 --> 00:00:17,180
+development purposes.
+
+5
+00:00:17,400 --> 00:00:23,670
+It never hurts to have a lot of tests that cover a lot of scenarios because that way we just cover our
+
+6
+00:00:23,700 --> 00:00:24,870
+bases even more.
+
+7
+00:00:25,920 --> 00:00:34,110
+And don't worry too much about repeating yourself or the do not repeat yourself rule and programming
+
+8
+00:00:34,110 --> 00:00:39,990
+with when it comes to tests, it's OK to repeat yourself every once, every once in a while, especially
+
+9
+00:00:39,990 --> 00:00:42,810
+if it makes the tests really readable for other people.
+
+10
+00:00:42,810 --> 00:00:49,020
+Reading your code once again, these are never going into production, so it's always better to have
+
+11
+00:00:49,020 --> 00:00:50,820
+more tests than less tests.
+
+12
+00:00:52,500 --> 00:00:55,650
+So let's test a few more cases with our Google search function.
+
+13
+00:00:56,850 --> 00:01:04,500
+Let's say that we also want it to work with undefined.
+
+14
+00:01:06,240 --> 00:01:12,390
+And no input and that we want to make sure that this function.
+
+15
+00:01:14,090 --> 00:01:17,000
+Is going to work and let me just copy this expect.
+
+16
+00:01:19,810 --> 00:01:25,540
+Assertion and within here in the Google search, I'm just going to say undefined.
+
+17
+00:01:27,250 --> 00:01:33,250
+And we want that to equal an empty array if we somehow get a weird entry on an undefined input from
+
+18
+00:01:33,250 --> 00:01:38,830
+the user, we still want to return an empty array because maybe on the front end we're still displaying
+
+19
+00:01:38,830 --> 00:01:39,550
+an empty list.
+
+20
+00:01:40,270 --> 00:01:40,870
+Let's save.
+
+21
+00:01:42,090 --> 00:01:48,530
+And that passes, we now have three tests and let's also test for the null case.
+
+22
+00:01:48,570 --> 00:01:50,010
+Again, we'll copy this.
+
+23
+00:01:52,300 --> 00:01:54,940
+And we'll test for null as well.
+
+24
+00:01:55,600 --> 00:02:02,440
+All right, our tests are passing perfect and you can see how nicely outlined they're in just for us.
+
+25
+00:02:03,570 --> 00:02:09,850
+Finally, we also want to check if we look at our script, that we return no more than three matches.
+
+26
+00:02:09,900 --> 00:02:12,490
+That's an important feature of our app.
+
+27
+00:02:12,990 --> 00:02:15,600
+Once again, let's say it.
+
+28
+00:02:18,270 --> 00:02:22,500
+Does not return more than three matches.
+
+29
+00:02:25,600 --> 00:02:27,910
+And let make more space for this so we can see.
+
+30
+00:02:31,980 --> 00:02:36,870
+And once again, you can see a lot of repeating here, but it's good we're writing tests.
+
+31
+00:02:37,570 --> 00:02:44,730
+Let's say that again, I'm just going to copy this because I am lazy to type and we'll say that we want
+
+32
+00:02:44,730 --> 00:02:45,180
+the.
+
+33
+00:02:46,700 --> 00:02:54,770
+When we searched dotcom, which all of these have, we want this to equal well, to equal.
+
+34
+00:02:56,120 --> 00:02:59,630
+An era with three items, how can we do that again?
+
+35
+00:02:59,660 --> 00:03:01,250
+This is just simple JavaScript.
+
+36
+00:03:01,460 --> 00:03:10,400
+We can just do a dot length in the expect bracket, which will return hopefully three, even though
+
+37
+00:03:10,400 --> 00:03:14,840
+we're doing dotcom and has four items because of our function is should return.
+
+38
+00:03:16,900 --> 00:03:19,060
+The length of three, so let's just set.
+
+39
+00:03:21,110 --> 00:03:30,140
+Look at that, our test pass and another advice here, just because your test passes doesn't mean it's
+
+40
+00:03:30,140 --> 00:03:31,130
+always correct.
+
+41
+00:03:31,190 --> 00:03:36,740
+It's always good to start off by making your tests fail and then trying to make them work.
+
+42
+00:03:37,610 --> 00:03:42,110
+Let's just make it fail by adding four in here and it's safe.
+
+43
+00:03:43,100 --> 00:03:44,100
+And all right.
+
+44
+00:03:44,120 --> 00:03:50,000
+We see that we expected a value to equal four, but we received three.
+
+45
+00:03:50,780 --> 00:03:51,530
+That's good.
+
+46
+00:03:51,890 --> 00:03:53,130
+If we change that to three.
+
+47
+00:03:53,870 --> 00:03:54,890
+Everything is good.
+
+48
+00:03:54,890 --> 00:03:57,080
+And you can play around with the inputs a little bit more.
+
+49
+00:03:58,050 --> 00:03:59,530
+I think you're starting to get this right.
+
+50
+00:03:59,670 --> 00:04:01,170
+It's not that bad.
+
+51
+00:04:01,350 --> 00:04:03,090
+It doesn't look that intimidating.
+
+52
+00:04:03,330 --> 00:04:08,910
+And yet when you look at other people's tests, there might be a few more methods that they add other
+
+53
+00:04:08,910 --> 00:04:10,350
+than to be and to equal.
+
+54
+00:04:10,500 --> 00:04:12,270
+But the basic principles are the same.
+
+55
+00:04:12,480 --> 00:04:16,730
+We just have a function that we run tests and that's it.
+
+56
+00:04:19,110 --> 00:04:26,130
+One final thing, we can group all of these because remember, with our thinking things can get bigger
+
+57
+00:04:26,130 --> 00:04:32,190
+and bigger and bigger, we can group tests that are similar, especially in this case, the ones that
+
+58
+00:04:32,190 --> 00:04:40,260
+are doing a Google search with another function called the describe and describe will say describes
+
+59
+00:04:40,260 --> 00:04:40,590
+the.
+
+60
+00:04:41,720 --> 00:04:43,220
+Google search.
+
+61
+00:04:44,280 --> 00:04:51,960
+And this is the exact same way that the Eppalock was described, the first parameter is a string that
+
+62
+00:04:51,960 --> 00:04:59,070
+will be displayed on the test and then the second one is a function and we can enter all of these tests
+
+63
+00:04:59,070 --> 00:05:00,780
+inside of this block.
+
+64
+00:05:02,160 --> 00:05:04,170
+So now if I say this.
+
+65
+00:05:05,590 --> 00:05:12,880
+I see that the tests are grouped together, and I know that all these tests that we're running are under
+
+66
+00:05:12,880 --> 00:05:20,140
+the Google search function so that when we have hundreds of tests, we can see which ones are failing
+
+67
+00:05:20,290 --> 00:05:23,980
+and where we want to target to fix our tests.
+
+68
+00:05:25,370 --> 00:05:30,500
+All right, more exciting things in the next video I'll see in that one by.

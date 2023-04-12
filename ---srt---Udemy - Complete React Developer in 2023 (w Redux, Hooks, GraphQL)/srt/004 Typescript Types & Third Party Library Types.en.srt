@@ -1,0 +1,691 @@
+1
+00:00:00,390 --> 00:00:01,350
+Welcome back, everyone.
+
+2
+00:00:02,800 --> 00:00:06,550
+So we were talking about our interfaces versus types.
+
+3
+00:00:07,330 --> 00:00:13,540
+So types are a different style of coding out our objects and typing them.
+
+4
+00:00:14,440 --> 00:00:20,130
+The way that type works is very similar to interface, except you don't need the AI.
+
+5
+00:00:20,650 --> 00:00:23,380
+So we can say interface of AI.
+
+6
+00:00:23,380 --> 00:00:26,200
+Search box props can be converted to type.
+
+7
+00:00:26,350 --> 00:00:29,050
+Search box props like this.
+
+8
+00:00:29,620 --> 00:00:31,390
+Except we need to use an equal sign.
+
+9
+00:00:32,320 --> 00:00:38,710
+And then inside we need to define an object that represents the shape of this props object.
+
+10
+00:00:39,430 --> 00:00:41,290
+Similarly, we'll do the same thing.
+
+11
+00:00:41,350 --> 00:00:42,670
+Class name is string.
+
+12
+00:00:42,850 --> 00:00:43,780
+Nothing different here.
+
+13
+00:00:44,110 --> 00:00:46,150
+Placeholder also the same.
+
+14
+00:00:47,900 --> 00:00:50,540
+If optional can pass the question mark.
+
+15
+00:00:51,080 --> 00:00:51,860
+Also a string.
+
+16
+00:00:53,080 --> 00:00:56,140
+And then for the actual function once again.
+
+17
+00:00:57,130 --> 00:01:03,730
+We can also put a function and now we can just put this search box pops as the type.
+
+18
+00:01:05,220 --> 00:01:11,940
+Now you might be wondering what is the main difference between using a type versus using an interface
+
+19
+00:01:11,940 --> 00:01:18,270
+other than the fact that interfaces offer us the ability to extend and offer us the ability to overload
+
+20
+00:01:18,330 --> 00:01:18,900
+like so?
+
+21
+00:01:20,410 --> 00:01:23,890
+Types allow us to do something known as a union.
+
+22
+00:01:24,340 --> 00:01:28,120
+Now, a union is essentially a combination of types.
+
+23
+00:01:28,720 --> 00:01:31,540
+So let's write one out so I can give you an example.
+
+24
+00:01:32,230 --> 00:01:40,270
+Let's say we had some variable that was an address, and the address could be equal to two different
+
+25
+00:01:40,270 --> 00:01:44,950
+styles of objects, maybe one for U.S. addresses, maybe one for Canadian addresses.
+
+26
+00:01:45,460 --> 00:01:51,400
+So the difference would be that here you would have, of course, your street, which is a string,
+
+27
+00:01:52,270 --> 00:01:57,100
+and you would also have your state on the U.S., which is a string.
+
+28
+00:01:57,730 --> 00:02:02,560
+But if you are in Canada, this instead would be a province.
+
+29
+00:02:03,540 --> 00:02:05,250
+Which is also a strain.
+
+30
+00:02:06,300 --> 00:02:13,050
+So in this particular case, we know that the state and the province are optional, but they can exist
+
+31
+00:02:13,050 --> 00:02:14,220
+as either one.
+
+32
+00:02:15,780 --> 00:02:20,670
+How this would work is that we could say that there is a type Canadian.
+
+33
+00:02:21,590 --> 00:02:28,670
+Address which is equal to this that needs, of course, your st which is a string.
+
+34
+00:02:30,010 --> 00:02:35,350
+But also you could have a province which is a string.
+
+35
+00:02:37,000 --> 00:02:40,750
+And similarly, we have a tape U.S. address.
+
+36
+00:02:43,510 --> 00:02:45,820
+And here st is a string.
+
+37
+00:02:47,000 --> 00:02:49,280
+But state is also a string.
+
+38
+00:02:51,110 --> 00:02:51,510
+I should.
+
+39
+00:02:51,520 --> 00:02:52,600
+I should be province like so.
+
+40
+00:02:53,740 --> 00:02:56,680
+In order to make a union, we could say type.
+
+41
+00:02:57,780 --> 00:03:03,810
+North American address is equal to Canadian address.
+
+42
+00:03:05,140 --> 00:03:09,190
+And then this one bar US address.
+
+43
+00:03:10,810 --> 00:03:12,970
+We've created now a union type.
+
+44
+00:03:13,090 --> 00:03:14,410
+Meaning that address.
+
+45
+00:03:17,020 --> 00:03:23,200
+If being passed, our union can now represent both a street.
+
+46
+00:03:24,200 --> 00:03:25,220
+With some value.
+
+47
+00:03:26,850 --> 00:03:27,480
+Or.
+
+48
+00:03:29,610 --> 00:03:30,630
+It can have a state.
+
+49
+00:03:31,530 --> 00:03:32,460
+With some value.
+
+50
+00:03:33,470 --> 00:03:35,060
+As well as a province.
+
+51
+00:03:35,630 --> 00:03:37,340
+Both are equally valid.
+
+52
+00:03:37,670 --> 00:03:40,700
+You'll notice that this is perfectly fine.
+
+53
+00:03:40,700 --> 00:03:41,630
+Province works.
+
+54
+00:03:42,440 --> 00:03:43,520
+State also works.
+
+55
+00:03:43,970 --> 00:03:46,580
+It's not throwing for us any additional errors.
+
+56
+00:03:47,940 --> 00:03:48,270
+Now.
+
+57
+00:03:48,270 --> 00:03:53,190
+Nothing is stopping us from adding any additional union types on top of this.
+
+58
+00:03:53,820 --> 00:04:01,590
+We can add something like a Italian address and this also has a street which is a string.
+
+59
+00:04:02,610 --> 00:04:06,030
+But it also can have a region.
+
+60
+00:04:07,120 --> 00:04:08,170
+Which is also a string.
+
+61
+00:04:09,980 --> 00:04:14,600
+This region, of course, could be something like Tuscany or Amalfi.
+
+62
+00:04:15,590 --> 00:04:21,140
+But now if you add this once again, this still works.
+
+63
+00:04:21,770 --> 00:04:24,050
+If we didn't have Italian address.
+
+64
+00:04:25,380 --> 00:04:31,800
+Then of course you see that we have an error because this cannot have region inside of our North American
+
+65
+00:04:31,800 --> 00:04:32,250
+address.
+
+66
+00:04:33,620 --> 00:04:35,600
+So of course, there's no longer a North American.
+
+67
+00:04:35,930 --> 00:04:38,690
+We can probably just put Western.
+
+68
+00:04:39,670 --> 00:04:42,670
+Or we can just put address if we think it's going to extend.
+
+69
+00:04:44,090 --> 00:04:45,680
+But this is the thing about types.
+
+70
+00:04:46,640 --> 00:04:48,320
+You're allowed to do unions on them.
+
+71
+00:04:48,470 --> 00:04:52,100
+There's also a couple other advantages which we'll discuss once we use more of types.
+
+72
+00:04:52,550 --> 00:04:54,500
+But this is really a preferential choice.
+
+73
+00:04:54,980 --> 00:04:59,030
+A lot of projects like to use interfaces, a lot of projects like to use types.
+
+74
+00:04:59,480 --> 00:05:06,830
+Typically, the Golden Rule is that if you are writing more of a functional style of code, functional
+
+75
+00:05:06,830 --> 00:05:08,990
+programming style, then you use types.
+
+76
+00:05:09,590 --> 00:05:13,790
+If you do more of an object oriented style, then you use interfaces.
+
+77
+00:05:14,360 --> 00:05:20,840
+Personally, I like functional programming a lot, so I am going to continue using types for the remainder
+
+78
+00:05:20,840 --> 00:05:23,900
+of this course, but you can feel free to use interfaces.
+
+79
+00:05:24,050 --> 00:05:27,830
+It's pretty common and it's overlap, so there's not that much difference.
+
+80
+00:05:28,730 --> 00:05:32,000
+So what we need to keep then is pretty much just our.
+
+81
+00:05:33,140 --> 00:05:34,190
+Search box, props type.
+
+82
+00:05:35,930 --> 00:05:41,930
+So here, one thing you'll notice is that our function definition, while we just type something, this
+
+83
+00:05:41,930 --> 00:05:42,710
+is not correct.
+
+84
+00:05:43,220 --> 00:05:47,180
+We actually are not even receiving the correct value here.
+
+85
+00:05:48,050 --> 00:05:49,820
+The reason why this is not the same.
+
+86
+00:05:50,830 --> 00:05:58,600
+Is because you'll notice that here inside of on change instead of directly just passing on change handler
+
+87
+00:05:58,600 --> 00:05:59,260
+like so.
+
+88
+00:06:01,250 --> 00:06:08,870
+I've written it another way where we're explicitly getting the actual event inside of a callback, which
+
+89
+00:06:08,870 --> 00:06:11,030
+we then pass to our own change handler.
+
+90
+00:06:12,110 --> 00:06:16,850
+Now, the reason I did it like this is because I want to know what this event is that we're getting
+
+91
+00:06:16,850 --> 00:06:17,440
+from React.
+
+92
+00:06:17,450 --> 00:06:24,320
+And this is very important because React actually has a lot of types by default inside of all of these
+
+93
+00:06:24,320 --> 00:06:25,640
+components that they've given us.
+
+94
+00:06:26,030 --> 00:06:33,440
+The reason why React has typed all of these HTML, but React to five gsx components is so that we can
+
+95
+00:06:33,440 --> 00:06:34,820
+actually use TypeScript with them.
+
+96
+00:06:35,510 --> 00:06:41,240
+In this particular case, if you switch back to this version, you'll notice that on change gives you
+
+97
+00:06:41,240 --> 00:06:41,660
+an error.
+
+98
+00:06:42,180 --> 00:06:50,870
+It says that our type of this function so you see type a string fat arrow void is not assignable to
+
+99
+00:06:50,870 --> 00:07:00,290
+type change event handler HTML input element change event handler is actually a functional type definition
+
+100
+00:07:00,290 --> 00:07:01,760
+that we get from React.
+
+101
+00:07:02,480 --> 00:07:09,020
+So here we can import this in from React and it's called if we highlight over it again.
+
+102
+00:07:10,440 --> 00:07:12,590
+Change event handler.
+
+103
+00:07:13,810 --> 00:07:19,510
+Now change event handler is essentially a function type that we receive from React.
+
+104
+00:07:20,230 --> 00:07:21,280
+We can put this here.
+
+105
+00:07:21,970 --> 00:07:23,920
+And what we also need to pass it.
+
+106
+00:07:24,280 --> 00:07:26,620
+If you remember when we had our.
+
+107
+00:07:27,530 --> 00:07:30,740
+Definition like this where we received some kind of event.
+
+108
+00:07:31,760 --> 00:07:34,230
+Notice that this event is of react change event.
+
+109
+00:07:34,270 --> 00:07:35,960
+H html input element.
+
+110
+00:07:37,070 --> 00:07:37,490
+Here.
+
+111
+00:07:37,490 --> 00:07:44,090
+We want to pass that HDMI input element into this change event handler because if you hover over this
+
+112
+00:07:44,870 --> 00:07:46,280
+reading this definition.
+
+113
+00:07:47,260 --> 00:07:49,750
+Alias type change event handler.
+
+114
+00:07:50,290 --> 00:07:52,450
+Notice that there are angular brackets.
+
+115
+00:07:52,720 --> 00:07:59,440
+This angular bracket is essentially representing that you can pass to this type a parameter the same
+
+116
+00:07:59,440 --> 00:08:01,450
+way that you pass a parameter to a function.
+
+117
+00:08:01,750 --> 00:08:06,520
+Certain types, by definition, you can actually also pass it a parameter.
+
+118
+00:08:07,180 --> 00:08:12,610
+This parameter, though, is a type you have to pass at a type so that it can use that type inside of
+
+119
+00:08:12,610 --> 00:08:14,590
+its own type definition.
+
+120
+00:08:15,440 --> 00:08:21,950
+For example, what you're seeing here with Change event handler is that it receives some parameter value
+
+121
+00:08:21,950 --> 00:08:22,520
+of T.
+
+122
+00:08:23,240 --> 00:08:26,100
+This T has to be some kind of element type.
+
+123
+00:08:26,120 --> 00:08:27,800
+Now, element here is a union.
+
+124
+00:08:27,800 --> 00:08:35,660
+It's a numerous bunch of different HTML element types of which h timber input element is one of them.
+
+125
+00:08:36,500 --> 00:08:43,250
+So what happens is you pass it this parameter T and then it uses it to define what the change event
+
+126
+00:08:43,250 --> 00:08:44,120
+type is going to be.
+
+127
+00:08:44,510 --> 00:08:50,360
+So notice that we say equals and then round brackets, event change, event of type T.
+
+128
+00:08:51,050 --> 00:08:57,980
+So we're saying, hey, give me some type T and this is going to be what I use to define the type that
+
+129
+00:08:57,980 --> 00:08:59,180
+I have later on.
+
+130
+00:08:59,840 --> 00:09:01,640
+If that seems confusing, don't worry.
+
+131
+00:09:01,640 --> 00:09:04,390
+We're going to work with these types of type parameters.
+
+132
+00:09:04,400 --> 00:09:07,720
+These are known as generics, and we're definitely going to explore those.
+
+133
+00:09:08,000 --> 00:09:13,490
+For now, though, all you need to know is that we are going to pass to it a type parameter of H our
+
+134
+00:09:13,760 --> 00:09:14,870
+input element.
+
+135
+00:09:15,200 --> 00:09:17,900
+And now this change event handler is correct.
+
+136
+00:09:18,590 --> 00:09:19,940
+So we don't even need this anymore.
+
+137
+00:09:21,470 --> 00:09:22,130
+And here we go.
+
+138
+00:09:22,490 --> 00:09:24,050
+We see that everything here works.
+
+139
+00:09:24,740 --> 00:09:32,630
+The reason why you can pass this different input elements types is because there are actually on change
+
+140
+00:09:33,110 --> 00:09:36,440
+methods across many different HTML components.
+
+141
+00:09:36,650 --> 00:09:38,450
+Input is just one of them.
+
+142
+00:09:38,690 --> 00:09:41,870
+We have a four text boxes, we have four dropdowns, we have four radios.
+
+143
+00:09:42,020 --> 00:09:48,500
+There are numerous different components that register and on change as a result, depending on which
+
+144
+00:09:48,530 --> 00:09:53,510
+input element is triggering this on change, they might have different values on the event.
+
+145
+00:09:53,900 --> 00:09:58,520
+So React is saying, Hey, tell me what type of on change this is going to be.
+
+146
+00:09:58,520 --> 00:10:03,230
+So I know that this function is ready to receive the correct event type.
+
+147
+00:10:04,040 --> 00:10:06,740
+Again, react is typed by default.
+
+148
+00:10:07,490 --> 00:10:12,530
+The fact that it's typed means that all of these components have these type definitions and what they
+
+149
+00:10:12,530 --> 00:10:14,900
+expect on their methods themselves.
+
+150
+00:10:15,590 --> 00:10:24,110
+So as a result, now this extends for us a way to leverage these existing types that react as made in
+
+151
+00:10:24,110 --> 00:10:26,330
+order to define the functions that will pass to it.
+
+152
+00:10:26,930 --> 00:10:32,840
+Many libraries by default now have TypeScript in them because again, TypeScript is so popular and by
+
+153
+00:10:32,840 --> 00:10:39,260
+doing this we need to always import some of these types so that we can make sure to the library that
+
+154
+00:10:39,260 --> 00:10:40,790
+we're giving it what it wants.
+
+155
+00:10:41,510 --> 00:10:45,740
+So this is probably the part where it gets a little challenging to learn.
+
+156
+00:10:45,740 --> 00:10:50,510
+TypeScript Because you do need to constantly reference the documentation in each of these libraries
+
+157
+00:10:50,690 --> 00:10:52,190
+to know what the types you receive will be.
+
+158
+00:10:52,640 --> 00:10:57,080
+But over time you'll pick up some of the patterns, such as what I just showed you, where you can just
+
+159
+00:10:57,140 --> 00:10:59,660
+look at the actual things that are being passed to you.
+
+160
+00:10:59,900 --> 00:11:04,580
+This is one of the beautiful things about using VS code for TypeScript because the code and TypeScript
+
+161
+00:11:04,580 --> 00:11:05,930
+are both made by Microsoft.
+
+162
+00:11:06,230 --> 00:11:12,050
+So by default TypeScript is embedded as the engine that runs the code, so the compiler is extremely
+
+163
+00:11:12,050 --> 00:11:12,950
+accurate and helpful.
+
+164
+00:11:13,860 --> 00:11:14,490
+But this is it.
+
+165
+00:11:14,670 --> 00:11:16,740
+We have typed out the search box component.
+
+166
+00:11:16,890 --> 00:11:22,830
+We've learned quite a few things actually about types, interfaces, strings and functions as well as
+
+167
+00:11:22,830 --> 00:11:25,110
+third party library types that we can inherit.
+
+168
+00:11:25,350 --> 00:11:29,970
+And we start to learn about these type parameters that we passed known as generics.
+
+169
+00:11:30,780 --> 00:11:35,940
+So I know this is very, very overwhelming, but I guarantee you once you learn more about TypeScript,
+
+170
+00:11:35,940 --> 00:11:41,670
+you'll actually learn way more about JavaScript and you'll get really intention of understanding how
+
+171
+00:11:41,670 --> 00:11:42,420
+JavaScript works.
+
+172
+00:11:43,020 --> 00:11:47,220
+So now that we have finished typing our search box, let's continue typing the rest of our project.
+
+173
+00:11:47,670 --> 00:11:48,600
+I'll see in the next video.

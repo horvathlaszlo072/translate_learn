@@ -1,0 +1,172 @@
+1
+00:00:00.04 --> 00:00:02.05
+- [Instructor] We got a
+taste of handling errors
+
+2
+00:00:02.05 --> 00:00:05.02
+with callbacks and promises
+in the previous chapter
+
+3
+00:00:05.02 --> 00:00:08.05
+with the error parameter
+and the catch function.
+
+4
+00:00:08.05 --> 00:00:11.02
+We will now look at a more
+generic form of handling errors
+
+5
+00:00:11.02 --> 00:00:14.02
+and exceptions with a try-catch block.
+
+6
+00:00:14.02 --> 00:00:17.03
+This works with async/await
+as well which is nice since it
+
+7
+00:00:17.03 --> 00:00:21.02
+makes the code look a lot more
+synchronous and easy to read.
+
+8
+00:00:21.02 --> 00:00:23.02
+So to do that, let's go to the top of our
+
+9
+00:00:23.02 --> 00:00:28.01
+app.post function above
+line 28 and type in try
+
+10
+00:00:28.01 --> 00:00:31.08
+and then add in a trycatch
+statement template.
+
+11
+00:00:31.08 --> 00:00:33.07
+If your editor does not have this,
+
+12
+00:00:33.07 --> 00:00:35.08
+you can just type it in manually.
+
+13
+00:00:35.08 --> 00:00:39.00
+Then let's copy all the
+code that is not commented
+
+14
+00:00:39.00 --> 00:00:42.08
+between line 35 and line 48 on my screen
+
+15
+00:00:42.08 --> 00:00:50.00
+and let's paste it inside the try block.
+
+16
+00:00:50.00 --> 00:00:54.02
+Then let's copy the code that
+we had in our original catch
+
+17
+00:00:54.02 --> 00:01:00.03
+and move it into the new catch
+block and then uncomment it.
+
+18
+00:01:00.03 --> 00:01:05.00
+And then I'll get rid
+of the commented code.
+
+19
+00:01:05.00 --> 00:01:07.02
+We can test out the catch functionality
+
+20
+00:01:07.02 --> 00:01:10.01
+by creating a throw at
+the top of our block.
+
+21
+00:01:10.01 --> 00:01:13.07
+So let's go to the top of our try block
+
+22
+00:01:13.07 --> 00:01:16.05
+and add throw 'some error'.
+
+23
+00:01:16.05 --> 00:01:19.01
+Let's save that, and
+then let's go to our app
+
+24
+00:01:19.01 --> 00:01:23.01
+and try to post a new message.
+
+25
+00:01:23.01 --> 00:01:24.09
+And as you can see, we're getting a
+
+26
+00:01:24.09 --> 00:01:29.02
+500 Internal Server Error,
+which is the status we expected.
+
+27
+00:01:29.02 --> 00:01:31.05
+Then let's check our console for an error
+
+28
+00:01:31.05 --> 00:01:35.08
+but before we do, let's
+match the error parameters
+
+29
+00:01:35.08 --> 00:01:38.05
+so that I fully spell out error.
+
+30
+00:01:38.05 --> 00:01:41.02
+Then let's save that and try again.
+
+31
+00:01:41.02 --> 00:01:47.09
+And I'll hit Send again, then
+let's look at the terminal.
+
+32
+00:01:47.09 --> 00:01:52.07
+And you can see, we are getting
+some error at the bottom.
+
+33
+00:01:52.07 --> 00:01:54.05
+Now that we know it's working,
+
+34
+00:01:54.05 --> 00:01:56.07
+let's remove the throw from line 30.
+
+35
+00:01:56.07 --> 00:01:58.06
+Next, let's look at finally.
+
+36
+00:01:58.06 --> 00:02:00.08
+This is another feature
+the try-catch block
+
+37
+00:02:00.08 --> 00:02:03.02
+that will execute
+regardless of whether your
+
+38
+00:02:03.02 --> 00:02:05.08
+try-catch block failed or succeeded.
+

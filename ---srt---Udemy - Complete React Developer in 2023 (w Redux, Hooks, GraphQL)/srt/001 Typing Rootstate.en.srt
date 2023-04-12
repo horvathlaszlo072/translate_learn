@@ -1,0 +1,535 @@
+1
+00:00:00,480 --> 00:00:01,410
+Welcome back, everyone.
+
+2
+00:00:02,070 --> 00:00:05,040
+In this video, we are going to finish typing out our store.
+
+3
+00:00:05,850 --> 00:00:12,360
+So here we are inside of our root reducer arou reducer if you hover over it is already typed for us.
+
+4
+00:00:12,360 --> 00:00:13,680
+It's of the type reducer.
+
+5
+00:00:14,100 --> 00:00:21,360
+It has a combined state as the return of our type where we have all of our different states that come
+
+6
+00:00:21,360 --> 00:00:22,980
+from our respective reducers.
+
+7
+00:00:23,490 --> 00:00:29,280
+User State category, state and cart state are all states that we have defined as the returned state
+
+8
+00:00:29,280 --> 00:00:30,450
+of each reducer.
+
+9
+00:00:30,750 --> 00:00:35,370
+So we don't need to type this or we do need to type though is the stored J.S. File.
+
+10
+00:00:35,850 --> 00:00:43,290
+So here I'm going to convert this over to store TS and what we want to do is we want to type out the
+
+11
+00:00:43,290 --> 00:00:50,130
+root state itself, which is the actual values that are contained inside of the actual root reducer.
+
+12
+00:00:50,670 --> 00:00:52,650
+So here I'm going to say export type.
+
+13
+00:00:53,650 --> 00:01:01,810
+Root state is equal to the return type, because remember, each one of these reducers is just a function.
+
+14
+00:01:02,680 --> 00:01:08,740
+Now, if I just put root reducer here, if I were to get the return type of root reducer here, you'll
+
+15
+00:01:08,740 --> 00:01:11,800
+notice that this is going to give us an issue.
+
+16
+00:01:12,280 --> 00:01:16,720
+It says that root is a reduces to a value but is being used as a type here.
+
+17
+00:01:17,350 --> 00:01:19,360
+Did you mean type of root reducer?
+
+18
+00:01:19,930 --> 00:01:25,570
+So root reducer is a function or something that lives in JavaScript.
+
+19
+00:01:25,780 --> 00:01:27,450
+It doesn't live in TypeScript world.
+
+20
+00:01:27,490 --> 00:01:29,200
+It doesn't live in the type world of TypeScript.
+
+21
+00:01:29,200 --> 00:01:29,830
+At the very least.
+
+22
+00:01:30,160 --> 00:01:38,230
+We can get the type of it though by using type of like this type of gives you the type of whatever you
+
+23
+00:01:38,230 --> 00:01:39,130
+are calling it on.
+
+24
+00:01:39,370 --> 00:01:44,770
+So for us now, when we call type of root reducer, we are getting back that reducer combined state
+
+25
+00:01:44,770 --> 00:01:46,600
+and then of all of our states.
+
+26
+00:01:47,170 --> 00:01:54,280
+So when we get the return type of it, root state will now give us that object that contains all of
+
+27
+00:01:54,280 --> 00:01:54,910
+those values.
+
+28
+00:01:55,510 --> 00:02:00,010
+Now it's an empty object as well, because on initialization nothing is going to be contained and then
+
+29
+00:02:00,010 --> 00:02:04,240
+it populates once all of our reducers return back with corresponding values.
+
+30
+00:02:04,450 --> 00:02:05,950
+Then the roots, they actually gets built.
+
+31
+00:02:06,250 --> 00:02:12,160
+But the key thing you'll notice is that it is indeed an intersection, but primarily of all of our different
+
+32
+00:02:12,160 --> 00:02:14,670
+states to their corresponding slice keys.
+
+33
+00:02:15,600 --> 00:02:22,110
+Now that we have our root state, we can now start fixing all of the different type issues that we had
+
+34
+00:02:22,110 --> 00:02:25,530
+earlier inside of each of our selector files.
+
+35
+00:02:26,040 --> 00:02:32,400
+So let's go into each selector and let's import in our state value because this state can now be cast.
+
+36
+00:02:32,820 --> 00:02:36,840
+So I'm going to import in root state from the store file.
+
+37
+00:02:39,440 --> 00:02:42,290
+And now I just say that state points the root state.
+
+38
+00:02:43,040 --> 00:02:43,700
+And there we go.
+
+39
+00:02:44,240 --> 00:02:49,130
+I'm going to copy this over because in each selector file, I'm going to need to do the same thing.
+
+40
+00:02:49,670 --> 00:02:51,380
+And all of these are all.
+
+41
+00:02:52,270 --> 00:02:54,640
+In the same relative path of each other.
+
+42
+00:02:55,920 --> 00:02:58,170
+And then the last one is category selector.
+
+43
+00:03:04,980 --> 00:03:08,790
+Now, honestly, you're watching me go through all these files in this manner, because this is pretty
+
+44
+00:03:08,790 --> 00:03:11,850
+much what migrating a project over to TypeScript looks like.
+
+45
+00:03:12,480 --> 00:03:17,130
+Personally, I think migrating JavaScript project to TypeScript is the best way to learn TypeScript.
+
+46
+00:03:17,370 --> 00:03:20,360
+You don't want to be learning JavaScript and TypeScript at the same time.
+
+47
+00:03:20,370 --> 00:03:25,830
+It's much easier to understand how JavaScript already works inside of your code that you've already
+
+48
+00:03:25,830 --> 00:03:30,060
+written, and then upgrading it to TypeScript is much easier because you can just focus on learning
+
+49
+00:03:30,060 --> 00:03:30,600
+TypeScript.
+
+50
+00:03:31,320 --> 00:03:31,950
+But there we go.
+
+51
+00:03:32,130 --> 00:03:36,780
+We have now fixed those type issues that we were getting from all of our selectors because now we're
+
+52
+00:03:36,780 --> 00:03:38,730
+coding out the state and giving it the state.
+
+53
+00:03:40,160 --> 00:03:45,260
+So once we have that now, what we need to do is we need to address these remaining issues.
+
+54
+00:03:45,980 --> 00:03:52,370
+So here first, we notice that this says that property redux devtools extension and post does not exist
+
+55
+00:03:52,370 --> 00:03:55,040
+on type window and type of global this.
+
+56
+00:03:55,670 --> 00:03:57,980
+So the window is typed as well.
+
+57
+00:03:57,980 --> 00:04:00,900
+The window object which the browser gives to us.
+
+58
+00:04:01,430 --> 00:04:03,140
+We want to extend on it.
+
+59
+00:04:03,140 --> 00:04:07,640
+And the way you do that in TypeScript is you first need to declare a global.
+
+60
+00:04:08,120 --> 00:04:09,980
+So you're saying, hey, I want it to close globally.
+
+61
+00:04:10,730 --> 00:04:17,030
+And what we're going to say is that interface window, which is something that already exists, we are
+
+62
+00:04:17,030 --> 00:04:20,120
+going to add this redux devtools.
+
+63
+00:04:21,620 --> 00:04:26,710
+Now this is going to be an optional key so we can put question mark.
+
+64
+00:04:26,910 --> 00:04:29,870
+COLON And that just means that it does not have to be there.
+
+65
+00:04:30,170 --> 00:04:30,890
+It might be there.
+
+66
+00:04:31,190 --> 00:04:31,940
+It might not be there.
+
+67
+00:04:32,330 --> 00:04:35,510
+The reason it might be there is because sometimes we load it with the DevTools.
+
+68
+00:04:35,690 --> 00:04:37,910
+It might not be there if the user doesn't have the extension.
+
+69
+00:04:38,630 --> 00:04:39,350
+That's all we're saying.
+
+70
+00:04:40,160 --> 00:04:43,100
+So now that we have this on, what is this going to be?
+
+71
+00:04:43,550 --> 00:04:48,350
+Well, as we know, this dev extension gives us a special type of compose.
+
+72
+00:04:48,920 --> 00:04:54,110
+So this is really just a type of the compose function that we get back from.
+
+73
+00:04:55,230 --> 00:04:56,220
+Redux anyways.
+
+74
+00:04:56,850 --> 00:05:02,520
+And that will now help us clear this issue that we're getting, which is that it was not being registered.
+
+75
+00:05:03,770 --> 00:05:04,700
+So moving on now.
+
+76
+00:05:05,540 --> 00:05:09,470
+Scrolling down here, we notice that we have a type error with our middleware.
+
+77
+00:05:10,010 --> 00:05:15,260
+We see that argument of type false or middleware is not assignable to the parameter of type middleware.
+
+78
+00:05:15,470 --> 00:05:17,570
+Type Boolean is not assignable to type middleware.
+
+79
+00:05:17,810 --> 00:05:22,940
+And the reason for this is because apply middleware is only expecting middleware as inside.
+
+80
+00:05:23,900 --> 00:05:30,260
+If you look at this middleware array, the reason this is happening is because here our process and
+
+81
+00:05:30,260 --> 00:05:35,210
+check to see if it's in production mode or not because of the double ampersand, we could end up with
+
+82
+00:05:35,210 --> 00:05:40,910
+a false value, meaning that if this evaluates to false, we won't even bother evaluating the rest of
+
+83
+00:05:40,910 --> 00:05:41,510
+the statement.
+
+84
+00:05:41,870 --> 00:05:46,730
+Now, even though this value will be false, we will filter it out with our boolean check.
+
+85
+00:05:47,090 --> 00:05:55,340
+The problem is that TypeScript does not know that by filtering out whatever is true or false, this
+
+86
+00:05:55,340 --> 00:05:58,070
+middleware will narrow its type down to middleware.
+
+87
+00:05:58,430 --> 00:06:03,770
+All it knows is that there's a chance that whatever this filters through, it may just still be some
+
+88
+00:06:03,770 --> 00:06:04,610
+Boolean value.
+
+89
+00:06:05,270 --> 00:06:09,830
+And this is where we essentially need to tell TypeScript exactly what this filter is doing.
+
+90
+00:06:10,520 --> 00:06:16,790
+Listen, if you pass the truthiness of this check inside of the filter, then you are for sure left
+
+91
+00:06:16,790 --> 00:06:20,420
+with a middleware because anything that's false is going to get stripped out.
+
+92
+00:06:20,990 --> 00:06:25,610
+This is the perfect time to use what we already know, which is our type predicate functions.
+
+93
+00:06:26,150 --> 00:06:33,830
+So we need to first import in that middleware type so that we can then utilize it in order to actually
+
+94
+00:06:33,830 --> 00:06:36,860
+narrow the type once it passes through our check.
+
+95
+00:06:37,400 --> 00:06:43,130
+So for this Boolean, I'm going to actually write the callback so we know we're getting some middleware
+
+96
+00:06:43,820 --> 00:06:49,520
+and now we're going to narrow the type using what we know we're going to say if middleware passes,
+
+97
+00:06:49,520 --> 00:06:56,750
+then its middleware is going to be of the type middleware and then we'll pass the actual middleware
+
+98
+00:06:56,960 --> 00:06:59,330
+parameter into this Boolean check.
+
+99
+00:06:59,870 --> 00:07:05,030
+And now if you hover over middleware, it will know whatever comes through and passes.
+
+100
+00:07:05,030 --> 00:07:09,830
+That filter must be of type middleware through this predicate type.
+
+101
+00:07:10,700 --> 00:07:11,360
+So there we go.
+
+102
+00:07:11,360 --> 00:07:12,680
+Will notice that our error is gone.
+
+103
+00:07:13,550 --> 00:07:16,970
+Now one other thing we want to tighten up is this persist config.
+
+104
+00:07:17,090 --> 00:07:22,940
+If you hover over it, you notice that it is of this type object key of string storage of web storage
+
+105
+00:07:23,060 --> 00:07:24,920
+white list is a string array.
+
+106
+00:07:25,550 --> 00:07:29,450
+Now we only want a white list values inside of our root state.
+
+107
+00:07:29,840 --> 00:07:34,730
+So what we can do is we can extend upon the existing persist config.
+
+108
+00:07:35,120 --> 00:07:38,600
+Now from redux persist there is a process config object.
+
+109
+00:07:39,320 --> 00:07:46,610
+This is a type that contains all of the existing values that actually exist inside of a persist config.
+
+110
+00:07:46,610 --> 00:07:48,410
+So whatever values you can actually pass to it.
+
+111
+00:07:48,860 --> 00:07:50,870
+So we just want to extend upon this.
+
+112
+00:07:50,870 --> 00:07:54,680
+So we'll say type extended persist config.
+
+113
+00:07:56,420 --> 00:08:00,230
+Is equal to precise config of the root state.
+
+114
+00:08:00,920 --> 00:08:02,240
+So this will pass that through.
+
+115
+00:08:03,760 --> 00:08:13,810
+And what we also want for this process config is we want to now narrow down through an intersection.
+
+116
+00:08:14,020 --> 00:08:15,940
+What the white list can contain.
+
+117
+00:08:16,720 --> 00:08:23,890
+So we want the white list to only contain an array of the keys of the root state.
+
+118
+00:08:24,580 --> 00:08:29,440
+So key of will get you back only those values inside of root state.
+
+119
+00:08:29,440 --> 00:08:35,170
+The key values which are of course the only values that we want to pass here and now, we can say that
+
+120
+00:08:35,170 --> 00:08:40,150
+persist config is of type extended persist config.
+
+121
+00:08:40,510 --> 00:08:45,820
+And now if you hover over, you'll notice that what does it say inside of persist config?
+
+122
+00:08:47,370 --> 00:08:51,990
+While the white list value can only contain user categories and cart.
+
+123
+00:08:52,680 --> 00:08:55,500
+And that's what we get from using this extended process config.
+
+124
+00:08:56,530 --> 00:08:59,570
+And just like that, we have now typed out all of our stories.
+
+125
+00:08:59,710 --> 00:09:05,530
+Yes, we have resolved all of those other issues that we saw and we've also fixed up our middleware.
+
+126
+00:09:06,160 --> 00:09:08,440
+So a lot of this is just practice.
+
+127
+00:09:08,440 --> 00:09:13,120
+Once you look at these errors and these type errors and you just really think about what it is through
+
+128
+00:09:13,120 --> 00:09:18,550
+the tools that we've learned, we're probably going to now be able to cover 80, 90% of any new additional
+
+129
+00:09:18,550 --> 00:09:19,870
+type errors we come across.
+
+130
+00:09:20,140 --> 00:09:25,780
+And that's the advantage of really using TypeScript to narrow down and understand what it is each of
+
+131
+00:09:25,780 --> 00:09:29,620
+these parts of our JavaScript code is trying to do, particularly redux.
+
+132
+00:09:30,720 --> 00:09:36,270
+Now that we're done typing out our store and that next video, we'll learn how to type our own custom
+
+133
+00:09:36,270 --> 00:09:36,660
+middleware.
+
+134
+00:09:37,260 --> 00:09:38,340
+I'll see you in the next video.

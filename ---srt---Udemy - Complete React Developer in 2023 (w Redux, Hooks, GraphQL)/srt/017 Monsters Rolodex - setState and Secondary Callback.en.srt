@@ -1,0 +1,531 @@
+1
+00:00:00,430 --> 00:00:01,480
+Welcome back, everyone.
+
+2
+00:00:02,230 --> 00:00:06,580
+So I know we're spending a lot of time with such day, and you might be wondering if let's just build
+
+3
+00:00:06,580 --> 00:00:07,660
+Monster's Rolodex.
+
+4
+00:00:07,960 --> 00:00:13,120
+But I really think this forms a great, solid foundation moving forward of really understanding the
+
+5
+00:00:13,120 --> 00:00:16,450
+code that you're writing and how reacts engine works at a high level.
+
+6
+00:00:16,840 --> 00:00:23,020
+If we build the solid foundation of just understanding how through set state and state and this class
+
+7
+00:00:23,020 --> 00:00:29,920
+component that react determines when to render or render a component, we really can very quickly understand
+
+8
+00:00:29,920 --> 00:00:35,110
+all of the other nuances of components and react, as well as why something is working or not working
+
+9
+00:00:35,320 --> 00:00:36,970
+and just the general flow of everything.
+
+10
+00:00:37,240 --> 00:00:43,060
+Because as I mentioned with React, it's really just all about components and how and when they render
+
+11
+00:00:43,060 --> 00:00:45,480
+or we render with such state.
+
+12
+00:00:45,490 --> 00:00:52,090
+I showed you earlier that when we just passed the object, we do a shallow merge, which in turn React
+
+13
+00:00:52,090 --> 00:00:53,020
+does do an update.
+
+14
+00:00:53,350 --> 00:00:58,120
+But inside of this same function, so the same callback that we gave to on click.
+
+15
+00:00:58,300 --> 00:01:00,790
+We also did a console.log dot this dot state.
+
+16
+00:01:01,150 --> 00:01:07,090
+And yet, for some reason, once this console.log ran, we were seeing our old state object and not
+
+17
+00:01:07,090 --> 00:01:07,660
+the new one.
+
+18
+00:01:08,020 --> 00:01:14,440
+So just to clarify, when we refresh here, what we should begin with is high.
+
+19
+00:01:14,440 --> 00:01:19,300
+Using this should be the initial state, which it is, as we see demonstrated in the UI.
+
+20
+00:01:19,990 --> 00:01:23,650
+But I click change name UI updates to Andre Aniagwu.
+
+21
+00:01:23,920 --> 00:01:28,690
+But for some reason, the console.log still shows the previous Why is this?
+
+22
+00:01:29,410 --> 00:01:35,080
+So this again actually has to do with the way that React does its re render, which is where Re rendered
+
+23
+00:01:35,080 --> 00:01:35,710
+our component.
+
+24
+00:01:36,220 --> 00:01:41,800
+However, with this set state call, what's happening here with the shallow merge is that this is actually
+
+25
+00:01:41,800 --> 00:01:43,630
+happening asynchronously.
+
+26
+00:01:44,290 --> 00:01:49,810
+So typically what JavaScript code code happens in asynchronous manner, meaning that it runs one by
+
+27
+00:01:49,810 --> 00:01:50,890
+one by one by one.
+
+28
+00:01:51,880 --> 00:01:57,100
+In this particular case, we're expecting that within our callback that we update the states and then
+
+29
+00:01:57,100 --> 00:01:58,660
+we console.log this start state.
+
+30
+00:01:59,110 --> 00:02:02,500
+But clearly, as we see this is getting run first.
+
+31
+00:02:02,860 --> 00:02:09,700
+However, the state is not being updated when this console.log runs, meaning that the state at this
+
+32
+00:02:09,700 --> 00:02:11,620
+point is still the previous one.
+
+33
+00:02:12,400 --> 00:02:19,180
+Why is this is because React batches these different sets state calls so that it can determine what
+
+34
+00:02:19,180 --> 00:02:23,320
+the most optimal strategy for re rendering the website is going to be.
+
+35
+00:02:23,890 --> 00:02:24,940
+What do I mean by this?
+
+36
+00:02:25,510 --> 00:02:30,010
+Well, let's say you imagine that you have an application where you have a lot of different components
+
+37
+00:02:30,280 --> 00:02:35,050
+and perhaps through one interaction, one button click, you're actually updating the state in multiple
+
+38
+00:02:35,050 --> 00:02:39,850
+components, not just this one, because inside of here, we have one component right now with one state,
+
+39
+00:02:40,150 --> 00:02:45,880
+but you can imagine how in a more complex app, one interaction might update the state of multiple different
+
+40
+00:02:45,880 --> 00:02:46,570
+components.
+
+41
+00:02:47,050 --> 00:02:53,710
+In that case, React doesn't want to just completely isolate and do all those different updates independently.
+
+42
+00:02:53,980 --> 00:02:59,680
+RAC wants to figure out if it can stack these together, or maybe there's a more optimal way of updating
+
+43
+00:02:59,680 --> 00:03:02,170
+these components so that it is more performance.
+
+44
+00:03:02,350 --> 00:03:04,510
+That's all what React is doing under the hood for us.
+
+45
+00:03:04,720 --> 00:03:09,330
+So as a result, set state as a call is a non synchronous call.
+
+46
+00:03:09,340 --> 00:03:15,220
+It's an asynchronous call, meaning that when consort log, which is asynchronous call, gets called
+
+47
+00:03:15,520 --> 00:03:18,060
+at this point, the state might not be updated.
+
+48
+00:03:18,070 --> 00:03:19,420
+It may or it may not be.
+
+49
+00:03:19,480 --> 00:03:20,320
+Chances are it's not.
+
+50
+00:03:20,830 --> 00:03:21,970
+So you might be wondering then?
+
+51
+00:03:21,970 --> 00:03:28,780
+Well, with such state, then what if I want to use the latest state after I've updated it inside of
+
+52
+00:03:28,780 --> 00:03:29,200
+my code?
+
+53
+00:03:29,200 --> 00:03:33,560
+Somehow, like in our case, I want to console.log and make sure that my state is up to date.
+
+54
+00:03:34,270 --> 00:03:41,650
+Now we can achieve this where instead of passing this object to such state, we can pass it a function.
+
+55
+00:03:43,400 --> 00:03:46,910
+So in this format, there's actually a different way.
+
+56
+00:03:47,060 --> 00:03:49,640
+So as I mentioned, we can pass it a function.
+
+57
+00:03:51,520 --> 00:03:57,280
+And what we can also pass, it is a callback, so these are two different arguments that you can pass
+
+58
+00:03:57,280 --> 00:03:58,030
+to set date.
+
+59
+00:03:58,420 --> 00:04:04,300
+If you pass it like this, you'll actually be able to get a more consistent synchronous behavior.
+
+60
+00:04:04,310 --> 00:04:07,840
+Not really, but just at least one where we anticipate what's going to happen.
+
+61
+00:04:08,050 --> 00:04:10,300
+So let me break this down, so I'm going to comment this up.
+
+62
+00:04:10,750 --> 00:04:13,690
+So this first function is a updater function.
+
+63
+00:04:14,260 --> 00:04:20,920
+The first function that you passed a set state here is going to be some function where you return an
+
+64
+00:04:20,920 --> 00:04:25,870
+object that it will then use to shallow merge against state.
+
+65
+00:04:26,500 --> 00:04:29,830
+So this is kind of very similar to what we did before.
+
+66
+00:04:29,830 --> 00:04:36,310
+When we just passed the object that we wanted to shall emerge again state as the argument to set state.
+
+67
+00:04:36,580 --> 00:04:40,090
+But now instead, we're passing a function that returns.
+
+68
+00:04:40,420 --> 00:04:43,720
+This object that we want to again shall emerge.
+
+69
+00:04:43,930 --> 00:04:46,690
+So you might be wondering, what's the point of doing this additional function?
+
+70
+00:04:47,410 --> 00:04:52,990
+Well, the reason why we do this is because within this function, we get access to state as well as
+
+71
+00:04:52,990 --> 00:04:56,410
+props, props I'm going to cover later.
+
+72
+00:04:56,830 --> 00:05:04,090
+But state at this current moment, this state variable that we have access to is equal to the current
+
+73
+00:05:04,090 --> 00:05:04,510
+state.
+
+74
+00:05:05,380 --> 00:05:11,020
+And the reason why we want to use this is because sometimes we want to maybe update our state based
+
+75
+00:05:11,020 --> 00:05:12,820
+on the previous value of the state.
+
+76
+00:05:13,360 --> 00:05:16,480
+Props, on the other hand, is something that does with components.
+
+77
+00:05:17,020 --> 00:05:21,400
+It's different values that you can pass to your component, and we're going to do a whole separate lesson
+
+78
+00:05:21,400 --> 00:05:22,690
+on that and deeper understand it.
+
+79
+00:05:22,810 --> 00:05:25,570
+For now, just understand that you don't really need it right now.
+
+80
+00:05:25,570 --> 00:05:29,650
+But if you wanted to utilize props somehow inside of your state, you can do so.
+
+81
+00:05:29,920 --> 00:05:31,480
+But again, don't worry about it.
+
+82
+00:05:31,810 --> 00:05:34,660
+These are both optional, as you can see right here.
+
+83
+00:05:34,840 --> 00:05:36,040
+I'm not even going to use it.
+
+84
+00:05:36,520 --> 00:05:40,390
+I'm just going to use the return where I passed the object that I want to have.
+
+85
+00:05:40,930 --> 00:05:43,420
+So let's just save this and see if it still works.
+
+86
+00:05:43,930 --> 00:05:48,010
+So if we go back here, we see using a head change name.
+
+87
+00:05:48,340 --> 00:05:50,350
+It's updated to Andre Nagwa.
+
+88
+00:05:51,190 --> 00:05:57,610
+So just like we saw earlier, this is doing that same state update as we had before reactor's registering.
+
+89
+00:05:57,610 --> 00:05:59,480
+Oh, it's a different object in memory.
+
+90
+00:05:59,500 --> 00:06:04,990
+I can now re render, which we saw, but I mentioned earlier that we want to see the console.log show
+
+91
+00:06:04,990 --> 00:06:06,160
+the correct value.
+
+92
+00:06:06,610 --> 00:06:09,310
+Well, that's actually what this second argument is.
+
+93
+00:06:09,310 --> 00:06:11,740
+This function that we wrote this callback.
+
+94
+00:06:12,520 --> 00:06:17,530
+Again, as I mentioned, a callback is just a function that my code says, Oh, once I'm finished,
+
+95
+00:06:17,530 --> 00:06:19,420
+I want you to run this callback.
+
+96
+00:06:20,330 --> 00:06:25,550
+So here inside of this function, we can write whatever we want, and I'm just going to console.log
+
+97
+00:06:25,550 --> 00:06:32,930
+the new states of the Star State and what happens here is that this console.log inside of this function,
+
+98
+00:06:33,470 --> 00:06:40,970
+this function is going to run only after all of the state changes have been applied, meaning that only
+
+99
+00:06:40,970 --> 00:06:44,140
+one react has determined in its asynchronous manner.
+
+100
+00:06:44,150 --> 00:06:50,780
+Oh, I've updated shall emerge the state and now the state is the new object, then I'm going to run
+
+101
+00:06:50,780 --> 00:06:51,890
+this callback function.
+
+102
+00:06:52,610 --> 00:06:59,750
+So now if we save this and we go back now, if I hit change name, what we'll see is that we have the
+
+103
+00:06:59,750 --> 00:07:01,700
+correct newly updated state.
+
+104
+00:07:02,720 --> 00:07:09,170
+And this format is actually the ideal optimal way that you should be writing your set state code in
+
+105
+00:07:09,170 --> 00:07:09,980
+class components.
+
+106
+00:07:10,190 --> 00:07:14,600
+The reason for this is just because by doing this, it's much more clear what's happening.
+
+107
+00:07:15,290 --> 00:07:18,680
+You don't have to use the previous state or the props values.
+
+108
+00:07:18,680 --> 00:07:20,900
+As I mentioned, we're definitely not doing that here.
+
+109
+00:07:21,050 --> 00:07:26,060
+But in this way, anyone looking at it just anticipates and understands what's going to happen.
+
+110
+00:07:26,750 --> 00:07:30,290
+It's going to understand that, oh, this object, just like before, is just going to be the thing
+
+111
+00:07:30,290 --> 00:07:36,980
+that gets shallow merged, but also that this follow up callback, if there is one, is going to run
+
+112
+00:07:36,980 --> 00:07:43,100
+only after the state is fully updated, which makes it much easier to think about what's going to happen.
+
+113
+00:07:43,130 --> 00:07:49,160
+You don't have to consider, Oh my God, at this current moment, is my code actually updated or not?
+
+114
+00:07:49,430 --> 00:07:51,800
+You know for sure that React is handling that.
+
+115
+00:07:52,040 --> 00:07:56,450
+The moment that the state is up to date is only when this callback is going to get run.
+
+116
+00:07:57,690 --> 00:08:01,050
+Now again, this callback is also entirely optional.
+
+117
+00:08:01,260 --> 00:08:02,400
+You don't have to pass it.
+
+118
+00:08:02,640 --> 00:08:06,450
+You can just pass it this function if you don't want to run a callback after state updates.
+
+119
+00:08:06,810 --> 00:08:07,890
+There's nothing wrong with that.
+
+120
+00:08:08,160 --> 00:08:13,080
+If we refresh and we clear out our console, we change name.
+
+121
+00:08:13,500 --> 00:08:15,040
+Our code still just works.
+
+122
+00:08:15,810 --> 00:08:21,060
+So this is just a very key thing to understand, except state and how react determines when to update,
+
+123
+00:08:21,330 --> 00:08:23,490
+when to batch things, to make it more performant.
+
+124
+00:08:23,670 --> 00:08:27,270
+And also when to run after it's updated the state.
+
+125
+00:08:28,020 --> 00:08:29,370
+And this is really all it is.
+
+126
+00:08:29,910 --> 00:08:34,110
+I know there's a lot that we learned about such state and we're going to get a lot of practice.
+
+127
+00:08:34,110 --> 00:08:35,760
+So don't worry, we're going to practice with it.
+
+128
+00:08:35,790 --> 00:08:40,560
+We're going to get familiar with it so that as we build out Monster's Rolodex, it'll become like second
+
+129
+00:08:40,560 --> 00:08:42,660
+nature to you about using set state.
+
+130
+00:08:43,290 --> 00:08:48,060
+I know I talked a lot about that state and it's really boring and really technical, but now we can
+
+131
+00:08:48,060 --> 00:08:52,530
+start using that state to actually build our monster's Rolodex application.
+
+132
+00:08:52,800 --> 00:08:57,300
+And as promised, I'm also going to talk about props and how that gets involved as well.
+
+133
+00:08:57,600 --> 00:09:00,900
+So in the next video, let's start building out our application.

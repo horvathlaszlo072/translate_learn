@@ -1,0 +1,347 @@
+1
+00:00:01,060 --> 00:00:08,200
+In order to understand how dynamic programming works, we need to understand what caching means.
+
+2
+00:00:08,950 --> 00:00:13,600
+Caching is a way to store values so you can use them later on.
+
+3
+00:00:14,230 --> 00:00:20,170
+Ideally, you can think of caching as a backpack they take to school.
+
+4
+00:00:21,160 --> 00:00:28,420
+Instead of going all the way home, when you need something like a pencil, you have a small box on
+
+5
+00:00:28,420 --> 00:00:36,700
+your back that holds items that you need so that when you go to school, you can just reuse them fast
+
+6
+00:00:36,700 --> 00:00:37,390
+over and over.
+
+7
+00:00:38,260 --> 00:00:40,360
+Now, that's a bit of a silly example.
+
+8
+00:00:40,690 --> 00:00:48,700
+Caching is just a way for us to speed up programs and hold some piece of data in an easily accessible
+
+9
+00:00:48,700 --> 00:00:49,150
+box.
+
+10
+00:00:49,900 --> 00:00:55,840
+And memorization is a specific form of caching that we're going to be talking about because we use it
+
+11
+00:00:55,840 --> 00:00:57,250
+a lot in dynamic programming.
+
+12
+00:00:58,060 --> 00:01:02,200
+But instead of just talking about it, let's actually demonstrate it in code.
+
+13
+00:01:04,340 --> 00:01:12,710
+The way we can cash things, well, let's imagine we have a function that says we want to add to Haiti
+
+14
+00:01:13,400 --> 00:01:21,620
+and this function takes a number and all it does is return the value of PN.
+
+15
+00:01:22,010 --> 00:01:25,760
+That is a parameter we give it and adds Haiti to it.
+
+16
+00:01:26,800 --> 00:01:30,040
+So that when we run the function, add to 80.
+
+17
+00:01:30,990 --> 00:01:35,220
+And let's say we put in five, we get 85.
+
+18
+00:01:36,140 --> 00:01:40,340
+Nice and simple, right, but if I run this function again.
+
+19
+00:01:42,610 --> 00:01:48,640
+I'll have to go through this step again and add 80 to that answer, and if I do this again, again,
+
+20
+00:01:49,000 --> 00:01:49,840
+do the same thing.
+
+21
+00:01:50,080 --> 00:01:52,720
+I've ran the calculation three times.
+
+22
+00:01:53,830 --> 00:01:58,810
+But what if this operation took a really, really long time?
+
+23
+00:01:59,560 --> 00:02:06,220
+What if I had a console like here and we can imagine that this operation takes multiple seconds.
+
+24
+00:02:06,670 --> 00:02:07,800
+It takes a long time.
+
+25
+00:02:08,680 --> 00:02:15,730
+Every time we run, this function will have to run a long time, three times and go through the step
+
+26
+00:02:16,300 --> 00:02:21,460
+one by one, even though we've done the exact same calculation three times.
+
+27
+00:02:22,120 --> 00:02:30,370
+Is there a way that we can optimize this and this is where we can use caching and memorisation?
+
+28
+00:02:31,120 --> 00:02:34,550
+Let's improve the above function by doing something different?
+
+29
+00:02:35,170 --> 00:02:40,940
+I'm going to create a new object called cache that's going to hold an empty object.
+
+30
+00:02:42,400 --> 00:02:43,990
+We're also going to have a function.
+
+31
+00:02:45,110 --> 00:02:47,840
+That is now going to be called memorized.
+
+32
+00:02:48,930 --> 00:02:50,550
+Not memorized, memorized.
+
+33
+00:02:52,030 --> 00:03:00,790
+Add to Katie that takes a number, and inside here, we're going to do something a little bit different
+
+34
+00:03:00,790 --> 00:03:06,320
+than the above, we're still going to add to Haiti, but we're going to do it in a special way.
+
+35
+00:03:07,000 --> 00:03:18,220
+I'm going to say that if MN is in cash and this is a way to check if a property exists in an object
+
+36
+00:03:18,220 --> 00:03:24,580
+in JavaScript, so it's similar to me doing cash dot and to check for the property.
+
+37
+00:03:25,580 --> 00:03:31,160
+This one just reads better, so I'm going to keep it like that, so if and exists in cash, so if we
+
+38
+00:03:31,280 --> 00:03:36,920
+cashed it before then simply return the cash dot and.
+
+39
+00:03:38,630 --> 00:03:39,680
+Or cash in.
+
+40
+00:03:41,690 --> 00:03:48,350
+So return the cash value, but obviously it's empty the first time around, so this is not going to
+
+41
+00:03:48,350 --> 00:03:48,670
+work.
+
+42
+00:03:49,630 --> 00:03:55,480
+If there's nothing in the cash, which is the case the first time around, well, we have an estimate
+
+43
+00:03:56,080 --> 00:03:56,950
+and in here.
+
+44
+00:03:58,680 --> 00:04:01,800
+We're going to have our cash.
+
+45
+00:04:02,790 --> 00:04:03,270
+And.
+
+46
+00:04:04,750 --> 00:04:10,330
+Which doesn't exist yet and assign it and plus 80.
+
+47
+00:04:11,940 --> 00:04:15,720
+So that after this, if we do something like.
+
+48
+00:04:16,930 --> 00:04:19,720
+Minimalized add to eighty five.
+
+49
+00:04:20,840 --> 00:04:24,710
+It's going to say five plus 80, so.
+
+50
+00:04:26,110 --> 00:04:33,880
+And here we're going to cash the property five to have a value of eighty five, which is what we're
+
+51
+00:04:33,880 --> 00:04:43,020
+doing here, so that the next time around we're doing something like this, we go through the if statement,
+
+52
+00:04:43,030 --> 00:04:50,320
+find the fact that we've already calculated five and just do simple property access, which as we know
+
+53
+00:04:50,320 --> 00:04:54,550
+is of one time, is super fast with a hash table like this.
+
+54
+00:04:56,020 --> 00:04:58,550
+Let's complete this example to show you how it works.
+
+55
+00:04:59,230 --> 00:05:01,060
+I'm just simply going to.
+
+56
+00:05:02,820 --> 00:05:03,360
+Return.
+
+57
+00:05:07,910 --> 00:05:08,270
+And.
+
+58
+00:05:10,050 --> 00:05:17,310
+Since we just filled that up here and let's just have a console log here that does long time to see
+
+59
+00:05:17,310 --> 00:05:20,280
+that we're doing the calculation, that takes a long time.
+
+60
+00:05:21,310 --> 00:05:23,500
+The first time I run this function.
+
+61
+00:05:24,930 --> 00:05:30,880
+I get eighty five and I have the cash prefilled, so it didn't calculate a long time.
+
+62
+00:05:30,900 --> 00:05:32,850
+Let's try that again, like run.
+
+63
+00:05:33,930 --> 00:05:40,650
+Long time the first pass through it went through here and did this calculation that hypothetically is
+
+64
+00:05:40,650 --> 00:05:42,030
+going to take a really long time.
+
+65
+00:05:42,360 --> 00:05:47,430
+Again, we're using a nice, easy example here, but you can imagine this being a calculation that takes
+
+66
+00:05:47,430 --> 00:05:48,840
+a long time, many seconds.
+
+67
+00:05:50,130 --> 00:05:54,450
+What if we do this again, we can console like here?
+
+68
+00:05:57,950 --> 00:06:01,130
+To make sure that we capture these values.
+
+69
+00:06:04,490 --> 00:06:07,070
+And we'll label them one.
+
+70
+00:06:08,590 --> 00:06:16,060
+And to just so we can distinguish them, so the first goal and the second call, if I had run.
+
+71
+00:06:17,950 --> 00:06:24,280
+Look at that first time around, we call long time and we calculate to eighty five, but the second
+
+72
+00:06:24,280 --> 00:06:31,900
+time around because this value was in the cash, we didn't have to do this long calculation and we just
+
+73
+00:06:31,900 --> 00:06:33,610
+returned it immediately.
+
+74
+00:06:35,260 --> 00:06:38,320
+So what is memorisation exactly?
+
+75
+00:06:39,430 --> 00:06:45,010
+Well, memorization is a specific form of caching that involves caching the return value.
+
+76
+00:06:46,230 --> 00:06:56,810
+All of a function that is the return value of this function based on its parameters and if the parameter
+
+77
+00:06:56,810 --> 00:07:03,170
+of this function doesn't change like it is here, then it's memorised.
+
+78
+00:07:03,200 --> 00:07:09,800
+That is, it uses the cash because it's calculated the same thing before with the same parameter, and
+
+79
+00:07:09,800 --> 00:07:18,480
+it will return a cached version of the function it's memorized if the parameter changes.
+
+80
+00:07:19,250 --> 00:07:20,750
+Well, it's a different.
+
+81
+00:07:21,760 --> 00:07:26,020
+Parameter that it's never seen before, so it's going to calculate both times.
+
+82
+00:07:27,000 --> 00:07:31,890
+Different things, and I just noticed here that this shouldn't be five, it should be and over here.
+
+83
+00:07:31,890 --> 00:07:33,040
+So it's dynamic.
+
+84
+00:07:33,060 --> 00:07:33,740
+There you go.
+
+85
+00:07:33,780 --> 00:07:34,330
+That's better.
+
+86
+00:07:35,610 --> 00:07:43,380
+So remember, this memorization is simply a way to remember a solution to a sore problem, so you don't
+
+87
+00:07:43,380 --> 00:07:45,630
+have to calculate it again.

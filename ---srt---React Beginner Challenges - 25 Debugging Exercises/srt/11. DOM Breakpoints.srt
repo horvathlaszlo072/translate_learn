@@ -1,0 +1,847 @@
+1
+00:00:00,150 --> 00:00:06,660
+All right, in this one, we are going to talk about Dom breakpoints, so this is a concept that is
+
+2
+00:00:06,660 --> 00:00:10,190
+not really used that often in my experience anymore.
+
+3
+00:00:10,890 --> 00:00:17,940
+It used to be really useful when you were writing query code with React, React, kind of figures out
+
+4
+00:00:17,940 --> 00:00:19,050
+the DOM for you.
+
+5
+00:00:19,050 --> 00:00:23,640
+And so putting a breakpoint on the DOM isn't as important with react because you're going to want to
+
+6
+00:00:23,640 --> 00:00:30,300
+be debugging more state stuff rather than the actual DOM breakpoints itself.
+
+7
+00:00:30,630 --> 00:00:32,970
+The dominant population itself, I should say.
+
+8
+00:00:33,270 --> 00:00:39,150
+But I've included an example in this in this talk where we are going to actually modify the DOM ourself
+
+9
+00:00:39,150 --> 00:00:41,670
+and you'll see where that this could be useful.
+
+10
+00:00:42,000 --> 00:00:43,560
+So anyway, let's get let's get into it.
+
+11
+00:00:43,590 --> 00:00:45,870
+What exactly is a Dom breakpoint?
+
+12
+00:00:46,110 --> 00:00:49,890
+So Dom Breakpoint, if you're on the web, get inspector here.
+
+13
+00:00:50,040 --> 00:00:51,990
+You could say I'm hovering over different elements.
+
+14
+00:00:52,230 --> 00:00:56,340
+And when you want to, you can basically just right.
+
+15
+00:00:56,340 --> 00:01:01,850
+Click and you'll see that this will allow you to see some options.
+
+16
+00:01:01,860 --> 00:01:08,630
+So let me go ahead and I'm going to actually just expand the the app that I'm in here.
+
+17
+00:01:08,640 --> 00:01:11,850
+So if I go over here and I write click and I say inspect.
+
+18
+00:01:12,120 --> 00:01:15,720
+So that'll get me to exactly what element I want to break point on.
+
+19
+00:01:15,960 --> 00:01:21,180
+And so looking at my app, this is an app that I just set up here to do a couple of things.
+
+20
+00:01:21,210 --> 00:01:24,540
+So this is just going to swap a font size class out.
+
+21
+00:01:24,720 --> 00:01:31,110
+So this is an example of let's say something in your app is happening and you want to see, well, what's
+
+22
+00:01:31,110 --> 00:01:34,480
+exactly the cause of this class change.
+
+23
+00:01:34,920 --> 00:01:37,140
+So this is doing in the code.
+
+24
+00:01:37,140 --> 00:01:38,640
+It's changing out of class.
+
+25
+00:01:38,970 --> 00:01:42,130
+So let's just say that you you want to.
+
+26
+00:01:42,180 --> 00:01:45,090
+So basically you we first took that step of.
+
+27
+00:01:45,090 --> 00:01:45,360
+Right.
+
+28
+00:01:45,360 --> 00:01:47,070
+Clicking and inspecting that element.
+
+29
+00:01:47,340 --> 00:01:49,290
+So we found that element in the DOM.
+
+30
+00:01:49,290 --> 00:01:50,040
+That's step one.
+
+31
+00:01:50,050 --> 00:01:52,850
+Once you do that, you could do a whole bunch of things which will show.
+
+32
+00:01:53,100 --> 00:01:54,990
+So right here you could see this.
+
+33
+00:01:54,990 --> 00:01:58,490
+So I know that when I click this button, that class is changing.
+
+34
+00:01:58,500 --> 00:02:02,190
+So if we do this, you could see that you saw this flash, right.
+
+35
+00:02:02,220 --> 00:02:05,420
+So if you go over here and you do that again, so we saw this flash.
+
+36
+00:02:05,670 --> 00:02:09,330
+So that's our first clue that this element is changing.
+
+37
+00:02:10,080 --> 00:02:13,930
+And we saw the parts of that that are changing, which is this class section here.
+
+38
+00:02:14,280 --> 00:02:19,710
+Now, if we zoom on in, could see that we actually have this class here called Big.
+
+39
+00:02:20,100 --> 00:02:23,310
+And when we click that button, that big class goes away.
+
+40
+00:02:23,670 --> 00:02:28,050
+So we know that when we click the button, the class goes away and then when we click it again, it
+
+41
+00:02:28,050 --> 00:02:28,680
+comes back.
+
+42
+00:02:29,070 --> 00:02:32,310
+So that that's an assumption that we we just learned some information.
+
+43
+00:02:32,310 --> 00:02:37,920
+We learn that this component is being modified and now the next thing.
+
+44
+00:02:37,920 --> 00:02:39,150
+So we've determined that.
+
+45
+00:02:39,150 --> 00:02:39,390
+Right.
+
+46
+00:02:39,400 --> 00:02:42,210
+So one thing that you could do is we could.
+
+47
+00:02:42,210 --> 00:02:42,480
+Right.
+
+48
+00:02:42,480 --> 00:02:43,320
+Click on this.
+
+49
+00:02:44,750 --> 00:02:47,150
+And right click and we're just going to say.
+
+50
+00:02:48,370 --> 00:02:49,270
+Brake on.
+
+51
+00:02:49,330 --> 00:02:55,180
+So this brake on here, this is going to give you three options, subtree modifications, attribute
+
+52
+00:02:55,180 --> 00:02:56,740
+modifications and no removal.
+
+53
+00:02:57,130 --> 00:02:58,930
+Now, the classes are part of the attributes.
+
+54
+00:02:58,930 --> 00:03:01,480
+So that will that's going to be a brake point.
+
+55
+00:03:01,480 --> 00:03:03,490
+That will change when we click that button.
+
+56
+00:03:03,820 --> 00:03:06,960
+Subtree modification, that's when anything in the subtree changes.
+
+57
+00:03:06,960 --> 00:03:12,890
+So if component gets removed or added, that will get triggered then and then a node removals on this
+
+58
+00:03:12,940 --> 00:03:14,520
+element gets removed altogether.
+
+59
+00:03:14,540 --> 00:03:15,700
+I want to show all these examples.
+
+60
+00:03:16,000 --> 00:03:20,890
+So first, we're going to show what happens when we click this attribute attribute modification.
+
+61
+00:03:21,040 --> 00:03:25,540
+You see now we have that breakpoint set here and when we click this button.
+
+62
+00:03:27,220 --> 00:03:31,720
+You could see now that we have some JavaScript that's actually been paused, so this is the raw attribute
+
+63
+00:03:31,720 --> 00:03:37,690
+that's actually or this is the raw code that's actually going to be modifying that, Dom.
+
+64
+00:03:37,690 --> 00:03:39,010
+So you can see here and react.
+
+65
+00:03:39,010 --> 00:03:42,840
+Dom, at this point, this is not our code anymore.
+
+66
+00:03:42,850 --> 00:03:43,870
+This is really code.
+
+67
+00:03:43,870 --> 00:03:49,900
+If we go over here to the call stack, you could see it's going all the way down into React Dom development
+
+68
+00:03:49,900 --> 00:03:50,170
+code.
+
+69
+00:03:50,170 --> 00:03:55,300
+So basically REACT has delegated this all the way to the react Dom.
+
+70
+00:03:55,300 --> 00:03:57,990
+And we can't see any of our react code in here.
+
+71
+00:03:58,330 --> 00:04:02,740
+So this is unfortunately why this is really not that useful for react right now.
+
+72
+00:04:03,040 --> 00:04:08,530
+Maybe there's something in the to bugger that we can find that will trace it back to our react hook
+
+73
+00:04:08,530 --> 00:04:09,010
+function.
+
+74
+00:04:09,370 --> 00:04:14,700
+But in the meantime, this is why this is really not that useful for debugging that exact function.
+
+75
+00:04:15,400 --> 00:04:18,640
+So let's go back to our code, though, because.
+
+76
+00:04:18,640 --> 00:04:18,880
+All right.
+
+77
+00:04:18,880 --> 00:04:23,320
+So anyway, so you can see here, we could just continue to resume this execution and then we're going
+
+78
+00:04:23,320 --> 00:04:24,730
+to go back to our code again.
+
+79
+00:04:24,970 --> 00:04:26,890
+So go over here now.
+
+80
+00:04:26,920 --> 00:04:29,330
+I'm going to show you what our code does here.
+
+81
+00:04:29,470 --> 00:04:33,970
+So basically, this is it's running this function here, which is called swap class.
+
+82
+00:04:34,270 --> 00:04:38,470
+So it's setting the big class and it's we have a react hook up here.
+
+83
+00:04:38,770 --> 00:04:42,550
+And when this hook is set, we have this big class else we have no class.
+
+84
+00:04:42,880 --> 00:04:44,590
+So that's added onto that element.
+
+85
+00:04:45,130 --> 00:04:47,770
+Now, I want to show you another example here.
+
+86
+00:04:47,770 --> 00:04:49,450
+This is called Add Class Vanilla.
+
+87
+00:04:49,690 --> 00:04:53,950
+So this is going to be using vanilla JavaScript to add that class, which means we're going to be using
+
+88
+00:04:53,950 --> 00:04:54,730
+the document.
+
+89
+00:04:54,970 --> 00:04:58,810
+We're going to use this native JavaScript function called Get Elements by class name.
+
+90
+00:04:59,260 --> 00:05:01,900
+We're going to access the class list and we're going to add a new class.
+
+91
+00:05:02,470 --> 00:05:08,700
+Now, this actually took me some Googling to remember this because I was so used to using react.
+
+92
+00:05:08,720 --> 00:05:11,790
+I haven't manually added stuff to the DOM in a while.
+
+93
+00:05:11,800 --> 00:05:14,320
+So this is a good thing that you can research.
+
+94
+00:05:14,330 --> 00:05:16,030
+So basically you have.
+
+95
+00:05:16,750 --> 00:05:20,480
+So let's let's go back to our DOM point, though, so we have that DOM breakpoint set.
+
+96
+00:05:21,040 --> 00:05:25,000
+Now, what I'm going to show you this time is instead of clicking that first button, we're going to
+
+97
+00:05:25,000 --> 00:05:27,930
+click on that ad class, Menella, which is going to call this other function.
+
+98
+00:05:28,300 --> 00:05:35,670
+So when we go back to our breakpoint here so let's see here, we have that breakpoint still set.
+
+99
+00:05:36,100 --> 00:05:37,740
+So we're going to go and click that button.
+
+100
+00:05:37,780 --> 00:05:40,500
+We're going to click on that other button, which is right here.
+
+101
+00:05:40,510 --> 00:05:47,920
+So when I say ad class vanilla now, you could see here what's happening is that we actually have that
+
+102
+00:05:47,920 --> 00:05:50,730
+breakpoint coming right back to our JavaScript.
+
+103
+00:05:50,740 --> 00:05:54,750
+So this is our code and it's it's stopped right at exactly our code.
+
+104
+00:05:54,760 --> 00:05:58,170
+So this is it's cutting right to where we're modifying the DOM.
+
+105
+00:05:58,570 --> 00:06:00,130
+So this is an example.
+
+106
+00:06:00,130 --> 00:06:03,420
+You're using Jorquera, you're using regular vanilla JavaScript.
+
+107
+00:06:03,880 --> 00:06:05,770
+This is a great thing for you to know.
+
+108
+00:06:05,770 --> 00:06:08,320
+OK, this is exactly what modified my Dom.
+
+109
+00:06:08,620 --> 00:06:14,240
+I've traced my code back to wherever that bug is or wherever that feature is doing, and that's great.
+
+110
+00:06:14,530 --> 00:06:18,580
+So this is kind of an older feature, but I wanted to mention it because you're going to you may need
+
+111
+00:06:18,580 --> 00:06:21,010
+to use this for those situations.
+
+112
+00:06:21,880 --> 00:06:27,010
+Now, moving along, like I said, with react, not as not as useful.
+
+113
+00:06:27,010 --> 00:06:31,060
+So moving along, I want to talk about some of the other break points.
+
+114
+00:06:31,060 --> 00:06:33,550
+Now, that was attribute modifications.
+
+115
+00:06:33,550 --> 00:06:33,790
+Right.
+
+116
+00:06:33,910 --> 00:06:38,020
+That will also get triggered for any of the other DOM attributes that could be set here.
+
+117
+00:06:38,380 --> 00:06:43,100
+So to remove that, we're just going to click on this and we're just going to.
+
+118
+00:06:43,660 --> 00:06:48,310
+So I actually if you go to the source panel, you go down here to breakpoints.
+
+119
+00:06:48,310 --> 00:06:49,720
+You could see Dom breakpoints.
+
+120
+00:06:49,720 --> 00:06:50,320
+You could just right.
+
+121
+00:06:50,320 --> 00:06:51,880
+Click and say remove all break points.
+
+122
+00:06:51,880 --> 00:06:56,980
+Now we're going to go back to elements and want to do that again are actually this time we're going
+
+123
+00:06:56,980 --> 00:07:01,560
+to go to a different type of breakpoint because we just talked about attribute modification, breakpoints.
+
+124
+00:07:02,170 --> 00:07:09,850
+Now we're going to talk about the second thing, which is you could talk about subtree modifications.
+
+125
+00:07:10,210 --> 00:07:16,330
+So if we go to the app, we're just going to put a breakpoint here that says break on subtree modifications.
+
+126
+00:07:17,360 --> 00:07:20,280
+To show you that again, because that window doesn't show the pop up.
+
+127
+00:07:20,300 --> 00:07:24,150
+OK, so here we go again, break on subtree modifications.
+
+128
+00:07:24,620 --> 00:07:26,990
+So this is going to break.
+
+129
+00:07:27,000 --> 00:07:31,970
+So let's say if we were still pause on that other break point.
+
+130
+00:07:31,970 --> 00:07:32,810
+So we're going to go ahead.
+
+131
+00:07:32,840 --> 00:07:35,630
+You know, here you can by the way, you could debug the element.
+
+132
+00:07:35,630 --> 00:07:38,660
+You could debug anything you want in the section prior to that.
+
+133
+00:07:38,660 --> 00:07:39,690
+So that's pretty cool.
+
+134
+00:07:40,010 --> 00:07:43,070
+So we're going to continue on here with that.
+
+135
+00:07:43,980 --> 00:07:48,440
+I wanted to mention that that class that was added, it turns the text read, right?
+
+136
+00:07:48,460 --> 00:07:53,800
+So I added a new class that's in the styles here that turns the class read new class.
+
+137
+00:07:54,370 --> 00:08:02,710
+But if you go and change the font size, you add that big class that is going to get overridden because
+
+138
+00:08:02,710 --> 00:08:04,150
+react is react.
+
+139
+00:08:04,150 --> 00:08:05,710
+Doesn't know about that new class.
+
+140
+00:08:05,710 --> 00:08:10,530
+We added because we added it with vanilla JavaScript and so that new class is going to go away.
+
+141
+00:08:10,540 --> 00:08:12,430
+So you really don't want to do this.
+
+142
+00:08:12,640 --> 00:08:16,780
+Don't don't modify the DOM if you're using react because react is going to get very confused.
+
+143
+00:08:17,080 --> 00:08:18,280
+You run into all kinds of issues.
+
+144
+00:08:18,280 --> 00:08:23,500
+So never, never do this unless you're not using react or using something or some other framework.
+
+145
+00:08:23,890 --> 00:08:24,310
+So.
+
+146
+00:08:25,310 --> 00:08:33,020
+All right, so now what we were doing again was the the subtree modifications, so have another function
+
+147
+00:08:33,020 --> 00:08:34,060
+here called remove title.
+
+148
+00:08:34,070 --> 00:08:35,230
+It's going to remove that title.
+
+149
+00:08:35,570 --> 00:08:40,730
+But first, I want to show you that when I change the font size, when I change that attribute, the
+
+150
+00:08:40,760 --> 00:08:45,380
+underlying HTML is that that breakpoints not being triggered.
+
+151
+00:08:45,380 --> 00:08:49,820
+So you could see that when I change that, the class names being changed, but the actual breakpoint
+
+152
+00:08:49,820 --> 00:08:50,630
+is not being fired.
+
+153
+00:08:50,960 --> 00:08:57,440
+But when we remove the title of a button here that just removes the title, when when the react hook
+
+154
+00:08:57,440 --> 00:09:02,630
+is set, click the button, removes the title, remove the title, sets this react hook to be true.
+
+155
+00:09:03,170 --> 00:09:09,540
+Then we know that there's no title boolean and that does not render the title.
+
+156
+00:09:09,890 --> 00:09:11,950
+So when we do that, click that button.
+
+157
+00:09:12,260 --> 00:09:14,930
+Now we get our breakpoint once again.
+
+158
+00:09:14,930 --> 00:09:20,540
+Not very useful because we're in react Dom, so we can, you know, we know where we are and react Dom,
+
+159
+00:09:20,540 --> 00:09:25,430
+which is cool, but we are not hitting our code.
+
+160
+00:09:25,850 --> 00:09:28,490
+So again, just something to be aware of.
+
+161
+00:09:28,540 --> 00:09:30,860
+The next thing is same thing, attribute removal.
+
+162
+00:09:31,220 --> 00:09:31,880
+Let me go over here.
+
+163
+00:09:32,090 --> 00:09:34,550
+So this was subtree modifications on our base app.
+
+164
+00:09:34,550 --> 00:09:38,720
+So we broke we put a break point whenever some node got removed.
+
+165
+00:09:39,050 --> 00:09:40,450
+So that's why that node got hit.
+
+166
+00:09:40,700 --> 00:09:41,690
+So we removed that.
+
+167
+00:09:42,200 --> 00:09:50,210
+So I think you can just click on this break on C, I don't think that you can actually remove the breakpoint
+
+168
+00:09:50,210 --> 00:09:52,610
+from this menu, which is not ideal.
+
+169
+00:09:52,820 --> 00:09:53,630
+So we're clicking on that.
+
+170
+00:09:53,630 --> 00:09:54,380
+Nothing's happening.
+
+171
+00:09:54,590 --> 00:09:57,020
+Go back to our source panel or remove the breakpoint here.
+
+172
+00:09:58,410 --> 00:10:04,210
+Continuing on next and final dam break, we're going to talk about is called the snow removal.
+
+173
+00:10:04,620 --> 00:10:08,190
+So just like we had that title, so the title is completely gone.
+
+174
+00:10:08,200 --> 00:10:12,030
+So we're going to go and refresh our app so that we could get that title back.
+
+175
+00:10:12,030 --> 00:10:13,230
+So we got title back there.
+
+176
+00:10:14,080 --> 00:10:19,710
+Go back to our break point again and what we're going to do here, we're just going to set a break point
+
+177
+00:10:19,710 --> 00:10:20,940
+for node removal.
+
+178
+00:10:20,970 --> 00:10:24,000
+So we lost our our our element are going to go ahead and.
+
+179
+00:10:24,000 --> 00:10:24,210
+Right.
+
+180
+00:10:24,210 --> 00:10:27,450
+Click on the title because we want to see where that's being removed.
+
+181
+00:10:28,050 --> 00:10:31,160
+Go here and we just say break on notable.
+
+182
+00:10:31,620 --> 00:10:32,430
+So this is useful.
+
+183
+00:10:32,430 --> 00:10:34,440
+You want to see when that actually got removed.
+
+184
+00:10:34,950 --> 00:10:36,000
+So do that.
+
+185
+00:10:36,300 --> 00:10:39,540
+And then we go and we remove the title again and there we go.
+
+186
+00:10:39,540 --> 00:10:41,730
+We get the same break point action happening.
+
+187
+00:10:42,180 --> 00:10:43,490
+So there you go.
+
+188
+00:10:43,500 --> 00:10:45,600
+That is Dom breakpoints.
+
+189
+00:10:45,960 --> 00:10:48,930
+I don't know if I really talked about.
+
+190
+00:10:48,930 --> 00:10:51,990
+Yeah, I think I covered pretty much everything that you could do.
+
+191
+00:10:51,990 --> 00:10:58,680
+You could do with this once again, more useful if you're doing jorquera document, vanilla javascript
+
+192
+00:10:58,680 --> 00:10:59,040
+stuff.
+
+193
+00:10:59,340 --> 00:11:05,250
+So if you were using react and you wanted to see well where did that get modified, you you would really
+
+194
+00:11:05,250 --> 00:11:06,510
+want to just trace the DOM.
+
+195
+00:11:06,510 --> 00:11:10,500
+And that's sort of useful for conditional breakpoints, which we'll talk about next.
+
+196
+00:11:10,530 --> 00:11:14,970
+So if I wanted to debug, how was that font being changed in React World?
+
+197
+00:11:15,270 --> 00:11:20,490
+What I would do is I would just go over here and I would just put a breakpoint right here at the top
+
+198
+00:11:20,700 --> 00:11:25,450
+of this render method right before the, you know, right.
+
+199
+00:11:25,470 --> 00:11:27,750
+Right before the actual code got rendered.
+
+200
+00:11:27,750 --> 00:11:32,450
+And I would just say, OK, well, what why is why is this big class true?
+
+201
+00:11:32,700 --> 00:11:36,960
+Because I would just look at this code and say, OK, when it's big class, it's big.
+
+202
+00:11:36,960 --> 00:11:39,980
+And when it's not, it's not there's no there's no class.
+
+203
+00:11:40,500 --> 00:11:44,280
+So that's why declarative versus imperative react is declarative.
+
+204
+00:11:44,580 --> 00:11:51,300
+It's declaring exactly what the code looks like versus imperative code that just kind of hacks at the
+
+205
+00:11:51,300 --> 00:11:55,490
+DOM altogether and and changes things without any concept of state.
+
+206
+00:11:55,980 --> 00:11:56,400
+So.
+
+207
+00:11:57,320 --> 00:12:01,520
+So I react is better, you don't really need these types of breakpoints anymore, you could just kind
+
+208
+00:12:01,520 --> 00:12:06,260
+of put a breakpoint here, which will do next with conditional breakpoints to see, well, when is this
+
+209
+00:12:06,260 --> 00:12:09,200
+big class true and what's what's what's going on in that situation.
+
+210
+00:12:09,210 --> 00:12:10,430
+So, all right.
+
+211
+00:12:10,430 --> 00:12:11,990
+This is this is Don Breakpoints.
+
+212
+00:12:11,990 --> 00:12:12,950
+And let's move on.

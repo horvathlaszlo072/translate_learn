@@ -1,0 +1,179 @@
+1
+00:00:01,060 --> 00:00:05,950
+We learned the four main concepts that really made react take off.
+
+2
+00:00:06,910 --> 00:00:13,180
+It gave developers a whole new way to think about their applications and how we built them, and it
+
+3
+00:00:13,180 --> 00:00:21,010
+was architected in such a way that it made building large scale applications a lot more pleasant than
+
+4
+00:00:21,010 --> 00:00:21,900
+what we had before.
+
+5
+00:00:22,540 --> 00:00:28,240
+Now, since then, a lot of libraries have come out that have taken some of the concepts.
+
+6
+00:00:28,720 --> 00:00:34,990
+Angular was rewritten to a new version that is more in line with these concepts.
+
+7
+00:00:35,530 --> 00:00:43,480
+Libraries like View are also using these concepts because people have realized that these are some really
+
+8
+00:00:43,480 --> 00:00:44,260
+good principles.
+
+9
+00:00:45,160 --> 00:00:52,120
+So now you have things like react angular view that developers are using to build front end applications.
+
+10
+00:00:52,480 --> 00:00:59,350
+But react really had this initial jump and it's still the most popular library and the library with
+
+11
+00:00:59,350 --> 00:01:04,660
+the most job demand because it was the first to introduce these principles and the beauty.
+
+12
+00:01:05,740 --> 00:01:12,550
+Is that although we haven't written any code, you've now learned a little bit about some of the key
+
+13
+00:01:12,550 --> 00:01:16,690
+words that will encounter throughout this course, and don't worry, you're not supposed to get them
+
+14
+00:01:16,690 --> 00:01:22,360
+100 percent just now because all of these things are something that we need to practice code and build
+
+15
+00:01:22,360 --> 00:01:24,270
+projects with to really understand them.
+
+16
+00:01:24,670 --> 00:01:31,240
+But now when you hear the words like declarative components, state props, virtual dom, you'll have
+
+17
+00:01:31,240 --> 00:01:37,720
+an idea of what it is, because we've learned that react is a declarative paradigm.
+
+18
+00:01:37,960 --> 00:01:46,000
+That is, instead of telling our APS exactly what to do, we simply give it some state, some components
+
+19
+00:01:46,030 --> 00:01:47,500
+that are built with something called.
+
+20
+00:01:49,010 --> 00:01:55,790
+And these components sometimes receive properties which are called props, we give all that information,
+
+21
+00:01:56,270 --> 00:02:04,520
+a giant JavaScript object in a declarative way, which creates a virtual dom in JavaScript, and that
+
+22
+00:02:04,520 --> 00:02:13,480
+virtual dom is used by the React Library to update the DOM for us in a declarative way.
+
+23
+00:02:14,330 --> 00:02:21,140
+But your question is this how do I become the best reactive helper I can be?
+
+24
+00:02:21,980 --> 00:02:27,920
+And to be a great reactive helper, it actually comes down to three things, three things that really,
+
+25
+00:02:27,920 --> 00:02:33,680
+really good senior reactive helpers do well, and we're going to focus on these three skills throughout
+
+26
+00:02:33,680 --> 00:02:34,130
+the course.
+
+27
+00:02:35,000 --> 00:02:41,870
+The first one is to decide on components really good reactive Alpers, decide what is a component,
+
+28
+00:02:41,870 --> 00:02:44,030
+how much do we want to break down a component?
+
+29
+00:02:44,030 --> 00:02:47,840
+How do we build these reusable components as we've seen?
+
+30
+00:02:48,930 --> 00:02:54,190
+And deciding on how to break down the app into different components is a very important skill.
+
+31
+00:02:54,840 --> 00:02:58,710
+The next thing is to decide the state and where it lives.
+
+32
+00:02:59,400 --> 00:03:03,960
+Now we're going to explore this idea of state or data or app a lot more.
+
+33
+00:03:04,410 --> 00:03:09,060
+But this state can live in different locations in our virtual dorm.
+
+34
+00:03:09,780 --> 00:03:15,750
+So whether we put the state here or we put the state here or here or here or in multiple locations,
+
+35
+00:03:16,050 --> 00:03:20,250
+that decision is very important in architecting your app.
+
+36
+00:03:20,400 --> 00:03:26,610
+And really good developers do a really good job placing state in the appropriate component.
+
+37
+00:03:28,080 --> 00:03:37,050
+The third is what changes should we make when the state changes based on what this JavaScript object
+
+38
+00:03:37,050 --> 00:03:45,150
+called state is changed, we have to decide what to render, what part of the virtual dom changes.
+
+39
+00:03:45,660 --> 00:03:51,270
+And deciding on this is also important because it has huge effects on performance.
+
+40
+00:03:52,990 --> 00:03:57,640
+Now, don't worry, these are the things that we're going to really work on, but I want you to keep
+
+41
+00:03:57,640 --> 00:04:04,360
+this as a reference, because if you want to become a senior developer, these are the things that you
+
+42
+00:04:04,360 --> 00:04:10,030
+have to become really good at making these decisions and knowing when something is good, when when
+
+43
+00:04:10,030 --> 00:04:10,990
+something is bad.
+
+44
+00:04:12,190 --> 00:04:14,190
+We're going to explore that and a lot more.
+
+45
+00:04:14,980 --> 00:04:17,710
+The next section I'll see in the next one by.

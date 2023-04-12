@@ -1,0 +1,395 @@
+1
+00:00:00,700 --> 00:00:06,870
+All right, challenge 11, so this says names are set at the same time, please see if you can fix.
+
+2
+00:00:07,240 --> 00:00:12,460
+So I open up my code sandbox here and I start typing in one hand.
+
+3
+00:00:12,460 --> 00:00:14,770
+As you can see, I've confirmed that that is true.
+
+4
+00:00:14,770 --> 00:00:18,910
+I am typing and the text is appearing in both inputs at the same time.
+
+5
+00:00:19,450 --> 00:00:21,220
+So let's actually look into this.
+
+6
+00:00:21,700 --> 00:00:26,560
+As you can see, we have a simple app this time and you could see we have our inputs here.
+
+7
+00:00:26,560 --> 00:00:29,130
+So we found the code that's causing the issue.
+
+8
+00:00:29,950 --> 00:00:35,830
+If you look at the change handler, we see that we are referencing the same on change handler.
+
+9
+00:00:36,400 --> 00:00:37,430
+So that makes sense, right?
+
+10
+00:00:37,600 --> 00:00:45,130
+We have one state variable here and we are changing with the same handler calling the same set state
+
+11
+00:00:45,400 --> 00:00:46,030
+handler.
+
+12
+00:00:46,030 --> 00:00:47,560
+And we're changing the inputs.
+
+13
+00:00:48,100 --> 00:00:52,460
+The same inputs are being referenced here in the value prop for the input.
+
+14
+00:00:53,020 --> 00:00:59,260
+So if you're not familiar with inputs, you could look up inputs on Mozilla, you know, developer tools
+
+15
+00:00:59,260 --> 00:01:01,810
+or any of the other documentation for HTML.
+
+16
+00:01:02,170 --> 00:01:07,180
+And that would get you information on if you're not that familiar with inputs.
+
+17
+00:01:07,180 --> 00:01:09,700
+You could also look at our website over here.
+
+18
+00:01:09,700 --> 00:01:13,120
+We have some inputs, examples that you could look into.
+
+19
+00:01:13,570 --> 00:01:16,240
+And here we have just, you know, basic react inputs.
+
+20
+00:01:16,810 --> 00:01:22,810
+And that's where you would just kind of confirm, if you wanted to, the various inputs, perhaps,
+
+21
+00:01:22,810 --> 00:01:27,550
+but really just go to Mozilla, go to Mozilla input to learn more about inputs.
+
+22
+00:01:27,850 --> 00:01:31,000
+But we probably had a few challenges about this already.
+
+23
+00:01:31,000 --> 00:01:34,230
+But as you could see here, they're passing in a couple of different props.
+
+24
+00:01:34,240 --> 00:01:35,680
+They're passing a name in here.
+
+25
+00:01:36,040 --> 00:01:40,200
+And name is very useful because it's available on that element.
+
+26
+00:01:40,330 --> 00:01:45,340
+So if I go here and I search for name, maybe wondered what is actually name do.
+
+27
+00:01:45,820 --> 00:01:48,280
+And it's the name of the input form control.
+
+28
+00:01:48,280 --> 00:01:51,270
+It's submitted with the form as part of the name value pair.
+
+29
+00:01:51,280 --> 00:01:55,210
+So this is designed to be used inside of form HTML elements.
+
+30
+00:01:55,660 --> 00:02:02,140
+So when you actually submit a form behind the scenes HTML, you can automatically submit that input,
+
+31
+00:02:02,140 --> 00:02:03,130
+name and value.
+
+32
+00:02:03,430 --> 00:02:08,290
+So actually putting a name on the inputs, good practice in general, what does that have to do with
+
+33
+00:02:08,290 --> 00:02:09,100
+our change?
+
+34
+00:02:09,130 --> 00:02:11,650
+Well we can actually put some names on these inputs.
+
+35
+00:02:11,860 --> 00:02:20,290
+So if we say name equals first name and then we go down here and we say name equals last name.
+
+36
+00:02:21,820 --> 00:02:29,780
+You could see now if we save this, you might notice that we could actually go here and we could.
+
+37
+00:02:29,800 --> 00:02:34,950
+Now, this is going to just kind of give us access to this name inside of our synthetic event.
+
+38
+00:02:35,320 --> 00:02:35,580
+Right.
+
+39
+00:02:35,860 --> 00:02:41,860
+So if we go here and we just say console, log, dot, target, dot name.
+
+40
+00:02:42,310 --> 00:02:44,920
+See, we already have the value referenced here.
+
+41
+00:02:45,280 --> 00:02:47,210
+Now, let's see if the name actually works.
+
+42
+00:02:47,530 --> 00:02:51,430
+So if we go here to console, if we save this, we go here.
+
+43
+00:02:51,850 --> 00:02:53,050
+See, now we have first name.
+
+44
+00:02:53,050 --> 00:02:57,310
+I'm typing in the first name endpoint and then I click over here and now I'm typing in the last name
+
+45
+00:02:57,310 --> 00:02:57,670
+input.
+
+46
+00:02:58,090 --> 00:02:59,010
+So what did we just do?
+
+47
+00:02:59,020 --> 00:03:05,590
+We just figured out a fork to actually set different values of this or actually figure out which input
+
+48
+00:03:05,590 --> 00:03:06,010
+I'm in.
+
+49
+00:03:06,220 --> 00:03:11,770
+So we don't have to actually copy the same exact handler if we want to reuse this functionality.
+
+50
+00:03:11,770 --> 00:03:12,010
+Right.
+
+51
+00:03:12,400 --> 00:03:18,980
+So what we'll do is we'll save const input name equals Yeeda Target name.
+
+52
+00:03:19,480 --> 00:03:23,230
+Now we could say something like if input name equals first name.
+
+53
+00:03:23,590 --> 00:03:30,370
+And then we go down here and we say set first name or else set last name.
+
+54
+00:03:30,520 --> 00:03:30,880
+Right.
+
+55
+00:03:32,600 --> 00:03:37,700
+Eat target value, and then we could also just get input value, right, input.
+
+56
+00:03:40,880 --> 00:03:50,450
+Input value, he target, not value or even more advanced than that, you could just d structure this.
+
+57
+00:03:50,450 --> 00:03:56,230
+This is already so now this is Target and then also what else is there inside of Target?
+
+58
+00:03:56,240 --> 00:03:57,610
+There's name and value.
+
+59
+00:03:57,980 --> 00:03:59,740
+So you could structure it just like that.
+
+60
+00:03:59,820 --> 00:04:00,680
+I me the same thing.
+
+61
+00:04:00,680 --> 00:04:04,100
+And then now we don't even have to use these.
+
+62
+00:04:04,100 --> 00:04:13,160
+We could just say just like this name in value, we could just say name and value which is this so value.
+
+63
+00:04:15,030 --> 00:04:15,750
+Value.
+
+64
+00:04:17,020 --> 00:04:23,590
+And then now we're just going to duplicate react hooks, so another thing that I forgot to do is I can
+
+65
+00:04:23,590 --> 00:04:29,920
+actually Google this, which if you just Google, I Googled search over here, input's are set at the
+
+66
+00:04:29,920 --> 00:04:35,740
+same time, react like I just took the scenario that I was in and I Googled it just to show you that
+
+67
+00:04:35,980 --> 00:04:41,860
+if you're very lazy and you don't feel like figuring this out on your own, you could theoretically
+
+68
+00:04:41,860 --> 00:04:47,670
+actually find people who've already done this and look at their examples.
+
+69
+00:04:47,980 --> 00:04:52,420
+So once again, I this is pretty much exactly what we're doing.
+
+70
+00:04:52,420 --> 00:04:52,610
+Right.
+
+71
+00:04:52,630 --> 00:04:58,450
+I mean, it's almost like this example, you know, is the same thing that we're doing.
+
+72
+00:04:58,630 --> 00:05:01,150
+So as you can see here, what they're doing is.
+
+73
+00:05:02,570 --> 00:05:07,130
+They're setting the state to the name, they're setting the object, so usually you have an object as
+
+74
+00:05:07,130 --> 00:05:07,580
+a state.
+
+75
+00:05:07,970 --> 00:05:12,890
+So they're doing they're they're setting that dynamic key to be that that value.
+
+76
+00:05:12,900 --> 00:05:18,830
+So they're just blanket, you know, setting that key on the state and then setting it to be the value.
+
+77
+00:05:19,550 --> 00:05:20,000
+So.
+
+78
+00:05:21,210 --> 00:05:23,590
+Always good to be resourceful, if you're not sure.
+
+79
+00:05:23,730 --> 00:05:25,590
+But anyway, let's continue in our path.
+
+80
+00:05:25,590 --> 00:05:29,700
+This is just one solution, right, where we're just saying we're going to break this out into two different
+
+81
+00:05:29,700 --> 00:05:35,610
+react hooks, which is not even the most dry or do not repeat yourself.
+
+82
+00:05:35,610 --> 00:05:35,880
+Right?
+
+83
+00:05:36,090 --> 00:05:39,150
+It's not it's not the least repetitive solution to this.
+
+84
+00:05:39,150 --> 00:05:42,800
+But we're just showing you one option.
+
+85
+00:05:42,810 --> 00:05:43,980
+So to say first name.
+
+86
+00:05:43,980 --> 00:05:44,760
+Last name.
+
+87
+00:05:47,400 --> 00:05:49,470
+And then we have set last name.
+
+88
+00:05:51,440 --> 00:05:52,970
+OK, and now.
+
+89
+00:05:54,520 --> 00:05:56,020
+Name equals first name.
+
+90
+00:05:56,050 --> 00:06:05,320
+We're going to say set first name and then down here we are saying value is the first name and value
+
+91
+00:06:05,320 --> 00:06:07,120
+over here is the last name.
+
+92
+00:06:09,440 --> 00:06:09,840
+All right.
+
+93
+00:06:10,130 --> 00:06:16,970
+And that's it now we have figured this out, we are now typing in both inputs and they are behaving
+
+94
+00:06:16,970 --> 00:06:17,520
+independently.
+
+95
+00:06:17,540 --> 00:06:23,750
+We have split the shared functionality of that out into two separate state variables here.
+
+96
+00:06:24,020 --> 00:06:26,120
+And we use the same on change handler.
+
+97
+00:06:26,120 --> 00:06:31,310
+Except we added a fork cleaning solution would be to have done something with this person's doing,
+
+98
+00:06:31,730 --> 00:06:34,910
+but we will just move on since we've fixed the error for now.
+
+99
+00:06:35,100 --> 00:06:36,710
+So that's this challenge.

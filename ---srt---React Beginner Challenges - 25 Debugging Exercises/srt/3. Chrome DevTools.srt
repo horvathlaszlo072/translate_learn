@@ -1,0 +1,999 @@
+1
+00:00:00,970 --> 00:00:01,880
+All right, hello.
+
+2
+00:00:01,900 --> 00:00:06,670
+And this video, we are going to be talking about the Web kit inspector, so if you're a JavaScript
+
+3
+00:00:06,670 --> 00:00:12,460
+developer or react developer, you need to know about the webcam inspector, because it's going to help
+
+4
+00:00:12,460 --> 00:00:17,170
+you a lot when you're debugging your apps, not even just debugging issues, but kind of just seeing
+
+5
+00:00:17,170 --> 00:00:23,980
+how the app works, looking into various performance things, seeing the network tab, seeing your logs,
+
+6
+00:00:24,520 --> 00:00:29,530
+viewing source code, putting breakpoints in source code, pretty much anything to do with looking into
+
+7
+00:00:29,530 --> 00:00:30,430
+how your app works.
+
+8
+00:00:30,430 --> 00:00:34,570
+You're going to need the webcam inspector, and you need to and you're going to need to know pretty
+
+9
+00:00:34,570 --> 00:00:38,890
+much most of the things I'm going to show you today in order to be really productive.
+
+10
+00:00:39,220 --> 00:00:42,190
+So with that, we'll just kind of get started with this.
+
+11
+00:00:42,190 --> 00:00:46,000
+So you could see Hiraman, just a basic code sandbox here.
+
+12
+00:00:46,000 --> 00:00:48,010
+And I'm just pulling up the webcam inspector.
+
+13
+00:00:48,010 --> 00:00:51,550
+So to pull this guy up, you can use the hotkey.
+
+14
+00:00:51,820 --> 00:00:55,370
+John Mac, it's going to be command option J.
+
+15
+00:00:55,720 --> 00:00:58,440
+And if you're on Windows, I think it's control shift J.
+
+16
+00:00:58,750 --> 00:01:01,030
+So that's going to pop up this guy right here.
+
+17
+00:01:01,240 --> 00:01:04,750
+And this is going to be your Web kit, Inspector.
+
+18
+00:01:04,750 --> 00:01:07,480
+So we're just going to take a tour through of this.
+
+19
+00:01:07,480 --> 00:01:10,570
+But before we do that, I just want to point out something you could see here.
+
+20
+00:01:10,570 --> 00:01:13,300
+I have it in this popped out mode.
+
+21
+00:01:13,300 --> 00:01:15,910
+You might get it sort of put on the side of your app.
+
+22
+00:01:15,910 --> 00:01:19,540
+So that's a good thing to first kind of talk about is over on the top, right?
+
+23
+00:01:19,870 --> 00:01:24,400
+You can actually just see some of the options for this webcam, inspector.
+
+24
+00:01:24,400 --> 00:01:30,070
+So you could see here the thing that we're going to first talk about is this doc so you could control
+
+25
+00:01:30,280 --> 00:01:32,530
+where it actually docks on your page.
+
+26
+00:01:32,770 --> 00:01:35,860
+So you could see here I have it popped out onto a supper window.
+
+27
+00:01:36,190 --> 00:01:38,770
+You may find it more useful for one of these.
+
+28
+00:01:38,770 --> 00:01:44,800
+And actually, I at some point rotated between three of these, depending on what type of app you're
+
+29
+00:01:44,800 --> 00:01:45,310
+working on.
+
+30
+00:01:45,310 --> 00:01:46,810
+So let me show you what that looks like.
+
+31
+00:01:46,810 --> 00:01:51,640
+If I click Dock to Bottom, what that's going to do is just kind of put it on the bottom of my page
+
+32
+00:01:51,640 --> 00:01:52,430
+just like this.
+
+33
+00:01:52,950 --> 00:01:58,390
+Now, this might be useful if you need if you just want it there and you're just playing with your app
+
+34
+00:01:58,390 --> 00:02:01,870
+and you just want to go in and see some logs, this is where you're going to have it.
+
+35
+00:02:01,870 --> 00:02:04,270
+And I think this is pretty useful for that.
+
+36
+00:02:04,930 --> 00:02:11,800
+If you are looking to debug HTML, that's when you're going to want to go and then you're going to just
+
+37
+00:02:11,800 --> 00:02:15,130
+move this a little bit and you're going to want to go to this top.
+
+38
+00:02:15,130 --> 00:02:15,310
+Right.
+
+39
+00:02:15,310 --> 00:02:20,170
+And we're going to switch up here and then we're going to change it to dock to the right.
+
+40
+00:02:20,710 --> 00:02:27,310
+So and then we just can kind of move it around like this and then just have it over here on the right.
+
+41
+00:02:27,710 --> 00:02:32,110
+And what we're going to do, why we do, why we would do that is so that we could actually look at the
+
+42
+00:02:32,530 --> 00:02:33,220
+military here.
+
+43
+00:02:33,230 --> 00:02:39,610
+So this is a better view of seeing it, seeing more basically vertical space that you can look at various
+
+44
+00:02:39,610 --> 00:02:40,810
+HTML elements.
+
+45
+00:02:41,140 --> 00:02:45,550
+So that's why you would have it like that now if you were now, why?
+
+46
+00:02:45,550 --> 00:02:47,440
+Why would you have it popped out?
+
+47
+00:02:47,800 --> 00:02:51,940
+So let's say you had a lot of debugging that you wanted to do.
+
+48
+00:02:51,940 --> 00:02:57,010
+Maybe you wanted to look at like a full source of some JavaScript or something or some HTML.
+
+49
+00:02:57,280 --> 00:03:02,650
+And you you were doing some pretty serious debugging where a lot of times if you have to look at like
+
+50
+00:03:02,650 --> 00:03:06,820
+a lot of HTML, you would then just sort of maximized that like this.
+
+51
+00:03:07,060 --> 00:03:13,270
+And let's say you you wanted also to be able to look at all the CFS panel on the right here.
+
+52
+00:03:13,510 --> 00:03:18,550
+If you're doing like really serious debugging, that's when you would, you know, pop it out and then
+
+53
+00:03:18,550 --> 00:03:23,170
+just have that out here so that you could really take a big look at all of this.
+
+54
+00:03:23,380 --> 00:03:28,600
+So that's kind of the three scenarios that you would rotate between where this thing is going to go
+
+55
+00:03:28,600 --> 00:03:29,110
+in your app.
+
+56
+00:03:29,350 --> 00:03:31,080
+I just kind of explain that.
+
+57
+00:03:31,090 --> 00:03:36,400
+So for our sake, since we're talking about this Web inspector today, we're going to leave it in the
+
+58
+00:03:36,400 --> 00:03:37,620
+popped out scenario.
+
+59
+00:03:37,930 --> 00:03:40,990
+So with that, let's keep moving on.
+
+60
+00:03:41,020 --> 00:03:47,000
+So next thing is, let's just go right into the the elements tab here.
+
+61
+00:03:47,020 --> 00:03:48,220
+So the first tab.
+
+62
+00:03:48,460 --> 00:03:51,700
+OK, so now we're looking at the elements tab here.
+
+63
+00:03:52,150 --> 00:03:55,780
+And this is going to be you probably already know what this is.
+
+64
+00:03:55,780 --> 00:03:59,630
+This is basically just the HTML that's running on your page.
+
+65
+00:03:59,650 --> 00:04:00,910
+So this is the end result.
+
+66
+00:04:01,440 --> 00:04:04,330
+HTML this is not going to show you react elements.
+
+67
+00:04:04,330 --> 00:04:09,850
+For that, you would need to add in the react components extension, which we'll talk about in one of
+
+68
+00:04:09,910 --> 00:04:11,110
+the next lectures.
+
+69
+00:04:11,110 --> 00:04:17,740
+But in this video, we're just going to basically give you a brief overview of this tab here for the
+
+70
+00:04:17,740 --> 00:04:18,250
+elements.
+
+71
+00:04:18,550 --> 00:04:24,850
+So let's see if we can just sort of select one of those react elements in our scene.
+
+72
+00:04:24,850 --> 00:04:31,480
+So if we go over here, what typically the use cases, if you want to see what success is being applied
+
+73
+00:04:31,480 --> 00:04:31,660
+here.
+
+74
+00:04:31,660 --> 00:04:31,980
+Right.
+
+75
+00:04:32,230 --> 00:04:37,660
+So as you can see in this code sandbox, if we go to the styles that CSFs that's in this root or this
+
+76
+00:04:37,870 --> 00:04:42,960
+default create react, we could just add in special access class.
+
+77
+00:04:42,970 --> 00:04:46,000
+That's like my class.
+
+78
+00:04:47,110 --> 00:04:50,710
+And then in here, what we're going to do is we're just going to set the color to be blue.
+
+79
+00:04:51,370 --> 00:04:56,650
+So then we jump on over to say that I would jump on over to our app and then we could use that CSFs
+
+80
+00:04:56,650 --> 00:04:59,440
+class here and let's just say a div.
+
+81
+00:04:59,440 --> 00:05:00,090
+So we just put an.
+
+82
+00:05:00,210 --> 00:05:04,950
+Div with a class being the my class.
+
+83
+00:05:05,580 --> 00:05:11,220
+Actually, that's not a class, that's an I.D. So let's just change that to be a period here.
+
+84
+00:05:11,970 --> 00:05:13,020
+So that's a class.
+
+85
+00:05:13,020 --> 00:05:21,590
+And then we go back and we made that our class and then we do this and then we just say Hello Blue.
+
+86
+00:05:22,770 --> 00:05:24,310
+So then we have that blue text here.
+
+87
+00:05:24,400 --> 00:05:31,770
+OK, so now let's say you want to see how to actually or what styles are being applied on this element.
+
+88
+00:05:31,770 --> 00:05:32,040
+Right?
+
+89
+00:05:32,060 --> 00:05:35,740
+Do you maybe you have an issue where you need to change this color or whatever.
+
+90
+00:05:35,760 --> 00:05:36,990
+So how do you actually know?
+
+91
+00:05:37,320 --> 00:05:39,120
+How do you trace back that class?
+
+92
+00:05:39,390 --> 00:05:41,300
+This is a good use case for this element's top.
+
+93
+00:05:41,610 --> 00:05:43,050
+So as you could see, if we if we.
+
+94
+00:05:43,050 --> 00:05:43,350
+Right.
+
+95
+00:05:43,350 --> 00:05:45,090
+Click if we.
+
+96
+00:05:45,090 --> 00:05:45,390
+Right.
+
+97
+00:05:45,390 --> 00:05:47,580
+Click this element here.
+
+98
+00:05:48,530 --> 00:05:55,580
+And we click, inspect, it will pop, it will pop up that element right in our elements tab here.
+
+99
+00:05:56,830 --> 00:06:02,620
+So then going into this, if we click on that element, you could see then on the right we have a Styles
+
+100
+00:06:02,620 --> 00:06:03,160
+tab here.
+
+101
+00:06:03,520 --> 00:06:09,640
+So Styles tab, computed tab and then event listeners, are they like the sub tabs in this window here
+
+102
+00:06:09,970 --> 00:06:11,280
+for this elements tab?
+
+103
+00:06:11,620 --> 00:06:15,310
+So we click on that and then you could see all the cows that supply there.
+
+104
+00:06:15,640 --> 00:06:17,340
+So you could see here we have my class.
+
+105
+00:06:17,350 --> 00:06:20,620
+This is being applied and you have that color being applied there.
+
+106
+00:06:20,980 --> 00:06:25,670
+And if you go up here, this is just some one off styles that you can add in if you want.
+
+107
+00:06:25,690 --> 00:06:29,640
+This is sort of like an optional thing to add in or test new styles.
+
+108
+00:06:29,950 --> 00:06:37,390
+So if I you know, if I wanted to go up here and actually, you know, change this, if I wanted to
+
+109
+00:06:37,390 --> 00:06:42,850
+change this style up here, if I wanted to say color green and then I go down here and I could see that
+
+110
+00:06:42,850 --> 00:06:46,240
+that actually changes it, but it doesn't add in any code or anything.
+
+111
+00:06:46,240 --> 00:06:47,700
+I didn't modify any of the code here.
+
+112
+00:06:47,710 --> 00:06:55,180
+All I'm doing is just giving myself the ability to add in new styles on top of the existing ones.
+
+113
+00:06:55,660 --> 00:06:59,590
+Now, another thing that's really useful is the computed tab.
+
+114
+00:07:00,650 --> 00:07:06,200
+So with the computer tab, if I go up here, I can actually see all the CSFs that's applied to that
+
+115
+00:07:06,200 --> 00:07:09,830
+element and I can go and look and see where that came from.
+
+116
+00:07:09,860 --> 00:07:15,500
+So if I click on this, I can click on color and I could look and see, oh, the color comes from my
+
+117
+00:07:15,500 --> 00:07:16,050
+class.
+
+118
+00:07:16,580 --> 00:07:23,030
+So if you have something with like a ton of classes and you have no idea where that class is or it's
+
+119
+00:07:23,030 --> 00:07:29,210
+really confusing, you can just go right to this computer tab and just find the style property that
+
+120
+00:07:29,210 --> 00:07:29,750
+you want.
+
+121
+00:07:29,750 --> 00:07:35,570
+And then you can go and see where that class came from or where that.
+
+122
+00:07:36,050 --> 00:07:39,380
+Yeah, where the CSFs came from came from this class.
+
+123
+00:07:39,590 --> 00:07:41,360
+And then where did the class come from?
+
+124
+00:07:41,360 --> 00:07:43,240
+It came from this stylesheet over here.
+
+125
+00:07:43,610 --> 00:07:50,060
+So that's where you can go and click on that stylesheet and then go and actually see the actual file,
+
+126
+00:07:50,060 --> 00:07:51,430
+which is really useful too.
+
+127
+00:07:51,440 --> 00:07:54,200
+So that's going to save you some time into debugging this.
+
+128
+00:07:54,230 --> 00:08:01,100
+And we went from looking at a Web site to finding the CFS file that has that Silin.
+
+129
+00:08:01,100 --> 00:08:01,960
+It is not cool.
+
+130
+00:08:02,030 --> 00:08:04,760
+So very useful stuff that it's very important to know.
+
+131
+00:08:06,780 --> 00:08:13,100
+So moving on, if we go back over here, we can then look at some of the other tabs in this inspector,
+
+132
+00:08:13,110 --> 00:08:16,050
+so we just looked at where the sources tab.
+
+133
+00:08:16,050 --> 00:08:18,430
+Now we're going to move on over to the console tab.
+
+134
+00:08:18,690 --> 00:08:25,410
+So this is where you can see your logs in addition to actually running your own JavaScript and seeing
+
+135
+00:08:25,410 --> 00:08:26,050
+variables.
+
+136
+00:08:26,310 --> 00:08:32,760
+So if I go over here and I go back to the code sandbox, you could see I do have a log that I've added
+
+137
+00:08:32,760 --> 00:08:33,130
+in here.
+
+138
+00:08:33,420 --> 00:08:40,260
+Now, I can also just add in a variable that's like const X equals, you know, hello world.
+
+139
+00:08:40,560 --> 00:08:45,180
+And then I can put that in my app somewhere and just put like hello text.
+
+140
+00:08:45,870 --> 00:08:49,650
+And then I could go over here and I could just put that in here.
+
+141
+00:08:50,030 --> 00:08:51,960
+I could just say hello text.
+
+142
+00:08:52,590 --> 00:08:56,480
+OK, and now that who would say that worked, right?
+
+143
+00:08:56,490 --> 00:08:57,600
+So save this.
+
+144
+00:08:58,770 --> 00:09:05,070
+And yeah, that work, so now what I'm going to show you is, OK, well, we have this log here that's
+
+145
+00:09:05,070 --> 00:09:06,150
+logged in the console.
+
+146
+00:09:07,050 --> 00:09:13,500
+And another thing that we have that log there and then let's say I want to actually see the value of
+
+147
+00:09:13,510 --> 00:09:14,250
+hello text.
+
+148
+00:09:14,580 --> 00:09:16,110
+This is where we get into breakpoints.
+
+149
+00:09:16,320 --> 00:09:21,330
+So and I'm going to show you what this console tab can do when you're actually in a breakpoint.
+
+150
+00:09:21,330 --> 00:09:25,520
+You can type variables that are at the current scope of the breakpoint.
+
+151
+00:09:25,980 --> 00:09:32,580
+So actually, first thing that I'm going to show you in the console tab is actually to just running
+
+152
+00:09:32,580 --> 00:09:35,160
+arbitrary JavaScript so I can be like const.
+
+153
+00:09:36,130 --> 00:09:41,230
+Hello equals five three, and then I could just be like, hello, and then it's going to be that variable.
+
+154
+00:09:41,230 --> 00:09:46,510
+Another thing that I do all the time is if I want to just see an array function or something, I'll
+
+155
+00:09:46,510 --> 00:09:51,550
+be like const array equals one, two, three, just to get that array there.
+
+156
+00:09:51,550 --> 00:09:53,590
+And then I'm like, OK, what's the function for filter?
+
+157
+00:09:53,900 --> 00:09:55,780
+And I'm like a radar filter.
+
+158
+00:09:56,050 --> 00:09:57,640
+And then I know that that's a function.
+
+159
+00:09:57,640 --> 00:10:02,860
+And then I could just run a quick filter function on this and I'll say and is greater than two.
+
+160
+00:10:03,160 --> 00:10:08,620
+And then just like that I just did a little filter function just to show myself, OK, that's how filter
+
+161
+00:10:08,620 --> 00:10:08,950
+works.
+
+162
+00:10:09,160 --> 00:10:14,020
+And then I would go and put, you know, this code in my code base after, you know, I've debug that
+
+163
+00:10:14,020 --> 00:10:16,120
+a little bit, which is also really useful.
+
+164
+00:10:16,120 --> 00:10:21,190
+So few are actually in your code base and you're actually looking at some object or something.
+
+165
+00:10:21,430 --> 00:10:27,520
+You can really easily just know, you know, what what you can not only, you know, see what that variable
+
+166
+00:10:27,520 --> 00:10:31,110
+is, but you can, like, run JavaScript on it in the console, which is very useful.
+
+167
+00:10:31,570 --> 00:10:33,910
+So lot we could talk about with the console.
+
+168
+00:10:33,910 --> 00:10:35,230
+You know, this is where errors are.
+
+169
+00:10:35,230 --> 00:10:37,740
+This is where you can you could clear the console.
+
+170
+00:10:37,760 --> 00:10:41,800
+This you can you can just I don't do any of this stuff.
+
+171
+00:10:41,800 --> 00:10:44,290
+I don't do I don't really mess with this too much.
+
+172
+00:10:44,620 --> 00:10:51,520
+I don't like to change the, you know, change the type of errors or anything like that appear here.
+
+173
+00:10:51,730 --> 00:10:54,010
+That's not really something that I do that often.
+
+174
+00:10:54,040 --> 00:10:58,210
+So basically, what I just showed you is pretty much now moving on to the sources panel.
+
+175
+00:10:58,210 --> 00:11:00,910
+This is a panel that you're in all the time also.
+
+176
+00:11:01,210 --> 00:11:06,250
+And the most common thing that you would do here is actually find the file that you're operating in
+
+177
+00:11:06,250 --> 00:11:07,520
+and then put a breakpoint in.
+
+178
+00:11:07,990 --> 00:11:09,310
+So if we go back to our scene.
+
+179
+00:11:10,870 --> 00:11:16,030
+We we know that we have this app, Jacir, so there's an app.
+
+180
+00:11:16,960 --> 00:11:21,810
+And so what you would do is he can actually find that file in the webcam, inspector.
+
+181
+00:11:21,820 --> 00:11:29,140
+So if you go here in the webcam inspector and you go to control P, this is like something that completely
+
+182
+00:11:29,140 --> 00:11:30,900
+blew my mind the first time that I found it.
+
+183
+00:11:31,090 --> 00:11:34,020
+So if you do abduct Jaycee, you can then find that file.
+
+184
+00:11:34,210 --> 00:11:35,800
+So you're going to see two things here.
+
+185
+00:11:35,980 --> 00:11:37,900
+The source map one and the regular one.
+
+186
+00:11:38,110 --> 00:11:42,340
+You're going to want to click on the source map one, because this is going to be the the react code,
+
+187
+00:11:42,340 --> 00:11:42,870
+basically.
+
+188
+00:11:43,060 --> 00:11:43,990
+So it's easy to read.
+
+189
+00:11:43,990 --> 00:11:47,350
+It's just like in your text editor, it's not like compiled code or anything.
+
+190
+00:11:47,560 --> 00:11:48,970
+And then you can put a breakpoint in here.
+
+191
+00:11:49,480 --> 00:11:50,910
+And this is pretty finicky.
+
+192
+00:11:50,920 --> 00:11:54,640
+I mean, it does stuff that you don't expect, like it puts breakpoints everywhere sometimes.
+
+193
+00:11:54,640 --> 00:11:57,190
+And that's, you know, not not great.
+
+194
+00:11:57,190 --> 00:12:01,440
+I mean, I think it's is actually putting multiple break points in here at certain times.
+
+195
+00:12:01,780 --> 00:12:08,230
+So if we if we just get rid of some of these or we can just leave those in and you can actually go over
+
+196
+00:12:08,230 --> 00:12:11,200
+here and if you want to, you can go on the side.
+
+197
+00:12:11,350 --> 00:12:18,430
+And then you could see sort of the the function stack, the call stack, you could see the breakpoints
+
+198
+00:12:18,430 --> 00:12:18,580
+here.
+
+199
+00:12:18,590 --> 00:12:21,350
+So it should show you where the breakpoints are.
+
+200
+00:12:21,370 --> 00:12:22,990
+So let me refresh this thing.
+
+201
+00:12:22,990 --> 00:12:24,350
+Maybe if I refresh it, I'll show you.
+
+202
+00:12:24,700 --> 00:12:28,150
+So if I refresh that app, then.
+
+203
+00:12:29,410 --> 00:12:33,430
+OK, those went away, so if I do this and then I go back, put that breakpoint there, I go back to
+
+204
+00:12:33,430 --> 00:12:37,360
+my code sandbox, if I just hit refresh on this here.
+
+205
+00:12:38,230 --> 00:12:41,950
+That should trigger that breakpoint, so that breakpoint is now hit.
+
+206
+00:12:43,360 --> 00:12:43,810
+So.
+
+207
+00:12:44,930 --> 00:12:50,060
+We're in the code sandbox again, and now I want to show you, if we go back to the console tab, if
+
+208
+00:12:50,060 --> 00:12:54,310
+you type in actually see the scope of where you are, so you see hello text.
+
+209
+00:12:54,440 --> 00:12:57,090
+And just like that, I'm typing out something here.
+
+210
+00:12:57,110 --> 00:13:02,750
+So now if you want to, you know, write some JavaScript around this, you want to split it by characters
+
+211
+00:13:02,750 --> 00:13:04,160
+or something like that, you could do that.
+
+212
+00:13:04,550 --> 00:13:09,630
+And just a good way to just see some JavaScript, what that does, that not variable.
+
+213
+00:13:10,050 --> 00:13:13,460
+Now, I'm here in this breakpoint.
+
+214
+00:13:13,460 --> 00:13:14,300
+I'm in this scope.
+
+215
+00:13:14,300 --> 00:13:17,050
+So you're only going to be able to see variables that are defined here.
+
+216
+00:13:17,060 --> 00:13:20,930
+So if I had a variable defined after this, I wouldn't be able to hover over it.
+
+217
+00:13:20,930 --> 00:13:25,280
+But with this yellow text, I can hover over it and see what it is so I could see it's equal to Hello
+
+218
+00:13:25,280 --> 00:13:25,630
+World.
+
+219
+00:13:25,970 --> 00:13:27,260
+So this is extremely useful.
+
+220
+00:13:27,560 --> 00:13:33,210
+This is basically how you debug things 90 percent of the time you're going to be doing this.
+
+221
+00:13:33,210 --> 00:13:36,860
+I don't really recommend going into the code base and putting the word debugger.
+
+222
+00:13:37,100 --> 00:13:38,060
+I used to do that.
+
+223
+00:13:38,390 --> 00:13:42,680
+I think, you know, you can write like the word debugger in here and that's going to do the same thing
+
+224
+00:13:42,680 --> 00:13:44,720
+if you really can't find the file.
+
+225
+00:13:45,080 --> 00:13:49,910
+This is what we would do before you could just go in the webcam specter and find the file before like
+
+226
+00:13:49,910 --> 00:13:50,720
+source maps.
+
+227
+00:13:50,750 --> 00:13:55,460
+You know, you had no idea where this code was running and you could not there was no chance of you
+
+228
+00:13:55,460 --> 00:13:56,000
+finding it.
+
+229
+00:13:56,000 --> 00:13:57,620
+You would just put in a debugger like this.
+
+230
+00:13:57,920 --> 00:14:05,000
+But because you can easily find the file with the source maps, there's really it's just way easier
+
+231
+00:14:05,000 --> 00:14:10,100
+to just find this file rather than putting debugger statements in your code base, which you don't want
+
+232
+00:14:10,100 --> 00:14:10,520
+to even.
+
+233
+00:14:11,000 --> 00:14:16,190
+So anyway, we found the file and now we put a breakpoint there.
+
+234
+00:14:16,190 --> 00:14:20,930
+And what we're going to do now is, you know, you could step through, you could step over to the next
+
+235
+00:14:20,930 --> 00:14:23,360
+function call, you can step into it.
+
+236
+00:14:23,360 --> 00:14:25,610
+So if you're if you're about to run a function, you could do that.
+
+237
+00:14:26,180 --> 00:14:28,130
+You can, you know, step over.
+
+238
+00:14:28,130 --> 00:14:30,350
+You can continue the execution altogether.
+
+239
+00:14:30,470 --> 00:14:32,660
+You're no longer paused in the script.
+
+240
+00:14:33,050 --> 00:14:35,660
+Now, over here on the right, you could see we have the break point here.
+
+241
+00:14:35,660 --> 00:14:38,690
+You can right click over here and it doesn't show you.
+
+242
+00:14:38,960 --> 00:14:41,060
+Let me just get over here again.
+
+243
+00:14:41,540 --> 00:14:45,560
+So if I go over here and I right click it's going to show you you can actually you could remove the
+
+244
+00:14:45,560 --> 00:14:46,040
+breakpoint.
+
+245
+00:14:46,040 --> 00:14:47,510
+You could disable all break points.
+
+246
+00:14:47,510 --> 00:14:52,970
+So if you have a bunch of break points, you could just click remove all break points and there's dom
+
+247
+00:14:52,970 --> 00:14:53,660
+breakpoints.
+
+248
+00:14:53,660 --> 00:14:54,080
+There's a vent.
+
+249
+00:14:54,080 --> 00:14:56,810
+Listeners will get in all that later.
+
+250
+00:14:57,080 --> 00:15:01,400
+This is kind of high level overview of the usefulness of the sources tab.

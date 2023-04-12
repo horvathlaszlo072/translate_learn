@@ -1,0 +1,351 @@
+1
+00:00:00,480 --> 00:00:06,030
+In the last video, we learned about how a class component decides that it needs to render when the
+
+2
+00:00:06,030 --> 00:00:10,710
+state is different, the way that it determines that the state is different is when it sees that the
+
+3
+00:00:10,710 --> 00:00:14,010
+state object is now a different object in memory.
+
+4
+00:00:14,280 --> 00:00:19,680
+And the way that we can best use this is to utilize the class components set state method that React
+
+5
+00:00:19,680 --> 00:00:20,280
+has given us.
+
+6
+00:00:20,970 --> 00:00:26,640
+As I mentioned in the last video, that state can take an object and it will in fact shallow merge this
+
+7
+00:00:26,640 --> 00:00:30,240
+object into your current state and give you a new state object.
+
+8
+00:00:31,090 --> 00:00:35,170
+But there's actually other things you can pass the said state, but we'll talk about that a little later.
+
+9
+00:00:35,650 --> 00:00:40,900
+For now, I want to focus on the shall emerge, so we really understand what it does and then what the
+
+10
+00:00:40,900 --> 00:00:42,610
+best practices for it are.
+
+11
+00:00:43,560 --> 00:00:49,980
+So when you pass it, an object, as we saw with shallow merging, it will look for any keys that exist
+
+12
+00:00:49,980 --> 00:00:55,320
+in the current state object, and we'll update them to the new one that we have in our case.
+
+13
+00:00:55,320 --> 00:01:02,010
+We're updating name to Andre so we can actually see this if instead we do another value.
+
+14
+00:01:02,010 --> 00:01:04,350
+Let's say company is equal to XDR-TB.
+
+15
+00:01:05,620 --> 00:01:11,230
+And just to be clear, let's also render this to our UI, and I'll say hi.
+
+16
+00:01:11,590 --> 00:01:12,940
+I work at.
+
+17
+00:01:13,150 --> 00:01:15,910
+And then this Scott state company.
+
+18
+00:01:17,750 --> 00:01:19,480
+So I haven't modified said state.
+
+19
+00:01:19,490 --> 00:01:20,810
+We're still just updating the name.
+
+20
+00:01:21,050 --> 00:01:25,880
+And if we go back to our application, if I hit change name, it says, Hi Andre.
+
+21
+00:01:25,970 --> 00:01:27,290
+I work at XHTML.
+
+22
+00:01:28,340 --> 00:01:32,540
+And just to be clear, let's also console.log this start state.
+
+23
+00:01:35,210 --> 00:01:36,140
+And if I save this.
+
+24
+00:01:37,380 --> 00:01:42,910
+Now, if I click this again, you'll see the first time that we click console.log our state objects
+
+25
+00:01:42,910 --> 00:01:47,070
+skills as one company, but I'll break this down a little later as to why that's happening.
+
+26
+00:01:47,070 --> 00:01:51,570
+And it's not what you expect, which is why is it not saying Andre if I click it again?
+
+27
+00:01:51,570 --> 00:01:52,260
+Now it's Andre.
+
+28
+00:01:52,680 --> 00:01:53,760
+So don't worry about this.
+
+29
+00:01:53,760 --> 00:01:56,400
+For now, I'm going to talk about why this is happening a little later.
+
+30
+00:01:56,400 --> 00:02:00,810
+But for now, what I want you to focus on is the fact that what happened with that shallow merge is
+
+31
+00:02:00,810 --> 00:02:02,580
+that name did get updated to Andre.
+
+32
+00:02:03,150 --> 00:02:03,660
+You'll see.
+
+33
+00:02:03,690 --> 00:02:06,360
+Name is now Andre, but the company stays the same.
+
+34
+00:02:06,900 --> 00:02:08,130
+So this again is a shall emerge.
+
+35
+00:02:08,250 --> 00:02:12,510
+It only updates the keys for the values that are being passed to it.
+
+36
+00:02:12,810 --> 00:02:15,780
+Anything else it keeps and it retains the same way.
+
+37
+00:02:16,440 --> 00:02:22,590
+Now, one important consideration to make about the shallow merge is that there's actually a thing that
+
+38
+00:02:22,680 --> 00:02:28,380
+yields a best practice when we do this, because with a shallow merge rack doesn't care what the value
+
+39
+00:02:28,380 --> 00:02:29,190
+was before.
+
+40
+00:02:29,820 --> 00:02:32,400
+All it cares about is that I see that the keys match.
+
+41
+00:02:32,400 --> 00:02:36,780
+I'm going to update the value regardless of how complex the previous value was.
+
+42
+00:02:37,140 --> 00:02:37,980
+What do I mean by this?
+
+43
+00:02:38,490 --> 00:02:45,090
+Well, let's update names so that instead of a string, it says that it's an object that has a first
+
+44
+00:02:45,090 --> 00:02:47,700
+name value as well as a last name value.
+
+45
+00:02:51,110 --> 00:02:57,530
+And now inside of my string, let's also update this Star State name, first name, so that it's now
+
+46
+00:02:57,530 --> 00:03:01,880
+referencing the new value that we have, which is an object.
+
+47
+00:03:01,970 --> 00:03:04,850
+And I want to point to the first name as well as the last name.
+
+48
+00:03:06,120 --> 00:03:13,740
+So now, if I save this and I go back to my application, we'll see that now it says, Hi Juzang, I
+
+49
+00:03:13,740 --> 00:03:14,940
+work at XDR-TB.
+
+50
+00:03:15,890 --> 00:03:20,810
+When I click change name again, we see that this was the previous value, so let's ignore this again.
+
+51
+00:03:20,810 --> 00:03:22,160
+I'll talk about this in the next video.
+
+52
+00:03:22,760 --> 00:03:27,440
+But let's say it again, you'll see what happens is that our state object got updated.
+
+53
+00:03:27,440 --> 00:03:28,610
+So that name is Andre.
+
+54
+00:03:29,540 --> 00:03:32,630
+But here we see that our app is not working, that we expect it to.
+
+55
+00:03:32,810 --> 00:03:34,280
+It's not displaying Andre anymore.
+
+56
+00:03:34,820 --> 00:03:39,170
+And this makes actually total sense because name is now just a string.
+
+57
+00:03:39,290 --> 00:03:43,700
+It's not that object that we had before the first name, last name, complex object.
+
+58
+00:03:44,570 --> 00:03:49,760
+And the reason why that this is not rendering is because when we look at our code, our code is looking
+
+59
+00:03:49,760 --> 00:03:54,020
+for this dot state dot named Dot first name and this dot state dot named Dot last name.
+
+60
+00:03:54,290 --> 00:03:58,940
+But of course, as we know, a string doesn't have a dot first name or a dot last name property.
+
+61
+00:03:59,210 --> 00:04:00,830
+So now our code is breaking.
+
+62
+00:04:01,280 --> 00:04:08,120
+But again, with a shallow merge rate doesn't care that this is a completely different shape or even
+
+63
+00:04:08,120 --> 00:04:13,970
+in fact type, then what it was before, because now we got a string before as an object.
+
+64
+00:04:14,220 --> 00:04:14,840
+RAC doesn't care.
+
+65
+00:04:14,840 --> 00:04:19,700
+Let's say, Oh, you just want me to shallow merge this key of name value to replace the old one.
+
+66
+00:04:19,910 --> 00:04:20,840
+I'm just going to do that.
+
+67
+00:04:21,830 --> 00:04:26,990
+So this actually extends into a best practice so that our code doesn't behave in this weird way where
+
+68
+00:04:26,990 --> 00:04:27,590
+it breaks.
+
+69
+00:04:28,160 --> 00:04:35,480
+We want to make sure that when we update our state, we're always using the same types of values for
+
+70
+00:04:35,480 --> 00:04:37,010
+our object properties.
+
+71
+00:04:37,580 --> 00:04:43,430
+So if your name is going to be an object, make sure that you update it appropriately, like so.
+
+72
+00:04:43,730 --> 00:04:47,180
+So that here first name is still Andre.
+
+73
+00:04:48,360 --> 00:04:51,320
+And last name is Niagara.
+
+74
+00:04:52,080 --> 00:04:53,130
+I hope I spot that right.
+
+75
+00:04:53,880 --> 00:04:58,530
+So here now when I click change, name now works the way we expect it to.
+
+76
+00:04:59,160 --> 00:05:03,690
+So this is an important thing to understand about using such state when you pass it and object.
+
+77
+00:05:04,260 --> 00:05:08,820
+So now that we understand that state with an object, I'm actually going to in the next lesson, break
+
+78
+00:05:08,820 --> 00:05:14,640
+down what the different way you can use that state is where you don't pass it an object, but instead
+
+79
+00:05:14,640 --> 00:05:15,540
+you pass it a function.
+
+80
+00:05:16,020 --> 00:05:18,960
+And with this function, it's actually the preferred way to do so.
+
+81
+00:05:19,560 --> 00:05:24,990
+Not all the time, because you will see a lot of projects use such state where they pass it and object
+
+82
+00:05:24,990 --> 00:05:25,320
+still.
+
+83
+00:05:25,830 --> 00:05:30,930
+But as far as reax own suggestion goes, you should use the function and there are certain parts to
+
+84
+00:05:30,930 --> 00:05:32,190
+it which I'll explain in the next video.
+
+85
+00:05:32,550 --> 00:05:42,180
+Similarly, it's also going to explain why whenever we were logging our state object in our experiments,
+
+86
+00:05:42,660 --> 00:05:48,720
+we see that the first time I do so, despite the fact that the value in the UI has updated, my console.log
+
+87
+00:05:48,720 --> 00:05:53,430
+seems to be behind because the object still says firstname lastname of the previous value.
+
+88
+00:05:54,270 --> 00:05:56,910
+So we're going to break that down in the next video, and I'll see you there.

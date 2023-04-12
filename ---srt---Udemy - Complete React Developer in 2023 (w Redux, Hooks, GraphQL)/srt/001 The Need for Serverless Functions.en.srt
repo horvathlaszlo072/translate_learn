@@ -1,0 +1,487 @@
+1
+00:00:00,780 --> 00:00:01,770
+Welcome back, everyone.
+
+2
+00:00:02,700 --> 00:00:07,560
+In this video, we are going to learn about how to perform a payment using Stripe.
+
+3
+00:00:08,190 --> 00:00:13,470
+Now, Stripe in this particular case is what actually provides us with this credit card information.
+
+4
+00:00:13,950 --> 00:00:19,230
+Because I'm in a testing environment, you will see that the automatic credit card is being disabled.
+
+5
+00:00:19,530 --> 00:00:22,830
+But these are all different things that we'll learn about when integrating with Stripe.
+
+6
+00:00:23,280 --> 00:00:29,400
+In this particular case, we're able to insert a Stripe number with test cards, of course, which is
+
+7
+00:00:29,400 --> 00:00:30,120
+what we're using.
+
+8
+00:00:30,630 --> 00:00:37,170
+And then from here, we can create a payment which will fire off into a serverless function that we
+
+9
+00:00:37,170 --> 00:00:42,660
+will learn about, that will then complete the actual checkout and we can see it logged inside of our
+
+10
+00:00:42,660 --> 00:00:43,560
+stripe dashboard.
+
+11
+00:00:44,040 --> 00:00:49,290
+So we're going to learn all about payment integrations from the front end, as well as serverless functions
+
+12
+00:00:49,290 --> 00:00:51,240
+in this upcoming section.
+
+13
+00:00:52,240 --> 00:00:57,340
+So in order to begin our high level discussion, I want to focus on Stripe first.
+
+14
+00:00:58,370 --> 00:01:02,390
+We know that with web development we have a frontend and a backend.
+
+15
+00:01:02,780 --> 00:01:07,160
+The frontend is primarily where we've worked with all of our code throughout this course.
+
+16
+00:01:07,850 --> 00:01:10,040
+All of our real code lives on the front end.
+
+17
+00:01:10,280 --> 00:01:13,040
+We have not actually written any backend code at all.
+
+18
+00:01:13,760 --> 00:01:20,090
+With Stripe though, Stripe is a service that lives outside of our frontend and our backend applications.
+
+19
+00:01:20,510 --> 00:01:26,630
+Stripe has their own servers, Stripe has their own API and we on our application the combination of
+
+20
+00:01:26,630 --> 00:01:27,910
+our frontend and back end.
+
+21
+00:01:28,160 --> 00:01:35,060
+If we potentially had a backend would have to interact with these Stripe APIs in order to perform a
+
+22
+00:01:35,060 --> 00:01:36,500
+payment using Stripe.
+
+23
+00:01:36,980 --> 00:01:42,590
+This is a very key concept when it comes to using any external third party applications that provide
+
+24
+00:01:42,590 --> 00:01:44,000
+a service to our application.
+
+25
+00:01:44,450 --> 00:01:49,700
+And our particular stripe provides the payment service, which is what we want to leverage inside of
+
+26
+00:01:49,700 --> 00:01:50,150
+our app.
+
+27
+00:01:51,120 --> 00:01:58,470
+The way that Stripe can identify our application to us is that it provisions us a secret key.
+
+28
+00:01:58,830 --> 00:02:00,780
+But the key word here is that it's a secret.
+
+29
+00:02:01,470 --> 00:02:06,450
+If we were to keep this secret key on our front end, which is a very common thing that you will notice,
+
+30
+00:02:06,450 --> 00:02:10,140
+is that a lot of third party applications will give you a secret key.
+
+31
+00:02:10,710 --> 00:02:16,320
+If you keep on the front end and you try to make a payment request from your front end, passing the
+
+32
+00:02:16,320 --> 00:02:21,990
+secret key to Stripe so that stripe knows that this is you, you'll notice that stripe will block this
+
+33
+00:02:21,990 --> 00:02:29,370
+payment because you are not allowed to keep that secret key on the front end because there is very limited
+
+34
+00:02:29,370 --> 00:02:30,750
+security on the front end.
+
+35
+00:02:31,440 --> 00:02:34,950
+Instead we have to do is keep that secret key on the back end.
+
+36
+00:02:35,280 --> 00:02:40,590
+So what we need to do is be able to make a request to make a payment to the back end.
+
+37
+00:02:40,950 --> 00:02:46,440
+The back end, which has the secret key, then communicates and makes a request to Stripe so that a
+
+38
+00:02:46,440 --> 00:02:47,820
+payment can be made.
+
+39
+00:02:48,360 --> 00:02:53,370
+From here, Stripe will then allow us to make this payment because it can tell that this is not coming
+
+40
+00:02:53,370 --> 00:02:55,320
+from some front end browser.
+
+41
+00:02:56,190 --> 00:03:00,150
+So this is a very key pattern that we need to know about using Stripe.
+
+42
+00:03:00,360 --> 00:03:03,120
+We have to set up some kind of back end.
+
+43
+00:03:04,020 --> 00:03:07,440
+Now, when you think about backends, backends are very typical.
+
+44
+00:03:07,920 --> 00:03:12,720
+Essentially, from a front end, we make some kind of request to a back end and the back end sends us
+
+45
+00:03:12,720 --> 00:03:13,860
+back a response.
+
+46
+00:03:14,400 --> 00:03:17,340
+Now, where is this separation between frontend and backend?
+
+47
+00:03:18,030 --> 00:03:23,430
+Frontend is pretty much anything that has to do with user interaction and the logic that comes from
+
+48
+00:03:23,430 --> 00:03:26,460
+a user interacting on a browser website.
+
+49
+00:03:26,910 --> 00:03:29,130
+The backend is anything beyond that.
+
+50
+00:03:29,610 --> 00:03:35,640
+Backend coding typically has a lot of database interaction, a lot of cross service interaction, a
+
+51
+00:03:35,640 --> 00:03:38,610
+lot of data management, a lot of service management.
+
+52
+00:03:38,790 --> 00:03:44,250
+Anything that has to do with dev ops infrastructure, which involves scaling up and scaling down the
+
+53
+00:03:44,250 --> 00:03:46,050
+amount of resources which we'll talk about.
+
+54
+00:03:46,470 --> 00:03:53,280
+But backend is in itself a very large beast and any API that we interact with on the frontend is typically
+
+55
+00:03:53,280 --> 00:03:55,260
+speaking with a backend server.
+
+56
+00:03:55,920 --> 00:04:01,890
+For us of course we have not built any backend, but as we saw with Stripe, we need to have some kind
+
+57
+00:04:01,890 --> 00:04:06,660
+of backend in order for us to actually complete a payment request to Stripe.
+
+58
+00:04:07,600 --> 00:04:13,060
+So here what I'm going to talk about is serverless functions, which is something that makes this process
+
+59
+00:04:13,060 --> 00:04:17,920
+significantly easier for us, who are primarily focused on frontend and learning.
+
+60
+00:04:17,920 --> 00:04:20,830
+React because React is not a back and thing.
+
+61
+00:04:21,550 --> 00:04:25,990
+So what we've got to do to understand back end though is traditionally how backends work.
+
+62
+00:04:26,560 --> 00:04:28,450
+As I mentioned, there are servers.
+
+63
+00:04:28,690 --> 00:04:32,410
+A server is pretty much what you can imagine your computer to be.
+
+64
+00:04:32,590 --> 00:04:38,650
+There are some hardware that has something to do with memory as well as performance speed.
+
+65
+00:04:39,160 --> 00:04:41,520
+So memory in this case exists in two forms.
+
+66
+00:04:41,560 --> 00:04:47,920
+You have RAM, which is pretty much immediate memory, and then you have your disk, which is like your
+
+67
+00:04:47,920 --> 00:04:51,100
+hard drive, which essentially is more long term memory.
+
+68
+00:04:51,730 --> 00:04:57,310
+So the immediate memory that comes from your RAM is very quick to access, but it's also something that
+
+69
+00:04:57,310 --> 00:04:59,470
+disappears whenever the server restarts.
+
+70
+00:05:00,570 --> 00:05:06,300
+In the particular case with your disk, which is your long term memory, even if you restart the server,
+
+71
+00:05:06,300 --> 00:05:07,380
+that data lives in there.
+
+72
+00:05:07,560 --> 00:05:13,020
+But as a result, it's much more slower to actually update that data and retrieve that data.
+
+73
+00:05:13,590 --> 00:05:16,980
+But these two things form the basis of your server.
+
+74
+00:05:17,250 --> 00:05:24,270
+All of the additional code you write on top of that is leveraging these resources of your RAM and your
+
+75
+00:05:24,270 --> 00:05:24,810
+disk.
+
+76
+00:05:25,900 --> 00:05:27,490
+So back ends are very similar.
+
+77
+00:05:27,520 --> 00:05:31,590
+There are essentially these computers that don't have a user interface.
+
+78
+00:05:31,600 --> 00:05:37,720
+It just has the resources and then you host your back end code on these resources and then your front
+
+79
+00:05:37,720 --> 00:05:39,670
+end makes requests to these servers.
+
+80
+00:05:40,480 --> 00:05:46,210
+So you can see your back end as a combination of the servers and the supporting infrastructure that
+
+81
+00:05:46,210 --> 00:05:47,260
+allows this to be done.
+
+82
+00:05:48,230 --> 00:05:54,230
+So here, if a frontend makes a request to your backend, let's say for example, we make on average
+
+83
+00:05:54,230 --> 00:05:55,820
+100 requests per minute.
+
+84
+00:05:56,690 --> 00:06:01,640
+One server is probably enough to service all of these frontend requests.
+
+85
+00:06:01,880 --> 00:06:04,940
+Maybe these requests ask for some data from the backend.
+
+86
+00:06:05,000 --> 00:06:06,620
+Maybe we do some transformations.
+
+87
+00:06:06,830 --> 00:06:10,430
+Maybe we send out emails, whatever it is that we have to do through a server.
+
+88
+00:06:10,910 --> 00:06:15,680
+Generally speaking, depending on your architecture, one server is probably enough to service these
+
+89
+00:06:15,680 --> 00:06:16,970
+100 requests per minute.
+
+90
+00:06:17,890 --> 00:06:20,860
+The problem becomes when we start hitting massive scale.
+
+91
+00:06:21,370 --> 00:06:27,430
+Let's say we hit the size of a company like Amazon or Google where we're making ten K requests per minute
+
+92
+00:06:27,610 --> 00:06:28,840
+from numerous fronts.
+
+93
+00:06:29,620 --> 00:06:32,500
+At this point, your backend needs to scale up.
+
+94
+00:06:32,620 --> 00:06:35,860
+One server cannot service all of these requests anymore.
+
+95
+00:06:36,280 --> 00:06:42,940
+So you have to manually or your developer team has to manually figure out how to code out systems that
+
+96
+00:06:42,940 --> 00:06:48,430
+can scale up the number of servers in order to service these 10,000 requests.
+
+97
+00:06:49,360 --> 00:06:53,450
+Now, remember, these requests do fluctuate because there are seasons.
+
+98
+00:06:53,470 --> 00:06:58,900
+You can imagine that for a company like Amazon during the holiday season, they get way more purchases
+
+99
+00:06:58,900 --> 00:07:05,800
+and sales and therefore requests than they do perhaps in the earlier portions of the year or during
+
+100
+00:07:05,800 --> 00:07:06,940
+down parts of the year.
+
+101
+00:07:07,420 --> 00:07:13,300
+This means that they are constantly scaling up and down resources and if they go back for some reason
+
+102
+00:07:13,300 --> 00:07:17,740
+to 100 requests per minute during a season, they need to scale down the number of servers.
+
+103
+00:07:19,200 --> 00:07:24,550
+So even in the middle, they have to be a variable amount of servers that go up and down.
+
+104
+00:07:24,600 --> 00:07:29,490
+Sometimes you get 10,000, sometimes you get 2000, sometimes you get 500, 100.
+
+105
+00:07:29,760 --> 00:07:36,480
+The idea is that it changes and correspondingly there is a process involved that requires us manually
+
+106
+00:07:36,480 --> 00:07:40,230
+scaling up and down the number of servers to serve these requests.
+
+107
+00:07:41,690 --> 00:07:47,540
+This, however, costs money and time to do it costs money because, of course, these resources, these
+
+108
+00:07:47,540 --> 00:07:52,400
+servers take up physical space in the real world and therefore, they need to be purchased, they need
+
+109
+00:07:52,400 --> 00:07:53,240
+to be maintained.
+
+110
+00:07:53,570 --> 00:07:58,280
+And there's maintenance as well as the code it takes the right to scale these up and down takes time.
+
+111
+00:07:58,820 --> 00:08:02,270
+This time comes from developers, which in turn also costs money.
+
+112
+00:08:02,630 --> 00:08:08,750
+So for a company building out their own backend, that scalable is often a very expensive endeavor,
+
+113
+00:08:09,080 --> 00:08:13,040
+especially for us, who are just trying to learn, react and need to make straight payments.
+
+114
+00:08:13,280 --> 00:08:18,950
+Having to set up all the infrastructure and consider all of these things for our back end is just largely
+
+115
+00:08:18,950 --> 00:08:21,440
+a big, big waste of time.
+
+116
+00:08:21,440 --> 00:08:25,820
+As far as learning frontend goes, if you all learn backend, it's an incredible learning experience
+
+117
+00:08:26,150 --> 00:08:28,370
+but again we're trying to learn react.
+
+118
+00:08:28,700 --> 00:08:34,730
+So in order for us to simplify the process of setting up a backend that simply allows us to just make
+
+119
+00:08:34,730 --> 00:08:39,200
+these payments to Stripe, what we can leverage is serverless functions.
+
+120
+00:08:39,710 --> 00:08:45,980
+Serverless functions is a very efficient way for us in order to perform these backend functionalities,
+
+121
+00:08:46,400 --> 00:08:50,720
+but with very minimal resources and commitment on our end in order to set this up.
+
+122
+00:08:51,500 --> 00:08:53,660
+So that's why we're going to talk about in the next video.

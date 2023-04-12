@@ -1,0 +1,479 @@
+1
+00:00:00,150 --> 00:00:01,140
+Welcome back, everyone.
+
+2
+00:00:02,070 --> 00:00:06,630
+So make sure you are inside of the new GraphQL version of the application.
+
+3
+00:00:07,320 --> 00:00:09,240
+Make sure all of the libraries are installed.
+
+4
+00:00:09,450 --> 00:00:17,070
+And to begin in order to start working with GraphQL, we need to first, as you might suspect, wrap
+
+5
+00:00:17,070 --> 00:00:20,580
+the application in some kind of GraphQL provider.
+
+6
+00:00:21,590 --> 00:00:25,940
+Now instead of a graphical provider, it's actually going to be an Apollo provider.
+
+7
+00:00:26,720 --> 00:00:30,050
+So in order to get started with that, we need to import in a few things.
+
+8
+00:00:30,620 --> 00:00:34,220
+The first is going to be this Apollo client.
+
+9
+00:00:35,150 --> 00:00:42,080
+Now, Apollo client is going to be the thing that registers the actual graphical server that you're
+
+10
+00:00:42,080 --> 00:00:42,890
+trying to hit.
+
+11
+00:00:43,610 --> 00:00:44,930
+So we need the Apollo client.
+
+12
+00:00:45,530 --> 00:00:49,070
+The next thing we need is something known as in-memory cache.
+
+13
+00:00:50,110 --> 00:00:53,350
+And we also need the Apollo provider.
+
+14
+00:00:53,920 --> 00:00:57,160
+So this, of course, being the provider that you wrap around your application.
+
+15
+00:00:58,230 --> 00:00:59,010
+To begin with.
+
+16
+00:00:59,250 --> 00:01:02,440
+The first thing we need to do is initialize the client.
+
+17
+00:01:02,460 --> 00:01:11,250
+So we'll say content client is equal to a new Apollo client and we're going to pass into this Apollo
+
+18
+00:01:11,250 --> 00:01:14,640
+client a single parameter, which is going to be an object.
+
+19
+00:01:15,210 --> 00:01:22,500
+The object is going to have Yuri as a key where you will point to the user out of the server.
+
+20
+00:01:22,800 --> 00:01:29,460
+Now the URL, the server is going to be our GraphQL playground, which is also our server's entry point.
+
+21
+00:01:29,550 --> 00:01:30,870
+They serve double duty.
+
+22
+00:01:31,290 --> 00:01:37,920
+So this you can just come back to the actual URL, copy it, and then paste it in.
+
+23
+00:01:39,850 --> 00:01:44,350
+As for the actual cash, this is the second key value.
+
+24
+00:01:44,560 --> 00:01:47,880
+So remember we were looking at that in-memory cache which we imported.
+
+25
+00:01:48,400 --> 00:01:51,340
+We're going to say new in memory cash.
+
+26
+00:01:52,240 --> 00:01:59,560
+And what caching does is exactly as you might expect with any type of caching, when you make a request
+
+27
+00:01:59,560 --> 00:02:05,980
+with Graf Kuo, that request comes back and you will actually cash that value as well.
+
+28
+00:02:06,220 --> 00:02:11,260
+So if you make that request again, if nothing's changed, GraphQL will just give you the cached value.
+
+29
+00:02:11,590 --> 00:02:17,320
+And this is where it's really handy because essentially there is a local copy of the data you have asked
+
+30
+00:02:17,320 --> 00:02:17,650
+for.
+
+31
+00:02:17,920 --> 00:02:21,190
+So that's the big thing with Apollo that you can do.
+
+32
+00:02:22,380 --> 00:02:29,400
+So once we have set up this client, what we want to do now is we want to wrap the highest part of our
+
+33
+00:02:29,400 --> 00:02:32,970
+application inside of this Apollo provider.
+
+34
+00:02:34,950 --> 00:02:42,300
+Now we're going to wrap all of our code inside of our new Apollo provider, and we're going to pass
+
+35
+00:02:42,300 --> 00:02:49,080
+to it client where the client is going to go to this new Apollo client that we created.
+
+36
+00:02:49,710 --> 00:02:54,690
+And now we're able to utilize GraphQL inside of our application.
+
+37
+00:02:55,290 --> 00:03:02,130
+So the first place to start is I'm going to work with our categories context, because if you remember,
+
+38
+00:03:02,130 --> 00:03:04,610
+that's where we're actually fetching our data.
+
+39
+00:03:05,190 --> 00:03:09,360
+So if you open up the categories context.
+
+40
+00:03:10,570 --> 00:03:17,710
+Instead of actually making this request to Firebase, we now have our own separate server that is hosting
+
+41
+00:03:17,710 --> 00:03:18,430
+our data.
+
+42
+00:03:19,210 --> 00:03:26,620
+So what I'm going to do is I'm just going to quickly get rid of this code so that we have a better idea
+
+43
+00:03:26,710 --> 00:03:27,670
+of what's going on.
+
+44
+00:03:28,780 --> 00:03:36,550
+Now, the first thing that I want to do is I want to import in two different things from the Apollo
+
+45
+00:03:36,550 --> 00:03:37,150
+client.
+
+46
+00:03:37,480 --> 00:03:40,080
+I want to import in GQ.
+
+47
+00:03:40,090 --> 00:03:46,900
+Well, GQ is what allows us to write those same query signatures that we have been doing inside of the
+
+48
+00:03:46,900 --> 00:03:47,380
+playground.
+
+49
+00:03:48,160 --> 00:03:56,500
+The next thing I want is use query, because use query is how to actually be able to utilize the actual
+
+50
+00:03:56,500 --> 00:03:58,390
+shape that we made and make a request.
+
+51
+00:03:58,390 --> 00:04:02,830
+So exactly as it looks like you use query when you want to make a query.
+
+52
+00:04:04,950 --> 00:04:08,580
+Now what I'm going to do is I'm going to define that shape of the object.
+
+53
+00:04:09,120 --> 00:04:12,240
+So I'm going to say const collections.
+
+54
+00:04:12,240 --> 00:04:20,430
+And I can say this in capitals like this is equal to equal, and then we pass it a string interpolation.
+
+55
+00:04:20,430 --> 00:04:24,540
+So the back ticks remember to use back ticks, not single quotes or double quotes.
+
+56
+00:04:25,440 --> 00:04:32,220
+Inside of here I'm going to say query collections or I can actually call it get collections if I want
+
+57
+00:04:32,220 --> 00:04:33,120
+to be more explicit.
+
+58
+00:04:34,530 --> 00:04:40,020
+And what I'm going to say inside of this query is that, okay, there's collections, which is the name
+
+59
+00:04:40,020 --> 00:04:42,210
+of the query, and then there's the fields.
+
+60
+00:04:42,870 --> 00:04:46,950
+So here we come to the playground and we can just copy this over.
+
+61
+00:04:52,100 --> 00:04:54,680
+And now this represents our collection square.
+
+62
+00:04:54,770 --> 00:04:56,110
+You don't even need this title.
+
+63
+00:04:56,120 --> 00:04:58,070
+It's more so for yourself if you want to read it.
+
+64
+00:04:58,700 --> 00:05:02,750
+But I'm not going to get rid of it just so that our signature matches what we've already currently seen
+
+65
+00:05:02,750 --> 00:05:05,360
+inside of our graphical playground.
+
+66
+00:05:06,170 --> 00:05:07,820
+But this now represents the tag.
+
+67
+00:05:07,830 --> 00:05:14,180
+You'll notice it looks pretty much the exact same as what we had inside of our previous playground.
+
+68
+00:05:15,050 --> 00:05:19,340
+So here, once I have this all set up, what I'm also going to do.
+
+69
+00:05:22,290 --> 00:05:26,130
+Other than fixing these indents so that they're more in line with what I want to see.
+
+70
+00:05:27,120 --> 00:05:30,990
+Is now I am going to actually use this inside of the provider.
+
+71
+00:05:31,800 --> 00:05:38,580
+So the first thing I'm going to do is I'm going to call that use query hook that we got back.
+
+72
+00:05:40,830 --> 00:05:42,660
+And what it returns back to us.
+
+73
+00:05:42,840 --> 00:05:47,730
+I'm going to discuss, but first, I'm going to pass this collection's query that we just made.
+
+74
+00:05:48,720 --> 00:05:50,040
+Into use query.
+
+75
+00:05:50,640 --> 00:05:54,750
+So again, remember, you want to make a graphical query inside of the shape that you want.
+
+76
+00:05:54,750 --> 00:06:00,690
+You just pass it using the GQ l tag with this back tick string and then you literally just paste it
+
+77
+00:06:00,690 --> 00:06:01,650
+exactly as you see.
+
+78
+00:06:03,280 --> 00:06:03,730
+Here.
+
+79
+00:06:03,730 --> 00:06:08,080
+Inside of calling this use query, this will give us back three things.
+
+80
+00:06:08,470 --> 00:06:12,760
+It will give us back a Boolean telling us if this is being loaded.
+
+81
+00:06:13,270 --> 00:06:18,580
+Just like we did with our Redux saga and stunk videos where we had some kind of loading state.
+
+82
+00:06:19,000 --> 00:06:20,980
+Use query also gives us a loading state.
+
+83
+00:06:21,580 --> 00:06:23,440
+It gives us also an error.
+
+84
+00:06:23,440 --> 00:06:28,900
+In case you have an error, get thrown and you also get back the data.
+
+85
+00:06:30,480 --> 00:06:37,050
+So here, what I'm going to do is I'm just going to console.log out the data so we can see what we're
+
+86
+00:06:37,050 --> 00:06:37,530
+working with.
+
+87
+00:06:38,130 --> 00:06:44,580
+So if we save this and let's go back to our terminal and make sure that we start our server.
+
+88
+00:06:46,520 --> 00:06:52,220
+And now if we come to our application and we restart, we should see the requests get made to GraphQL.
+
+89
+00:06:53,150 --> 00:06:53,960
+And there we see it.
+
+90
+00:06:54,470 --> 00:06:59,180
+We see that we have first initially undefined when the query first goes out.
+
+91
+00:06:59,390 --> 00:07:05,720
+So when we initialize our application, of course there is no data because the query is still being
+
+92
+00:07:05,720 --> 00:07:06,200
+created.
+
+93
+00:07:06,860 --> 00:07:11,690
+Then once it's done, you'll notice that we get back the data and it matches the shape what was in our
+
+94
+00:07:11,690 --> 00:07:12,200
+playground.
+
+95
+00:07:12,680 --> 00:07:19,820
+So we see our collections and inside of our collections we have the array with all of the values that
+
+96
+00:07:19,820 --> 00:07:20,810
+we have asked for.
+
+97
+00:07:22,210 --> 00:07:25,920
+So this is pretty much what we need to work with graphically.
+
+98
+00:07:26,890 --> 00:07:27,730
+This is our data.
+
+99
+00:07:27,730 --> 00:07:32,350
+We just have to get used to this structure when it comes to structuring it off inside of our application.
+
+100
+00:07:33,010 --> 00:07:38,560
+Now, in order for us to double check a couple of things, let me just also make sure that I console.log
+
+101
+00:07:38,560 --> 00:07:39,430
+the loading state.
+
+102
+00:07:39,580 --> 00:07:42,910
+So here, what I'm going to do is I'm going to console.log out.
+
+103
+00:07:44,830 --> 00:07:48,850
+Loading as a string points to the loading value.
+
+104
+00:07:52,390 --> 00:07:54,100
+And similarly, data.
+
+105
+00:07:55,520 --> 00:07:56,210
+Is the data.
+
+106
+00:07:56,780 --> 00:07:58,940
+So now we get to see all the different states.
+
+107
+00:07:59,990 --> 00:08:01,040
+As this hook works.
+
+108
+00:08:01,910 --> 00:08:04,040
+First we see we initialized loading is true.
+
+109
+00:08:04,490 --> 00:08:05,510
+Data is undefined.
+
+110
+00:08:05,810 --> 00:08:09,140
+Then loading is false and data is equal to the collections.
+
+111
+00:08:10,040 --> 00:08:11,210
+So very intuitive.
+
+112
+00:08:11,330 --> 00:08:12,620
+We understand how it works.
+
+113
+00:08:12,830 --> 00:08:17,390
+On mount, of course, default state of loading is going to be true because the query is being made.
+
+114
+00:08:17,510 --> 00:08:19,610
+Data is undefined because we have no data.
+
+115
+00:08:20,180 --> 00:08:23,470
+Loading is false because we've gotten back our data.
+
+116
+00:08:23,480 --> 00:08:25,880
+And of course then we see our data object.
+
+117
+00:08:26,660 --> 00:08:27,230
+So there we go.
+
+118
+00:08:27,710 --> 00:08:33,260
+Now that we have our data, let's start modifying our context so that we can now use what we're getting
+
+119
+00:08:33,260 --> 00:08:33,590
+back.
+
+120
+00:08:34,460 --> 00:08:35,900
+We'll do that in the next video together.

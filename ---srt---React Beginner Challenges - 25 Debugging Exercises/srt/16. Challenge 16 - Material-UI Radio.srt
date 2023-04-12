@@ -1,0 +1,539 @@
+1
+00:00:00,540 --> 00:00:06,300
+All right, so for this example, challenge 16, you could see here, we can't select the option, and
+
+2
+00:00:06,300 --> 00:00:07,920
+that is all the information we get.
+
+3
+00:00:07,950 --> 00:00:16,740
+So if we go here to the code sandbox, you can see here that as we click, we are not being able to
+
+4
+00:00:16,920 --> 00:00:17,910
+select the option.
+
+5
+00:00:17,910 --> 00:00:18,130
+Right.
+
+6
+00:00:18,150 --> 00:00:20,850
+So if we go to the console, there's no errors here.
+
+7
+00:00:21,210 --> 00:00:24,160
+So it looks like we're going to have to debug how this component works.
+
+8
+00:00:24,660 --> 00:00:30,660
+So first thing we're going to do as as usual, you can search for this component that's causing the
+
+9
+00:00:30,660 --> 00:00:31,080
+issue.
+
+10
+00:00:31,440 --> 00:00:36,390
+And the way that we do that, as you know, is with the react dev tools.
+
+11
+00:00:36,690 --> 00:00:37,950
+So we could do that.
+
+12
+00:00:37,950 --> 00:00:43,830
+But just to keep this short, since we've done that a bunch of times and previous challenges, we can
+
+13
+00:00:43,830 --> 00:00:48,990
+just look at this example, which is pretty evident where these things are.
+
+14
+00:00:48,990 --> 00:00:49,260
+Right.
+
+15
+00:00:49,290 --> 00:00:52,230
+So if we go down here, we could see the best, the worst.
+
+16
+00:00:52,230 --> 00:00:54,450
+These are labels inside of this component.
+
+17
+00:00:54,810 --> 00:00:56,560
+So we can see the pop quiz up here.
+
+18
+00:00:56,730 --> 00:00:58,680
+So we're in this area right here.
+
+19
+00:01:00,040 --> 00:01:04,480
+And as you can see here, we have some components that are being rendered, we have radio group, we
+
+20
+00:01:04,480 --> 00:01:08,260
+have form control label, we have a button down here for the summit.
+
+21
+00:01:08,470 --> 00:01:14,520
+And that's all the clues we have about what type of elements were in release of this form control here.
+
+22
+00:01:14,830 --> 00:01:16,980
+So where are these elements coming from?
+
+23
+00:01:16,990 --> 00:01:17,320
+Right.
+
+24
+00:01:17,500 --> 00:01:20,200
+So if we go up, we see we have radio group.
+
+25
+00:01:20,200 --> 00:01:24,580
+So right here you could see Radio Group is a material UI component.
+
+26
+00:01:25,270 --> 00:01:30,820
+And as you go down here, you see we have some form control labels inside of that.
+
+27
+00:01:31,090 --> 00:01:35,800
+So form control labels, another clue that may have to do with this or may not.
+
+28
+00:01:36,160 --> 00:01:38,300
+So form control label is right here.
+
+29
+00:01:38,980 --> 00:01:41,530
+And so we have those can those components.
+
+30
+00:01:41,830 --> 00:01:44,040
+We also have what else?
+
+31
+00:01:44,050 --> 00:01:48,880
+So we have form control label and that's basically it.
+
+32
+00:01:48,910 --> 00:01:49,450
+So.
+
+33
+00:01:51,230 --> 00:01:56,930
+We also you could see here inside of the forum, controllable, there is a control option which passes
+
+34
+00:01:56,930 --> 00:01:57,790
+in the radio.
+
+35
+00:01:58,040 --> 00:01:59,800
+So the radio button is this right.
+
+36
+00:02:00,260 --> 00:02:02,690
+But let's pretend we didn't know about any of these components.
+
+37
+00:02:02,690 --> 00:02:05,420
+What would we do to figure out how to actually fix this issue?
+
+38
+00:02:05,870 --> 00:02:10,280
+Well, the first thing we're going to do is just kind of take a guess and take a stab at where this
+
+39
+00:02:10,280 --> 00:02:10,920
+is coming from.
+
+40
+00:02:11,240 --> 00:02:17,150
+My guess is because the radio change handler isn't working, it could be related to the radio group
+
+41
+00:02:17,150 --> 00:02:17,720
+element.
+
+42
+00:02:18,050 --> 00:02:20,820
+Now, how do I know where what library that's coming from?
+
+43
+00:02:20,860 --> 00:02:23,420
+Well, if you go up here, you see material, you iCore Radio Group.
+
+44
+00:02:23,750 --> 00:02:26,330
+Now, really, what you could do is you could Google this.
+
+45
+00:02:26,330 --> 00:02:30,290
+If you really don't know where this is coming from, you could just Google the path of that and you'll
+
+46
+00:02:30,290 --> 00:02:37,190
+get this radio group API for a material UI here, which brings you here to the material UI documentation
+
+47
+00:02:37,190 --> 00:02:38,470
+for Radio Group.
+
+48
+00:02:38,930 --> 00:02:39,350
+So.
+
+49
+00:02:40,250 --> 00:02:47,240
+You could see here, you could read about this, so this is an event to function when this happens so
+
+50
+00:02:47,600 --> 00:02:51,020
+you can pull out the new value by accessing event target value.
+
+51
+00:02:51,030 --> 00:02:55,800
+So we have change handler a value the value of the selected radio button.
+
+52
+00:02:55,820 --> 00:02:57,940
+This is a good clue right here about what this is.
+
+53
+00:02:58,190 --> 00:03:02,660
+So we're just kind of exploring the props that are documented here could also go down and see some demos.
+
+54
+00:03:03,380 --> 00:03:08,090
+So if you click down here at the demos, it brings you to the radio button demo page.
+
+55
+00:03:08,600 --> 00:03:11,690
+And as you could see here, we have a similar example, right?
+
+56
+00:03:12,020 --> 00:03:15,080
+So this is working, but our code is not working.
+
+57
+00:03:15,710 --> 00:03:17,000
+So we have a similar example.
+
+58
+00:03:17,000 --> 00:03:22,640
+So so one thing you could do if you remember our strategy guide is that we could return to normal so
+
+59
+00:03:22,640 --> 00:03:25,870
+we could actually just see if pasting this in actually works.
+
+60
+00:03:26,210 --> 00:03:30,860
+So we we see we can open up that code sandbox here, which is this example which is working.
+
+61
+00:03:31,190 --> 00:03:35,300
+We could go here and then we could actually just copy all of this in.
+
+62
+00:03:35,750 --> 00:03:36,140
+Right.
+
+63
+00:03:38,240 --> 00:03:41,180
+And so let's just maybe paste that below.
+
+64
+00:03:43,350 --> 00:03:49,290
+And you could see here handle change is not defined, so we may want to just stop that because it doesn't
+
+65
+00:03:49,290 --> 00:03:53,560
+really matter whether this one works or not, I guess it does matter.
+
+66
+00:03:53,760 --> 00:03:56,980
+So if we go back here to this, you could see handle changes this.
+
+67
+00:03:56,980 --> 00:04:03,090
+So we'll just copy that handler as well and we'll just see if we could paste that in.
+
+68
+00:04:03,300 --> 00:04:07,350
+So we have a value in a set value react hook that we also want to grab.
+
+69
+00:04:07,530 --> 00:04:09,030
+So let's just grab all of that.
+
+70
+00:04:09,480 --> 00:04:14,010
+And instead of placing that in there like this, we could do is leave that as handle change.
+
+71
+00:04:16,260 --> 00:04:23,250
+Save that leave, that is handle change, and then we go back up here and we see we have already asset
+
+72
+00:04:23,250 --> 00:04:25,690
+value and a another one, right.
+
+73
+00:04:25,710 --> 00:04:26,910
+So if we go here.
+
+74
+00:04:35,610 --> 00:04:39,040
+So if we pace that in, you could see now we already have that declared.
+
+75
+00:04:39,060 --> 00:04:44,270
+So let's call that example value and set example value.
+
+76
+00:04:44,760 --> 00:04:47,850
+So we're doing is we are just copying this example into our app.
+
+77
+00:04:48,180 --> 00:04:49,110
+So we have this.
+
+78
+00:04:49,560 --> 00:04:57,300
+So then we go down here to the example value down here where we have this, we say example value and
+
+79
+00:04:57,300 --> 00:04:59,670
+then set example value.
+
+80
+00:04:59,670 --> 00:04:59,940
+Right.
+
+81
+00:04:59,940 --> 00:05:01,110
+But handle change.
+
+82
+00:05:01,110 --> 00:05:04,140
+We can leave alone because that was the one that was pasted over.
+
+83
+00:05:04,140 --> 00:05:08,250
+So handle change is the one that we pasted in.
+
+84
+00:05:08,250 --> 00:05:10,560
+So we've got to make sure we also copy this.
+
+85
+00:05:10,560 --> 00:05:12,170
+I'm not expecting you guys to do all of this.
+
+86
+00:05:12,180 --> 00:05:17,070
+I'm just showing you what you could do if you wanted to just copy that example into your app.
+
+87
+00:05:17,370 --> 00:05:20,100
+So I pasted that example in.
+
+88
+00:05:20,100 --> 00:05:22,950
+I changed some things around because it was clashing with my example.
+
+89
+00:05:23,250 --> 00:05:28,170
+But at the end of the day, we did actually fix that or we put in a new example.
+
+90
+00:05:28,530 --> 00:05:34,230
+Now, if I compare that to what I'm doing in this app, you could see I have I'm checking the event
+
+91
+00:05:34,230 --> 00:05:38,160
+target value and I'm setting the true or false, but that's not what I'm doing up here.
+
+92
+00:05:38,160 --> 00:05:38,460
+Right.
+
+93
+00:05:39,000 --> 00:05:40,970
+So why is this the case?
+
+94
+00:05:40,980 --> 00:05:41,340
+Right.
+
+95
+00:05:41,820 --> 00:05:43,440
+First, let's just see if this works.
+
+96
+00:05:45,540 --> 00:05:46,970
+Spoiler alert, it does work.
+
+97
+00:05:47,130 --> 00:05:52,920
+So the reason it works is because what we're doing here is instead of setting true or false, we're
+
+98
+00:05:52,920 --> 00:05:54,750
+setting the actual value of the target.
+
+99
+00:05:55,320 --> 00:06:02,040
+And the value of the target is that radio button and the radio buttons, values controlled here and
+
+100
+00:06:02,040 --> 00:06:03,080
+the value.
+
+101
+00:06:03,450 --> 00:06:05,250
+So the value is a texturing.
+
+102
+00:06:05,250 --> 00:06:05,520
+Right.
+
+103
+00:06:06,000 --> 00:06:10,560
+So similarly in here, you could see that this example passes in the value.
+
+104
+00:06:10,830 --> 00:06:12,080
+So you could do this.
+
+105
+00:06:12,090 --> 00:06:14,130
+You can actually debug a working example.
+
+106
+00:06:14,130 --> 00:06:14,340
+Right.
+
+107
+00:06:14,340 --> 00:06:19,050
+So I could go and set a breakpoint here and check the actual value that's being set.
+
+108
+00:06:19,440 --> 00:06:24,230
+And then I could copy what I learned here that, hey, we actually need to set the event target value.
+
+109
+00:06:24,480 --> 00:06:27,990
+I could have made this more difficult by not even providing that for you guys.
+
+110
+00:06:28,410 --> 00:06:29,850
+But I provided that.
+
+111
+00:06:29,850 --> 00:06:34,560
+And except I just added a twist of, you know, converting to true or false.
+
+112
+00:06:34,950 --> 00:06:36,460
+So this is a string value.
+
+113
+00:06:36,460 --> 00:06:41,940
+You set the string of the radio button there and we learned that through this example.
+
+114
+00:06:41,940 --> 00:06:44,670
+But also we could just read the documentation of that a little bit.
+
+115
+00:06:44,670 --> 00:06:50,330
+We saw the value of the radio group was the value of the button.
+
+116
+00:06:50,760 --> 00:06:55,640
+But the other thing that we didn't really talk about is the form control label.
+
+117
+00:06:55,860 --> 00:07:03,200
+So you could research farm control label and you could see here a form control label is here.
+
+118
+00:07:03,210 --> 00:07:05,970
+It's let's see if it's talked about any more in this article.
+
+119
+00:07:06,360 --> 00:07:08,550
+So we're using control F or finding.
+
+120
+00:07:08,700 --> 00:07:12,090
+So these have labels, so.
+
+121
+00:07:13,100 --> 00:07:18,890
+So he could go to the API for foreign control label and if we go down here to value, you could see
+
+122
+00:07:18,950 --> 00:07:22,160
+the value of the component and things are passed in.
+
+123
+00:07:22,160 --> 00:07:22,490
+Right.
+
+124
+00:07:22,510 --> 00:07:22,850
+So.
+
+125
+00:07:25,360 --> 00:07:29,650
+Yeah, so the on change event, it's the source of the call back, so.
+
+126
+00:07:31,000 --> 00:07:37,570
+If we go down here, we could see this we use we don't have on control or on change in here, but we
+
+127
+00:07:37,720 --> 00:07:39,120
+do have the change up here.
+
+128
+00:07:39,580 --> 00:07:44,280
+So this is a basic introduction to how radio buttons work in material.
+
+129
+00:07:44,290 --> 00:07:47,280
+You are you have the value that you maintain in the opera.
+
+130
+00:07:47,320 --> 00:07:48,880
+So you are maintaining the value.
+
+131
+00:07:49,090 --> 00:07:55,960
+You're passing it in here with the radio group and the radio group is going to know which target that
+
+132
+00:07:55,960 --> 00:07:56,800
+you've selected.
+
+133
+00:07:56,800 --> 00:07:59,170
+So that's this example.
+
+134
+00:07:59,170 --> 00:08:01,150
+All you had to do was change this.
+
+135
+00:08:02,740 --> 00:08:03,610
+Event handler.

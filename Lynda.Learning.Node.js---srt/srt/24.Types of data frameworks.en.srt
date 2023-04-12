@@ -1,0 +1,214 @@
+1
+00:00:00.07 --> 00:00:01.07
+- [Instructor] There are many different
+
+2
+00:00:01.07 --> 00:00:03.02
+database technologies, such as
+
+3
+00:00:03.02 --> 00:00:07.03
+MongoDB, MySQL, Veras, and many more.
+
+4
+00:00:07.03 --> 00:00:10.04
+Node has packages to work
+with most of these options.
+
+5
+00:00:10.04 --> 00:00:13.06
+And most of these options
+fall into two categories:
+
+6
+00:00:13.06 --> 00:00:16.01
+Either SQL or NoSQL.
+
+7
+00:00:16.01 --> 00:00:18.02
+Let's take a quick look at SQL.
+
+8
+00:00:18.02 --> 00:00:21.01
+SQL stands for structured query language.
+
+9
+00:00:21.01 --> 00:00:23.00
+The key word here is structured,
+
+10
+00:00:23.00 --> 00:00:25.03
+meaning the data stored
+inside is structured.
+
+11
+00:00:25.03 --> 00:00:28.02
+The database knows and
+cares about the structure,
+
+12
+00:00:28.02 --> 00:00:30.01
+and the tables that store the data
+
+13
+00:00:30.01 --> 00:00:32.03
+must be designed with that in mind.
+
+14
+00:00:32.03 --> 00:00:33.04
+The object classes,
+
+15
+00:00:33.04 --> 00:00:35.00
+which represent the items
+
+16
+00:00:35.00 --> 00:00:36.09
+that will go into those structured tables,
+
+17
+00:00:36.09 --> 00:00:38.05
+must also be designed.
+
+18
+00:00:38.05 --> 00:00:41.02
+There is a lot of up-front
+design work in doing so,
+
+19
+00:00:41.02 --> 00:00:44.06
+but also some performance and
+query benefits in some cases.
+
+20
+00:00:44.06 --> 00:00:46.06
+But, in other cases,
+
+21
+00:00:46.06 --> 00:00:48.08
+there are also performance hits
+
+22
+00:00:48.08 --> 00:00:50.09
+from the overhead of this design.
+
+23
+00:00:50.09 --> 00:00:52.05
+NoSQL, on the other hand,
+
+24
+00:00:52.05 --> 00:00:54.07
+is the absence of that structure.
+
+25
+00:00:54.07 --> 00:00:56.05
+We just put data into collections
+
+26
+00:00:56.05 --> 00:00:58.09
+without paying much
+attention to the structure.
+
+27
+00:00:58.09 --> 00:01:01.06
+As a result, there's less
+up-front design work,
+
+28
+00:01:01.06 --> 00:01:04.09
+and possible performance
+increases in some cases.
+
+29
+00:01:04.09 --> 00:01:07.06
+There's no good solution for all cases,
+
+30
+00:01:07.06 --> 00:01:09.08
+and each project has requirements
+
+31
+00:01:09.08 --> 00:01:13.02
+that might match SQL or
+NoSQL better or worse.
+
+32
+00:01:13.02 --> 00:01:15.07
+A good analogy from stack overflow
+
+33
+00:01:15.07 --> 00:01:18.08
+is thinking of SQL like an automatic car,
+
+34
+00:01:18.08 --> 00:01:22.01
+where a lot of the manual
+work is done for you,
+
+35
+00:01:22.01 --> 00:01:25.02
+and some performance
+improvements, in other cases.
+
+36
+00:01:25.02 --> 00:01:28.03
+And NoSQL is like a
+manual, or standard car.
+
+37
+00:01:28.03 --> 00:01:29.08
+Something to keep in mind
+
+38
+00:01:29.08 --> 00:01:31.08
+is that there are some databases
+
+39
+00:01:31.08 --> 00:01:35.02
+that share the features of SQL and NoSQL.
+
+40
+00:01:35.02 --> 00:01:37.00
+But for an introductory project
+
+41
+00:01:37.00 --> 00:01:39.06
+where you are learning
+to work with a database,
+
+42
+00:01:39.06 --> 00:01:44.03
+a NoSQL database might be a
+bit easier to get started with.
+
+43
+00:01:44.03 --> 00:01:47.00
+A good choice to start with is MongoDB,
+
+44
+00:01:47.00 --> 00:01:49.06
+as it is often used in the mean stack.
+
+45
+00:01:49.06 --> 00:01:51.06
+If you'd like to learn
+more about the mean stack,
+
+46
+00:01:51.06 --> 00:01:53.08
+please check out my mean stack
+
+47
+00:01:53.08 --> 00:01:56.08
+and the MongoDB development
+techniques course.
+
+48
+00:01:56.08 --> 00:01:59.08
+Now that we have a brief
+overview of database solutions,
+
+49
+00:01:59.08 --> 00:02:02.04
+let's get started with MongoDB.
+

@@ -1,0 +1,323 @@
+1
+00:00:00,500 --> 00:00:01,430
+Welcome back, everyone.
+
+2
+00:00:02,560 --> 00:00:04,870
+Let's talk about pure and impure functions.
+
+3
+00:00:05,930 --> 00:00:10,460
+When we talk about a pure function, there are mainly two things to consider.
+
+4
+00:00:10,940 --> 00:00:12,380
+And the first one is very simple.
+
+5
+00:00:13,330 --> 00:00:14,230
+You have a function.
+
+6
+00:00:15,330 --> 00:00:18,180
+So here I'm going to initialize Juan, I'm going to call it pure funk.
+
+7
+00:00:19,480 --> 00:00:22,960
+And what this function does is it takes some arguments.
+
+8
+00:00:24,220 --> 00:00:26,710
+In this particular case, let's imagine it takes two numbers.
+
+9
+00:00:28,170 --> 00:00:37,530
+Want a pure function should do is return the exact same thing, no matter how many times it gets called,
+
+10
+00:00:37,830 --> 00:00:40,170
+when it's given the same arguments?
+
+11
+00:00:40,620 --> 00:00:46,500
+So here are pure function is just a function that receives A and B, which are both integers, and it
+
+12
+00:00:46,500 --> 00:00:47,550
+will add them together.
+
+13
+00:00:48,120 --> 00:00:49,080
+That's what it returns.
+
+14
+00:00:50,010 --> 00:00:50,730
+So here.
+
+15
+00:00:52,070 --> 00:00:57,710
+For my function to be pure, if I give it to and for, it should always give me six.
+
+16
+00:00:58,040 --> 00:01:01,910
+No matter how many times I call this function, this should always return.
+
+17
+00:01:01,910 --> 00:01:03,780
+Six And looking at this function?
+
+18
+00:01:03,800 --> 00:01:04,730
+You might think, Oh, you are.
+
+19
+00:01:04,750 --> 00:01:10,070
+That's super intuitive, of course, because looking at the identity, this is a very simple function,
+
+20
+00:01:10,790 --> 00:01:14,630
+but we all have seen functions that go way beyond and above this.
+
+21
+00:01:14,840 --> 00:01:18,320
+And where are those conditions where this may not be pure?
+
+22
+00:01:18,920 --> 00:01:25,940
+One easy example to think of is if we created some other function, let's call it funky, and this function
+
+23
+00:01:26,210 --> 00:01:29,660
+similar has a and B, which are both integers.
+
+24
+00:01:30,080 --> 00:01:34,160
+But what it does is it relies on some external value.
+
+25
+00:01:34,160 --> 00:01:36,800
+C and let's say C right now is three.
+
+26
+00:01:37,460 --> 00:01:41,060
+And what it does is it returns you a plus B plus C.
+
+27
+00:01:42,640 --> 00:01:49,870
+In this particular case, when you look at this new funk, if you were to pass this to and for.
+
+28
+00:01:51,200 --> 00:01:54,950
+You would get nine, because two plus four plus three is nine.
+
+29
+00:01:56,490 --> 00:02:02,430
+This currently does give us back nine every time we call it, but sea might change.
+
+30
+00:02:03,120 --> 00:02:10,920
+And if sea changes, this is now no longer giving us the same value as it did previously, it's now
+
+31
+00:02:10,920 --> 00:02:13,080
+giving us back 11 instead of nine.
+
+32
+00:02:13,350 --> 00:02:14,800
+So this is an impure function.
+
+33
+00:02:15,450 --> 00:02:21,420
+An important thing to note sea may change without funk, a knowing, and that's a very important thing.
+
+34
+00:02:21,720 --> 00:02:28,890
+A function is considered pure when everything that dictates what it returns is completely isolated from
+
+35
+00:02:28,890 --> 00:02:30,510
+what gets passed into it.
+
+36
+00:02:31,350 --> 00:02:38,130
+This is very important because this functions return should solely be dependent on the props being passed
+
+37
+00:02:38,130 --> 00:02:38,430
+in.
+
+38
+00:02:38,790 --> 00:02:42,510
+That is the only way that your function is considered pure.
+
+39
+00:02:43,710 --> 00:02:49,530
+Another thing that your function should not do in order for it to be considered a pure function is produce
+
+40
+00:02:49,530 --> 00:02:50,340
+side effects.
+
+41
+00:02:50,670 --> 00:02:51,690
+What is a side effect?
+
+42
+00:02:52,380 --> 00:02:54,720
+Let's once again talk about that.
+
+43
+00:02:55,700 --> 00:02:58,250
+Variable that we had before, see.
+
+44
+00:02:59,420 --> 00:03:04,070
+See, is some value that is outside of our function.
+
+45
+00:03:04,640 --> 00:03:07,400
+In fact, we can make a new function, let's call it funk B.
+
+46
+00:03:08,370 --> 00:03:09,510
+If this function.
+
+47
+00:03:10,780 --> 00:03:18,250
+Takes a and B, but for some reason, what it does is it sets C equal to a plus B.
+
+48
+00:03:20,090 --> 00:03:24,830
+And what else it does is maybe it returns a times B.
+
+49
+00:03:27,310 --> 00:03:32,680
+Funk, be at this point, if you were to pass it to and for.
+
+50
+00:03:34,260 --> 00:03:40,810
+This will definitely always give you the same result that validates what we set up up here functioned.
+
+51
+00:03:41,340 --> 00:03:46,590
+However, C is now being changed outside of the function.
+
+52
+00:03:47,660 --> 00:03:55,520
+This is considered a side effect, a side effect is when a function creates some kind of effect outside
+
+53
+00:03:55,520 --> 00:03:56,510
+of its scope.
+
+54
+00:03:56,960 --> 00:04:02,120
+And in this particular case, it's setting some variable outside of the scope of its function.
+
+55
+00:04:03,020 --> 00:04:09,830
+And the scope is whatever is inside of this function, the variable C does not live within the scope
+
+56
+00:04:09,830 --> 00:04:13,010
+of this function, it's accessible within the scope of this function.
+
+57
+00:04:13,310 --> 00:04:16,610
+But it is also accessible outside of the scope of this function.
+
+58
+00:04:16,790 --> 00:04:22,640
+And as a result, if it were to change that variable, that is considered a side effect.
+
+59
+00:04:22,940 --> 00:04:27,470
+These are very important things to note about pure functions and impure functions.
+
+60
+00:04:29,110 --> 00:04:38,740
+So in summary, remember a pure function if it is to modify or rely on something outside of its scope
+
+61
+00:04:39,070 --> 00:04:45,460
+and beyond the parameters being passed into it, that is a impure function.
+
+62
+00:04:46,710 --> 00:04:51,030
+Now, when it comes to pure and impure functions, is one superior over the other.
+
+63
+00:04:51,690 --> 00:04:54,750
+This is a highly contentious topic.
+
+64
+00:04:55,320 --> 00:05:02,250
+Technically speaking, many JavaScript developers prefer writing code in a functional way because it's
+
+65
+00:05:02,250 --> 00:05:03,390
+very predictable.
+
+66
+00:05:03,570 --> 00:05:10,470
+You can look at a function looking at its arguments and understand what its output is going to be.
+
+67
+00:05:11,010 --> 00:05:14,460
+This gives you a contract that is very secure.
+
+68
+00:05:14,490 --> 00:05:20,850
+You can trust that this function is going to return what you expected to return because it does not
+
+69
+00:05:20,850 --> 00:05:24,480
+rely on something outside of the arguments being passed in.
+
+70
+00:05:25,540 --> 00:05:32,020
+However, that does not necessarily mean that NPR functions do not have a place, and this is an important
+
+71
+00:05:32,020 --> 00:05:37,810
+thing to note because in React, what we are writing is going to be in pure functions.
+
+72
+00:05:38,320 --> 00:05:40,840
+We're going to use hooks to create impure functions.
+
+73
+00:05:41,080 --> 00:05:44,380
+We have pure functions and we also have impure functions.
+
+74
+00:05:44,620 --> 00:05:49,840
+But when you think about some of these hooks understand that what you're doing is you are generating
+
+75
+00:05:49,840 --> 00:05:50,770
+side effects.
+
+76
+00:05:51,160 --> 00:05:56,440
+And that is really the idea around why pure and impure functions is an important thing to note, because
+
+77
+00:05:56,440 --> 00:05:59,230
+generally speaking, we want to write our functions purely.
+
+78
+00:05:59,500 --> 00:06:03,580
+But when you write functional components, you will create impure functions.
+
+79
+00:06:03,850 --> 00:06:10,210
+And by understanding that idea of modifying or relying on some value that exists outside of the scope
+
+80
+00:06:10,210 --> 00:06:16,750
+of your function will help you understand the way that functional components render and render and react.
+
+81
+00:06:17,470 --> 00:06:21,370
+So now that we understand this, let's move on to our next video.

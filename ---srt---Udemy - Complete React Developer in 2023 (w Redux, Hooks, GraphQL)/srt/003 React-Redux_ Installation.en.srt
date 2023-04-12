@@ -1,0 +1,587 @@
+1
+00:00:00,470 --> 00:00:01,400
+Welcome back, everyone.
+
+2
+00:00:02,060 --> 00:00:07,010
+In this video, we are going to talk about how we can bring reduction to our application and how we
+
+3
+00:00:07,010 --> 00:00:12,110
+actually convert these concepts that we learned about Redux into our code base and the patterns that
+
+4
+00:00:12,110 --> 00:00:12,680
+will emerge.
+
+5
+00:00:13,460 --> 00:00:19,580
+In order for us to use the Redux Library inside of React, we need to install two libraries and then
+
+6
+00:00:19,580 --> 00:00:25,280
+I'm going to install an additional one that will help us understand the flow of these actions inside
+
+7
+00:00:25,280 --> 00:00:26,270
+of our data.
+
+8
+00:00:27,250 --> 00:00:30,670
+So the first library that I want to add is the Redux Library.
+
+9
+00:00:30,940 --> 00:00:35,710
+So this allows us to interact with the reducers that produce the root reducer which produce the store.
+
+10
+00:00:36,710 --> 00:00:43,490
+Then there is React Redux, which gives us all the React bindings so that we can dispatch and pull these
+
+11
+00:00:43,940 --> 00:00:45,950
+store values off of Redux.
+
+12
+00:00:46,700 --> 00:00:52,400
+And then there's Redux lager, which is a great little tool that helps us understand how actions are
+
+13
+00:00:52,400 --> 00:00:54,500
+firing and what's happening with our state.
+
+14
+00:00:55,430 --> 00:00:57,200
+So you don't really need RELIX Logger.
+
+15
+00:00:57,210 --> 00:00:58,670
+That's the additional one that I mentioned.
+
+16
+00:00:59,150 --> 00:01:04,250
+I always like to install it because I like to see what's happening with my store and I'm very used to
+
+17
+00:01:04,250 --> 00:01:05,180
+using that service.
+
+18
+00:01:06,080 --> 00:01:12,530
+But once we have these three libraries, what we want to think about inside of our application is what
+
+19
+00:01:12,530 --> 00:01:13,760
+Redux replaces.
+
+20
+00:01:14,630 --> 00:01:20,990
+So as I mentioned, most of the time you do not want to use Context API and Redux at the same time.
+
+21
+00:01:21,710 --> 00:01:28,760
+The reason is because what our user context stores can be stored by Redux and it's confusing to think
+
+22
+00:01:28,760 --> 00:01:32,870
+about where all of your information and state is being stored.
+
+23
+00:01:33,530 --> 00:01:38,900
+The reason for this is because in Redux there's this concept of a single source of truth, which means
+
+24
+00:01:38,900 --> 00:01:42,440
+that all of your state should be stored in one place.
+
+25
+00:01:42,980 --> 00:01:44,900
+Generally speaking, this is your Redux store.
+
+26
+00:01:45,230 --> 00:01:51,110
+So if you have user data stored in a context as well as Redux, then that gets really confusing as to
+
+27
+00:01:51,140 --> 00:01:55,310
+what goes where, and you have to manage more dependencies of where your state lives.
+
+28
+00:01:56,210 --> 00:02:02,660
+So what we want to do is we want to replace this user context completely with Redux.
+
+29
+00:02:03,950 --> 00:02:10,970
+Now in this video, what we're going to do is set up the basic redux into our application, which does
+
+30
+00:02:10,970 --> 00:02:13,070
+involve quite a few steps.
+
+31
+00:02:13,070 --> 00:02:18,230
+And one of the known things about Redux is the boilerplate code that we have to write in order to get
+
+32
+00:02:18,230 --> 00:02:19,050
+this code working.
+
+33
+00:02:19,850 --> 00:02:22,160
+But it is an unfortunate side effect of this.
+
+34
+00:02:22,730 --> 00:02:28,850
+I do want you to follow along because it is very key that we set it up this way and I'll discuss why
+
+35
+00:02:28,850 --> 00:02:30,350
+we're doing it this way as we go.
+
+36
+00:02:31,640 --> 00:02:35,330
+But I do want to warn you that there will be a lot of steps that we're going through.
+
+37
+00:02:35,780 --> 00:02:37,970
+So please bear with me while we do this.
+
+38
+00:02:38,810 --> 00:02:42,740
+The first thing that we want to do is we want to set up a store folder.
+
+39
+00:02:42,980 --> 00:02:47,690
+This store folder is going to contain all of our redux code.
+
+40
+00:02:48,730 --> 00:02:50,500
+Inside of our store folder.
+
+41
+00:02:50,500 --> 00:02:54,540
+We need to create a file which is are stored as.
+
+42
+00:02:55,640 --> 00:03:05,030
+This store is what I mentioned earlier, as this almost combined place where all of our redux happens.
+
+43
+00:03:05,600 --> 00:03:11,540
+So where our state lives, but also where we receive actions and we dispatch them into our reducers
+
+44
+00:03:11,540 --> 00:03:12,560
+to update the state.
+
+45
+00:03:13,490 --> 00:03:20,090
+You need this store file because inside is where we're going to generate the store object that we will
+
+46
+00:03:20,090 --> 00:03:22,010
+use inside of our React application.
+
+47
+00:03:22,790 --> 00:03:30,500
+In order to do this, we actually need to import in three different methods from Redux the core Redux
+
+48
+00:03:30,500 --> 00:03:30,980
+library.
+
+49
+00:03:31,670 --> 00:03:37,910
+We want to import, compose, we want to import, create, store, and we want to import, apply middleware.
+
+50
+00:03:38,180 --> 00:03:40,370
+I'll talk about these three as we go through this.
+
+51
+00:03:41,590 --> 00:03:45,940
+What we also want to import in is lager from Redux Lager.
+
+52
+00:03:46,600 --> 00:03:51,390
+And again, I'm going to explain these concepts once we start getting to this portion.
+
+53
+00:03:52,430 --> 00:03:53,360
+Every store.
+
+54
+00:03:53,840 --> 00:03:56,530
+In order for it to work needs reducers.
+
+55
+00:03:56,540 --> 00:04:02,090
+As I mentioned, these reducers are what allow us to actually form the state object.
+
+56
+00:04:02,660 --> 00:04:06,950
+So what we know is that we need something called a root reducer.
+
+57
+00:04:06,960 --> 00:04:11,280
+If you remember, I mentioned that a root reducer is the combination of all of our reducers.
+
+58
+00:04:11,300 --> 00:04:16,460
+It's kind of like one big reducer if you want to think about your state being composed of multiple reducers.
+
+59
+00:04:17,520 --> 00:04:21,780
+But we know that we need this in order for our store to have any kind of state value.
+
+60
+00:04:22,620 --> 00:04:29,100
+Now, in order for us to build our route reducer, we are going to create a new file for this reducer
+
+61
+00:04:29,160 --> 00:04:31,410
+just so that we can separate out this concept.
+
+62
+00:04:31,740 --> 00:04:33,960
+I'm going to call it Reducer Docs.
+
+63
+00:04:34,920 --> 00:04:35,820
+Inside of here.
+
+64
+00:04:35,850 --> 00:04:41,010
+I need to bring in a combine reducers method from Redux.
+
+65
+00:04:41,670 --> 00:04:49,020
+And combine reducers is just a method that allows us to create a final big reducer that we can use inside
+
+66
+00:04:49,020 --> 00:04:51,900
+of our store by combining smaller reducers together.
+
+67
+00:04:52,140 --> 00:04:55,050
+And it's really just something that looks like an object.
+
+68
+00:04:55,680 --> 00:05:00,600
+And to do that, what I'm going to say is that export const root reducer.
+
+69
+00:05:00,600 --> 00:05:06,060
+So this is essentially the root reducer that we're creating is equal to combined reducers.
+
+70
+00:05:06,750 --> 00:05:13,440
+And then what we're going to pass into this parameter of combine reducer is an object where the keys
+
+71
+00:05:13,440 --> 00:05:19,230
+and the values are going to be the name of the reducer slice and then the actual reducer function itself.
+
+72
+00:05:20,130 --> 00:05:25,620
+So here it's a lot of boilerplate, as I mentioned, but each of these steps is crucial to understanding
+
+73
+00:05:25,620 --> 00:05:26,610
+how it all fits together.
+
+74
+00:05:27,300 --> 00:05:31,440
+I'm going to go over this all again as we build out our store.
+
+75
+00:05:31,530 --> 00:05:32,130
+Don't worry.
+
+76
+00:05:32,460 --> 00:05:35,220
+Right now, we just have to set up some things in order for this to work.
+
+77
+00:05:36,270 --> 00:05:40,440
+So as I mentioned, we need a reducer and we're replacing our user context.
+
+78
+00:05:41,070 --> 00:05:48,570
+So what I want to create is a user folder inside of this user store and inside I'm making a user reducer
+
+79
+00:05:48,570 --> 00:05:49,320
+JS file.
+
+80
+00:05:50,300 --> 00:05:54,740
+This user reducer is going to literally be our reducer.
+
+81
+00:05:55,370 --> 00:06:01,460
+So what we can do is we can actually take a lot of this reducer code that we have used inside of our
+
+82
+00:06:01,460 --> 00:06:02,030
+context.
+
+83
+00:06:02,630 --> 00:06:06,230
+All of this is actually the exact same.
+
+84
+00:06:06,560 --> 00:06:12,830
+So this is one of the huge benefits we get from having already learned how reducers work inside of our
+
+85
+00:06:12,830 --> 00:06:13,310
+code base.
+
+86
+00:06:14,180 --> 00:06:20,360
+Because with this, I can pretty much now just start using our reducer, but we have to make a couple
+
+87
+00:06:20,360 --> 00:06:24,200
+tweaks according to how the Redux structure is different.
+
+88
+00:06:25,250 --> 00:06:32,210
+So the first thing is that by default, because we no longer have the hook use reducer, if you remember,
+
+89
+00:06:32,210 --> 00:06:36,320
+what happened here was that we passed initial state to use reducer.
+
+90
+00:06:36,530 --> 00:06:43,370
+So the reducer knew that the first state is going to be this initial state value because we don't have
+
+91
+00:06:43,370 --> 00:06:44,570
+that hook anymore.
+
+92
+00:06:44,870 --> 00:06:50,780
+We need to give state inside of the function a default value, which will be initial state.
+
+93
+00:06:51,260 --> 00:06:53,540
+So if nothing gets passed, then use the initial state.
+
+94
+00:06:53,540 --> 00:06:57,050
+And the only time where state is not getting passed is when it runs for the first time.
+
+95
+00:06:57,590 --> 00:07:02,270
+Because in your reducer initializes of course there's no state value, so giving it this initial state
+
+96
+00:07:02,510 --> 00:07:04,790
+will allow us to know what the state value is.
+
+97
+00:07:06,290 --> 00:07:15,260
+The other thing that's different is that all of our reducers react to every single action, as I mentioned,
+
+98
+00:07:15,260 --> 00:07:16,940
+with the user context.
+
+99
+00:07:18,040 --> 00:07:24,820
+This previous user context use use reducer and this use reducer returns you a dispatch.
+
+100
+00:07:25,240 --> 00:07:31,960
+This dispatch, when called, will only fire actions to the associated use reducer that we got this
+
+101
+00:07:31,960 --> 00:07:32,200
+from.
+
+102
+00:07:32,590 --> 00:07:34,480
+So what did we get our use reducer from?
+
+103
+00:07:34,570 --> 00:07:35,590
+User reducer.
+
+104
+00:07:35,830 --> 00:07:42,010
+So any action you dispatch from this dispatch function you get back is going to dispatch the action
+
+105
+00:07:42,400 --> 00:07:44,500
+only to this reducer.
+
+106
+00:07:45,570 --> 00:07:52,230
+The same is going to be true for the court context as we know here when we created our.
+
+107
+00:07:53,630 --> 00:07:57,120
+Use reducer from our cart reducer.
+
+108
+00:07:57,470 --> 00:08:01,400
+This dispatch will only dispatch to the cart reducer.
+
+109
+00:08:01,700 --> 00:08:04,460
+It won't dispatch to the user reducer.
+
+110
+00:08:05,450 --> 00:08:11,420
+This is where it's different because every single producer receives every single action inside of Redux.
+
+111
+00:08:11,810 --> 00:08:19,100
+So as a result, by default, whenever we don't respond to an action because it's very possible we might
+
+112
+00:08:19,100 --> 00:08:23,480
+get actions where the type has nothing to do with our user reducer.
+
+113
+00:08:23,750 --> 00:08:26,360
+It only has to do with our cart.
+
+114
+00:08:27,530 --> 00:08:28,370
+If that happens.
+
+115
+00:08:28,370 --> 00:08:31,430
+All of our cases, of course, are not going to switch.
+
+116
+00:08:31,550 --> 00:08:35,690
+So then by default, we need to return back the current state.
+
+117
+00:08:36,690 --> 00:08:39,690
+Only by returning current state does our code know.
+
+118
+00:08:39,720 --> 00:08:40,360
+Okay.
+
+119
+00:08:40,380 --> 00:08:44,940
+This part of my reducer did not change because as I mentioned, state is an object.
+
+120
+00:08:45,120 --> 00:08:47,580
+Everything in React is referenced by memory.
+
+121
+00:08:47,940 --> 00:08:53,670
+So because state is an object and it's the exact same previous object in memory, this reducer does
+
+122
+00:08:53,670 --> 00:08:59,610
+not need to update and this is going to be important when it comes to our re renders, which again you've
+
+123
+00:08:59,610 --> 00:09:01,620
+probably heard me talk about numerous times.
+
+124
+00:09:01,890 --> 00:09:05,580
+We're going to understand that once we start working with this reducer.
+
+125
+00:09:06,330 --> 00:09:13,500
+So I'm going to export this out so that we can import in this user reducer into our root reducer.
+
+126
+00:09:13,980 --> 00:09:16,950
+So I'm going to say import user reducer from.
+
+127
+00:09:18,280 --> 00:09:18,850
+User.
+
+128
+00:09:19,240 --> 00:09:20,380
+User dot reducer.
+
+129
+00:09:21,160 --> 00:09:26,470
+And then using user reducer, I'm going to say, okay, inside of convert reducers, we're passing an
+
+130
+00:09:26,470 --> 00:09:26,890
+object.
+
+131
+00:09:27,220 --> 00:09:32,440
+I want the key to be equal to user and I want the value to be the user reducer.
+
+132
+00:09:32,890 --> 00:09:39,790
+And now our actual final state shape is going to be this object where it's got user and then the actual
+
+133
+00:09:39,850 --> 00:09:41,650
+state of the user reducer.
+
+134
+00:09:42,310 --> 00:09:45,490
+So as we add more to our root reducer, this is how it'll grow.
+
+135
+00:09:46,390 --> 00:09:53,560
+Now just to go over what we learned as far as the differences in reducers go, our reducers in Redux
+
+136
+00:09:53,560 --> 00:09:56,410
+receive every single action that gets dispatched ever.
+
+137
+00:09:57,100 --> 00:10:00,760
+And also we need to, as a result, return the default state.
+
+138
+00:10:02,060 --> 00:10:08,630
+That is one thing you need to remember when migrating your existing reducers over from context into
+
+139
+00:10:08,630 --> 00:10:09,170
+Redux.
+
+140
+00:10:09,320 --> 00:10:15,530
+But also, this is one thing to know about Redux reducers and how reducers work and the Redux flow of
+
+141
+00:10:15,530 --> 00:10:16,550
+data as a whole.
+
+142
+00:10:17,140 --> 00:10:20,750
+Key thing actions pass to every single reducer.
+
+143
+00:10:21,170 --> 00:10:27,170
+So that means that every single reducer by default needs to return the previous state if none of the
+
+144
+00:10:27,200 --> 00:10:28,970
+cases matched to the type.
+
+145
+00:10:29,930 --> 00:10:35,810
+So that's all we need to know about reducers inside of Redux as well as composing route reducer in the
+
+146
+00:10:35,810 --> 00:10:36,380
+next video.
+
+147
+00:10:36,590 --> 00:10:38,240
+Let's continue building out our store.

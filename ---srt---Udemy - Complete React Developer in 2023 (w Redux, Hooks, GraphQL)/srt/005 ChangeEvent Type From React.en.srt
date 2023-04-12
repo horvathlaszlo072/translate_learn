@@ -1,0 +1,183 @@
+1
+00:00:00,560 --> 00:00:01,490
+Welcome back, everyone.
+
+2
+00:00:01,880 --> 00:00:07,850
+In the last video we learned about the change event handler and the receiving of input elements as an
+
+3
+00:00:07,850 --> 00:00:10,460
+argument for what this function defines.
+
+4
+00:00:11,300 --> 00:00:16,220
+Now this function by default, returns void, which is what change event handler assumes you're going
+
+5
+00:00:16,220 --> 00:00:16,580
+to do.
+
+6
+00:00:16,820 --> 00:00:20,750
+You don't need to return anything because it's not expecting you to receive anything.
+
+7
+00:00:21,290 --> 00:00:28,670
+But if for some reason you wanted on your change handler to actually register some type of return for
+
+8
+00:00:28,670 --> 00:00:29,390
+whatever reason.
+
+9
+00:00:29,960 --> 00:00:36,890
+Another way that you can actually define this function is you can bring in the change event.
+
+10
+00:00:37,490 --> 00:00:43,610
+Change event is the event definition instead of the actual function definition.
+
+11
+00:00:44,180 --> 00:00:48,350
+And what this means is that you can define your own function definition.
+
+12
+00:00:48,860 --> 00:00:57,350
+So you can say, I'm going to give you some function where I expect to receive the event of change event
+
+13
+00:00:58,010 --> 00:01:02,150
+where the change event is registered to H HTML input element.
+
+14
+00:01:02,840 --> 00:01:09,080
+If you remember earlier when we looked at the actual change event handler, when we hovered over the
+
+15
+00:01:09,080 --> 00:01:14,780
+parameter, we noticed that we were receiving the change event as well, where we were passing the actual
+
+16
+00:01:14,780 --> 00:01:15,170
+type.
+
+17
+00:01:15,950 --> 00:01:21,980
+So before we do that and take a look at that, I'm just also going to now explicitly return void because
+
+18
+00:01:21,980 --> 00:01:22,880
+that's what this function does.
+
+19
+00:01:23,120 --> 00:01:28,970
+If you want to return something else though, again, you could put something here like your boolean
+
+20
+00:01:28,970 --> 00:01:32,520
+or your string or whatever this change event you happen to return.
+
+21
+00:01:32,540 --> 00:01:36,470
+For whatever reason, this is just another way that you can define this.
+
+22
+00:01:37,460 --> 00:01:42,530
+But going back to this change event, I also want to bring in this change event handler.
+
+23
+00:01:43,480 --> 00:01:47,680
+And I just want to show this side by side so we really understand what's happening here.
+
+24
+00:01:48,580 --> 00:01:55,660
+So when I hover or change event handler again, we receive some generic T which is equal to an element
+
+25
+00:01:56,380 --> 00:01:58,990
+and then that gets passed to change event.
+
+26
+00:02:00,060 --> 00:02:02,550
+So essentially this is change event.
+
+27
+00:02:03,090 --> 00:02:10,290
+Change event here is expecting some value t in order for us to tell it what type of element this change
+
+28
+00:02:10,290 --> 00:02:10,890
+event is for.
+
+29
+00:02:11,670 --> 00:02:17,220
+So really this function that we see right here is really just us typing it out like so.
+
+30
+00:02:17,370 --> 00:02:18,540
+More manually.
+
+31
+00:02:19,720 --> 00:02:23,920
+That's really just something I wanted to highlight to you if you wanted to define your own function
+
+32
+00:02:24,730 --> 00:02:25,450
+normally.
+
+33
+00:02:25,720 --> 00:02:31,330
+If you look at this actual definition and you see that there's a change event that is being defined
+
+34
+00:02:31,330 --> 00:02:38,560
+in the actual function type definition, you can use that very easily as well and write your own function
+
+35
+00:02:38,560 --> 00:02:45,460
+definition so you get more granular control, such as if you wanted to pass back or return some specific
+
+36
+00:02:45,460 --> 00:02:49,060
+type or if you wanted to even add additional parameters for some reason.
+
+37
+00:02:49,390 --> 00:02:56,740
+Again, this main idea is that oftentimes when it comes to typing with third party libraries, you really
+
+38
+00:02:56,740 --> 00:02:57,880
+just got to read the types.
+
+39
+00:02:58,210 --> 00:03:03,880
+It gives you a better idea of what the functions do, but it also gives you more granular control with
+
+40
+00:03:03,880 --> 00:03:04,930
+your typing as well.
+
+41
+00:03:05,140 --> 00:03:11,200
+And this becomes especially important as we start interacting with more and more third party libraries.
+
+42
+00:03:11,950 --> 00:03:12,480
+So that's it.
+
+43
+00:03:12,490 --> 00:03:15,700
+I just want to highlight to you that there are numerous ways that you can type out.
+
+44
+00:03:16,980 --> 00:03:20,430
+These third party interactive parameters that you're passing.
+
+45
+00:03:21,420 --> 00:03:25,500
+So here, let's just use the change event so that we can be more explicit in what we see.
+
+46
+00:03:26,500 --> 00:03:28,810
+So with that, let's type the rest of our project.

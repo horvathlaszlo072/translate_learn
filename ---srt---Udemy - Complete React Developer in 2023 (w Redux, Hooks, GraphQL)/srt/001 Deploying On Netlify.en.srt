@@ -1,0 +1,499 @@
+1
+00:00:00,450 --> 00:00:01,560
+Welcome back, everyone.
+
+2
+00:00:02,280 --> 00:00:08,790
+In this video, we are going to host our Web site live using Net Lafite through this great platform
+
+3
+00:00:08,790 --> 00:00:13,720
+that the why we can actually have our website hosted by the end of this video.
+
+4
+00:00:14,370 --> 00:00:21,330
+And the reason why is because net fi is a platform that focuses primarily on getting frontend modern
+
+5
+00:00:21,330 --> 00:00:24,540
+applications up as easy as possible.
+
+6
+00:00:25,260 --> 00:00:30,630
+They've really taken the world by storm in the last two three years, and they're only continuing to
+
+7
+00:00:30,630 --> 00:00:30,930
+grow.
+
+8
+00:00:30,940 --> 00:00:36,720
+So this is a really stable, great service to use for hosting applications, and we get great things
+
+9
+00:00:36,720 --> 00:00:38,880
+like continuous integration right out of the box.
+
+10
+00:00:39,510 --> 00:00:44,370
+I'll talk more about that once we start signing in and taking a look at nullify.
+
+11
+00:00:44,820 --> 00:00:49,140
+So if you have not already got an account here, I want you to sign up and go through the process.
+
+12
+00:00:49,350 --> 00:00:55,680
+And once you've successfully signed in, join me because what you should see is a page like.
+
+13
+00:00:56,890 --> 00:01:03,190
+This one, once this loads, so now that we're back, hopefully you've signed in and you are seeing
+
+14
+00:01:03,190 --> 00:01:04,570
+this similar page as I am.
+
+15
+00:01:05,500 --> 00:01:11,020
+There's a lot of different options here, but the primary thing we want to look at is the CITES section.
+
+16
+00:01:11,710 --> 00:01:16,810
+So down here in CITES, one I want you to do is just click this import from get.
+
+17
+00:01:17,620 --> 00:01:25,000
+What this allows us to do is directly choose the GitHub account that we have that we want to host our
+
+18
+00:01:25,000 --> 00:01:26,140
+application through.
+
+19
+00:01:26,860 --> 00:01:33,040
+And the great thing about this is because whenever you make a push to GitHub, to the specific branch
+
+20
+00:01:33,040 --> 00:01:39,100
+that you want to deploy, it will automatically rebuild on that la vie, meaning that your website is
+
+21
+00:01:39,100 --> 00:01:45,280
+always up to date to a specific branch that you have that you want to be your life website.
+
+22
+00:01:46,810 --> 00:01:52,930
+So if you haven't already, make sure that your GitHub is currently up to date with all of the code
+
+23
+00:01:52,930 --> 00:01:55,270
+changes that we've made in the last few videos.
+
+24
+00:01:56,400 --> 00:02:01,260
+Here, what we're going to do is we're going to choose get as our get provider, but we could have choose
+
+25
+00:02:01,260 --> 00:02:01,860
+other ones.
+
+26
+00:02:02,310 --> 00:02:05,760
+What it will ask you to do is authorize GitHub.
+
+27
+00:02:06,180 --> 00:02:08,250
+So mine, I'm already authorized.
+
+28
+00:02:08,430 --> 00:02:09,860
+But just go through the steps.
+
+29
+00:02:09,870 --> 00:02:10,800
+It's very simple.
+
+30
+00:02:10,800 --> 00:02:16,440
+It's essentially allowing net Lafite to access your repositories inside of GitHub.
+
+31
+00:02:17,910 --> 00:02:25,830
+Once you've done that, what you want to do now is you want to go and find your specific repository
+
+32
+00:02:25,830 --> 00:02:27,000
+where you have our project.
+
+33
+00:02:27,390 --> 00:02:28,860
+Now mine is called.
+
+34
+00:02:30,070 --> 00:02:31,840
+Crown Clothing v two.
+
+35
+00:02:32,440 --> 00:02:37,030
+So you can either search for it right here or you can find it, and I'm going to look for mine.
+
+36
+00:02:37,150 --> 00:02:39,580
+Crown calling me to this is the latest version.
+
+37
+00:02:41,080 --> 00:02:46,480
+The branch that you want to deploy is the one of your choosing, so mine is going to be main.
+
+38
+00:02:47,540 --> 00:02:50,930
+Because that is the primary place with my up to date coat.
+
+39
+00:02:52,440 --> 00:02:56,580
+Now, what we need to do is we need to look at these commands right here.
+
+40
+00:02:57,300 --> 00:03:00,450
+Nothing I want you to change except for build command.
+
+41
+00:03:00,930 --> 00:03:07,920
+The build command is the command inside of our package JSON that builds and serves the final packet
+
+42
+00:03:07,920 --> 00:03:11,760
+of our website after it's been minified and magnified and all that stuff.
+
+43
+00:03:12,000 --> 00:03:19,140
+Magnification and Uggla ification is the process where we convert our fancy readable code into a less
+
+44
+00:03:19,140 --> 00:03:23,310
+readable but much more optimized code, and it's handled all by Webpack.
+
+45
+00:03:24,570 --> 00:03:28,290
+What you need to add is c.i equals and then yarn built.
+
+46
+00:03:28,500 --> 00:03:33,750
+And the reason why you need sequels equals is because of the continuous integration aspect of our website.
+
+47
+00:03:34,500 --> 00:03:35,610
+Now let me explain.
+
+48
+00:03:36,660 --> 00:03:43,530
+So, C.I. continuous integration is the process in which we're allowing this platform to deploy our
+
+49
+00:03:43,530 --> 00:03:50,940
+website based on very quick code changes that we make to some repository in a get environment get environment
+
+50
+00:03:50,940 --> 00:03:52,530
+for us right now is GitHub.
+
+51
+00:03:53,040 --> 00:03:57,570
+Now, typically with deployments, this is actually a manual and arduous process.
+
+52
+00:03:57,570 --> 00:04:03,720
+If you were to set up the infrastructure and coordinate some of the potential cloud solutions, or maybe
+
+53
+00:04:03,720 --> 00:04:09,060
+the infrastructure solutions required for a full deployment because you need to allocate resourcing,
+
+54
+00:04:09,060 --> 00:04:13,170
+you need to figure out where these build files are going to be living in order for you to serve them
+
+55
+00:04:13,170 --> 00:04:15,160
+to a web site whenever they request them.
+
+56
+00:04:15,480 --> 00:04:19,470
+Because remember, what's happening with our website is it's getting built into the final version,
+
+57
+00:04:19,650 --> 00:04:24,510
+but our final version has to live in a resource somewhere, a server somewhere that then needs to be
+
+58
+00:04:24,510 --> 00:04:26,850
+able to serve that to websites that are asking for it.
+
+59
+00:04:26,970 --> 00:04:31,710
+And it has to be the latest version of the code or at least the version of the code that we want to
+
+60
+00:04:31,710 --> 00:04:33,300
+deploy typically in.
+
+61
+00:04:33,310 --> 00:04:36,330
+Imagine how this process might be complicated and arduous.
+
+62
+00:04:36,600 --> 00:04:41,880
+But this is what these platforms like Netflix like do is that they've essentially turned all of this
+
+63
+00:04:41,880 --> 00:04:46,350
+infrastructure into the primary thing that they offer as a service.
+
+64
+00:04:46,650 --> 00:04:50,910
+So behind the scenes, they're coordinating all these deployments, they're figuring out all of these
+
+65
+00:04:50,910 --> 00:04:51,930
+build pipelines.
+
+66
+00:04:52,110 --> 00:04:56,880
+They're figuring out all of the resourcing required in order for you to easily and quickly deploy your
+
+67
+00:04:56,880 --> 00:05:01,500
+website while listening to some great repository for those changes.
+
+68
+00:05:02,220 --> 00:05:06,480
+Now we rely on to create React app in order to build our project.
+
+69
+00:05:06,810 --> 00:05:12,750
+What's happening inside of Nat Lo-Fi is that Nat the fight is essentially going to scaffold up, create
+
+70
+00:05:12,750 --> 00:05:16,050
+React app and run, create React apps build command.
+
+71
+00:05:16,500 --> 00:05:22,500
+So that means that you're essentially instead of building on our local terminal while building inside
+
+72
+00:05:22,500 --> 00:05:24,390
+of a net lo-fi environment.
+
+73
+00:05:24,750 --> 00:05:28,560
+Nullify, of course, is, as I mentioned, now a CGI environment.
+
+74
+00:05:28,890 --> 00:05:35,220
+So what happens is that because it's still using create racked up to build up our project, it's rely
+
+75
+00:05:35,230 --> 00:05:42,150
+on Create React app to look at the CIA environments of Nat Lo-Fi and look for any potential issues.
+
+76
+00:05:42,750 --> 00:05:47,880
+Now what will happen is that some of these tools, because in a sealed environment, might throw a couple
+
+77
+00:05:47,880 --> 00:05:50,100
+warnings inside of our build step.
+
+78
+00:05:50,640 --> 00:05:56,010
+The moment that happens in a CSI environment create React app has decided to be a lot more strict,
+
+79
+00:05:56,010 --> 00:05:58,650
+meaning that it'll treat warnings as errors.
+
+80
+00:05:58,650 --> 00:06:06,270
+Which is why if you don't have sequels to overthrow that CIA variable inside of Create React app, then
+
+81
+00:06:06,270 --> 00:06:09,630
+what happens that create wrapped up will fail inside of nullify?
+
+82
+00:06:09,990 --> 00:06:16,320
+But that's only because of an overly aggressive treatment towards warnings which will get thrown from
+
+83
+00:06:16,320 --> 00:06:19,830
+these internal libraries we're relying on inside of nullify.
+
+84
+00:06:20,100 --> 00:06:25,290
+So by saying, Hey, ignore that, don't worry about it, just build now it all works.
+
+85
+00:06:26,480 --> 00:06:31,640
+As for the published directory, this is just what directory we want to serve our build files from and
+
+86
+00:06:31,640 --> 00:06:35,480
+knowing that yarn build would create React app builds into a build folder.
+
+87
+00:06:35,600 --> 00:06:37,250
+That's exactly the folder we want.
+
+88
+00:06:37,640 --> 00:06:39,530
+So now I just want you to head deploy site.
+
+89
+00:06:39,950 --> 00:06:42,620
+Now what should happen is you should land on this page.
+
+90
+00:06:43,070 --> 00:06:48,410
+Here, you'll notice that we have a random string that's generated for our website and it'll say site
+
+91
+00:06:48,410 --> 00:06:49,610
+deploy in progress.
+
+92
+00:06:50,180 --> 00:06:55,130
+If you scroll down, you will see these three steps that nullify is suggesting we go through in order
+
+93
+00:06:55,130 --> 00:06:57,860
+to have a fully secure and up to date website.
+
+94
+00:06:58,400 --> 00:07:00,230
+We don't need step two and step three right now.
+
+95
+00:07:00,530 --> 00:07:05,570
+All we need is to leverage the existing you are all that they're generating for us, which is going
+
+96
+00:07:05,570 --> 00:07:08,210
+to be based off of this randomly generated string.
+
+97
+00:07:08,820 --> 00:07:11,360
+And we just need to wait for our site to finish deploying.
+
+98
+00:07:11,930 --> 00:07:15,770
+If you scroll down, you'll see that these are our production to place.
+
+99
+00:07:16,280 --> 00:07:22,010
+So generally speaking, this process takes about two to three minutes, but it really depends on how
+
+100
+00:07:22,010 --> 00:07:28,190
+much code you have, because what's happening behind the scenes right now is that Nullify is running
+
+101
+00:07:28,190 --> 00:07:34,550
+our Create React app build script in order to build out the final folder that is going to actually use
+
+102
+00:07:34,550 --> 00:07:35,630
+to host our website.
+
+103
+00:07:36,230 --> 00:07:38,270
+So let's just quickly wait until this finishes.
+
+104
+00:07:40,060 --> 00:07:41,800
+And there you should see published.
+
+105
+00:07:42,670 --> 00:07:48,400
+So now, if we scroll back up, we'll see our website is located at this address.
+
+106
+00:07:49,270 --> 00:07:56,350
+If you click this, it will open up our web application and you'll see that our entire application works
+
+107
+00:07:56,350 --> 00:07:59,050
+the way that we had originally designed it to.
+
+108
+00:07:59,920 --> 00:08:05,650
+In fact, if you click around, you'll see that you have everything working, including all of our features.
+
+109
+00:08:06,640 --> 00:08:12,940
+And let's check our sign in, so here I'm going to sign in with an email that I know we've already created,
+
+110
+00:08:13,540 --> 00:08:14,230
+I sign in.
+
+111
+00:08:14,650 --> 00:08:15,310
+And there we go.
+
+112
+00:08:15,580 --> 00:08:17,900
+Our users also authenticated up.
+
+113
+00:08:17,960 --> 00:08:20,430
+It'll get all these different checks and balances.
+
+114
+00:08:20,440 --> 00:08:26,560
+If you're using Chrome browser, which will tell you whether or not you want to update or store your
+
+115
+00:08:26,560 --> 00:08:27,130
+passwords.
+
+116
+00:08:27,130 --> 00:08:28,780
+But either way, our website works.
+
+117
+00:08:29,370 --> 00:08:30,460
+Authentication works.
+
+118
+00:08:30,760 --> 00:08:31,720
+Everything is built in.
+
+119
+00:08:32,560 --> 00:08:33,160
+So there we go.
+
+120
+00:08:33,190 --> 00:08:36,220
+Our website is live, but there's one last step we need to do.
+
+121
+00:08:36,850 --> 00:08:42,740
+If you click on jackets or any other deeper nested route, if you hit refresh.
+
+122
+00:08:43,450 --> 00:08:45,790
+Notice that we get a page not found.
+
+123
+00:08:46,390 --> 00:08:48,340
+Now, don't worry, this is perfectly normal.
+
+124
+00:08:48,730 --> 00:08:53,740
+We'll discuss why this is happening, and it'll be a really quick fix for us related to not the.
+
+125
+00:08:54,670 --> 00:08:56,890
+And we'll do that in the next video to see you there.

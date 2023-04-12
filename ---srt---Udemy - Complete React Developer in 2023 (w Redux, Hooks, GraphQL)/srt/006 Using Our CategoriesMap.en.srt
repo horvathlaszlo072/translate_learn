@@ -1,0 +1,527 @@
+1
+00:00:00,390 --> 00:00:01,560
+Welcome back, everyone.
+
+2
+00:00:02,550 --> 00:00:08,610
+In this video, we want to talk about utilizing our new category map inside of our application, as
+
+3
+00:00:08,610 --> 00:00:12,480
+a result, it makes this products provider seem a little bit incorrect.
+
+4
+00:00:12,810 --> 00:00:18,630
+So what we need to do is think about refactoring our products provider so that it more accurately contains
+
+5
+00:00:18,630 --> 00:00:21,780
+these categories that we want to use through our category map.
+
+6
+00:00:22,470 --> 00:00:24,420
+To begin with, let's start with renaming.
+
+7
+00:00:24,780 --> 00:00:27,870
+I'm going to name this category as context.
+
+8
+00:00:28,320 --> 00:00:34,110
+And similarly, I'm going to have to rename this product context as categories context.
+
+9
+00:00:34,650 --> 00:00:36,710
+Instead of showing products.
+
+10
+00:00:36,720 --> 00:00:43,890
+We want to be more explicit that what we have is a categories map and similarity with the categories
+
+11
+00:00:44,280 --> 00:00:44,650
+here.
+
+12
+00:00:44,670 --> 00:00:48,810
+We want to switch provider also to categories provider.
+
+13
+00:00:49,820 --> 00:00:55,310
+As for products, we're now showing a categories map and set two categories Map.
+
+14
+00:00:56,350 --> 00:00:57,340
+Capitalize the sea.
+
+15
+00:00:58,460 --> 00:01:03,140
+And instead of this being an array, what do we want to know about a map?
+
+16
+00:01:03,530 --> 00:01:07,700
+We know that the maps empty state is when there are no categories to show.
+
+17
+00:01:07,730 --> 00:01:11,510
+So instead of showing no, we can just show an empty object.
+
+18
+00:01:11,930 --> 00:01:16,100
+And the reason why we're going to use an empty object is because we're really interfacing with the objects
+
+19
+00:01:16,100 --> 00:01:19,730
+keys in order to get the responding item for the category.
+
+20
+00:01:20,210 --> 00:01:24,590
+So if we're trying to get it and there is no keys, then we're just going to get nothing back.
+
+21
+00:01:24,860 --> 00:01:29,030
+And that's why we want to use an empty object instead of null where you typically want to store it like
+
+22
+00:01:29,030 --> 00:01:29,930
+a full object.
+
+23
+00:01:30,050 --> 00:01:31,880
+Here, it's kind of like a collection.
+
+24
+00:01:32,270 --> 00:01:36,110
+And when you use maps, typically an empty map is the empty state of a map.
+
+25
+00:01:37,530 --> 00:01:44,520
+So now that we have this, let's think about the actual value, which will also be our categories map.
+
+26
+00:01:46,020 --> 00:01:54,150
+Similarly, we want to update the name of this file, so here I'm going to switch this over to categories
+
+27
+00:01:54,600 --> 00:01:56,580
+doc context, Dutch air sex.
+
+28
+00:01:57,890 --> 00:02:04,220
+And then with this, now we also have to update wherever we're calling it, inside of our index, Jess,
+
+29
+00:02:05,060 --> 00:02:08,300
+because now we are no longer using a products provider.
+
+30
+00:02:08,510 --> 00:02:11,120
+We are now using eight categories provider.
+
+31
+00:02:11,690 --> 00:02:16,400
+And similarly, this is no longer products contexts its categories context.
+
+32
+00:02:17,000 --> 00:02:24,200
+So let's copy this over into our products provider and then now everything should continue working.
+
+33
+00:02:24,560 --> 00:02:28,940
+So if we go back to our application, we should see everything still works as we expect.
+
+34
+00:02:29,330 --> 00:02:32,900
+If we have any issues, let's figure it out inside of our shop component.
+
+35
+00:02:32,910 --> 00:02:34,970
+We can't resolve products context.
+
+36
+00:02:35,270 --> 00:02:37,220
+Of course, we still have one more place where we're using it.
+
+37
+00:02:37,250 --> 00:02:39,080
+Shop context or shop component?
+
+38
+00:02:39,080 --> 00:02:39,350
+Sorry.
+
+39
+00:02:40,540 --> 00:02:46,600
+Here we see that our products context is what's being pulled in, so let's just call our category's
+
+40
+00:02:46,600 --> 00:02:49,180
+context and pass that in here.
+
+41
+00:02:49,840 --> 00:02:54,910
+And then similarly, we no longer have a product context is now a categories context.
+
+42
+00:02:55,600 --> 00:02:59,810
+So let's save this again now again with use context here.
+
+43
+00:02:59,830 --> 00:03:05,590
+We're not actually calling anything here inside because now products is no longer an array.
+
+44
+00:03:06,190 --> 00:03:08,440
+So let's just comment this code out for now.
+
+45
+00:03:09,370 --> 00:03:12,790
+And instead of showing products, let's also just delete this.
+
+46
+00:03:13,630 --> 00:03:17,230
+And now, if we come back, go to shop still A..
+
+47
+00:03:17,620 --> 00:03:21,280
+OK, now let's go into our categories context.
+
+48
+00:03:21,880 --> 00:03:27,910
+And now what we want to do is we want to set this category map to the actual value that we're exporting
+
+49
+00:03:27,910 --> 00:03:28,990
+through our value here.
+
+50
+00:03:29,680 --> 00:03:35,530
+So I want to call this set categories map setter on the category map that we get back from our method.
+
+51
+00:03:36,590 --> 00:03:37,790
+And then I'm going to save this.
+
+52
+00:03:38,390 --> 00:03:42,020
+And now back in the shuttle component, we need to think about how to utilize it.
+
+53
+00:03:42,860 --> 00:03:48,710
+So remember when you look at the shape of this component, it is an object that has a title for the
+
+54
+00:03:48,710 --> 00:03:52,820
+key which we need as well as the items itself.
+
+55
+00:03:53,210 --> 00:03:54,770
+So we need both of these values.
+
+56
+00:03:55,100 --> 00:03:58,940
+And what we want to do is we want to iterate through this.
+
+57
+00:03:59,300 --> 00:04:02,990
+Different items array to show the first four items for preview.
+
+58
+00:04:03,470 --> 00:04:06,980
+And before we build out the component, let's just make sure we at least know how to work with this
+
+59
+00:04:06,980 --> 00:04:08,600
+category's map object first.
+
+60
+00:04:09,410 --> 00:04:14,270
+So I'm going to leverage this product's container because all it is, if you remember from our styling,
+
+61
+00:04:14,510 --> 00:04:17,600
+is that it is just displaying four columns.
+
+62
+00:04:18,050 --> 00:04:22,010
+And what we're going to do for now is just display the first four.
+
+63
+00:04:22,460 --> 00:04:26,840
+We can actually display all of them, in fact, if we really wanted to inside of the grid.
+
+64
+00:04:27,110 --> 00:04:32,960
+The key thing is really just that we have some way to show that we're able to work with this component
+
+65
+00:04:32,960 --> 00:04:33,470
+properly.
+
+66
+00:04:33,530 --> 00:04:34,520
+This category's map?
+
+67
+00:04:35,430 --> 00:04:41,160
+So what I'm going to do is I'm going to wrap this inside of a fragment, and if you've never seen this
+
+68
+00:04:41,160 --> 00:04:41,610
+before.
+
+69
+00:04:42,030 --> 00:04:43,530
+This is shorthand for fragment.
+
+70
+00:04:43,830 --> 00:04:46,740
+Instead of importing fragment, you can actually just use this.
+
+71
+00:04:47,190 --> 00:04:51,780
+But let's be consistent, and let's just import fragment, because that's what we've been doing up until
+
+72
+00:04:51,780 --> 00:04:52,770
+this point anyways.
+
+73
+00:04:53,730 --> 00:04:56,520
+And consistency is very important in a project.
+
+74
+00:04:57,460 --> 00:05:03,460
+And now what we need to do is we need to figure out how to map through this category as context.
+
+75
+00:05:03,790 --> 00:05:04,840
+But this is an object.
+
+76
+00:05:05,200 --> 00:05:09,580
+How do we get these individual fields inside of this object?
+
+77
+00:05:10,240 --> 00:05:11,840
+Well, there's actually a way you can do this.
+
+78
+00:05:11,860 --> 00:05:20,260
+You can do object dot keys, which will essentially allow you to pass this and object itself, and it
+
+79
+00:05:20,260 --> 00:05:22,750
+will return you back an array of the keys.
+
+80
+00:05:23,410 --> 00:05:27,100
+So here I can say, Hey, let me give you the categories map.
+
+81
+00:05:27,640 --> 00:05:32,050
+And what this will give us back is an array of all of these key values.
+
+82
+00:05:32,050 --> 00:05:35,410
+So it's an array of strings where it contains hats, jackets, men's sneakers.
+
+83
+00:05:35,410 --> 00:05:35,800
+Women's.
+
+84
+00:05:36,990 --> 00:05:41,790
+And with this, what I'm going to do now is I'm going to map through this and I know that what I have
+
+85
+00:05:41,790 --> 00:05:44,160
+for the key is going to be the title value.
+
+86
+00:05:44,970 --> 00:05:48,120
+It's not necessarily the title because it's capitalized.
+
+87
+00:05:48,810 --> 00:05:51,810
+But remember, they're all lowercase when we put them into our map.
+
+88
+00:05:53,030 --> 00:05:57,860
+Here's what I want to do is I want to now again use a fragment.
+
+89
+00:05:59,340 --> 00:06:06,570
+Because inside of this fragment, I want to show an H2 where I have the title and then underneath this,
+
+90
+00:06:06,570 --> 00:06:13,740
+I want to use this div, so here I can really actually just copy this over and place this inside.
+
+91
+00:06:16,830 --> 00:06:20,910
+Now, let's uncomment this out and hear what is products.
+
+92
+00:06:21,330 --> 00:06:26,940
+Products is the array of products associated to this specific title, whether it be the hats, the sneakers,
+
+93
+00:06:26,940 --> 00:06:28,260
+the jackets, the men's, the women's.
+
+94
+00:06:28,890 --> 00:06:29,970
+How do we access this now?
+
+95
+00:06:30,390 --> 00:06:36,450
+Well, remember we have categories map, which is the object and the object has these key values.
+
+96
+00:06:37,020 --> 00:06:41,040
+The key is the title, which we clearly are d structuring off or not d structuring.
+
+97
+00:06:41,040 --> 00:06:42,990
+But we're getting it off of this object duckies.
+
+98
+00:06:43,560 --> 00:06:49,050
+So this, when we call this should give us the corresponding value of the associated array of products.
+
+99
+00:06:49,650 --> 00:06:53,940
+And now we can just map through this with the appropriate product, and this should now work.
+
+100
+00:06:54,480 --> 00:06:56,580
+Now it does look like I have a bit of an error here.
+
+101
+00:06:58,060 --> 00:07:00,190
+It looks like that I have an extra bracket set.
+
+102
+00:07:00,340 --> 00:07:02,020
+So this is not necessary.
+
+103
+00:07:02,530 --> 00:07:05,650
+We only need one set of curly braces to render our JavaScript.
+
+104
+00:07:06,400 --> 00:07:06,910
+So there we go.
+
+105
+00:07:07,900 --> 00:07:10,990
+We also hear it need to explicitly turn something back.
+
+106
+00:07:11,410 --> 00:07:16,960
+So let me tidy this up right here where this is mapping through.
+
+107
+00:07:18,020 --> 00:07:20,240
+I don't need this one, and I don't need this one.
+
+108
+00:07:20,450 --> 00:07:20,840
+There we go.
+
+109
+00:07:21,380 --> 00:07:21,680
+OK.
+
+110
+00:07:22,580 --> 00:07:28,790
+This now cleans up what we had before, before I was not returning from my function because I had squiggly
+
+111
+00:07:28,790 --> 00:07:31,550
+brackets, but now I'm using a single line return.
+
+112
+00:07:32,610 --> 00:07:34,020
+So if we come back.
+
+113
+00:07:35,060 --> 00:07:40,070
+We see each child in the list should have a unique key prop, so let's do that as well inside of this
+
+114
+00:07:40,070 --> 00:07:40,620
+fragment.
+
+115
+00:07:40,640 --> 00:07:45,860
+I'm going to give it a key of the title because I know those are unique because of the map.
+
+116
+00:07:46,850 --> 00:07:48,920
+And now if I refresh.
+
+117
+00:07:52,730 --> 00:08:00,410
+We see how that shows us these values jackets shows us these jacket values, men's shows as these men
+
+118
+00:08:00,410 --> 00:08:06,950
+values and shoes shows us these different sneakers and women shows us these women, so everything here
+
+119
+00:08:06,950 --> 00:08:07,580
+is working.
+
+120
+00:08:08,180 --> 00:08:12,860
+You'll notice also that because we're rendering our product cards, our cart continues to work.
+
+121
+00:08:17,350 --> 00:08:21,010
+So here we've figured out at least how to work with this category's map.
+
+122
+00:08:21,670 --> 00:08:28,000
+What I want you to do now for your challenge is that actually this should not show all of these products.
+
+123
+00:08:28,090 --> 00:08:31,480
+We actually need to create separate routing for this at the shop level.
+
+124
+00:08:32,170 --> 00:08:39,610
+What we need is we want the base root to just show these four first elements inside of each of the categories.
+
+125
+00:08:40,090 --> 00:08:47,860
+And then when you click this actual value here, it should in turn take you to a corresponding slash,
+
+126
+00:08:47,860 --> 00:08:50,800
+whichever page that shows the actual items there.
+
+127
+00:08:52,020 --> 00:08:56,010
+There's actually one particular nuance to the routing that we're going to have to learn about in the
+
+128
+00:08:56,010 --> 00:08:58,800
+next video regarding using dynamic parameters.
+
+129
+00:08:59,220 --> 00:09:03,420
+But really, what I want you to do is just really think about kind of how you might separate this.
+
+130
+00:09:03,450 --> 00:09:05,550
+You don't have to code it out yourself, but just think about it.
+
+131
+00:09:06,120 --> 00:09:07,080
+And then the next video?
+
+132
+00:09:07,440 --> 00:09:08,310
+Let's do it together.

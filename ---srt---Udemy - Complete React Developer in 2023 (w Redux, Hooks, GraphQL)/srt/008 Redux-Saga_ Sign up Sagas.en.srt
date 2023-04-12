@@ -1,0 +1,575 @@
+1
+00:00:00,390 --> 00:00:01,410
+Welcome back, everyone.
+
+2
+00:00:02,280 --> 00:00:05,220
+In this video, we are going to write our sign up sagas.
+
+3
+00:00:05,970 --> 00:00:08,490
+Now, the sign up sagas are a little bit more interesting.
+
+4
+00:00:09,000 --> 00:00:13,350
+The reason why is because we're probably going to have to make it in multiple steps.
+
+5
+00:00:14,100 --> 00:00:20,880
+If you remember with how our sign up form component works is that when the user submits the form, we
+
+6
+00:00:20,880 --> 00:00:22,590
+check if their password matches.
+
+7
+00:00:23,160 --> 00:00:28,530
+If it does, then what we do is we create an off user with the email and password.
+
+8
+00:00:29,040 --> 00:00:31,200
+So this creates a user off for us.
+
+9
+00:00:31,200 --> 00:00:33,120
+Very similar to Google Sign in.
+
+10
+00:00:33,840 --> 00:00:39,000
+Once we get that user off object, then we manually trigger create user document from off.
+
+11
+00:00:39,210 --> 00:00:42,960
+The reason being that when you sign up you are not signed in.
+
+12
+00:00:43,410 --> 00:00:48,600
+So signing up and signing in with that signed up user are two different steps.
+
+13
+00:00:48,990 --> 00:00:55,140
+We did merge the actual sign and step with generating the actual user document from the user off.
+
+14
+00:00:55,650 --> 00:00:58,440
+So that is an additional thing that we will need to do.
+
+15
+00:00:59,220 --> 00:01:05,190
+So when breaking up the saga, these are probably going to be two sagas, one to create the user and
+
+16
+00:01:05,220 --> 00:01:08,850
+one to sign in the user with the signed up user.
+
+17
+00:01:09,900 --> 00:01:16,110
+So the first thing we need to do is inside of our action types, create the three new action types for
+
+18
+00:01:16,110 --> 00:01:16,680
+sign up.
+
+19
+00:01:17,250 --> 00:01:19,920
+So we'll say Sign up, start.
+
+20
+00:01:23,060 --> 00:01:23,960
+User slash.
+
+21
+00:01:25,280 --> 00:01:27,050
+And then we need to sign up.
+
+22
+00:01:27,320 --> 00:01:28,160
+Success.
+
+23
+00:01:29,920 --> 00:01:30,850
+User slash.
+
+24
+00:01:33,030 --> 00:01:34,800
+And then we need to sign up.
+
+25
+00:01:35,370 --> 00:01:35,850
+Failed.
+
+26
+00:01:42,250 --> 00:01:45,190
+And then we'll create the corresponding actions.
+
+27
+00:01:46,220 --> 00:01:53,960
+So the first thing we need is that when we sign up start, we are going to receive the email, the password
+
+28
+00:01:54,350 --> 00:01:58,220
+and the display name because those are the only fields that we ask them to fill in.
+
+29
+00:01:59,090 --> 00:02:06,050
+From here, we are going to create a new action using our new sign up start.
+
+30
+00:02:07,820 --> 00:02:14,660
+And then we'll pass an object as the payload where we have the email, the password and the display
+
+31
+00:02:14,660 --> 00:02:14,840
+name.
+
+32
+00:02:16,290 --> 00:02:19,890
+We also need this sign up success.
+
+33
+00:02:22,270 --> 00:02:23,620
+So a sign of success.
+
+34
+00:02:24,220 --> 00:02:26,170
+Let's think about what it is that we're going to get back.
+
+35
+00:02:26,890 --> 00:02:29,380
+We're going to get back that user off object.
+
+36
+00:02:29,620 --> 00:02:34,000
+And then we need any additional details that we're going to store for that user.
+
+37
+00:02:34,360 --> 00:02:37,840
+For us, that's most likely going to be the display name that gets passed through.
+
+38
+00:02:38,440 --> 00:02:43,000
+And if we in the future choose to add more fields will have to also add those in here.
+
+39
+00:02:43,000 --> 00:02:47,140
+But those are all going to fall under this category of additional details.
+
+40
+00:02:47,950 --> 00:02:49,570
+So here I'm going to say sign up.
+
+41
+00:02:49,570 --> 00:02:58,030
+Success is going to be us receiving an object where we have the user and the additional details.
+
+42
+00:03:00,620 --> 00:03:07,430
+We're going to say create action calling user action types, sign up success.
+
+43
+00:03:08,270 --> 00:03:14,210
+And then we're just going to pass through the user and the additional details.
+
+44
+00:03:15,330 --> 00:03:20,520
+So here, because this is the same, we can technically actually tweak this a bit.
+
+45
+00:03:20,520 --> 00:03:24,900
+Maybe we can make it so that when we call a sign up success, we get them as separate fields, which
+
+46
+00:03:24,900 --> 00:03:27,330
+we then aggregate inside of this object.
+
+47
+00:03:27,840 --> 00:03:30,900
+This might be much more clear rather than actually passing an object.
+
+48
+00:03:32,010 --> 00:03:39,900
+And then finally we need our sign up failed, which is just going to give us an error and we'll call
+
+49
+00:03:39,900 --> 00:03:44,400
+create action on user action types dot sign.
+
+50
+00:03:46,040 --> 00:03:46,820
+Up failed.
+
+51
+00:03:47,920 --> 00:03:49,960
+And here we'll pass the error as the payload.
+
+52
+00:03:51,880 --> 00:03:55,240
+So let's start actually writing the sagas with these three new actions.
+
+53
+00:03:56,410 --> 00:03:59,530
+So first we want to do is we need the entry point saga.
+
+54
+00:03:59,590 --> 00:04:04,990
+So I'm going to say export function on sign up start.
+
+55
+00:04:06,160 --> 00:04:07,480
+This is going to yield.
+
+56
+00:04:07,600 --> 00:04:08,560
+Take latest.
+
+57
+00:04:09,930 --> 00:04:20,220
+On user action types dot sign up start and here I'm going to call sign up, which is the name of this
+
+58
+00:04:20,430 --> 00:04:21,750
+generator that I've yet to write.
+
+59
+00:04:22,620 --> 00:04:24,630
+So here, let's create it.
+
+60
+00:04:24,840 --> 00:04:28,290
+Let's say export function star sign up.
+
+61
+00:04:28,920 --> 00:04:31,590
+We received the action off the action.
+
+62
+00:04:31,590 --> 00:04:34,350
+We just want the payload and off the payload.
+
+63
+00:04:34,350 --> 00:04:39,270
+We're going to get the email, the password, as well as the display name.
+
+64
+00:04:40,770 --> 00:04:45,600
+And now what we're going to do is we are going to attempt to create this user auth object.
+
+65
+00:04:45,960 --> 00:04:48,270
+So of course, we have our tri catch block.
+
+66
+00:04:49,260 --> 00:04:55,080
+And then we need to actually bring in the method that we had created in our Firebase Utils or create
+
+67
+00:04:55,110 --> 00:04:56,850
+off user with email and password.
+
+68
+00:04:57,860 --> 00:05:04,520
+So importing it in, we're going to say yield call, create off user with email and password.
+
+69
+00:05:04,850 --> 00:05:07,940
+And here we're just going to pass email and password.
+
+70
+00:05:08,540 --> 00:05:10,370
+We don't do anything yet with a display name.
+
+71
+00:05:11,390 --> 00:05:16,940
+When this call succeeds, what we get back again is an off object that we've already seen before.
+
+72
+00:05:17,390 --> 00:05:21,170
+So this is on the user key, as we've done so far up to this point.
+
+73
+00:05:21,920 --> 00:05:29,660
+And once that succeeds, what we'll do is we'll say, Hey, we have succeeded in signing up, so we'll
+
+74
+00:05:29,660 --> 00:05:32,600
+create that sign up success method.
+
+75
+00:05:33,080 --> 00:05:36,920
+Now this is that action that we had just created right here.
+
+76
+00:05:37,490 --> 00:05:40,490
+And what we're doing is we're dispatching sign up success.
+
+77
+00:05:41,090 --> 00:05:41,570
+Sign up.
+
+78
+00:05:41,570 --> 00:05:44,030
+Success doesn't actually do anything to our reducers.
+
+79
+00:05:44,570 --> 00:05:47,810
+It's not for the reducers, it's for our user saga.
+
+80
+00:05:48,380 --> 00:05:54,350
+So we need to create yet even another entry saga for on.
+
+81
+00:05:56,500 --> 00:05:57,940
+Sign up.
+
+82
+00:05:58,120 --> 00:05:59,140
+Success.
+
+83
+00:06:00,910 --> 00:06:09,730
+And here we're going to yield take latest our user action types dot sign up success.
+
+84
+00:06:10,720 --> 00:06:12,370
+So we're listening for sign of success.
+
+85
+00:06:12,850 --> 00:06:18,790
+And once that happens, we are going to trigger a sign in after sign up.
+
+86
+00:06:20,180 --> 00:06:20,750
+Generator.
+
+87
+00:06:21,620 --> 00:06:26,660
+So this is where, as I mentioned, we need to break up the two steps.
+
+88
+00:06:27,920 --> 00:06:29,870
+So we'll need another generator.
+
+89
+00:06:30,500 --> 00:06:36,050
+And this generator is going to receive the action that we had made for sign of success.
+
+90
+00:06:36,440 --> 00:06:41,510
+So it's going to get a payload of user and additional details on the action.
+
+91
+00:06:42,260 --> 00:06:48,380
+So we're going to want to structure off payload, the user and the additional details.
+
+92
+00:06:48,890 --> 00:06:54,860
+And then we're going to yield all of these values to our get snapshot from user off.
+
+93
+00:06:57,830 --> 00:06:58,460
+And there we go.
+
+94
+00:06:58,820 --> 00:07:01,220
+That is our sign in after sign up.
+
+95
+00:07:02,240 --> 00:07:02,810
+Generator.
+
+96
+00:07:03,950 --> 00:07:08,060
+So what we need to do now is just make sure that we're actually passing the appropriate values to our
+
+97
+00:07:08,060 --> 00:07:09,260
+sign up success.
+
+98
+00:07:09,650 --> 00:07:13,640
+So the sign of a success is going to get user and additional details as to values.
+
+99
+00:07:14,060 --> 00:07:21,560
+So let's set that up where we pass them in as user and then the additional details as an object with
+
+100
+00:07:21,560 --> 00:07:22,550
+just display name.
+
+101
+00:07:23,700 --> 00:07:27,180
+And then that's pretty much all we need for the tri section.
+
+102
+00:07:27,180 --> 00:07:30,630
+As far as the catch section, we need to yield out the put.
+
+103
+00:07:31,730 --> 00:07:36,770
+As we always do, where we have signed up failed.
+
+104
+00:07:37,620 --> 00:07:38,510
+We pass the error.
+
+105
+00:07:40,870 --> 00:07:46,900
+And now that we have these, we need to make sure that we're also listening for them inside of our saga.
+
+106
+00:07:47,980 --> 00:07:51,910
+So we'll call both on sign up, start and sign up success.
+
+107
+00:07:53,170 --> 00:07:58,480
+And then once we're all listening, we need to make sure our sign up form now is actually dispatching.
+
+108
+00:07:58,930 --> 00:07:59,680
+Sign up, start.
+
+109
+00:08:00,800 --> 00:08:06,770
+So here what we'll do is we will bring in our hook so that we have access to dispatch.
+
+110
+00:08:09,270 --> 00:08:15,750
+And we also need to bring in the appropriate sign up start action creator.
+
+111
+00:08:16,960 --> 00:08:21,220
+And then we need to get the dispatch from the U.S Dispatch Hook.
+
+112
+00:08:23,280 --> 00:08:31,410
+And then with dispatch, we now replace this method right here with our dispatch.
+
+113
+00:08:33,980 --> 00:08:43,580
+Our sign up start and then we pass it the email, the password and the display name.
+
+114
+00:08:44,900 --> 00:08:45,770
+So we save this.
+
+115
+00:08:46,370 --> 00:08:47,570
+We have everything set up.
+
+116
+00:08:48,630 --> 00:08:50,060
+So now let's sign in.
+
+117
+00:08:51,000 --> 00:08:54,510
+Let's use my good friend Mo, who builds the React Native course.
+
+118
+00:08:55,140 --> 00:08:56,940
+I'm going to say Mo at Gmail.
+
+119
+00:08:57,900 --> 00:08:59,370
+And now if I sign up.
+
+120
+00:09:00,320 --> 00:09:06,510
+We see that we have a sign up success and we see that we have our sign in success inside of here.
+
+121
+00:09:06,530 --> 00:09:12,020
+If we look inside of our user and our current user, you may notice that there are something odd here
+
+122
+00:09:12,020 --> 00:09:15,560
+in the fact that we only have our I.D. but not the other values.
+
+123
+00:09:16,220 --> 00:09:20,960
+This is actually something that's a little bit annoying about Firebase with this create user through
+
+124
+00:09:20,960 --> 00:09:21,770
+email and password.
+
+125
+00:09:22,190 --> 00:09:27,230
+Sometimes this is a little slower and what it's doing is is rectifying and actually trying to rewrite
+
+126
+00:09:27,230 --> 00:09:27,560
+this.
+
+127
+00:09:27,980 --> 00:09:30,050
+This might actually be an error with V9.
+
+128
+00:09:30,050 --> 00:09:36,800
+I'm not fully sure, but if you refresh because we know we've successfully signed in, if you now check
+
+129
+00:09:36,800 --> 00:09:41,510
+inside of your current user, you actually see all of those other fields that we have.
+
+130
+00:09:41,990 --> 00:09:47,900
+So this is one tiny little tweak that actually happens that we got to watch out for.
+
+131
+00:09:48,500 --> 00:09:54,380
+But at the very least, we know that on our side, as far as our code is correct, that's all that really
+
+132
+00:09:54,380 --> 00:09:54,770
+matters.
+
+133
+00:09:55,370 --> 00:09:56,060
+But here we go.
+
+134
+00:09:56,300 --> 00:09:59,090
+We have our sign up and then we have our sign in.
+
+135
+00:10:00,020 --> 00:10:04,370
+So this is a really monstrous and challenging part of the course.
+
+136
+00:10:04,520 --> 00:10:05,300
+Absolutely.
+
+137
+00:10:05,690 --> 00:10:09,620
+A lot of new concepts, a lot of coordination along new patterns of generators.
+
+138
+00:10:09,620 --> 00:10:10,430
+We haven't learned before.
+
+139
+00:10:11,210 --> 00:10:14,270
+But before we move on, there's still one more, which is sign out.
+
+140
+00:10:15,300 --> 00:10:18,180
+So I do want you to try and figure it out yourself first.
+
+141
+00:10:19,190 --> 00:10:21,260
+If not, join me in the next video.
+
+142
+00:10:21,680 --> 00:10:22,340
+We'll code out.
+
+143
+00:10:22,340 --> 00:10:23,090
+Sign out together.
+
+144
+00:10:23,600 --> 00:10:24,650
+I'll see you in the next video.

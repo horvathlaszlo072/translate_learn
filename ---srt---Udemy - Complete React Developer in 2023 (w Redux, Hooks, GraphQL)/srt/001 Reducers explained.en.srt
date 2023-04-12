@@ -1,0 +1,655 @@
+1
+00:00:00,330 --> 00:00:01,800
+Hello, everyone, and welcome back.
+
+2
+00:00:02,640 --> 00:00:09,780
+In this video, we are going to talk about one of the most common libraries inside the React ecosystem
+
+3
+00:00:09,990 --> 00:00:14,850
+that you have to get used to when it comes to being a professional React developer.
+
+4
+00:00:15,630 --> 00:00:22,860
+This library is, of course, redux, but for us to understand and Redux will need to understand this
+
+5
+00:00:22,860 --> 00:00:24,630
+concept of a reducer.
+
+6
+00:00:25,230 --> 00:00:31,920
+But I want to take a second just to talk a little bit about Redux and where it fits inside of our current
+
+7
+00:00:31,920 --> 00:00:32,730
+architecture.
+
+8
+00:00:33,450 --> 00:00:41,700
+So in order for us to understand Redux, we need to actually understand and think back upon context.
+
+9
+00:00:42,360 --> 00:00:48,480
+So as we remember with context, we have some context inside of our application.
+
+10
+00:00:48,480 --> 00:00:55,200
+Let's take the user context as an example, and this lives somewhere that wraps our entire application.
+
+11
+00:00:56,300 --> 00:01:02,540
+We're able to make an update to the user data that lives inside this user context.
+
+12
+00:01:02,720 --> 00:01:07,380
+Now, of course, this user data, as we know, can be pretty much whatever we want to set it to.
+
+13
+00:01:07,730 --> 00:01:12,860
+But in our particular case, with our own user context, it's really just a current user value.
+
+14
+00:01:13,310 --> 00:01:16,340
+It's either going to hold now or it's going to hold an object.
+
+15
+00:01:17,060 --> 00:01:24,650
+But the main thing to remember is that user context lives outside of the application in a sense that
+
+16
+00:01:24,650 --> 00:01:30,740
+it's at the parent level so that we can say, I have some component down inside of my application.
+
+17
+00:01:31,190 --> 00:01:36,110
+I want to set the current user because this component, let's say, for example, is our assignment
+
+18
+00:01:36,110 --> 00:01:36,440
+page.
+
+19
+00:01:37,160 --> 00:01:44,930
+It will be able to then get that user from Google API or whatever, and then we can propagate that object
+
+20
+00:01:44,930 --> 00:01:48,860
+up into our user context and update current user appropriately.
+
+21
+00:01:49,580 --> 00:01:53,630
+From there, any part in our application, of course, can access this user context.
+
+22
+00:01:53,900 --> 00:02:00,500
+So any component, no matter how far, deep down into this application it is, is able to get that current
+
+23
+00:02:00,500 --> 00:02:01,310
+user object.
+
+24
+00:02:02,030 --> 00:02:07,640
+So here, the main thing I want you to think about this is this is a state management strategy.
+
+25
+00:02:07,970 --> 00:02:10,910
+When I say state here, I'm not talking about component state.
+
+26
+00:02:10,910 --> 00:02:14,720
+I'm talking about application state or global state.
+
+27
+00:02:15,080 --> 00:02:20,300
+Because now this current user is globally available inside of our application.
+
+28
+00:02:21,080 --> 00:02:29,030
+But the key thing to remember here about this user context, this is one type of state management strategy
+
+29
+00:02:29,510 --> 00:02:36,680
+where leveraging user context, if you remember as a react component, meaning that we're using you
+
+30
+00:02:36,680 --> 00:02:45,020
+state or we're using use effects in order to update the value of the user context state inside of this
+
+31
+00:02:45,020 --> 00:02:46,310
+context component.
+
+32
+00:02:46,850 --> 00:02:53,240
+Now the thing to remember is that this again is React Context API, which is the default state management
+
+33
+00:02:53,240 --> 00:03:01,100
+solution that React ships with Redux is a external library that serves a very similar purpose, not
+
+34
+00:03:01,100 --> 00:03:07,190
+entirely 1 to 1, but we'll break down more of the details as to why Context API and Redux are slightly
+
+35
+00:03:07,190 --> 00:03:12,050
+different and why you would want to use one over the other once we understand Redux.
+
+36
+00:03:12,590 --> 00:03:16,160
+But in order to understand Redux, we need to first understand reducers.
+
+37
+00:03:16,730 --> 00:03:24,290
+And reducers is actually a pattern for state management that you can use inside your application.
+
+38
+00:03:24,500 --> 00:03:29,900
+More specifically, you can actually even use it in the current React context that we've written.
+
+39
+00:03:30,380 --> 00:03:36,230
+And let's understand a little bit more about what reducers are so right now.
+
+40
+00:03:36,230 --> 00:03:42,170
+When you think about your user context, it really just holds a object which has the value of current
+
+41
+00:03:42,170 --> 00:03:44,300
+user, which is either null or an object.
+
+42
+00:03:44,300 --> 00:03:46,400
+It's a very simple context.
+
+43
+00:03:46,580 --> 00:03:47,900
+It's just storing one thing.
+
+44
+00:03:48,710 --> 00:03:50,600
+But let's take a more complicated example.
+
+45
+00:03:50,600 --> 00:03:51,950
+Like our cart context.
+
+46
+00:03:52,370 --> 00:03:56,420
+Our cart context is something that contains multiple values.
+
+47
+00:03:56,420 --> 00:04:04,490
+It can store items, which is an array of item objects, it can store account, which is an integer
+
+48
+00:04:04,490 --> 00:04:09,290
+that represents the total number of things or core items inside of our cart.
+
+49
+00:04:09,800 --> 00:04:15,890
+And we have a cart total, which is a value representing the total cost of goods inside of our cart.
+
+50
+00:04:16,790 --> 00:04:23,960
+The thing here about car context is that when you think about cart context inside of our application.
+
+51
+00:04:24,850 --> 00:04:30,670
+I want to zero in, in fact, on just this little example where we have our shop page.
+
+52
+00:04:30,880 --> 00:04:35,410
+So this is a component tree representing the shop page portion of our application.
+
+53
+00:04:36,160 --> 00:04:41,740
+It has also a bunch of different products which are represented by product nodes down there, which
+
+54
+00:04:41,740 --> 00:04:44,080
+are those lower level circles.
+
+55
+00:04:45,090 --> 00:04:46,420
+More context, as we know.
+
+56
+00:04:46,500 --> 00:04:52,830
+Let's say we click and interact with the fourth product card and here we say, Oh, I want to add this
+
+57
+00:04:52,830 --> 00:04:55,050
+product to the cart car context.
+
+58
+00:04:55,050 --> 00:04:57,930
+Of course we'll update with the added product.
+
+59
+00:04:58,380 --> 00:05:05,370
+But what also needs to happen is cart count needs to update and cart total needs to update these three
+
+60
+00:05:05,370 --> 00:05:06,390
+different values.
+
+61
+00:05:06,390 --> 00:05:10,860
+All update due to an item being added to our cart.
+
+62
+00:05:11,550 --> 00:05:17,280
+And the way that we manage this inside of our car context as a react component is we have those use
+
+63
+00:05:17,290 --> 00:05:22,290
+effects that trigger whenever the use state value of cart items changes.
+
+64
+00:05:22,440 --> 00:05:27,870
+And if you remember, in fact, each of these three values are being stored as separate use states.
+
+65
+00:05:28,200 --> 00:05:31,680
+How they update is based off of use effect.
+
+66
+00:05:32,160 --> 00:05:37,320
+So there's a bunch of hook architecture that we've set up inside of car context in order to make this
+
+67
+00:05:37,320 --> 00:05:37,710
+work.
+
+68
+00:05:38,220 --> 00:05:44,850
+So this is a very react, defiant way of updating these three values inside of our cart context.
+
+69
+00:05:45,060 --> 00:05:49,830
+But at the end of the day, what we do is we still update these values correspondingly so our application
+
+70
+00:05:49,830 --> 00:05:53,340
+can use this cart state inside of our cart context.
+
+71
+00:05:54,740 --> 00:06:04,400
+How reducers work is reducers are pretty similar, except it has a bit of a more intuitive way of thinking
+
+72
+00:06:04,400 --> 00:06:11,600
+about how this object at store and it completely distances itself away from the react way of updating
+
+73
+00:06:11,600 --> 00:06:11,870
+state.
+
+74
+00:06:12,050 --> 00:06:14,030
+So we don't use use effects that way.
+
+75
+00:06:14,420 --> 00:06:19,100
+But in order to understand that, let's go back to what it is that a reducer represents.
+
+76
+00:06:19,760 --> 00:06:25,700
+So as we saw before, we were storing some object as our state value inside of car context.
+
+77
+00:06:25,940 --> 00:06:26,780
+That doesn't change.
+
+78
+00:06:27,170 --> 00:06:29,480
+A reducer is still an object.
+
+79
+00:06:30,230 --> 00:06:32,660
+So let's think about a car reducer.
+
+80
+00:06:32,750 --> 00:06:33,590
+So just follow me.
+
+81
+00:06:33,620 --> 00:06:35,990
+I promise that once we explain it, it'll make sense.
+
+82
+00:06:36,590 --> 00:06:40,520
+Paradiso was an object and it stores the same values.
+
+83
+00:06:40,910 --> 00:06:42,830
+It's going to start the car items, which is an array.
+
+84
+00:06:43,010 --> 00:06:44,990
+It's going to store the car count, which is an integer.
+
+85
+00:06:45,230 --> 00:06:47,090
+It's going to store the car total as an integer.
+
+86
+00:06:47,510 --> 00:06:52,280
+And let's also just in fact, store the last value that we also had in the car context, which is readable,
+
+87
+00:06:52,280 --> 00:06:54,050
+which is ARC is car open.
+
+88
+00:06:54,320 --> 00:06:58,070
+If you remember, this is the boolean that tells us if our dropdown is appearing or not.
+
+89
+00:06:59,090 --> 00:07:02,360
+This cart reducer object still the exact same.
+
+90
+00:07:02,480 --> 00:07:03,410
+Nothing different here.
+
+91
+00:07:04,250 --> 00:07:10,820
+The thing that changes is that instead of leveraging you states and use effect in order to update these
+
+92
+00:07:10,820 --> 00:07:15,050
+values, we now utilize something called an action.
+
+93
+00:07:15,170 --> 00:07:17,030
+And an action is very simple.
+
+94
+00:07:17,330 --> 00:07:21,290
+It's also just an object, and it's an object that has two values on it.
+
+95
+00:07:21,740 --> 00:07:28,460
+It has a type value which points to a string, and then it has an optional payload value, which can
+
+96
+00:07:28,460 --> 00:07:29,690
+be anything at all.
+
+97
+00:07:30,260 --> 00:07:31,040
+Anything you want.
+
+98
+00:07:31,100 --> 00:07:31,700
+Objects.
+
+99
+00:07:31,700 --> 00:07:32,300
+Integers.
+
+100
+00:07:32,450 --> 00:07:33,110
+Arrays.
+
+101
+00:07:33,470 --> 00:07:34,130
+Undefined.
+
+102
+00:07:34,130 --> 00:07:34,490
+NULL.
+
+103
+00:07:34,640 --> 00:07:36,880
+Whatever you want as the payload, you can have it.
+
+104
+00:07:36,890 --> 00:07:38,230
+And it's purely optional.
+
+105
+00:07:38,240 --> 00:07:40,190
+Actions don't even need to have payloads.
+
+106
+00:07:40,430 --> 00:07:43,970
+But if it were to have any properties, it can only have a type.
+
+107
+00:07:43,970 --> 00:07:48,320
+In fact, it must have a type and then an optional payload parameter.
+
+108
+00:07:49,040 --> 00:07:54,230
+So now how do we use like these actions in order to update the cart reducer?
+
+109
+00:07:54,890 --> 00:07:59,720
+Well, let's look at the action that gets fired and let's look at the cart reducer and what happens
+
+110
+00:07:59,720 --> 00:08:00,080
+in turn.
+
+111
+00:08:00,860 --> 00:08:08,450
+So let's say, for example, we have some string value for the type and this string is a very clear
+
+112
+00:08:08,450 --> 00:08:09,320
+identifier.
+
+113
+00:08:09,320 --> 00:08:13,880
+In fact, it's a unique string, and the string should describe what it is that's happening.
+
+114
+00:08:13,880 --> 00:08:17,990
+So for us, let's say we want it to toggle the is car open value.
+
+115
+00:08:18,350 --> 00:08:23,390
+We will want to say, hey, I'm going to fire an action or there's going to be an action and this action
+
+116
+00:08:23,390 --> 00:08:26,390
+has a type of toggle cart is open that string.
+
+117
+00:08:27,620 --> 00:08:33,050
+There is again an optional payload because we're toggling a value, we're using the previous value and
+
+118
+00:08:33,050 --> 00:08:35,390
+switching it to the opposite value.
+
+119
+00:08:35,390 --> 00:08:36,350
+So if it's false, it's true.
+
+120
+00:08:36,350 --> 00:08:37,280
+If it's true, it's false.
+
+121
+00:08:37,340 --> 00:08:38,030
+It's a payload.
+
+122
+00:08:38,060 --> 00:08:38,900
+Doesn't matter here.
+
+123
+00:08:39,320 --> 00:08:41,660
+We don't actually need a payload to toggle anything.
+
+124
+00:08:42,410 --> 00:08:44,930
+So because payload on the find, we don't need to pass it.
+
+125
+00:08:45,140 --> 00:08:47,090
+It's just an action with a type of string.
+
+126
+00:08:47,090 --> 00:08:48,260
+Toggle cart is open.
+
+127
+00:08:48,800 --> 00:08:55,990
+What happens now is that is cart open is the thing that reacts to this action is cart open we know is
+
+128
+00:08:56,000 --> 00:09:02,570
+the only thing that gets modified inside this object based on the fact that this action has a type toggle
+
+129
+00:09:02,570 --> 00:09:04,910
+card is open because we only want to toggle this value.
+
+130
+00:09:05,240 --> 00:09:07,070
+So now that value updates to true.
+
+131
+00:09:08,010 --> 00:09:11,070
+The other three values do not need to update.
+
+132
+00:09:11,980 --> 00:09:14,890
+Now let's say we wanted to make another action.
+
+133
+00:09:14,890 --> 00:09:19,930
+And a very common one that we know we need our producer to store is let's say we were adding an item
+
+134
+00:09:19,930 --> 00:09:20,470
+to our cart.
+
+135
+00:09:20,740 --> 00:09:25,420
+So now let's say we have this action type string as add item to cart.
+
+136
+00:09:26,110 --> 00:09:30,130
+Well, if we're going to add something to our cart, we need to know what specifically we're trying
+
+137
+00:09:30,130 --> 00:09:30,560
+to add.
+
+138
+00:09:30,580 --> 00:09:33,280
+We need the product object.
+
+139
+00:09:34,150 --> 00:09:36,280
+This is going to be the payload.
+
+140
+00:09:36,640 --> 00:09:37,500
+That's what you're passing.
+
+141
+00:09:37,510 --> 00:09:39,190
+You're passing the object.
+
+142
+00:09:39,790 --> 00:09:42,640
+That is the product you want to add to the cart.
+
+143
+00:09:43,670 --> 00:09:43,940
+Here.
+
+144
+00:09:43,940 --> 00:09:49,040
+Of course, now the producer is going to say, okay, I've got this action with this type add item to
+
+145
+00:09:49,040 --> 00:09:49,340
+cart.
+
+146
+00:09:49,880 --> 00:09:55,090
+I'm going to take that payload, which is the object, and I'm going to update correspondingly the values
+
+147
+00:09:55,110 --> 00:10:00,470
+that care cart items, cart count and cart total all need to update whenever an item adds to cart.
+
+148
+00:10:01,370 --> 00:10:07,460
+So what we're going to do, though, is that we know is cart open is completely unaffected by adding
+
+149
+00:10:07,460 --> 00:10:08,180
+items to cart.
+
+150
+00:10:08,720 --> 00:10:14,480
+So cart items will add that corresponding item into and we might do some modifications here as we do
+
+151
+00:10:14,480 --> 00:10:17,960
+where we create a new object that has a quantity value on it.
+
+152
+00:10:18,170 --> 00:10:19,490
+But all that happens.
+
+153
+00:10:19,490 --> 00:10:25,880
+The main thing is that the cart items gets updated, that array cart count updates it's count and cart
+
+154
+00:10:25,910 --> 00:10:31,250
+total updates its total value also to whatever the new cost is.
+
+155
+00:10:32,090 --> 00:10:40,370
+This flow of actions modifying cart reducers is the key thing of how reducers are different than how
+
+156
+00:10:40,370 --> 00:10:45,710
+we're currently storing our context state inside of our car context.
+
+157
+00:10:46,610 --> 00:10:53,210
+So I'm going to go into how we can convert what we have now over to reducers, because this is the step
+
+158
+00:10:53,210 --> 00:10:54,560
+by step to learning redux.
+
+159
+00:10:54,740 --> 00:10:59,660
+The first step is just learning about reducers because we can use them inside of context.
+
+160
+00:11:00,200 --> 00:11:06,380
+And then afterwards I'll figure out why Redux might be a better solution with reducers inside your application.
+
+161
+00:11:06,830 --> 00:11:09,020
+But for now, this is the main thing you really need to understand.
+
+162
+00:11:09,170 --> 00:11:15,920
+Reducers are really just these object representations of these values that receive actions, and then
+
+163
+00:11:15,920 --> 00:11:20,450
+these actions in turn will update the values inside of the reducer object.
+
+164
+00:11:20,810 --> 00:11:25,580
+So now that we understand this, let's learn about creating reducers inside of our context.

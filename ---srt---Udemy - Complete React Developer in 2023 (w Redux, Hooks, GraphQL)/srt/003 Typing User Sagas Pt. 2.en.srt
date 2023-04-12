@@ -1,0 +1,323 @@
+1
+00:00:00,630 --> 00:00:01,530
+Welcome back, everyone.
+
+2
+00:00:02,400 --> 00:00:05,580
+Let's continue finishing typing out these different user sagas.
+
+3
+00:00:06,210 --> 00:00:08,210
+So here for is authenticated.
+
+4
+00:00:08,220 --> 00:00:10,980
+It's just an error casting as we have to do.
+
+5
+00:00:12,120 --> 00:00:13,380
+Here inside of sign up.
+
+6
+00:00:13,620 --> 00:00:16,530
+Where do we actually call our sign up saga?
+
+7
+00:00:17,130 --> 00:00:22,410
+So if we scroll down, we notice that we call our sign up Saga on sign up start.
+
+8
+00:00:22,830 --> 00:00:26,250
+So this happens when we get that action, sign up, start.
+
+9
+00:00:26,970 --> 00:00:32,280
+So here, let's scroll up and let's bring in the corresponding action type.
+
+10
+00:00:32,940 --> 00:00:42,870
+So this one, as I mentioned, is going to be our sign up start, which we will bring in and set as
+
+11
+00:00:43,620 --> 00:00:46,860
+the action that we receive for this parameter.
+
+12
+00:00:48,480 --> 00:00:54,930
+Similarly here we are also calling our create auth user with email and password, which is very similar
+
+13
+00:00:54,930 --> 00:00:57,720
+to our sign in auth user with email and password.
+
+14
+00:00:58,170 --> 00:01:03,450
+At the very least, what we know is that we are getting back a user credential, so we are going to
+
+15
+00:01:03,450 --> 00:01:10,260
+replicate the code we have above where we get some user credential upon which we perform a check first
+
+16
+00:01:10,260 --> 00:01:19,200
+to see is it not undefined, then we will structure off the user from the user credential upon which
+
+17
+00:01:19,200 --> 00:01:22,710
+we finally actually yield out the next subsequent call.
+
+18
+00:01:23,670 --> 00:01:24,270
+Now sign up.
+
+19
+00:01:24,270 --> 00:01:27,510
+Success gives us a error call here.
+
+20
+00:01:28,380 --> 00:01:34,830
+So here we see that user is authenticated by this credential, but user is not assignable to the parameter
+
+21
+00:01:34,830 --> 00:01:36,150
+type of user data.
+
+22
+00:01:36,780 --> 00:01:42,570
+Now the reason we're throwing this error is because our sign up success has defined user to be user
+
+23
+00:01:42,570 --> 00:01:42,930
+data.
+
+24
+00:01:43,560 --> 00:01:49,500
+So this most likely means that we actually mistyped our sign up success definition.
+
+25
+00:01:50,370 --> 00:01:54,910
+Here we are defining user as user data, but this is most likely incorrect.
+
+26
+00:01:54,930 --> 00:01:59,820
+We're actually expecting this to be of the type user that we get from a user credential.
+
+27
+00:02:00,480 --> 00:02:04,170
+So the reason why is because when you sign up, you are authenticating.
+
+28
+00:02:04,170 --> 00:02:10,650
+When you authenticate, it does not mean that you have an instance of the user inside of our firestorm.
+
+29
+00:02:11,280 --> 00:02:17,010
+User data is the data that comes from the user snapshot, which is an instance inside of firestorm data.
+
+30
+00:02:17,580 --> 00:02:22,830
+The user that comes from a user credential is just that author information.
+
+31
+00:02:23,520 --> 00:02:28,950
+Again, I know it's very confusing because a firebase and its naming conventions, but here we know
+
+32
+00:02:28,950 --> 00:02:33,150
+that what we need to bring this from is firebase slash off.
+
+33
+00:02:35,180 --> 00:02:40,070
+So with the user now what we can do is properly fix our typing issue.
+
+34
+00:02:40,850 --> 00:02:46,610
+So inside of sign of success, we need to update it here and we also need to update the action itself
+
+35
+00:02:46,610 --> 00:02:51,650
+because the action definition most likely has it as also user data.
+
+36
+00:02:52,400 --> 00:02:53,240
+So let's fix that.
+
+37
+00:02:53,810 --> 00:02:54,620
+Let's save this.
+
+38
+00:02:55,250 --> 00:02:58,610
+Go back to our saga and now we see that everything is fixed.
+
+39
+00:02:58,910 --> 00:03:04,310
+We know that this is correct because we follow the string of our logic, but also because our sagas
+
+40
+00:03:04,310 --> 00:03:07,120
+were working, which means that the saga code is correct.
+
+41
+00:03:07,130 --> 00:03:08,720
+It's just that our typing was off.
+
+42
+00:03:09,970 --> 00:03:13,270
+So moving on we now need to also type this sign up failed.
+
+43
+00:03:13,360 --> 00:03:14,630
+We'll say this as error.
+
+44
+00:03:15,250 --> 00:03:21,220
+Similarly, we also need to type our sign out failed as error and then our sign in after sign up.
+
+45
+00:03:21,790 --> 00:03:25,600
+This saga gets called specifically after sign up success.
+
+46
+00:03:26,080 --> 00:03:29,440
+So we need to get the action for sign up success.
+
+47
+00:03:29,860 --> 00:03:30,880
+So let's import that in.
+
+48
+00:03:33,160 --> 00:03:33,520
+Here.
+
+49
+00:03:33,520 --> 00:03:34,810
+We were missing a comma.
+
+50
+00:03:34,990 --> 00:03:38,320
+And let's bring in sign up success.
+
+51
+00:03:39,400 --> 00:03:43,990
+And now we'll just scroll back down to our sign in after sign up.
+
+52
+00:03:45,130 --> 00:03:48,700
+And cast the appropriate action, which should also fix our type error.
+
+53
+00:03:50,100 --> 00:03:50,630
+So that's it.
+
+54
+00:03:50,700 --> 00:03:53,040
+We've finished typing out our user saga.
+
+55
+00:03:53,700 --> 00:03:59,370
+So again, this is probably the most complicated portion of our code, but with just a little bit of
+
+56
+00:03:59,370 --> 00:04:04,740
+thinking about everything that we've already learned, as far as typing goes, we are very easily able
+
+57
+00:04:04,740 --> 00:04:07,290
+to type everything now and make it TypeScript compliant.
+
+58
+00:04:08,280 --> 00:04:13,530
+So now that we've finished typing our user saga, what we want to do next is we also want to make sure
+
+59
+00:04:13,530 --> 00:04:15,090
+to type our route saga.
+
+60
+00:04:15,990 --> 00:04:19,260
+So our route saga here, we also want to.
+
+61
+00:04:20,360 --> 00:04:21,290
+Convert this to.
+
+62
+00:04:22,650 --> 00:04:23,220
+Eight dots.
+
+63
+00:04:23,270 --> 00:04:23,480
+Yes.
+
+64
+00:04:23,490 --> 00:04:23,790
+While.
+
+65
+00:04:25,280 --> 00:04:34,580
+And of course, instead of Redux saga of facts, we will bring in our typed Redux saga slash macro.
+
+66
+00:04:37,930 --> 00:04:40,840
+And we need to switch this yield to a yield star.
+
+67
+00:04:42,580 --> 00:04:43,270
+Save this.
+
+68
+00:04:44,170 --> 00:04:44,770
+And there we go.
+
+69
+00:04:45,160 --> 00:04:47,410
+We have now also typed out route saga.
+
+70
+00:04:48,870 --> 00:04:55,980
+So now that we have all of our sagas typed, we can now begin actually typing out the remainder of our
+
+71
+00:04:55,980 --> 00:04:56,310
+code.
+
+72
+00:04:57,150 --> 00:05:01,110
+So one quick thing before you start typing out these components, there's a couple of things we're going
+
+73
+00:05:01,110 --> 00:05:02,820
+to have to adjust as we go.
+
+74
+00:05:03,330 --> 00:05:08,010
+But first, let's just do a quick check and make sure that we have no type errors.
+
+75
+00:05:08,430 --> 00:05:10,260
+We see that our code is still working.
+
+76
+00:05:10,890 --> 00:05:12,690
+We see that our ADD to CART is working.
+
+77
+00:05:13,170 --> 00:05:15,070
+So all of our sagas are properly typed.
+
+78
+00:05:15,090 --> 00:05:16,320
+All of our code is valid.
+
+79
+00:05:17,250 --> 00:05:22,830
+So now that that's done, let's move on to typing our rather complex react components that we've made
+
+80
+00:05:22,830 --> 00:05:26,010
+inside of our crown coding application.
+
+81
+00:05:26,460 --> 00:05:27,420
+I'll see in the next video.

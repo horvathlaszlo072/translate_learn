@@ -1,0 +1,483 @@
+1
+00:00:01,280 --> 00:00:01,940
+Welcome back.
+
+2
+00:00:02,390 --> 00:00:08,210
+We got our tests to work and Google search right now is working pretty nicely.
+
+3
+00:00:08,390 --> 00:00:12,170
+I'm pretty happy with it and I think we can move on.
+
+4
+00:00:12,650 --> 00:00:21,410
+Let's create another script and have perhaps a more realistic or a harder function than this to test.
+
+5
+00:00:22,460 --> 00:00:27,310
+So I'm going to just add a new file and call it script to James.
+
+6
+00:00:28,960 --> 00:00:35,170
+And we definitely want to write some tests for it, but for now, let's just write our function and
+
+7
+00:00:35,170 --> 00:00:36,090
+what it's going to do.
+
+8
+00:00:37,480 --> 00:00:43,990
+Now, one of the harder tests to write and something that you might be thinking of is a Synchronoss
+
+9
+00:00:43,990 --> 00:00:44,390
+test.
+
+10
+00:00:44,710 --> 00:00:52,150
+I mean, right now you can see that with Google search, we can copy this with pretty much any function.
+
+11
+00:00:52,690 --> 00:00:55,750
+And you might see why pure functions are so good to test.
+
+12
+00:00:55,990 --> 00:00:58,020
+I mean, you're just testing function.
+
+13
+00:00:58,060 --> 00:01:04,670
+You're just adding some random inputs and making sure that the outputs are what they're expected.
+
+14
+00:01:04,990 --> 00:01:06,280
+Very nice and simple.
+
+15
+00:01:06,490 --> 00:01:08,740
+And they're all just synchronous, nice tests.
+
+16
+00:01:09,400 --> 00:01:16,450
+But in real life, we most likely have fetch calls or API calls that are asynchronous.
+
+17
+00:01:16,750 --> 00:01:18,040
+How do we test for those?
+
+18
+00:01:18,870 --> 00:01:23,920
+Well, in this video, let's tackle that for this exercise.
+
+19
+00:01:23,930 --> 00:01:27,280
+I'm going to use an API that I really, really like called Swaby.
+
+20
+00:01:28,240 --> 00:01:31,660
+And yeah, that stands for the Star Wars API.
+
+21
+00:01:32,080 --> 00:01:33,790
+It's free and it's awesome.
+
+22
+00:01:34,120 --> 00:01:36,040
+I recommend it in the other course as well.
+
+23
+00:01:36,190 --> 00:01:38,170
+So some people might be familiar with it.
+
+24
+00:01:38,590 --> 00:01:39,910
+But yeah, it's great.
+
+25
+00:01:39,910 --> 00:01:46,630
+You can see here that you can request planets, you can request people, you can request starships all
+
+26
+00:01:46,630 --> 00:01:47,530
+from Star Wars.
+
+27
+00:01:47,540 --> 00:01:48,850
+Yeah, pretty awesome.
+
+28
+00:01:49,540 --> 00:01:58,120
+Using the Star Wars API, you can see that this is the end point that we can hit to get the JSON response.
+
+29
+00:01:58,990 --> 00:02:10,180
+Let's create a nice little function for us to use that we can test now fetch in node one work, because
+
+30
+00:02:10,390 --> 00:02:14,830
+if you remember, fetch is something that's implemented by the browser.
+
+31
+00:02:16,300 --> 00:02:24,010
+And it's on the window object, but a. there's no such thing as a window object, so there's no window
+
+32
+00:02:24,430 --> 00:02:26,320
+fetch for that.
+
+33
+00:02:26,350 --> 00:02:29,170
+We need to install something called.
+
+34
+00:02:31,660 --> 00:02:33,370
+Noad Fach.
+
+35
+00:02:34,570 --> 00:02:39,370
+And there's a few other libraries that you can use so you can do fish calls from note, but let's just
+
+36
+00:02:39,370 --> 00:02:40,440
+stick with this one for now.
+
+37
+00:02:42,210 --> 00:02:45,930
+This way, we can now have such a..
+
+38
+00:02:47,390 --> 00:02:55,270
+And again, we import it with the common way because imports and exports are not available yet in note
+
+39
+00:02:55,790 --> 00:02:58,310
+and then just import noad fetch.
+
+40
+00:03:02,130 --> 00:03:11,220
+All right, and in here, let's do a contest, get people from Star Wars and let's say this is going
+
+41
+00:03:11,220 --> 00:03:14,460
+to receive the fetch.
+
+42
+00:03:14,610 --> 00:03:20,430
+Remember, we're doing a bit of dependency injection here so that we can test and we can keep this nice
+
+43
+00:03:20,430 --> 00:03:22,290
+and easy to test as possible.
+
+44
+00:03:22,980 --> 00:03:28,050
+And here we can say that we're going to return.
+
+45
+00:03:29,010 --> 00:03:32,250
+Futch and I know I know this is a little bit.
+
+46
+00:03:33,360 --> 00:03:41,370
+Redundant because we could just not have an input and have fetched, but it's just it shows, I think,
+
+47
+00:03:41,370 --> 00:03:46,730
+dependency injection really well, and this isn't something that you necessarily always need to do.
+
+48
+00:03:47,100 --> 00:03:51,840
+But for this purposes, I think it's a good way for you to get familiar with dependency injection.
+
+49
+00:03:53,150 --> 00:03:57,190
+And here we're going to have the Star Wars episode.
+
+50
+00:03:57,200 --> 00:03:58,970
+Let's go back to what they had.
+
+51
+00:04:01,440 --> 00:04:04,470
+And let's copy this.
+
+52
+00:04:06,230 --> 00:04:14,450
+And say that we want to request the people API, and if you remember, we always need to do our classic
+
+53
+00:04:15,090 --> 00:04:15,470
+then.
+
+54
+00:04:18,940 --> 00:04:23,380
+Response and then run the JSON method on the response.
+
+55
+00:04:25,250 --> 00:04:31,440
+And then finally, we have our data, which will be the people that it returns.
+
+56
+00:04:32,240 --> 00:04:40,100
+So let's say in here we're just going to return an object that has a count, because if we go to people
+
+57
+00:04:40,100 --> 00:04:40,670
+over here.
+
+58
+00:04:42,000 --> 00:04:50,040
+Because we want to get all the characters, we get a count variable of all the characters in the API.
+
+59
+00:04:51,150 --> 00:04:53,010
+So let's do that and we'll say count.
+
+60
+00:04:54,570 --> 00:04:57,900
+And actually, it should be DataDot count.
+
+61
+00:04:59,130 --> 00:05:07,770
+And then we'll do results that will just have the data that results, which will have all the people
+
+62
+00:05:07,770 --> 00:05:10,740
+in an array and each person in an object.
+
+63
+00:05:13,040 --> 00:05:18,170
+All right, let's save that and I want to make sure this works, so we'll just do console dialogue,
+
+64
+00:05:18,830 --> 00:05:25,070
+get people and pass in the first function to it, going to save.
+
+65
+00:05:25,700 --> 00:05:27,470
+And let's just run node.
+
+66
+00:05:28,730 --> 00:05:35,510
+Let me clear this for now, and actually, just because this is a Synchronoss, a nicer way of doing
+
+67
+00:05:35,510 --> 00:05:39,590
+this is just in here console logging the data.
+
+68
+00:05:40,850 --> 00:05:45,690
+The save and run AMPM script to James.
+
+69
+00:05:47,450 --> 00:05:53,690
+And we have to wait a bit, but you see over here that, all right, we got all the characters with
+
+70
+00:05:53,690 --> 00:05:57,530
+count to eighty seven and we got Luke Skywalker.
+
+71
+00:05:57,840 --> 00:05:59,150
+What else we got C three.
+
+72
+00:05:59,150 --> 00:06:01,040
+Po are two, D two.
+
+73
+00:06:01,370 --> 00:06:02,940
+All the main cat's awesome.
+
+74
+00:06:03,800 --> 00:06:05,180
+This is working.
+
+75
+00:06:05,930 --> 00:06:09,500
+And you know what, while we're at it just for fun.
+
+76
+00:06:10,570 --> 00:06:17,200
+Since this is using a promise, let's also add the async weight version of the code.
+
+77
+00:06:20,350 --> 00:06:25,270
+And let's just remove the call and just call say that get people.
+
+78
+00:06:26,390 --> 00:06:33,320
+Is going to use the async await, so that means in front of the function, we're going to do async.
+
+79
+00:06:34,890 --> 00:06:43,800
+And not we can use the wait keyboard so we can just say consed get request equals await the first call.
+
+80
+00:06:45,680 --> 00:06:47,840
+And now we can say that the.
+
+81
+00:06:49,320 --> 00:06:54,750
+Const Detta again equals 08.
+
+82
+00:06:58,100 --> 00:06:58,550
+The.
+
+83
+00:06:59,570 --> 00:07:00,500
+Get request.
+
+84
+00:07:02,360 --> 00:07:07,330
+Dodgson and now we can remove the dog then.
+
+85
+00:07:09,620 --> 00:07:11,910
+And keep everything the way we had it.
+
+86
+00:07:11,960 --> 00:07:13,370
+Let me add the semicolons.
+
+87
+00:07:14,380 --> 00:07:16,810
+And let's just make this smaller so you can see better.
+
+88
+00:07:20,120 --> 00:07:21,470
+And we can move this.
+
+89
+00:07:24,630 --> 00:07:30,720
+On this line, you can decide for yourself what looks cleaner, but let's test out to this as well to
+
+90
+00:07:30,720 --> 00:07:32,070
+make sure that it works.
+
+91
+00:07:32,250 --> 00:07:35,490
+So get people and we'll add fetch.
+
+92
+00:07:37,510 --> 00:07:49,870
+Going to save Amron NPM, oops, not there, run it here, ampm run no and Noad scripted as we wait
+
+93
+00:07:49,870 --> 00:07:51,620
+a bit and there you go.
+
+94
+00:07:51,640 --> 00:07:52,750
+Everything is working.
+
+95
+00:07:55,350 --> 00:08:00,720
+I don't know why I decided to show that in the test video, but I'm sure somebody out there is going
+
+96
+00:08:00,720 --> 00:08:05,820
+to find this useful to compare promises and async a little bit of a tangent.
+
+97
+00:08:06,000 --> 00:08:07,630
+But let's get back on track here.
+
+98
+00:08:07,980 --> 00:08:14,640
+Let's actually start writing tests for our async code again.
+
+99
+00:08:14,640 --> 00:08:20,310
+The first thing we're going to do and I'm going to remove the get people and cancel log from here.
+
+100
+00:08:22,630 --> 00:08:23,230
+Let's save.
+
+101
+00:08:26,020 --> 00:08:27,790
+And I'm going to create a new file.
+
+102
+00:08:27,820 --> 00:08:31,030
+Call it script 2.0 test.
+
+103
+00:08:32,240 --> 00:08:33,200
+Dr. James.
+
+104
+00:08:36,100 --> 00:08:43,300
+And within here, we want to do a few things first, we want to use the fetch function, so we need
+
+105
+00:08:43,300 --> 00:08:45,550
+the require.
+
+106
+00:08:48,230 --> 00:08:49,580
+Noad Fetch.
+
+107
+00:08:50,870 --> 00:09:01,100
+Again, because we have used dependency injection and we need the parameter fetch for the get people.
+
+108
+00:09:02,800 --> 00:09:05,230
+And then we also need the function.
+
+109
+00:09:07,260 --> 00:09:15,060
+From the the API that returns the get people for now, let's just say require.
+
+110
+00:09:17,000 --> 00:09:17,630
+Script.
+
+111
+00:09:18,880 --> 00:09:21,430
+To James, We don't need the James.
+
+112
+00:09:23,420 --> 00:09:28,070
+But remember, because this isn't no package, we need to actually give it the path.
+
+113
+00:09:30,280 --> 00:09:37,870
+All right, so let's export the function, let's just export both of these for now, we'll say module
+
+114
+00:09:38,560 --> 00:09:39,910
+dot exports.
+
+115
+00:09:41,610 --> 00:09:46,950
+And we export them in an object, we'll say get people and instead of doing get people, get people.
+
+116
+00:09:46,950 --> 00:09:55,320
+Again, shorthand with ethics is to just to get people and get people promise, which which is the same
+
+117
+00:09:55,320 --> 00:10:01,210
+thing as get people semicolon, get people property and value property in value.
+
+118
+00:10:02,340 --> 00:10:02,850
+All right.
+
+119
+00:10:03,480 --> 00:10:09,480
+So now within here will have the will have access to our functions, both of them.
+
+120
+00:10:10,760 --> 00:10:15,680
+Let's take a break, and in the next video, we're going to finish up this test, I'll see in that one
+
+121
+00:10:16,470 --> 00:10:16,790
+by.

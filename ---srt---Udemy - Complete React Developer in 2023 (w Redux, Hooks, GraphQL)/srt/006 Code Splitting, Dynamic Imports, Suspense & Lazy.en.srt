@@ -1,0 +1,583 @@
+1
+00:00:00,360 --> 00:00:01,380
+Welcome back, everyone.
+
+2
+00:00:02,440 --> 00:00:06,490
+In this video, i want to talk about code splitting and chunking.
+
+3
+00:00:06,790 --> 00:00:09,280
+Rack lazy as well as react suspense.
+
+4
+00:00:10,000 --> 00:00:13,960
+These are all things that you may have heard in rather recent versions of React.
+
+5
+00:00:14,410 --> 00:00:19,150
+And when you're curious about what they are, they're really just ways that we can optimize the way
+
+6
+00:00:19,150 --> 00:00:24,250
+that our browser downloads the code that we are serving from our website.
+
+7
+00:00:25,310 --> 00:00:28,070
+If you were to look inside of your network tab.
+
+8
+00:00:28,550 --> 00:00:33,710
+I just recently refreshed the website on the homepage and I want to show you what you see here.
+
+9
+00:00:34,400 --> 00:00:37,040
+So I'm going to remove some of these handles.
+
+10
+00:00:37,520 --> 00:00:44,240
+A lot of what you see here, there are images, there are some different code blocks, some of them
+
+11
+00:00:44,240 --> 00:00:49,100
+being from our stripe library, some of them being from our own application.
+
+12
+00:00:49,700 --> 00:00:57,080
+But the main thing that you'll really notice is that there is this CCS, which comes from Google API,
+
+13
+00:00:57,170 --> 00:00:59,060
+which is of course our Google fonts.
+
+14
+00:00:59,630 --> 00:01:06,050
+We have this bundle JS, which gives us the big bundle of all of our application code.
+
+15
+00:01:06,800 --> 00:01:13,430
+And then there is a bunch of stripe related code and some font related code related to TypeScript for
+
+16
+00:01:13,430 --> 00:01:14,090
+fonts.
+
+17
+00:01:14,510 --> 00:01:18,410
+There's essentially a lot of different library code.
+
+18
+00:01:18,710 --> 00:01:25,310
+The key thing is the bundle JS The bundle JS is a bundle of all of our JavaScript.
+
+19
+00:01:26,150 --> 00:01:32,600
+If I were to clear this out and navigate to different parts of the application, all of these calls
+
+20
+00:01:32,600 --> 00:01:36,590
+that you see here, these are all for Firestorm.
+
+21
+00:01:38,000 --> 00:01:39,680
+This one is for Stripe.
+
+22
+00:01:40,280 --> 00:01:41,270
+These are all images.
+
+23
+00:01:41,870 --> 00:01:42,590
+This one again.
+
+24
+00:01:42,620 --> 00:01:43,040
+Stripe.
+
+25
+00:01:43,220 --> 00:01:44,210
+And this one far store.
+
+26
+00:01:44,930 --> 00:01:47,480
+Nothing is being called from our application.
+
+27
+00:01:48,320 --> 00:01:54,170
+If I click this again and go to the authentication page, we see that there's no downloads again other
+
+28
+00:01:54,170 --> 00:01:54,980
+than a stripe.
+
+29
+00:01:54,980 --> 00:01:56,660
+One stripe does its own thing.
+
+30
+00:01:56,690 --> 00:01:57,890
+It's not really important for us.
+
+31
+00:01:59,490 --> 00:02:05,940
+What this means is that when we come to our application for the first time, we are downloading the
+
+32
+00:02:05,940 --> 00:02:09,480
+entire bundle of our application right out the gate.
+
+33
+00:02:10,320 --> 00:02:16,770
+This is very inefficient because as we scale our application, our JavaScript code is going to get rather
+
+34
+00:02:16,770 --> 00:02:23,490
+large, which means the load time it takes to download the entire bundle of our entire application is
+
+35
+00:02:23,490 --> 00:02:24,780
+going to be costly.
+
+36
+00:02:25,290 --> 00:02:30,300
+Why is it that when I'm on the homepage I want to download all of the JavaScript and react code for
+
+37
+00:02:30,300 --> 00:02:34,980
+the sign in page or for the shop page or even for the checkout page.
+
+38
+00:02:35,400 --> 00:02:37,830
+None of those are important to me right now.
+
+39
+00:02:38,040 --> 00:02:41,580
+The only thing that I should need is just the home page.
+
+40
+00:02:42,060 --> 00:02:44,400
+And this is the whole idea of code splitting.
+
+41
+00:02:45,060 --> 00:02:45,950
+By code splitting.
+
+42
+00:02:45,960 --> 00:02:54,420
+We tell React and Webpack to split up our bundle into the appropriate quantities, meaning that if I
+
+43
+00:02:54,420 --> 00:02:56,730
+land on the homepage, just give me the homepage stuff.
+
+44
+00:02:57,060 --> 00:02:59,820
+If I land on the shop page, just give me the shop page stuff.
+
+45
+00:03:00,180 --> 00:03:03,070
+If I land on authentication, then give me authentication.
+
+46
+00:03:03,600 --> 00:03:04,950
+So that is what we're going to do.
+
+47
+00:03:05,160 --> 00:03:10,770
+We're going to use a combination of React router as well as React in order to split our code at the
+
+48
+00:03:10,800 --> 00:03:11,850
+root level.
+
+49
+00:03:12,850 --> 00:03:19,750
+To do this, we need to use a couple new concepts, the first of which is that we are going to be using
+
+50
+00:03:19,930 --> 00:03:23,290
+React Lazy as well as react suspense.
+
+51
+00:03:24,480 --> 00:03:29,340
+Both of these are required in order for us to do something known as dynamic imports.
+
+52
+00:03:29,940 --> 00:03:36,750
+Dynamic imports is something that comes from modern JavaScript is a modern JavaScript feature.
+
+53
+00:03:37,440 --> 00:03:43,560
+When you do an import like this, this is asynchronous import, meaning that your JavaScript code is
+
+54
+00:03:43,560 --> 00:03:48,870
+not going to run until all of these imports are successfully brought into this file.
+
+55
+00:03:49,080 --> 00:03:55,440
+Then it precedes and actually renders and runs the rest of the JavaScript code with a dynamic import.
+
+56
+00:03:55,470 --> 00:03:58,200
+It's kind of like an async await the way it's written.
+
+57
+00:03:58,380 --> 00:04:03,660
+If we were to take this home component, for example, and turn it into a dynamic import, you would
+
+58
+00:04:03,660 --> 00:04:11,040
+say const home is equal to a weight and then inside of the weights or actually after the weight you
+
+59
+00:04:11,040 --> 00:04:14,700
+would say import and then the root that you are importing.
+
+60
+00:04:18,290 --> 00:04:18,770
+Like so.
+
+61
+00:04:19,820 --> 00:04:23,810
+That's how we go from this style of import over to dynamic import.
+
+62
+00:04:24,440 --> 00:04:28,240
+But the problem is that inside of React, React doesn't actually know how to utilize this.
+
+63
+00:04:28,250 --> 00:04:31,520
+You need to use a combination of react lazy and react suspense.
+
+64
+00:04:31,850 --> 00:04:32,990
+In order for this to render.
+
+65
+00:04:33,890 --> 00:04:35,840
+So how do we convert this over to react?
+
+66
+00:04:35,840 --> 00:04:36,230
+Lazy.
+
+67
+00:04:36,830 --> 00:04:42,800
+So the way that you would utilize react lazy is that instead of writing the A weight statement, lazy
+
+68
+00:04:42,800 --> 00:04:45,130
+is actually its own function.
+
+69
+00:04:45,980 --> 00:04:49,640
+It will return you back a modified version of this component when it receives it.
+
+70
+00:04:50,090 --> 00:04:57,620
+So what you pass the lazy is a function with the import statement and now this is a lazy component.
+
+71
+00:04:57,980 --> 00:05:03,800
+Essentially react will not render this until it actually fetches it when it's required.
+
+72
+00:05:04,340 --> 00:05:05,360
+When is it required?
+
+73
+00:05:05,540 --> 00:05:12,050
+Well, on the page that actually renders and it sees that this is a lazy import is when in the browser
+
+74
+00:05:12,260 --> 00:05:17,000
+the moment and encounters this it's going to start requesting for this component from our server that
+
+75
+00:05:17,000 --> 00:05:18,500
+is hosting all of our code.
+
+76
+00:05:19,580 --> 00:05:24,200
+Unfortunately, in order to use it, we need to use react suspense because the suspense is essentially
+
+77
+00:05:24,200 --> 00:05:30,110
+saying, hey, I know that you are currently trying to fetch something in suspended animation, meaning
+
+78
+00:05:30,110 --> 00:05:34,430
+it's asynchronous, some component while you're waiting.
+
+79
+00:05:34,760 --> 00:05:36,080
+What do you want me to do?
+
+80
+00:05:36,830 --> 00:05:38,090
+What do you want me to render?
+
+81
+00:05:38,840 --> 00:05:45,830
+So here, what we can say is that okay, if one of our routes or any of our code inside of this is being
+
+82
+00:05:46,310 --> 00:05:51,740
+lazily loaded, then what we're going to do is instead show the spinner component.
+
+83
+00:05:52,550 --> 00:05:57,470
+So here, let's import in spinner from our components.
+
+84
+00:05:59,430 --> 00:06:01,980
+Our spinner and then our spinner component.
+
+85
+00:06:04,490 --> 00:06:07,880
+And then for suspense, always say, is that okay?
+
+86
+00:06:08,030 --> 00:06:10,460
+Suspense takes one value, which is the fallback.
+
+87
+00:06:11,060 --> 00:06:14,780
+And the fallback is where you render the component you want to show.
+
+88
+00:06:15,810 --> 00:06:16,890
+When things are loading.
+
+89
+00:06:17,790 --> 00:06:22,470
+So now if we save this and we come back to the application and let's refresh.
+
+90
+00:06:24,380 --> 00:06:26,750
+You see the spinner, and then you see everything load.
+
+91
+00:06:27,320 --> 00:06:30,770
+But what you notice inside of this coat, let me filter this down to JavaScript.
+
+92
+00:06:30,770 --> 00:06:39,230
+Only we have this new additional source routes home which is coming from our website and that is what
+
+93
+00:06:39,230 --> 00:06:45,410
+is happening when you land on the homepage is when it actually tries to fetch the home component.
+
+94
+00:06:46,010 --> 00:06:49,820
+If you are on the shop page and let's say you re rendered the entire application from scratch.
+
+95
+00:06:50,600 --> 00:06:53,900
+Notice how we're not pulling anything related to the home page.
+
+96
+00:06:54,440 --> 00:06:58,850
+We get the bundled, yes, of course, which is the appropriate bundle of the relevant code.
+
+97
+00:06:59,450 --> 00:07:05,780
+But if we come now to the homepage there we see we actually finally then download the home component.
+
+98
+00:07:06,680 --> 00:07:14,270
+So now it's very easy because at the root level we can now very quickly wrap the appropriate root components
+
+99
+00:07:14,270 --> 00:07:16,460
+inside of a lazy check.
+
+100
+00:07:17,270 --> 00:07:23,420
+So now I'm going to say const authentication is equal to lazy.
+
+101
+00:07:25,360 --> 00:07:26,020
+Import.
+
+102
+00:07:28,700 --> 00:07:29,510
+Of this route.
+
+103
+00:07:33,730 --> 00:07:35,470
+And I can get rid of authentication.
+
+104
+00:07:36,310 --> 00:07:41,200
+And if I save now and I come back to my application and I force a refresh.
+
+105
+00:07:42,340 --> 00:07:47,470
+Initially on the homepage, we download our initial bundle as well as our home component, because that's
+
+106
+00:07:47,470 --> 00:07:47,950
+what we need.
+
+107
+00:07:48,760 --> 00:07:53,410
+But when we go to sign in is when we download our authentication.
+
+108
+00:07:54,550 --> 00:07:57,640
+Notice that the bundle is 740 kilobytes.
+
+109
+00:07:58,240 --> 00:08:03,940
+What I want to show you is that as we start splitting out this bundle, this size should theoretically
+
+110
+00:08:03,940 --> 00:08:06,880
+get smaller because the initial bundle should grow smaller.
+
+111
+00:08:07,510 --> 00:08:15,100
+So let's go back and let's start converting any of these relevant root components over to using our
+
+112
+00:08:15,100 --> 00:08:15,550
+splitting.
+
+113
+00:08:16,390 --> 00:08:19,150
+So I'm going to do the navigation component as well.
+
+114
+00:08:19,450 --> 00:08:22,570
+In fact, let's just do these three right here.
+
+115
+00:08:23,200 --> 00:08:27,130
+We need the spinner to be synchronously loaded because that is our only fallback component.
+
+116
+00:08:27,160 --> 00:08:33,430
+So this one very clearly doesn't need to be a dynamic import, but these other ones like navigation.
+
+117
+00:08:35,700 --> 00:08:37,950
+Vacation lazy.
+
+118
+00:08:39,480 --> 00:08:40,200
+Import.
+
+119
+00:08:44,030 --> 00:08:45,320
+And then copy over this route.
+
+120
+00:08:50,640 --> 00:08:53,730
+In fact, I think I can do this more efficiently.
+
+121
+00:08:54,690 --> 00:08:55,380
+Like so.
+
+122
+00:09:01,810 --> 00:09:02,560
+Wrap this.
+
+123
+00:09:03,430 --> 00:09:04,270
+Get rid of this.
+
+124
+00:09:06,360 --> 00:09:07,440
+Rapid and lazy.
+
+125
+00:09:12,150 --> 00:09:16,320
+And then we need to wrap these also inside of an import.
+
+126
+00:09:18,150 --> 00:09:24,360
+And now if we save, let's go back to our application once we tidy up some of this spacing.
+
+127
+00:09:26,110 --> 00:09:27,610
+And if we refresh.
+
+128
+00:09:29,240 --> 00:09:30,680
+Let's look inside of our network.
+
+129
+00:09:32,220 --> 00:09:34,890
+We do see that our bundle size has reduced.
+
+130
+00:09:35,280 --> 00:09:37,140
+We see it's down to 728 now.
+
+131
+00:09:38,010 --> 00:09:44,100
+Now, that number should only get smaller as we continue to code split, dynamically imported root level
+
+132
+00:09:44,100 --> 00:09:44,820
+components.
+
+133
+00:09:45,510 --> 00:09:46,560
+So that's it really.
+
+134
+00:09:46,800 --> 00:09:50,700
+You've learned the majority of the different strategies that React provides for us when it comes to
+
+135
+00:09:50,700 --> 00:09:52,920
+optimizing our performance.
+
+136
+00:09:53,220 --> 00:09:59,460
+We can optimize at the callback level, we can optimize with hooks, we can optimize with react lazy
+
+137
+00:09:59,460 --> 00:10:02,040
+and react suspense as well as dynamic importing.
+
+138
+00:10:02,700 --> 00:10:07,110
+But really, that's that covers the breadth of the strategies that React has available for us when it
+
+139
+00:10:07,110 --> 00:10:08,760
+comes to performance optimization.
+
+140
+00:10:09,670 --> 00:10:14,620
+I do want to mention once again that throughout this course you have been learning a lot of the best
+
+141
+00:10:14,620 --> 00:10:18,910
+practices and patterns of how to write optimal and perform a code in the first place.
+
+142
+00:10:19,360 --> 00:10:25,360
+Beyond that, we are also really, really focused on understanding the rendering and re rendering cycles
+
+143
+00:10:25,540 --> 00:10:29,440
+that exist inside of React as well with all of that combined.
+
+144
+00:10:29,590 --> 00:10:34,840
+You are now very equipped to begin writing beautiful and performant React applications.
+
+145
+00:10:35,650 --> 00:10:37,870
+So that covers it for our performance section.
+
+146
+00:10:38,320 --> 00:10:39,960
+Thank you and I'll see you in the next video.

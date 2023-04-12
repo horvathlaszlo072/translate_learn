@@ -1,0 +1,311 @@
+1
+00:00:01,020 --> 00:00:02,040
+Welcome back, everyone.
+
+2
+00:00:02,700 --> 00:00:08,550
+In the last video, we learn about nested routing and the outlets that in turn will render whatever
+
+3
+00:00:08,550 --> 00:00:10,590
+the nested matching route will be.
+
+4
+00:00:11,460 --> 00:00:17,280
+So here what we see is that this directory component is staying persistent despite what gets rendered
+
+5
+00:00:17,280 --> 00:00:18,390
+as a sub route.
+
+6
+00:00:19,080 --> 00:00:24,780
+So what we know then, is that perhaps we can leverage this pattern for our navigation bar in order
+
+7
+00:00:24,780 --> 00:00:30,030
+to continually render our navigation bar, regardless of what path we navigate to.
+
+8
+00:00:30,840 --> 00:00:32,010
+So let's leverage this idea.
+
+9
+00:00:32,190 --> 00:00:37,290
+Let's go back to our application, and let's actually think about what we need to create.
+
+10
+00:00:38,010 --> 00:00:41,220
+We need to create some top level navigation component.
+
+11
+00:00:41,520 --> 00:00:43,060
+I was going to call it navigation for now.
+
+12
+00:00:43,080 --> 00:00:44,380
+We can rename it after.
+
+13
+00:00:44,400 --> 00:00:49,410
+But for the purpose of this lesson, let's just make it very clear this navigation component is going
+
+14
+00:00:49,410 --> 00:00:51,840
+to contain a div inside of this div.
+
+15
+00:00:52,110 --> 00:00:59,820
+I'm just going to put some kind of div placeholder that has an H1 that says I am the navigation bar.
+
+16
+00:01:00,510 --> 00:01:03,150
+We'll fill it with an actual navigation bar after.
+
+17
+00:01:04,020 --> 00:01:09,420
+But with just this, we know that this is going to be some component that always lives on the page.
+
+18
+00:01:09,750 --> 00:01:15,660
+It's going to be essentially the parent level component because it holds the navigation bar in sign
+
+19
+00:01:15,660 --> 00:01:15,840
+out.
+
+20
+00:01:15,840 --> 00:01:20,850
+Whatever's underneath the navigation bar should render the home page or the shop page, respectively,
+
+21
+00:01:20,850 --> 00:01:21,780
+depending on the part.
+
+22
+00:01:22,530 --> 00:01:25,590
+So to do that, we're going to utilize an outlet.
+
+23
+00:01:26,910 --> 00:01:32,160
+So why don't we set this up first and then I'll explain in detail what's happening in case this is a
+
+24
+00:01:32,160 --> 00:01:32,910
+little confusing.
+
+25
+00:01:34,020 --> 00:01:42,600
+So this navigation bar should be at the top level, so at the very top level, this should nest everything
+
+26
+00:01:43,290 --> 00:01:44,970
+and it should nest it under slash.
+
+27
+00:01:45,420 --> 00:01:50,310
+And the element that it points to should be this navigation component.
+
+28
+00:01:51,910 --> 00:01:58,060
+Inside of here is where we now want to render our appropriate sibling components.
+
+29
+00:01:58,750 --> 00:02:00,970
+So instead, remember shop is nested under home.
+
+30
+00:02:00,980 --> 00:02:02,050
+We don't want that anymore.
+
+31
+00:02:02,380 --> 00:02:04,300
+We want these to be siblings of each other.
+
+32
+00:02:05,220 --> 00:02:06,120
+And I want.
+
+33
+00:02:07,000 --> 00:02:10,810
+This home, just to be explicit, let's just keep it home for now.
+
+34
+00:02:11,560 --> 00:02:14,380
+And now let's nest these inside of here.
+
+35
+00:02:16,030 --> 00:02:22,630
+Now, if we save this, well, we should see is that when we're on the home page?
+
+36
+00:02:23,590 --> 00:02:25,150
+We just see our navigation bar.
+
+37
+00:02:26,150 --> 00:02:27,320
+If I go to my home.
+
+38
+00:02:28,480 --> 00:02:29,740
+I see the directory.
+
+39
+00:02:30,740 --> 00:02:34,220
+If I go to shop, I see the shop edge.
+
+40
+00:02:34,970 --> 00:02:37,280
+So so far, the navigation bar is persistent.
+
+41
+00:02:38,210 --> 00:02:44,510
+But when we learn on our website, we do want just this base, Pat, to show the directory instead of
+
+42
+00:02:44,510 --> 00:02:46,040
+having to go to slash home.
+
+43
+00:02:47,000 --> 00:02:48,140
+So how do we do this?
+
+44
+00:02:49,010 --> 00:02:56,750
+Well, instead of pattern matching path like this, we can actually use the term index and index is
+
+45
+00:02:56,750 --> 00:02:57,440
+an attribute.
+
+46
+00:02:57,470 --> 00:03:01,730
+If you pass index like this, it's actually equivalent to saying index is equal to true.
+
+47
+00:03:03,120 --> 00:03:04,080
+It's just shorthand.
+
+48
+00:03:04,410 --> 00:03:10,800
+But what this tells this route is that when you match just this slash, so with nothing on it, then
+
+49
+00:03:10,860 --> 00:03:13,560
+this should be the home component.
+
+50
+00:03:13,860 --> 00:03:15,960
+That's what you render at the outlet level.
+
+51
+00:03:16,260 --> 00:03:21,420
+So match this slash when it's empty as the base component.
+
+52
+00:03:22,260 --> 00:03:28,140
+So we know that we already have a parental component, but render whatever the base is inside of the
+
+53
+00:03:28,140 --> 00:03:28,470
+outlet.
+
+54
+00:03:29,190 --> 00:03:31,890
+So here now, if we save this, we go back.
+
+55
+00:03:32,430 --> 00:03:36,120
+We see that we don't have anything we don't flash on, but we see our directory.
+
+56
+00:03:36,840 --> 00:03:38,610
+And now if we navigate to slash up.
+
+57
+00:03:39,870 --> 00:03:42,960
+We should see the director disappear and we see our shop page.
+
+58
+00:03:43,740 --> 00:03:47,130
+But the main thing is now we're persisting this navigation bar.
+
+59
+00:03:47,430 --> 00:03:50,730
+So this is actually our top level component.
+
+60
+00:03:51,120 --> 00:03:54,240
+This outlet will now, in turn, render everything else in sight.
+
+61
+00:03:55,600 --> 00:04:02,260
+So we have no leveraged that specific pattern utilizing the outlet that we had previously in our home
+
+62
+00:04:02,260 --> 00:04:07,510
+component, but now we've moved it to the top level navigation component and this top level navigation
+
+63
+00:04:07,510 --> 00:04:09,520
+component is kind of like the template.
+
+64
+00:04:09,970 --> 00:04:13,060
+It essentially represents the thing that should always be present.
+
+65
+00:04:13,510 --> 00:04:18,400
+And the thing that we decided to be president was going to be this navigation bar component inside this
+
+66
+00:04:18,400 --> 00:04:18,850
+outlet.
+
+67
+00:04:19,120 --> 00:04:26,140
+This is what we'll swap based on the remaining route matching inside and this pattern matching this
+
+68
+00:04:26,140 --> 00:04:27,790
+deeper nested route matching.
+
+69
+00:04:28,060 --> 00:04:33,370
+You can do continually, however, nested deep you go.
+
+70
+00:04:33,850 --> 00:04:35,950
+And that's the big advantage of rack, right?
+
+71
+00:04:35,950 --> 00:04:36,310
+Or dump.
+
+72
+00:04:36,490 --> 00:04:40,690
+It takes a little bit of time to wrap your head around this concept, but you'll get a lot of practice.
+
+73
+00:04:40,960 --> 00:04:45,790
+But here we can see how we leverage this outlet pattern now in order to persist.
+
+74
+00:04:45,790 --> 00:04:46,900
+The navigation bar.
+
+75
+00:04:48,050 --> 00:04:52,520
+So we're definitely going to leverage this pattern a lot throughout the rest of this application in
+
+76
+00:04:52,520 --> 00:04:58,190
+the next video, let's style this navigation bar looks closer to what we actually have in our final
+
+77
+00:04:58,190 --> 00:05:02,150
+application and then we can continue building out our roots and building our pages.
+
+78
+00:05:02,540 --> 00:05:03,670
+So I'll see you in the next video.

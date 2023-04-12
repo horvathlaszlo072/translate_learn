@@ -1,0 +1,439 @@
+1
+00:00:00,420 --> 00:00:01,320
+Welcome back, everyone.
+
+2
+00:00:02,340 --> 00:00:09,210
+So here we are inside of the Create React app documents and we're looking at specifically they're adding
+
+3
+00:00:09,210 --> 00:00:10,260
+TypeScript section.
+
+4
+00:00:11,100 --> 00:00:16,860
+The reason why we want to read this section is because it racked up under the hood has actually already
+
+5
+00:00:16,860 --> 00:00:22,710
+configured their web pack and also some additional configurations when they set up the project for us
+
+6
+00:00:22,720 --> 00:00:28,590
+with crate racked up so that it can actually support TypeScript pretty easily, you can actually spin
+
+7
+00:00:28,590 --> 00:00:35,100
+up your instance of Create React app application with TypeScript by default by using a Dash Dash template
+
+8
+00:00:35,130 --> 00:00:40,680
+TypeScript for us, though, we initialized our application without TypeScript because we wanted to
+
+9
+00:00:40,680 --> 00:00:43,980
+be able to write our code without thinking about TypeScript.
+
+10
+00:00:43,980 --> 00:00:49,200
+First we had to learn, react, but now we're ready to learn TypeScript and specifically TypeScript
+
+11
+00:00:49,200 --> 00:00:50,190
+in React.
+
+12
+00:00:51,380 --> 00:00:57,110
+So if you scroll down here, you'll actually find a section where it's adding TypeScript to an existing
+
+13
+00:00:57,110 --> 00:00:57,890
+rack project.
+
+14
+00:00:58,370 --> 00:01:02,450
+So what we're going to do is we are going to copy this entire thing.
+
+15
+00:01:03,290 --> 00:01:08,750
+So the reason we want this is because there are a bunch of different libraries that we need to install
+
+16
+00:01:08,750 --> 00:01:10,430
+in order for TypeScript to run.
+
+17
+00:01:11,370 --> 00:01:14,760
+So here all we're going to do is we're going to go back into.
+
+18
+00:01:15,680 --> 00:01:19,970
+Our terminal an Inside Your Monster's Rolodex project.
+
+19
+00:01:20,690 --> 00:01:27,620
+I want you to add inside that line that we just copied over and we're going to install a bunch of these
+
+20
+00:01:27,620 --> 00:01:28,220
+libraries.
+
+21
+00:01:29,090 --> 00:01:34,010
+The other thing that we need to set up is actually a TSC config file.
+
+22
+00:01:34,880 --> 00:01:39,330
+So TypeScript, as I mentioned, is not necessarily JavaScript.
+
+23
+00:01:39,350 --> 00:01:44,420
+It's like another language, even though it's remarkably, remarkably similar to JavaScript.
+
+24
+00:01:44,780 --> 00:01:51,170
+So essentially what happens is we need to tell our TypeScript configuration what we want to support.
+
+25
+00:01:52,160 --> 00:01:57,950
+Essentially this is kind of like us telling TypeScript we want to support React with its types.
+
+26
+00:01:58,460 --> 00:02:02,090
+We also want to tell it that there's a certain version of JavaScript that we want to support.
+
+27
+00:02:02,120 --> 00:02:07,310
+Like, for example, up to certain versions of TypeScript, they don't actually support generators the
+
+28
+00:02:07,310 --> 00:02:10,760
+way that we need it to in order for us to properly type our sagas.
+
+29
+00:02:11,330 --> 00:02:16,280
+So essentially the test config allows us to configure our typescript so that it runs in the version
+
+30
+00:02:16,280 --> 00:02:17,150
+we need it to.
+
+31
+00:02:17,660 --> 00:02:24,320
+Now, normally when you build out your project in TypeScript using the Create React TypeScript template,
+
+32
+00:02:24,620 --> 00:02:27,380
+it will build out this RTS config file for you.
+
+33
+00:02:27,590 --> 00:02:30,810
+But because we started without it, we're not going to get that.
+
+34
+00:02:30,830 --> 00:02:37,400
+So what we're going to do is we are going to add in our own test config, JSON file.
+
+35
+00:02:38,060 --> 00:02:42,500
+And inside what I want you to do is I want you to paste what I'm going to give you.
+
+36
+00:02:42,980 --> 00:02:50,990
+Now, this is essentially the exact file that's going to get generated for you when you build your project
+
+37
+00:02:50,990 --> 00:02:51,980
+in TypeScript.
+
+38
+00:02:52,160 --> 00:02:57,530
+So when you run Create React app with the template and the generator config file, we're really just
+
+39
+00:02:57,530 --> 00:02:59,090
+pasting that one over.
+
+40
+00:02:59,810 --> 00:03:01,010
+So that's what I want you to do.
+
+41
+00:03:01,580 --> 00:03:06,350
+I want you to go into your resource folder, find the test config file, copy it and paste it in.
+
+42
+00:03:06,560 --> 00:03:11,030
+It's literally just the exact same file because it comes with what we need it to have.
+
+43
+00:03:12,380 --> 00:03:18,650
+So once we have in our config file, we can start migrating our code over to TypeScript.
+
+44
+00:03:18,650 --> 00:03:27,230
+And to do that, what we need to do is actually change these files from Gsx and dot JSE over to dot
+
+45
+00:03:27,230 --> 00:03:29,510
+t s or dot tsx.
+
+46
+00:03:30,200 --> 00:03:36,560
+The Dot t s essentially stands for TypeScript, and the way that we're going to start migrating is we're
+
+47
+00:03:36,560 --> 00:03:39,350
+going to start thinking about it in isolation.
+
+48
+00:03:40,700 --> 00:03:48,260
+So the easiest way for me to teach you TypeScript, is to begin by typing some of the more basic parts
+
+49
+00:03:48,260 --> 00:03:51,560
+of the application, and then as we grow, will discuss more.
+
+50
+00:03:51,680 --> 00:03:56,660
+Think about more types, think about more of a strategy of migrating an application over to TypeScript.
+
+51
+00:03:56,930 --> 00:04:03,530
+Honestly, there's a lot to discuss, but we have a great way forward, so the best place to begin is
+
+52
+00:04:03,530 --> 00:04:06,860
+for us to just start with our search box.
+
+53
+00:04:07,580 --> 00:04:10,340
+The search box component is a simple component.
+
+54
+00:04:11,150 --> 00:04:18,050
+Now, in order for us to start typing this file, we need to convert it from a J.S. file over to a T
+
+55
+00:04:18,260 --> 00:04:18,590
+file.
+
+56
+00:04:18,980 --> 00:04:21,350
+If it's G6, then it's TSX.
+
+57
+00:04:21,350 --> 00:04:23,290
+If it's just, then it's T.
+
+58
+00:04:23,300 --> 00:04:23,630
+S.
+
+59
+00:04:24,230 --> 00:04:28,520
+So TSX is a X file, except instead it's in TypeScript.
+
+60
+00:04:28,910 --> 00:04:32,930
+If you look down here, it says TypeScript, react, which is what we want it to be.
+
+61
+00:04:34,120 --> 00:04:39,100
+The moment you switch it over, you'll notice that the voice code compiler is going to throw some errors
+
+62
+00:04:39,100 --> 00:04:41,560
+because this is invalid typescript.
+
+63
+00:04:42,070 --> 00:04:47,680
+If you hover over you see binding element class name implicitly has an any type.
+
+64
+00:04:49,110 --> 00:04:53,130
+Now any is a special keyword inside of TypeScript.
+
+65
+00:04:53,160 --> 00:04:55,650
+Any means that it can be anything at all?
+
+66
+00:04:55,650 --> 00:04:58,530
+Any possible type can be passed as an argument.
+
+67
+00:04:59,100 --> 00:05:04,650
+Now, if any type can be passed, then automatically this defeats the purpose of using TypeScript because
+
+68
+00:05:04,650 --> 00:05:12,000
+we want to implicitly or explicitly know what types are being passed through or cast as these variables.
+
+69
+00:05:12,660 --> 00:05:15,100
+So this is a very important thing to remember.
+
+70
+00:05:15,120 --> 00:05:17,730
+You never want to use any.
+
+71
+00:05:17,910 --> 00:05:21,280
+In fact, it's probably the number one golden rule in TypeScript.
+
+72
+00:05:21,300 --> 00:05:26,310
+Never use the any keyword in fact of any type as any you want to figure out.
+
+73
+00:05:26,310 --> 00:05:31,050
+There's probably some kind of strategy to tie this to some type of type.
+
+74
+00:05:31,990 --> 00:05:37,270
+There are even cases where you have no idea what you're getting, but there's actually another type
+
+75
+00:05:37,270 --> 00:05:40,210
+you can assign to that that is more type safe than any.
+
+76
+00:05:40,420 --> 00:05:46,240
+But the key thing, almost 99.9% of the time, you will never use any.
+
+77
+00:05:47,240 --> 00:05:51,890
+Now before we start typing these parameters, let's talk about typing in general and how that works.
+
+78
+00:05:52,490 --> 00:05:54,440
+I'm going to create a variable called name.
+
+79
+00:05:55,070 --> 00:06:00,920
+If I wanted to type this name and say that this is always going to hold a string value, the way that
+
+80
+00:06:00,920 --> 00:06:03,260
+we type this is we use a colon.
+
+81
+00:06:03,890 --> 00:06:06,440
+Following the colon, we then define the type.
+
+82
+00:06:06,740 --> 00:06:08,870
+So here I'm going to say it's going to be a string.
+
+83
+00:06:09,650 --> 00:06:12,920
+Now you want to use these lowercase, primitive types.
+
+84
+00:06:13,490 --> 00:06:17,150
+Typically inside of JavaScript, you're probably used to seeing capitalized string.
+
+85
+00:06:17,750 --> 00:06:22,550
+You want to use the lowercase value because this is a specific type we get from TypeScript representing
+
+86
+00:06:22,550 --> 00:06:23,660
+the actual primitive.
+
+87
+00:06:24,110 --> 00:06:31,010
+You have the string, you have booleans, you have numbers and you have the arrays, the objects as
+
+88
+00:06:31,010 --> 00:06:32,120
+well as the functions.
+
+89
+00:06:32,120 --> 00:06:35,060
+But those are more specific and we'll discuss those after.
+
+90
+00:06:35,270 --> 00:06:41,090
+We're just going to start with basic types for now with string, if you set it to string, you'll notice
+
+91
+00:06:41,090 --> 00:06:43,850
+now that when you hover over this variable.
+
+92
+00:06:44,690 --> 00:06:48,920
+In that first line, it says contact name is string.
+
+93
+00:06:49,310 --> 00:06:54,290
+So right now TypeScript compiler knows, Oh, this value has been cast to a string, even though we
+
+94
+00:06:54,290 --> 00:06:55,520
+haven't assigned the value yet.
+
+95
+00:06:56,510 --> 00:07:03,890
+Now what we can do is if we assign it a value of string, then what we notice is simply that it's declared,
+
+96
+00:07:03,890 --> 00:07:04,700
+but it's never used.
+
+97
+00:07:04,730 --> 00:07:06,710
+So this is a warning, but it's not an error.
+
+98
+00:07:07,490 --> 00:07:14,240
+What happens, though, if you were to assign this a value that is not matching of the type like a number,
+
+99
+00:07:14,840 --> 00:07:21,740
+if you hover over it now in that third line, you'll see type number is not assignable to type string.
+
+100
+00:07:22,340 --> 00:07:27,950
+So JavaScript compiler now knows, oh, this value you're trying to assign to me is a number, but this
+
+101
+00:07:27,950 --> 00:07:33,860
+doesn't match the type that has been explicitly stated to this value of name and now it will throw an
+
+102
+00:07:33,860 --> 00:07:34,220
+error.
+
+103
+00:07:35,000 --> 00:07:40,970
+Now, as we advance, this will get more complex, especially when we need to actually define the types
+
+104
+00:07:41,300 --> 00:07:45,740
+for objects and for arrays, which is what we'll discuss in the next video.
+
+105
+00:07:46,100 --> 00:07:51,050
+For now, all we need to know is that once we've installed TypeScript and you want to convert a file
+
+106
+00:07:51,050 --> 00:07:58,850
+over to TypeScript, convert the file extension to TS or that's X, and then for the actual values,
+
+107
+00:07:58,850 --> 00:08:02,840
+if you want to assign them to some kind of type, you must use the colon.
+
+108
+00:08:03,560 --> 00:08:08,930
+And we've learned a little bit also about how the TypeScript compiler inside of this code helps us realize
+
+109
+00:08:08,930 --> 00:08:10,460
+that we're throwing type errors.
+
+110
+00:08:11,180 --> 00:08:13,520
+So with that, let's move on to the next video.

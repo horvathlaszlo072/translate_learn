@@ -1,0 +1,355 @@
+1
+00:00:00,620 --> 00:00:06,770
+Hello, everyone, and welcome to this lesson on building a blog Web site with Gatsby.
+
+2
+00:00:07,370 --> 00:00:13,970
+My name is Iowa and I'm one of the instructors alongside Andre that teaches the Riak course from zero
+
+3
+00:00:13,970 --> 00:00:14,690
+to mastery.
+
+4
+00:00:15,620 --> 00:00:23,030
+Now, in this lesson, I am going to talk about Gatsby and how we can leverage Gatsby in order to build
+
+5
+00:00:23,030 --> 00:00:24,280
+a blog website.
+
+6
+00:00:24,740 --> 00:00:32,210
+Now, before we continue, I do want to note that this lesson assumes that you know the basics of react
+
+7
+00:00:32,210 --> 00:00:32,860
+and graphics.
+
+8
+00:00:32,900 --> 00:00:39,770
+Well, we also make the assumption that you understand some of the caveats behind some of the libraries
+
+9
+00:00:39,770 --> 00:00:42,650
+in the reactor ecosystem, such as react router.
+
+10
+00:00:43,310 --> 00:00:46,970
+If you are unfamiliar with this, we do teach us in the course.
+
+11
+00:00:47,270 --> 00:00:53,440
+Otherwise you may have to become more familiar with these concepts before proceeding with this lesson.
+
+12
+00:00:53,780 --> 00:00:59,270
+You can definitely watch this lesson still, but you might not be able to understand all of the code
+
+13
+00:00:59,270 --> 00:01:02,000
+that will end up writing inside of this section.
+
+14
+00:01:03,330 --> 00:01:10,380
+Now, if that is not a problem for you, then let's take a deep dive into what Gatsby is in the first
+
+15
+00:01:10,380 --> 00:01:10,750
+place.
+
+16
+00:01:11,430 --> 00:01:16,530
+So, as I mentioned, Gatsby is a framework that is written in react.
+
+17
+00:01:17,380 --> 00:01:25,270
+It's a framework that has already combined together some of the best react ecosystem libraries into
+
+18
+00:01:25,270 --> 00:01:31,930
+one bundle and as an opinionated way about how you should use it in order to build a static website,
+
+19
+00:01:32,560 --> 00:01:38,380
+in order for us to actually understand when we should use something like Gatsby, we have to understand
+
+20
+00:01:38,380 --> 00:01:43,600
+some of the competing technologies that you've definitely at least used or heard about.
+
+21
+00:01:44,450 --> 00:01:46,280
+So let's take a look at this image.
+
+22
+00:01:47,430 --> 00:01:56,400
+Let us go over one high level concept in react so we know that React is a front end based UI rendering
+
+23
+00:01:56,400 --> 00:01:57,000
+library.
+
+24
+00:01:57,870 --> 00:02:05,340
+We write code, which is a combination of JavaScript and JSM, in order for us to compile that code
+
+25
+00:02:05,340 --> 00:02:13,440
+that we've written and react down into Jackson HTML using a loader like Web pack as well as a trans
+
+26
+00:02:13,440 --> 00:02:14,650
+pilot like Babille.
+
+27
+00:02:15,510 --> 00:02:23,490
+Now those files are the files that any webpage that our browser loads consumes in order to build such
+
+28
+00:02:23,490 --> 00:02:24,140
+a web page.
+
+29
+00:02:24,630 --> 00:02:30,660
+So when we build our websites and react, we might be writing Riak code, but there is some compile
+
+30
+00:02:30,660 --> 00:02:37,950
+step along the way that builds them into JavaScript, CSFs and HTML files that our browser is able to
+
+31
+00:02:37,950 --> 00:02:38,510
+consume.
+
+32
+00:02:39,180 --> 00:02:46,350
+Now, keeping this in mind, let's take a breakdown of three technologies that we see in the react ecosystem
+
+33
+00:02:46,350 --> 00:02:50,630
+that try and solve the problem of how you develop react applications.
+
+34
+00:02:51,120 --> 00:02:54,720
+Now, those are Gatsby Create React App.
+
+35
+00:02:54,720 --> 00:02:55,860
+And next Shabaz.
+
+36
+00:02:56,730 --> 00:03:00,840
+Now you've definitely heard of Create React app and you've definitely used it.
+
+37
+00:03:00,840 --> 00:03:08,670
+If you've taken this course, create react app is a very quick way for you to start up a react application
+
+38
+00:03:08,940 --> 00:03:12,360
+and it leverages what is called client side rendering.
+
+39
+00:03:12,990 --> 00:03:20,460
+Now, what client side rendering means is that it leverages the browser in order to build out the HTML
+
+40
+00:03:20,460 --> 00:03:26,570
+that gets served whenever a user navigates to any page on your react application.
+
+41
+00:03:27,270 --> 00:03:34,080
+So if you were to see this browser here, when the user navigates to the home route and then loads up
+
+42
+00:03:34,080 --> 00:03:42,480
+the home component, what happens is that the code that we've written is built and passed to that user's
+
+43
+00:03:42,480 --> 00:03:43,940
+browser engine.
+
+44
+00:03:44,610 --> 00:03:51,210
+Now that engine will end up being the one that actually generates the HTML required for that home page
+
+45
+00:03:51,210 --> 00:03:53,970
+and then loads it up onto the browser.
+
+46
+00:03:55,210 --> 00:04:00,730
+The same thing happens whenever they navigate to any other route, such as collections, but the main
+
+47
+00:04:00,730 --> 00:04:08,740
+idea here is that the browser engine is the thing that is generating the HTML pages that the browser
+
+48
+00:04:08,740 --> 00:04:11,830
+needs to load related to our REACT application.
+
+49
+00:04:12,620 --> 00:04:20,600
+Everything is rendered on the client side, so on the browser now racked up is a great tool when you
+
+50
+00:04:20,600 --> 00:04:28,340
+want to build a really dynamic website in react, but you don't have a lot of static images that come
+
+51
+00:04:28,340 --> 00:04:36,620
+by default with the actual application or a lot of really deeply nested and really complex logic that
+
+52
+00:04:36,620 --> 00:04:38,280
+ends up building your pages.
+
+53
+00:04:39,050 --> 00:04:46,100
+Now, when you do have a website that is performing slowly and can exceed the amount of power that our
+
+54
+00:04:46,100 --> 00:04:51,270
+browser engine has, then you want to use something like next, James.
+
+55
+00:04:52,100 --> 00:04:57,920
+Now, if you've never heard of NexGen, it is a framework that allows you to write, react and leverage.
+
+56
+00:04:57,920 --> 00:05:05,120
+Server side rendering, server side rendering is almost the exact same conceptually as client side rendering.
+
+57
+00:05:05,510 --> 00:05:12,710
+Except instead of letting the client or the browser engine be the actual thing that ends up compiling
+
+58
+00:05:12,710 --> 00:05:17,220
+and generating the HTML code for our browser routes.
+
+59
+00:05:17,240 --> 00:05:25,940
+Whenever our users navigate to any of our pages, we let the backend server build and generate the HTML
+
+60
+00:05:25,940 --> 00:05:33,050
+files that the user needs in order to view the home root, the collections route or any route for that
+
+61
+00:05:33,050 --> 00:05:33,460
+matter.
+
+62
+00:05:34,280 --> 00:05:41,060
+So whenever the user navigates to another route, for example, like our home, then this will communicate
+
+63
+00:05:41,060 --> 00:05:45,260
+to our backend servers that they need the HTML related to home.
+
+64
+00:05:45,740 --> 00:05:51,110
+So the server will start to generate using our react code, the actual HTML required.
+
+65
+00:05:51,710 --> 00:05:58,160
+And this is way more robust because our back and server is more powerful and it's capable of generating
+
+66
+00:05:58,160 --> 00:06:00,880
+it really quickly compared to our browser.
+
+67
+00:06:01,550 --> 00:06:07,640
+So you want to use next Jass when you need to build a really robust and large website that might end
+
+68
+00:06:07,640 --> 00:06:11,550
+up having really complex logic to build out your views.
+
+69
+00:06:12,050 --> 00:06:18,950
+Now, the main thing here to remember, though, is that next shapes and create react app are both dynamically
+
+70
+00:06:18,950 --> 00:06:27,050
+generated, meaning that we directly generate the HTML whenever the browser navigates two different
+
+71
+00:06:27,050 --> 00:06:27,700
+routes.
+
+72
+00:06:28,130 --> 00:06:36,150
+So this is all live generated, whereas something like Gatsby is what's called a static generated website.
+
+73
+00:06:36,770 --> 00:06:44,240
+So what this means is that all of the code that builds to the HTML pages that end up comprising our
+
+74
+00:06:44,240 --> 00:06:48,080
+application is all done at the build step.
+
+75
+00:06:48,080 --> 00:06:51,710
+So similar to when we run, build with create react app.
+
+76
+00:06:52,220 --> 00:07:00,380
+When we push our Gatsby code up to a server or up to a hosting platform of some kind, they will run
+
+77
+00:07:00,380 --> 00:07:07,820
+the build script, which will automatically generate all of the static HTML that our browsers end up
+
+78
+00:07:07,820 --> 00:07:15,020
+using in order to display the views, which means that none of this code is generated dynamically.
+
+79
+00:07:15,050 --> 00:07:20,200
+It's all generated way ahead of time when you push your code up onto your server.
+
+80
+00:07:20,960 --> 00:07:23,000
+So this is the main difference with Gatsby.
+
+81
+00:07:23,360 --> 00:07:28,550
+So it's really good when you want to build static websites that generally don't need to dynamically
+
+82
+00:07:28,550 --> 00:07:32,180
+change the views that often by doing so.
+
+83
+00:07:32,330 --> 00:07:39,500
+This is actually exactly what we need for a blog website where much of the actual content is already
+
+84
+00:07:39,500 --> 00:07:40,400
+predetermined.
+
+85
+00:07:40,520 --> 00:07:41,470
+It's already written.
+
+86
+00:07:41,720 --> 00:07:46,250
+So all we want to do is just display a bunch of blog posts and navigate between them.
+
+87
+00:07:46,760 --> 00:07:48,840
+And Gatsby is the perfect solution for that.
+
+88
+00:07:49,220 --> 00:07:53,540
+So in the next lesson, I'm going to teach you how we can get started with Gatsby.
+
+89
+00:07:53,960 --> 00:07:55,330
+So I'll see you in the next lesson.

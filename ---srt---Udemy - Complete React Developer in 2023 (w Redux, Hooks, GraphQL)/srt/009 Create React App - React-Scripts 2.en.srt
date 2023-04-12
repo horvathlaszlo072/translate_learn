@@ -1,0 +1,683 @@
+1
+00:00:00,330 --> 00:00:01,380
+Welcome back, everyone.
+
+2
+00:00:01,920 --> 00:00:06,990
+In the last video, we took a look at what files and folders got built for us by create racked up and
+
+3
+00:00:06,990 --> 00:00:10,530
+inside a package that Jason, we took a look at our start script.
+
+4
+00:00:10,920 --> 00:00:17,780
+We took a look at also the files related to setting up the initial project, which is the index such
+
+5
+00:00:17,790 --> 00:00:25,770
+as file and the index saw him offer and how react Dom at a high level helps us render out our application.
+
+6
+00:00:26,460 --> 00:00:32,790
+In this video, we are going to deep dive into the three remaining scripts inside of React and what
+
+7
+00:00:32,790 --> 00:00:37,080
+we're going to do, as well as we will take a look at some of these other files and how they relate
+
+8
+00:00:37,080 --> 00:00:38,130
+to these scripts.
+
+9
+00:00:39,350 --> 00:00:46,340
+So diving into the next one, which is built, what is built, so right now, what I want you to understand
+
+10
+00:00:46,340 --> 00:00:54,830
+is that when we ran script start, this is just taking our application code and pushing it directly
+
+11
+00:00:55,130 --> 00:00:58,160
+through our local ports of three thousand.
+
+12
+00:00:58,160 --> 00:01:01,730
+So on our computer and our browser is just accessing it directly.
+
+13
+00:01:01,820 --> 00:01:07,190
+It doesn't have to go through our network, which is our Wi-Fi or internet connection or anything like
+
+14
+00:01:07,190 --> 00:01:10,730
+that in order to get the related files in order to run.
+
+15
+00:01:10,730 --> 00:01:12,380
+Our application doesn't need to.
+
+16
+00:01:12,380 --> 00:01:14,450
+It's all local on our computer.
+
+17
+00:01:14,780 --> 00:01:16,670
+So this is incredibly efficient and fast.
+
+18
+00:01:16,700 --> 00:01:19,400
+We don't even think about optimizing it at all.
+
+19
+00:01:20,030 --> 00:01:27,590
+But when we're actually hosting our application live somewhere so that anybody can access our website,
+
+20
+00:01:28,370 --> 00:01:30,550
+they need to leverage their internet connection.
+
+21
+00:01:30,560 --> 00:01:34,370
+And as we know, internet connection varies and it can be very slow.
+
+22
+00:01:34,760 --> 00:01:41,180
+So what needs to happen is our code needs to be much more optimized so that it's as small and efficiently
+
+23
+00:01:41,180 --> 00:01:42,230
+served as possible.
+
+24
+00:01:42,680 --> 00:01:44,600
+And that's really what this build step does.
+
+25
+00:01:45,050 --> 00:01:51,680
+So going back to our terminal, if we do something like we call yarn or npm, whichever one you prefer
+
+26
+00:01:51,680 --> 00:01:58,700
+once again and we call build, what will happen is that react scripts will actually generate an optimal
+
+27
+00:01:58,700 --> 00:02:01,670
+build for us, an optimal build folder.
+
+28
+00:02:02,390 --> 00:02:06,350
+And what this is doing is it is taking all of this code that we have.
+
+29
+00:02:06,770 --> 00:02:11,660
+So all of these separate files and all of these different JavaScript and CSC files.
+
+30
+00:02:11,930 --> 00:02:19,610
+And what it will do is it'll actually group it all into one file for each related J.S. CSC indexation
+
+31
+00:02:19,610 --> 00:02:22,550
+HTML, and it will make it as optimal as possible.
+
+32
+00:02:22,760 --> 00:02:26,090
+And it will put it all inside of a new folder right here called built.
+
+33
+00:02:26,570 --> 00:02:31,520
+So if you go into this, what you'll see is that there's our index sort of alpha again.
+
+34
+00:02:32,150 --> 00:02:35,560
+But inside of here you see that it's a very condensed.
+
+35
+00:02:35,570 --> 00:02:40,800
+And what you'll notice is that in here is all of the code related to our application.
+
+36
+00:02:41,270 --> 00:02:46,520
+You'll see that there's all this like really funky looking JavaScript code, and it's really tight and
+
+37
+00:02:46,700 --> 00:02:47,990
+it's just using these.
+
+38
+00:02:49,020 --> 00:02:51,030
+Very reduced variable names.
+
+39
+00:02:51,180 --> 00:02:58,350
+And the reason for this is because it's trying to create the most optimal low memory version of our
+
+40
+00:02:58,350 --> 00:02:59,820
+application as possible.
+
+41
+00:03:00,240 --> 00:03:01,830
+So that's really what's happening here.
+
+42
+00:03:02,070 --> 00:03:06,120
+It's taking all of these files that we have all these potential JavaScript files that we're going to
+
+43
+00:03:06,120 --> 00:03:07,470
+write throughout this course.
+
+44
+00:03:07,800 --> 00:03:13,500
+And it's just condensing it down into the fastest version that can be sent over an internet connection
+
+45
+00:03:13,500 --> 00:03:14,850
+for a browser to consume.
+
+46
+00:03:15,270 --> 00:03:18,180
+So that's really all this build is doing for us.
+
+47
+00:03:20,060 --> 00:03:26,630
+So going back to our package that, Jason, we want to look at test, so testing, we're going to cover
+
+48
+00:03:26,630 --> 00:03:29,250
+extensively later in the course at a high level.
+
+49
+00:03:29,270 --> 00:03:34,110
+All you need to know is that tests are just ways for us to make sure that the code that we write for
+
+50
+00:03:34,110 --> 00:03:36,890
+a React application does what we expected to.
+
+51
+00:03:37,370 --> 00:03:40,250
+Inside, you'll see that there is a aptaker test file.
+
+52
+00:03:40,610 --> 00:03:41,510
+Don't look at the concept.
+
+53
+00:03:41,510 --> 00:03:43,430
+For now, this is not as important right now.
+
+54
+00:03:43,820 --> 00:03:49,760
+But essentially what it is is that it's a test file that is trying to test something in specific.
+
+55
+00:03:50,240 --> 00:03:53,220
+In this particular case, it's testing the app file.
+
+56
+00:03:53,240 --> 00:03:57,140
+We haven't looked at these yet, but all you need to know at a high level is that this test is related
+
+57
+00:03:57,140 --> 00:04:01,790
+to this file, and it's just making sure that this file's code does what we expect it to.
+
+58
+00:04:02,630 --> 00:04:09,230
+So when you run rec scripts test, it's going to try and test your code and they'll tell you whether
+
+59
+00:04:09,230 --> 00:04:12,380
+or not your code is doing what you expected to do, according to the test.
+
+60
+00:04:12,740 --> 00:04:14,720
+If it doesn't, it will break and fail.
+
+61
+00:04:15,200 --> 00:04:17,160
+And again, we're going to talk about testing much later.
+
+62
+00:04:17,180 --> 00:04:20,420
+I don't want to bog you down into the details of it right now, but just understand that's what this
+
+63
+00:04:20,420 --> 00:04:20,660
+does.
+
+64
+00:04:22,000 --> 00:04:24,340
+Now, finally, let's talk about Eject.
+
+65
+00:04:25,470 --> 00:04:30,330
+To talk about object, we have to get a deeper understanding of actually what happens in the build.
+
+66
+00:04:31,410 --> 00:04:37,800
+So one thing I want you to think about is that when it comes to a browser, right now, I'm using Chrome,
+
+67
+00:04:38,130 --> 00:04:40,460
+but there's actually numerous different browsers.
+
+68
+00:04:40,470 --> 00:04:46,740
+There's Safari, there is Internet Explorer, there's Edge, there's opera, there's probably some other
+
+69
+00:04:46,740 --> 00:04:47,220
+browsers.
+
+70
+00:04:47,850 --> 00:04:50,970
+Each browser is implemented a little differently.
+
+71
+00:04:51,000 --> 00:04:52,650
+That's why there are different browsers.
+
+72
+00:04:52,800 --> 00:04:59,520
+What this means is that they consume the HMO, CIUSSS and JavaScript files in their own way under the
+
+73
+00:04:59,520 --> 00:04:59,760
+hood.
+
+74
+00:05:00,910 --> 00:05:06,790
+This code that we're writing, which is React code, is not necessarily code that every browser can
+
+75
+00:05:06,790 --> 00:05:07,360
+understand.
+
+76
+00:05:07,390 --> 00:05:13,120
+A lot of the times this is some interesting funky syntax which will deep dive into once we go throughout
+
+77
+00:05:13,120 --> 00:05:13,570
+the course.
+
+78
+00:05:14,140 --> 00:05:16,320
+That is already kind of hard for us to understand.
+
+79
+00:05:16,330 --> 00:05:18,550
+We have to understand how it works in order to write this code.
+
+80
+00:05:18,880 --> 00:05:21,130
+The browser definitely doesn't understand.
+
+81
+00:05:21,490 --> 00:05:26,500
+Oftentimes, the browser understands a older version of JavaScript syntax only.
+
+82
+00:05:27,220 --> 00:05:34,480
+So what's happening is that in this bill process, there is actually two libraries being used or two
+
+83
+00:05:34,480 --> 00:05:36,670
+packages to helpers, essentially.
+
+84
+00:05:37,090 --> 00:05:41,470
+One is called Babbel and the other is called Webpack.
+
+85
+00:05:42,160 --> 00:05:47,260
+Where Babbel does is it takes all of this react code that we've written all this react funky javascript,
+
+86
+00:05:47,440 --> 00:05:53,230
+and it actually condenses it down into this JavaScript that these browsers can understand.
+
+87
+00:05:53,590 --> 00:05:59,170
+If you look at it, it's very basic JavaScript, very, very old school JavaScript, none of the new
+
+88
+00:05:59,170 --> 00:06:01,780
+syntax that you and I are used to writing with.
+
+89
+00:06:02,800 --> 00:06:07,420
+So the reason for this is because, again, all of these browsers, all these different browsers can
+
+90
+00:06:07,450 --> 00:06:13,120
+understand probably a very basic version of JavaScript and Babbel is just making sure that all of our
+
+91
+00:06:13,120 --> 00:06:18,280
+code gets built into a version that can be understood by these browsers.
+
+92
+00:06:19,000 --> 00:06:21,220
+So I mentioned there were two main helpers.
+
+93
+00:06:21,320 --> 00:06:23,350
+There's Babbel and there's Webpack.
+
+94
+00:06:23,800 --> 00:06:25,030
+What is Webpack?
+
+95
+00:06:25,510 --> 00:06:29,320
+Well, Webpack is actually something that makes our code a little bit more efficient.
+
+96
+00:06:29,890 --> 00:06:35,350
+So inside of here, this index, at each level, there is some JavaScript that is focused on actually
+
+97
+00:06:35,350 --> 00:06:38,620
+pulling the primary JavaScript files.
+
+98
+00:06:39,310 --> 00:06:44,590
+So inside of the static folder, inside a build, you'll see there's a C folder as a jazz folder.
+
+99
+00:06:45,720 --> 00:06:51,150
+Inside of this jazz folder is all the different chunks you'll notice that they're all end in this Dutch
+
+100
+00:06:51,150 --> 00:06:59,880
+chunk, a chunk is essentially a contained portion of JavaScript code that is working together to actually
+
+101
+00:06:59,880 --> 00:07:01,590
+represent a part of our application.
+
+102
+00:07:02,640 --> 00:07:08,010
+What it's doing is that Webpack is saying, hey, sometimes let's say our application, we wrote a massive,
+
+103
+00:07:08,010 --> 00:07:09,000
+massive web page.
+
+104
+00:07:09,570 --> 00:07:14,820
+There's a lot of different JavaScript files that, even when reduced, can only be reduced so far.
+
+105
+00:07:15,360 --> 00:07:17,590
+So what Webpack says is, OK, actually, you know what?
+
+106
+00:07:17,610 --> 00:07:23,850
+Let me break these into chunks so that when the user is trying to access the home page, he just gets
+
+107
+00:07:23,850 --> 00:07:25,440
+the JavaScript related to the home page.
+
+108
+00:07:25,740 --> 00:07:31,860
+If he wants to navigate to like another page, then I'm going to turn that other page into a new chunk
+
+109
+00:07:31,980 --> 00:07:33,990
+and then send it to them when they need it.
+
+110
+00:07:34,320 --> 00:07:40,020
+So web hack is essentially modular, rising AKA module being a chunk, that's a good way to think about
+
+111
+00:07:40,020 --> 00:07:40,110
+it.
+
+112
+00:07:40,500 --> 00:07:41,610
+So that's really what Webpack does.
+
+113
+00:07:41,610 --> 00:07:43,620
+Is it saying, Oh, your JavaScript really big?
+
+114
+00:07:43,800 --> 00:07:49,530
+I'm going to make sure that I optimize it and break it into the self-contained portions of it so that
+
+115
+00:07:49,530 --> 00:07:54,840
+when the user is trying to access one part of it, it only gets the relevant JavaScript for that part.
+
+116
+00:07:54,900 --> 00:07:57,480
+It's not going to get all of it, and that's all Webpack is doing.
+
+117
+00:07:57,840 --> 00:08:05,190
+So essentially, what Build is doing is it's leveraging Babbel and Webpack in order for it to properly
+
+118
+00:08:05,190 --> 00:08:11,370
+optimize for these browsers, as well as for the speed so that we send down all the appropriate chunks
+
+119
+00:08:11,370 --> 00:08:12,450
+when the user needs them.
+
+120
+00:08:12,810 --> 00:08:13,590
+That's what it's doing.
+
+121
+00:08:14,100 --> 00:08:20,940
+So how does this relate to what I was talking about, which is eject well again, web hacking Babbel
+
+122
+00:08:20,940 --> 00:08:21,680
+are tools.
+
+123
+00:08:21,690 --> 00:08:26,190
+That means that you can modify them so that they follow some specific rules that you want to create.
+
+124
+00:08:26,190 --> 00:08:28,830
+React app is just saying, Hey, I've already optimized that for you.
+
+125
+00:08:29,130 --> 00:08:35,790
+I'm optimizing telling babble and telling Webpack what to do if you want to modify it for your project
+
+126
+00:08:35,790 --> 00:08:38,440
+needs and concerns you can inject.
+
+127
+00:08:38,460 --> 00:08:46,680
+And what that will do is it will spit out the files that are related to actually showing you what Babbel
+
+128
+00:08:46,680 --> 00:08:49,200
+and Webpack do, so you can modify them to do what you want.
+
+129
+00:08:49,440 --> 00:08:53,400
+And actually, Andre's going to break that down in the next video and actually tell you why you shouldn't
+
+130
+00:08:53,400 --> 00:08:53,790
+eject.
+
+131
+00:08:53,790 --> 00:08:57,240
+Because honestly, Facebooks are really optimized team for this kind of stuff.
+
+132
+00:08:57,240 --> 00:09:02,160
+And they've written extensively and they've tested extensively the best configuration for Webpack and
+
+133
+00:09:02,160 --> 00:09:03,690
+Babel for most cases.
+
+134
+00:09:03,990 --> 00:09:09,450
+Chances are, you might actually work on a project that does need you to eject because of some funky
+
+135
+00:09:09,450 --> 00:09:11,370
+work requirement based on your project.
+
+136
+00:09:11,880 --> 00:09:16,080
+But most of the time, especially for us learning react, we definitely don't need to eject.
+
+137
+00:09:16,320 --> 00:09:17,820
+But that's really what's happening here.
+
+138
+00:09:18,880 --> 00:09:24,160
+Now, before we break down some of the core portions of the actual real code, I want to take a look
+
+139
+00:09:24,160 --> 00:09:27,730
+at a couple other of the more minor files that we got generated.
+
+140
+00:09:28,360 --> 00:09:33,400
+There is this set up tests that jazz, which is related to the actual tests themselves.
+
+141
+00:09:33,430 --> 00:09:37,780
+It's just a file that really just imports the specific testing library.
+
+142
+00:09:38,110 --> 00:09:41,010
+And that testing library will dive deeper later.
+
+143
+00:09:41,020 --> 00:09:41,980
+So don't worry about this one.
+
+144
+00:09:43,300 --> 00:09:46,030
+Inside of our public, there is a favicon.
+
+145
+00:09:46,450 --> 00:09:51,760
+So this favicon is really just this icon right here in the tab of your browser.
+
+146
+00:09:52,000 --> 00:09:53,350
+That's just what that icon is.
+
+147
+00:09:54,040 --> 00:10:00,270
+We also get these logos of these different sizes, and these logos are more so related to this manifest
+
+148
+00:10:00,280 --> 00:10:01,210
+dot JSON file.
+
+149
+00:10:01,810 --> 00:10:07,600
+The manifest, not JSON file, is a way for us to actually be progressive, web app compliant and all.
+
+150
+00:10:07,600 --> 00:10:13,960
+This means progressive web app is that some people want to be able to download your web application
+
+151
+00:10:14,500 --> 00:10:17,740
+onto their desktop so that they can access that offline.
+
+152
+00:10:18,250 --> 00:10:23,800
+It's essentially a way for somebody to use your application, not through the browser.
+
+153
+00:10:24,460 --> 00:10:32,410
+So essentially, with these logos, you can create this little icon of your choice, which is what these
+
+154
+00:10:32,410 --> 00:10:35,920
+logos will be inside of.
+
+155
+00:10:36,100 --> 00:10:41,740
+This contain progressive web app application that they download from the website onto their desktop.
+
+156
+00:10:42,370 --> 00:10:47,530
+And then that logo is what they double click to actually open your progressive web app version of your
+
+157
+00:10:47,530 --> 00:10:47,950
+website.
+
+158
+00:10:48,280 --> 00:10:52,630
+If that seems confusing, don't worry, we're going to go through how that all works later much later
+
+159
+00:10:52,630 --> 00:10:55,300
+in the course, but just understand that this is doing that for us.
+
+160
+00:10:55,690 --> 00:11:00,970
+And then there's also this Robux that text file and this file is just telling essentially web scrapers,
+
+161
+00:11:00,970 --> 00:11:02,440
+which is so related.
+
+162
+00:11:02,440 --> 00:11:07,510
+So like Google, for example, when they determine whether they need to rank your web site higher or
+
+163
+00:11:07,510 --> 00:11:14,230
+lower, it crawls your website with their own kind of like code crawlers and this robots.
+
+164
+00:11:14,230 --> 00:11:16,570
+That is just a way to help explain what that is.
+
+165
+00:11:16,960 --> 00:11:20,740
+This one you don't have to really worry about as far as you're building web application goes, but just
+
+166
+00:11:20,740 --> 00:11:22,120
+understand that it's generated for you.
+
+167
+00:11:23,210 --> 00:11:28,430
+So now that we understand the majority of some of the lesser important files that are all generated
+
+168
+00:11:28,430 --> 00:11:37,160
+for us, we are going to dive into what the main bulk of the actual code created for us by crate racked
+
+169
+00:11:37,160 --> 00:11:39,590
+up and relates to react code is related.
+
+170
+00:11:39,750 --> 00:11:41,120
+And we're going to do that in the next video.
+
+171
+00:11:41,390 --> 00:11:43,160
+So I'll see you in the next video.

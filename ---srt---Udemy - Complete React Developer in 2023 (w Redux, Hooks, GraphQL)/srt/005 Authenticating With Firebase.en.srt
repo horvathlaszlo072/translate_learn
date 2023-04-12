@@ -1,0 +1,871 @@
+1
+00:00:00,860 --> 00:00:01,910
+Welcome back, everyone.
+
+2
+00:00:02,940 --> 00:00:06,390
+So let's pull down Firebase indoor application.
+
+3
+00:00:07,200 --> 00:00:12,270
+The first thing, though, I want you to think about is the fact that we are going to be interacting
+
+4
+00:00:12,270 --> 00:00:14,430
+with this new API.
+
+5
+00:00:14,910 --> 00:00:17,940
+The API in this particular case is going to be Firebase.
+
+6
+00:00:18,480 --> 00:00:21,180
+Now Firebase has a very particular way of doing things.
+
+7
+00:00:21,510 --> 00:00:26,820
+So what we want to do is think about how we can abstract out this as best as we can.
+
+8
+00:00:27,390 --> 00:00:33,240
+And generally speaking, the easiest way you can do this is try and keep anything that you write when
+
+9
+00:00:33,240 --> 00:00:39,840
+it comes to interfacing with some kind of backend API that might have some particular nuances to it
+
+10
+00:00:40,080 --> 00:00:44,880
+inside of its own folder and inside of its own file in that folder.
+
+11
+00:00:45,240 --> 00:00:48,360
+So in this particular case, what I might do is inside of source.
+
+12
+00:00:48,360 --> 00:00:51,180
+I want to make a new folder and I'm going to call it utils.
+
+13
+00:00:51,600 --> 00:00:54,210
+This is going to contain utility files.
+
+14
+00:00:54,570 --> 00:00:58,050
+And the one that I want to make is a Firebase utility file.
+
+15
+00:00:58,060 --> 00:01:03,300
+So I'm going to make a Firebase folder and inside a firebase, I'm going to make Firebase dart utils,
+
+16
+00:01:03,300 --> 00:01:04,080
+duchess.
+
+17
+00:01:05,230 --> 00:01:11,860
+So here this is just JavaScript, we're most likely not going to return any GSX from this because this
+
+18
+00:01:11,860 --> 00:01:14,590
+library is just for using Firebase.
+
+19
+00:01:15,010 --> 00:01:18,550
+I'm going to link you the docs to Firebase as we do this so that you can follow along.
+
+20
+00:01:18,700 --> 00:01:19,840
+But I'm not going to lie to you.
+
+21
+00:01:19,840 --> 00:01:23,680
+Firebase documentation is kind of hard to read.
+
+22
+00:01:24,130 --> 00:01:25,330
+It's very technical.
+
+23
+00:01:25,330 --> 00:01:31,240
+As per all of Google's documentation, I actually find Google to write a little bit of confusing documentation,
+
+24
+00:01:31,240 --> 00:01:35,140
+sometimes very thorough, but sometimes a little bit hard to get started with.
+
+25
+00:01:35,970 --> 00:01:37,470
+But essentially what we're going to do.
+
+26
+00:01:38,660 --> 00:01:45,560
+Is inside of this utility folder set up everything we need to get started, so in order for you to use
+
+27
+00:01:45,560 --> 00:01:49,700
+Firebase, you actually need to import from Firebase.
+
+28
+00:01:51,560 --> 00:01:55,130
+And then slash, what is that you want to pull in?
+
+29
+00:01:55,610 --> 00:01:58,340
+So Firebase, as I mentioned, is a suite of tools.
+
+30
+00:01:58,580 --> 00:02:00,950
+Firestar is one of the tools inside.
+
+31
+00:02:01,400 --> 00:02:06,830
+So this suite, though, you bring down from the library as a thing called the app.
+
+32
+00:02:07,040 --> 00:02:11,600
+So this kind of captures all of the things required to get Firebase running, including of its internal
+
+33
+00:02:11,600 --> 00:02:12,200
+services.
+
+34
+00:02:12,860 --> 00:02:16,460
+So in order for you to get it, you need the Initialize app function.
+
+35
+00:02:16,760 --> 00:02:24,230
+This initialize app function creates an app instance for you based off of some type of config, which
+
+36
+00:02:24,230 --> 00:02:25,730
+we'll talk about right now.
+
+37
+00:02:26,420 --> 00:02:34,610
+This config is an object that allows us to attach this Firebase app instance to that instance that we
+
+38
+00:02:34,610 --> 00:02:37,400
+have online, because right now we have the library installed.
+
+39
+00:02:37,580 --> 00:02:43,220
+But there's no way of us telling Firebase, Oh, this instance that you're using should be referring
+
+40
+00:02:43,220 --> 00:02:46,400
+to the one that you have created inside of Firebase console.
+
+41
+00:02:46,760 --> 00:02:48,320
+Specifically, this one right here.
+
+42
+00:02:48,830 --> 00:02:49,850
+So how do we do this?
+
+43
+00:02:50,360 --> 00:02:56,150
+Well, what you want to do is inside of the home page, you want to click this little part here that
+
+44
+00:02:56,150 --> 00:03:00,320
+says Web, because there's different ways that you can add your application to Firebase.
+
+45
+00:03:00,560 --> 00:03:02,480
+So Firebase needs you to confirm how to do it.
+
+46
+00:03:02,990 --> 00:03:08,450
+Now what we're want to register is a web app, so I'm just going to call this Crown Clothing Web app
+
+47
+00:03:08,450 --> 00:03:09,340
+because I know our building.
+
+48
+00:03:09,350 --> 00:03:10,550
+It's our React Web app.
+
+49
+00:03:11,300 --> 00:03:12,380
+We don't do hosting it.
+
+50
+00:03:12,590 --> 00:03:13,460
+It doesn't even matter.
+
+51
+00:03:14,060 --> 00:03:16,400
+But here now, just click Register app.
+
+52
+00:03:17,330 --> 00:03:21,500
+And what this will do now is it will generate for us a package.
+
+53
+00:03:22,040 --> 00:03:25,220
+So these are disruptions as you see npm install Firebase.
+
+54
+00:03:25,370 --> 00:03:26,060
+We've already done it.
+
+55
+00:03:26,330 --> 00:03:29,270
+We have yard installed Firebase into our application.
+
+56
+00:03:29,840 --> 00:03:33,230
+What we really want, though, is this Firebase config.
+
+57
+00:03:33,740 --> 00:03:35,420
+So I want you to copy this over.
+
+58
+00:03:35,600 --> 00:03:39,740
+And even if you look this line, copy this over to because we're going to do it because we already imported
+
+59
+00:03:39,740 --> 00:03:40,640
+the Initialize app.
+
+60
+00:03:41,920 --> 00:03:43,990
+So here when you paste this in.
+
+61
+00:03:45,260 --> 00:03:50,310
+You end up passing this to the Initialise app function that we get from Firebase app.
+
+62
+00:03:50,840 --> 00:03:58,000
+What this config does is it identifies this SDK, which is essentially a developer kit that we're using.
+
+63
+00:03:58,010 --> 00:04:04,670
+So the library itself, this library is just some JavaScript library that abstracts away some of the
+
+64
+00:04:04,670 --> 00:04:09,230
+functionality that we need to use in order to interact with our instance of Firebase.
+
+65
+00:04:09,500 --> 00:04:14,150
+So those crud actions I was telling you about creating, reading, updating, storing, authenticating
+
+66
+00:04:14,150 --> 00:04:19,940
+all of those things is going to happen using this Firebase app instance.
+
+67
+00:04:20,480 --> 00:04:24,680
+So here I'm going to make this more clear by saying and calling this Firebase app.
+
+68
+00:04:25,130 --> 00:04:26,960
+So initialize app takes the config.
+
+69
+00:04:27,440 --> 00:04:35,570
+It's like, Oh, this config tells me this is the specific crown clothing db instance, which is the
+
+70
+00:04:35,570 --> 00:04:39,440
+Firebase instance that we made a few videos ago.
+
+71
+00:04:40,430 --> 00:04:44,270
+Literally, this instance that we're looking at right here in the console right here.
+
+72
+00:04:44,510 --> 00:04:50,270
+This is the instance this unique identifier, as I mentioned before it, we see it actually right here.
+
+73
+00:04:50,300 --> 00:04:51,230
+This project idea.
+
+74
+00:04:52,010 --> 00:04:53,270
+Now if you're wondering.
+
+75
+00:04:53,930 --> 00:05:00,350
+Typically speaking with API keys, aren't we never supposed to expose our API keys while in Firebase?
+
+76
+00:05:00,350 --> 00:05:04,310
+Unfortunately or fortunately, this is not the same pattern.
+
+77
+00:05:04,610 --> 00:05:09,590
+Firebase needs this API key, and this is not some super secret API key that you've got to worry about.
+
+78
+00:05:10,250 --> 00:05:14,390
+This is actually also explicitly stated inside of their documentation, so don't worry about this,
+
+79
+00:05:14,390 --> 00:05:16,160
+but you need your own config.
+
+80
+00:05:16,730 --> 00:05:23,350
+Your own config is going to be able to allow you to make Firebase actions, create actions to save,
+
+81
+00:05:23,360 --> 00:05:28,790
+read update all those things to your own specific instance of Firebase.
+
+82
+00:05:29,690 --> 00:05:36,320
+So now that we have Firebase set up, the next thing we need to do is we need to actually set up the
+
+83
+00:05:36,320 --> 00:05:37,190
+authentication.
+
+84
+00:05:38,110 --> 00:05:45,220
+Now, as I mentioned in Firebase kind of includes a bunch of different library packages for us when
+
+85
+00:05:45,220 --> 00:05:46,220
+we install Firebase.
+
+86
+00:05:46,240 --> 00:05:50,440
+It wasn't just one library, it was a bunch of little micro libraries.
+
+87
+00:05:51,190 --> 00:05:57,430
+One of them is anything related to authentication and this is under Firebase slash auth.
+
+88
+00:05:58,840 --> 00:06:05,770
+So this is pretty much the off service and what we need from here is we need get off because just like
+
+89
+00:06:06,250 --> 00:06:09,430
+initialized app, we got to create a fourth instance as well.
+
+90
+00:06:10,330 --> 00:06:13,270
+We also need sign in with Redirect.
+
+91
+00:06:14,050 --> 00:06:15,970
+Now there's actually a couple.
+
+92
+00:06:16,120 --> 00:06:20,830
+So the sign in with Redirect and their sign in with pop up, let's take both because I want to talk
+
+93
+00:06:20,830 --> 00:06:21,250
+about both.
+
+94
+00:06:22,990 --> 00:06:25,330
+The other thing we need is also Google Auth provider.
+
+95
+00:06:25,780 --> 00:06:28,630
+So these are all namespace specifically from Firebase off.
+
+96
+00:06:29,050 --> 00:06:32,380
+It's using these that were able to create our Google sign in.
+
+97
+00:06:32,830 --> 00:06:37,480
+We can either sign in using a pop up or we can sign in by allowing our application to redirect and we'll
+
+98
+00:06:37,480 --> 00:06:38,140
+walk through both.
+
+99
+00:06:38,410 --> 00:06:40,900
+This is just very specific set up for Firebase.
+
+100
+00:06:41,590 --> 00:06:44,320
+You can find all this again inside of the docs that I'll link.
+
+101
+00:06:45,160 --> 00:06:52,060
+So in order to use this Google authentication, we need to first initialize a provider using this Google
+
+102
+00:06:52,090 --> 00:06:54,580
+Earth provider class that we received.
+
+103
+00:06:55,090 --> 00:07:01,060
+So here you want to call new Google Earth provider, which in turn will give you back this provider
+
+104
+00:07:01,060 --> 00:07:01,690
+instance.
+
+105
+00:07:02,380 --> 00:07:05,950
+Then we will want to do is we want to call set custom parameters.
+
+106
+00:07:06,490 --> 00:07:09,940
+So these custom parameters will take some kind of configuration object.
+
+107
+00:07:10,270 --> 00:07:15,880
+And with it, we can tell different ways that we want this Google Auth provider to behave.
+
+108
+00:07:16,480 --> 00:07:21,100
+So generally speaking, the main one that we want is really just prompt.
+
+109
+00:07:22,760 --> 00:07:26,000
+Which will be select underscore account.
+
+110
+00:07:26,810 --> 00:07:32,930
+So what this means is that every time somebody interacts with our provider, we want to always force
+
+111
+00:07:32,930 --> 00:07:34,520
+them to select an account.
+
+112
+00:07:34,790 --> 00:07:37,670
+I'll talk more about it once we've set it up and what this detail does.
+
+113
+00:07:37,970 --> 00:07:44,240
+So really, these custom parameters are primarily for Google authentication providers, which is specific
+
+114
+00:07:44,240 --> 00:07:45,770
+to Google's own interface.
+
+115
+00:07:46,070 --> 00:07:49,820
+Again, this is just some particular configuration that Google wants.
+
+116
+00:07:50,090 --> 00:07:55,550
+Really, this whole file that we're setting up is just unique to the different types of configuration
+
+117
+00:07:55,550 --> 00:07:57,950
+styles that Google in particular wants from us.
+
+118
+00:07:58,280 --> 00:08:02,000
+So there's not a lot of logic flow here to really learn at a high level.
+
+119
+00:08:02,030 --> 00:08:05,870
+You really just got to learn what they want for the tooling, and that tooling might change a little
+
+120
+00:08:05,870 --> 00:08:06,560
+bit here and there.
+
+121
+00:08:06,890 --> 00:08:09,500
+And honestly, that's really all there is to it.
+
+122
+00:08:10,190 --> 00:08:15,740
+The other thing we need to do is we need to export our authentication, which, as I mentioned, we
+
+123
+00:08:15,740 --> 00:08:17,030
+need to create the instance.
+
+124
+00:08:17,690 --> 00:08:20,480
+And then we also need to export out.
+
+125
+00:08:20,480 --> 00:08:24,080
+And now this sign in with pop up.
+
+126
+00:08:24,560 --> 00:08:28,670
+So here I want to call it, sign in with Google pop up.
+
+127
+00:08:29,950 --> 00:08:35,650
+And this is going to be equal to a anonymous function that's going to return.
+
+128
+00:08:35,860 --> 00:08:40,750
+So remember no squiggly brackets, we want a return sign in with pop up.
+
+129
+00:08:41,500 --> 00:08:45,250
+And what we want to pass to this is off and the provider.
+
+130
+00:08:45,940 --> 00:08:50,980
+So the provider instance that we created, as well as the fourth instance that we generated, we want
+
+131
+00:08:50,980 --> 00:08:53,350
+to pass both of these in to sign up with pop up.
+
+132
+00:08:53,920 --> 00:08:58,810
+Now here you might be wondering why is Auth just a function invocation without the new keyword, whereas
+
+133
+00:08:58,810 --> 00:09:00,130
+Google off provider is one?
+
+134
+00:09:00,640 --> 00:09:06,970
+So Google Auth provider is essentially a class that we get from Firebase authentication, and this is
+
+135
+00:09:06,970 --> 00:09:08,920
+connected to Google Auth itself.
+
+136
+00:09:09,310 --> 00:09:11,300
+We will Auth has many different implementations.
+
+137
+00:09:11,320 --> 00:09:13,450
+This is just Firebase Authentication Zone.
+
+138
+00:09:13,660 --> 00:09:19,030
+So this is a class and sometimes you want to generate multiple of these different providers because
+
+139
+00:09:19,240 --> 00:09:22,060
+you might have different provider instances doing different things.
+
+140
+00:09:22,300 --> 00:09:28,180
+For example, as we see with sign in with pop up provider, you pass it a provider, maybe for sign
+
+141
+00:09:28,180 --> 00:09:30,160
+in with a redirect, you pass a different provider.
+
+142
+00:09:30,430 --> 00:09:35,500
+These providers are kind of just instructions for this instance of provider, but you can have multiple
+
+143
+00:09:35,500 --> 00:09:38,320
+different providers authentication.
+
+144
+00:09:38,320 --> 00:09:43,390
+On the other hand, there's a singleton of meaning that the way your application authenticate and the
+
+145
+00:09:43,390 --> 00:09:49,420
+rules for authentication and the authentication that communicates with Firebase, this should always
+
+146
+00:09:49,420 --> 00:09:51,490
+be the same one for every application.
+
+147
+00:09:51,880 --> 00:09:55,230
+Why would you have different authentication services for what application?
+
+148
+00:09:55,240 --> 00:09:56,260
+That doesn't make sense, right?
+
+149
+00:09:56,500 --> 00:10:02,860
+Once you authenticate for this website as a whole, it should be held onto for the duration of the lifecycle
+
+150
+00:10:02,860 --> 00:10:03,970
+of this application.
+
+151
+00:10:04,300 --> 00:10:09,130
+You would not ever really need more than one authentication, whereas you might need multiple providers
+
+152
+00:10:09,310 --> 00:10:13,930
+because you might have different buttons that trigger different forms of even Google.
+
+153
+00:10:13,930 --> 00:10:14,950
+Sign in with pop up.
+
+154
+00:10:15,280 --> 00:10:18,640
+Maybe some of them prompt you to select an account, some of them don't.
+
+155
+00:10:18,820 --> 00:10:22,120
+You can imagine that there are different cases and use cases for these two.
+
+156
+00:10:22,870 --> 00:10:26,350
+But essentially, now that we have this set up what we want to do now.
+
+157
+00:10:27,560 --> 00:10:33,470
+Is we want to leverage this, so in order for us to actually use this well, we need to do is we need
+
+158
+00:10:33,470 --> 00:10:37,100
+to go back to our application and we need to go to Google console.
+
+159
+00:10:37,490 --> 00:10:43,160
+Now what you want to do is you want to go to this authentication tab on the left here and then in the
+
+160
+00:10:43,160 --> 00:10:45,110
+top here you want to go to sign in method.
+
+161
+00:10:46,030 --> 00:10:50,950
+Well, we want to do is we want to click the Google because we want to provide the ability to now sign
+
+162
+00:10:50,950 --> 00:10:51,550
+in with Google.
+
+163
+00:10:52,420 --> 00:10:55,270
+We don't need to worry about any of these other settings for now.
+
+164
+00:10:55,300 --> 00:10:58,300
+We'll talk about this domain one when it becomes important for now.
+
+165
+00:10:58,540 --> 00:11:03,490
+All you need to know is that localhost is authorized by default, meaning that this is a list of whatever
+
+166
+00:11:03,490 --> 00:11:07,090
+domains that we allowed our application to use.
+
+167
+00:11:07,090 --> 00:11:07,780
+Google sign it.
+
+168
+00:11:08,110 --> 00:11:11,740
+Now we're currently testing our local host, so this is by default enabled.
+
+169
+00:11:11,800 --> 00:11:12,400
+That's all we need.
+
+170
+00:11:12,430 --> 00:11:16,360
+We don't touch that up here, though we need to enable this signing.
+
+171
+00:11:16,810 --> 00:11:21,820
+And then for the project support email, just choose the email that you want to be the one that forwards
+
+172
+00:11:21,820 --> 00:11:26,500
+all the support emails for in terms of this authentication in this list.
+
+173
+00:11:26,860 --> 00:11:28,240
+So here this is my account.
+
+174
+00:11:28,570 --> 00:11:29,770
+And then you just hit save.
+
+175
+00:11:32,100 --> 00:11:33,060
+And that's all it takes.
+
+176
+00:11:33,570 --> 00:11:36,450
+Now you should be able to access, it's enabled.
+
+177
+00:11:37,230 --> 00:11:38,700
+So let's go back to our application.
+
+178
+00:11:39,450 --> 00:11:42,180
+We've set up this file, so now we actually need to use it.
+
+179
+00:11:42,780 --> 00:11:44,490
+So let's go into our sign and component.
+
+180
+00:11:45,020 --> 00:11:47,550
+We're going to do is we're going to import in.
+
+181
+00:11:48,720 --> 00:11:51,870
+From our Firebase utils.
+
+182
+00:11:52,590 --> 00:11:59,250
+So go to your utils folder, Firebase, Firebase utils, and we want to bring in our sign in with Google
+
+183
+00:11:59,250 --> 00:12:00,060
+pop up method.
+
+184
+00:12:01,270 --> 00:12:10,860
+What we're going to do is we are just going to create a log Google user, which is an asynchronous function.
+
+185
+00:12:11,870 --> 00:12:18,350
+Because remember, whenever you make a call to some database, this is going to be asynchronous.
+
+186
+00:12:19,040 --> 00:12:21,920
+So we want to get the value here.
+
+187
+00:12:22,880 --> 00:12:29,630
+By awaiting calling our sign in with Google pop up and then we just want to console Dot log the response.
+
+188
+00:12:30,650 --> 00:12:31,970
+And then down here.
+
+189
+00:12:32,960 --> 00:12:34,130
+We're going to make a button.
+
+190
+00:12:35,250 --> 00:12:38,970
+And inside this button, it's going to say sign in with Google pop up.
+
+191
+00:12:40,120 --> 00:12:46,300
+And then we're going to set the on click method so that it uses our log.
+
+192
+00:12:46,450 --> 00:12:48,040
+Google use our method.
+
+193
+00:12:48,730 --> 00:12:52,240
+So if we save this and now we go back to our application.
+
+194
+00:12:54,360 --> 00:12:59,670
+What we're going to do is we are now going to click this sign in with Google pop up method when we click
+
+195
+00:12:59,670 --> 00:13:05,880
+this notice that it opens up the Google pop up prompt, I clicked the email that I've got here.
+
+196
+00:13:06,790 --> 00:13:07,480
+And now.
+
+197
+00:13:08,690 --> 00:13:16,760
+We see we get back our user credential and inside of these objects, what you'll see is that under the
+
+198
+00:13:17,240 --> 00:13:19,520
+properties, you got the access token.
+
+199
+00:13:20,160 --> 00:13:25,640
+Remember earlier in the previous lesson when I showed you the diagram of how our application communicates
+
+200
+00:13:25,640 --> 00:13:27,500
+with Firebase, which communicates to Google?
+
+201
+00:13:27,680 --> 00:13:34,460
+And finally, the whole purpose is to get this access token using which we can then create credit requests.
+
+202
+00:13:34,820 --> 00:13:36,350
+This is that access token.
+
+203
+00:13:36,620 --> 00:13:41,450
+So just now, after we prompted the sign it it went through that flow that I justify to you.
+
+204
+00:13:41,660 --> 00:13:44,480
+And finally, Firebase is giving us back the access token.
+
+205
+00:13:44,690 --> 00:13:47,300
+So now we're able to make our credit requests.
+
+206
+00:13:48,110 --> 00:13:54,890
+This is a lot of setup that we had to do for Firebase, both inside of our Firebase instance, but then
+
+207
+00:13:54,890 --> 00:13:56,980
+also inside our Firebase Utils file.
+
+208
+00:13:57,290 --> 00:14:00,440
+I know we jumped around and we spent a really long time doing this video.
+
+209
+00:14:00,830 --> 00:14:05,840
+This video is a really long lesson, but honestly, it's just to get through a lot of the setup, and
+
+210
+00:14:05,840 --> 00:14:08,120
+there's a lot of different configurations and different things.
+
+211
+00:14:08,120 --> 00:14:09,170
+We have to learn about this.
+
+212
+00:14:09,440 --> 00:14:11,210
+So thank you for sticking with me for this one.
+
+213
+00:14:11,540 --> 00:14:15,860
+But now we essentially have our sign in method pretty much set up.
+
+214
+00:14:16,310 --> 00:14:22,490
+So in the next video, we're going to learn about how we can leverage this in order to actually start
+
+215
+00:14:22,490 --> 00:14:24,290
+building in authentication.
+
+216
+00:14:24,530 --> 00:14:26,600
+Now we're also going to continue with Firebase.
+
+217
+00:14:27,170 --> 00:14:33,440
+So join me in the next lesson where we'll move on from understanding what to do now with this authenticated
+
+218
+00:14:33,440 --> 00:14:33,770
+user.

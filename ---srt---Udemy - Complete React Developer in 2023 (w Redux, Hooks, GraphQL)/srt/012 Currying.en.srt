@@ -1,0 +1,203 @@
+1
+00:00:00,440 --> 00:00:02,090
+Let's talk about Kerrianne.
+
+2
+00:00:03,120 --> 00:00:11,820
+Now, currying is the technique of translating the evaluation of a function that takes multiple arguments.
+
+3
+00:00:12,970 --> 00:00:20,410
+Into evaluating a sequence of functions, each with a single argument, that sounds pretty confusing,
+
+4
+00:00:20,410 --> 00:00:20,800
+doesn't it?
+
+5
+00:00:21,610 --> 00:00:23,820
+Well, you can think of currying like this.
+
+6
+00:00:23,860 --> 00:00:31,900
+You take a function that can take multiple parameters and instead using, currying, modify it to a
+
+7
+00:00:31,900 --> 00:00:34,960
+function that takes one parameter at a time.
+
+8
+00:00:36,060 --> 00:00:43,500
+Let's have a look at an example, I can create a function, multiply in this, multiply takes A and
+
+9
+00:00:43,500 --> 00:00:55,290
+B as parameters, and we're just going to multiply A and B, if I do multiply three times four, I should
+
+10
+00:00:55,290 --> 00:00:57,300
+get 12, nice and easy.
+
+11
+00:00:58,420 --> 00:01:00,280
+How can we use couriering here?
+
+12
+00:01:01,340 --> 00:01:08,840
+Well, remember, we want to change the function from taking multiple parameters to taking a parameter
+
+13
+00:01:09,170 --> 00:01:09,770
+at a time.
+
+14
+00:01:11,150 --> 00:01:12,620
+We can do something like this.
+
+15
+00:01:12,860 --> 00:01:15,860
+I can say consed curried.
+
+16
+00:01:17,760 --> 00:01:18,420
+Multiply.
+
+17
+00:01:19,660 --> 00:01:27,610
+And we're going to take a parameter which is going to return another function that takes another parameter
+
+18
+00:01:28,270 --> 00:01:32,560
+and that is going to multiply A times B.
+
+19
+00:01:33,680 --> 00:01:40,130
+Because of closures, we have access inside of the B function to the variable.
+
+20
+00:01:42,370 --> 00:01:44,710
+Oh, and make sure I say consed here.
+
+21
+00:01:44,860 --> 00:01:45,400
+There you go.
+
+22
+00:01:45,730 --> 00:01:47,240
+Now, how can we use this.
+
+23
+00:01:47,830 --> 00:01:50,950
+Well I can now say curried.
+
+24
+00:01:52,780 --> 00:01:57,280
+Multiply four or less, do five times three.
+
+25
+00:01:58,970 --> 00:02:04,820
+If I run this well, no, that doesn't work, remember, because this is crude, it takes one parameter
+
+26
+00:02:04,820 --> 00:02:05,330
+at a time.
+
+27
+00:02:05,870 --> 00:02:08,420
+So instead I'm going to create five.
+
+28
+00:02:09,590 --> 00:02:13,190
+Which is going to give us the first variable.
+
+29
+00:02:14,270 --> 00:02:20,300
+And the way that I like to look at Arrow functions is that I can mimic how the function is written in
+
+30
+00:02:20,300 --> 00:02:21,570
+the way that I call the function.
+
+31
+00:02:21,590 --> 00:02:28,490
+So I see two brackets here with A and B. So I can call it with A and B. So if I do three here and run,
+
+32
+00:02:28,970 --> 00:02:29,600
+there you go.
+
+33
+00:02:29,660 --> 00:02:30,430
+I get 15.
+
+34
+00:02:31,220 --> 00:02:34,790
+So I'm giving the function one parameter at a time.
+
+35
+00:02:36,000 --> 00:02:37,770
+But why is this useful?
+
+36
+00:02:38,610 --> 00:02:48,060
+I can now create multiple utility functions out of this, for example, I can say const covid multiply
+
+37
+00:02:48,900 --> 00:02:50,190
+by five.
+
+38
+00:02:51,230 --> 00:03:00,470
+Which is going to equal this could multiply with the parameter of five so that now I've called this
+
+39
+00:03:00,470 --> 00:03:08,750
+function once and this function for the rest of its time, or at least this function is going to remember
+
+40
+00:03:08,780 --> 00:03:16,910
+this piece of data five, four well, forever until we finish running the program so that let's say
+
+41
+00:03:16,910 --> 00:03:23,770
+10 years from now, we finally remember, oh, we have this crude multiplied by five function.
+
+42
+00:03:24,290 --> 00:03:32,600
+I can use the multiply by five function and multiply anything that we want by five, let's say four.
+
+43
+00:03:33,020 --> 00:03:35,870
+If I run this I get twenty.
+
+44
+00:03:36,680 --> 00:03:43,700
+And instead of running this function over and over, I've run it once and now this covid multiply by
+
+45
+00:03:43,700 --> 00:03:45,810
+five is there for us to use.
+
+46
+00:03:46,190 --> 00:03:54,710
+So if it's a function that gets called many, many times, we only run this part of the function once,
+
+47
+00:03:55,100 --> 00:03:57,140
+which is really, really cool.
+
+48
+00:03:58,200 --> 00:04:06,930
+Encouraging almost reminds you of those methods, right, on prototypes that were shared amongst objects
+
+49
+00:04:07,290 --> 00:04:13,140
+they're trying to save on memory or at least the amount that our computers has to work.
+
+50
+00:04:14,190 --> 00:04:20,490
+Now that we have seen occurring, let's go to the next topic that gets often confused with Currey.
+
+51
+00:04:21,240 --> 00:04:22,950
+I'll see in the next one, Bobby.

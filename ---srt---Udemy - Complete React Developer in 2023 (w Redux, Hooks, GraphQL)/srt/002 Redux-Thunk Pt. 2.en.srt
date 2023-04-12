@@ -1,0 +1,395 @@
+1
+00:00:00,620 --> 00:00:01,460
+Welcome back, everyone.
+
+2
+00:00:02,210 --> 00:00:07,910
+So let's leverage our start success and fail option types inside of our category actions.
+
+3
+00:00:08,780 --> 00:00:14,450
+So what we need to do is we need to first create these three new actions.
+
+4
+00:00:14,990 --> 00:00:18,990
+So, first of all, one is going to be fetch categories start.
+
+5
+00:00:19,610 --> 00:00:25,970
+And as you guessed it, this is just going to be the action, of course, that tells our application
+
+6
+00:00:25,970 --> 00:00:32,150
+or rather our reading store that we are starting to fetch categories here.
+
+7
+00:00:32,160 --> 00:00:38,870
+What we're going to do is create an action and all we need to give it is the fact that this has the
+
+8
+00:00:38,870 --> 00:00:40,130
+type start.
+
+9
+00:00:40,490 --> 00:00:41,780
+There is no payload required.
+
+10
+00:00:42,440 --> 00:00:48,740
+Our reducer already knows that the moment we see this action, all we're going to do set loading to.
+
+11
+00:00:48,740 --> 00:00:49,070
+True.
+
+12
+00:00:49,190 --> 00:00:49,900
+That's all it is.
+
+13
+00:00:49,970 --> 00:00:50,660
+Nothing else.
+
+14
+00:00:51,710 --> 00:00:54,260
+So here that is our start action.
+
+15
+00:00:55,110 --> 00:00:59,130
+The next ones we need are going to be success and failure.
+
+16
+00:00:59,940 --> 00:01:01,800
+So let's define success first.
+
+17
+00:01:04,900 --> 00:01:12,550
+So here inside of success, this is pretty much going to be what we had here, except instead of categories,
+
+18
+00:01:12,940 --> 00:01:16,390
+we are triggering this action as the success action.
+
+19
+00:01:18,740 --> 00:01:23,150
+Similarly, the payload that we're going to pass to it is going to be the categories array, which is
+
+20
+00:01:23,150 --> 00:01:24,440
+what we want to send through.
+
+21
+00:01:25,540 --> 00:01:25,900
+Next.
+
+22
+00:01:25,900 --> 00:01:28,420
+What we need is fetch categories failed.
+
+23
+00:01:29,830 --> 00:01:33,220
+So if each category is failed, of course, we'll call the correct.
+
+24
+00:01:36,260 --> 00:01:39,770
+And then we're also going to pass error as the payload.
+
+25
+00:01:41,860 --> 00:01:44,290
+And now we have our three methods.
+
+26
+00:01:44,830 --> 00:01:51,370
+What we need to do is we need to now figure out how to create the thunk action that will trigger the
+
+27
+00:01:51,370 --> 00:01:53,800
+correspondingly correct actions.
+
+28
+00:01:54,370 --> 00:01:56,920
+So these three are synchronous and they're not even.
+
+29
+00:01:57,370 --> 00:01:58,660
+They're just regular actions.
+
+30
+00:01:59,110 --> 00:02:05,500
+A thunk is going to be a action that we say specifically fetched categories.
+
+31
+00:02:07,000 --> 00:02:08,440
+Async like this.
+
+32
+00:02:08,830 --> 00:02:10,170
+I like to call them async.
+
+33
+00:02:10,180 --> 00:02:17,170
+In fact, Redux also recommends that you declare your thunk actions with that last word async so that
+
+34
+00:02:17,170 --> 00:02:24,640
+we can look at this action creator function and know that it is indeed something that is asynchronous
+
+35
+00:02:24,640 --> 00:02:25,540
+and a thunk.
+
+36
+00:02:26,830 --> 00:02:33,670
+So as I mentioned, it's just a function that returns, a function that gets a dispatch.
+
+37
+00:02:34,480 --> 00:02:40,990
+This function can in fact be a async function, which is what we're going to use, because with this
+
+38
+00:02:40,990 --> 00:02:49,360
+async function, what we want to do is we want to be able to determine how we are fetching these categories,
+
+39
+00:02:49,690 --> 00:02:52,840
+what to do when it succeeds, and what to do when it fails.
+
+40
+00:02:53,620 --> 00:02:57,490
+Currently, we have this functionality inside of our shop component.
+
+41
+00:02:58,240 --> 00:03:04,090
+This is all we actually really need because this dispatch, instead of happening here now, we're going
+
+42
+00:03:04,090 --> 00:03:05,350
+to do it inside.
+
+43
+00:03:06,010 --> 00:03:11,110
+So first, let's bring in our get categories and documents.
+
+44
+00:03:18,200 --> 00:03:26,390
+And now what we're going to do is we are going to wrap this entire function inside of a tri catch block.
+
+45
+00:03:27,630 --> 00:03:34,770
+Because what we're saying is that, hey, I want you to try and run this asynchronous method.
+
+46
+00:03:35,460 --> 00:03:39,170
+If at any point inside it throws an error, which it will.
+
+47
+00:03:39,450 --> 00:03:47,070
+If are a wait call on get docs for some reason fails, then this async function is going to throw an
+
+48
+00:03:47,070 --> 00:03:48,570
+error which we will then catch.
+
+49
+00:03:49,500 --> 00:03:53,790
+So here this is pretty much our basic format to begin with.
+
+50
+00:03:53,820 --> 00:03:59,580
+The first thing that we're going to do is we are going to dispatch the fact that we started fetching
+
+51
+00:03:59,580 --> 00:04:00,360
+the categories.
+
+52
+00:04:00,780 --> 00:04:04,170
+So we're going to dispatch calling our action creator.
+
+53
+00:04:05,370 --> 00:04:06,480
+That's category start.
+
+54
+00:04:07,440 --> 00:04:13,800
+And then what happens is that inside, if we succeed from this awake call, then what we're going to
+
+55
+00:04:13,800 --> 00:04:22,110
+do is say fetch categories, success, and here what we're going to pass to it is the actual categories
+
+56
+00:04:22,110 --> 00:04:22,410
+array.
+
+57
+00:04:24,590 --> 00:04:32,060
+And then, of course, if we have an error, we will dispatch our fetch categories failed and pass the
+
+58
+00:04:32,060 --> 00:04:32,570
+error through.
+
+59
+00:04:33,470 --> 00:04:36,410
+I also forgot to wrap this in a dispatch as well.
+
+60
+00:04:39,370 --> 00:04:41,980
+So this is our new asynchronous function.
+
+61
+00:04:42,940 --> 00:04:44,200
+This is our thank.
+
+62
+00:04:45,090 --> 00:04:48,240
+So what I want to do is use this inside of the shop component.
+
+63
+00:04:48,510 --> 00:04:52,980
+So instead of calling set categories, I'm going to say fetch categories async.
+
+64
+00:04:53,940 --> 00:04:57,360
+And we're, of course, still going to dispatch this as our action crater.
+
+65
+00:04:57,840 --> 00:05:00,600
+But now we don't need this anymore.
+
+66
+00:05:00,690 --> 00:05:03,960
+In fact, this function isn't even asynchronous anymore.
+
+67
+00:05:04,920 --> 00:05:09,180
+It's just a regular dispatch that triggers the moment this component mounts.
+
+68
+00:05:11,470 --> 00:05:13,120
+And now if I save this.
+
+69
+00:05:14,230 --> 00:05:19,810
+Now, if we come back to our application here, we very clearly see that our action is being logged.
+
+70
+00:05:20,080 --> 00:05:21,520
+Now, of course, this is redux longer.
+
+71
+00:05:21,520 --> 00:05:24,460
+So there is no type to define because it's just a function.
+
+72
+00:05:25,090 --> 00:05:31,240
+So here, though, what we see is we are indeed dispatching this asynchronous action as a function.
+
+73
+00:05:32,050 --> 00:05:35,590
+And then further down we see, oh, there's our fetch category start.
+
+74
+00:05:36,160 --> 00:05:43,630
+And then right here, down here we see fetch category success payload is indeed are categories, items,
+
+75
+00:05:44,110 --> 00:05:48,280
+and then we see our categories gets updated with the correct array.
+
+76
+00:05:48,970 --> 00:05:56,530
+So this flow is the way that we now have hooked into our actual redux flow with a thunk.
+
+77
+00:05:56,950 --> 00:06:04,780
+And what we've really done is we have essentially moved out the synchronous and loading code into a
+
+78
+00:06:04,780 --> 00:06:05,710
+thunk instead.
+
+79
+00:06:06,310 --> 00:06:13,330
+This means that all of this asynchronous behavior of fetching is all handled by Redux now, because
+
+80
+00:06:13,330 --> 00:06:19,570
+through this thunk now, this shop component does not have any need to understand or maintain and balance
+
+81
+00:06:19,570 --> 00:06:24,310
+any async, await actions or any of the actual asynchronous coordination.
+
+82
+00:06:24,760 --> 00:06:26,830
+All of that is now just driven by an event.
+
+83
+00:06:26,980 --> 00:06:27,970
+All our component nodes.
+
+84
+00:06:27,970 --> 00:06:32,140
+Is that the moment I start, I'm just going to dispatch an event to say, Hey, start fetching something.
+
+85
+00:06:32,560 --> 00:06:37,330
+Whether or not it succeeds or fails is not governed by our actual component anymore.
+
+86
+00:06:37,600 --> 00:06:44,050
+That now all lives inside of this middleware, which is a very clean separation of logic, it allows
+
+87
+00:06:44,050 --> 00:06:49,720
+us to get even more granular an individual contribution of each of these different functions.
+
+88
+00:06:49,720 --> 00:06:53,530
+Now, because now this responsibility is no longer up to our component.
+
+89
+00:06:53,710 --> 00:07:00,610
+Our component simply consumes data and shows data here now inside of Redux is how we actually fetch
+
+90
+00:07:00,610 --> 00:07:01,150
+that data.
+
+91
+00:07:01,480 --> 00:07:08,890
+And this is why there's a very popular move towards bringing in a asynchronous Redux library like Redux.
+
+92
+00:07:08,890 --> 00:07:14,380
+Thunk When you get to a point where you want this action driven architecture and you want to separate
+
+93
+00:07:14,380 --> 00:07:19,600
+out this asynchronous behavior, it typically happens when your project scale is quite large and you
+
+94
+00:07:19,600 --> 00:07:24,790
+have a lot of asynchronous behavior happening in your application, and this is what we've just done.
+
+95
+00:07:24,910 --> 00:07:29,380
+We have moved out that category, fetching into this action creator.
+
+96
+00:07:30,730 --> 00:07:36,400
+So now that we've done this, the next thing we need to do is figure out how we can leverage the loading
+
+97
+00:07:36,790 --> 00:07:42,820
+value that is inside of our category reducer to make our code a little bit more user friendly.
+
+98
+00:07:43,360 --> 00:07:44,830
+So that's what we'll do in the next video.
+
+99
+00:07:45,010 --> 00:07:45,670
+So I'll see you there.

@@ -1,0 +1,615 @@
+1
+00:00:00,930 --> 00:00:06,810
+Now, I know that Create React app already comes with just and other testing tools pre-installed.
+
+2
+00:00:07,110 --> 00:00:13,170
+But I think it's important for us to understand how it works so that we can also build something like
+
+3
+00:00:13,170 --> 00:00:14,490
+Create React app ourselves.
+
+4
+00:00:14,820 --> 00:00:19,680
+So I'm going to start from scratch and set up a few testing examples for you.
+
+5
+00:00:21,370 --> 00:00:26,890
+Now, just here has great documentation once again with any library.
+
+6
+00:00:27,250 --> 00:00:30,970
+You go through their guide and they provide a lot of info.
+
+7
+00:00:31,270 --> 00:00:37,450
+So let's get started by installing just or first of all, let's create a project folder.
+
+8
+00:00:38,230 --> 00:00:45,910
+I'm going to create a project folder called Test, and we'll just go into that folder and run our usual
+
+9
+00:00:46,150 --> 00:00:47,210
+p.m. in it.
+
+10
+00:00:47,410 --> 00:00:50,140
+That's why to create an AMPM package.
+
+11
+00:00:51,040 --> 00:00:55,420
+And we also want to create a script dot just file.
+
+12
+00:00:57,760 --> 00:01:01,120
+And let's open that up and our favorite text editor.
+
+13
+00:01:02,280 --> 00:01:04,500
+Looking nice and pretty perfect.
+
+14
+00:01:04,890 --> 00:01:12,300
+Now let's look at package that Jason, and obviously the first step we want to do is run npm install
+
+15
+00:01:13,140 --> 00:01:13,560
+just.
+
+16
+00:01:17,630 --> 00:01:19,220
+And actually, let me cancel this.
+
+17
+00:01:19,490 --> 00:01:23,720
+Remember, that just is for development purposes.
+
+18
+00:01:23,960 --> 00:01:28,670
+We don't really need it as a dependency for our app.
+
+19
+00:01:29,450 --> 00:01:32,900
+So usually when you install just you want to do ampm install.
+
+20
+00:01:36,860 --> 00:01:39,590
+Dash Dash saved death.
+
+21
+00:01:41,830 --> 00:01:42,280
+Oops!
+
+22
+00:01:42,970 --> 00:01:48,370
+Let's try that again, just and remember that with the newer version of p.m..
+
+23
+00:01:49,650 --> 00:01:57,060
+When you do p.m. installed, just it assumes the Dash Dash save as a dev or as a dependency.
+
+24
+00:01:57,360 --> 00:01:59,490
+So that's why I didn't do the Dash Dash save here.
+
+25
+00:01:59,820 --> 00:02:04,140
+Now, while this is loading, let's go into our scripts.
+
+26
+00:02:06,060 --> 00:02:09,330
+And change this to the test command.
+
+27
+00:02:11,280 --> 00:02:14,790
+And all we need to do here is run.
+
+28
+00:02:15,060 --> 00:02:17,160
+Just once it's installed.
+
+29
+00:02:20,780 --> 00:02:26,270
+Not sure what happened here, it looks like a bit of a narrow let's just close this out and run it again.
+
+30
+00:02:26,810 --> 00:02:32,210
+Now while that's loading, let's go into our scripts file and think about what exercise we might want
+
+31
+00:02:32,210 --> 00:02:33,200
+to incorporate.
+
+32
+00:02:33,860 --> 00:02:41,810
+And I think having us incorporate a simple Google search functionality might be a fun little exercise.
+
+33
+00:02:41,990 --> 00:02:42,890
+So let's do that.
+
+34
+00:02:44,000 --> 00:02:45,620
+It looks like everything was added.
+
+35
+00:02:45,620 --> 00:02:49,520
+So let's just hit clear make this a little bit smaller.
+
+36
+00:02:50,420 --> 00:02:56,780
+And again, if we go to Pakistan JSON, we see that it's part of the dev dependencies, not the dependencies,
+
+37
+00:02:56,780 --> 00:02:57,650
+but dev.
+
+38
+00:02:57,710 --> 00:03:03,020
+Because we did because we did the dash dash that safe or dash safe dev.
+
+39
+00:03:04,380 --> 00:03:08,940
+And the script I just file, let's say that we're Google and we have a variable.
+
+40
+00:03:09,930 --> 00:03:16,320
+This is going to be a simplified version of their search algorithm, but the principles are going to
+
+41
+00:03:16,320 --> 00:03:16,860
+be the same.
+
+42
+00:03:17,730 --> 00:03:26,130
+So let's say that the Google database has an array of all the websites that they've indexed.
+
+43
+00:03:26,400 --> 00:03:29,160
+Let's say the first one is cats dot com.
+
+44
+00:03:29,820 --> 00:03:32,220
+Obviously, it's the internet, after all.
+
+45
+00:03:32,760 --> 00:03:38,140
+We also have soup recipes dot com.
+
+46
+00:03:39,150 --> 00:03:40,380
+Everybody loves soup.
+
+47
+00:03:40,740 --> 00:03:42,630
+We have flowers.
+
+48
+00:03:42,630 --> 00:03:43,260
+Dot com.
+
+49
+00:03:44,610 --> 00:03:50,700
+And let's just add one more will say that we also have animals dot com pretty basic web sites, and
+
+50
+00:03:50,700 --> 00:03:54,150
+these are all the website that Google can search for you.
+
+51
+00:03:54,630 --> 00:03:57,510
+Obviously, in real life, this list might be a little bit bigger.
+
+52
+00:04:00,300 --> 00:04:00,660
+All right.
+
+53
+00:04:00,900 --> 00:04:03,990
+So there is our Google database, and you know what?
+
+54
+00:04:04,680 --> 00:04:08,730
+While we're at it, just add a few more cat pictures dot.
+
+55
+00:04:10,480 --> 00:04:11,140
+And.
+
+56
+00:04:13,060 --> 00:04:16,180
+Maybe my favorite.
+
+57
+00:04:18,130 --> 00:04:18,580
+Cats.
+
+58
+00:04:22,270 --> 00:04:22,660
+All right.
+
+59
+00:04:22,840 --> 00:04:29,950
+And I've added these last two because, hmm, maybe if somebody searches for cats in the Google Chrome
+
+60
+00:04:29,950 --> 00:04:34,420
+browser, well, we might want to show them these three links.
+
+61
+00:04:34,840 --> 00:04:40,570
+Again, let's create a function and this will just be the Google search function.
+
+62
+00:04:43,250 --> 00:04:48,500
+And this function will take the search.
+
+63
+00:04:50,560 --> 00:04:51,070
+Input.
+
+64
+00:04:52,420 --> 00:04:54,290
+That the user provides.
+
+65
+00:04:54,310 --> 00:04:55,660
+So whatever they're searching for.
+
+66
+00:04:56,440 --> 00:04:58,630
+And from there, it does a few things.
+
+67
+00:04:59,500 --> 00:05:00,880
+First, we want to say.
+
+68
+00:05:03,050 --> 00:05:04,910
+It's going to be a very simple algorithm.
+
+69
+00:05:05,060 --> 00:05:10,820
+Obviously, this can be this is way more complicated on Google, but the idea is we search something
+
+70
+00:05:10,820 --> 00:05:13,910
+and if there is some sort of a match, we want to return it.
+
+71
+00:05:14,450 --> 00:05:16,760
+Let's just say that the.
+
+72
+00:05:18,120 --> 00:05:21,900
+Google database is going to get filtered.
+
+73
+00:05:23,460 --> 00:05:29,490
+And using the filter function, we'll say that each item in the database is a website that is going
+
+74
+00:05:29,490 --> 00:05:31,020
+to get filtered.
+
+75
+00:05:32,750 --> 00:05:37,310
+And all we need to do is return the website.
+
+76
+00:05:40,060 --> 00:05:41,050
+That includes.
+
+77
+00:05:43,310 --> 00:05:44,600
+So this is.
+
+78
+00:05:45,770 --> 00:05:47,480
+Let's say cats rt.com.
+
+79
+00:05:48,920 --> 00:05:53,180
+If it includes whatever the search input was.
+
+80
+00:05:54,360 --> 00:05:57,300
+Like I said, very, very nice and basic.
+
+81
+00:05:58,300 --> 00:05:59,950
+Google search algorithm.
+
+82
+00:06:01,150 --> 00:06:08,980
+And we also want to return these matches to the user, because while that's what Google does, but let's
+
+83
+00:06:08,980 --> 00:06:15,910
+say that we want to make sure because hypothetically, this database can get really, really big, we
+
+84
+00:06:15,910 --> 00:06:23,380
+want to only return the top three results so we can just say, OK, let me make sure I spell that right.
+
+85
+00:06:23,380 --> 00:06:27,430
+First, we want to say if this dot length.
+
+86
+00:06:28,560 --> 00:06:36,060
+Is greater than three, if we have more than three matches, then we'll just say matches that slice.
+
+87
+00:06:37,730 --> 00:06:40,880
+And just returned the first three results.
+
+88
+00:06:42,700 --> 00:06:45,370
+Otherwise just returned the regular matches.
+
+89
+00:06:46,840 --> 00:06:48,400
+Let's make this smaller, so we can see.
+
+90
+00:06:51,180 --> 00:06:54,720
+All right, let's test this out and see if it actually works.
+
+91
+00:06:54,750 --> 00:06:55,770
+I'm going to run the.
+
+92
+00:06:57,210 --> 00:06:59,060
+Google search function.
+
+93
+00:07:00,250 --> 00:07:06,100
+And let's say that the search input that I'm going to put in will be.
+
+94
+00:07:07,340 --> 00:07:07,790
+Soup.
+
+95
+00:07:10,960 --> 00:07:17,200
+And let's just canceled our log this to make sure that whatever the output is while we log it into our
+
+96
+00:07:17,200 --> 00:07:17,590
+terminal.
+
+97
+00:07:17,950 --> 00:07:18,580
+Let me save.
+
+98
+00:07:19,360 --> 00:07:26,200
+And again with Node, we can just run this node script dot J.S..
+
+99
+00:07:28,990 --> 00:07:29,470
+All right.
+
+100
+00:07:29,650 --> 00:07:30,160
+Look at that.
+
+101
+00:07:30,340 --> 00:07:31,930
+I have soup recipes.
+
+102
+00:07:32,290 --> 00:07:34,510
+If this changes to cats.
+
+103
+00:07:38,850 --> 00:07:46,200
+I get Cars.com and my favorite cat sitcom, but not cat pictures rt.com, because it doesn't match cats.
+
+104
+00:07:46,710 --> 00:07:51,900
+If we add another website here, let's call it my favorite cats to.
+
+105
+00:07:53,180 --> 00:07:55,340
+And I only search for Cat.
+
+106
+00:07:58,260 --> 00:08:00,120
+Oh, and make sure I add a comma.
+
+107
+00:08:01,450 --> 00:08:04,870
+Always forget the comma, let me clear this and try that again.
+
+108
+00:08:08,120 --> 00:08:08,520
+All right.
+
+109
+00:08:08,540 --> 00:08:14,870
+I only get one, two and three results because we're doing this little slice.
+
+110
+00:08:15,380 --> 00:08:17,480
+We're only returning the top three results.
+
+111
+00:08:18,260 --> 00:08:18,740
+Awesome.
+
+112
+00:08:18,980 --> 00:08:25,820
+We've just implemented Google on a simpler scale, but mind you, this is pretty much how Google works.
+
+113
+00:08:27,020 --> 00:08:28,740
+All right, so that was fun.
+
+114
+00:08:28,940 --> 00:08:31,820
+But how can we test this?
+
+115
+00:08:32,120 --> 00:08:38,180
+Let's say we were a Google, and we want to make sure that this Google search function works properly
+
+116
+00:08:38,540 --> 00:08:44,030
+because it's an important function for our app since we have just installed.
+
+117
+00:08:45,280 --> 00:08:47,440
+Let's run AMPM test and see what happens.
+
+118
+00:08:49,530 --> 00:08:51,120
+AMPM test.
+
+119
+00:08:54,790 --> 00:08:54,990
+Hmm.
+
+120
+00:08:55,360 --> 00:09:01,300
+It just says no tests found because we haven't written any tests.
+
+121
+00:09:01,930 --> 00:09:09,820
+But you can see over here that just automatically looks for anything that has either a folder that has
+
+122
+00:09:09,820 --> 00:09:16,420
+the underscore under score tests and anything inside of it, or it's going to look at any file that
+
+123
+00:09:16,420 --> 00:09:20,500
+has the spec or the test dot just syntax.
+
+124
+00:09:20,830 --> 00:09:25,750
+By that logic, I can just create a new file script.
+
+125
+00:09:26,080 --> 00:09:32,920
+Test dodges or I can put spec in here, which is also common, and I hit enter.
+
+126
+00:09:33,550 --> 00:09:34,960
+And if I run this again.
+
+127
+00:09:41,100 --> 00:09:42,470
+I get a feel.
+
+128
+00:09:42,870 --> 00:09:47,310
+It says your test suite must contain at least one test.
+
+129
+00:09:48,440 --> 00:09:48,680
+All right.
+
+130
+00:09:48,710 --> 00:09:49,580
+Let's clear this.
+
+131
+00:09:50,330 --> 00:09:56,000
+So how can you write a test for our Google search and we'll get to that in the next video?
+
+132
+00:09:56,180 --> 00:10:02,660
+But just to make sure that our test passes, I'll just show you one quick way that we can write unit
+
+133
+00:10:02,660 --> 00:10:03,510
+tests and just.
+
+134
+00:10:03,830 --> 00:10:09,770
+And that is we have now an IT function and the first parameter of the ID function.
+
+135
+00:10:10,370 --> 00:10:11,990
+And again, this comes with jest.
+
+136
+00:10:12,200 --> 00:10:17,830
+But if you download other testing libraries, pretty much all of them have this function as well.
+
+137
+00:10:17,840 --> 00:10:21,260
+Like I said, all these libraries have a very similar syntax.
+
+138
+00:10:21,410 --> 00:10:26,750
+So if you know one, you can transition into the other quite easily with a few minor changes.
+
+139
+00:10:27,620 --> 00:10:32,030
+So the first parameter in here is some sort of a string that will appear here.
+
+140
+00:10:32,030 --> 00:10:34,820
+So let's just say this is a test.
+
+141
+00:10:35,450 --> 00:10:38,450
+And then the second parameter is a function.
+
+142
+00:10:39,420 --> 00:10:46,800
+Which is the test that needs to run in our case, we don't really have anything, but let's save this
+
+143
+00:10:46,800 --> 00:10:49,080
+Enron and PM test.
+
+144
+00:10:51,660 --> 00:10:52,830
+Whoa, look at that.
+
+145
+00:10:53,520 --> 00:10:55,830
+We have our very first test.
+
+146
+00:10:57,070 --> 00:10:58,210
+That was pretty easy, right?
+
+147
+00:10:58,240 --> 00:11:06,850
+All we did was p.m. installed just and we already have this new ID function and we can run tests and
+
+148
+00:11:06,850 --> 00:11:11,020
+we see that this is a test passed in one millisecond.
+
+149
+00:11:11,110 --> 00:11:12,430
+That's a pretty fast test.
+
+150
+00:11:12,610 --> 00:11:16,300
+Everything is green and nice kind of feels good.
+
+151
+00:11:17,120 --> 00:11:18,640
+You see a nice boost of dopamine.
+
+152
+00:11:19,420 --> 00:11:19,810
+All right.
+
+153
+00:11:20,260 --> 00:11:24,850
+In the next video, we're actually going to start writing some tests for our Google search.
+
+154
+00:11:25,540 --> 00:11:26,380
+I'll see in the next one.

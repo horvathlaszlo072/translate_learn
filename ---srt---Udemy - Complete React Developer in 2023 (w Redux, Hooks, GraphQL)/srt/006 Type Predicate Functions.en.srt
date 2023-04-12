@@ -1,0 +1,311 @@
+1
+00:00:00,740 --> 00:00:02,000
+Hello, everyone, and welcome back.
+
+2
+00:00:02,880 --> 00:00:09,330
+In this video, we are going to discuss how we can extend our action creators so that they will be able
+
+3
+00:00:09,330 --> 00:00:16,410
+to perform type checking for us where they receive an additional action through a dot match method that
+
+4
+00:00:16,410 --> 00:00:18,330
+we're going to attach on to them.
+
+5
+00:00:19,110 --> 00:00:24,810
+And what this will do is it will check the action that it receives against the action that it's meant
+
+6
+00:00:24,810 --> 00:00:25,440
+to create.
+
+7
+00:00:25,770 --> 00:00:29,280
+And essentially, these action creators are now performing double duty.
+
+8
+00:00:29,610 --> 00:00:36,600
+They generate actions out of them, specific actions, but they also type check actions against the
+
+9
+00:00:36,600 --> 00:00:37,650
+action that they hold.
+
+10
+00:00:38,860 --> 00:00:43,120
+In order to do this, we need to leverage something known as a type predicate.
+
+11
+00:00:43,510 --> 00:00:50,740
+And a type predicate is kind of like a function that verifies whether a specific argument that it receives
+
+12
+00:00:50,860 --> 00:00:53,710
+is going to be a narrower type or not.
+
+13
+00:00:53,800 --> 00:00:55,930
+And I mean narrow as in more specific.
+
+14
+00:00:56,470 --> 00:00:59,050
+So let's say, for example, we had two different types.
+
+15
+00:00:59,440 --> 00:01:01,690
+Let's say we're one type which was alien.
+
+16
+00:01:02,410 --> 00:01:08,900
+And this had something where it was, I don't know, fly, for example, which is of type string.
+
+17
+00:01:09,760 --> 00:01:10,690
+Just as an example.
+
+18
+00:01:10,930 --> 00:01:12,100
+Doesn't really matter what that is.
+
+19
+00:01:12,790 --> 00:01:16,540
+Now, let's say there is also a type human.
+
+20
+00:01:17,890 --> 00:01:23,290
+And what it has is speak, which is a function actually let's make both of these functions so it's much
+
+21
+00:01:23,290 --> 00:01:23,800
+more clear.
+
+22
+00:01:30,620 --> 00:01:37,340
+If we had some function that checks whether or not this is a human, what should happen is that based
+
+23
+00:01:37,340 --> 00:01:43,730
+on this function, it will receive some entity or some argument, and this can be either a human or
+
+24
+00:01:43,730 --> 00:01:44,570
+an alien.
+
+25
+00:01:46,190 --> 00:01:54,950
+What should happen is that after this verifies that the entity is human, then the type that comes out
+
+26
+00:01:54,950 --> 00:02:00,470
+of it should be something that is narrow to the scope of human.
+
+27
+00:02:01,400 --> 00:02:09,080
+So that means that inside what our logic needs to do is that our logic needs to assume that this entity.
+
+28
+00:02:09,990 --> 00:02:11,610
+Is a human.
+
+29
+00:02:12,570 --> 00:02:19,350
+And here what we'll do is we'll say, okay, the speak method here should not be equal to undefined.
+
+30
+00:02:20,670 --> 00:02:31,200
+If this is true, then what we'll get back is that the entity should be, in theory, more narrowed
+
+31
+00:02:31,200 --> 00:02:32,010
+once we've run it.
+
+32
+00:02:32,910 --> 00:02:40,710
+So what happens here is that we need to add this additional type definition that the entity is human
+
+33
+00:02:41,280 --> 00:02:41,540
+like.
+
+34
+00:02:41,550 --> 00:02:41,790
+So.
+
+35
+00:02:42,380 --> 00:02:44,400
+So that's what this function aims to prove.
+
+36
+00:02:44,700 --> 00:02:50,160
+This function receives some argument value, which can only be either human or alien.
+
+37
+00:02:51,080 --> 00:02:54,680
+The logic itself essentially cast the entity as human.
+
+38
+00:02:54,860 --> 00:03:00,860
+The reason why we do this is if you try and call entity, speak like this, you'll get a type error.
+
+39
+00:03:01,550 --> 00:03:06,350
+You'll get a type error because Alien does not have the speak ability because this is a union type.
+
+40
+00:03:06,860 --> 00:03:09,680
+So you can't call again a method that doesn't exist on it.
+
+41
+00:03:09,680 --> 00:03:15,710
+So we have to say, hey, assume entity is going to be human and check the dot speak method.
+
+42
+00:03:16,010 --> 00:03:20,810
+Because if you call that speak in JavaScript on something that doesn't have it, this is just going
+
+43
+00:03:20,810 --> 00:03:21,680
+to be undefined.
+
+44
+00:03:22,220 --> 00:03:25,400
+But if you call it on something that has it, then it won't be undefined.
+
+45
+00:03:25,670 --> 00:03:30,500
+So in the JavaScript world this works, but in TypeScript it won't because unless you cast it, Texaco
+
+46
+00:03:30,500 --> 00:03:34,730
+is going to say, Hey, if I get an alien, I don't have the speak method, we know that.
+
+47
+00:03:34,730 --> 00:03:36,050
+But we want to leverage that.
+
+48
+00:03:36,050 --> 00:03:43,000
+We want to call it if it doesn't exist, so that we can check if the method on it is equal to undefined.
+
+49
+00:03:43,010 --> 00:03:45,410
+If it is, then we know it's not a human.
+
+50
+00:03:46,190 --> 00:03:52,550
+Now if speak is on it and it's not undefined, then we know for sure this must be human.
+
+51
+00:03:52,940 --> 00:03:57,890
+So if it's human, then the output of this function is this type predicate.
+
+52
+00:03:58,160 --> 00:04:03,170
+It's narrowed that the entity that I received must be human.
+
+53
+00:04:03,950 --> 00:04:05,780
+That's what this logic is aiming to do.
+
+54
+00:04:06,230 --> 00:04:12,590
+And essentially what it allows us to say is that let's say I get some value, some we for some reason
+
+55
+00:04:12,590 --> 00:04:13,370
+have some.
+
+56
+00:04:15,030 --> 00:04:16,320
+Value called Josh.
+
+57
+00:04:17,100 --> 00:04:20,990
+And let's imagine that when we called it, we don't know what he is.
+
+58
+00:04:21,000 --> 00:04:23,520
+We don't know if it's a human or we don't know if it's an alien.
+
+59
+00:04:24,410 --> 00:04:27,860
+If we say is human on Josh.
+
+60
+00:04:30,160 --> 00:04:30,760
+Like this.
+
+61
+00:04:31,600 --> 00:04:35,380
+Then inside, if I were to say, Josh, don't speak.
+
+62
+00:04:38,120 --> 00:04:43,250
+Then this should work because essentially as long as this passes.
+
+63
+00:04:43,280 --> 00:04:47,870
+Notice how even inside of a hover a josh automatically typescript knows.
+
+64
+00:04:47,900 --> 00:04:55,790
+Oh, this must be human because it passed this if condition statement and this type critical function
+
+65
+00:04:56,000 --> 00:04:59,870
+narrowed this down so that it must be human.
+
+66
+00:05:00,230 --> 00:05:04,520
+This little check right here, this is keyword that we wrote.
+
+67
+00:05:04,880 --> 00:05:12,050
+This is narrowing this type so that anything that passes this function means that whatever you gave
+
+68
+00:05:12,050 --> 00:05:17,090
+to it, if it's used later on, that type has been narrowed significantly smaller.
+
+69
+00:05:18,530 --> 00:05:22,880
+So that is the whole idea around type predicate functions.
+
+70
+00:05:23,600 --> 00:05:29,810
+And we need to leverage this in order for us to verify that an action we're receiving is a specific
+
+71
+00:05:29,810 --> 00:05:31,970
+kind of action, because that's what we're going to say.
+
+72
+00:05:31,970 --> 00:05:37,010
+We're essentially going to modify our code so that we leverage these to match those actions that it
+
+73
+00:05:37,010 --> 00:05:37,430
+receives.
+
+74
+00:05:37,760 --> 00:05:43,490
+If it is of this action that we know it's of this action, we can now leverage it inside of our reducer
+
+75
+00:05:43,490 --> 00:05:44,890
+and respond accordingly.
+
+76
+00:05:45,680 --> 00:05:50,810
+So this is the whole idea around using these matters, these type predicate functions, and that's what
+
+77
+00:05:50,810 --> 00:05:51,290
+we're going to do.
+
+78
+00:05:51,500 --> 00:05:53,120
+We're going to do that in the next video.

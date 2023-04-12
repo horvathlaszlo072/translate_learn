@@ -1,0 +1,447 @@
+1
+00:00:00,910 --> 00:00:01,870
+Welcome back, everyone.
+
+2
+00:00:02,470 --> 00:00:08,320
+So in this video, I want to talk a little bit about some of the optimizations inside of React and the
+
+3
+00:00:08,320 --> 00:00:14,140
+best practices around these optimizations, but at the same time, I want you to understand more what's
+
+4
+00:00:14,140 --> 00:00:17,620
+happening whenever React is rendering the code that you write.
+
+5
+00:00:18,490 --> 00:00:19,750
+So bear with me here.
+
+6
+00:00:19,900 --> 00:00:23,680
+We're going to get a little bit into the weeds of JavaScript, but we're really going to come out of
+
+7
+00:00:23,680 --> 00:00:24,970
+this as better developers.
+
+8
+00:00:26,180 --> 00:00:28,790
+When we look at this render method.
+
+9
+00:00:30,310 --> 00:00:37,660
+Every time React needs to update the time it runs this render method inside of this render method.
+
+10
+00:00:38,410 --> 00:00:42,850
+I want you to focus specifically on this on change callback that we've written.
+
+11
+00:00:44,040 --> 00:00:50,880
+This here is called a anonymous function, and an anonymous function is a function that is not stored
+
+12
+00:00:50,880 --> 00:00:52,050
+anywhere in a variable.
+
+13
+00:00:52,500 --> 00:00:59,400
+What this means is that when JavaScript runs this code and it comes across this line, what it sees
+
+14
+00:00:59,400 --> 00:01:02,460
+is that there is a function being created.
+
+15
+00:01:03,360 --> 00:01:06,510
+So what it will do is it will create this function for you.
+
+16
+00:01:07,460 --> 00:01:10,790
+But what happens afterwards is that it gets thrown away.
+
+17
+00:01:12,330 --> 00:01:19,110
+And the reason why this is significant is because every time render is being run, this function is
+
+18
+00:01:19,110 --> 00:01:20,730
+getting re initialize.
+
+19
+00:01:20,970 --> 00:01:26,100
+It's getting recreated every single time Brenda runs, because once it's done with it, it throws it
+
+20
+00:01:26,100 --> 00:01:26,370
+away.
+
+21
+00:01:27,060 --> 00:01:30,900
+So there's actually nowhere in memory that's keeping track of this function.
+
+22
+00:01:32,130 --> 00:01:38,910
+The reason why this is problematic is because, technically speaking, we actually never update this
+
+23
+00:01:38,910 --> 00:01:39,330
+function.
+
+24
+00:01:40,050 --> 00:01:46,170
+What I mean by this is that yes, the event of value will change, but that is the event value that's
+
+25
+00:01:46,170 --> 00:01:48,090
+not actually the function itself.
+
+26
+00:01:48,990 --> 00:01:53,040
+If you think about it like this, the event is being passed into our function, but our function is
+
+27
+00:01:53,040 --> 00:01:56,460
+not getting rewritten, even though we're referring to this event.
+
+28
+00:01:56,490 --> 00:02:01,170
+JavaScript is smart enough to know, Oh, this event is not something that this function is controlling.
+
+29
+00:02:01,800 --> 00:02:05,820
+In fact, the only thing about this function is that it doesn't change.
+
+30
+00:02:05,820 --> 00:02:12,090
+And as a result, every time we are re initializing it, we are actually making our app a little bit
+
+31
+00:02:12,090 --> 00:02:12,990
+less performance.
+
+32
+00:02:13,410 --> 00:02:18,060
+So with just this one function, your performance is not going to see any hit at all.
+
+33
+00:02:18,060 --> 00:02:22,920
+And we're going to do a really deep dive into performance and performance optimizations and react much
+
+34
+00:02:22,920 --> 00:02:23,820
+later in the course.
+
+35
+00:02:24,390 --> 00:02:30,720
+But what I want to do is I want to explain to you some of the optimizations and the reasons why we write
+
+36
+00:02:30,720 --> 00:02:36,480
+code the way we do, because when it comes to just one function, this is perfectly fine.
+
+37
+00:02:36,750 --> 00:02:40,470
+But when you have a lot of them, then your component really starts to slow down.
+
+38
+00:02:40,860 --> 00:02:45,450
+So in general, this is a needless performance risk that we don't have to have.
+
+39
+00:02:45,960 --> 00:02:51,750
+So what we do in order to improve this with a class component is we move this method out into the component
+
+40
+00:02:51,750 --> 00:02:57,360
+because this is a method related to our component, specifically related to our search.
+
+41
+00:02:57,870 --> 00:03:04,290
+So what we can say is we don't create a brand new method on our component called on search change.
+
+42
+00:03:05,190 --> 00:03:06,870
+And this is going to be.
+
+43
+00:03:08,170 --> 00:03:11,590
+The callback itself, so everything here for this callback.
+
+44
+00:03:12,400 --> 00:03:14,110
+We can just copy.
+
+45
+00:03:16,600 --> 00:03:17,080
+Like so.
+
+46
+00:03:18,160 --> 00:03:23,320
+And now what we need to do is we can just pass this on search change right here.
+
+47
+00:03:25,810 --> 00:03:30,880
+Or we are going to say this dance or change because it's attached to our class now.
+
+48
+00:03:32,120 --> 00:03:33,080
+And now if we save.
+
+49
+00:03:34,210 --> 00:03:35,140
+We go back to our code.
+
+50
+00:03:38,540 --> 00:03:39,260
+As we type.
+
+51
+00:03:40,870 --> 00:03:42,250
+We see that everything still works.
+
+52
+00:03:43,480 --> 00:03:49,930
+So this is just one of those things where if you think about an exchange, this class component is only
+
+53
+00:03:49,930 --> 00:03:55,330
+going to build this function once when initializes the class for the first time because it's a method.
+
+54
+00:03:55,900 --> 00:04:01,420
+Once that method is initialized, whenever render runs right now, it's just always going to refer to
+
+55
+00:04:01,420 --> 00:04:03,520
+this method that's already been initialized.
+
+56
+00:04:03,550 --> 00:04:08,380
+It's not going to just renationalise an anonymous function over and over again every time renderer gets
+
+57
+00:04:08,380 --> 00:04:08,680
+called.
+
+58
+00:04:09,010 --> 00:04:09,880
+That's the difference.
+
+59
+00:04:10,240 --> 00:04:11,260
+And what we've just done.
+
+60
+00:04:11,620 --> 00:04:13,780
+So this is just one of those optimizations that you make.
+
+61
+00:04:14,440 --> 00:04:20,380
+Another optimization we can make is that instead of just calling this everywhere, we can actually use
+
+62
+00:04:20,380 --> 00:04:21,730
+the structuring in Essex.
+
+63
+00:04:21,730 --> 00:04:25,090
+And D structuring is a big benefit for this exact reason.
+
+64
+00:04:25,270 --> 00:04:28,210
+It makes our variables look shorter and it makes things easier to read.
+
+65
+00:04:28,690 --> 00:04:35,650
+So what we can do at the very top here inside of our render is we can say I want to initialize a constant
+
+66
+00:04:35,650 --> 00:04:37,720
+and I want to pull it off of this dot state.
+
+67
+00:04:38,440 --> 00:04:44,770
+So inside of this object, what I'm going to do is I want to get the monsters and I want to get the
+
+68
+00:04:44,770 --> 00:04:45,460
+search field.
+
+69
+00:04:46,710 --> 00:04:48,030
+And I also want to get.
+
+70
+00:04:49,100 --> 00:04:50,780
+Off of this.
+
+71
+00:04:56,110 --> 00:04:57,070
+On search change.
+
+72
+00:05:02,880 --> 00:05:09,300
+And what we've done here is we have pulled off these different methods and values that were originally
+
+73
+00:05:09,300 --> 00:05:13,440
+on this, that state and this and we've cast them to variables.
+
+74
+00:05:14,010 --> 00:05:19,080
+And now what we can do instead of calling this Dutch state is I can just say, give me monsters.
+
+75
+00:05:19,560 --> 00:05:22,170
+Use the search field and then use.
+
+76
+00:05:23,370 --> 00:05:24,060
+Search change.
+
+77
+00:05:26,000 --> 00:05:26,490
+Answers.
+
+78
+00:05:29,850 --> 00:05:30,690
+This is actually a mistake.
+
+79
+00:05:30,720 --> 00:05:31,080
+There we go.
+
+80
+00:05:32,690 --> 00:05:38,450
+So now, if we save, we bow to our application, we see that everything still works the same way.
+
+81
+00:05:40,230 --> 00:05:42,990
+So here we've performed two big optimizations.
+
+82
+00:05:43,590 --> 00:05:48,550
+The main benefit of this optimization is that it's more readable for us when we look here.
+
+83
+00:05:48,570 --> 00:05:52,680
+We see that these variables are being initialized, so we know what we're getting off of this, not
+
+84
+00:05:52,680 --> 00:05:53,850
+state and off of this.
+
+85
+00:05:54,390 --> 00:05:57,540
+So later on, when we see these values, we know where they're coming from.
+
+86
+00:05:58,800 --> 00:06:04,470
+And the other optimization we made was that we made our app a little bit more performance by not unnecessarily
+
+87
+00:06:04,470 --> 00:06:09,600
+rendering extra anonymous functions whenever the render call is being called.
+
+88
+00:06:09,690 --> 00:06:15,090
+Instead, we've moved it up into the method, which only gets called an initialized once when our class
+
+89
+00:06:15,090 --> 00:06:16,050
+component initializes.
+
+90
+00:06:16,440 --> 00:06:19,020
+So just a couple of quick improvements to our code now.
+
+91
+00:06:19,530 --> 00:06:22,530
+And hopefully this actually makes us seem a lot more readable to you as well.
+
+92
+00:06:22,890 --> 00:06:27,510
+Because as you're looking through your code and you're looking through these methods, you are looking
+
+93
+00:06:27,510 --> 00:06:29,160
+at all the things that are getting involved.
+
+94
+00:06:29,370 --> 00:06:30,600
+You see this answer change.
+
+95
+00:06:30,600 --> 00:06:34,010
+And now when you read this input, you see, Oh, this is on search change.
+
+96
+00:06:34,350 --> 00:06:36,600
+You're not have to read through an anonymous function here.
+
+97
+00:06:36,840 --> 00:06:41,490
+You just know that if you were to care about what it includes, you could go look at it when you need
+
+98
+00:06:41,490 --> 00:06:42,270
+to look at the method.
+
+99
+00:06:42,600 --> 00:06:43,260
+Otherwise.
+
+100
+00:06:44,660 --> 00:06:45,980
+It's also a performance improvement.
+
+101
+00:06:46,730 --> 00:06:52,820
+So with this, we have now improved our application, and we've added our search feature in the next
+
+102
+00:06:52,820 --> 00:06:58,430
+video, we are going to start implementing some of the other improvements to the application.
+
+103
+00:06:58,700 --> 00:07:04,760
+Primarily, we're going to start moving some of these different features out into a component architecture.
+
+104
+00:07:05,180 --> 00:07:07,600
+And with that, we're going to talk about the full structure.
+
+105
+00:07:07,610 --> 00:07:09,110
+So it's a lot of very interesting things.
+
+106
+00:07:09,230 --> 00:07:13,400
+But if you're confused about any of the improvements we made here, please watch this video again and
+
+107
+00:07:13,400 --> 00:07:17,060
+really try to understand what it is that's happening with that anonymous function.
+
+108
+00:07:17,060 --> 00:07:20,960
+And these renders will definitely bring this up a lot more in future lessons as well.
+
+109
+00:07:21,440 --> 00:07:25,550
+But this is a good time, I think, to introduce this concept because moving forward are always going
+
+110
+00:07:25,550 --> 00:07:26,570
+to write our code this way.
+
+111
+00:07:27,140 --> 00:07:28,710
+So hopefully you understood that.
+
+112
+00:07:28,730 --> 00:07:30,020
+And let's move on to the next video.

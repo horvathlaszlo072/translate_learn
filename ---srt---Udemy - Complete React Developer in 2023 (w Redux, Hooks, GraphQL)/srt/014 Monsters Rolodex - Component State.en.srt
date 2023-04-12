@@ -1,0 +1,443 @@
+1
+00:00:00,210 --> 00:00:01,110
+Welcome back, everyone.
+
+2
+00:00:02,370 --> 00:00:07,980
+So when we look at our React application, we see that this website is pretty static, meaning that
+
+3
+00:00:07,980 --> 00:00:09,180
+things don't really change.
+
+4
+00:00:09,510 --> 00:00:14,430
+Yes, our logo spins, but none of this text really changes and this link doesn't change where it links
+
+5
+00:00:14,430 --> 00:00:14,820
+out to.
+
+6
+00:00:15,090 --> 00:00:19,020
+No matter how many times you click this link, it's always going to take you to the React website.
+
+7
+00:00:19,560 --> 00:00:23,820
+This is very atypical of the complex applications that we're used to working with.
+
+8
+00:00:25,310 --> 00:00:30,590
+So when we look at our app jazz file, that makes sense, because when we look at the code inside of
+
+9
+00:00:30,590 --> 00:00:35,360
+here, everything is hardcoded and you'll hear this a lot when something is hardcoded.
+
+10
+00:00:35,660 --> 00:00:41,750
+What this means is that there is nothing dynamic about the code that text inside the P tag is exactly
+
+11
+00:00:41,750 --> 00:00:42,580
+what we see it us.
+
+12
+00:00:42,920 --> 00:00:46,160
+This is exactly what will render the string inside of here.
+
+13
+00:00:46,400 --> 00:00:48,040
+There's nothing dynamic about it.
+
+14
+00:00:48,050 --> 00:00:50,960
+There's no way that that string is ever going to really change.
+
+15
+00:00:51,500 --> 00:00:54,710
+But that really isn't useful for us when it comes to building websites.
+
+16
+00:00:55,100 --> 00:00:59,180
+And this is a very important thing to understand because essentially what we want to do is we want to
+
+17
+00:00:59,180 --> 00:01:04,940
+make it so that react will render this string code dynamically based on something.
+
+18
+00:01:05,390 --> 00:01:07,700
+Whatever it is, we want to have control over that.
+
+19
+00:01:08,150 --> 00:01:10,040
+And that's what we're going to go into in this lesson.
+
+20
+00:01:10,850 --> 00:01:16,430
+So here what I'm going to do is I'm going actually change up this text so that it says, Hi, Iowa again.
+
+21
+00:01:16,430 --> 00:01:19,640
+It's still hard coded, but that's all I really want you to focus on.
+
+22
+00:01:20,120 --> 00:01:23,930
+And I'm also going to create a button instead of that anchor tag.
+
+23
+00:01:24,320 --> 00:01:31,100
+And inside it's going to say change name, meaning that when you click it, I want to change this name.
+
+24
+00:01:31,490 --> 00:01:32,810
+So right now, it's still hardcoded.
+
+25
+00:01:32,930 --> 00:01:38,420
+And when we go back, what we see is that React has re rendered our webpage so that now it says what?
+
+26
+00:01:38,420 --> 00:01:41,060
+I change it to Hiwa, and it has a button that says change name.
+
+27
+00:01:41,300 --> 00:01:44,510
+Now, of course, when you click it, nothing happens because we haven't coded in that functionality
+
+28
+00:01:44,510 --> 00:01:46,190
+yet, but that's what we're going to do.
+
+29
+00:01:46,790 --> 00:01:49,250
+So here you see what is still hard coded.
+
+30
+00:01:49,250 --> 00:01:51,470
+It's still not a variable.
+
+31
+00:01:52,010 --> 00:01:52,760
+It's nothing, really.
+
+32
+00:01:52,760 --> 00:01:54,200
+It's just hardcoded Yehuda.
+
+33
+00:01:54,410 --> 00:02:00,140
+But I want to change this so that maybe when I click this button change name, this value will change.
+
+34
+00:02:00,770 --> 00:02:01,700
+So how do we do that?
+
+35
+00:02:02,760 --> 00:02:06,450
+Well, going back to our class component that React has given us.
+
+36
+00:02:07,430 --> 00:02:11,240
+React actually allows us to do this quite easily.
+
+37
+00:02:12,180 --> 00:02:21,300
+And what we can do is use a method that we have access to with any class, but React has actually gone
+
+38
+00:02:21,300 --> 00:02:26,400
+into it and made some modifications that allow us to keep track of something called local, state,
+
+39
+00:02:26,910 --> 00:02:32,580
+local, state or just state for short is just some information that only this component is aware of
+
+40
+00:02:32,580 --> 00:02:34,740
+and can modify and can read from.
+
+41
+00:02:35,340 --> 00:02:41,670
+So the way that we can actually access and generate this state is through the constructor method.
+
+42
+00:02:42,420 --> 00:02:45,840
+The constructor method is a method that's available on all class components.
+
+43
+00:02:46,260 --> 00:02:49,080
+And you can see constructor as in construction.
+
+44
+00:02:49,590 --> 00:02:53,790
+And why that's important is because it's saying that, hey, whenever this app is constructed, whenever
+
+45
+00:02:53,790 --> 00:02:56,700
+it's built, instantiate it any of those terms.
+
+46
+00:02:57,120 --> 00:03:02,100
+I want you to run this constructor method first and inside of this constructor method you call super.
+
+47
+00:03:03,170 --> 00:03:09,200
+Super is not actually important for what it does for our React component code as far as you're concerned.
+
+48
+00:03:09,230 --> 00:03:16,310
+All it is is a saying, Hey, call Super Super just calls the underlying constructor method of any other
+
+49
+00:03:16,310 --> 00:03:17,930
+classes you are extending from.
+
+50
+00:03:18,110 --> 00:03:20,480
+So here are class app extends from component.
+
+51
+00:03:20,720 --> 00:03:24,860
+Just call super so that you're calling the constructor method on the component.
+
+52
+00:03:25,310 --> 00:03:30,620
+If you're unfamiliar with what that is doing and why that's useful, you can watch a video that I'm
+
+53
+00:03:30,620 --> 00:03:36,080
+going to link where Andre keeps a deeper dive on classes in general and you'll understand what that's
+
+54
+00:03:36,080 --> 00:03:36,590
+happening there.
+
+55
+00:03:36,740 --> 00:03:40,040
+But for now, you just gotta understand that whenever you write this constructor, you've got to write
+
+56
+00:03:40,040 --> 00:03:40,520
+the super.
+
+57
+00:03:41,210 --> 00:03:46,070
+This is really not that important for how it extends into our functionality with these class components
+
+58
+00:03:46,070 --> 00:03:46,970
+and what we dictate.
+
+59
+00:03:47,180 --> 00:03:49,550
+But it's just something that needs to happen and you need to write.
+
+60
+00:03:50,060 --> 00:03:55,520
+But going back to state here inside of our constructor function, I mentioned that React will run this
+
+61
+00:03:55,520 --> 00:03:57,080
+constructor method before anything else.
+
+62
+00:03:57,140 --> 00:03:58,310
+In fact, all classes do that.
+
+63
+00:03:59,350 --> 00:04:04,240
+But what I want to do here is I actually want to instantiate this state that I was talking about, and
+
+64
+00:04:04,240 --> 00:04:07,810
+to do that, I'm going to say this, which is referencing this class.
+
+65
+00:04:08,290 --> 00:04:15,370
+This starts state this is something that React is looking for inside of your constructor, inside of
+
+66
+00:04:15,370 --> 00:04:16,000
+your component.
+
+67
+00:04:16,270 --> 00:04:19,780
+I want to say this that state is equal to a empty object.
+
+68
+00:04:20,630 --> 00:04:25,160
+So for now, it's an empty object, because I'm told that what the state value should be, but the state
+
+69
+00:04:25,370 --> 00:04:27,110
+is always a JSON object.
+
+70
+00:04:27,500 --> 00:04:34,490
+And here what I want to change this to is I want to give it a key value pair inside.
+
+71
+00:04:34,910 --> 00:04:37,010
+Key value pairs can be whatever they want.
+
+72
+00:04:37,100 --> 00:04:41,450
+So whatever key you want to have and then whatever value you want to give it here because we're working
+
+73
+00:04:41,450 --> 00:04:47,000
+with names, I'm going to say this starts day equals empty object for now, and I want to give it a
+
+74
+00:04:47,000 --> 00:04:48,680
+name key.
+
+75
+00:04:49,190 --> 00:04:53,180
+And this is going to point to a string value of EÜ.
+
+76
+00:04:54,150 --> 00:05:02,190
+So now that I have this, I want to actually instead of hard coding Hiwa, I wanted to reference this
+
+77
+00:05:02,190 --> 00:05:10,260
+state object and I want it to reference the name key so that I can get the whole value to do that inside
+
+78
+00:05:10,260 --> 00:05:11,060
+of gas x.
+
+79
+00:05:11,490 --> 00:05:17,100
+I can actually access JavaScript variables, which is why, as you can see, we're tying what it looks
+
+80
+00:05:17,100 --> 00:05:21,000
+like, what the functionality and the functionality, of course, being the JavaScript.
+
+81
+00:05:21,850 --> 00:05:28,460
+So in order to use this variable, we can actually use curly braces inside of our HDMI, all of our
+
+82
+00:05:28,570 --> 00:05:34,270
+air sacs react is looking through this HDMI and saying, Hey, whenever I see curly braces, I know
+
+83
+00:05:34,270 --> 00:05:36,910
+you want to access a JavaScript variable.
+
+84
+00:05:37,830 --> 00:05:42,330
+And the backbone and access is this dot state dot name.
+
+85
+00:05:43,390 --> 00:05:48,940
+And now, if I save this and we go back to our website, we see that nothing's changed.
+
+86
+00:05:49,240 --> 00:05:50,890
+This is exactly how we want it to be.
+
+87
+00:05:51,610 --> 00:05:55,030
+But let me prove it to you instead of equal, let me say Andre.
+
+88
+00:05:55,600 --> 00:05:56,530
+And if I save.
+
+89
+00:05:57,540 --> 00:06:00,030
+Look, we now see it says, Hi, Andre.
+
+90
+00:06:00,540 --> 00:06:05,130
+So we know that instead of hard coding, this is now using the variable.
+
+91
+00:06:05,370 --> 00:06:07,950
+This starts state dot name, which right now is equal to Andre.
+
+92
+00:06:08,900 --> 00:06:16,190
+So this is what's so great about using state, because now we're able to cast these variables that React
+
+93
+00:06:16,190 --> 00:06:21,470
+has access to inside of this component and using this, we now have more dynamic ability.
+
+94
+00:06:21,650 --> 00:06:26,400
+We don't have to hard code all of these values inside of our demanding GSX.
+
+95
+00:06:26,930 --> 00:06:31,580
+In fact, you can kind of see it actually already being scafell out for us here with this logo, but
+
+96
+00:06:31,580 --> 00:06:34,520
+this is a little bit more complicated than we need to dive into right now.
+
+97
+00:06:35,060 --> 00:06:39,290
+But essentially, what I want you to focus on is the fact that this is so powerful.
+
+98
+00:06:39,290 --> 00:06:45,890
+Now we inside of our HTML can directly use and leverage JavaScript variables.
+
+99
+00:06:46,370 --> 00:06:53,330
+And whenever these variable change react will re render this HTML that we see.
+
+100
+00:06:53,510 --> 00:06:56,840
+So that's using the updated variable value.
+
+101
+00:06:57,440 --> 00:06:59,870
+And this is incredibly powerful.
+
+102
+00:07:00,560 --> 00:07:07,520
+So again, right now, all we know is that we are able to leverage this value that has been initialized
+
+103
+00:07:08,090 --> 00:07:09,380
+when our constructor gets called.
+
+104
+00:07:09,830 --> 00:07:10,850
+But it's still a dynamic.
+
+105
+00:07:10,850 --> 00:07:16,280
+We're not changing it on the fly, maybe not even through user interaction, but that's how we're going
+
+106
+00:07:16,280 --> 00:07:18,020
+to cover in the next video.
+
+107
+00:07:18,140 --> 00:07:19,590
+How do we update this value?
+
+108
+00:07:19,610 --> 00:07:23,240
+How do we tie some of this functionality to it and then make it more dynamic?
+
+109
+00:07:23,810 --> 00:07:30,770
+But again, what I really want to focus on again is this is how React is allowing us to render and re
+
+110
+00:07:30,770 --> 00:07:34,100
+render information that represents the UI.
+
+111
+00:07:34,430 --> 00:07:36,800
+So in the next video, let's cover how we can make this more dynamic.

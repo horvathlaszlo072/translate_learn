@@ -1,0 +1,736 @@
+1
+00:00:00.03 --> 00:00:01.04
+- [Instructor] Let's begin by creating
+
+2
+00:00:01.04 --> 00:00:03.09
+a new message post and point in Node.
+
+3
+00:00:03.09 --> 00:00:06.02
+So let's open up our server.js.
+
+4
+00:00:06.02 --> 00:00:12.05
+Then, let's copy our app.get
+on line 11 through line 13.
+
+5
+00:00:12.05 --> 00:00:14.09
+And we'll paste it below.
+
+6
+00:00:14.09 --> 00:00:19.05
+Next, let's change the get to a post.
+
+7
+00:00:19.05 --> 00:00:23.01
+Then, since we're not
+responding with a message list,
+
+8
+00:00:23.01 --> 00:00:27.01
+instead of using res.send on line 16,
+
+9
+00:00:27.01 --> 00:00:30.09
+we use res.sendStatus
+
+10
+00:00:30.09 --> 00:00:34.04
+and we'll pass in 200 for 200 OK.
+
+11
+00:00:34.04 --> 00:00:36.08
+This will let the client know
+that everything went well.
+
+12
+00:00:36.08 --> 00:00:40.07
+Finally as the test,
+above our res.sendStatus
+
+13
+00:00:40.07 --> 00:00:45.05
+we'll use a console.log
+to display the req.body
+
+14
+00:00:45.05 --> 00:00:48.00
+to see what data we get in our body.
+
+15
+00:00:48.00 --> 00:00:50.06
+In order to try this, we can't easily send
+
+16
+00:00:50.06 --> 00:00:52.09
+a post request with the browser,
+
+17
+00:00:52.09 --> 00:00:55.00
+so we'll use an app called Postman.
+
+18
+00:00:55.00 --> 00:00:57.06
+You can get Postman from
+the Chrome app store
+
+19
+00:00:57.06 --> 00:01:01.01
+or as a standalone app for Windows or Mac.
+
+20
+00:01:01.01 --> 00:01:04.03
+Once Postman starts, let's update the URL
+
+21
+00:01:04.03 --> 00:01:11.09
+with our post endpoint of
+localhost:3000/messages.
+
+22
+00:01:11.09 --> 00:01:13.03
+Then in the dropdown on the left,
+
+23
+00:01:13.03 --> 00:01:15.03
+instead of using the GET action,
+
+24
+00:01:15.03 --> 00:01:18.03
+we'll specify a POST action.
+
+25
+00:01:18.03 --> 00:01:23.03
+Then finally, we can go to
+the body tab and select raw
+
+26
+00:01:23.03 --> 00:01:25.08
+and then in the dropdown, instead of Text,
+
+27
+00:01:25.08 --> 00:01:27.06
+we'll select JSON.
+
+28
+00:01:27.06 --> 00:01:33.07
+In here we can create our message object.
+
+29
+00:01:33.07 --> 00:01:40.09
+It will have our name property
+
+30
+00:01:40.09 --> 00:01:46.02
+and we'll also need the message property.
+
+31
+00:01:46.02 --> 00:01:48.03
+Notice that the properties end values
+
+32
+00:01:48.03 --> 00:01:52.02
+must both have double quotes
+for it to be valid raw JSON
+
+33
+00:01:52.02 --> 00:01:54.05
+that we can send with Postman.
+
+34
+00:01:54.05 --> 00:01:56.01
+Now, let's hit Send
+
+35
+00:01:56.01 --> 00:01:59.03
+and we got back 200 OK.
+
+36
+00:01:59.03 --> 00:02:03.01
+So let's go to our terminal.
+
+37
+00:02:03.01 --> 00:02:07.01
+I'll go to View, then Integrated Terminal.
+
+38
+00:02:07.01 --> 00:02:09.06
+And the last message
+we see in our terminal
+
+39
+00:02:09.06 --> 00:02:13.01
+should be the console.log from line 16.
+
+40
+00:02:13.01 --> 00:02:15.01
+But it's currently undefined.
+
+41
+00:02:15.01 --> 00:02:17.08
+That's because express
+has no built-in support
+
+42
+00:02:17.08 --> 00:02:19.09
+to parse the body.
+
+43
+00:02:19.09 --> 00:02:22.02
+So let's install the
+package that will do that
+
+44
+00:02:22.02 --> 00:02:24.03
+called body-parser.
+
+45
+00:02:24.03 --> 00:02:26.05
+So I'll open up a new terminal
+
+46
+00:02:26.05 --> 00:02:36.08
+and we'll use npm install -s body-parser.
+
+47
+00:02:36.08 --> 00:02:39.01
+Then let's require it in at the top.
+
+48
+00:02:39.01 --> 00:02:41.05
+So above our var app on line two,
+
+49
+00:02:41.05 --> 00:02:47.00
+I'll use var bodyParser =
+
+50
+00:02:47.00 --> 00:02:52.03
+require('body-parser')
+
+51
+00:02:52.03 --> 00:02:56.05
+then we will set it up as
+middleware with app.use.
+
+52
+00:02:56.05 --> 00:02:58.09
+So below our existing app.use
+
+53
+00:02:58.09 --> 00:03:03.02
+we'll add another
+
+54
+00:03:03.02 --> 00:03:09.07
+and we'll pass in bodyParser.json.
+
+55
+00:03:09.07 --> 00:03:11.07
+This let's body parser know
+
+56
+00:03:11.07 --> 00:03:13.09
+that we expect JSON to be coming in
+
+57
+00:03:13.09 --> 00:03:16.05
+with our HTTP request.
+
+58
+00:03:16.05 --> 00:03:20.02
+So let's open up our terminal once again
+
+59
+00:03:20.02 --> 00:03:22.05
+and I'll close the new terminal
+
+60
+00:03:22.05 --> 00:03:24.09
+so we can see our nodemon.
+
+61
+00:03:24.09 --> 00:03:27.08
+Then let's go back to Postman
+
+62
+00:03:27.08 --> 00:03:30.08
+and before we hit Send,
+I'll fix a quick typo
+
+63
+00:03:30.08 --> 00:03:35.03
+in the message property,
+instead of comma we use a colon
+
+64
+00:03:35.03 --> 00:03:39.09
+to specify the value from
+postman for our message property.
+
+65
+00:03:39.09 --> 00:03:43.03
+Now let's go ahead and hit Send again.
+
+66
+00:03:43.03 --> 00:03:48.04
+And if we get back a 200 OK,
+let's check our terminal.
+
+67
+00:03:48.04 --> 00:03:50.02
+We can now see the message object
+
+68
+00:03:50.02 --> 00:03:54.04
+with the name and message property.
+
+69
+00:03:54.04 --> 00:03:56.04
+Now that we're getting our message,
+
+70
+00:03:56.04 --> 00:03:57.09
+let's add the new message we got
+
+71
+00:03:57.09 --> 00:03:59.05
+to our messages array.
+
+72
+00:03:59.05 --> 00:04:02.04
+We will be doing that
+by using messages.push
+
+73
+00:04:02.04 --> 00:04:03.09
+and pass in the request body
+
+74
+00:04:03.09 --> 00:04:06.04
+which contains the message object.
+
+75
+00:04:06.04 --> 00:04:10.06
+So on line 18, instead of the console.log
+
+76
+00:04:10.06 --> 00:04:17.01
+we'll use messages.push with the req.body.
+
+77
+00:04:17.01 --> 00:04:18.07
+Let's save that and then let's give it
+
+78
+00:04:18.07 --> 00:04:22.01
+another try from Postman.
+
+79
+00:04:22.01 --> 00:04:24.04
+Yep, we get a 200 OK.
+
+80
+00:04:24.04 --> 00:04:27.07
+Let's go to our web app and refresh.
+
+81
+00:04:27.07 --> 00:04:31.09
+And you can see that we're
+getting our Postman message.
+
+82
+00:04:31.09 --> 00:04:34.01
+The final thing that we need to do
+
+83
+00:04:34.01 --> 00:04:37.02
+is send the post request not from Postman
+
+84
+00:04:37.02 --> 00:04:38.08
+but from our browser app.
+
+85
+00:04:38.08 --> 00:04:40.08
+Let's go back to our HTML file.
+
+86
+00:04:40.08 --> 00:04:44.06
+Let's scroll down to our
+getMessages function.
+
+87
+00:04:44.06 --> 00:04:48.02
+We'll copy it from line 32 to line 36
+
+88
+00:04:48.02 --> 00:04:54.09
+and post it below.
+
+89
+00:04:54.09 --> 00:04:59.03
+Then let's rename it to postMessage
+
+90
+00:04:59.03 --> 00:05:03.01
+and change it from a .get to .post.
+
+91
+00:05:03.01 --> 00:05:05.03
+Then we'll pass along the message object
+
+92
+00:05:05.03 --> 00:05:06.08
+as a second argument.
+
+93
+00:05:06.08 --> 00:05:10.02
+And we'll get that message
+object as a parameter
+
+94
+00:05:10.02 --> 00:05:15.00
+so we'll add that to the
+postMessages function
+
+95
+00:05:15.00 --> 00:05:19.08
+and then supply it as the second
+parameter to our post call.
+
+96
+00:05:19.08 --> 00:05:24.02
+Then let's modify our click
+event on our send button
+
+97
+00:05:24.02 --> 00:05:26.02
+so that it calls postMessages
+
+98
+00:05:26.02 --> 00:05:29.02
+instead of just adding
+a placeholder message.
+
+99
+00:05:29.02 --> 00:05:32.02
+So I'll take out what we have on line 23
+
+100
+00:05:32.02 --> 00:05:34.08
+then I'll create the
+variable called message
+
+101
+00:05:34.08 --> 00:05:37.01
+and set it to an empty object for now,
+
+102
+00:05:37.01 --> 00:05:40.01
+then let's call postMessages.
+
+103
+00:05:40.01 --> 00:05:41.06
+And actually, I'll rename this function
+
+104
+00:05:41.06 --> 00:05:44.08
+on line 39, to postMessage.
+
+105
+00:05:44.08 --> 00:05:47.08
+And then I'll pass in our message object,
+
+106
+00:05:47.08 --> 00:05:51.01
+it's currently empty so
+we'll need to populate it.
+
+107
+00:05:51.01 --> 00:05:53.08
+That means we'll need access to the name
+
+108
+00:05:53.08 --> 00:05:56.06
+and message inputs in our HTML.
+
+109
+00:05:56.06 --> 00:05:59.06
+In order to have access to those inputs
+
+110
+00:05:59.06 --> 00:06:02.07
+we need to create IDs like we did before.
+
+111
+00:06:02.07 --> 00:06:06.05
+We'll begin with our inputs on line 12
+
+112
+00:06:06.05 --> 00:06:10.00
+and we'll set the ID of name.
+
+113
+00:06:10.00 --> 00:06:12.09
+Then we'll need another input for message.
+
+114
+00:06:12.09 --> 00:06:18.09
+So let's copy line 12 and
+11 and paste it below.
+
+115
+00:06:18.09 --> 00:06:22.00
+We'll change the placeholder to Message
+
+116
+00:06:22.00 --> 00:06:25.08
+and we'll want it to
+be a multi-line input,
+
+117
+00:06:25.08 --> 00:06:32.03
+so instead of using input
+tags, we'll use textarea.
+
+118
+00:06:32.03 --> 00:06:34.04
+And then we'll add the
+closing tag at the end.
+
+119
+00:06:34.04 --> 00:06:37.02
+Then let's change the ID to message.
+
+120
+00:06:37.02 --> 00:06:41.01
+Now we have IDs for both
+our name and our message
+
+121
+00:06:41.01 --> 00:06:45.00
+that we can then set
+in our message object.
+
+122
+00:06:45.00 --> 00:06:47.09
+So let's begin populating that object.
+
+123
+00:06:47.09 --> 00:06:49.05
+We'll start with the name property
+
+124
+00:06:49.05 --> 00:06:51.07
+and set it to the value of our input
+
+125
+00:06:51.07 --> 00:06:57.02
+which we'll access with Jquery with .val.
+
+126
+00:06:57.02 --> 00:07:09.07
+Then we'll do the same
+for the message property.
+
+127
+00:07:09.07 --> 00:07:11.08
+Then finally, let's finish modifying
+
+128
+00:07:11.08 --> 00:07:15.03
+our postMessage function on line 41.
+
+129
+00:07:15.03 --> 00:07:18.06
+We won't need a callback,
+so let's take that out.
+
+130
+00:07:18.06 --> 00:07:20.06
+Then let's save that.
+
+131
+00:07:20.06 --> 00:07:22.08
+Then let's give it a try in our webpage.
+
+132
+00:07:22.08 --> 00:07:24.07
+Put in a name and a message,
+
+133
+00:07:24.07 --> 00:07:27.04
+then let's hit Send and let's refresh.
+
+134
+00:07:27.04 --> 00:07:30.09
+We can see that both the name
+and message are undefined,
+
+135
+00:07:30.09 --> 00:07:33.03
+not exactly what we expected.
+
+136
+00:07:33.03 --> 00:07:35.04
+Let's try to debug why this is happening.
+
+137
+00:07:35.04 --> 00:07:37.02
+Let's go back to our backend
+
+138
+00:07:37.02 --> 00:07:40.02
+and in our postMessages endpoint
+
+139
+00:07:40.02 --> 00:07:45.00
+let's add a console.log
+again with req.body.
+
+140
+00:07:45.00 --> 00:07:51.06
+Let's save this and try posting again.
+
+141
+00:07:51.06 --> 00:07:54.01
+We can see that I've posted twice
+
+142
+00:07:54.01 --> 00:07:56.02
+and I have two empty objects twice.
+
+143
+00:07:56.02 --> 00:07:58.05
+That's because what
+comes in from our browser
+
+144
+00:07:58.05 --> 00:08:01.07
+is URL encoded and so we
+must set up body parser
+
+145
+00:08:01.07 --> 00:08:03.02
+to support that.
+
+146
+00:08:03.02 --> 00:08:06.01
+So let's go up to where
+we set up body parser
+
+147
+00:08:06.01 --> 00:08:10.04
+and then we'll add
+another line with app.use.
+
+148
+00:08:10.04 --> 00:08:14.05
+We'll use body-parser again .urlencoded
+
+149
+00:08:14.05 --> 00:08:17.05
+and then we'll specify
+extended to be false.
+
+150
+00:08:17.05 --> 00:08:19.05
+Let's save that.
+
+151
+00:08:19.05 --> 00:08:23.05
+Then let's get rid of the
+console.log on line 19
+
+152
+00:08:23.05 --> 00:08:25.05
+and give it a try after saving.
+
+153
+00:08:25.05 --> 00:08:28.02
+We'll go back to our app, we'll hit send,
+
+154
+00:08:28.02 --> 00:08:31.01
+then let's refresh.
+
+155
+00:08:31.01 --> 00:08:34.06
+Then we can see we're
+getting the expected values.
+
+156
+00:08:34.06 --> 00:08:38.00
+So our message app works
+both frontend and backend.
+
+157
+00:08:38.00 --> 00:08:40.05
+If we hosted this now, we would be able to
+
+158
+00:08:40.05 --> 00:08:42.00
+have a chat with a friend
+
+159
+00:08:42.00 --> 00:08:45.01
+and simulate a chat between two clients.
+
+160
+00:08:45.01 --> 00:08:48.00
+So I'll cop the URL, open up a new tab,
+
+161
+00:08:48.00 --> 00:08:53.07
+and then let's post a message
+from our second client.
+
+162
+00:08:53.07 --> 00:09:00.00
+And then let's do the same from the first.
+
+163
+00:09:00.00 --> 00:09:06.02
+And then refresh on the second.
+
+164
+00:09:06.02 --> 00:09:07.05
+We can see it's working
+
+165
+00:09:07.05 --> 00:09:09.09
+but we've noticed somewhat of an issue
+
+166
+00:09:09.09 --> 00:09:13.03
+that we have no idea when
+a new message comes in.
+
+167
+00:09:13.03 --> 00:09:15.06
+So we have to keep hitting refresh.
+
+168
+00:09:15.06 --> 00:09:16.09
+We could make this automatic
+
+169
+00:09:16.09 --> 00:09:19.06
+with a frontend JavaScript function,
+
+170
+00:09:19.06 --> 00:09:23.00
+which will keep doing
+an HTTP get on a timer.
+
+171
+00:09:23.00 --> 00:09:24.01
+But there is a better way.
+
+172
+00:09:24.01 --> 00:09:27.01
+Let's take a look at socket.io next.
+

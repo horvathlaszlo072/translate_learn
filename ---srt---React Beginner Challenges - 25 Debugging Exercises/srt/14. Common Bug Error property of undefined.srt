@@ -1,0 +1,139 @@
+1
+00:00:00,790 --> 00:00:05,470
+All right, so in this lecture, we're going to talk about a super, super common error that you're
+
+2
+00:00:05,470 --> 00:00:09,710
+going to get all the time when you're working with react apps or any kind of JavaScript apps.
+
+3
+00:00:10,300 --> 00:00:12,880
+This is the way to show it right here.
+
+4
+00:00:12,910 --> 00:00:19,090
+This is the can I read Property Z of Undefined, where this is the object sort of property that you're
+
+5
+00:00:19,090 --> 00:00:20,020
+trying to access.
+
+6
+00:00:20,530 --> 00:00:25,720
+And this error is pretty simple to understand, but it's just occurs everywhere.
+
+7
+00:00:25,720 --> 00:00:28,780
+And you're you're going to get confused a lot of the times.
+
+8
+00:00:28,780 --> 00:00:33,970
+But basically what this means is you're trying to access something off of an undefined property.
+
+9
+00:00:34,270 --> 00:00:36,780
+And undefined is just a type in JavaScript.
+
+10
+00:00:36,790 --> 00:00:39,300
+It doesn't have properties or anything that you could access.
+
+11
+00:00:39,580 --> 00:00:46,690
+So if you try and do a dot on that undefined thing, that variable, you're going to get an error.
+
+12
+00:00:47,020 --> 00:00:49,740
+And that's just a fact of life.
+
+13
+00:00:49,750 --> 00:00:53,500
+It's unfortunate, but this is just something that you're going to have to deal with.
+
+14
+00:00:53,650 --> 00:00:58,510
+What you should be thinking about is, OK, the variable.
+
+15
+00:00:58,510 --> 00:01:04,390
+So this this really should say foo is undefined and it's kind of misleading.
+
+16
+00:01:04,390 --> 00:01:10,540
+And I just mentioned another way that the other variable, you know, is not a function.
+
+17
+00:01:10,540 --> 00:01:10,840
+Right.
+
+18
+00:01:11,530 --> 00:01:14,830
+This should say Foo is undefined.
+
+19
+00:01:15,760 --> 00:01:19,690
+Instead, it says cannot read property Z of undefined.
+
+20
+00:01:19,960 --> 00:01:26,560
+So it's kind of it makes you think like, OK, well, it makes you you have to actually think for yourself
+
+21
+00:01:26,560 --> 00:01:31,150
+on this one and think to yourself, OK, what is undefined that I'm calling Z.
+
+22
+00:01:31,660 --> 00:01:37,240
+And if you go down, you look right here, you see food and you knowing this information, you could
+
+23
+00:01:37,240 --> 00:01:39,640
+say, OK, Foo is undefined and sort of way.
+
+24
+00:01:39,830 --> 00:01:44,290
+The way that you continue debugging this as you would look, you would trace up and say, OK, well,
+
+25
+00:01:45,220 --> 00:01:48,130
+I just defined Foo here and I didn't set it to anything.
+
+26
+00:01:48,580 --> 00:01:50,530
+And then I said Food Z.
+
+27
+00:01:51,550 --> 00:01:57,640
+And and that's all I did, far undefined, so that's how you would fix this error as you'd figure out
+
+28
+00:01:57,640 --> 00:02:01,490
+why you're calling something on an undefined object, you trace that back.
+
+29
+00:02:01,780 --> 00:02:05,810
+Now, let's say I define FUX to just be a blank object.
+
+30
+00:02:06,650 --> 00:02:10,720
+OK, now you could probably guess what kind of error I'm going to get now, right?
+
+31
+00:02:11,140 --> 00:02:12,760
+So now I get food out.
+
+32
+00:02:12,760 --> 00:02:13,720
+Z is not a function.
+
+33
+00:02:14,860 --> 00:02:21,850
+So now let's say we define Z and we just put Z as a function.
+
+34
+00:02:25,870 --> 00:02:32,020
+And so now we don't get an error because we have food to find and we have very defined, so I hope that
+
+35
+00:02:32,020 --> 00:02:32,550
+makes sense.

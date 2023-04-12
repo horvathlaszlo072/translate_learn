@@ -1,0 +1,411 @@
+1
+00:00:00,210 --> 00:00:01,230
+Welcome back, everyone.
+
+2
+00:00:01,800 --> 00:00:07,830
+In the last video we learned about how we can migrate our user contacts code into Redux.
+
+3
+00:00:08,190 --> 00:00:12,120
+In this video, we're going to do the same thing with our categories context.
+
+4
+00:00:12,360 --> 00:00:17,580
+And along the way, we're going to learn a couple nuances about how the flow of data in Redux might
+
+5
+00:00:17,580 --> 00:00:22,860
+change the way that we actually think about the logic in how we store our state.
+
+6
+00:00:23,550 --> 00:00:31,470
+So with our categories context, we just want to migrate exactly what we see over into Redux first.
+
+7
+00:00:32,040 --> 00:00:37,170
+So to begin with, we know we need to make a couple files in our store folder.
+
+8
+00:00:37,650 --> 00:00:40,020
+So I'm going to make a new one called Categories.
+
+9
+00:00:40,620 --> 00:00:47,460
+And inside of this categories, we will need, of course, a category reducer such as.
+
+10
+00:00:50,420 --> 00:00:54,770
+I also need a category action dogs.
+
+11
+00:00:56,030 --> 00:01:00,620
+We also know we need a category type such as?
+
+12
+00:01:01,160 --> 00:01:06,380
+And finally, we know we need a category selector dogs.
+
+13
+00:01:07,410 --> 00:01:11,370
+So I'm just setting up these files because we know we're going to need them later.
+
+14
+00:01:12,240 --> 00:01:14,670
+So let's start coding our reducer.
+
+15
+00:01:15,300 --> 00:01:19,440
+What we know we need is we know we need the initial state.
+
+16
+00:01:19,470 --> 00:01:29,190
+So categories, initial state, which is going to be an object and inside it will contain our categories
+
+17
+00:01:29,190 --> 00:01:29,520
+map.
+
+18
+00:01:30,360 --> 00:01:34,020
+So nothing different here from what we have in our context as the value.
+
+19
+00:01:35,160 --> 00:01:42,720
+And then, of course, as we know, we need our categories reducer, which will be equal to a function
+
+20
+00:01:42,720 --> 00:01:47,460
+that receives the state, which by default is equal to categories initial state.
+
+21
+00:01:47,970 --> 00:01:49,800
+And then we get an action.
+
+22
+00:01:50,930 --> 00:01:53,960
+Off the action we want to structure off.
+
+23
+00:01:55,150 --> 00:01:56,740
+The type and the payload.
+
+24
+00:01:58,030 --> 00:02:00,370
+Which will be equal to the action.
+
+25
+00:02:01,300 --> 00:02:07,150
+And we also want to make sure that our action, if no action is passed and for some reason our reducer
+
+26
+00:02:07,150 --> 00:02:11,280
+runs by default, we pass an empty object just so that there's something to call.
+
+27
+00:02:12,630 --> 00:02:15,690
+And then we write our stitch statement on our type.
+
+28
+00:02:16,680 --> 00:02:20,610
+So a lot of this, again, is just going to be very basic.
+
+29
+00:02:21,660 --> 00:02:24,030
+Boilerplate code that you write with every reducer.
+
+30
+00:02:25,130 --> 00:02:27,500
+It's also good to get this practice when you're typing this out.
+
+31
+00:02:27,500 --> 00:02:29,030
+So you remember every single step.
+
+32
+00:02:30,170 --> 00:02:36,500
+And we probably will want to set two categories map once we get it from wherever we get it from.
+
+33
+00:02:37,250 --> 00:02:39,050
+So we'll figure out what the types are after.
+
+34
+00:02:40,270 --> 00:02:43,600
+We know that we want to return something with our default state.
+
+35
+00:02:46,110 --> 00:02:52,140
+And we also know that we want to update the categories map with our payload.
+
+36
+00:02:53,100 --> 00:02:55,120
+So structurally, this makes perfect sense.
+
+37
+00:02:55,140 --> 00:02:59,490
+We haven't even written our action creator yet, but we pretty much know that this is what it's going
+
+38
+00:02:59,490 --> 00:02:59,850
+to be.
+
+39
+00:03:00,570 --> 00:03:02,610
+And then, of course, by default, we return the state.
+
+40
+00:03:04,840 --> 00:03:10,540
+So now that we have our reducer, we can, of course figure out if we need to tweak this later.
+
+41
+00:03:10,960 --> 00:03:15,100
+But we got to take this reducer and we want to put it into our root reducer.
+
+42
+00:03:16,030 --> 00:03:18,610
+So we want to import our categories.
+
+43
+00:03:18,610 --> 00:03:21,610
+Reducer from categories.
+
+44
+00:03:22,330 --> 00:03:23,410
+Category reducer.
+
+45
+00:03:27,190 --> 00:03:30,250
+And then add it to categories on the root reducer.
+
+46
+00:03:31,950 --> 00:03:39,210
+So now that we have our categories reducer, what we want to do is we want to create a action that will
+
+47
+00:03:39,330 --> 00:03:42,750
+update this category just like we did with our user action.
+
+48
+00:03:43,380 --> 00:03:49,530
+So I'm going to copy over create action from this user action file so that I can paste it in without
+
+49
+00:03:49,530 --> 00:03:51,240
+having to do it myself.
+
+50
+00:03:51,960 --> 00:03:56,490
+And I know that what I need to do is create a set categories.
+
+51
+00:03:57,030 --> 00:03:58,440
+Map action.
+
+52
+00:03:59,420 --> 00:04:02,060
+And this is going to get a category's map.
+
+53
+00:04:03,290 --> 00:04:09,860
+And then what I'm going to return is call create action with that type that our producer is expecting.
+
+54
+00:04:10,370 --> 00:04:15,650
+So here I can take the string and I'm going to make the new category type for this.
+
+55
+00:04:16,430 --> 00:04:25,610
+So I want to say const categories action type is equal to an object or asset categories.
+
+56
+00:04:25,610 --> 00:04:28,190
+MAP points to categories, not the string.
+
+57
+00:04:29,440 --> 00:04:36,760
+If I wanted to be a little bit more explicit, I can even say that this is a category slash categories,
+
+58
+00:04:36,760 --> 00:04:36,980
+man.
+
+59
+00:04:37,810 --> 00:04:43,870
+This way, when I look at this, I know that the first term tells me which section of my store this
+
+60
+00:04:43,870 --> 00:04:44,590
+is governed by.
+
+61
+00:04:45,070 --> 00:04:49,580
+So similarly, I can do the same thing with user types as well.
+
+62
+00:04:49,600 --> 00:04:56,830
+I can say user set current user, just in case you ever come across a time where you have these action
+
+63
+00:04:56,830 --> 00:05:00,580
+type names that kind of seem similar to your other reducers.
+
+64
+00:05:00,610 --> 00:05:03,850
+You can imagine that add an app at scale where you might have 50 reducers.
+
+65
+00:05:04,060 --> 00:05:07,630
+This might get a little bit more clear in order for us to set this up.
+
+66
+00:05:09,070 --> 00:05:14,740
+But now that we have our category action types, we need to make sure that we export this out so that
+
+67
+00:05:14,740 --> 00:05:17,680
+we can import it into the appropriate places.
+
+68
+00:05:19,490 --> 00:05:22,190
+So importing our action types.
+
+69
+00:05:23,400 --> 00:05:24,660
+From category types.
+
+70
+00:05:25,560 --> 00:05:28,650
+And we'll need the same thing inside of our action.
+
+71
+00:05:31,070 --> 00:05:38,330
+And then here for the create action, I'm creating set categories map and passing the categories map.
+
+72
+00:05:39,220 --> 00:05:43,240
+And of course we can't forget to export this out, adds our action creator.
+
+73
+00:05:44,440 --> 00:05:48,070
+So we have our action creator, we have our reducer.
+
+74
+00:05:48,430 --> 00:05:50,290
+We've connected our reducer.
+
+75
+00:05:50,320 --> 00:05:54,850
+Oh, I also need to remember to actually update the value in the reducer.
+
+76
+00:05:56,410 --> 00:05:56,920
+There we go.
+
+77
+00:05:57,400 --> 00:06:01,360
+So we have our reducer and we have it inside of our root reducer.
+
+78
+00:06:02,220 --> 00:06:06,990
+So now there's nothing actually stopping us from starting to migrate the application.
+
+79
+00:06:07,740 --> 00:06:14,640
+At this point, you have a categories reducer and you also have your category action that will set your
+
+80
+00:06:14,640 --> 00:06:17,280
+reducer with the new categories.
+
+81
+00:06:17,280 --> 00:06:18,420
+Map payload.
+
+82
+00:06:19,450 --> 00:06:26,080
+So now that we've set up our reducers, I want to challenge you to figure out if you can actually manually
+
+83
+00:06:26,080 --> 00:06:31,060
+now replace the categories context with what we have here.
+
+84
+00:06:31,720 --> 00:06:32,920
+I'm going to give you a hint.
+
+85
+00:06:33,930 --> 00:06:40,440
+What you're going to want to do with this categories context is you need to find a new place for this
+
+86
+00:06:40,440 --> 00:06:45,960
+coat after you're done with figuring out where this coat is going to go and what you need to replace
+
+87
+00:06:45,960 --> 00:06:51,510
+accordingly, you're probably going to also need to make sure that you can extract this data from your
+
+88
+00:06:51,510 --> 00:06:51,870
+state.
+
+89
+00:06:52,380 --> 00:06:54,750
+And to do that you're going to want to use some selectors.
+
+90
+00:06:55,920 --> 00:06:57,780
+So that is my challenge to you.
+
+91
+00:06:58,290 --> 00:06:59,460
+I want you to figure that out.
+
+92
+00:07:00,210 --> 00:07:05,400
+And what you can do, in fact, if you figure it out, is you can even delete the categories context
+
+93
+00:07:06,210 --> 00:07:06,480
+here.
+
+94
+00:07:06,490 --> 00:07:11,250
+We've actually done everything we need to with moving the user context over.
+
+95
+00:07:11,520 --> 00:07:15,450
+So in fact, if we look for our user provider.
+
+96
+00:07:16,540 --> 00:07:19,300
+We only have it referenced inside of our user context.
+
+97
+00:07:19,480 --> 00:07:23,830
+And if we look for user context, we also see it's only referenced in the user context file.
+
+98
+00:07:24,250 --> 00:07:28,480
+So nothing is stopping us from deleting this user context such as X.
+
+99
+00:07:29,460 --> 00:07:30,800
+And that's because we fully migrated.
+
+100
+00:07:30,810 --> 00:07:31,860
+So that's my challenge to you.
+
+101
+00:07:32,010 --> 00:07:35,970
+I've helped you set up a lot of our initial boilerplate for the reducer.
+
+102
+00:07:36,360 --> 00:07:42,000
+Now, my challenge to you is to figure out if you can actually leverage this in code and try it yourself.
+
+103
+00:07:42,660 --> 00:07:44,700
+In the next video, we will tackle this together.

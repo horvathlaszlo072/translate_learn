@@ -1,0 +1,131 @@
+1
+00:00:00,330 --> 00:00:06,750
+All right, all right, I had to make this quick video to talk about the elephant in the room, if you
+
+2
+00:00:06,750 --> 00:00:08,820
+know anything about the react world.
+
+3
+00:00:09,040 --> 00:00:12,630
+Well, this discussion has to happen.
+
+4
+00:00:12,930 --> 00:00:14,730
+Classes versus Hooke's.
+
+5
+00:00:15,900 --> 00:00:22,770
+Now, as you learn in the course, there's many ways to build react components and one of the newer
+
+6
+00:00:22,770 --> 00:00:26,340
+ways to write these components is using Hooke's.
+
+7
+00:00:27,440 --> 00:00:33,080
+Now, the way we've structured the course is the way that we actually recommend you learn how to write
+
+8
+00:00:33,080 --> 00:00:34,160
+proper applications.
+
+9
+00:00:34,760 --> 00:00:38,770
+The thing is, Hooke's are fairly new and they're exciting.
+
+10
+00:00:38,810 --> 00:00:43,160
+So a lot of people talk about them, but they're also very specific to react.
+
+11
+00:00:43,880 --> 00:00:49,610
+What you learn about Hooke's, you can't really apply to anywhere else and the programming world because
+
+12
+00:00:49,610 --> 00:00:52,710
+they're so react specific versus classes.
+
+13
+00:00:52,940 --> 00:00:54,980
+Well, that's part of JavaScript.
+
+14
+00:00:55,280 --> 00:01:01,850
+Learning classes is an important concept, not only in JavaScript, but a lot of other programming languages
+
+15
+00:01:02,390 --> 00:01:04,700
+also because Hooke's are fairly new.
+
+16
+00:01:04,970 --> 00:01:10,970
+A lot of code bases, in fact, still use classes because there's nothing wrong with classes.
+
+17
+00:01:11,300 --> 00:01:16,400
+So the way we've structured the course is that we're going to teach you react starting with classes.
+
+18
+00:01:16,400 --> 00:01:20,750
+So you know how those works so that you can apply that knowledge to any of your future projects.
+
+19
+00:01:20,780 --> 00:01:25,370
+Or if you land on a project at a job that still uses classes.
+
+20
+00:01:25,520 --> 00:01:28,310
+And then we're going to convert the app using hooks.
+
+21
+00:01:28,460 --> 00:01:30,590
+So you get to learn both ways.
+
+22
+00:01:30,920 --> 00:01:37,670
+And we also started with classes because there's been a little bit of move lately in the industry where
+
+23
+00:01:37,820 --> 00:01:41,900
+people are shying away from hooks because of the added complexity.
+
+24
+00:01:42,080 --> 00:01:43,580
+It adds to react.
+
+25
+00:01:43,730 --> 00:01:45,740
+Now, this is a hot topic of discussion.
+
+26
+00:01:45,890 --> 00:01:48,380
+It doesn't really matter whichever one you prefer.
+
+27
+00:01:48,530 --> 00:01:52,790
+Our goal is to teach you both and then you can decide for yourself what is best.
+
+28
+00:01:53,510 --> 00:01:58,640
+The way we structure the course is what we think is the best way to learn, react.
+
+29
+00:01:58,760 --> 00:02:04,940
+That is starting with classes as they were intended, and then learning hooks afterwards to show what
+
+30
+00:02:04,940 --> 00:02:08,810
+problems Hooke's solves that maybe we had with classes.
+
+31
+00:02:09,020 --> 00:02:10,160
+So hang in there.
+
+32
+00:02:10,160 --> 00:02:11,420
+We're going to cover both of these.
+
+33
+00:02:11,840 --> 00:02:12,680
+I'll see you in the next one.

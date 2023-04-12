@@ -1,0 +1,419 @@
+1
+00:00:00,840 --> 00:00:01,860
+Welcome back, everyone.
+
+2
+00:00:02,520 --> 00:00:07,230
+In the last video, we started learning about leveraging the roots and the root component from React
+
+3
+00:00:07,230 --> 00:00:07,920
+router Dom.
+
+4
+00:00:08,340 --> 00:00:13,920
+We're going to dive much deeper into roots, especially because there's a lot that we can do with this,
+
+5
+00:00:13,920 --> 00:00:15,840
+and there's a lot more nuance that we're going to learn about.
+
+6
+00:00:16,110 --> 00:00:17,790
+But I want to highlight one quick thing.
+
+7
+00:00:18,390 --> 00:00:24,480
+The reason why these components are able to connect to the URL and therefore render the appropriate
+
+8
+00:00:24,480 --> 00:00:29,790
+elements is because of the fact that these are nested inside of the browser router.
+
+9
+00:00:30,150 --> 00:00:34,770
+You remember that I mentioned that you want to nest your application inside of the browser, router
+
+10
+00:00:34,770 --> 00:00:38,220
+component or whichever router component you choose to use and leverage.
+
+11
+00:00:38,220 --> 00:00:43,920
+Most of the time it being browser router, because by doing this, you're extending that ability to
+
+12
+00:00:44,010 --> 00:00:49,380
+read from the URL and keep track of navigation history and all those things and respond in turn with
+
+13
+00:00:49,380 --> 00:00:49,530
+it.
+
+14
+00:00:49,860 --> 00:00:57,810
+Because those components, the roots and the root component rely on being wrapped in an outside browser
+
+15
+00:00:57,810 --> 00:00:58,560
+router component.
+
+16
+00:00:59,010 --> 00:01:03,600
+So our app component is really just the entry point, but all of those components that we leverage are
+
+17
+00:01:03,600 --> 00:01:05,430
+now nested inside of browser router.
+
+18
+00:01:05,820 --> 00:01:10,170
+So that's what I meant earlier in the previous lesson when I said, You want to wrap your application
+
+19
+00:01:10,170 --> 00:01:15,240
+inside a browser router so you can leverage the underlying browser functionalities when it comes to
+
+20
+00:01:15,240 --> 00:01:15,900
+navigation?
+
+21
+00:01:16,560 --> 00:01:22,290
+Now, inside of the home route, I have switched the path back to just the slash, and we're going to
+
+22
+00:01:22,290 --> 00:01:26,040
+die of a little deeper into understanding how this root component works.
+
+23
+00:01:26,820 --> 00:01:29,910
+So you don't have to type this along because we're going to delete it anyways.
+
+24
+00:01:30,000 --> 00:01:32,400
+This is really just to highlight a quick point.
+
+25
+00:01:32,940 --> 00:01:37,890
+I'm going to make a really quick component, and it's just a component that renders an H1 that says
+
+26
+00:01:37,890 --> 00:01:39,750
+I am the shop page.
+
+27
+00:01:40,590 --> 00:01:47,250
+And what I'm going to do is I'm going to duplicate this route and instead here I'm going to say when
+
+28
+00:01:47,250 --> 00:01:50,430
+you land on Dash Shop, render our shop component.
+
+29
+00:01:51,120 --> 00:01:55,020
+So I'm going to save this and now we'll go back to our application.
+
+30
+00:01:55,710 --> 00:01:57,450
+If we navigate to slash up.
+
+31
+00:01:58,650 --> 00:01:59,430
+What do we see?
+
+32
+00:01:59,970 --> 00:02:05,490
+We see that we we've entirely removed the home component, and now we're rendering the shop component,
+
+33
+00:02:05,970 --> 00:02:08,250
+so everything here behaves as we expect.
+
+34
+00:02:08,670 --> 00:02:13,860
+We know that when we pattern match, we want to strip out everything that we had before, but now we
+
+35
+00:02:13,860 --> 00:02:15,540
+want to render in what's appropriate.
+
+36
+00:02:16,620 --> 00:02:21,990
+But as I mentioned earlier, what we want to show is this consistent navigation bar.
+
+37
+00:02:22,020 --> 00:02:23,250
+So how do we do this?
+
+38
+00:02:24,120 --> 00:02:29,640
+Well, as it turns out, there's actually a few patterns that exist within our Dom and its components
+
+39
+00:02:29,820 --> 00:02:31,530
+that allow us to do exactly that.
+
+40
+00:02:32,340 --> 00:02:35,880
+So in order to understand that, we're going to have to modify our code a little bit.
+
+41
+00:02:36,720 --> 00:02:42,900
+The first thing we're going to explore is this concept of nested routes in order to nest routes within
+
+42
+00:02:42,900 --> 00:02:43,500
+the other.
+
+43
+00:02:43,770 --> 00:02:50,220
+What we do is instead of making these is just one line closed components, we essentially make them
+
+44
+00:02:50,220 --> 00:02:54,810
+components where we can embed children between them.
+
+45
+00:02:55,410 --> 00:03:01,260
+So here I'm going to take this shop route and I'm going to nested inside of the home route.
+
+46
+00:03:02,730 --> 00:03:08,190
+So instead of using the auto closing tag, I'm going to open up this component and the nest, the home
+
+47
+00:03:08,190 --> 00:03:08,310
+wrote.
+
+48
+00:03:08,340 --> 00:03:12,540
+Inside what this now does is actually a couple of things.
+
+49
+00:03:12,870 --> 00:03:20,640
+The first of which is it makes the path that's nested inside relative to the path of the parent.
+
+50
+00:03:21,270 --> 00:03:28,140
+So what this means is that you can imagine that for this route path to match now, it's going to have
+
+51
+00:03:28,140 --> 00:03:29,510
+to match the parent first.
+
+52
+00:03:29,520 --> 00:03:30,420
+So slash.
+
+53
+00:03:30,720 --> 00:03:33,810
+And then it's going to have to match the inside, which is shot.
+
+54
+00:03:34,620 --> 00:03:39,450
+So I know this doesn't really seem any different from what we had before because before our path was
+
+55
+00:03:39,450 --> 00:03:42,120
+matching this anyways, but they're no longer siblings.
+
+56
+00:03:42,130 --> 00:03:43,290
+This is a child.
+
+57
+00:03:43,560 --> 00:03:50,090
+So what this means is that if this top level was home in order for this to match, it's got to be slash
+
+58
+00:03:50,100 --> 00:03:51,990
+home slash shop.
+
+59
+00:03:53,100 --> 00:03:56,940
+So let's just keep these paths so that we know what's happening here.
+
+60
+00:03:57,480 --> 00:03:58,890
+So let's go back to our application.
+
+61
+00:03:59,370 --> 00:04:04,530
+We noticed that now we're no longer rendering on the empty plane URL.
+
+62
+00:04:04,560 --> 00:04:06,540
+Instead, we now navigate to slash home.
+
+63
+00:04:06,990 --> 00:04:08,940
+We see our home component as we expect.
+
+64
+00:04:09,660 --> 00:04:12,330
+What do you think is going to happen when we navigate to slash shop?
+
+65
+00:04:14,110 --> 00:04:14,710
+Let's see.
+
+66
+00:04:15,490 --> 00:04:16,540
+Well, isn't that interesting?
+
+67
+00:04:16,780 --> 00:04:21,250
+We still see our home component, but we don't see our sharp edge component.
+
+68
+00:04:22,000 --> 00:04:22,960
+Why is that?
+
+69
+00:04:23,530 --> 00:04:25,030
+Well, there's actually a couple of things to notice.
+
+70
+00:04:25,360 --> 00:04:31,240
+The first is that the parental component is still rendering, despite the fact that we're now matching
+
+71
+00:04:31,240 --> 00:04:33,100
+beyond the slash home slash up.
+
+72
+00:04:33,850 --> 00:04:35,290
+And this is one important thing.
+
+73
+00:04:35,710 --> 00:04:42,130
+This means that our parental component at that parent level route is going to render unless we tell
+
+74
+00:04:42,130 --> 00:04:42,790
+it otherwise.
+
+75
+00:04:43,150 --> 00:04:45,460
+So that's one important thing, and I'll explain how we do that after.
+
+76
+00:04:46,180 --> 00:04:51,970
+But the other thing is that even though we have slashed shot matching, our route is not displaying
+
+77
+00:04:51,970 --> 00:04:52,690
+its element.
+
+78
+00:04:53,080 --> 00:04:53,950
+Why is that?
+
+79
+00:04:54,610 --> 00:05:01,540
+The reason for that is because we have not actually told our code where we want this matching slash
+
+80
+00:05:01,540 --> 00:05:03,310
+shop component to go.
+
+81
+00:05:04,000 --> 00:05:10,390
+The way that we do that is we actually have to go into our parent level component and we need to tell
+
+82
+00:05:10,390 --> 00:05:16,810
+it exactly where we want recruiter Don to render this nested matching element.
+
+83
+00:05:17,140 --> 00:05:23,950
+And the way you do that is you use another component that we get from recruiter Dom called an outlet.
+
+84
+00:05:25,020 --> 00:05:33,660
+This outlet, you can see as a outlet where the code that we want to render should come out from and
+
+85
+00:05:33,660 --> 00:05:37,080
+we would use it inside of our component.
+
+86
+00:05:38,350 --> 00:05:42,580
+Now, because as I mentioned, you always need one parent level component.
+
+87
+00:05:43,300 --> 00:05:49,150
+I'm just going to make a new div and inside I'm going to render the outlet wherever you render.
+
+88
+00:05:49,150 --> 00:05:54,670
+The outlet is where when this route matches is going to render the element.
+
+89
+00:05:54,820 --> 00:05:58,040
+So shop here is going to render above the directory.
+
+90
+00:05:58,480 --> 00:06:00,010
+So let's back to our code.
+
+91
+00:06:00,370 --> 00:06:02,200
+And here we see that's exactly what happened.
+
+92
+00:06:02,770 --> 00:06:08,770
+If I move this outlet below the directory, we see now it's below our directory.
+
+93
+00:06:09,610 --> 00:06:16,690
+So that is very powerful because the outlet now allows us to leverage this pattern matching and this
+
+94
+00:06:16,690 --> 00:06:24,280
+nesting structure in order to dynamically change portions of our code based on the routes and the nested
+
+95
+00:06:24,280 --> 00:06:24,640
+routes.
+
+96
+00:06:25,680 --> 00:06:31,920
+So with this in mind, we can kind of start to see a pattern emerge where we can keep the navigation
+
+97
+00:06:31,920 --> 00:06:36,660
+bar, but just change the content inside using a specific nesting strategy.
+
+98
+00:06:37,260 --> 00:06:38,700
+That's what we're going to do in our next lesson.
+
+99
+00:06:39,120 --> 00:06:42,630
+I want you to think about it a little bit first, just so that you're familiar because we learn something
+
+100
+00:06:42,630 --> 00:06:43,830
+really interesting just now.
+
+101
+00:06:43,830 --> 00:06:48,030
+And it might be a little confusing with these nested roots, but just really sit and think about it
+
+102
+00:06:48,030 --> 00:06:48,540
+a little bit.
+
+103
+00:06:48,690 --> 00:06:53,550
+And imagine in your head how you can imagine this composition we're about to do in the next video is
+
+104
+00:06:53,550 --> 00:06:56,850
+going to look so that we can maintain a navigation bar.
+
+105
+00:06:57,630 --> 00:07:00,870
+So think about that and then join me in the next video and let's do that together.

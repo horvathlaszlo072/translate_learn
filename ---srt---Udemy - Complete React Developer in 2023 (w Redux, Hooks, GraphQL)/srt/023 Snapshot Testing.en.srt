@@ -1,0 +1,459 @@
+1
+00:00:01,380 --> 00:00:02,030
+Welcome back.
+
+2
+00:00:02,870 --> 00:00:09,890
+If you remember our talk about testing, I mentioned that React has these two special features that
+
+3
+00:00:10,100 --> 00:00:12,650
+you often see in their tests.
+
+4
+00:00:13,400 --> 00:00:20,450
+One is the enzyme library, which allows us to render our components in a test environment, which we
+
+5
+00:00:20,450 --> 00:00:20,780
+saw.
+
+6
+00:00:22,010 --> 00:00:30,170
+And then we can use whatever expect methods that we want from just to actually test whatever is render,
+
+7
+00:00:30,800 --> 00:00:34,190
+but there's also another thing called the snapshot testing.
+
+8
+00:00:35,120 --> 00:00:42,950
+And again, this is another really good tool that comes with just that really, really helps us test
+
+9
+00:00:42,950 --> 00:00:44,060
+our react components.
+
+10
+00:00:44,720 --> 00:00:46,250
+So let's talk about that in this video.
+
+11
+00:00:48,340 --> 00:00:55,810
+If we go back to our app, you might be asking yourself, All right, I can keep going with this car
+
+12
+00:00:55,810 --> 00:01:04,450
+component and just use the regular just syntax to make sure that the car component has everything that
+
+13
+00:01:04,450 --> 00:01:09,370
+I need, including maybe in an image tag, a diff tag, some names and emails.
+
+14
+00:01:10,200 --> 00:01:19,020
+But here's the thing, we worked really, really hard to keep these components, what we call stateless
+
+15
+00:01:19,020 --> 00:01:25,650
+components, they are not using the class syntax to extend Riak component.
+
+16
+00:01:25,920 --> 00:01:27,240
+They don't have any state.
+
+17
+00:01:27,450 --> 00:01:31,750
+They're just pure functions that we've created.
+
+18
+00:01:32,370 --> 00:01:34,890
+So if we're actually writing tests.
+
+19
+00:01:36,080 --> 00:01:42,350
+I bet we're going to repeat a lot of code here, we're always going to just be testing if this guy render
+
+20
+00:01:42,350 --> 00:01:43,580
+if this guy rendered.
+
+21
+00:01:44,900 --> 00:01:47,960
+And that's a lot of repeated work for a developer.
+
+22
+00:01:49,100 --> 00:01:57,140
+Well, just realize that this would be a lot of redundant, wasted time, wouldn't it be great if we
+
+23
+00:01:57,140 --> 00:02:06,650
+can just take a snapshot of whatever this card component renders and any time while we're writing our
+
+24
+00:02:06,650 --> 00:02:14,750
+car component, anything changes and the component doesn't look as we expected it to as the snapshot
+
+25
+00:02:15,680 --> 00:02:16,950
+that we took a picture of.
+
+26
+00:02:17,510 --> 00:02:20,840
+Well, if it looks any different, then we fail the test.
+
+27
+00:02:21,740 --> 00:02:25,690
+That's what snapshot testing is and it's really easy.
+
+28
+00:02:25,730 --> 00:02:27,800
+Let me demonstrate and you'll see how simple it is.
+
+29
+00:02:28,700 --> 00:02:30,320
+Let's go back to our car test here.
+
+30
+00:02:31,660 --> 00:02:38,560
+Instead of doing the length to equal one and many other tests that we can right here, let's do something
+
+31
+00:02:38,560 --> 00:02:39,050
+different here.
+
+32
+00:02:39,460 --> 00:02:40,270
+I'm going to right.
+
+33
+00:02:40,270 --> 00:02:42,640
+Expect we're going to shallow card.
+
+34
+00:02:42,880 --> 00:02:47,280
+And since we're not using render and mount here, let's just remove that from our imports.
+
+35
+00:02:48,010 --> 00:02:57,490
+Now, we've rendered the card component in just we can use snapshot testing to say to match.
+
+36
+00:02:59,890 --> 00:03:00,550
+Snapshot.
+
+37
+00:03:05,110 --> 00:03:05,500
+That's it.
+
+38
+00:03:06,070 --> 00:03:07,540
+So what does this do?
+
+39
+00:03:07,660 --> 00:03:08,860
+Well, let's save here.
+
+40
+00:03:10,370 --> 00:03:11,690
+And see what just happened.
+
+41
+00:03:13,210 --> 00:03:20,170
+We have a snapshot summary that showed up, it says One snapshot written in one in one test suite.
+
+42
+00:03:21,060 --> 00:03:22,960
+And we see that it passed.
+
+43
+00:03:23,100 --> 00:03:28,170
+That's good, but one thing you may have noticed is that we now have a folder.
+
+44
+00:03:29,360 --> 00:03:34,680
+A snapshot folder that magically appear just by running this method.
+
+45
+00:03:35,570 --> 00:03:37,040
+If I open this up.
+
+46
+00:03:38,740 --> 00:03:41,410
+I see that just took a snapshot.
+
+47
+00:03:42,420 --> 00:03:50,610
+And you can read out more about it here, but it looks like a text file, a plain text file that has
+
+48
+00:03:51,180 --> 00:03:56,820
+all these things, you see these shallow wrapper object here that has of length one.
+
+49
+00:03:57,850 --> 00:04:05,710
+It has the class name that we have in our d'Hiv, if I keep scrolling down.
+
+50
+00:04:07,000 --> 00:04:09,880
+We see that we have a ton of information.
+
+51
+00:04:11,990 --> 00:04:17,610
+Such as the type of div, we also have a type of P, a paragraph.
+
+52
+00:04:17,650 --> 00:04:20,510
+Now, what does this actually mean?
+
+53
+00:04:21,410 --> 00:04:30,440
+This took a picture of this component when we shallow rendered it so that now I can keep saving.
+
+54
+00:04:30,440 --> 00:04:35,630
+Let's say I'm working on my app, working on the card component and I keep saving, keep saving.
+
+55
+00:04:35,900 --> 00:04:42,560
+But I decide to remove this tech center tachyons glass that it has.
+
+56
+00:04:43,280 --> 00:04:44,990
+I'm going to change that and save that.
+
+57
+00:04:46,400 --> 00:04:51,560
+Now, my tests fail and it says one snapshot test failed.
+
+58
+00:04:53,020 --> 00:05:01,030
+Because we've just changed what the snapshot expected, the car component to render.
+
+59
+00:05:01,720 --> 00:05:04,890
+How cool is that magically detects any changes.
+
+60
+00:05:04,900 --> 00:05:11,140
+And if, let's say, a developer comes in and messes up our car component, the test will immediately
+
+61
+00:05:11,140 --> 00:05:11,460
+fail.
+
+62
+00:05:12,780 --> 00:05:16,500
+We see that expect to rent your car component is failing.
+
+63
+00:05:18,740 --> 00:05:24,300
+That's very, very cool, and it even tells you where the changes have made.
+
+64
+00:05:25,040 --> 00:05:32,060
+This is the same with, let's say we're by mistake, not rendering our component our email of the robot.
+
+65
+00:05:33,050 --> 00:05:37,310
+If I save this, we see that we're missing a few things.
+
+66
+00:05:41,640 --> 00:05:42,270
+Very cool.
+
+67
+00:05:42,730 --> 00:05:45,390
+Now, let's go back to having the email here.
+
+68
+00:05:45,840 --> 00:05:46,510
+Let's save it.
+
+69
+00:05:46,580 --> 00:05:53,280
+OK, everything is passing, but let's say that well, I actually do not want the tax to be centered.
+
+70
+00:05:53,520 --> 00:05:54,210
+I do.
+
+71
+00:05:54,210 --> 00:05:55,230
+This was intentional.
+
+72
+00:05:55,230 --> 00:05:57,120
+I did want to move the class name.
+
+73
+00:05:58,040 --> 00:05:59,310
+And make a change to it.
+
+74
+00:05:59,780 --> 00:06:02,510
+Well, with snapshot testing, if I save this.
+
+75
+00:06:04,470 --> 00:06:07,120
+We see that we have pressed W to show more.
+
+76
+00:06:07,170 --> 00:06:09,410
+I'm going to press the WC.
+
+77
+00:06:10,990 --> 00:06:18,790
+And here we see that we have the option of pressing you to update the failing snapshots, if I press
+
+78
+00:06:18,790 --> 00:06:24,580
+you here, it's going to take another snapshot and it's going to say, yes, I made this intentionally,
+
+79
+00:06:24,580 --> 00:06:27,660
+take another snapshot and use that as a reference.
+
+80
+00:06:27,700 --> 00:06:31,240
+So I'm going to say you and there you go.
+
+81
+00:06:31,420 --> 00:06:34,150
+My snapshot is now updated.
+
+82
+00:06:35,140 --> 00:06:37,750
+And if I go back to the way I had it before.
+
+83
+00:06:38,890 --> 00:06:45,190
+It's not going to fail because it's expecting a different snapshot, the snapshot was just updated in
+
+84
+00:06:45,190 --> 00:06:45,390
+here.
+
+85
+00:06:46,940 --> 00:06:49,670
+Now, how simple is that?
+
+86
+00:06:50,930 --> 00:06:58,940
+It's very, very nice and as a matter of fact, because we've made this card component so simple, is
+
+87
+00:06:58,940 --> 00:07:05,990
+just a function, a pure function that takes an input and always produces the same output by just using
+
+88
+00:07:05,990 --> 00:07:07,540
+the snapshot testing.
+
+89
+00:07:07,910 --> 00:07:10,300
+We don't really need to test anymore.
+
+90
+00:07:10,730 --> 00:07:16,070
+We're testing exactly what it needs to do, which is make sure that the car component renders whatever
+
+91
+00:07:16,100 --> 00:07:17,030
+we tell it to render.
+
+92
+00:07:18,050 --> 00:07:23,750
+And that's the beauty of snapshot testing and creating these small stainless components.
+
+93
+00:07:24,840 --> 00:07:33,060
+We can have really, really nice tests that are one liners to just run a snapshot test and we've pretty
+
+94
+00:07:33,060 --> 00:07:35,040
+much covered our bases for the car.
+
+95
+00:07:36,920 --> 00:07:39,860
+Now, one thing I haven't shown you and let me.
+
+96
+00:07:41,040 --> 00:07:44,190
+Go back to updating our snapshot here, I want to press you.
+
+97
+00:07:45,420 --> 00:07:47,220
+Is code coverage.
+
+98
+00:07:48,640 --> 00:07:52,750
+How do we know that the map snapshot or the.
+
+99
+00:07:53,820 --> 00:07:56,190
+To match snapshot is actually.
+
+100
+00:07:57,850 --> 00:07:59,410
+Fully testing the car component.
+
+101
+00:08:00,190 --> 00:08:03,010
+Well, I can run NPM.
+
+102
+00:08:04,070 --> 00:08:11,570
+Test, dash, dash space, dash, dash coverage, and it's going to show media coverage report.
+
+103
+00:08:14,420 --> 00:08:17,030
+And let me make this a little bit bigger so we can see.
+
+104
+00:08:19,590 --> 00:08:27,360
+Look at that, we have absolutely zero tests other than perhaps the set up test.
+
+105
+00:08:29,130 --> 00:08:31,680
+But that's because we're not doing anything in that file.
+
+106
+00:08:31,980 --> 00:08:33,560
+So there's not much to test here.
+
+107
+00:08:33,840 --> 00:08:39,090
+But if we look at card component, even though all the other components have just zero percent, zero
+
+108
+00:08:39,090 --> 00:08:44,700
+percent test coverage card component now has a 100 percent code coverage.
+
+109
+00:08:47,450 --> 00:08:53,570
+How cool is that one simple line and we've covered our bases with the card component.
+
+110
+00:08:54,870 --> 00:09:01,380
+Again, I'm going to keep saying this throughout these videos, but writing tests shouldn't be complicated.
+
+111
+00:09:01,380 --> 00:09:07,080
+Try to structure your application in a way that writing tests are really, really simple.
+
+112
+00:09:07,410 --> 00:09:12,810
+And the way you do that is by writing these pure functions that keep things simple.
+
+113
+00:09:12,810 --> 00:09:18,330
+And you don't have these massive functions that do a ton of things that become harder and harder to
+
+114
+00:09:18,330 --> 00:09:20,090
+test with more lines of code.
+
+115
+00:09:22,670 --> 00:09:28,400
+All right, that's it for now, let's keep running some more tests and the next video by.

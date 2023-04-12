@@ -1,0 +1,763 @@
+1
+00:00:01,230 --> 00:00:02,250
+Welcome back, everyone.
+
+2
+00:00:03,300 --> 00:00:06,750
+In this video, we are going to type out our Firebase Utils.
+
+3
+00:00:07,440 --> 00:00:12,210
+We want to type them out so that we can end up finally typing our user store files.
+
+4
+00:00:12,780 --> 00:00:17,730
+But starting with the utils will teach us a couple concepts that are new because we're working with
+
+5
+00:00:17,730 --> 00:00:20,990
+async await and an external library as well.
+
+6
+00:00:21,000 --> 00:00:26,880
+It'll help us set up for the final typing of the user because so much of it depends on these firebase
+
+7
+00:00:26,880 --> 00:00:27,270
+files.
+
+8
+00:00:28,270 --> 00:00:29,080
+To begin with.
+
+9
+00:00:29,080 --> 00:00:31,150
+Let's think about what we need to do.
+
+10
+00:00:32,200 --> 00:00:39,250
+So first of all, let's first look at the different errors that we see all along the side here, because
+
+11
+00:00:39,250 --> 00:00:40,640
+these are all of our type errors.
+
+12
+00:00:40,780 --> 00:00:43,450
+And with that, we can begin actually typing out our file.
+
+13
+00:00:44,720 --> 00:00:50,210
+So here, what we start with is this ad collection and document.
+
+14
+00:00:51,050 --> 00:00:53,420
+So what is it that we are receiving?
+
+15
+00:00:54,170 --> 00:00:55,110
+Collection key.
+
+16
+00:00:55,130 --> 00:01:00,890
+If you remember, this was our method that allowed us to add a bunch of things into Firebase.
+
+17
+00:01:00,890 --> 00:01:04,070
+We are batching them, we're committing them, and that's how we finished it.
+
+18
+00:01:04,790 --> 00:01:07,850
+Collection key is the string representing the collection.
+
+19
+00:01:07,850 --> 00:01:16,700
+We want to add this to objects to add what is objects that objects to add is going to be an array of
+
+20
+00:01:16,700 --> 00:01:20,900
+some specific type of object that we are trying to add into our DB.
+
+21
+00:01:21,380 --> 00:01:27,380
+So here, because it could be some random type that we don't know in the future, we want to make it
+
+22
+00:01:27,560 --> 00:01:30,530
+so that we can pass it in as a generic.
+
+23
+00:01:31,160 --> 00:01:37,520
+The only thing we know that for sure exists on this object is a type title.
+
+24
+00:01:38,300 --> 00:01:41,990
+So here I can even make a new type court object to add.
+
+25
+00:01:42,350 --> 00:01:46,700
+We can export this out because in the future maybe we might need it.
+
+26
+00:01:48,630 --> 00:01:56,160
+And again, the only thing it has is some title, which is a string, because using that title is oftentimes
+
+27
+00:01:56,160 --> 00:01:58,830
+how we're going to determine what it's going to be.
+
+28
+00:01:59,930 --> 00:02:04,790
+So here we can just add that as the type T as an array.
+
+29
+00:02:05,510 --> 00:02:08,440
+And then this field, I actually think it's not even being used.
+
+30
+00:02:08,450 --> 00:02:12,560
+So this might actually be an extra field that was on use that we can just get rid of.
+
+31
+00:02:14,750 --> 00:02:15,140
+Now.
+
+32
+00:02:15,650 --> 00:02:16,370
+Let's continue.
+
+33
+00:02:16,970 --> 00:02:21,260
+The next thing we need to type is our get categories and documents method.
+
+34
+00:02:22,160 --> 00:02:24,320
+So here, this is an async function.
+
+35
+00:02:24,920 --> 00:02:29,690
+Actually, earlier here with the same async function, we want to return something.
+
+36
+00:02:30,410 --> 00:02:32,330
+This function doesn't return anything.
+
+37
+00:02:32,690 --> 00:02:35,810
+With async functions, you always return a promise.
+
+38
+00:02:36,050 --> 00:02:38,210
+And within the promise you have a value.
+
+39
+00:02:39,020 --> 00:02:42,560
+So for us, we're not actually resolving or returning any values.
+
+40
+00:02:42,680 --> 00:02:49,430
+So we can just make sure that this returns a promise of void, whereas forget categories and documents.
+
+41
+00:02:49,850 --> 00:02:51,350
+Does this return something?
+
+42
+00:02:52,010 --> 00:02:52,760
+Yes, it does.
+
+43
+00:02:53,300 --> 00:02:54,620
+What does it return, though?
+
+44
+00:02:55,250 --> 00:02:58,820
+In this particular case, it returns some category data.
+
+45
+00:02:59,090 --> 00:03:03,050
+The category for us has to do with our category reducer.
+
+46
+00:03:03,740 --> 00:03:08,150
+So here we actually already have this category data as type.
+
+47
+00:03:08,540 --> 00:03:11,360
+We also have the corresponding category items.
+
+48
+00:03:11,810 --> 00:03:14,300
+So let's first just bring in the category.
+
+49
+00:03:15,110 --> 00:03:19,100
+So we're going to go up here and we're going to import category.
+
+50
+00:03:20,650 --> 00:03:21,940
+From our category types.
+
+51
+00:03:22,480 --> 00:03:27,550
+And again it has the title, the image you are well as well as the items.
+
+52
+00:03:28,180 --> 00:03:29,050
+So that's what we need.
+
+53
+00:03:29,950 --> 00:03:37,960
+We can come down here to our get categories and documents and what we know that we get back from this
+
+54
+00:03:37,960 --> 00:03:43,510
+function is going to be the data of this category.
+
+55
+00:03:43,930 --> 00:03:49,660
+So it's a promise because it's an amazing function of our category as an array.
+
+56
+00:03:50,110 --> 00:03:56,440
+If we look at our return though here, we see that this is actually not working because what we get
+
+57
+00:03:56,440 --> 00:03:58,480
+is a bunch of query snapshots.
+
+58
+00:03:58,840 --> 00:04:03,310
+The reason for this is because we know what it is that Firebase gives us back.
+
+59
+00:04:03,730 --> 00:04:07,690
+But TypeScript doesn't know that we've looked inside of our Firebase.
+
+60
+00:04:07,690 --> 00:04:09,670
+DB we know what the object will be.
+
+61
+00:04:10,180 --> 00:04:13,600
+So this is where we actually need to cast the value.
+
+62
+00:04:13,930 --> 00:04:22,060
+So what we can say is that doc snapshot dot data like this is going to be as category.
+
+63
+00:04:23,360 --> 00:04:28,370
+And essentially what we're saying is that we know that documents snapshot that data is going to come
+
+64
+00:04:28,370 --> 00:04:30,200
+back as a category type.
+
+65
+00:04:30,470 --> 00:04:37,010
+So just cast this value of what you get back from the data call as a category type.
+
+66
+00:04:37,820 --> 00:04:38,900
+And this is all we need.
+
+67
+00:04:39,170 --> 00:04:43,280
+Typically, you don't want to do too much casting because you're essentially telling TypeScript that
+
+68
+00:04:43,280 --> 00:04:44,420
+this is what you're getting back.
+
+69
+00:04:44,660 --> 00:04:49,640
+But oftentimes when you interface with a third party API, this is going to be one of the things that
+
+70
+00:04:49,640 --> 00:04:55,250
+you are going to have to keep track of by casting here is not a bad thing to do.
+
+71
+00:04:56,060 --> 00:04:58,850
+And with that, we now have this function typed out.
+
+72
+00:04:59,860 --> 00:05:04,840
+The next thing that we need to do is type out our create user document from off.
+
+73
+00:05:05,770 --> 00:05:08,620
+So here we need to type out our user off.
+
+74
+00:05:09,620 --> 00:05:14,090
+Now the user off is actually something that we call user off.
+
+75
+00:05:14,180 --> 00:05:21,560
+What it really is is this user object that we get from luckily firebase.
+
+76
+00:05:21,890 --> 00:05:23,690
+So this is already something that's typed.
+
+77
+00:05:24,170 --> 00:05:26,120
+Firebase auth gives it to us.
+
+78
+00:05:26,930 --> 00:05:28,640
+And here if you hover over this.
+
+79
+00:05:30,320 --> 00:05:30,680
+Oh, sorry.
+
+80
+00:05:30,680 --> 00:05:33,410
+Not Firestorm Firebase off right up here.
+
+81
+00:05:34,340 --> 00:05:39,380
+If you hover over this, you see that it is actually an existing interface for a user account.
+
+82
+00:05:39,890 --> 00:05:43,820
+So that is really handy because now we can just type it like so.
+
+83
+00:05:45,120 --> 00:05:50,280
+Similarly, let's think about what else we need inside of this function type definition.
+
+84
+00:05:51,090 --> 00:05:55,380
+We know that with this we also get some additional information.
+
+85
+00:05:56,610 --> 00:06:01,020
+Now, for now, all we're adding for this additional information.
+
+86
+00:06:02,620 --> 00:06:03,940
+Is just.
+
+87
+00:06:05,330 --> 00:06:08,150
+The display name and this is even optional.
+
+88
+00:06:08,570 --> 00:06:10,640
+So here we can put it like this.
+
+89
+00:06:12,450 --> 00:06:14,070
+And cast it like so.
+
+90
+00:06:18,260 --> 00:06:24,140
+And the reason why we only have a display name, of course, is because according to our signup form,
+
+91
+00:06:24,320 --> 00:06:25,820
+that's the only values we add.
+
+92
+00:06:26,420 --> 00:06:31,160
+If we were to add more, we can, of course add to this additional information here.
+
+93
+00:06:31,730 --> 00:06:35,810
+If you want to keep the types for this file inside of a separate Firebase file, you can do that as
+
+94
+00:06:35,810 --> 00:06:36,090
+well.
+
+95
+00:06:36,110 --> 00:06:36,800
+That's a pattern.
+
+96
+00:06:37,070 --> 00:06:41,540
+For now, I'm keeping it all inside of Firebase Utils because this is really the only place I'm using
+
+97
+00:06:41,540 --> 00:06:42,020
+it so far.
+
+98
+00:06:42,920 --> 00:06:47,510
+Moving on, we also need to type out the actual user data.
+
+99
+00:06:47,690 --> 00:06:53,510
+So here I'm going to type out user data because user is already claimed by Firebase.
+
+100
+00:06:54,560 --> 00:07:00,500
+This is a type that is equal to something that gives us a created out date, which is a date.
+
+101
+00:07:01,370 --> 00:07:08,380
+We also have display name, which is a string, and we also have email, which is a string.
+
+102
+00:07:11,550 --> 00:07:15,960
+So this user data, what is the actual user data?
+
+103
+00:07:16,620 --> 00:07:25,680
+Well, user data is something that we get back from this final set dock call where we return back this
+
+104
+00:07:25,680 --> 00:07:26,490
+user snapshot.
+
+105
+00:07:27,300 --> 00:07:33,450
+So here, this is where we need to tell the actual function and utilize our user data.
+
+106
+00:07:33,870 --> 00:07:36,270
+So let's think about the flow of this document.
+
+107
+00:07:36,780 --> 00:07:37,740
+What can we get back?
+
+108
+00:07:38,610 --> 00:07:41,640
+We can primarily get back user snapshot.
+
+109
+00:07:41,640 --> 00:07:47,880
+And inside of this user snapshot can either be the user data or it can be nothing.
+
+110
+00:07:48,150 --> 00:07:54,120
+Because if we log out, remember we also run this through our listener or on the listener calls create
+
+111
+00:07:54,120 --> 00:07:55,020
+user doc off.
+
+112
+00:07:55,830 --> 00:08:01,830
+Regardless of what happens if you sign in, if you sign up and if you sign out, all three values of
+
+113
+00:08:01,830 --> 00:08:03,960
+user off get past it, which is why we have this check.
+
+114
+00:08:04,380 --> 00:08:06,840
+So here we might actually resolve to undefined.
+
+115
+00:08:07,410 --> 00:08:16,710
+So that means that this function can return back a promised value of both this void value or it can
+
+116
+00:08:16,710 --> 00:08:18,930
+return back this user snapshot.
+
+117
+00:08:19,470 --> 00:08:21,750
+Now user snapshot is not the data.
+
+118
+00:08:21,750 --> 00:08:25,140
+We're not returning back the data, we're returning back a snapshot.
+
+119
+00:08:25,650 --> 00:08:29,400
+So this snapshot, though, is actually already typed for us.
+
+120
+00:08:29,760 --> 00:08:32,640
+And this is something that Firebase gives us.
+
+121
+00:08:33,150 --> 00:08:40,860
+So here, up inside a fire store, we can get a query document, snapshot type, and this snapshot type
+
+122
+00:08:41,490 --> 00:08:44,490
+is going to hold the value inside of the snapshot.
+
+123
+00:08:44,490 --> 00:08:47,820
+So here we can just say, okay, it's a snapshot type.
+
+124
+00:08:48,030 --> 00:08:51,870
+And inside of it is the data, user data.
+
+125
+00:08:57,150 --> 00:09:01,710
+The last thing we need to do, of course, is tell this user snapshot what it's going to be.
+
+126
+00:09:02,100 --> 00:09:06,600
+And for us, as I mentioned before, with Firebase, we can cast this as well.
+
+127
+00:09:07,020 --> 00:09:15,120
+We can say that this is going to be a query document snapshot of a user data type.
+
+128
+00:09:21,190 --> 00:09:26,110
+One thing you'll notice here is inside of catch air will not have a message type.
+
+129
+00:09:26,830 --> 00:09:32,440
+This is because inside of every catch by default it is going to be of an unknown type.
+
+130
+00:09:32,980 --> 00:09:38,980
+So for us, instead of trying to just call directly air dot message, we can just console.log the whole
+
+131
+00:09:38,980 --> 00:09:39,310
+air.
+
+132
+00:09:40,530 --> 00:09:43,500
+Again with unknown unknown as very similar to any.
+
+133
+00:09:43,980 --> 00:09:46,880
+The only difference is that unknown is not reasonable.
+
+134
+00:09:46,890 --> 00:09:49,560
+You can't set the value of an unknown to something else.
+
+135
+00:09:49,830 --> 00:09:52,880
+But just like any TypeScript has no idea what it's going to be.
+
+136
+00:09:52,890 --> 00:09:54,450
+There's no type associated to it.
+
+137
+00:09:55,430 --> 00:09:58,190
+And the reason for this is because you can catch numerous types of errors.
+
+138
+00:09:58,310 --> 00:09:59,600
+TypeScript or JavaScript.
+
+139
+00:09:59,600 --> 00:10:00,500
+Sorry, not even TypeScript.
+
+140
+00:10:00,500 --> 00:10:03,230
+JavaScript sketch does not know what's going to get thrown.
+
+141
+00:10:03,680 --> 00:10:06,080
+For this reason there can't be an associated type to it.
+
+142
+00:10:06,620 --> 00:10:08,320
+So for us, that's fine.
+
+143
+00:10:08,330 --> 00:10:09,560
+We're just going to say catch.
+
+144
+00:10:09,770 --> 00:10:11,030
+We're just logging in anyways.
+
+145
+00:10:11,300 --> 00:10:12,110
+That's fine for us.
+
+146
+00:10:13,620 --> 00:10:14,240
+Moving on.
+
+147
+00:10:14,670 --> 00:10:21,450
+As far as these email and password goes, we know that these are going to be a string and we know that
+
+148
+00:10:21,450 --> 00:10:23,310
+password is also a string.
+
+149
+00:10:24,490 --> 00:10:27,340
+Now what is it that create user email and password?
+
+150
+00:10:27,370 --> 00:10:28,090
+Give us back.
+
+151
+00:10:28,510 --> 00:10:34,060
+Well, if you hover over it, it tells us it gives us back a promise of user credential.
+
+152
+00:10:34,570 --> 00:10:39,310
+So here, if we hover over this, we already say that we're going to get that back promise of either
+
+153
+00:10:39,310 --> 00:10:40,960
+user credential or undefined.
+
+154
+00:10:41,200 --> 00:10:45,550
+The reason it's undefined is because we might exit early, so we don't need to type this.
+
+155
+00:10:46,270 --> 00:10:48,820
+Similarly with this one, sign in with email password.
+
+156
+00:10:49,120 --> 00:10:50,890
+It's a promise of user credential.
+
+157
+00:10:51,130 --> 00:10:53,250
+So again, we don't need to take this.
+
+158
+00:10:53,260 --> 00:10:57,460
+We just need to type our parameters to ensure that they go in as strings.
+
+159
+00:10:57,880 --> 00:11:03,300
+Because, again, we infer, we see that we get a promise user credential or undefined.
+
+160
+00:11:04,560 --> 00:11:06,780
+Our sign out user promise a void.
+
+161
+00:11:06,780 --> 00:11:11,610
+Because once you sign out, sign out itself returns you void as a promise.
+
+162
+00:11:13,390 --> 00:11:15,760
+Now for our On Off the Change listener.
+
+163
+00:11:16,330 --> 00:11:18,340
+What is the callback that we're passing in?
+
+164
+00:11:19,030 --> 00:11:23,080
+The callback is a function, but it's a very specific function.
+
+165
+00:11:23,500 --> 00:11:27,430
+It is a next or observer type.
+
+166
+00:11:27,820 --> 00:11:34,450
+So this again is a very special function that gets called with the dot next as a callback whenever the
+
+167
+00:11:34,450 --> 00:11:35,470
+observer changes.
+
+168
+00:11:35,920 --> 00:11:40,690
+Now, luckily for us, we actually can import this type as well from Firebase.
+
+169
+00:11:41,050 --> 00:11:48,610
+So here we just go up to Firebase Auth and we just import in next or observer.
+
+170
+00:11:49,890 --> 00:11:58,170
+And what this gives us is the user, because on off state change is always passing us this user that
+
+171
+00:11:58,170 --> 00:11:59,820
+we already saw earlier.
+
+172
+00:12:00,540 --> 00:12:02,340
+Again, this is a user account.
+
+173
+00:12:02,820 --> 00:12:07,230
+So whenever the offset changes, our base is trying to give us that user account.
+
+174
+00:12:07,380 --> 00:12:11,670
+So luckily for us, that's all we need as well as for our last one.
+
+175
+00:12:11,670 --> 00:12:13,050
+Get current user.
+
+176
+00:12:13,650 --> 00:12:17,430
+This was that type that we had created to return us back.
+
+177
+00:12:17,430 --> 00:12:18,270
+A promise.
+
+178
+00:12:18,870 --> 00:12:20,970
+And that promise is going to be.
+
+179
+00:12:22,810 --> 00:12:32,410
+Either a user or no because again when we call this what we are looking for as on off state changed
+
+180
+00:12:32,740 --> 00:12:38,170
+we might get back the currently signed in user or authenticated user or if there's no user.
+
+181
+00:12:38,590 --> 00:12:39,800
+Firebase gives us null.
+
+182
+00:12:39,820 --> 00:12:44,140
+So as a result, the promise can only resolve with user or null.
+
+183
+00:12:44,920 --> 00:12:45,430
+And that's it.
+
+184
+00:12:46,580 --> 00:12:51,260
+We learned a lot about typing out these async functions, mainly wrapping them in promises, and we
+
+185
+00:12:51,260 --> 00:12:56,870
+learned a lot about all of these different additional casting opportunities we have to do.
+
+186
+00:12:56,900 --> 00:13:01,310
+Working with an external API, but also these types that Firebase gives us.
+
+187
+00:13:02,030 --> 00:13:05,270
+But now we have fully typed out our Firebase file.
+
+188
+00:13:06,140 --> 00:13:06,680
+So that's it.
+
+189
+00:13:06,950 --> 00:13:11,950
+Now we can start using this inside of our user reducer files, and that's what I want you to do.
+
+190
+00:13:12,380 --> 00:13:16,970
+I want you to take these type files, try it out yourself inside of the user reducer files, and then
+
+191
+00:13:16,970 --> 00:13:19,210
+join me in the next video or we'll do it together.

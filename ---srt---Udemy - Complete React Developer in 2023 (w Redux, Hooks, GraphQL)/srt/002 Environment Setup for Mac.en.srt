@@ -1,0 +1,423 @@
+1
+00:00:00,430 --> 00:00:01,520
+Welcome back, everybody.
+
+2
+00:00:02,230 --> 00:00:07,930
+In this lesson, I'm going to show you how you can set up your environment so that you can follow this
+
+3
+00:00:07,930 --> 00:00:14,140
+course with all of the tools that I have and that you'll see throughout the course along the way, I'll
+
+4
+00:00:14,140 --> 00:00:16,850
+mention some alternatives that you might use.
+
+5
+00:00:16,870 --> 00:00:19,570
+It's entirely up to you because these are all just tools.
+
+6
+00:00:19,570 --> 00:00:23,330
+And I simply have my own set up that I use throughout this course.
+
+7
+00:00:24,220 --> 00:00:27,300
+Now, the first thing you need to install is your editor.
+
+8
+00:00:27,880 --> 00:00:34,420
+So if you already have an editor that you prefer, such as Sublime or Adam or even an idee like Web
+
+9
+00:00:34,420 --> 00:00:36,250
+storm, you can totally use that.
+
+10
+00:00:36,680 --> 00:00:39,290
+I like visual studio code, so that's what I use.
+
+11
+00:00:39,790 --> 00:00:44,440
+So in order for you to get Visual Studio code, simply go to this link that I'm going to provide you
+
+12
+00:00:44,440 --> 00:00:47,830
+and your resources and then hit the download format button.
+
+13
+00:00:48,910 --> 00:00:54,310
+Now, what this will do is this will trigger the installation, so simply choose the place where you
+
+14
+00:00:54,310 --> 00:00:56,980
+want to download the actual TVs code.
+
+15
+00:00:57,190 --> 00:01:01,960
+So I'm going to choose desktop and this will download the zip folder for you.
+
+16
+00:01:02,650 --> 00:01:04,690
+Then you simply just open up the zip.
+
+17
+00:01:06,040 --> 00:01:11,720
+And now you'll have your visual studio coat application where you saved your zip folder.
+
+18
+00:01:12,070 --> 00:01:15,260
+So now if I go to my desktop folder, I see it right here.
+
+19
+00:01:15,820 --> 00:01:17,310
+So just double click to open it.
+
+20
+00:01:18,350 --> 00:01:23,960
+And then allow your Mac to open visual studio coat because it's downloaded from the Internet, you need
+
+21
+00:01:23,960 --> 00:01:24,860
+to give it permission.
+
+22
+00:01:26,600 --> 00:01:32,270
+Now, once you've given it permission, Visual Studio Code is up and running, so you now have the same
+
+23
+00:01:32,270 --> 00:01:33,340
+editor that I use.
+
+24
+00:01:33,770 --> 00:01:39,530
+The only thing I would suggest you probably do is add the code shell command to your terminal.
+
+25
+00:01:39,860 --> 00:01:44,060
+Now, we'll explain more about what that actually is in a little bit later.
+
+26
+00:01:44,270 --> 00:01:50,660
+But right now, in order for you to add it, you simply hold command shift and press P, then you're
+
+27
+00:01:50,660 --> 00:01:51,920
+going to type command.
+
+28
+00:01:52,130 --> 00:01:55,350
+And here you'll see shell command install code command path.
+
+29
+00:01:55,550 --> 00:02:00,680
+So simply click that and then it will install the code command to your path.
+
+30
+00:02:01,740 --> 00:02:08,910
+Now, once you have your path set up, you are now able to use the code DOT command to open up files
+
+31
+00:02:08,910 --> 00:02:13,030
+and folders inside of your terminal, which we will do a lot in this course.
+
+32
+00:02:13,620 --> 00:02:14,880
+Now, what is the terminal?
+
+33
+00:02:15,300 --> 00:02:20,340
+Well, the terminal is actually going to be the main way that we navigate around our application, as
+
+34
+00:02:20,340 --> 00:02:23,580
+well as modify our files as you'll see in this course.
+
+35
+00:02:24,120 --> 00:02:26,870
+Now, by default, Mac comes with a terminal.
+
+36
+00:02:26,880 --> 00:02:31,890
+So in order for you to access it, simply go to your spotlight search and type in terminal.
+
+37
+00:02:32,580 --> 00:02:37,650
+Once you have that, just open up the first thing you see, and this will be the terminal that you can
+
+38
+00:02:37,650 --> 00:02:39,000
+use throughout this course.
+
+39
+00:02:40,220 --> 00:02:45,060
+Now, with this terminal, what we need to do next is actually install node.
+
+40
+00:02:45,740 --> 00:02:51,380
+Now, the easiest way for us to install node is actually to use something called End VM, which is node
+
+41
+00:02:51,380 --> 00:02:52,310
+version manager.
+
+42
+00:02:52,820 --> 00:02:58,430
+Now, in order to install and VM, simply go to the link that I'm going to provide you inside of your
+
+43
+00:02:58,430 --> 00:02:59,260
+resource folder.
+
+44
+00:02:59,630 --> 00:03:06,710
+And then once you navigate to this link, scroll down to this section called Installation and Update
+
+45
+00:03:07,190 --> 00:03:11,210
+and simply copy this line and then paste it into your terminal.
+
+46
+00:03:13,240 --> 00:03:20,620
+What this will do is this will clone down the NBN package and then add it to your existing shell, which
+
+47
+00:03:20,620 --> 00:03:23,410
+is the thing that we're running inside of our terminal.
+
+48
+00:03:24,570 --> 00:03:30,270
+Now, once we have an VM, we have to actually close our terminal and then relaunch it.
+
+49
+00:03:32,100 --> 00:03:36,750
+Now, once you have reopened your terminal type in commandership and pvm.
+
+50
+00:03:37,660 --> 00:03:42,520
+If you see nothing listed, then this means that SVM is not yet loaded to our shell.
+
+51
+00:03:43,120 --> 00:03:49,780
+So what we have to do is we have to actually scroll down here and we can see inside of these instructions
+
+52
+00:03:49,780 --> 00:03:56,470
+right here on OSX, if we see that there's no end pvm script than what we have to do is first check
+
+53
+00:03:56,470 --> 00:03:58,130
+if we have a Basche profile.
+
+54
+00:03:58,930 --> 00:04:05,770
+Now, you can do this by simply typing Nanao and then this till the sign sgot Basche profile.
+
+55
+00:04:07,550 --> 00:04:13,160
+Now, if you hit this and nothing occurs, meaning that there is no Basche profile, instead of NENO,
+
+56
+00:04:13,190 --> 00:04:20,120
+replace this with touch and then run nano profile again because touch will open a new Basche profile
+
+57
+00:04:20,120 --> 00:04:20,480
+for you.
+
+58
+00:04:21,530 --> 00:04:28,160
+So inside of our profile, if at the very bottom we see nothing related to end pvm that we need to add
+
+59
+00:04:28,160 --> 00:04:31,300
+this line of running source Basche RC.
+
+60
+00:04:31,670 --> 00:04:33,170
+So let's just add that in right now.
+
+61
+00:04:33,560 --> 00:04:35,600
+You can also copy paste this in if you want.
+
+62
+00:04:37,430 --> 00:04:44,000
+Once we have that, we just need to save by hitting Command X. It'll ask us if we want to say we hit
+
+63
+00:04:44,000 --> 00:04:45,890
+Y and then we hit enter.
+
+64
+00:04:46,800 --> 00:04:56,760
+And now what we need to do is we need to type source Tilda Agbank profile to upload and rerun our profile
+
+65
+00:04:56,760 --> 00:04:58,140
+that we've just made changes to.
+
+66
+00:04:58,710 --> 00:05:04,810
+And now if we type in LVM, we'll see that there's something here instead of an PVM command not found.
+
+67
+00:05:05,130 --> 00:05:06,630
+So now we know we have an PVM.
+
+68
+00:05:07,480 --> 00:05:14,560
+So now what we need to do is actually install node using NBN, and the way we do that is we can actually
+
+69
+00:05:14,560 --> 00:05:16,960
+first figure out what node version we want to run.
+
+70
+00:05:17,440 --> 00:05:22,360
+So let's go to the node website, which I will link to you as well inside of your resources.
+
+71
+00:05:23,280 --> 00:05:28,770
+And here we'll see that the latest version is ten point one six point zero, so we don't need to actually
+
+72
+00:05:28,770 --> 00:05:31,850
+manually download this from the website we can use and VM.
+
+73
+00:05:32,010 --> 00:05:36,240
+So go back to your terminal and you can type in nvm install.
+
+74
+00:05:37,310 --> 00:05:43,940
+Ten point one six point zero or any other version of note that you want to use now, you can also type
+
+75
+00:05:43,940 --> 00:05:48,540
+in N.V. and VM install node and this will give you the latest version of Node.
+
+76
+00:05:49,070 --> 00:05:54,920
+So for us, I'm just going to use ten point one six point zero and now this will install the appropriate
+
+77
+00:05:54,920 --> 00:05:56,540
+version of node that we need.
+
+78
+00:05:57,970 --> 00:06:01,870
+Once it's done, installing what we need to do is make sure that we use it.
+
+79
+00:06:02,320 --> 00:06:07,090
+So in order to do that, we can just say nvm use ten point one, six point zero.
+
+80
+00:06:07,970 --> 00:06:14,790
+And now we'll be using the right version of note, we'll also see that MPM was installed as well and
+
+81
+00:06:14,790 --> 00:06:20,390
+NPM is what we're going to use to manage the packages, which are the libraries that we use inside of
+
+82
+00:06:20,390 --> 00:06:21,860
+our JavaScript applications.
+
+83
+00:06:22,040 --> 00:06:22,910
+So this is really good.
+
+84
+00:06:22,910 --> 00:06:29,110
+We have both of them installed now and we can check by typing No Dashkova as well as NPM Dashboard.
+
+85
+00:06:29,450 --> 00:06:32,550
+And here we see that we have both installed on our computer.
+
+86
+00:06:33,080 --> 00:06:36,740
+So at this point, it's actually perfectly fine to continue with the course.
+
+87
+00:06:37,010 --> 00:06:41,100
+You have node, you have NPM, you have your terminal and you have your editor.
+
+88
+00:06:41,750 --> 00:06:48,950
+Now, the thing is that I use Riaan instead of NPM Yohana, simply another package manager that Facebook
+
+89
+00:06:48,950 --> 00:06:51,830
+made during a time when Empt has some issues.
+
+90
+00:06:52,130 --> 00:06:59,060
+But NPM is perfectly stable now and both are pretty equal in terms of the features and the speed regarding
+
+91
+00:06:59,060 --> 00:06:59,940
+package management.
+
+92
+00:07:00,410 --> 00:07:05,120
+So if you want to use NPM and not install yarn, you can definitely do so.
+
+93
+00:07:05,450 --> 00:07:12,050
+You can simply look at the different commands with NPM that you need in order to run commands instead
+
+94
+00:07:12,050 --> 00:07:13,730
+of using the yarn ones that I do.
+
+95
+00:07:14,090 --> 00:07:19,010
+But if you want to use yarn, just go to the yarn link that I provide you and your resources.
+
+96
+00:07:19,580 --> 00:07:24,950
+Scroll down to the installation script and then copy that line right there.
+
+97
+00:07:25,700 --> 00:07:30,590
+Then you go back to your terminal, we clear it and then we paste it in.
+
+98
+00:07:31,600 --> 00:07:38,410
+And now this will install yarn into your computer now, once you have yarn, you just need to check
+
+99
+00:07:38,410 --> 00:07:39,550
+whether or not it's there.
+
+100
+00:07:39,670 --> 00:07:45,770
+So simply tienen yarn, dash v and if you see a version now, you also have yarn.
+
+101
+00:07:46,360 --> 00:07:51,880
+So now you're able to do everything that I do in this course with yarn and you can switch between yarn
+
+102
+00:07:51,880 --> 00:07:53,020
+and MP freely.
+
+103
+00:07:53,230 --> 00:07:58,300
+Ideally, in one project, however, you should use either one or the other.
+
+104
+00:07:58,450 --> 00:08:01,970
+You should not use both NPM and yarn in the same folder.
+
+105
+00:08:02,200 --> 00:08:06,240
+Now, keeping that in mind, you are fully set up to move on with the course.
+
+106
+00:08:06,250 --> 00:08:07,860
+So I'll see you in the next lesson.

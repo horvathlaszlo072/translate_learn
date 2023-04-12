@@ -1,0 +1,451 @@
+1
+00:00:00,660 --> 00:00:01,560
+Welcome back, everyone.
+
+2
+00:00:02,460 --> 00:00:05,130
+In this video we're going to discuss Redux Funk.
+
+3
+00:00:05,730 --> 00:00:06,150
+Redux.
+
+4
+00:00:06,150 --> 00:00:10,290
+Funk is one flavor of asynchronous side effects inside of Redux.
+
+5
+00:00:10,590 --> 00:00:16,200
+What this means is that we allow our application to fire actions, and then those actions now do not
+
+6
+00:00:16,200 --> 00:00:20,550
+have to flow through the redux diagram in asynchronous manner.
+
+7
+00:00:20,940 --> 00:00:25,860
+Instead, now we get Redux bindings, which means we can read from the store, or we can dispatch new
+
+8
+00:00:25,860 --> 00:00:31,020
+actions within the actual middleware section of this redux flow.
+
+9
+00:00:31,410 --> 00:00:36,600
+We don't have to only figure out how to essentially coordinate these asynchronous behaviors inside of
+
+10
+00:00:36,600 --> 00:00:38,760
+components, which is how we've done it so far.
+
+11
+00:00:39,150 --> 00:00:45,450
+Instead, now with a middleware, you can actually do that inside of here, which opens up really powerful
+
+12
+00:00:45,450 --> 00:00:51,810
+architecture patterns, because essentially your components are purely dictating how these actions get
+
+13
+00:00:51,810 --> 00:00:56,610
+fired now, what the actions do, what APIs they need to call, what asynchronous behavior it needs
+
+14
+00:00:56,610 --> 00:00:59,730
+to happen, all happens inside of middleware.
+
+15
+00:01:00,570 --> 00:01:04,050
+So let's talk about Redux, Duncan, where it fits inside of this middleware.
+
+16
+00:01:05,060 --> 00:01:07,700
+So redux like of course, is itself a middleware.
+
+17
+00:01:07,700 --> 00:01:12,140
+And what it allows us to do is receive actions that are functions.
+
+18
+00:01:12,320 --> 00:01:15,380
+It's actually very, very simple once you understand how it works.
+
+19
+00:01:15,950 --> 00:01:20,450
+But what happens here is that we have some action and it's going to be an asynchronous action.
+
+20
+00:01:20,900 --> 00:01:27,770
+So instead of us dispatching a action in the typical format of an object or the type in a payload,
+
+21
+00:01:28,100 --> 00:01:29,630
+instead we pass a function.
+
+22
+00:01:30,230 --> 00:01:35,630
+This function goes to the relaxed thunk, and what happens is that redux then takes this function and
+
+23
+00:01:35,630 --> 00:01:36,950
+it passes into it.
+
+24
+00:01:36,950 --> 00:01:38,000
+A dispatch.
+
+25
+00:01:38,720 --> 00:01:43,130
+This dispatch is the same dispatch that we have used up until this point.
+
+26
+00:01:43,910 --> 00:01:49,970
+What we do at this dispatch is now we can dispatch new actions from right inside of this thunk.
+
+27
+00:01:50,570 --> 00:01:53,870
+And now this new action will go back into the flow.
+
+28
+00:01:54,110 --> 00:01:59,870
+And it might hit another thunk, or I might continue on into the subsequent Redux store and further
+
+29
+00:01:59,870 --> 00:02:01,010
+reducers, etc..
+
+30
+00:02:01,430 --> 00:02:08,270
+The key benefit here is that the Redux now we're able to abstract out some of our logic into the thunk
+
+31
+00:02:08,330 --> 00:02:08,810
+themselves.
+
+32
+00:02:09,140 --> 00:02:13,370
+And this opens us up to new patterns which we're going to cover in this video.
+
+33
+00:02:14,090 --> 00:02:20,390
+So in order for us to begin using things, we need to first add the Redux Thunk Library.
+
+34
+00:02:21,370 --> 00:02:25,810
+So while this is loading, let me explain a little bit about Redux.
+
+35
+00:02:25,810 --> 00:02:26,080
+Thank.
+
+36
+00:02:27,120 --> 00:02:34,770
+So earlier, if you remember, inside of our stalks, while I had actually mentioned that we were essentially
+
+37
+00:02:34,770 --> 00:02:39,780
+setting up our middleware when we wrote our logger to account for this thunk.
+
+38
+00:02:40,470 --> 00:02:47,640
+The reason why is because inside of logs, if the action has no type, then what we do is we pass the
+
+39
+00:02:47,640 --> 00:02:48,450
+action onwards.
+
+40
+00:02:48,900 --> 00:02:55,470
+And the reason why we do this is because all funks really do is allow actions to be passed as functions.
+
+41
+00:02:55,890 --> 00:03:00,240
+So there is some middleware somewhere where inside what it does is it receives the action.
+
+42
+00:03:00,510 --> 00:03:02,820
+So let's imagine this is thunk middleware.
+
+43
+00:03:04,180 --> 00:03:06,910
+And again, if you remember, it takes the format.
+
+44
+00:03:06,940 --> 00:03:07,960
+It receives a store.
+
+45
+00:03:09,840 --> 00:03:10,890
+It receives next.
+
+46
+00:03:12,210 --> 00:03:13,620
+And then it receives the action.
+
+47
+00:03:15,050 --> 00:03:19,160
+And what it does is essentially checks if action equals.
+
+48
+00:03:20,710 --> 00:03:28,270
+Or in fact, if type of action is equal to function, then what it does is it runs the action and it
+
+49
+00:03:28,270 --> 00:03:34,990
+passes dispatch into that action so that you're able to essentially use a function as a action.
+
+50
+00:03:34,990 --> 00:03:38,380
+Thunk So this will become more clear once we start using it.
+
+51
+00:03:39,220 --> 00:03:43,150
+So what we do is we import Thunk from Redux Thunk.
+
+52
+00:03:44,540 --> 00:03:48,290
+And all we need to do now is just pass this into the middleware array.
+
+53
+00:03:49,740 --> 00:03:50,310
+And that's it.
+
+54
+00:03:50,760 --> 00:03:51,990
+Now we can start writing funks.
+
+55
+00:03:53,100 --> 00:03:58,260
+So what you want to do with dunks is essentially you want to figure out where in your application code
+
+56
+00:03:58,260 --> 00:04:04,980
+base you have asynchronous behavior that you can move into a action driven flow.
+
+57
+00:04:05,790 --> 00:04:12,450
+So here what we do is we get categories and documents when this component mounts, and then we essentially
+
+58
+00:04:12,450 --> 00:04:15,750
+set it into our reducer when we get it back.
+
+59
+00:04:16,320 --> 00:04:20,040
+This is the perfect opportunity to use this in a thunk.
+
+60
+00:04:21,110 --> 00:04:25,790
+So in order for us to do this, we actually have to modify and change up our architecture a little bit
+
+61
+00:04:25,790 --> 00:04:27,470
+for our category reducer.
+
+62
+00:04:28,800 --> 00:04:35,970
+So first, what we need to do is we need to tell our producer to track whether or not it is in a loading
+
+63
+00:04:35,970 --> 00:04:37,920
+state right now for the data it will hold.
+
+64
+00:04:38,370 --> 00:04:42,420
+So, of course, by default, it won't be until something triggers it to be.
+
+65
+00:04:42,750 --> 00:04:44,910
+And that we'll talk about when we get to the actions portion.
+
+66
+00:04:45,480 --> 00:04:52,110
+We also need to start tracking our air states because as we do asynchronous matching now, I'll reduce
+
+67
+00:04:52,110 --> 00:04:55,620
+or should be aware of whether or not an error occurred in the fetching process.
+
+68
+00:04:56,430 --> 00:04:57,750
+So this is the first step.
+
+69
+00:04:58,470 --> 00:05:01,470
+The next step is to modify our action types.
+
+70
+00:05:02,600 --> 00:05:06,260
+So essentially what happens now is we are performing feature requests.
+
+71
+00:05:06,680 --> 00:05:13,370
+So here we're going to say I'm going to fetch a category, but this is the start of the fetching process.
+
+72
+00:05:14,420 --> 00:05:21,290
+So the reason why we say fetch start is because there are two possible cases that can occur during the
+
+73
+00:05:21,290 --> 00:05:22,040
+fetch process.
+
+74
+00:05:22,400 --> 00:05:23,810
+We can either succeed.
+
+75
+00:05:24,080 --> 00:05:28,640
+So we say fetch category success or we can fail.
+
+76
+00:05:29,000 --> 00:05:31,580
+So we'll say fetch categories failed.
+
+77
+00:05:34,210 --> 00:05:40,570
+Now, depending on what happened in this process, we will now determine whether or not we want to store
+
+78
+00:05:40,600 --> 00:05:42,520
+the data or store an error state.
+
+79
+00:05:43,210 --> 00:05:48,640
+So instead of setting the categories like this through an action, we're going to set it when we succeed.
+
+80
+00:05:49,450 --> 00:05:54,150
+So let me just get rid of the set categories here and let's modify our corresponding reducer.
+
+81
+00:05:55,130 --> 00:06:00,030
+So what we need to think about is that we no longer are setting categories on this action.
+
+82
+00:06:00,050 --> 00:06:03,380
+Instead, we're setting it on fetch category success.
+
+83
+00:06:03,770 --> 00:06:08,690
+If it succeeds, then we're going to set the categories with the payload that we get from this action.
+
+84
+00:06:09,870 --> 00:06:14,580
+The other things we account for though is also category action types.
+
+85
+00:06:15,540 --> 00:06:16,590
+Fetch start.
+
+86
+00:06:17,460 --> 00:06:22,560
+When we start fetching, it's essentially the time when we are beginning our API request.
+
+87
+00:06:22,800 --> 00:06:27,450
+So this is just as we fire it, meaning that we don't know whether or not it's going to succeed or fail.
+
+88
+00:06:28,200 --> 00:06:34,350
+So what we need to say is that is loading at this point is going to be true because the moment that
+
+89
+00:06:34,350 --> 00:06:37,380
+we start fetching, we are in a loading state.
+
+90
+00:06:38,510 --> 00:06:45,710
+As for a category success, we want to say that it is now false because once we get back a actual results
+
+91
+00:06:45,710 --> 00:06:50,120
+and it's successful, then we're not loading anymore because we have now set the categories payload
+
+92
+00:06:51,110 --> 00:06:54,380
+and finally we need the same thing for failure.
+
+93
+00:06:55,280 --> 00:06:56,720
+So whenever we fail.
+
+94
+00:06:57,750 --> 00:07:03,090
+Is loading is going to be false, but the error is also going to be the error.
+
+95
+00:07:04,150 --> 00:07:08,020
+And this will be a payload that we pass in with this action.
+
+96
+00:07:09,220 --> 00:07:09,910
+And there we go.
+
+97
+00:07:10,240 --> 00:07:14,200
+We have now modified our reducer in order to work with this.
+
+98
+00:07:15,190 --> 00:07:19,890
+So now what we can do is we can actually start coming up with the actions.
+
+99
+00:07:19,990 --> 00:07:25,390
+So as I mentioned, these actions are now going to reflect these three states and they're also going
+
+100
+00:07:25,390 --> 00:07:27,970
+to create a function action.
+
+101
+00:07:28,860 --> 00:07:31,740
+So this is what we're going to do in the next video.
+
+102
+00:07:32,250 --> 00:07:36,030
+So before we start, just think about these three states and think about whether or not this pattern
+
+103
+00:07:36,030 --> 00:07:36,720
+makes sense to you.
+
+104
+00:07:37,290 --> 00:07:38,730
+When we start, we're loading.
+
+105
+00:07:39,000 --> 00:07:40,680
+If we succeed, we stop loading.
+
+106
+00:07:40,680 --> 00:07:42,420
+We have a correct payload.
+
+107
+00:07:42,660 --> 00:07:44,430
+If we fail, we also stop loading.
+
+108
+00:07:44,820 --> 00:07:45,630
+But we have an error.
+
+109
+00:07:46,350 --> 00:07:52,350
+This is going to be the fundamental basis now of the majority of our asynchronous actions when it comes
+
+110
+00:07:52,350 --> 00:07:59,520
+to fetching inside of any redux based side effect library, whether it be redux, thunk, redux, observable
+
+111
+00:08:00,000 --> 00:08:03,150
+or redux saga, it's all going to follow this new pattern.
+
+112
+00:08:03,420 --> 00:08:06,210
+And we're going to also talk about why in this pattern, how this is useful.
+
+113
+00:08:06,960 --> 00:08:09,210
+So join me in the next video where we'll continue.

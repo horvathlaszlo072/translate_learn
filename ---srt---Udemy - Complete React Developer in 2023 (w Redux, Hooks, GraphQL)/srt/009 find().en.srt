@@ -1,0 +1,119 @@
+1
+00:00:00,860 --> 00:00:07,670
+Now, before we do reduce, let's do find so what is find?
+
+2
+00:00:09,230 --> 00:00:17,390
+Well, let's first get our array again, so we'll just copy over what we had from our last experiment.
+
+3
+00:00:19,250 --> 00:00:29,060
+And find is also exactly as it sounds, we're trying to find an element that correctly returns true
+
+4
+00:00:29,780 --> 00:00:32,120
+based on the condition that we have.
+
+5
+00:00:33,070 --> 00:00:41,890
+And the return of our function, very similar to filter, so what we would say is Meyera Dot find.
+
+6
+00:00:43,220 --> 00:00:52,820
+And we would get our element and let's say I wanted the element that is equal to five well here at what
+
+7
+00:00:53,200 --> 00:00:55,650
+would get us our element five, right?
+
+8
+00:00:55,760 --> 00:00:58,720
+Because if one goes in, is it equal to five?
+
+9
+00:00:58,760 --> 00:01:00,470
+No, three, no.
+
+10
+00:01:01,130 --> 00:01:02,420
+But five is true.
+
+11
+00:01:02,420 --> 00:01:09,260
+And the moment that it's correct, this method actually stops and it gives us back the first value in
+
+12
+00:01:09,260 --> 00:01:18,080
+the array that return true from calling this function on each element so it won't keep going.
+
+13
+00:01:19,210 --> 00:01:26,590
+So a way we can actually see this is if we say Meyera, fine and we get our aliment.
+
+14
+00:01:27,830 --> 00:01:33,170
+And let's say we do, as long as the element is greater than four.
+
+15
+00:01:34,540 --> 00:01:42,220
+So theoretically, five, seven and nine are all true, but because it's applying it from left to right
+
+16
+00:01:42,220 --> 00:01:49,390
+on each element, the first element that this returns true, it will return and it won't keep going.
+
+17
+00:01:50,260 --> 00:01:52,750
+And we know that it will be five.
+
+18
+00:01:53,780 --> 00:02:01,100
+So don't find is a great way for us when world, let's say we have an array of objects, right.
+
+19
+00:02:01,280 --> 00:02:05,080
+And we want to find a specific object based on some condition.
+
+20
+00:02:05,510 --> 00:02:05,840
+Right.
+
+21
+00:02:06,500 --> 00:02:16,370
+You can imagine if we had let's say people are right where we had an array of objects where the I.D.
+
+22
+00:02:16,400 --> 00:02:17,150
+was one.
+
+23
+00:02:18,690 --> 00:02:20,700
+The I.D. of four.
+
+24
+00:02:22,610 --> 00:02:25,580
+And then the idea of seven.
+
+25
+00:02:28,770 --> 00:02:37,740
+If we wanted to find people Arae right, with the idea for one, then we would say person or person
+
+26
+00:02:37,740 --> 00:02:40,770
+thought it was equal to four.
+
+27
+00:02:41,800 --> 00:02:47,890
+And now this will give us our second item where it's our person with our idea for.
+
+28
+00:02:49,140 --> 00:02:55,080
+So this is the great thing about find is that final give us the reference to whatever element it is
+
+29
+00:02:55,080 --> 00:03:00,360
+that matches the condition that we pass in the function of our find.
+
+30
+00:03:00,780 --> 00:03:05,610
+And we will use this as well quite extensively in our coding.

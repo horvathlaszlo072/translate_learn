@@ -1,0 +1,125 @@
+1
+00:00:00.05 --> 00:00:01.04
+- [Instructor] Lets take a look
+
+2
+00:00:01.04 --> 00:00:03.02
+at the first web framework for Node.
+
+3
+00:00:03.02 --> 00:00:05.06
+We'll head over to expressjs.com.
+
+4
+00:00:05.06 --> 00:00:06.05
+If we scroll down a bit,
+
+5
+00:00:06.05 --> 00:00:10.08
+we can see it has support for
+web applications and web APIs.
+
+6
+00:00:10.08 --> 00:00:13.01
+But first, what is a web application?
+
+7
+00:00:13.01 --> 00:00:15.09
+There might some confusion
+around its definition.
+
+8
+00:00:15.09 --> 00:00:18.00
+Is is something for the front end
+
+9
+00:00:18.00 --> 00:00:20.00
+or something for the back end?
+
+10
+00:00:20.00 --> 00:00:20.09
+When I think of apps,
+
+11
+00:00:20.09 --> 00:00:23.04
+I think of things that run in your browser
+
+12
+00:00:23.04 --> 00:00:24.07
+or mobile devices.
+
+13
+00:00:24.07 --> 00:00:27.04
+But those apps often
+need to talk to a server.
+
+14
+00:00:27.04 --> 00:00:29.03
+For example, to log users in
+
+15
+00:00:29.03 --> 00:00:32.06
+or get a list of data to display, etc.
+
+16
+00:00:32.06 --> 00:00:34.01
+One way to think of it
+
+17
+00:00:34.01 --> 00:00:36.05
+is that a web app has some functionality
+
+18
+00:00:36.05 --> 00:00:38.09
+on the front end and some on the back end.
+
+19
+00:00:38.09 --> 00:00:40.04
+The app, as a whole,
+
+20
+00:00:40.04 --> 00:00:43.04
+is distributed across
+both front and back end.
+
+21
+00:00:43.04 --> 00:00:46.04
+Imagine Twitter without
+being able to get any tweets
+
+22
+00:00:46.04 --> 00:00:47.09
+from its back end?
+
+23
+00:00:47.09 --> 00:00:50.09
+That being said,
+Express.js runs within Node
+
+24
+00:00:50.09 --> 00:00:53.03
+and Node is something
+just for the back end.
+
+25
+00:00:53.03 --> 00:00:55.06
+But it contributes to the app as a whole
+
+26
+00:00:55.06 --> 00:00:57.06
+which will talk to the back end.
+
+27
+00:00:57.06 --> 00:00:58.07
+As mentioned before,
+
+28
+00:00:58.07 --> 00:01:02.01
+there is a lot of community
+support and online documentation
+
+29
+00:01:02.01 --> 00:01:06.03
+because Express.js has been
+around for such a long time.
+

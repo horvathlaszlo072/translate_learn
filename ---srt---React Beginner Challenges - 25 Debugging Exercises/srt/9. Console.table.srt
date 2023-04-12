@@ -1,0 +1,495 @@
+1
+00:00:00,710 --> 00:00:01,320
+All right, guys.
+
+2
+00:00:01,340 --> 00:00:06,140
+So in this one, we're going to talk about console table and we're going to use it in a kind of clever
+
+3
+00:00:06,140 --> 00:00:11,270
+way to actually see the data inside of this minesweeper game over here.
+
+4
+00:00:11,660 --> 00:00:17,750
+And by using the console to table command, we're going to be able to cheat and just see all the bombs
+
+5
+00:00:17,750 --> 00:00:23,750
+in this and we're going to use the console table to actually see that graphed for us here in the console
+
+6
+00:00:23,750 --> 00:00:25,180
+to log here.
+
+7
+00:00:25,190 --> 00:00:28,910
+So normally, you know, you do console a log and output some text in here.
+
+8
+00:00:29,240 --> 00:00:35,630
+But if you want to actually see some, you know, spatial data, like a couple of nested arrays, that's
+
+9
+00:00:35,630 --> 00:00:37,210
+not really going to be helpful for you.
+
+10
+00:00:37,220 --> 00:00:43,010
+You're going to have to, you know, log those out in a series of numbers or something.
+
+11
+00:00:43,010 --> 00:00:45,500
+And it's going to be really hard to see the actual data.
+
+12
+00:00:45,500 --> 00:00:46,990
+Right, in terms of visuals.
+
+13
+00:00:47,270 --> 00:00:52,430
+So what we're going to do with this, when you use the console to table command now, we could use this
+
+14
+00:00:52,430 --> 00:00:55,250
+with objects or arrays.
+
+15
+00:00:55,260 --> 00:00:57,980
+So basically, I have my app in here on my left.
+
+16
+00:00:57,980 --> 00:01:02,600
+I have my initial state and we're just going to go ahead and start using this just console on a table.
+
+17
+00:01:02,870 --> 00:01:08,210
+And inside here, we're going to wrap we're going to use initial state and we're just going to do initial
+
+18
+00:01:08,210 --> 00:01:10,290
+state just so you could see what's going on here.
+
+19
+00:01:10,730 --> 00:01:16,370
+So right on over here on my right, you could see in the console we now have a table displayed, which
+
+20
+00:01:16,370 --> 00:01:17,140
+is really awesome.
+
+21
+00:01:17,450 --> 00:01:19,480
+We also get the actual object here.
+
+22
+00:01:19,490 --> 00:01:21,770
+Normally, if you just did console a log, you get this.
+
+23
+00:01:22,100 --> 00:01:24,920
+So you could see here we have a grid, which is an array of res.
+
+24
+00:01:25,250 --> 00:01:27,080
+And in here we have this table.
+
+25
+00:01:27,080 --> 00:01:28,610
+Now, you could see the grid.
+
+26
+00:01:28,760 --> 00:01:32,750
+It's being it's showing the the arrays inside of the grid.
+
+27
+00:01:32,760 --> 00:01:35,900
+So there's eight arrays inside of the grid for each row.
+
+28
+00:01:35,900 --> 00:01:36,980
+There's eight rows.
+
+29
+00:01:36,980 --> 00:01:37,270
+Right.
+
+30
+00:01:37,280 --> 00:01:40,370
+And then each one of those rows has eight columns or eight cells.
+
+31
+00:01:40,730 --> 00:01:42,560
+So that this is cool.
+
+32
+00:01:42,560 --> 00:01:44,960
+But this is not really giving us the grid.
+
+33
+00:01:44,960 --> 00:01:45,230
+Right.
+
+34
+00:01:45,240 --> 00:01:48,020
+So we're going to do is we're going to actually just do first.
+
+35
+00:01:48,020 --> 00:01:52,040
+We're going to show you what happens if we add another statement here.
+
+36
+00:01:52,040 --> 00:01:53,770
+We're going to do grid.
+
+37
+00:01:53,780 --> 00:01:55,390
+So now we're just doing the grid.
+
+38
+00:01:55,910 --> 00:01:58,040
+So this this cool, right.
+
+39
+00:01:58,040 --> 00:02:05,690
+We could see here we have the eight by eight grid here, but in each one we're getting the grid cell.
+
+40
+00:02:05,880 --> 00:02:09,710
+So you could see here we have eight by eight grid cells and that's cool.
+
+41
+00:02:09,710 --> 00:02:13,160
+But we're not really seeing any information in each in each cell.
+
+42
+00:02:13,160 --> 00:02:13,430
+Right.
+
+43
+00:02:13,460 --> 00:02:17,540
+So how would we actually see the information in that cell?
+
+44
+00:02:17,930 --> 00:02:23,840
+Well, what we could do is we could map over that data and just log a new type of data.
+
+45
+00:02:24,020 --> 00:02:28,180
+So log a map over that data with whatever we want to display.
+
+46
+00:02:28,610 --> 00:02:34,110
+So if we want it to display whether they had a bomb or not, we could do that or the number inside.
+
+47
+00:02:34,490 --> 00:02:40,310
+So if you go back here to components, you could see over here we have the cell and you could see here
+
+48
+00:02:40,310 --> 00:02:41,930
+we have the different properties of the cell.
+
+49
+00:02:41,930 --> 00:02:45,950
+We've got the is mine that we've got is empty.
+
+50
+00:02:46,130 --> 00:02:47,270
+So you could do whatever you want here.
+
+51
+00:02:47,270 --> 00:02:48,110
+You could see the value.
+
+52
+00:02:48,110 --> 00:02:49,070
+You could see the number.
+
+53
+00:02:49,340 --> 00:02:50,670
+So let's try the number first.
+
+54
+00:02:51,080 --> 00:02:57,770
+So what we're going to do here, we're going to go up and we're going to now just go over here where
+
+55
+00:02:57,770 --> 00:02:58,670
+we did this table.
+
+56
+00:02:59,000 --> 00:03:02,960
+And we're going to do instead is we're going to say initial state grid.
+
+57
+00:03:02,960 --> 00:03:03,830
+I'm going to do a map.
+
+58
+00:03:03,980 --> 00:03:05,780
+So we're going to map over this data.
+
+59
+00:03:06,080 --> 00:03:10,970
+And in the map function, what we're going to do is we're going to get a bunch of rows.
+
+60
+00:03:10,970 --> 00:03:11,270
+Right.
+
+61
+00:03:11,750 --> 00:03:15,700
+And we're going to do is we're going to return the rows, that map.
+
+62
+00:03:15,980 --> 00:03:17,330
+So we're going to map over the rows.
+
+63
+00:03:17,350 --> 00:03:20,450
+We're going to turn another map over those rows.
+
+64
+00:03:21,170 --> 00:03:26,180
+And inside of here, we're going to end up doing is we're going to say so each cell.
+
+65
+00:03:26,180 --> 00:03:28,340
+So cell, we're going to map over the cell.
+
+66
+00:03:28,610 --> 00:03:33,290
+And then finally, we're just going to say cell dot and.
+
+67
+00:03:37,010 --> 00:03:42,230
+OK, so now you could see something save this, so it makes it easier to see, OK, so it's going to
+
+68
+00:03:42,230 --> 00:03:43,340
+put it all on one line here.
+
+69
+00:03:43,350 --> 00:03:46,250
+So let me just collapse this so you could see that.
+
+70
+00:03:46,250 --> 00:03:46,680
+There you go.
+
+71
+00:03:47,060 --> 00:03:48,100
+So there we go.
+
+72
+00:03:48,140 --> 00:03:50,360
+That's returning the number of that value.
+
+73
+00:03:50,790 --> 00:03:54,310
+And as you can see now, we have access to all those numbers here.
+
+74
+00:03:54,710 --> 00:03:56,540
+So let's just see if that's correct.
+
+75
+00:03:56,550 --> 00:04:01,310
+So we know that if we click on one of those, we're going to get that number of how many minds are around
+
+76
+00:04:01,310 --> 00:04:01,780
+that number.
+
+77
+00:04:02,090 --> 00:04:05,920
+So if we go down here, let's just try and stretch this out a little bit.
+
+78
+00:04:09,660 --> 00:04:18,150
+OK, and we are going to see, OK, so we have zero, we have one over here and that the let me just
+
+79
+00:04:18,180 --> 00:04:19,710
+move this around really quick.
+
+80
+00:04:20,340 --> 00:04:26,730
+Let's move this up so you could see so you could see we have right in here, first row is going to be
+
+81
+00:04:26,730 --> 00:04:27,230
+zero zero.
+
+82
+00:04:27,230 --> 00:04:28,890
+And then we have the second row, we have a one.
+
+83
+00:04:29,130 --> 00:04:33,270
+So if I go up here and I click it, that's a one just to show you, I'm not making this up.
+
+84
+00:04:33,270 --> 00:04:34,190
+We go down over here.
+
+85
+00:04:34,440 --> 00:04:35,550
+This is should be a two.
+
+86
+00:04:36,620 --> 00:04:38,510
+Go so that that's the two right there.
+
+87
+00:04:38,900 --> 00:04:39,330
+Awesome.
+
+88
+00:04:39,350 --> 00:04:41,480
+So now we don't have any data about these bombs.
+
+89
+00:04:41,480 --> 00:04:45,700
+So if I start clicking on the zeros, the zero might be a bomb, I believe.
+
+90
+00:04:45,710 --> 00:04:50,320
+So if I just start clicking over here on these zeros, this so we've got one.
+
+91
+00:04:50,330 --> 00:04:51,400
+This is going to be a one.
+
+92
+00:04:51,710 --> 00:04:52,220
+And there you go.
+
+93
+00:04:52,220 --> 00:04:52,820
+That's a bomb.
+
+94
+00:04:52,820 --> 00:04:53,650
+Bomb a zero.
+
+95
+00:04:53,660 --> 00:04:55,090
+So this isn't really going to help me cheat.
+
+96
+00:04:55,520 --> 00:04:59,660
+So we're going to do is instead we're going to say cell that is mine.
+
+97
+00:05:00,630 --> 00:05:05,210
+And then if it's a mine, we're going to just put a B or else just nothing.
+
+98
+00:05:06,080 --> 00:05:07,320
+So there we go.
+
+99
+00:05:07,340 --> 00:05:13,570
+So now we could see we have the grid here, eight by eight of whether or not these are bombs.
+
+100
+00:05:14,540 --> 00:05:15,360
+So there we go.
+
+101
+00:05:15,390 --> 00:05:16,170
+So that should do it.
+
+102
+00:05:16,190 --> 00:05:17,900
+So now if we just start clicking.
+
+103
+00:05:18,320 --> 00:05:20,720
+So if I start clicking, OK, I know that's a bomb.
+
+104
+00:05:20,720 --> 00:05:20,900
+Right?
+
+105
+00:05:20,930 --> 00:05:23,640
+So if I go, these three should be not bombs.
+
+106
+00:05:24,230 --> 00:05:24,890
+Next one.
+
+107
+00:05:24,890 --> 00:05:25,610
+This one's here.
+
+108
+00:05:26,450 --> 00:05:29,270
+These should all not be bombs except for this one on the bottom.
+
+109
+00:05:29,840 --> 00:05:37,130
+So we know this column over here, this third one in should be all not bombs, this one up here.
+
+110
+00:05:37,550 --> 00:05:39,320
+And then we go down here.
+
+111
+00:05:39,320 --> 00:05:40,380
+This should be a bomb.
+
+112
+00:05:40,380 --> 00:05:41,120
+So I think if we right.
+
+113
+00:05:41,120 --> 00:05:43,640
+Click, we'll flag that flag these two.
+
+114
+00:05:44,150 --> 00:05:46,490
+And then we go up here, we flag this one.
+
+115
+00:05:47,310 --> 00:05:48,940
+This is a very fun way to play the game.
+
+116
+00:05:48,960 --> 00:05:50,920
+I think it's pretty fun there.
+
+117
+00:05:50,940 --> 00:05:52,970
+Go down here and that's a bomb.
+
+118
+00:05:52,970 --> 00:05:54,230
+This bomb is a bomb.
+
+119
+00:05:54,510 --> 00:05:55,280
+This is a bomb.
+
+120
+00:05:55,910 --> 00:05:56,990
+And.
+
+121
+00:05:58,460 --> 00:06:03,470
+This should be the last cell, so hopefully I'll win the game, so we go, I won.
+
+122
+00:06:04,220 --> 00:06:12,170
+So not very fun way to play, but this is how you use console that table to cheat or to see the better
+
+123
+00:06:12,170 --> 00:06:12,980
+view of that data.
+
+124
+00:06:13,010 --> 00:06:13,910
+So thanks.

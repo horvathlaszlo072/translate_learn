@@ -1,0 +1,451 @@
+1
+00:00:00,590 --> 00:00:01,610
+Welcome back, everyone.
+
+2
+00:00:02,420 --> 00:00:06,350
+In this video, we are going to finish up what we need for our sign and form component.
+
+3
+00:00:06,650 --> 00:00:11,420
+And we're also going to finish styling our authentication page to begin with.
+
+4
+00:00:11,420 --> 00:00:17,570
+What we want to do is we want to be able to indicate to our users if some kind of error happens in order
+
+5
+00:00:17,570 --> 00:00:18,110
+to do that.
+
+6
+00:00:18,420 --> 00:00:21,980
+Let's console log the error so that we can see what happens.
+
+7
+00:00:22,670 --> 00:00:29,660
+So let's go back to our application and here, instead of using an email, let's just see what kinds
+
+8
+00:00:29,660 --> 00:00:32,720
+of errors we can get when we try and sign in with nothing.
+
+9
+00:00:33,920 --> 00:00:39,140
+If we sign in with no required filling fields, we see that we get this required message, which is
+
+10
+00:00:39,140 --> 00:00:43,040
+great because that means that our form input with required is working.
+
+11
+00:00:43,580 --> 00:00:49,640
+So I'm just going to pass an email and let's say I pass an incorrect password, just an incorrect random
+
+12
+00:00:49,640 --> 00:00:50,090
+password.
+
+13
+00:00:51,270 --> 00:00:56,070
+Here we see that we do get some air Firebase Air off wrong password.
+
+14
+00:00:56,730 --> 00:01:01,410
+So this one is a great one that we can use similar to what we had before.
+
+15
+00:01:01,830 --> 00:01:08,100
+We can say that if air decode is equal to auth wrong password.
+
+16
+00:01:08,340 --> 00:01:15,660
+And what we want to do is we want to alert to the user that there is an incorrect password so we can
+
+17
+00:01:15,660 --> 00:01:17,880
+say incorrect password for email.
+
+18
+00:01:18,570 --> 00:01:19,530
+Let's save this.
+
+19
+00:01:20,190 --> 00:01:21,090
+Let's go back here.
+
+20
+00:01:21,840 --> 00:01:22,860
+Let's try this again.
+
+21
+00:01:23,460 --> 00:01:24,170
+And there we see it.
+
+22
+00:01:24,190 --> 00:01:25,710
+Incorrect password for email.
+
+23
+00:01:26,780 --> 00:01:34,160
+Similarly, what if we have some kind of email that doesn't exist here, if we sign in, we see that
+
+24
+00:01:34,160 --> 00:01:36,410
+we get off user not found.
+
+25
+00:01:37,540 --> 00:01:43,990
+So here what we could do is we could do an if statement and do a similar error code equals this one.
+
+26
+00:01:44,470 --> 00:01:48,070
+But what if instead I want to do is I want to make a switch statement.
+
+27
+00:01:48,550 --> 00:01:54,460
+So what this switch statement allows me to do is allows me to run code depending on what gets matched
+
+28
+00:01:54,460 --> 00:01:55,600
+inside of airport.
+
+29
+00:01:56,440 --> 00:02:04,300
+And what I can say is that if the case in this particular case of error code is equal to auth dash wrong
+
+30
+00:02:04,300 --> 00:02:04,930
+password.
+
+31
+00:02:07,000 --> 00:02:07,480
+Like so.
+
+32
+00:02:08,520 --> 00:02:13,050
+Then what I wanted to do is I wanted to alert incorrect.
+
+33
+00:02:14,560 --> 00:02:16,450
+Password for email.
+
+34
+00:02:17,460 --> 00:02:20,700
+And then I want a break and I'll explain what the break is after.
+
+35
+00:02:21,390 --> 00:02:27,390
+So first, let's just comment this code out, and let's do the same thing for this other off.
+
+36
+00:02:29,710 --> 00:02:31,870
+So I'm going to make another case.
+
+37
+00:02:33,100 --> 00:02:33,670
+For.
+
+38
+00:02:34,610 --> 00:02:39,740
+Authors are not found similarly alert in this particular case.
+
+39
+00:02:39,990 --> 00:02:44,990
+No user associated with this email.
+
+40
+00:02:46,150 --> 00:02:47,050
+And we'll break again.
+
+41
+00:02:48,500 --> 00:02:54,770
+And then by default, we'll just console.log the error, assuming that we don't know what it is.
+
+42
+00:02:56,410 --> 00:02:57,670
+So in this particular case.
+
+43
+00:02:58,700 --> 00:03:02,270
+What is it that we see inside of our search statement?
+
+44
+00:03:02,480 --> 00:03:03,200
+So let's break this down.
+
+45
+00:03:03,890 --> 00:03:10,370
+What Switch does a switch is the equivalent to almost saying if and then with this code is equal to
+
+46
+00:03:10,370 --> 00:03:17,600
+this, if it's equal to this run, this else, check if it's equal to this, if it is, run this and
+
+47
+00:03:17,600 --> 00:03:19,670
+otherwise, if none of it matches.
+
+48
+00:03:19,670 --> 00:03:24,920
+If none of these strings match the error code, then by default, just run this code.
+
+49
+00:03:25,400 --> 00:03:31,010
+The break essentially says that once you found a match, don't check the next subsequent cases.
+
+50
+00:03:31,400 --> 00:03:36,080
+You can imagine that if we had like five different cases down here and we didn't have this break.
+
+51
+00:03:36,590 --> 00:03:43,280
+What happens is that essentially without these breaks, our code is going to, let's say, a match off
+
+52
+00:03:43,280 --> 00:03:44,090
+the wrong password.
+
+53
+00:03:44,870 --> 00:03:49,130
+Let's say it matches, it's going to run the alert, but then it's going to try and keep matching these
+
+54
+00:03:49,130 --> 00:03:52,100
+cases, even though we know that the error code has already found a match.
+
+55
+00:03:52,730 --> 00:03:56,480
+So with a break, it allows us to prevent that from happening.
+
+56
+00:03:56,780 --> 00:04:02,570
+Now, one thing I do want to mention is that some of you might be wondering where can we find all of
+
+57
+00:04:02,570 --> 00:04:03,680
+these error codes?
+
+58
+00:04:04,310 --> 00:04:11,540
+Unfortunately, there is no real compile place or a list right now that firebase for authentication
+
+59
+00:04:11,930 --> 00:04:17,540
+in our current version that showcases what all of these error codes will be and what they are.
+
+60
+00:04:17,900 --> 00:04:22,910
+If you do find it, eventually, please send it to me because I've been looking for a long time to and
+
+61
+00:04:22,910 --> 00:04:28,460
+it's actually a common thing in this community using Firebase that Google has not yet provided this
+
+62
+00:04:28,460 --> 00:04:31,280
+full list of these error codes, as well as what they are.
+
+63
+00:04:32,060 --> 00:04:38,990
+But that doesn't stop us from at least addressing these major and currently seen primary error codes
+
+64
+00:04:38,990 --> 00:04:41,180
+that we know are most important for assigning.
+
+65
+00:04:41,690 --> 00:04:47,000
+So now that we have our alerts, there's actually another thing that I want you to see if I scroll down
+
+66
+00:04:47,000 --> 00:04:54,350
+here and I look at this button, our Google button, if we come back here, we know that when I hit
+
+67
+00:04:54,350 --> 00:04:55,340
+the Google sign in.
+
+68
+00:04:55,880 --> 00:05:00,860
+What happens is I should just open our Google pop up, but let's take a look at what happens.
+
+69
+00:05:01,070 --> 00:05:02,000
+I had Google sign in.
+
+70
+00:05:02,720 --> 00:05:05,960
+I do indeed see that we have our Google pop up.
+
+71
+00:05:06,500 --> 00:05:10,580
+But what I also see is that for some reason, our alert fired.
+
+72
+00:05:10,640 --> 00:05:17,750
+No user associated with this email, which we know is our error that we see for an associated email.
+
+73
+00:05:18,470 --> 00:05:22,490
+But why is it that when I hit the Google sign in this form also tried to submit?
+
+74
+00:05:23,150 --> 00:05:30,110
+The reason for this is because by default, buttons are of typed submit inside of forms for us.
+
+75
+00:05:30,110 --> 00:05:35,150
+To prevent this from happening, we have to just say that the type of this button is just a button.
+
+76
+00:05:35,750 --> 00:05:39,890
+And now if we save this and we come back, we clear this.
+
+77
+00:05:40,280 --> 00:05:41,450
+We had our Google sign in.
+
+78
+00:05:42,420 --> 00:05:47,970
+We see that we didn't end up noticing that we have an error and also our alert did not fire.
+
+79
+00:05:48,810 --> 00:05:55,590
+So these are pretty much the only last few tweaks that we need to make for this code in order for it
+
+80
+00:05:55,590 --> 00:05:56,040
+to work.
+
+81
+00:05:56,820 --> 00:06:02,700
+So let's also just for now, keep the response, because after this lesson on authentication, there's
+
+82
+00:06:02,700 --> 00:06:07,830
+a couple other things we want to do what the user object, but let's just tidy up the visuals of our
+
+83
+00:06:07,830 --> 00:06:08,850
+authentication.
+
+84
+00:06:09,540 --> 00:06:11,580
+So let's go to our authentication component.
+
+85
+00:06:12,030 --> 00:06:17,980
+And what I want to do is I want to get rid of this import because I definitely don't need it anymore.
+
+86
+00:06:18,570 --> 00:06:25,860
+But I also want to create some styling so that I can make sure that the authentication page looks how
+
+87
+00:06:25,860 --> 00:06:26,610
+it's supposed to.
+
+88
+00:06:27,150 --> 00:06:29,330
+So let's make a authentication styles.
+
+89
+00:06:29,340 --> 00:06:32,700
+That's nice and looking at the component itself.
+
+90
+00:06:33,950 --> 00:06:40,970
+What I want to do is I want to give this a class name, and I'm going to call it the authentication
+
+91
+00:06:40,970 --> 00:06:41,690
+container.
+
+92
+00:06:43,120 --> 00:06:46,120
+And here I also don't need this sign on page anymore.
+
+93
+00:06:46,180 --> 00:06:52,300
+The H1 is done with and this class name of authentication container is what I want to style.
+
+94
+00:06:53,080 --> 00:07:00,130
+So if inside I'm just going to do a display flex flex direction in this particular case or not flex
+
+95
+00:07:00,130 --> 00:07:00,520
+direction.
+
+96
+00:07:00,940 --> 00:07:03,670
+I'm going to say justify content is space between.
+
+97
+00:07:04,790 --> 00:07:10,430
+I'm also going to set a width and I'm going to give it 900 pixels because I know each one inside is
+
+98
+00:07:10,430 --> 00:07:12,230
+three hundred and eighty pixels as we set.
+
+99
+00:07:12,800 --> 00:07:19,070
+And as for the margin, I want a top bottom margin of 30 pixels, but then I want auto margins on the
+
+100
+00:07:19,070 --> 00:07:21,830
+side so that it center no matter how big your screen gets.
+
+101
+00:07:22,550 --> 00:07:26,960
+And then finally, I want to make sure that I import in this new style sheet that we've created.
+
+102
+00:07:29,050 --> 00:07:30,130
+So here let's go back.
+
+103
+00:07:31,570 --> 00:07:32,380
+And there we go.
+
+104
+00:07:32,860 --> 00:07:35,020
+We see that we have our sign and page.
+
+105
+00:07:35,380 --> 00:07:36,940
+Everything is pretty much working now.
+
+106
+00:07:37,540 --> 00:07:38,230
+And that's it.
+
+107
+00:07:38,380 --> 00:07:41,500
+We finished styling the sign in page in the next video.
+
+108
+00:07:41,500 --> 00:07:47,710
+What we're going to do is we are going to learn what to do with this user that we have just signed it.
+
+109
+00:07:48,160 --> 00:07:52,780
+And we have to think about how leveraging this user allows us to perform certain functionality.
+
+110
+00:07:53,290 --> 00:07:55,150
+So we're going to think about the purpose of the user.
+
+111
+00:07:55,390 --> 00:07:59,500
+We're also going to think about how in react, we're going to store and use this user.
+
+112
+00:07:59,920 --> 00:08:03,970
+So join me in the next lesson where we're going to talk about react context.
+
+113
+00:08:04,360 --> 00:08:05,380
+I'll see you in the next video.

@@ -1,0 +1,491 @@
+1
+00:00:00,420 --> 00:00:05,820
+All right, so in this example, you see chart colors are not correct, they should match our brand
+
+2
+00:00:05,820 --> 00:00:06,870
+color, this one.
+
+3
+00:00:07,470 --> 00:00:14,400
+So the objective here was basically imitating somebody saying that we want to change the chart colors.
+
+4
+00:00:14,710 --> 00:00:16,020
+So you have three charts here.
+
+5
+00:00:16,290 --> 00:00:20,140
+And the objective here is to basically make it look like this.
+
+6
+00:00:20,160 --> 00:00:26,250
+So this is the solution right here where all three of these charts have the same color, which is the
+
+7
+00:00:26,250 --> 00:00:27,810
+brand color that you were given.
+
+8
+00:00:28,200 --> 00:00:29,520
+So how do we do this?
+
+9
+00:00:29,910 --> 00:00:33,030
+Well, the first thing we want to do is look at our code here.
+
+10
+00:00:33,030 --> 00:00:37,860
+And here is the example opened up through Code Sandbox here.
+
+11
+00:00:38,460 --> 00:00:44,240
+And if we go to this example here, first thing we want to do is actually just identify the charts themselves.
+
+12
+00:00:44,250 --> 00:00:47,730
+So this is not, you know, syntax error or anything like that.
+
+13
+00:00:47,760 --> 00:00:52,730
+We need to look at the console for this is more or less a research problem that we have to look into.
+
+14
+00:00:53,100 --> 00:00:58,910
+And I included this because it's good to know how certain libraries work if you need to debug them.
+
+15
+00:00:59,340 --> 00:01:03,330
+So APACS charts, you could see here we have one library there.
+
+16
+00:01:03,330 --> 00:01:07,050
+We have another one called High Charts, and then we have another called Chartist.
+
+17
+00:01:07,320 --> 00:01:11,660
+So three different charting libraries that you would have to debug here in order to figure this out.
+
+18
+00:01:12,000 --> 00:01:14,550
+And all three of them might have different solutions.
+
+19
+00:01:14,730 --> 00:01:19,200
+It turns out that Apex charts and high charts have very similar ways to change the colors.
+
+20
+00:01:19,620 --> 00:01:25,110
+But Chartist has a much more different and inconvenient way to do that.
+
+21
+00:01:25,620 --> 00:01:31,560
+So the first thing we're going to go here to the Apex chart example here, and we're just going to look
+
+22
+00:01:31,560 --> 00:01:32,270
+at what's going on.
+
+23
+00:01:32,280 --> 00:01:35,580
+You could see this is the React Apex charts library up here.
+
+24
+00:01:35,970 --> 00:01:38,100
+And then we could go and see here.
+
+25
+00:01:38,100 --> 00:01:39,360
+We just have some options.
+
+26
+00:01:39,720 --> 00:01:42,680
+And yeah, that's passed into the chart right here.
+
+27
+00:01:43,020 --> 00:01:47,250
+And so just looking for opportunities to modify options basically.
+
+28
+00:01:47,250 --> 00:01:52,950
+And without the documentation, no, you're going to be hard pressed to actually figure this out on
+
+29
+00:01:52,950 --> 00:01:53,360
+your own.
+
+30
+00:01:53,730 --> 00:02:00,390
+So what you should do is actually look for apex charts, documentation or better yet, examples.
+
+31
+00:02:00,720 --> 00:02:02,780
+I found this example on their website.
+
+32
+00:02:02,790 --> 00:02:09,510
+So if you look for a react chart, demos column charts here in Apex charts, you will be able to find
+
+33
+00:02:09,510 --> 00:02:14,430
+this example where we go and we see we have the options here.
+
+34
+00:02:14,430 --> 00:02:22,470
+And then inside of the options we have a colours array and so the colours array, it's not defined here
+
+35
+00:02:22,470 --> 00:02:23,070
+fully.
+
+36
+00:02:23,080 --> 00:02:24,090
+Let's see if we go down.
+
+37
+00:02:24,360 --> 00:02:27,570
+So it's not actually even defined here very well.
+
+38
+00:02:27,580 --> 00:02:32,550
+So these these examples, like I've mentioned, are not usually going to be that helpful.
+
+39
+00:02:32,700 --> 00:02:37,200
+So what we could do is we could find more information on what that colours array is.
+
+40
+00:02:37,530 --> 00:02:43,460
+If you just go to if you just keep looking through the documentation, you will find or if you searched
+
+41
+00:02:43,470 --> 00:02:44,490
+for colours.
+
+42
+00:02:46,880 --> 00:02:54,320
+So if we search for Colores Apex charts, you'll just get this page here, which shows you how to set
+
+43
+00:02:54,320 --> 00:02:55,460
+a series of colours.
+
+44
+00:02:55,760 --> 00:03:00,720
+So for any of the charts, you could set this in the options.
+
+45
+00:03:01,040 --> 00:03:04,280
+So this is really just, you know, colors of series, right.
+
+46
+00:03:04,310 --> 00:03:13,610
+So if we go here in the example, we will as we saw in that other example, we define the colors inside
+
+47
+00:03:13,610 --> 00:03:16,100
+of this options object here.
+
+48
+00:03:16,610 --> 00:03:17,840
+So if we go back up.
+
+49
+00:03:19,270 --> 00:03:26,080
+We can see will define the colors to be an array, and we'll just put the one color that we want just
+
+50
+00:03:26,080 --> 00:03:27,060
+to see if that works.
+
+51
+00:03:27,460 --> 00:03:29,890
+So we go back here and we copy that brand color in.
+
+52
+00:03:33,370 --> 00:03:41,350
+Copy that in to an array just like this and then just like that, you could see the chart has changed
+
+53
+00:03:41,350 --> 00:03:45,190
+colors, hi charts does this very similarly.
+
+54
+00:03:45,220 --> 00:03:52,630
+If you go to the pie charts website, you can then look up ways of setting colors similarly.
+
+55
+00:03:52,960 --> 00:03:57,130
+And here you could just, you know, you could search there documentation.
+
+56
+00:03:57,130 --> 00:03:59,500
+You could look up here, you could go to charts.
+
+57
+00:03:59,740 --> 00:04:03,940
+So if we search their documentation like this, we just search for colors.
+
+58
+00:04:03,940 --> 00:04:07,060
+You'll get plenty of examples like this colors.
+
+59
+00:04:07,390 --> 00:04:10,630
+And then we could look at certain examples.
+
+60
+00:04:10,630 --> 00:04:12,820
+But this example doesn't seem to work for me.
+
+61
+00:04:13,060 --> 00:04:16,390
+So some of these examples seem to be broken unless we click run.
+
+62
+00:04:16,870 --> 00:04:17,320
+There we go.
+
+63
+00:04:17,330 --> 00:04:18,010
+So it does work.
+
+64
+00:04:18,280 --> 00:04:24,790
+So similarly here you could see here we have this global high chart set options, which is really cool.
+
+65
+00:04:25,090 --> 00:04:28,270
+So we could set them globally so that our brand color is always there.
+
+66
+00:04:28,570 --> 00:04:30,670
+And that's a good best practice.
+
+67
+00:04:30,670 --> 00:04:34,150
+Maybe the best solution for this would be to do that for each of these libraries.
+
+68
+00:04:34,390 --> 00:04:36,310
+So like hi charts, you could go over here.
+
+69
+00:04:36,520 --> 00:04:38,920
+And so high charts is the second chart, by the way.
+
+70
+00:04:38,920 --> 00:04:39,970
+We're done with the first one.
+
+71
+00:04:40,240 --> 00:04:46,650
+So we go here to high charts, set options, and let's go ahead and try to set that brand color.
+
+72
+00:04:47,050 --> 00:04:49,570
+So if we go up here and we go back to our.
+
+73
+00:04:50,880 --> 00:04:55,590
+Color and go back here to high charts that said options now.
+
+74
+00:04:56,760 --> 00:04:58,980
+If we refresh the page here.
+
+75
+00:05:00,800 --> 00:05:05,130
+We see that the the chart is correctly sent now to our brand color.
+
+76
+00:05:05,360 --> 00:05:11,160
+So now any charts that we create with hi charts will have that color that we have here.
+
+77
+00:05:11,180 --> 00:05:17,270
+So now, no matter what chart we create, we have our branding colors right here globally.
+
+78
+00:05:18,530 --> 00:05:23,120
+All right, so the next one, react chartist, you're going to do a little bit more research on this.
+
+79
+00:05:23,120 --> 00:05:28,910
+If you do, you might find this stack overflow thread which says, hey, I'm using Chartist, but I
+
+80
+00:05:28,910 --> 00:05:30,460
+can't change default line colors.
+
+81
+00:05:30,680 --> 00:05:36,370
+We have Barbar charts, but usually the way to do it is the same throughout your app.
+
+82
+00:05:36,380 --> 00:05:37,830
+So we have these bar charts here.
+
+83
+00:05:38,300 --> 00:05:40,100
+So anyway, what do they do?
+
+84
+00:05:40,130 --> 00:05:45,210
+Well, they actually will use Kath's to change the stroke to that color.
+
+85
+00:05:45,560 --> 00:05:50,210
+So what we can do here is we could do this similar example here.
+
+86
+00:05:50,210 --> 00:05:53,760
+We could try and find the excess properties that correspond to that.
+
+87
+00:05:54,140 --> 00:05:57,260
+So if we go here to our bar and we right.
+
+88
+00:05:57,260 --> 00:06:04,370
+Click and say inspect, you will then be able to check out the different elements that make up that
+
+89
+00:06:04,370 --> 00:06:09,890
+chart, which is pretty interesting if you're interested in this kind of thing of of learning how charting
+
+90
+00:06:09,890 --> 00:06:13,040
+libraries work, a lot of them are using these CGS.
+
+91
+00:06:13,370 --> 00:06:22,630
+And so CGS are basically animated, scalable vector graphics that apply, you know, inside of HTML.
+
+92
+00:06:22,640 --> 00:06:28,420
+So it's not a canvas where you're drawing on pixels, pixel based, rendering its vector based.
+
+93
+00:06:28,670 --> 00:06:31,880
+So you're using math basically to define certain things.
+
+94
+00:06:31,910 --> 00:06:38,030
+So here I'm looking at the lines here and as I drill in, I could see there's a series right here and
+
+95
+00:06:38,030 --> 00:06:42,520
+I click into that and then I, you could see I'm actually hovering over each bar.
+
+96
+00:06:42,830 --> 00:06:45,830
+So when I click on that, you'll see we have that.
+
+97
+00:06:46,990 --> 00:06:49,790
+Class here that we can then copy.
+
+98
+00:06:50,290 --> 00:06:55,450
+So this is the case that's applying that if I want to change that, I could just change it right here,
+
+99
+00:06:55,450 --> 00:06:56,620
+actually, so I could do this.
+
+100
+00:06:56,620 --> 00:07:01,180
+I could click on this square right here and I could change the color to whatever I want it to be.
+
+101
+00:07:01,360 --> 00:07:03,250
+But so that proves that that works.
+
+102
+00:07:03,580 --> 00:07:06,250
+So now we have to do is just overwrite this in our app.
+
+103
+00:07:07,300 --> 00:07:08,410
+So we go back to our app.
+
+104
+00:07:08,560 --> 00:07:11,860
+What I'm going to do is I'm going to paste in those exact classes that I found.
+
+105
+00:07:14,510 --> 00:07:21,080
+And then here you could see all I'm going to do is just set that show property to be our branded color.
+
+106
+00:07:23,350 --> 00:07:28,240
+So let's see what happens when I say there we go, that that looked like it worked.
+
+107
+00:07:28,570 --> 00:07:29,950
+So there we go.
+
+108
+00:07:29,980 --> 00:07:32,770
+So as you could see here, that worked.
+
+109
+00:07:32,770 --> 00:07:34,990
+And I've set the Smokler, so.
+
+110
+00:07:35,900 --> 00:07:41,480
+Once again, all of these charting libraries have different ways of nuances, of writing their documentation,
+
+111
+00:07:41,480 --> 00:07:47,300
+showing examples and some you have to you stack overflow to figure out what to do.
+
+112
+00:07:47,330 --> 00:07:56,270
+Now, it would be ideal if this you know, I'm sure that Chartist probably does have a way to set this,
+
+113
+00:07:56,270 --> 00:08:02,330
+but it doesn't really seem clear based on a Google search that I can actually do that.
+
+114
+00:08:02,600 --> 00:08:08,330
+Now, if I just search for Riak Chartist, I can try and dive in deeper into, you know, what's going
+
+115
+00:08:08,330 --> 00:08:09,350
+on with this library.
+
+116
+00:08:09,710 --> 00:08:11,330
+And I could, you know, end up here.
+
+117
+00:08:11,570 --> 00:08:15,770
+And then I could try and search for color on this documentation and nothing comes up.
+
+118
+00:08:16,070 --> 00:08:18,900
+So it's a very simple library here.
+
+119
+00:08:19,220 --> 00:08:25,190
+So once again, this example of something that you have to search for to figure out, unless I'm not
+
+120
+00:08:25,190 --> 00:08:30,670
+finding the right documentation, but that's how I would solve these issues here.
+
+121
+00:08:30,680 --> 00:08:32,170
+So be resourceful.
+
+122
+00:08:32,180 --> 00:08:38,090
+Look at your documentation, read the documentation, find example code and try and search for the proper
+
+123
+00:08:38,090 --> 00:08:38,750
+solutions.

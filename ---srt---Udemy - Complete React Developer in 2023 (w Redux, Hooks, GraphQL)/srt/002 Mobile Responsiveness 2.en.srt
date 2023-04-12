@@ -1,0 +1,699 @@
+1
+00:00:00,980 --> 00:00:09,350
+OK, everyone, let's continue with modifying our application to be more mobile responsive, so the
+
+2
+00:00:09,350 --> 00:00:11,990
+next thing I want to update is our header component.
+
+3
+00:00:13,010 --> 00:00:20,090
+So our header right now is not optimized for the mobile view, so inside of our hairstyles, I'm just
+
+4
+00:00:20,090 --> 00:00:28,760
+going to modify the actual width and height to be a little bit more aligned with the actual browser
+
+5
+00:00:28,760 --> 00:00:30,880
+view inside of a mobile device.
+
+6
+00:00:31,950 --> 00:00:38,280
+Now, inside of this heter container, we are going to just paste in that same media query that we had
+
+7
+00:00:38,280 --> 00:00:38,700
+before.
+
+8
+00:00:39,880 --> 00:00:47,680
+Because we're using the same media query in any of our mobile style changes, so here what I'm going
+
+9
+00:00:47,680 --> 00:00:55,450
+to do is I'm going to write it so that what I want to set in terms of the actual header container is
+
+10
+00:00:55,450 --> 00:01:01,030
+I want to shrink the height to 60 pixels instead of 70 pixels, just literally shaving off 10 pixels
+
+11
+00:01:01,030 --> 00:01:01,210
+here.
+
+12
+00:01:01,900 --> 00:01:08,200
+I want to make sure that there's some padding all around the header of 10 pixels, and then I'm going
+
+13
+00:01:08,200 --> 00:01:16,480
+to have a margin bottom of 20 pixels so that we push the content down with our new header.
+
+14
+00:01:17,400 --> 00:01:24,360
+So with that, we need to now modify the actual size of the components inside of the header, but the
+
+15
+00:01:24,360 --> 00:01:27,120
+header is shaped more like how I want it to be.
+
+16
+00:01:28,620 --> 00:01:36,720
+Now, inside of the actual logo container, I am going to add in this media query again, and what I
+
+17
+00:01:36,720 --> 00:01:41,280
+want to change is I want the width of this logo to be way smaller.
+
+18
+00:01:41,940 --> 00:01:44,100
+So I only want it to be 50 pixels.
+
+19
+00:01:44,610 --> 00:01:46,710
+And then I don't want any padding anymore.
+
+20
+00:01:46,890 --> 00:01:49,560
+I just want a padding of zero.
+
+21
+00:01:50,400 --> 00:01:58,050
+So now if we go back and we see we see that our logo is more aligned with where we want it to be inside
+
+22
+00:01:58,050 --> 00:01:59,640
+of this header now.
+
+23
+00:02:01,290 --> 00:02:06,690
+I also want to make sure that the options container, so that section containing the option links we
+
+24
+00:02:06,690 --> 00:02:09,130
+have that navigate us to different Web pages.
+
+25
+00:02:09,960 --> 00:02:15,120
+I want to make sure that that is now taking up more of the space of the header than before.
+
+26
+00:02:15,510 --> 00:02:20,760
+Before it only took up 50 percent of the total width of the header because with so much real estate
+
+27
+00:02:20,760 --> 00:02:26,880
+space with a Web view, instead I'm going to do a width of 80 percent.
+
+28
+00:02:26,880 --> 00:02:33,750
+Because the only other thing on this browser page, when we're in this mobile view or in any of you,
+
+29
+00:02:33,750 --> 00:02:35,340
+in fact, is just the logo.
+
+30
+00:02:35,760 --> 00:02:39,240
+So now with this with this way, we have way more space.
+
+31
+00:02:39,240 --> 00:02:39,990
+As we can see.
+
+32
+00:02:40,830 --> 00:02:44,660
+In fact, everything still works, which is really great for us.
+
+33
+00:02:45,150 --> 00:02:50,590
+We just need to make sure to update our views, like our homepage, to also be responsive.
+
+34
+00:02:51,060 --> 00:02:56,830
+Now, what it is that I want to change is I want the menu item to fit in a nicer way.
+
+35
+00:02:57,540 --> 00:03:02,340
+So what we can do is go into our menu item styles.
+
+36
+00:03:03,370 --> 00:03:13,390
+And modify them so that they have a similar media query and then render a different shape on the actual
+
+37
+00:03:13,390 --> 00:03:14,590
+menu item container.
+
+38
+00:03:15,130 --> 00:03:22,630
+So as you remember, we set the height based on this size property, which does dictate to it how big
+
+39
+00:03:22,630 --> 00:03:26,560
+it should be based on which image it is.
+
+40
+00:03:26,560 --> 00:03:32,200
+Because when you remember inside of our Web view, the men and women sections are larger than the three
+
+41
+00:03:32,200 --> 00:03:33,520
+other sections that we have.
+
+42
+00:03:34,540 --> 00:03:41,860
+Now, what we want to do here is we want to actually modify this height value so that it stays pretty
+
+43
+00:03:41,860 --> 00:03:43,930
+consistent regardless of size.
+
+44
+00:03:44,650 --> 00:03:51,220
+So what we can do is at the end, append our media screen query and what we'll just say is simply height,
+
+45
+00:03:51,220 --> 00:03:52,040
+two hundred pixels.
+
+46
+00:03:52,930 --> 00:03:59,890
+Now, media queries have a higher specificity than anything else inside of our styles.
+
+47
+00:04:00,490 --> 00:04:08,170
+So no matter what styles inside of this here, the media query, if it has the same style, will always
+
+48
+00:04:08,170 --> 00:04:14,800
+overwrite the styles here because media queries always have a higher specificity order than regular
+
+49
+00:04:14,800 --> 00:04:15,340
+selectors.
+
+50
+00:04:15,970 --> 00:04:23,860
+So now if we go back, we'll see that our elements are aligned much better because the heights are statically
+
+51
+00:04:23,860 --> 00:04:27,090
+two hundred pixels and the widths will always adjust.
+
+52
+00:04:27,490 --> 00:04:34,750
+So the screen will try and fit these elements on the page in the right order that they have access to.
+
+53
+00:04:35,440 --> 00:04:39,100
+And then the moment that a new one starts on a new page, it fills the remaining space.
+
+54
+00:04:39,100 --> 00:04:43,180
+But the height is always set to a specific static two hundred pixels.
+
+55
+00:04:43,990 --> 00:04:47,200
+So with that, we now have a mobile view.
+
+56
+00:04:48,630 --> 00:04:54,030
+Now our home page is set up, the next thing that we need to modify is our shot page.
+
+57
+00:04:55,880 --> 00:05:03,140
+Our shop page is going to be a little bit more complicated because our shop page, it doesn't look terrible.
+
+58
+00:05:03,470 --> 00:05:04,670
+We have these elements.
+
+59
+00:05:05,060 --> 00:05:11,390
+But the problem with this is that this item you have to actually click it in order to see the add to
+
+60
+00:05:11,390 --> 00:05:15,380
+cart, which you'd then have to click instead with a mobile view.
+
+61
+00:05:15,710 --> 00:05:22,760
+This button seems too small in order to just put here the style and the actual design needs it to be
+
+62
+00:05:22,760 --> 00:05:29,120
+a little bit more deliberate in how we can actually add items because we want our users to be able to
+
+63
+00:05:29,120 --> 00:05:30,900
+add items as easily as possible.
+
+64
+00:05:31,730 --> 00:05:40,640
+So what we're going to modify is both the collection preview as well as our actual collection item.
+
+65
+00:05:41,390 --> 00:05:43,880
+So let's go back to our application code.
+
+66
+00:05:44,540 --> 00:05:48,930
+And what we need to do is go to the collection item styles.
+
+67
+00:05:49,790 --> 00:05:55,430
+Now, I do think actually I have a slight typo in our collection item here.
+
+68
+00:05:55,430 --> 00:05:57,590
+I accidentally put collection styles.
+
+69
+00:05:57,590 --> 00:06:04,130
+Dot styles such as this should actually be a collection item that style.
+
+70
+00:06:04,130 --> 00:06:04,640
+Such as?
+
+71
+00:06:05,980 --> 00:06:12,700
+So if we make that modification, we also have to make sure that we update it here now, mine automatically
+
+72
+00:06:12,700 --> 00:06:16,900
+updated it for me because my vote code is intelligent like that.
+
+73
+00:06:17,170 --> 00:06:22,120
+If yours is not, you just got to make sure to modify the place where you imported all of these components
+
+74
+00:06:22,120 --> 00:06:24,340
+in so that it's pointing to the right route.
+
+75
+00:06:25,030 --> 00:06:26,900
+Just a little typo, right?
+
+76
+00:06:26,920 --> 00:06:28,270
+These things happen to everybody.
+
+77
+00:06:28,930 --> 00:06:35,200
+So inside of our collection items, styles, what we're going to do is we are going to go into this
+
+78
+00:06:35,200 --> 00:06:42,280
+collection item container and we are going to modify how large this width will be.
+
+79
+00:06:43,250 --> 00:06:44,180
+Based on.
+
+80
+00:06:45,630 --> 00:06:53,040
+The actual mobile view, so inside of here, I want the width to be 40 view with meaning that it takes
+
+81
+00:06:53,040 --> 00:06:56,370
+up 40 percent of the total width of the full view.
+
+82
+00:06:57,270 --> 00:07:03,180
+Then I need to overwrite some of these hover features because these hover features I don't want inside
+
+83
+00:07:03,180 --> 00:07:05,750
+of my mobile view with our mobile view.
+
+84
+00:07:05,760 --> 00:07:06,930
+I don't care about the hover.
+
+85
+00:07:07,260 --> 00:07:11,100
+You don't actually hover that much with touch as you're used to it.
+
+86
+00:07:11,100 --> 00:07:11,550
+The mobile.
+
+87
+00:07:12,090 --> 00:07:18,780
+So what I'm going to say is that the image just unset, the opacity unset pretty much says that this
+
+88
+00:07:18,810 --> 00:07:20,570
+was never set in the first place.
+
+89
+00:07:20,580 --> 00:07:23,100
+So there's actually no image styles.
+
+90
+00:07:24,300 --> 00:07:28,980
+Here on the hover effect of the image when you're inside of this medium sized.
+
+91
+00:07:30,700 --> 00:07:34,830
+For any buttons in here, I also want to unset the opacity as well.
+
+92
+00:07:36,930 --> 00:07:39,810
+So now if we go back to our application.
+
+93
+00:07:40,560 --> 00:07:44,020
+OK, we'll see that we're looking at the wrong file.
+
+94
+00:07:44,190 --> 00:07:50,910
+This is probably because we didn't save this file, so once my visa code actually updated this route,
+
+95
+00:07:51,660 --> 00:07:53,880
+it didn't actually manually save the file for me.
+
+96
+00:07:53,880 --> 00:07:55,880
+So I had to manually make that save.
+
+97
+00:07:56,580 --> 00:07:57,460
+And now here we'll see.
+
+98
+00:07:57,500 --> 00:08:01,420
+This looks a little bit more tightly coupled because the width is larger.
+
+99
+00:08:02,160 --> 00:08:09,260
+The only reason it's still stacking like this is because we need to update our actual collection preview
+
+100
+00:08:09,260 --> 00:08:09,490
+view.
+
+101
+00:08:10,200 --> 00:08:14,250
+So what we'll do here is we will go to our collections preview.
+
+102
+00:08:15,180 --> 00:08:22,590
+Styles and inside of the preview container, we need to write our media query, so let's copy back our
+
+103
+00:08:22,590 --> 00:08:24,000
+old media query here.
+
+104
+00:08:26,540 --> 00:08:33,770
+And inside, we are going to say that I want this now to have a.
+
+105
+00:08:34,770 --> 00:08:36,690
+A line items property.
+
+106
+00:08:37,970 --> 00:08:42,530
+So this allows us to have everything centered.
+
+107
+00:08:43,490 --> 00:08:48,530
+Whenever our content is inside of this display, Fleck's.
+
+108
+00:08:49,440 --> 00:08:54,300
+Now, I know that this is a lot of success that we haven't touched upon before, if you're unfamiliar
+
+109
+00:08:54,300 --> 00:08:56,520
+with success, this might be completely new to you.
+
+110
+00:08:57,710 --> 00:09:04,730
+Honestly, this case is pretty extensive in terms of what rules there are, I'm going to link the flex
+
+111
+00:09:04,730 --> 00:09:06,880
+box ruling documentation for you.
+
+112
+00:09:06,890 --> 00:09:12,080
+It's actually an amazing resource to read through because it's really a matter of where the more you
+
+113
+00:09:12,080 --> 00:09:13,580
+practice with, the more that you'll see.
+
+114
+00:09:14,330 --> 00:09:19,280
+It's really comprehensive and it's difficult for me to cover inside of a course on reac because I'll
+
+115
+00:09:19,280 --> 00:09:22,610
+have to spend so much time on actual CSFs things.
+
+116
+00:09:23,030 --> 00:09:29,810
+So if this gets confusing for you at any point, I will definitely include a version of our application
+
+117
+00:09:29,810 --> 00:09:32,510
+where everything is converted to be mobile friendly for you.
+
+118
+00:09:32,930 --> 00:09:37,670
+Otherwise you can pause the video and read up on some of these styling rules.
+
+119
+00:09:37,670 --> 00:09:43,850
+If my explanations are not fully clear and you don't have the full context of everything, but it's
+
+120
+00:09:43,850 --> 00:09:49,210
+really just a matter of doing this on your own with practice, right?
+
+121
+00:09:51,200 --> 00:09:56,630
+So one of the other things that we have to do after we did this, a line items, is we need to modify
+
+122
+00:09:56,630 --> 00:10:04,640
+our preview container as well so that instead of being a display flex, what it will be is a display
+
+123
+00:10:04,640 --> 00:10:05,120
+grid.
+
+124
+00:10:05,990 --> 00:10:10,900
+Now, this is a new feature that I will also link the documentation for.
+
+125
+00:10:10,940 --> 00:10:13,520
+And this is another version of Display Flex.
+
+126
+00:10:13,910 --> 00:10:19,220
+We've actually used display grid before inside of our application, and it literally just lets us place
+
+127
+00:10:19,220 --> 00:10:25,100
+elements inside of whatever this top level component is in a grid like shape.
+
+128
+00:10:26,260 --> 00:10:33,300
+So here I'm going to say grid template is always going to just have columns where it's one F.R., whatever.
+
+129
+00:10:33,340 --> 00:10:39,640
+If you remember from that lesson on grids really quickly, one half hour just means whatever space is
+
+130
+00:10:40,000 --> 00:10:46,300
+remaining inside of this screen, meaning that there will always be essentially columns.
+
+131
+00:10:46,720 --> 00:10:53,110
+And the two columns here will each take up one full portion of the application, which means that they
+
+132
+00:10:53,110 --> 00:10:58,290
+are equally 50 percent of what space is available inside of this preview container.
+
+133
+00:10:59,110 --> 00:11:02,230
+And then I also want a grid gap of 15 pixel.
+
+134
+00:11:03,420 --> 00:11:05,670
+So grid gap is pretty much just.
+
+135
+00:11:06,640 --> 00:11:10,240
+The spacing between these elements, so with this now.
+
+136
+00:11:11,560 --> 00:11:16,870
+We see that our application looks more like that grid I was telling you about, right, there's always
+
+137
+00:11:16,870 --> 00:11:21,480
+two columns and they always take up one F.R. of space.
+
+138
+00:11:22,390 --> 00:11:24,070
+They're also 40 of you within size.
+
+139
+00:11:24,070 --> 00:11:28,360
+And there's a 15 pixel gap in between all of these items.
+
+140
+00:11:29,260 --> 00:11:33,250
+So now our application looks way closer to what we need it to be.
+
+141
+00:11:34,790 --> 00:11:40,880
+Now, the only thing missing is our actual button, so what we're going to do is we're going to go back
+
+142
+00:11:40,880 --> 00:11:48,530
+to our collection item styles and we're going to modify the button itself so that the button is always
+
+143
+00:11:48,530 --> 00:11:51,350
+displayed whenever we're in a mobile view.
+
+144
+00:11:52,740 --> 00:11:58,110
+We're going to say that the display is block instead of display none, so block is the default you can
+
+145
+00:11:58,110 --> 00:11:59,280
+do block or inline block.
+
+146
+00:11:59,880 --> 00:12:03,210
+We're going to make sure that the opacity is zero point nine.
+
+147
+00:12:04,430 --> 00:12:10,280
+We're also going to set a Menwith value where we unset it, the reason why we have to unset it, even
+
+148
+00:12:10,280 --> 00:12:16,160
+though it's not here, is because the button leverages custom button and custom button is a custom button
+
+149
+00:12:16,160 --> 00:12:19,150
+container with a Menwith of one hundred and sixty five pixel.
+
+150
+00:12:19,460 --> 00:12:21,140
+But that's too big for mobile view.
+
+151
+00:12:21,470 --> 00:12:24,350
+That's pretty much half our screen, so we just want to unset it.
+
+152
+00:12:25,350 --> 00:12:33,360
+And we also want to modify the padding so that what it'll do is it'll set a top value of zero 10 pixels
+
+153
+00:12:33,360 --> 00:12:37,500
+on the right, zero on the bottom, and then 10 pixels on the left.
+
+154
+00:12:38,520 --> 00:12:43,580
+So this way, we're getting zero 10 pixels, zero 10 pixels, in fact, you don't even need this.
+
+155
+00:12:44,400 --> 00:12:46,170
+This syntax is also the same way.
+
+156
+00:12:46,200 --> 00:12:50,160
+We just put two values for padding it, saying zero for top bottom 10 pixels.
+
+157
+00:12:50,160 --> 00:12:50,640
+Left, right.
+
+158
+00:12:51,180 --> 00:12:52,410
+And now if we save this.
+
+159
+00:12:53,970 --> 00:13:00,090
+We'll actually see that our button is always present, if we click this, we'll see that it still works.
+
+160
+00:13:00,270 --> 00:13:02,100
+Our items are being added to our check checkout.
+
+161
+00:13:02,940 --> 00:13:07,290
+Our collection preview is pretty close to what we actually want it to look like.
+
+162
+00:13:09,980 --> 00:13:15,320
+Now, at this point, I definitely encourage you to take a crack at trying to modify the styles for
+
+163
+00:13:15,320 --> 00:13:16,470
+the rest of this yourself.
+
+164
+00:13:16,940 --> 00:13:22,730
+It's a good exercise to maybe work on some success that we haven't really touched upon too much of in
+
+165
+00:13:22,730 --> 00:13:25,100
+this course, because this is a Riak horse.
+
+166
+00:13:27,360 --> 00:13:32,760
+Once you've played around with the stars, you can always check back to the GitHub for what it is that
+
+167
+00:13:32,760 --> 00:13:33,400
+we have done.
+
+168
+00:13:33,600 --> 00:13:39,030
+Now, I will also include a GitHub link of everything we've done up until this point right now.
+
+169
+00:13:39,030 --> 00:13:40,740
+So you have something to reference against.
+
+170
+00:13:41,310 --> 00:13:46,710
+But just like with all the other exercises that we did, this is a great chance to take some time of
+
+171
+00:13:46,710 --> 00:13:49,080
+your own to play around with some styling.
+
+172
+00:13:49,990 --> 00:13:56,440
+So good luck with that and always refer to the completed version and see how your styles match up to
+
+173
+00:13:56,440 --> 00:14:00,940
+mine again, mine is just my own attempt at the solution, right?
+
+174
+00:14:00,970 --> 00:14:04,630
+It's totally up to you how you want your application to look in a mobile view.
+
+175
+00:14:05,620 --> 00:14:09,820
+So with that, good luck with the exercise and I'll see you in the next lesson.

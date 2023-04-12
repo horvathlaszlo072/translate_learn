@@ -1,0 +1,519 @@
+1
+00:00:00,730 --> 00:00:01,720
+Welcome back, everyone.
+
+2
+00:00:02,050 --> 00:00:07,660
+So in this video, let's apply some of our styles and have a better understanding of the way that react
+
+3
+00:00:07,660 --> 00:00:09,430
+handles regular access.
+
+4
+00:00:10,960 --> 00:00:17,290
+So right here, when we initialized our application and create reactor, we knew that we had also generated
+
+5
+00:00:17,290 --> 00:00:19,090
+this app Dot CIUSSS file.
+
+6
+00:00:20,050 --> 00:00:24,670
+Inside of this app that Sears has filed, there are, of course, a bunch of styling that was related
+
+7
+00:00:24,670 --> 00:00:29,200
+to that original spinning logo that create reactor scaffold it for us.
+
+8
+00:00:29,890 --> 00:00:31,150
+Now we don't need any of this anymore.
+
+9
+00:00:31,990 --> 00:00:37,540
+So what we want to do is we want to start styling our application to look much more similar to what
+
+10
+00:00:37,540 --> 00:00:39,550
+we had in the final output.
+
+11
+00:00:40,090 --> 00:00:44,380
+So let's go here and see what we have is, of course, we have this title.
+
+12
+00:00:44,380 --> 00:00:51,760
+But then we also have this background and we have these different cards that are styled in place of
+
+13
+00:00:51,760 --> 00:00:54,070
+what we see now, which is just once.
+
+14
+00:00:54,850 --> 00:00:59,710
+So let's start styling, and that way we can get an understanding of how this application works.
+
+15
+00:01:01,120 --> 00:01:05,380
+So here, let's talk a little about structure inside of us.
+
+16
+00:01:05,980 --> 00:01:09,640
+Ijaz represents the entry point to our entire application.
+
+17
+00:01:10,030 --> 00:01:15,910
+There's a reason why in most applications, A.j.'s does not live inside of your components folder.
+
+18
+00:01:16,030 --> 00:01:23,470
+And the reason for this is because App J.S. is not necessarily the same category of component as these
+
+19
+00:01:23,470 --> 00:01:24,280
+other components.
+
+20
+00:01:24,820 --> 00:01:31,510
+These other components represent reusable components in our application, whereas OPG's there is only
+
+21
+00:01:31,510 --> 00:01:32,530
+ever one.
+
+22
+00:01:32,830 --> 00:01:39,250
+You will not have multiple agassiz because again, OPG's is the entry point represented as a component
+
+23
+00:01:39,490 --> 00:01:41,650
+into our entire application.
+
+24
+00:01:42,270 --> 00:01:48,760
+Similarly, then, we also have an app that says this is going to be styling that should apply to your
+
+25
+00:01:48,760 --> 00:01:50,080
+entire application.
+
+26
+00:01:50,410 --> 00:01:56,350
+You can keep it in app Nazi SS or if you don't like App XYZ, you can make a index that CSC violence,
+
+27
+00:01:56,350 --> 00:01:58,810
+that an import that instead into objects.
+
+28
+00:01:59,050 --> 00:02:01,690
+It's really just up to how you want a name.
+
+29
+00:02:01,810 --> 00:02:08,230
+This idea of a styling file that reflects styling that should be present across your entire application.
+
+30
+00:02:08,650 --> 00:02:10,420
+So for us, what should go in there?
+
+31
+00:02:10,780 --> 00:02:12,820
+Well, for now, let's look at this application.
+
+32
+00:02:13,060 --> 00:02:18,280
+We know that this background is ever present, so let's actually add this into our application.
+
+33
+00:02:19,400 --> 00:02:22,850
+So she has us inside of React is like CSI anywhere.
+
+34
+00:02:23,540 --> 00:02:28,670
+I don't want to spend too much time on CSI because generally speaking, there's so much JavaScript and
+
+35
+00:02:28,670 --> 00:02:31,340
+react that we have to learn throughout this course.
+
+36
+00:02:31,610 --> 00:02:35,900
+So what I'm going to do is give you all of the CSI that you are going to apply.
+
+37
+00:02:36,110 --> 00:02:40,700
+I'm going to, of course, talk about how CSI actually operates inside of React and all of the considerations
+
+38
+00:02:40,700 --> 00:02:41,450
+you have to make for it.
+
+39
+00:02:41,900 --> 00:02:45,560
+But if we just talk about CSI, I'm going to spend hours on hours teaching CSI.
+
+40
+00:02:45,740 --> 00:02:50,030
+So there's no real point to that when really the purpose is to learn, react and JavaScript.
+
+41
+00:02:50,900 --> 00:02:57,080
+So here, just look inside your resources folder and get that ceasefire and just paste it into your
+
+42
+00:02:57,080 --> 00:02:58,040
+app that sees us.
+
+43
+00:02:59,430 --> 00:03:05,400
+Once you've passed that rent, save and go back to your application and you will see that you now have
+
+44
+00:03:05,400 --> 00:03:06,510
+this gradient background.
+
+45
+00:03:07,960 --> 00:03:13,120
+So one thing to note about the way that CSC works inside of React.
+
+46
+00:03:13,920 --> 00:03:16,380
+Is that no matter where you import it?
+
+47
+00:03:16,740 --> 00:03:25,260
+As long as it's a general ceasefire, react will build it all into one big ceasefire so that no matter
+
+48
+00:03:25,260 --> 00:03:28,740
+what, that cease is always present in your application.
+
+49
+00:03:29,160 --> 00:03:31,620
+Now why is this an important thing to think about?
+
+50
+00:03:32,310 --> 00:03:32,730
+OK.
+
+51
+00:03:33,660 --> 00:03:38,760
+Let's discuss and represent how we should structure our system knowing that, and we'll better understand
+
+52
+00:03:38,760 --> 00:03:39,570
+what I mean when I say this.
+
+53
+00:03:40,660 --> 00:03:42,310
+Inside of your search box component.
+
+54
+00:03:43,280 --> 00:03:47,960
+What you want to do is you want to write XSS that's relevant to the component.
+
+55
+00:03:48,110 --> 00:03:52,790
+So I'm going to make a search box dot styles dot ceasefire.
+
+56
+00:03:54,410 --> 00:04:01,190
+This is just going to hold cost that is only applicable to our search box and of course, our search
+
+57
+00:04:01,190 --> 00:04:02,360
+box component here.
+
+58
+00:04:03,080 --> 00:04:10,130
+Right now, we are appending some classes on here, but let's say, for example, by using string interpolation.
+
+59
+00:04:11,230 --> 00:04:18,340
+We can do this, so we have to wrap our string interpolation because interpolation is JavaScript inside
+
+60
+00:04:18,340 --> 00:04:19,330
+of these squiggly brackets.
+
+61
+00:04:19,690 --> 00:04:23,830
+And here what this interpolation I'm saying, OK, I'm going to use some JavaScript in the string.
+
+62
+00:04:23,830 --> 00:04:27,550
+I want you to take this variable and apply it, and we know class name is going to be a string.
+
+63
+00:04:28,360 --> 00:04:33,340
+But let's also just say for our sake, we say this is a search box.
+
+64
+00:04:34,030 --> 00:04:37,330
+So I'm adding the class name search box right now.
+
+65
+00:04:37,330 --> 00:04:43,210
+The property that we're passing into apparatus is also search box, and I'm just going to call this
+
+66
+00:04:43,210 --> 00:04:45,460
+monster's search box.
+
+67
+00:04:46,570 --> 00:04:47,620
+So when I save this.
+
+68
+00:04:48,850 --> 00:04:53,020
+And I say this, if I go here and I look at this component.
+
+69
+00:04:54,080 --> 00:04:56,690
+I will see that there are now two classes on here.
+
+70
+00:04:56,960 --> 00:04:59,450
+There is search box and monster search box segments.
+
+71
+00:04:59,450 --> 00:05:03,890
+The search box tells me, Oh, this is a search box for monsters, but then search box is general.
+
+72
+00:05:03,890 --> 00:05:04,310
+Style it.
+
+73
+00:05:05,770 --> 00:05:11,620
+And this is important because inside of my search box styles, I can now target this search box.
+
+74
+00:05:12,740 --> 00:05:15,620
+Class that I have by default in the component.
+
+75
+00:05:16,790 --> 00:05:21,320
+If I wanted to overwrite some of these styles or add additional styles for the monster search box,
+
+76
+00:05:21,320 --> 00:05:27,530
+which is a specific instance, or I'm using the search box component for a specific purpose, then I
+
+77
+00:05:27,530 --> 00:05:33,110
+can apply styling on that class and that is dictated by whatever is passing it, and it makes a flexible
+
+78
+00:05:33,110 --> 00:05:33,530
+like that.
+
+79
+00:05:34,070 --> 00:05:37,340
+But I do want all my search boxes to have some general styling.
+
+80
+00:05:38,150 --> 00:05:42,590
+So here inside of here, you can just again look inside your resources folder.
+
+81
+00:05:42,860 --> 00:05:47,000
+Find that, yes, that's code for search box and paste it in.
+
+82
+00:05:47,940 --> 00:05:48,870
+Now we save.
+
+83
+00:05:49,500 --> 00:05:55,050
+And what we need to do is we need to import this ceasefire into our search box component.
+
+84
+00:05:55,990 --> 00:06:03,370
+So I'm going to say input, and then I'm going to go up in the same folder and just import search box
+
+85
+00:06:03,370 --> 00:06:04,420
+styles that SS.
+
+86
+00:06:06,100 --> 00:06:12,220
+Once I look inside of my code, I will see that this search box now has the styling, it's thicker now,
+
+87
+00:06:12,220 --> 00:06:13,000
+it's bigger now.
+
+88
+00:06:13,180 --> 00:06:15,310
+That was all we did for updating this.
+
+89
+00:06:16,000 --> 00:06:20,830
+But one thing I want you to know when I mentioned earlier that no matter where you import CCS, it will
+
+90
+00:06:20,830 --> 00:06:22,900
+be present on the entire page.
+
+91
+00:06:23,200 --> 00:06:29,830
+The important thing I want to say there is that this list does not mean it only applies to your search
+
+92
+00:06:29,830 --> 00:06:30,460
+box component.
+
+93
+00:06:31,700 --> 00:06:33,710
+So our car getting inside.
+
+94
+00:06:33,740 --> 00:06:40,460
+Of course, only applies to this class, but I mean that this file is not in isolation from the rest
+
+95
+00:06:40,460 --> 00:06:48,350
+of our application because styles CSF style specifically apply to the entire website, the file is present
+
+96
+00:06:48,500 --> 00:06:49,940
+across the entire website.
+
+97
+00:06:50,150 --> 00:06:56,240
+That means that other components are not protected from the styling that you write, even though here
+
+98
+00:06:56,240 --> 00:07:02,600
+when you see this import, it makes it seem like I'm importing styling that's only relevant to search
+
+99
+00:07:02,600 --> 00:07:02,990
+box.
+
+100
+00:07:03,200 --> 00:07:11,390
+That does not mean that only within the context of this file is this applied once ISIS is actually bundled
+
+101
+00:07:11,390 --> 00:07:19,040
+and then put onto a website that's just as is applicable to every single components, every single HTML
+
+102
+00:07:19,040 --> 00:07:19,970
+that's on that website.
+
+103
+00:07:20,150 --> 00:07:26,750
+And a quick way that we can test this is if we look inside of our car component for this div that reflects
+
+104
+00:07:26,750 --> 00:07:29,270
+our cardless component, I'm just going to put a quick class name here.
+
+105
+00:07:30,200 --> 00:07:32,480
+And I'm going to say cardless.
+
+106
+00:07:34,710 --> 00:07:41,550
+And I want to do this just to demonstrate to you that we can target this from our search box styles.
+
+107
+00:07:42,240 --> 00:07:44,220
+Let's say here I say Doc Cardless.
+
+108
+00:07:45,830 --> 00:07:47,160
+And let's do something really bold.
+
+109
+00:07:47,180 --> 00:07:49,400
+Let's set the background color to red.
+
+110
+00:07:50,400 --> 00:07:56,460
+If I save this and I go back here, you see that this cardless components background is affected.
+
+111
+00:07:57,150 --> 00:08:03,780
+And this is because again, when you import a ceasefire, that ceasefire is going to be applicable to
+
+112
+00:08:03,780 --> 00:08:04,830
+the entire website.
+
+113
+00:08:05,130 --> 00:08:12,690
+The only reason why we put these imports at the component level is more so for us when we are looking
+
+114
+00:08:12,690 --> 00:08:18,570
+for our styling that is related to the search box, you want to put it where that component lives.
+
+115
+00:08:18,870 --> 00:08:20,850
+And of course, you want to target your access.
+
+116
+00:08:21,000 --> 00:08:24,960
+So that's only relevant to the components code inside.
+
+117
+00:08:25,800 --> 00:08:30,540
+But this is just a designation for us as the actual developers.
+
+118
+00:08:30,780 --> 00:08:36,660
+As far as the underlying technology is concerned, if you write CSI that will overlap with components
+
+119
+00:08:36,990 --> 00:08:42,780
+outside of your component, it will still happen exactly as we saw here.
+
+120
+00:08:43,170 --> 00:08:48,000
+This doc cardless code in CSI is still going to affect other code.
+
+121
+00:08:48,920 --> 00:08:50,390
+So that's an important thing to remember.
+
+122
+00:08:50,900 --> 00:08:57,470
+Now you might be wondering, is there a way that I can isolate my code so that the CSIS doesn't overlap
+
+123
+00:08:57,470 --> 00:08:59,330
+with CSIS in other files?
+
+124
+00:08:59,690 --> 00:09:06,500
+There is, and that involves learning some CSC in Jeff's libraries, which will do in a later project.
+
+125
+00:09:06,530 --> 00:09:10,030
+Not this one that is going to help us do the isolation.
+
+126
+00:09:10,040 --> 00:09:14,720
+And we're going to definitely dive into why the differences with that one exist between this one, which
+
+127
+00:09:14,720 --> 00:09:16,040
+is CSC in React.
+
+128
+00:09:16,550 --> 00:09:17,840
+Now, let's delete the style.
+
+129
+00:09:18,830 --> 00:09:24,350
+And in the next lesson, let's star the rest of our application, including styling out our different
+
+130
+00:09:24,350 --> 00:09:29,330
+users slash monsters into their own respective cards, so I'll see you in the next lesson.

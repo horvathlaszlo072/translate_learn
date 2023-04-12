@@ -1,0 +1,419 @@
+1
+00:00:00,390 --> 00:00:01,230
+Welcome back, everyone.
+
+2
+00:00:02,250 --> 00:00:06,000
+So let's continue with creating our app functional component.
+
+3
+00:00:06,750 --> 00:00:12,690
+So here what I'm going to do is I'm going to move search box back into the return of our demo, so I'm
+
+4
+00:00:12,690 --> 00:00:13,590
+going to uncomment to.
+
+5
+00:00:14,720 --> 00:00:20,000
+And let's think about what we need in order to pass this on such change that we had before into search
+
+6
+00:00:20,000 --> 00:00:20,390
+box.
+
+7
+00:00:21,320 --> 00:00:28,040
+As we know, with a function, a function is supposed to iterate from top to bottom, meaning that JavaScript
+
+8
+00:00:28,040 --> 00:00:29,050
+runs from top to bottom.
+
+9
+00:00:29,090 --> 00:00:35,540
+So of course, we need to actually create this on search change function inside of our app.
+
+10
+00:00:36,080 --> 00:00:39,230
+So I'm just going to create this function right here on search of change.
+
+11
+00:00:39,620 --> 00:00:42,080
+And this is going to be equal to a function.
+
+12
+00:00:43,180 --> 00:00:49,100
+And this will be the exact same search change handler that we had before, so scrolling down here.
+
+13
+00:00:49,510 --> 00:00:51,400
+Let's copy what's inside of here.
+
+14
+00:00:51,730 --> 00:00:55,930
+In fact, let's take the whole entire function because we need the event.
+
+15
+00:00:57,540 --> 00:01:01,770
+We're going to have to fix it up a little bit because it is common set out below.
+
+16
+00:01:01,950 --> 00:01:06,300
+So if I paste this here, I will need to uncomment that out.
+
+17
+00:01:07,280 --> 00:01:08,660
+And fix the tapping here.
+
+18
+00:01:09,320 --> 00:01:10,220
+So here what we do.
+
+19
+00:01:10,370 --> 00:01:11,330
+We get the event.
+
+20
+00:01:11,720 --> 00:01:17,420
+And then what we do with lowercase it and following up we do this sets date.
+
+21
+00:01:18,320 --> 00:01:23,960
+So this not such date, as I mentioned, is a method unique to class components, but we're not using
+
+22
+00:01:23,960 --> 00:01:24,620
+that anymore.
+
+23
+00:01:24,950 --> 00:01:28,580
+In fact, let me remove it because we don't need our class component anymore.
+
+24
+00:01:29,470 --> 00:01:31,270
+How are we going to set state?
+
+25
+00:01:32,520 --> 00:01:35,490
+This is actually where we need to use a hook.
+
+26
+00:01:36,420 --> 00:01:41,010
+So let me explain what hooks are and more specifically, the most simplest hook that's available to
+
+27
+00:01:41,010 --> 00:01:43,020
+us, which is the use state hook.
+
+28
+00:01:44,430 --> 00:01:51,600
+You state essentially gives us a ability to encapsulate local state in a functional component.
+
+29
+00:01:52,170 --> 00:01:54,150
+So let's talk about how we actually use it.
+
+30
+00:01:54,810 --> 00:02:02,550
+What we're going to do is we are going to use Array D structuring from use state because use state gives
+
+31
+00:02:02,550 --> 00:02:04,950
+us back an array of two values.
+
+32
+00:02:05,460 --> 00:02:10,230
+So if you're unfamiliar with array restructuring, essentially what it does is it allows us to assign
+
+33
+00:02:10,230 --> 00:02:13,020
+variables to values inside of an array.
+
+34
+00:02:13,680 --> 00:02:16,140
+So as a quick example, let me just quickly show you.
+
+35
+00:02:17,420 --> 00:02:22,670
+Let's say that we had some aura and it contained the values two and four like this.
+
+36
+00:02:23,600 --> 00:02:27,170
+If I do contest A, B equals A.
+
+37
+00:02:28,010 --> 00:02:34,670
+So I'm saying, Hey, I want you to assign a variable a to the first value, add a vowel B to the second
+
+38
+00:02:34,670 --> 00:02:35,090
+value.
+
+39
+00:02:35,630 --> 00:02:39,500
+Now, a as we see as equals A to B is equal to four.
+
+40
+00:02:40,100 --> 00:02:41,720
+So this is exactly what we're doing here.
+
+41
+00:02:42,290 --> 00:02:46,040
+You state gives us back an array of two values.
+
+42
+00:02:46,310 --> 00:02:50,210
+The first value is going to be the value that we want to store.
+
+43
+00:02:50,510 --> 00:02:54,290
+And the second value is going to be a set or function.
+
+44
+00:02:55,040 --> 00:02:56,540
+So what do I mean by this?
+
+45
+00:02:57,260 --> 00:03:04,160
+You state, unlike the set state that you're familiar with, inside of class components is a object
+
+46
+00:03:04,160 --> 00:03:08,920
+in the class component, but in the functional component, it's individual values.
+
+47
+00:03:08,960 --> 00:03:11,210
+We are not trying to store entire objects.
+
+48
+00:03:11,720 --> 00:03:18,500
+So here what we want to do when we say, Oh this u state value, we are going to encapsulate a singular
+
+49
+00:03:18,500 --> 00:03:20,360
+value from that state.
+
+50
+00:03:20,390 --> 00:03:25,320
+So if you have multiple values in a state, well, then you need multiple use state calls.
+
+51
+00:03:25,610 --> 00:03:27,650
+Each hook only hooks into one value.
+
+52
+00:03:28,310 --> 00:03:30,440
+So here we want to do search field.
+
+53
+00:03:30,950 --> 00:03:36,200
+So search field, you want to pass into the you state the initial value that it should be.
+
+54
+00:03:36,560 --> 00:03:37,550
+And for us before.
+
+55
+00:03:38,540 --> 00:03:43,340
+Inside of our object, our search fields, initial value was an empty string.
+
+56
+00:03:43,760 --> 00:03:45,530
+So we want to do the same thing here.
+
+57
+00:03:45,980 --> 00:03:47,690
+We're going to initialize it as an empty string.
+
+58
+00:03:47,990 --> 00:03:50,810
+And what we'll get back again is the value and asset value.
+
+59
+00:03:51,290 --> 00:03:53,810
+So here I'm going to call it the search field.
+
+60
+00:03:54,880 --> 00:03:58,240
+Value and then I'm going to call this set search field.
+
+61
+00:03:58,840 --> 00:04:05,440
+So what these two values now we're able to actually replicate the sets state for just search field.
+
+62
+00:04:06,220 --> 00:04:07,450
+So we don't need this anymore.
+
+63
+00:04:08,820 --> 00:04:14,640
+Here are these two names clash what really this search field is, is really the target value that's
+
+64
+00:04:14,640 --> 00:04:15,360
+been lowercase.
+
+65
+00:04:15,510 --> 00:04:22,590
+So I'm just going to say this is the search field string, because that's what it is.
+
+66
+00:04:22,590 --> 00:04:25,500
+It's the string value we're getting back from our search field.
+
+67
+00:04:26,900 --> 00:04:32,780
+And what I want to do is I want to call that sets search field center function that we get back from,
+
+68
+00:04:32,780 --> 00:04:33,260
+you state.
+
+69
+00:04:33,830 --> 00:04:35,030
+And then I'm going to pass this in.
+
+70
+00:04:36,260 --> 00:04:39,230
+So far, this is all we're really doing.
+
+71
+00:04:40,010 --> 00:04:41,390
+And with this search field.
+
+72
+00:04:42,330 --> 00:04:49,980
+What this should do now simply is just log the value, because right now nothing is actually happening.
+
+73
+00:04:50,160 --> 00:04:56,130
+We haven't used this search field string in the state for anything yet before we were filtering monsters
+
+74
+00:04:56,130 --> 00:04:56,370
+with it.
+
+75
+00:04:56,520 --> 00:04:57,690
+But so far, we haven't done anything.
+
+76
+00:04:57,900 --> 00:05:01,200
+And the reason why is because I just want to show you what these values will be.
+
+77
+00:05:02,490 --> 00:05:04,860
+So here I'm going to console don't log search field.
+
+78
+00:05:06,600 --> 00:05:08,670
+And I just want you to see what's happening.
+
+79
+00:05:09,120 --> 00:05:11,880
+So let's say let's go to our application.
+
+80
+00:05:12,480 --> 00:05:13,290
+Let's clear this out.
+
+81
+00:05:15,070 --> 00:05:19,480
+So when we initialized our search field is an empty string, that's the first time it logs.
+
+82
+00:05:20,020 --> 00:05:23,170
+So remember, we're logging this after our you state gets called.
+
+83
+00:05:23,920 --> 00:05:28,450
+So at this point, search field is an empty string because that's the default empty string value.
+
+84
+00:05:29,360 --> 00:05:34,570
+We have this on search change function, and what it does is it receives the event a lowercase is it?
+
+85
+00:05:34,580 --> 00:05:38,600
+And then it calls that search field and then we pass that into our search box component.
+
+86
+00:05:38,600 --> 00:05:42,110
+So our search bar component runs it every time we type into the search box.
+
+87
+00:05:42,890 --> 00:05:50,300
+Now, if we start typing, what we see is that our search field is indeed updating the value inside
+
+88
+00:05:50,300 --> 00:05:52,910
+of the local state with this string value.
+
+89
+00:05:55,030 --> 00:06:00,130
+Now, one quick thing I want to mention is that when we're logging this, this isn't an object because
+
+90
+00:06:00,130 --> 00:06:06,520
+I am logging out an object right here, I'm just using object shorthand in order to make it more clear
+
+91
+00:06:06,520 --> 00:06:07,960
+to us what it is we're logging.
+
+92
+00:06:08,650 --> 00:06:11,920
+But set state is really not in an object anymore.
+
+93
+00:06:12,010 --> 00:06:16,690
+It's whatever value it is inside of the state itself.
+
+94
+00:06:17,080 --> 00:06:20,200
+So in our particular case, this used state is a string.
+
+95
+00:06:20,350 --> 00:06:23,020
+And whenever we set the value, we're setting a string.
+
+96
+00:06:23,380 --> 00:06:26,560
+So search field value itself is actually a string.
+
+97
+00:06:27,010 --> 00:06:33,220
+So if I instead remove those curly braces and here instead, you'll see it mounts, it's empty.
+
+98
+00:06:33,880 --> 00:06:36,580
+And then as you type, you log out a string.
+
+99
+00:06:37,680 --> 00:06:43,890
+It's still just whatever value type it is, it doesn't get converted into an object the way that set
+
+100
+00:06:43,890 --> 00:06:49,090
+state had it before where our entire state object was an object in here.
+
+101
+00:06:49,110 --> 00:06:53,640
+It's whatever type it is when you pass it to the state hook.
+
+102
+00:06:54,180 --> 00:06:55,410
+So this is an important difference.
+
+103
+00:06:56,040 --> 00:07:01,800
+So now that we understand how to utilize the used state hook in the next video, let's dive into the
+
+104
+00:07:01,800 --> 00:07:08,190
+way that we can understand how these components are re rendering in the context of this hook.
+
+105
+00:07:08,730 --> 00:07:09,690
+See you in the next video.

@@ -1,0 +1,219 @@
+1
+00:00:00,420 --> 00:00:01,380
+Welcome back, everyone.
+
+2
+00:00:02,220 --> 00:00:07,350
+In this video, we are going to clean up the last few remaining things inside of our website.
+
+3
+00:00:07,830 --> 00:00:12,420
+The first thing is we're going to remove this console.log of our categories map from our categories
+
+4
+00:00:12,420 --> 00:00:17,940
+context and then the next thing is to make it so that these fronts and directory items linked to the
+
+5
+00:00:17,940 --> 00:00:20,190
+appropriate pages now that we have them.
+
+6
+00:00:20,940 --> 00:00:24,660
+So let's go back into our application to get rid of the console.log.
+
+7
+00:00:24,930 --> 00:00:30,660
+Very simply, we didn't just remove Line 15 inside of the use effect of our categories context.
+
+8
+00:00:31,380 --> 00:00:38,880
+As for actually fixing the routing here inside of our categories, we have this categories object that
+
+9
+00:00:38,880 --> 00:00:41,970
+currently lives in the home and passes it to the directory.
+
+10
+00:00:42,540 --> 00:00:48,990
+What we can do, in fact, is move this somewhere else and modify it so that our home page doesn't do
+
+11
+00:00:48,990 --> 00:00:53,850
+any of this prop drilling now that we've learned a little bit more because we set up the directory really
+
+12
+00:00:53,850 --> 00:00:54,240
+early.
+
+13
+00:00:54,900 --> 00:01:02,190
+So let's move this out of directories come into the directories and now instead of ingesting categories
+
+14
+00:01:02,190 --> 00:01:02,730
+like so.
+
+15
+00:01:03,870 --> 00:01:07,320
+We can actually just move the categories into this component.
+
+16
+00:01:07,470 --> 00:01:11,040
+In fact, let's move it above because it's pretty much a constant.
+
+17
+00:01:12,710 --> 00:01:16,370
+Now, similarly, as I mentioned before, there are different ways we could tackle this.
+
+18
+00:01:16,610 --> 00:01:24,470
+We can attach this onto our collection inside a fire store with the category itself if you want to do
+
+19
+00:01:24,470 --> 00:01:25,130
+it that way.
+
+20
+00:01:25,490 --> 00:01:30,200
+The main reason why I'm doing it here is because we need something like a root name or a root.
+
+21
+00:01:30,410 --> 00:01:36,290
+More specifically, because this is going to tell our directory item where it needs to go, which is
+
+22
+00:01:36,290 --> 00:01:38,540
+kind of exclusive to the application.
+
+23
+00:01:38,960 --> 00:01:42,010
+Making it so that it's on the back end makes no sense.
+
+24
+00:01:42,020 --> 00:01:47,820
+If you have other applications that consume these categories, that property might not apply to them.
+
+25
+00:01:47,840 --> 00:01:49,640
+It only applies to our friends in application.
+
+26
+00:01:49,940 --> 00:01:52,310
+So really, we can attach the rule ourselves here.
+
+27
+00:01:53,700 --> 00:01:58,380
+And the route we need to go to is specifically shop slash hats.
+
+28
+00:01:59,250 --> 00:02:01,260
+This is for our hats.
+
+29
+00:02:02,820 --> 00:02:06,630
+For jackets, of course, it's shop slash jackets for sneakers.
+
+30
+00:02:06,660 --> 00:02:08,040
+It's shop slash sneakers.
+
+31
+00:02:10,100 --> 00:02:15,830
+For women's, it's shops, women's and then for men's, it's shop slash men's.
+
+32
+00:02:16,910 --> 00:02:20,660
+So now when we pass this category into our directory item.
+
+33
+00:02:22,500 --> 00:02:26,910
+Inside of the directory item, we also want a D structure off the root.
+
+34
+00:02:28,090 --> 00:02:34,210
+And in order to use the route, we can either transform our directory item container into a link component,
+
+35
+00:02:34,600 --> 00:02:40,240
+or I can show you another programmatic way to do it by using a hook that we get from react.
+
+36
+00:02:42,990 --> 00:02:43,620
+Router up.
+
+37
+00:02:46,500 --> 00:02:53,310
+And this is the use navigate, hook with use, navigate, it actually gives us a function called navigate.
+
+38
+00:02:54,920 --> 00:02:56,090
+Or whatever you want to call it.
+
+39
+00:02:56,120 --> 00:02:59,900
+I'm going to call it navigate, which we get back from, call it use, navigate.
+
+40
+00:03:01,010 --> 00:03:04,970
+Navigate is essentially a way for us to route, so we can say on.
+
+41
+00:03:06,880 --> 00:03:08,200
+Navigate Handler.
+
+42
+00:03:10,310 --> 00:03:14,860
+Which is equal to a function that calls navigate and then we give it the right.
+
+43
+00:03:17,560 --> 00:03:18,620
+Oh, I'm missing accounts.
+
+44
+00:03:18,640 --> 00:03:19,030
+There we go.
+
+45
+00:03:19,660 --> 00:03:22,360
+So now if we just pass this to the on click.
+
+46
+00:03:23,320 --> 00:03:25,300
+Of the directory item container.
+
+47
+00:03:27,440 --> 00:03:28,400
+If we come back now.
+
+48
+00:03:29,440 --> 00:03:30,340
+Anywhere we click.
+
+49
+00:03:31,150 --> 00:03:33,310
+It will take us to the appropriate place.
+
+50
+00:03:34,640 --> 00:03:35,180
+So there we go.
+
+51
+00:03:35,840 --> 00:03:40,760
+Our application is pretty much finished being built in the next video.
+
+52
+00:03:40,760 --> 00:03:45,770
+I'm going to show you where we're going to host this, and it's a great place that's really easy and
+
+53
+00:03:45,770 --> 00:03:49,670
+really quick, and we'll have our website up in less than five minutes.
+
+54
+00:03:49,880 --> 00:03:54,470
+So join me in the next video or we will finally host this application that we fully built.
+
+55
+00:03:54,950 --> 00:03:55,970
+I'll see you in the next video.

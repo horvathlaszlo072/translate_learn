@@ -1,0 +1,419 @@
+1
+00:00:00,180 --> 00:00:01,200
+Welcome back, everyone.
+
+2
+00:00:02,010 --> 00:00:07,410
+In this upcoming video section, we are going to type the remainder of the components inside of our
+
+3
+00:00:07,410 --> 00:00:08,760
+Crown clothing project.
+
+4
+00:00:09,390 --> 00:00:14,580
+To begin with, we need to include the types for some of our libraries, the most important one being
+
+5
+00:00:14,580 --> 00:00:15,510
+style components.
+
+6
+00:00:15,900 --> 00:00:22,320
+So just like we did with Redux Logger, we are going to yarn add at types slash styled components.
+
+7
+00:00:24,040 --> 00:00:30,490
+So as this is installing, we're going to come over and we're going to first start styling out our button
+
+8
+00:00:30,490 --> 00:00:30,970
+component.
+
+9
+00:00:31,510 --> 00:00:37,720
+So to begin with, I want you to convert both the component touch aspects and the styles, not just
+
+10
+00:00:38,080 --> 00:00:39,790
+over to the.
+
+11
+00:00:40,700 --> 00:00:41,750
+TSX versions.
+
+12
+00:00:43,660 --> 00:00:51,610
+What you'll notice inside of our style's component is that most of these components that get generated
+
+13
+00:00:51,760 --> 00:00:55,660
+from star components actually already are tight for us.
+
+14
+00:00:56,110 --> 00:01:02,230
+So here you'll notice that this base button is of a style component type button, and then there are
+
+15
+00:01:02,230 --> 00:01:05,110
+some subsequent parameters on the style component.
+
+16
+00:01:06,010 --> 00:01:07,980
+For us, we can just trust the inference.
+
+17
+00:01:07,990 --> 00:01:10,150
+It's rare that we need to modify these.
+
+18
+00:01:10,510 --> 00:01:17,200
+So what we can do is just trust that the styling that has been done on these components is correct.
+
+19
+00:01:18,380 --> 00:01:23,930
+When we come to our button component components, we need to think about the logic around how we've
+
+20
+00:01:23,930 --> 00:01:24,890
+created our code.
+
+21
+00:01:25,640 --> 00:01:33,050
+So first off, these button classes are no longer going to be a contact because as we saw, we want
+
+22
+00:01:33,050 --> 00:01:35,150
+these to be constant values that move around.
+
+23
+00:01:35,420 --> 00:01:42,320
+So we're going to convert this to an enum, as we did with our action types, and we're going to similarly
+
+24
+00:01:42,890 --> 00:01:45,890
+switch these colons over to equals.
+
+25
+00:01:47,160 --> 00:01:52,800
+And then if we save this, we also need to now check why there are.
+
+26
+00:01:53,310 --> 00:01:56,100
+Oh, no, that was just the compiler being a little slow.
+
+27
+00:01:57,070 --> 00:02:02,200
+So again, as I mentioned, depending on the speed of your computer, the compiler and the code might
+
+28
+00:02:02,200 --> 00:02:03,490
+lag a little bit behind.
+
+29
+00:02:04,090 --> 00:02:09,490
+So if you ever see something where it doesn't look accurate, just wait a little bit or restart the
+
+30
+00:02:09,640 --> 00:02:09,910
+code.
+
+31
+00:02:10,330 --> 00:02:14,230
+Unfortunately, TypeScript compiler is pretty intense on the system.
+
+32
+00:02:14,530 --> 00:02:16,240
+It's just one of those things that lags behind.
+
+33
+00:02:17,020 --> 00:02:19,330
+Now here inside get button.
+
+34
+00:02:19,480 --> 00:02:20,740
+Let's think about what this does.
+
+35
+00:02:21,430 --> 00:02:27,520
+This will definitely return us back one of these three style component buttons.
+
+36
+00:02:28,060 --> 00:02:35,500
+So what we can say is that this function gives back type of base button because base button is a component.
+
+37
+00:02:36,040 --> 00:02:39,730
+Now type of gives us the actual type on the base button.
+
+38
+00:02:39,850 --> 00:02:44,860
+So it will give us this style component button type, which all three of these buttons are.
+
+39
+00:02:45,130 --> 00:02:50,830
+They are all variations of style component button because they're all based off of the base button.
+
+40
+00:02:52,830 --> 00:03:00,360
+The additional parameter that we need to also do is that we need to think about how this button component
+
+41
+00:03:00,360 --> 00:03:01,890
+is actually going to render.
+
+42
+00:03:02,640 --> 00:03:05,250
+So as you can tell, we need to define button props.
+
+43
+00:03:06,210 --> 00:03:11,250
+Now, if you wanted to find props inside of our component, as we've done before.
+
+44
+00:03:11,730 --> 00:03:19,770
+One main way that we did inside of our monster's Rolodex was that we defined the type of the props like
+
+45
+00:03:19,770 --> 00:03:20,070
+so.
+
+46
+00:03:21,400 --> 00:03:27,250
+And inside we would add any additional props that were not typical to our component.
+
+47
+00:03:27,910 --> 00:03:33,670
+However, we know that we have children inside of these props and we don't actually want to define the
+
+48
+00:03:33,670 --> 00:03:34,570
+children ourselves.
+
+49
+00:03:35,200 --> 00:03:37,870
+This is something that React is already attached.
+
+50
+00:03:38,110 --> 00:03:42,430
+So chances are when you look at something and this is not your own implementation, but something that
+
+51
+00:03:42,430 --> 00:03:47,230
+the underlying a library or third party library does for you, chances are there's something in the
+
+52
+00:03:47,230 --> 00:03:48,670
+types that does this for you.
+
+53
+00:03:49,120 --> 00:03:51,580
+So for us we are using functional components.
+
+54
+00:03:51,820 --> 00:03:58,420
+We can import in the F C type or which stands for functional components from React.
+
+55
+00:03:58,990 --> 00:04:02,800
+This FC type is going to be what this button is.
+
+56
+00:04:03,250 --> 00:04:09,280
+So we can actually say FC and then we can pass it the button props as the generic.
+
+57
+00:04:09,790 --> 00:04:16,360
+What this will do is it's equivalent to actually passing the button props on to this section as we were
+
+58
+00:04:16,360 --> 00:04:17,350
+used to doing before.
+
+59
+00:04:17,770 --> 00:04:25,150
+So you could essentially do button props like this, or if you use the FC type, it will actually infer
+
+60
+00:04:25,180 --> 00:04:28,060
+the children, which is really handy for us.
+
+61
+00:04:29,120 --> 00:04:36,020
+So as you can see now this children is valid because React knows that it's a React note because this
+
+62
+00:04:36,020 --> 00:04:41,240
+button is of the functional component type which extends children as part of its props definition.
+
+63
+00:04:41,750 --> 00:04:47,450
+What we do need to add is button type is loading, but also the fact that all of the other props that
+
+64
+00:04:47,450 --> 00:04:53,210
+we might spread through onto custom button here, this is going to be part of just a button.
+
+65
+00:04:53,690 --> 00:04:58,160
+Remember, we are extending on the base type of style component dubbed button, which is just a React
+
+66
+00:04:58,160 --> 00:04:58,430
+button.
+
+67
+00:04:58,440 --> 00:05:05,150
+So we want all of those button props as part of the signature that we accept as props on this component.
+
+68
+00:05:05,990 --> 00:05:11,300
+So we'll first define the props that we have unique to our button, which is really just this button
+
+69
+00:05:11,300 --> 00:05:16,880
+type that drives which of these button styles you want and then is loading, which determines to show
+
+70
+00:05:16,880 --> 00:05:18,020
+the spinner or the children.
+
+71
+00:05:18,740 --> 00:05:24,890
+So first off, we'll say that button type, which is an optional parameter because by default the button
+
+72
+00:05:24,890 --> 00:05:27,080
+type fallback is base button.
+
+73
+00:05:28,040 --> 00:05:28,970
+As we can see here.
+
+74
+00:05:29,690 --> 00:05:35,990
+So we can say that button type is one of these button type classes inside of the enum.
+
+75
+00:05:38,140 --> 00:05:38,470
+Next.
+
+76
+00:05:38,470 --> 00:05:43,990
+What we need is is loading is loading is also optional.
+
+77
+00:05:44,560 --> 00:05:48,580
+And here we can say that this is a Boolean value.
+
+78
+00:05:50,260 --> 00:05:50,740
+From here.
+
+79
+00:05:50,740 --> 00:05:54,820
+Now we need to extend the other props that exist on a button.
+
+80
+00:05:55,480 --> 00:06:02,380
+In order for us to get those, we actually need to import in button HTML attributes because React has
+
+81
+00:06:02,380 --> 00:06:09,820
+specific attribute bindings for their button component and this is called button h HTML attributes.
+
+82
+00:06:11,580 --> 00:06:18,060
+And then what we can do is use an intersection type right here and we'll say button HTML attributes
+
+83
+00:06:18,180 --> 00:06:20,850
+for the HTML button element.
+
+84
+00:06:23,510 --> 00:06:29,810
+And now our button is able to accept all of those other parameters that we are familiar with, such
+
+85
+00:06:29,810 --> 00:06:33,460
+as the actual type, because we have button type.
+
+86
+00:06:33,470 --> 00:06:38,180
+But remember there is a type attribute that you can use if you want to say that it's a submit button
+
+87
+00:06:38,330 --> 00:06:41,300
+or if it's just a regular button or if it's another type of button.
+
+88
+00:06:41,600 --> 00:06:45,290
+These are the ways that you can get all of those typical button attributes.
+
+89
+00:06:46,360 --> 00:06:50,560
+So now we have typed out this button and we can save this.
+
+90
+00:06:52,200 --> 00:06:55,830
+And we can now move on to the remainder of our components.
+
+91
+00:06:56,340 --> 00:07:02,070
+Now, typing buttons and typing inputs typically are the most challenging because these custom components
+
+92
+00:07:02,070 --> 00:07:08,220
+do extend upon the existing components that are present inside of the React ecosystem.
+
+93
+00:07:08,700 --> 00:07:13,590
+Really, our buttons just add on to some existing component.
+
+94
+00:07:13,590 --> 00:07:15,090
+For us, this is the button component.
+
+95
+00:07:15,090 --> 00:07:18,060
+We're just customizing it, adding some additional functionality.
+
+96
+00:07:18,390 --> 00:07:23,310
+So you need to figure out which attribute you need from those original ones in order to extend upon
+
+97
+00:07:23,310 --> 00:07:23,490
+them.
+
+98
+00:07:23,670 --> 00:07:26,670
+We saw this inside of our monsters rolodex when we did with the form input.
+
+99
+00:07:27,330 --> 00:07:29,340
+So this is an important thing to remember.
+
+100
+00:07:29,970 --> 00:07:36,870
+If you are writing a component that extends upon an existing React component in HTML, there is most
+
+101
+00:07:36,870 --> 00:07:44,610
+likely a corresponding component HTML attributes type that you want to pass a similar HTML element for.
+
+102
+00:07:44,880 --> 00:07:50,490
+And from there you can now extend all of those existing bindings that exist of those attributes.
+
+103
+00:07:51,330 --> 00:07:54,620
+Now speaking of form input, that's the next component that we're going to type out.
+
+104
+00:07:54,840 --> 00:07:57,270
+So join me in the next video where we'll tape it together.
+
+105
+00:07:57,660 --> 00:07:58,230
+I'll see you there.

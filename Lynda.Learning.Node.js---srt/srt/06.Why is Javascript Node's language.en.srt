@@ -1,0 +1,218 @@
+1
+00:00:00.06 --> 00:00:02.07
+- [Instructor] Modern web
+apps and websites all have
+
+2
+00:00:02.07 --> 00:00:05.08
+some front end components
+or functionality.
+
+3
+00:00:05.08 --> 00:00:07.06
+Since the browser running these apps
+
+4
+00:00:07.06 --> 00:00:10.03
+all use JavaScript,
+these components usually
+
+5
+00:00:10.03 --> 00:00:12.03
+are written in JavaScript.
+
+6
+00:00:12.03 --> 00:00:15.03
+It's nice to have both
+your front end and back end
+
+7
+00:00:15.03 --> 00:00:18.03
+written in the same language
+for multiple reasons.
+
+8
+00:00:18.03 --> 00:00:20.07
+First, there are no
+syntactical differences
+
+9
+00:00:20.07 --> 00:00:23.08
+to worry about as with
+two different languages.
+
+10
+00:00:23.08 --> 00:00:27.00
+For a long time, I was
+programming with C# only
+
+11
+00:00:27.00 --> 00:00:30.04
+and switching to and
+from JavaScript and C#
+
+12
+00:00:30.04 --> 00:00:32.07
+after long delays added some overhead
+
+13
+00:00:32.07 --> 00:00:34.05
+to my ability to focus.
+
+14
+00:00:34.05 --> 00:00:37.07
+This benefit is not as big
+as being able to share code
+
+15
+00:00:37.07 --> 00:00:41.03
+and data structure between
+your front end and back end.
+
+16
+00:00:41.03 --> 00:00:43.04
+Let's take a look at some examples
+
+17
+00:00:43.04 --> 00:00:45.05
+of where code sharing might be useful.
+
+18
+00:00:45.05 --> 00:00:49.07
+There are many great libraries
+for encryption or utility
+
+19
+00:00:49.07 --> 00:00:52.07
+such as Underscore, that
+can be used for both
+
+20
+00:00:52.07 --> 00:00:54.05
+the front end and the back end.
+
+21
+00:00:54.05 --> 00:00:56.03
+An example could be, if you are writing
+
+22
+00:00:56.03 --> 00:00:59.04
+a user authentication system with tokens,
+
+23
+00:00:59.04 --> 00:01:02.01
+you might want to use the
+same token and encryption
+
+24
+00:01:02.01 --> 00:01:04.03
+library on both the front end and back end
+
+25
+00:01:04.03 --> 00:01:05.08
+to authorize your users.
+
+26
+00:01:05.08 --> 00:01:08.00
+Or, if you're writing a custom algorithm
+
+27
+00:01:08.00 --> 00:01:09.09
+or some sort of logic or function
+
+28
+00:01:09.09 --> 00:01:13.01
+that you could use both on
+the front end and back end.
+
+29
+00:01:13.01 --> 00:01:16.05
+One example I can think of is
+if you're writing a web game.
+
+30
+00:01:16.05 --> 00:01:19.00
+You will perform some
+sort of attack algorithm
+
+31
+00:01:19.00 --> 00:01:21.05
+on the front end, or the game client,
+
+32
+00:01:21.05 --> 00:01:24.04
+and you'll verify it on
+the back end in the server
+
+33
+00:01:24.04 --> 00:01:26.03
+to make sure nobody's cheating.
+
+34
+00:01:26.03 --> 00:01:28.03
+And to do that, you'll
+need the same algorithm
+
+35
+00:01:28.03 --> 00:01:30.05
+on both the front end and back end.
+
+36
+00:01:30.05 --> 00:01:32.08
+Another example is a data model.
+
+37
+00:01:32.08 --> 00:01:35.02
+For example, the definition of your user
+
+38
+00:01:35.02 --> 00:01:36.09
+which can have many properties.
+
+39
+00:01:36.09 --> 00:01:38.05
+With all of these examples,
+
+40
+00:01:38.05 --> 00:01:40.06
+if they are not in the same language,
+
+41
+00:01:40.06 --> 00:01:42.03
+there will be maintenance overhead.
+
+42
+00:01:42.03 --> 00:01:45.02
+Let's imagine having to
+change 20 data models
+
+43
+00:01:45.02 --> 00:01:47.06
+with multiple properties in each model
+
+44
+00:01:47.06 --> 00:01:49.03
+in two different languages.
+
+45
+00:01:49.03 --> 00:01:51.08
+It's much better to
+have to do it only once.
+
+46
+00:01:51.08 --> 00:01:54.02
+This is a key principle of programming.
+
+47
+00:01:54.02 --> 00:01:57.00
+And one of the benefits
+we get when we code share
+
+48
+00:01:57.00 --> 00:01:59.02
+and have our front end and back end
+
+49
+00:01:59.02 --> 00:02:01.00
+in the same language.
+

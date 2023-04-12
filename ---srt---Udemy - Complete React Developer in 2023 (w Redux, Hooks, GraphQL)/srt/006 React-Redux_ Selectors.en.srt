@@ -1,0 +1,303 @@
+1
+00:00:00,360 --> 00:00:01,410
+Welcome back, everyone.
+
+2
+00:00:02,310 --> 00:00:09,120
+In this video, we are going to learn about getting the values inside of Redux into our components.
+
+3
+00:00:09,930 --> 00:00:11,130
+So how do we do this?
+
+4
+00:00:11,910 --> 00:00:17,790
+Well, there's actually another hook that we need in order to extract data out of Redux.
+
+5
+00:00:18,270 --> 00:00:21,030
+And this is called the use selector hook.
+
+6
+00:00:21,930 --> 00:00:23,190
+So use selector.
+
+7
+00:00:24,240 --> 00:00:30,540
+Is a hook that allows us to interact from a component with the Redux store.
+
+8
+00:00:31,950 --> 00:00:33,900
+What is a selector, though?
+
+9
+00:00:35,120 --> 00:00:41,180
+So first, in order for us to make use of this use selector, let's just get rid of what we currently
+
+10
+00:00:41,180 --> 00:00:42,170
+have in context.
+
+11
+00:00:43,330 --> 00:00:44,350
+You selector?
+
+12
+00:00:45,640 --> 00:00:48,070
+Is a hook that you pass.
+
+13
+00:00:48,550 --> 00:00:55,780
+A selector function and a selector function is something that essentially extracts off the values that
+
+14
+00:00:55,780 --> 00:00:59,830
+you want from the whole entire Redux store.
+
+15
+00:01:00,340 --> 00:01:03,670
+So the state, as I mentioned, is one big object.
+
+16
+00:01:04,510 --> 00:01:09,370
+The object, of course, is composed of all the smaller reducers, but in the end, it's really just
+
+17
+00:01:09,370 --> 00:01:11,860
+an object that has these key values on them.
+
+18
+00:01:12,640 --> 00:01:18,760
+So we actually receive inside of our selector function whenever you call use selector the entire state
+
+19
+00:01:18,760 --> 00:01:19,240
+object.
+
+20
+00:01:19,930 --> 00:01:25,630
+So when you want specifically the user reducer, you're going to have to stay state, dot user.
+
+21
+00:01:26,260 --> 00:01:32,350
+And then from the user state, we're going to want further the current user property like so.
+
+22
+00:01:33,160 --> 00:01:37,540
+And then we just need to cast this to some variable which I'm going to call current user.
+
+23
+00:01:38,260 --> 00:01:46,360
+And now current user being referenced here will be this current user object inside of the Redux store.
+
+24
+00:01:47,520 --> 00:01:53,430
+If we come back to our application, we now see we indeed have the current user being rendered.
+
+25
+00:01:53,970 --> 00:01:57,990
+And of course, that selector will go into our redux state.
+
+26
+00:01:58,230 --> 00:02:00,900
+It will go, okay, this whole state object.
+
+27
+00:02:01,230 --> 00:02:07,230
+I'm going to go and get the user reducer and then inside the user reducer slice, I want the current
+
+28
+00:02:07,230 --> 00:02:10,080
+user value, which is this object here.
+
+29
+00:02:10,860 --> 00:02:17,850
+So if you refresh, what you'll see is that initially we saw the sign in and then we saw the sign out.
+
+30
+00:02:18,270 --> 00:02:21,210
+So this is because that redux updated.
+
+31
+00:02:21,630 --> 00:02:25,170
+If I hit sign out now notice that this still worked.
+
+32
+00:02:25,410 --> 00:02:32,310
+And the reason why it works is because our selector updates whenever the state object changes.
+
+33
+00:02:33,000 --> 00:02:34,830
+And here is exactly what we see.
+
+34
+00:02:35,310 --> 00:02:36,510
+Set current user.
+
+35
+00:02:36,510 --> 00:02:40,110
+Set the payload of NULL to this user value.
+
+36
+00:02:40,500 --> 00:02:45,510
+Current user is being referenced using the user selector hook right here.
+
+37
+00:02:45,900 --> 00:02:53,070
+So whenever this state object changes by reference due to redux, as I mentioned, every time whenever
+
+38
+00:02:53,070 --> 00:02:59,040
+we update any of our reducer values, we always return a brand new state object with the change values.
+
+39
+00:02:59,610 --> 00:03:05,550
+When that happens, the selector will rerun current user updates and then react will re render this
+
+40
+00:03:05,550 --> 00:03:06,030
+component.
+
+41
+00:03:06,720 --> 00:03:13,710
+So this is how you can now select values off of Redux and then put them into your components.
+
+42
+00:03:14,950 --> 00:03:21,610
+So one thing to note is that a lot of these selectors are just functions that take state and then return
+
+43
+00:03:21,610 --> 00:03:22,180
+you back.
+
+44
+00:03:22,450 --> 00:03:25,210
+The value that is deeply nested that you want.
+
+45
+00:03:25,990 --> 00:03:31,000
+These might actually be reused though we might want to reuse the current user selector.
+
+46
+00:03:31,420 --> 00:03:39,820
+So what I want to do is I want to set up a file inside of our store called User Dot Selector Dot J.S.
+
+47
+00:03:40,360 --> 00:03:44,800
+And this will contain selection based selectors.
+
+48
+00:03:45,070 --> 00:03:50,170
+So I'm going to call it select to know that this is a selector function and I'm going to say select
+
+49
+00:03:50,170 --> 00:03:53,860
+current user is just the same function that we had.
+
+50
+00:03:54,340 --> 00:03:59,260
+It selects off the state, it gets a state dot user, dot current user.
+
+51
+00:04:01,510 --> 00:04:05,860
+And now we just import this into our navigation component.
+
+52
+00:04:11,370 --> 00:04:11,850
+From.
+
+53
+00:04:12,750 --> 00:04:14,850
+Let's go up to our.
+
+54
+00:04:15,970 --> 00:04:17,140
+Store folder.
+
+55
+00:04:17,920 --> 00:04:21,190
+Into our user, into our user selector.
+
+56
+00:04:21,880 --> 00:04:28,480
+And now we can just pass this in where we had our originally hardcoded selector function.
+
+57
+00:04:29,140 --> 00:04:31,540
+And now if we save this and we go back.
+
+58
+00:04:32,600 --> 00:04:38,630
+And we refresh here, we see that we are with an empty current user value.
+
+59
+00:04:39,140 --> 00:04:40,190
+But if we sign in.
+
+60
+00:04:42,870 --> 00:04:43,380
+There we go.
+
+61
+00:04:43,440 --> 00:04:48,270
+We see that we're still pulling the correct value from our new reduce our value.
+
+62
+00:04:49,230 --> 00:04:50,310
+So this is selectors.
+
+63
+00:04:51,430 --> 00:04:56,860
+We've pretty much now learned all of the basic bits and pieces of working with Redux.
+
+64
+00:04:57,490 --> 00:05:03,790
+What I want you to do is I want you to think a little bit about all these parts that you've learned,
+
+65
+00:05:04,360 --> 00:05:10,660
+because a lot of this is more confusing due to all of the boilerplate that we had to set up.
+
+66
+00:05:11,110 --> 00:05:16,390
+We created four different new files, actions, reducers, selector and types.
+
+67
+00:05:16,990 --> 00:05:23,290
+And in order to utilize it inside of our React component, we had to build out a store object.
+
+68
+00:05:23,410 --> 00:05:25,510
+We had to build out a root reducer.
+
+69
+00:05:25,780 --> 00:05:27,610
+There's just a lot of moving pieces.
+
+70
+00:05:28,180 --> 00:05:32,950
+So despite the fact there are so many pieces, it is something that will definitely come to you with
+
+71
+00:05:32,950 --> 00:05:38,930
+practice because as you practice, you'll realize why each of these pieces are necessary.
+
+72
+00:05:39,850 --> 00:05:46,990
+And what I want you to do is actually think about how we generate and set up these selectors.
+
+73
+00:05:47,830 --> 00:05:52,210
+So now that we have all these bits and pieces before you proceed, I really want you to make sure that
+
+74
+00:05:52,210 --> 00:05:59,020
+you understand all of these moving parts that went into this redux migration for just the user context
+
+75
+00:05:59,410 --> 00:06:05,290
+and the next video we are going to reiterate on this and convert another context over to Redux.
+
+76
+00:06:05,590 --> 00:06:06,730
+I'll see you in the next video.

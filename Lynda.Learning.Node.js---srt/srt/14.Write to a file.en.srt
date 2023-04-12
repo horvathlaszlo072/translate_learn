@@ -1,0 +1,238 @@
+1
+00:00:00.04 --> 00:00:02.05
+- [Instructor] Since we
+know how to read files
+
+2
+00:00:02.05 --> 00:00:04.01
+and read directories, next,
+
+3
+00:00:04.01 --> 00:00:06.04
+let's move onto writing our own files.
+
+4
+00:00:06.04 --> 00:00:09.08
+As usual, we'll begin
+by creating a new file,
+
+5
+00:00:09.08 --> 00:00:16.07
+called demo.js and let's
+bring in the file system.
+
+6
+00:00:16.07 --> 00:00:19.08
+And as you probably guessed,
+in order to write a file,
+
+7
+00:00:19.08 --> 00:00:21.07
+we're going to access the file system
+
+8
+00:00:21.07 --> 00:00:24.08
+and use the function called writeFile.
+
+9
+00:00:24.08 --> 00:00:27.01
+The first parameter is
+the name of the file
+
+10
+00:00:27.01 --> 00:00:29.02
+and we'll be writing a JSON file
+
+11
+00:00:29.02 --> 00:00:32.05
+and we'll simply call it data.json.
+
+12
+00:00:32.05 --> 00:00:34.07
+The second parameter, is the actual data
+
+13
+00:00:34.07 --> 00:00:36.05
+that will be written to the file.
+
+14
+00:00:36.05 --> 00:00:38.05
+We could add it inline, but I'm going
+
+15
+00:00:38.05 --> 00:00:40.03
+to create a variable for that.
+
+16
+00:00:40.03 --> 00:00:43.05
+So above our function, let's
+add a variable called data
+
+17
+00:00:43.05 --> 00:00:45.08
+and set it to a JSON object.
+
+18
+00:00:45.08 --> 00:00:48.04
+Inside here, we'll add
+a property called name
+
+19
+00:00:48.04 --> 00:00:51.00
+and we'll pass in Bob as the value.
+
+20
+00:00:51.00 --> 00:00:53.09
+And then, let's pass our new data object
+
+21
+00:00:53.09 --> 00:00:57.04
+as the second parameter
+to our writeFile function.
+
+22
+00:00:57.04 --> 00:01:00.07
+Let's save that, so let's
+go ahead and execute it.
+
+23
+00:01:00.07 --> 00:01:05.05
+I'll use node and specify demo.js.
+
+24
+00:01:05.05 --> 00:01:09.05
+And as you can see, a
+data.json file is created.
+
+25
+00:01:09.05 --> 00:01:14.04
+But if we look inside, we're
+not seeing what we expected.
+
+26
+00:01:14.04 --> 00:01:18.01
+And that's because the second
+parameter expects a string,
+
+27
+00:01:18.01 --> 00:01:20.08
+yet we're passing in a JSON object.
+
+28
+00:01:20.08 --> 00:01:23.07
+So let's convert our
+object over into a string.
+
+29
+00:01:23.07 --> 00:01:26.07
+So we could manually do
+it by wrapping everything
+
+30
+00:01:26.07 --> 00:01:30.02
+in double quotes including
+the property name,
+
+31
+00:01:30.02 --> 00:01:34.09
+but an easier way is to use JSON.stringify
+
+32
+00:01:34.09 --> 00:01:43.04
+so I'll modify that on line seven.
+
+33
+00:01:43.04 --> 00:01:46.00
+Let's save that and try running it again.
+
+34
+00:01:46.00 --> 00:01:48.06
+Let's open our data.json
+and we can see that
+
+35
+00:01:48.06 --> 00:01:51.08
+our JSON file is now
+in the correct format.
+
+36
+00:01:51.08 --> 00:01:54.05
+So everything's working, but
+you might have noticed that
+
+37
+00:01:54.05 --> 00:01:57.06
+we're getting a deprecation
+warning when we run our demo,
+
+38
+00:01:57.06 --> 00:02:00.05
+telling us that calling
+an asynchronous function
+
+39
+00:02:00.05 --> 00:02:03.00
+without a callback is deprecated.
+
+40
+00:02:03.00 --> 00:02:06.04
+And if we hover over
+writeFile, we can see that
+
+41
+00:02:06.04 --> 00:02:10.06
+the first parameter is the
+path, the second is the data,
+
+42
+00:02:10.06 --> 00:02:15.06
+and the third is a callback,
+so let's create that.
+
+43
+00:02:15.06 --> 00:02:20.07
+And this simply passes an error,
+in case there was an error.
+
+44
+00:02:20.07 --> 00:02:25.01
+And I'll just use a
+console.log and I'll write in
+
+45
+00:02:25.01 --> 00:02:29.04
+the console 'write finished'
+and then I'll pass in
+
+46
+00:02:29.04 --> 00:02:31.07
+the error in case there was an error.
+
+47
+00:02:31.07 --> 00:02:34.07
+So let's save that and
+try to run it again.
+
+48
+00:02:34.07 --> 00:02:37.03
+And you can see that
+the write was finished
+
+49
+00:02:37.03 --> 00:02:39.07
+and we're no longer getting
+a deprecation warning.
+
+50
+00:02:39.07 --> 00:02:41.05
+Now that we have a good idea of working
+
+51
+00:02:41.05 --> 00:02:43.07
+with the file system, let's take a look at
+
+52
+00:02:43.07 --> 00:02:46.06
+some of the popular web
+frameworks for Node.
+

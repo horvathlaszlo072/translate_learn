@@ -1,0 +1,543 @@
+1
+00:00:00,360 --> 00:00:01,320
+Welcome back, everyone.
+
+2
+00:00:02,160 --> 00:00:05,220
+In the last video, we hosted our Web site at Low-fi.
+
+3
+00:00:05,610 --> 00:00:12,660
+But what we noticed is that if we navigate into deeper roots than our base route when we refresh, what
+
+4
+00:00:12,660 --> 00:00:15,630
+we see is that we get this page not found.
+
+5
+00:00:16,290 --> 00:00:21,090
+So in order for us to fix this, I need to explain to you why this problem is happening and it has to
+
+6
+00:00:21,090 --> 00:00:22,410
+do with web servers.
+
+7
+00:00:24,020 --> 00:00:31,280
+So to begin, let's imagine that you are on your left side, a user, this user is on a browser and
+
+8
+00:00:31,280 --> 00:00:33,290
+trying to access your website.
+
+9
+00:00:33,830 --> 00:00:37,940
+Here I'm using Crown Cleveland.com, but you can replace this with your net lo-fi URL.
+
+10
+00:00:38,000 --> 00:00:43,370
+None of it matters for the point of this example, but the main idea is that you're trying to access
+
+11
+00:00:43,370 --> 00:00:46,910
+some website that is now live and hosted by Nullify.
+
+12
+00:00:47,660 --> 00:00:54,320
+So when the user tries to access this base route of Crown Clothing dot com, what happens is that this
+
+13
+00:00:54,320 --> 00:00:59,600
+browser actually makes a request to net the files web server that's hosting our build script.
+
+14
+00:01:00,050 --> 00:01:01,460
+So our website is deployed.
+
+15
+00:01:01,490 --> 00:01:08,030
+Yes, but this access and these files still live on some web server somewhere, which is being provided
+
+16
+00:01:08,030 --> 00:01:08,750
+by nullify.
+
+17
+00:01:09,750 --> 00:01:15,210
+So this user is going to say, hey, I want to request any resources for this slash end point.
+
+18
+00:01:15,780 --> 00:01:20,790
+What happens here is that nullify web servers like, Hey, do I have anything for that slash end point?
+
+19
+00:01:21,270 --> 00:01:21,960
+Yes, I do.
+
+20
+00:01:22,110 --> 00:01:25,740
+I'm going to send back the index that HDMI out now.
+
+21
+00:01:25,740 --> 00:01:31,650
+This index to HDMI file is going to represent the built version of our website because on this page,
+
+22
+00:01:31,690 --> 00:01:39,210
+HTML will be the JavaScript tags and the CSS tags that is the built version of also our React code or
+
+23
+00:01:39,210 --> 00:01:40,260
+style components code.
+
+24
+00:01:40,620 --> 00:01:44,640
+All of our code is now living inside of this HTML file.
+
+25
+00:01:45,360 --> 00:01:50,640
+So what I happen is that the website will take these files and it will start building out the website.
+
+26
+00:01:51,180 --> 00:01:55,950
+So at this point, what will happen is the JavaScript now loads onto the page.
+
+27
+00:01:56,280 --> 00:02:00,780
+The JavaScript includes all of the React code that we've written, as well as all of the libraries were
+
+28
+00:02:00,780 --> 00:02:01,290
+leveraging.
+
+29
+00:02:01,770 --> 00:02:03,000
+So at this point, what happens?
+
+30
+00:02:03,000 --> 00:02:09,600
+JavaScript contains React, React router Dom, everything that we've built throughout these lessons.
+
+31
+00:02:10,380 --> 00:02:15,390
+Using this, it will look at the website and say, Oh, what do I need to match?
+
+32
+00:02:15,630 --> 00:02:20,700
+Remember, this is a single page application, which means that it's building out all of these different
+
+33
+00:02:20,700 --> 00:02:25,800
+pages that live on these routes, which is what our router is doing in React, right, Dom.
+
+34
+00:02:26,250 --> 00:02:28,260
+So it sees, Oh, I'm on the base route.
+
+35
+00:02:28,530 --> 00:02:30,900
+What base elements do I need to build?
+
+36
+00:02:31,140 --> 00:02:33,750
+In our particular case, we know we need to build the directory.
+
+37
+00:02:33,870 --> 00:02:40,020
+So the corresponding HTML, CSS and JavaScript for that page gets built, and that is what gets used
+
+38
+00:02:40,020 --> 00:02:41,400
+to populate that page.
+
+39
+00:02:41,940 --> 00:02:44,850
+Now, let's say the user already has our JavaScript code now.
+
+40
+00:02:45,210 --> 00:02:50,940
+What happens when they navigate further to shop jackets is that our JavaScript code, which contains
+
+41
+00:02:50,940 --> 00:02:56,460
+our React router, DOM code and all the code to configure what routes get, what components we'll see.
+
+42
+00:02:56,460 --> 00:03:02,130
+Oh, this users now trying to access slash shop slash jackets, there is going to be some root matching
+
+43
+00:03:02,130 --> 00:03:05,820
+that happens through the rack router dom roots components that we've written.
+
+44
+00:03:06,180 --> 00:03:12,090
+And then the corresponding element, which is the category element is going to run all of our contacts
+
+45
+00:03:12,090 --> 00:03:13,980
+get pulled, all of our data comes in.
+
+46
+00:03:14,130 --> 00:03:19,920
+And that in turn builds the correspondingly correct HTML and CSS files that need to be used in order
+
+47
+00:03:19,920 --> 00:03:21,090
+to build that page.
+
+48
+00:03:21,510 --> 00:03:25,740
+So this is really what's just happening from a single page application standpoint.
+
+49
+00:03:26,310 --> 00:03:30,930
+But the key thing to remember is that at this point, the reason why this worked is because we were
+
+50
+00:03:30,930 --> 00:03:32,880
+asking for the slash endpoint.
+
+51
+00:03:33,120 --> 00:03:38,700
+Our net off our web server understands, oh, whenever anyone tries to access the slash endpoint, send
+
+52
+00:03:38,700 --> 00:03:44,460
+back the index HTML and then the index HTML and the corresponding JavaScript React and React router
+
+53
+00:03:44,460 --> 00:03:51,060
+DOM code that's in there is going to be the resource that will take over any additional routing that
+
+54
+00:03:51,060 --> 00:03:52,320
+happens on the browser.
+
+55
+00:03:52,440 --> 00:03:57,720
+Because at that point, there's no more need to communicate with the web server for more resources unless
+
+56
+00:03:57,720 --> 00:03:58,350
+required.
+
+57
+00:03:58,590 --> 00:04:03,990
+The main thing is that now all of our routing is handled on the front end by our single page application.
+
+58
+00:04:04,620 --> 00:04:11,400
+However, if when starting, the very first request you make for is instead four slash slop slash jackets.
+
+59
+00:04:12,000 --> 00:04:18,240
+This point net lit by a web server, does not have anything to serve for that route because we expect
+
+60
+00:04:18,600 --> 00:04:22,290
+our frontend application to be the one that actually builds out the page.
+
+61
+00:04:23,300 --> 00:04:25,670
+Before single page applications were a thing.
+
+62
+00:04:26,680 --> 00:04:32,500
+A Web server, what essentially have all of the different pages for every one of these endpoints?
+
+63
+00:04:32,800 --> 00:04:36,460
+So then when a user requests for it, it would send them back the web page.
+
+64
+00:04:36,760 --> 00:04:37,810
+We're not doing that anymore.
+
+65
+00:04:38,440 --> 00:04:42,640
+You can't do that with server side rendering, but our application is a single page application, so
+
+66
+00:04:42,640 --> 00:04:43,690
+that does not happen.
+
+67
+00:04:43,900 --> 00:04:49,780
+Instead, what happens is that now if a web servers like, Oh, I got no resource for this shop jackets,
+
+68
+00:04:49,930 --> 00:04:54,820
+which is why we end up seeing that error where there is no page found.
+
+69
+00:04:55,890 --> 00:05:01,080
+In order to fix this, what we need to do is we need to say, oh, whenever you request a resource for
+
+70
+00:05:01,230 --> 00:05:02,880
+any endpoint at all.
+
+71
+00:05:03,510 --> 00:05:05,670
+Always send back indexed HTML.
+
+72
+00:05:06,150 --> 00:05:11,880
+So on this initial request, whenever they try to access anything, we send back indexed HTML indexed
+
+73
+00:05:11,920 --> 00:05:13,740
+HMO will render our real code.
+
+74
+00:05:13,920 --> 00:05:19,050
+And from that real code, we're going to then be able to determine, oh, from this group showed this
+
+75
+00:05:19,050 --> 00:05:19,470
+page.
+
+76
+00:05:19,890 --> 00:05:26,120
+So that's really why all of this is happening and we can solve this really easily by creating a redirects
+
+77
+00:05:26,130 --> 00:05:26,460
+file.
+
+78
+00:05:27,520 --> 00:05:33,400
+Now, back in our application, in order to build this redirects file, we need to go into our public
+
+79
+00:05:33,400 --> 00:05:37,150
+folder and make a new file called underscore redirects.
+
+80
+00:05:37,990 --> 00:05:41,470
+This underscore redirects file is specifically for net low-fi.
+
+81
+00:05:41,860 --> 00:05:47,890
+It tells net lo-fi If you ever get any root requests, I want you to redirect to this other root.
+
+82
+00:05:48,100 --> 00:05:49,960
+And with a specific status.
+
+83
+00:05:50,440 --> 00:05:57,010
+So for us, we want to match any root at all, which is what this slash wildcard is going to represent.
+
+84
+00:05:57,400 --> 00:06:00,820
+If we remember inside of our own routing, we've seen this wild card before.
+
+85
+00:06:01,150 --> 00:06:03,280
+This just means match any root at all.
+
+86
+00:06:03,280 --> 00:06:04,450
+That follows Slash.
+
+87
+00:06:05,230 --> 00:06:08,860
+What you want to redirect towards is index indexed HTML.
+
+88
+00:06:09,400 --> 00:06:15,100
+So here we're saying, Hey, if you get a request for slash anything, redirect them to index HTML,
+
+89
+00:06:15,100 --> 00:06:20,680
+which in turn will send them indexed HTML and then just return a status of 200.
+
+90
+00:06:21,250 --> 00:06:21,700
+That's it.
+
+91
+00:06:22,120 --> 00:06:23,020
+Save this file.
+
+92
+00:06:23,230 --> 00:06:28,480
+Go back to your terminal and just add this and make a commit.
+
+93
+00:06:28,780 --> 00:06:34,210
+Because as I mentioned before, we've set up our GitHub repo now to be connected to our net low-fi.
+
+94
+00:06:34,510 --> 00:06:39,400
+So as long as we make a push request adding redirect for an alibi.
+
+95
+00:06:40,300 --> 00:06:41,290
+And we push this up.
+
+96
+00:06:42,070 --> 00:06:45,040
+Nat Lo-Fi when you go back to your native, for instance.
+
+97
+00:06:47,600 --> 00:06:54,440
+You should see that your nullify is rebuilding, so through this rebuild, as I mentioned, we're connected
+
+98
+00:06:54,440 --> 00:06:54,710
+now.
+
+99
+00:06:54,920 --> 00:06:56,630
+So this is one of the great advantages.
+
+100
+00:06:56,870 --> 00:07:01,880
+Through simply pushing to GitHub, we are rebuilding our web site and now we just wait for the bill
+
+101
+00:07:01,880 --> 00:07:05,030
+to finish and then we can recheck and see if we fix the error.
+
+102
+00:07:06,400 --> 00:07:10,960
+So there we've just published live, and now if we go back to this website.
+
+103
+00:07:12,210 --> 00:07:16,080
+And let's navigate deep into jackets again, if I refresh.
+
+104
+00:07:17,500 --> 00:07:18,040
+There we go.
+
+105
+00:07:18,400 --> 00:07:22,390
+We don't get the far, far anymore, and the reason for this now is that when not if I received that
+
+106
+00:07:22,390 --> 00:07:27,850
+request for shot down jackets, it's still just going to send index HTML, which is going to build out
+
+107
+00:07:27,850 --> 00:07:31,960
+our website and rely on the single page application nature to fix everything.
+
+108
+00:07:32,680 --> 00:07:33,150
+That's it.
+
+109
+00:07:33,460 --> 00:07:38,800
+Our website is now fully deployed and live and any further changes you make as long as you push to the
+
+110
+00:07:38,800 --> 00:07:45,340
+correct GitHub repository branch that is building towards a website, you have a easy to update website
+
+111
+00:07:45,340 --> 00:07:49,270
+that you can really quickly maintain and really quickly deploy changes to.
+
+112
+00:07:49,900 --> 00:07:52,510
+This is an end end process that we now have built in.
+
+113
+00:07:53,080 --> 00:07:53,710
+So that's it.
+
+114
+00:07:54,430 --> 00:07:59,530
+This is as far as the base library of React goes and 90 percent of the patterns that you're going to
+
+115
+00:07:59,530 --> 00:08:05,560
+use on the day to day when it comes to building react applications in exclusively the React library.
+
+116
+00:08:06,100 --> 00:08:10,060
+What we're going to learn next is going to be some additional.
+
+117
+00:08:10,360 --> 00:08:16,600
+I want to call them tangential libraries or patterns that exist in the greater react ecosystem.
+
+118
+00:08:17,080 --> 00:08:21,880
+This is where you're going to learn about things like TypeScript integrations, things such as redux
+
+119
+00:08:21,880 --> 00:08:24,740
+and state management within that state management.
+
+120
+00:08:24,760 --> 00:08:30,010
+We're also going to learn things such as side effect event handling with things such as dunks and sagas.
+
+121
+00:08:30,460 --> 00:08:37,300
+And then beyond that, there will be topics on testing different things around existing React libraries
+
+122
+00:08:37,300 --> 00:08:40,510
+that kind of make building react applications a little different.
+
+123
+00:08:40,780 --> 00:08:44,830
+We're going to talk about integrating with tools like graphical in general.
+
+124
+00:08:44,830 --> 00:08:52,540
+It's just now from this point forward, a lot more of the potentially optional parts of the React ecosystem,
+
+125
+00:08:52,780 --> 00:08:57,640
+where depending on the company you work at, you may or may not use these powders at large.
+
+126
+00:08:57,910 --> 00:09:04,000
+But a lot of the times you're probably going to encounter them at one of these companies, you're definitely
+
+127
+00:09:04,000 --> 00:09:06,670
+going to encounter one of these optional.
+
+128
+00:09:06,670 --> 00:09:12,970
+Perhaps I want to call them libraries and patterns because a lot of the companies are shifting towards
+
+129
+00:09:12,970 --> 00:09:14,530
+these solutions at scale.
+
+130
+00:09:14,620 --> 00:09:18,450
+So it's still very important, and I do want to equip you with that knowledge.
+
+131
+00:09:18,460 --> 00:09:22,150
+So that is what you can look forward to in the upcoming sessions.
+
+132
+00:09:22,450 --> 00:09:27,490
+But as far as the Base React library goes, building our capstone project, deploying it live and then
+
+133
+00:09:27,490 --> 00:09:28,810
+seeing and interacting with it.
+
+134
+00:09:29,260 --> 00:09:30,370
+This is it.
+
+135
+00:09:31,030 --> 00:09:31,840
+Thank you, everybody.
+
+136
+00:09:32,230 --> 00:09:33,400
+I'll see you in the next section.

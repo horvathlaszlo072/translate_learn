@@ -1,0 +1,403 @@
+1
+00:00:00,330 --> 00:00:01,350
+Welcome back, everyone.
+
+2
+00:00:02,130 --> 00:00:05,250
+In this video, we're going to talk about serverless functions.
+
+3
+00:00:05,940 --> 00:00:10,620
+In order for us to understand serverless functions, we need to go back to our example of our front
+
+4
+00:00:10,620 --> 00:00:16,830
+end with this back end, which we completely own, where we have to provision our own resources, scale
+
+5
+00:00:16,830 --> 00:00:19,440
+up our servers either horizontally or vertically.
+
+6
+00:00:19,800 --> 00:00:26,010
+And all of the complexity that comes with managing this, which as we discussed, is a costly from a
+
+7
+00:00:26,010 --> 00:00:28,620
+time and a money perspective ordeal.
+
+8
+00:00:29,250 --> 00:00:34,050
+This is where typically most platforms will utilize something like a cloud service.
+
+9
+00:00:34,800 --> 00:00:41,100
+Cloud services are essentially infrastructure as a service, which means that you are paying a company
+
+10
+00:00:41,100 --> 00:00:46,170
+like Google with their GCP, Amazon with their AWP or Microsoft with their Azure.
+
+11
+00:00:46,650 --> 00:00:54,060
+These are massive, massive companies that have a ton of these server resources, these physical resources
+
+12
+00:00:54,360 --> 00:01:00,780
+which have both the ram, the memory, the disk, the database, all of that resource available.
+
+13
+00:01:01,200 --> 00:01:07,080
+What they also do is they will build a lot of these tools and services that we use and the infrastructure
+
+14
+00:01:07,080 --> 00:01:09,720
+to support it when it comes to building up backend.
+
+15
+00:01:10,320 --> 00:01:16,470
+So what essentially happens is that they are now able to scale up horizontally for you or vertically.
+
+16
+00:01:16,920 --> 00:01:20,490
+All that's happening now is when your front end makes requests to the cloud service.
+
+17
+00:01:20,730 --> 00:01:25,710
+The cloud service knows roughly based on the amount of requests that it's getting, how much to provision
+
+18
+00:01:25,710 --> 00:01:28,770
+for you, and you just pay for what you need.
+
+19
+00:01:29,310 --> 00:01:35,970
+This is an incredible time and money saver, and this is why cloud services are exploding right now
+
+20
+00:01:35,970 --> 00:01:37,800
+and have been exploding for such a long time.
+
+21
+00:01:38,430 --> 00:01:41,610
+So let's simplify this by talking about serverless functions.
+
+22
+00:01:42,150 --> 00:01:46,500
+When it comes to the usual backend, you're writing express servers, node servers, Ruby servers,
+
+23
+00:01:46,500 --> 00:01:49,200
+rails servers, whatever it is that you're writing.
+
+24
+00:01:49,470 --> 00:01:55,170
+There are numerous flavors of how you can write a server, but this is a lot of complexity because these
+
+25
+00:01:55,170 --> 00:01:58,680
+servers are probably most likely constantly up and running.
+
+26
+00:01:59,550 --> 00:02:05,040
+In our particular case, with a lot of what we need from a backend, we really just need that security
+
+27
+00:02:05,040 --> 00:02:09,960
+layer and maybe access to some of those back end libraries to be able to make a request for us.
+
+28
+00:02:10,110 --> 00:02:10,800
+And then that's it.
+
+29
+00:02:11,070 --> 00:02:14,460
+Maybe the length of the request lasts five, maybe 10 seconds.
+
+30
+00:02:14,700 --> 00:02:17,730
+Anything after that, it doesn't need to continue to live.
+
+31
+00:02:17,730 --> 00:02:19,800
+It serves a singular purpose.
+
+32
+00:02:20,550 --> 00:02:22,500
+This is where serverless functions step in.
+
+33
+00:02:22,800 --> 00:02:28,710
+And what I mean by a serverless function is it's essentially a function that lives on the cloud, and
+
+34
+00:02:28,710 --> 00:02:34,710
+this function performs that single responsibility, it spins up, it does its responsibility, and then
+
+35
+00:02:34,710 --> 00:02:35,220
+it's done.
+
+36
+00:02:36,030 --> 00:02:40,410
+This is where you can talk about different functions, such as a function that essentially makes a backend
+
+37
+00:02:40,410 --> 00:02:40,860
+payment.
+
+38
+00:02:40,860 --> 00:02:43,110
+It receives a request, it has an amount on it.
+
+39
+00:02:43,350 --> 00:02:49,020
+It makes a request to make that payment for that amount to some other service to the fact that it lives
+
+40
+00:02:49,020 --> 00:02:53,550
+on the backend, it being more secure now and then it sends back the response to the front end.
+
+41
+00:02:53,760 --> 00:02:57,630
+It's done, that function is finished, its duty and now it dissipates.
+
+42
+00:02:58,320 --> 00:03:01,620
+You can imagine there are many API requests that do similar things.
+
+43
+00:03:01,890 --> 00:03:08,430
+You can imagine that there is a send email where essentially we send our back end function, some email
+
+44
+00:03:08,430 --> 00:03:10,140
+address and then some body text.
+
+45
+00:03:10,140 --> 00:03:16,110
+And then the email service function just takes that information and then fires the body to the appropriate
+
+46
+00:03:16,110 --> 00:03:16,950
+email address.
+
+47
+00:03:16,950 --> 00:03:17,670
+And that's it.
+
+48
+00:03:18,330 --> 00:03:21,120
+This is essentially what server the functions are.
+
+49
+00:03:21,540 --> 00:03:27,420
+It lives on a cloud service that has these near limitless resources, and it will generate and spin
+
+50
+00:03:27,420 --> 00:03:30,240
+up these functions whenever they're being requested.
+
+51
+00:03:30,990 --> 00:03:35,610
+Now, each of these functions lives on an end point, so it's still like an API that you interface with.
+
+52
+00:03:35,850 --> 00:03:41,970
+But the thing is that behind that endpoint lives just the service function, not necessarily an entire
+
+53
+00:03:41,970 --> 00:03:42,660
+server.
+
+54
+00:03:43,110 --> 00:03:45,180
+So let's discuss about how this works.
+
+55
+00:03:45,690 --> 00:03:50,280
+The cloud service has access to all the functions that we give to it, essentially the services that
+
+56
+00:03:50,280 --> 00:03:54,330
+we need this cloud to provision for us, these functions.
+
+57
+00:03:55,430 --> 00:04:00,410
+So what happens is that a front end might make the same thing where it makes a bunch of requests to
+
+58
+00:04:00,410 --> 00:04:01,610
+our cloud service.
+
+59
+00:04:02,510 --> 00:04:05,430
+We might receive 100 payment requests per minute.
+
+60
+00:04:05,450 --> 00:04:07,070
+In this case, the cloud services.
+
+61
+00:04:07,070 --> 00:04:13,820
+Oh, I need to spin up some of these resources in order to host this make payment function.
+
+62
+00:04:14,450 --> 00:04:20,000
+And then here what happens is that all of these requests go to this resource that has access to these
+
+63
+00:04:20,000 --> 00:04:20,480
+functions.
+
+64
+00:04:20,570 --> 00:04:21,890
+It spins up these functions.
+
+65
+00:04:22,070 --> 00:04:24,230
+These functions make these payments for each of these requests.
+
+66
+00:04:24,530 --> 00:04:27,020
+And then it sends back a response, and then it's done.
+
+67
+00:04:27,140 --> 00:04:31,790
+And then the service will now downgrade and get rid of all of the provision resources.
+
+68
+00:04:31,910 --> 00:04:38,510
+The moment the requests stop coming in, if we start getting a ton of payment requests, such as 10,000
+
+69
+00:04:38,510 --> 00:04:44,990
+of them per minute, then again the cloud service will spin up a corresponding amount of resources in
+
+70
+00:04:44,990 --> 00:04:50,330
+order to provision a duplication of these functions over and over again for each of these different
+
+71
+00:04:50,330 --> 00:04:50,900
+requests.
+
+72
+00:04:51,230 --> 00:04:56,510
+Again, these requests are handled and then response is sent back, and then it spins down the service.
+
+73
+00:04:56,510 --> 00:05:00,770
+Whenever, in a similar way, the number of requests go back down.
+
+74
+00:05:01,790 --> 00:05:06,200
+So it's essentially what you can imagine with having to spin up your own servers.
+
+75
+00:05:06,530 --> 00:05:11,660
+But here we're relying on a cloud service to spin up and down the number of servers or the amount of
+
+76
+00:05:11,660 --> 00:05:15,260
+resources so that we can primarily just host our functions.
+
+77
+00:05:16,250 --> 00:05:19,190
+So this is essentially how this process works.
+
+78
+00:05:19,610 --> 00:05:23,960
+But you can imagine also on my front end, we might be receiving a bunch of different quests.
+
+79
+00:05:24,290 --> 00:05:26,120
+Maybe we got 100 payment requests per minute.
+
+80
+00:05:26,870 --> 00:05:32,210
+Let's say we receive 3000 API requests per minute and then 5000 email requests for a minute.
+
+81
+00:05:32,570 --> 00:05:38,030
+Now, keep in mind, each of these requests are requesting a specific endpoint for a specific function.
+
+82
+00:05:38,570 --> 00:05:40,520
+So here our cloud service knows that.
+
+83
+00:05:40,520 --> 00:05:46,220
+So it will correspondingly provision the right amount of resources to service the amount that's coming
+
+84
+00:05:46,220 --> 00:05:46,880
+in for each.
+
+85
+00:05:47,270 --> 00:05:54,320
+So let's say there is arbitrarily one units of make payment services in order to handle the amount of
+
+86
+00:05:54,320 --> 00:05:56,090
+requests for the make payment function.
+
+87
+00:05:56,540 --> 00:05:58,910
+Of course there will be more for the API request.
+
+88
+00:05:58,930 --> 00:06:05,090
+So again, the service will provision enough resources to handle the 3000 API requests from the function.
+
+89
+00:06:05,630 --> 00:06:07,910
+And then of course that send email takes the most.
+
+90
+00:06:07,910 --> 00:06:10,370
+So it will provision just enough there as well.
+
+91
+00:06:10,670 --> 00:06:16,580
+But the key thing is that it will scale up and scale down for the corresponding requests for each function.
+
+92
+00:06:16,580 --> 00:06:22,670
+And each function gets the amount of servers that it needs in order to handle this type of request.
+
+93
+00:06:23,570 --> 00:06:26,270
+So this is essentially what we're combining together.
+
+94
+00:06:26,780 --> 00:06:30,500
+We know that from our frontend we need to make payment requests to stripe.
+
+95
+00:06:31,040 --> 00:06:36,310
+So what we're going to do is we are going to write our own service functions and host them on net net.
+
+96
+00:06:36,350 --> 00:06:41,210
+The FBI is then going to provision the resources for us so that we can actually make Stripe payments.
+
+97
+00:06:41,480 --> 00:06:43,490
+And that is what we are going to do.
+
+98
+00:06:44,120 --> 00:06:48,230
+So now that you understand the high level concept about why we need serverless functions and how they're
+
+99
+00:06:48,230 --> 00:06:53,960
+going to help us, let's jump into the code in the next video where we can start figuring out how to
+
+100
+00:06:53,960 --> 00:06:55,160
+interact with Stripe.
+
+101
+00:06:55,550 --> 00:06:56,720
+I'll see you in the next video.

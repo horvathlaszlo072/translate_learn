@@ -1,0 +1,443 @@
+1
+00:00:00,330 --> 00:00:01,260
+Welcome back, everyone.
+
+2
+00:00:02,200 --> 00:00:08,980
+In this video, we are going to begin the process of typing out our final project, which is our crown
+
+3
+00:00:08,980 --> 00:00:10,210
+clothing application.
+
+4
+00:00:11,250 --> 00:00:13,170
+Now I am not going to lie to you.
+
+5
+00:00:13,350 --> 00:00:19,950
+The process of learning TypeScript with Redux is actually quite a steep learning curve.
+
+6
+00:00:20,490 --> 00:00:28,230
+The reason why it's so challenging is because we have to learn a lot of new concepts as well as flexing
+
+7
+00:00:28,230 --> 00:00:32,130
+the ones that we know already in a manner that makes it so.
+
+8
+00:00:32,130 --> 00:00:35,040
+Our code is extensible in Redux.
+
+9
+00:00:35,820 --> 00:00:42,060
+The main thing, though, is that once you type redux, you will accelerate your understanding of TypeScript
+
+10
+00:00:42,060 --> 00:00:43,440
+quite significantly.
+
+11
+00:00:43,800 --> 00:00:50,700
+But there is a lot of code changes that we need to make in order to make our code work with Redux the
+
+12
+00:00:50,700 --> 00:00:52,830
+way we need it to where it's type safe.
+
+13
+00:00:53,700 --> 00:00:57,630
+Now, the first thing that we need to do is install the relevant libraries.
+
+14
+00:00:59,080 --> 00:01:04,570
+So this is a command that we're pulling from the Create React app, adding TypeScript section of the
+
+15
+00:01:04,570 --> 00:01:05,020
+docs.
+
+16
+00:01:05,170 --> 00:01:07,690
+Again, you can check your resources folder for that.
+
+17
+00:01:08,620 --> 00:01:13,570
+And as this is installing, what we're also going to need is RTC config file.
+
+18
+00:01:14,290 --> 00:01:21,910
+So here inside of our application, just like we did with our actual Monsters Rolodex project, we are
+
+19
+00:01:21,910 --> 00:01:24,340
+going to add in a test config file.
+
+20
+00:01:25,210 --> 00:01:28,840
+So here, just do test config dot json.
+
+21
+00:01:29,810 --> 00:01:36,590
+And again, look inside your resources folder and find the actual test config file that I have included.
+
+22
+00:01:37,130 --> 00:01:38,900
+And then I want you to paste that in here.
+
+23
+00:01:40,380 --> 00:01:45,090
+Once you have this, you're going to go into your reducer utils JS file.
+
+24
+00:01:45,870 --> 00:01:49,680
+We are going to start with Redux first because this is where our data lives.
+
+25
+00:01:49,860 --> 00:01:56,160
+And from Redux, we are going to have to learn and touch upon a lot of additional concepts in order
+
+26
+00:01:56,160 --> 00:01:57,510
+to make this code work.
+
+27
+00:01:58,140 --> 00:02:00,630
+So I'm not going to lie to you.
+
+28
+00:02:00,640 --> 00:02:04,200
+As I mentioned earlier, this is going to be quite complex.
+
+29
+00:02:04,530 --> 00:02:10,020
+In fact, we're going to learn a lot of concepts that TypeScript introduces, such as function overloading,
+
+30
+00:02:10,200 --> 00:02:17,160
+some really interesting usage of generics, as well as some additional functionality that we can get
+
+31
+00:02:17,520 --> 00:02:20,910
+from the utilization of TypeScript features.
+
+32
+00:02:21,780 --> 00:02:26,340
+The first thing that we need to do is think about what we're going to do and why.
+
+33
+00:02:26,820 --> 00:02:30,930
+So in this video, I'm going to highlight how we're going to convert this over to TypeScript.
+
+34
+00:02:32,280 --> 00:02:38,070
+We're going to start with the simplest reducer that we have, which is our categories reducer.
+
+35
+00:02:38,960 --> 00:02:40,770
+Inside of our categories reducer.
+
+36
+00:02:41,330 --> 00:02:43,010
+We are going to start with our actions.
+
+37
+00:02:43,940 --> 00:02:50,180
+What we know about our action types is that we have this object that has these fields that we want.
+
+38
+00:02:50,660 --> 00:02:54,710
+The thing about these fields, though, is that these are not just strings.
+
+39
+00:02:55,100 --> 00:02:57,920
+These, in fact, are specific constants.
+
+40
+00:02:58,370 --> 00:02:59,690
+They just happen to be strings.
+
+41
+00:03:00,050 --> 00:03:07,760
+But really what we're saying is that there are only three actions that are categories reducer or category
+
+42
+00:03:07,760 --> 00:03:12,680
+saga, or any reducer, in fact, can recognize that as relevant to the categories.
+
+43
+00:03:12,680 --> 00:03:14,990
+And it is these three values.
+
+44
+00:03:15,170 --> 00:03:18,560
+These are the only three category related action types.
+
+45
+00:03:19,900 --> 00:03:25,240
+So this can actually be converted to a enumerable type, which is an enum.
+
+46
+00:03:25,600 --> 00:03:27,880
+And an enum is a special.
+
+47
+00:03:28,240 --> 00:03:29,620
+It's not even a type.
+
+48
+00:03:29,620 --> 00:03:36,190
+It's actually an extended version or extended data structure that TypeScript introduces to us.
+
+49
+00:03:36,550 --> 00:03:40,270
+And it's usable the same way that you can use an object.
+
+50
+00:03:40,300 --> 00:03:44,230
+The only thing about it is that it has fixed values.
+
+51
+00:03:45,100 --> 00:03:48,910
+In other words, instead, when you hover over categorize action type right now with our object.
+
+52
+00:03:49,180 --> 00:03:51,520
+Notice how these keys point to strings.
+
+53
+00:03:52,150 --> 00:03:54,730
+Instead, if we were to convert this to an item.
+
+54
+00:03:55,120 --> 00:03:58,450
+So first, let's convert this from just to us.
+
+55
+00:04:00,040 --> 00:04:02,380
+All we can do is say export enum.
+
+56
+00:04:02,950 --> 00:04:04,570
+Category action types.
+
+57
+00:04:05,080 --> 00:04:06,820
+And you get rid of this equal sign.
+
+58
+00:04:07,390 --> 00:04:12,550
+And then instead of these colons, you set an equal.
+
+59
+00:04:14,330 --> 00:04:16,040
+And this is your enum.
+
+60
+00:04:16,460 --> 00:04:17,570
+Now, if you hover over it.
+
+61
+00:04:18,020 --> 00:04:18,870
+Enum categories.
+
+62
+00:04:18,890 --> 00:04:22,940
+Action type is going to contain these three members.
+
+63
+00:04:22,970 --> 00:04:27,680
+Meaning that the three values that you can use as keys, just like you do with objects, though they
+
+64
+00:04:27,680 --> 00:04:31,400
+will only be equal to one of three three options.
+
+65
+00:04:32,500 --> 00:04:40,060
+So this first step allows us now to essentially capture these literal string values, these literal
+
+66
+00:04:40,060 --> 00:04:44,470
+strings, as the types themselves that we need to reference.
+
+67
+00:04:45,280 --> 00:04:46,150
+So that's the first thing.
+
+68
+00:04:47,150 --> 00:04:47,930
+By doing this.
+
+69
+00:04:48,050 --> 00:04:55,040
+Now, when we go into our category action, just like before, we still have these crazy actions generating
+
+70
+00:04:55,040 --> 00:04:56,840
+these action objects for us.
+
+71
+00:04:57,230 --> 00:04:59,360
+But now we need to type these actions.
+
+72
+00:05:00,080 --> 00:05:06,620
+The thing, however, with our reducer is that what we need to do is that inside of our reducer we want
+
+73
+00:05:06,620 --> 00:05:09,590
+to isolate the actions we respond to.
+
+74
+00:05:09,950 --> 00:05:12,140
+Because here we know we're going to receive a reaction.
+
+75
+00:05:12,770 --> 00:05:17,480
+But the actions we want to respond to are specifically the categories, action types.
+
+76
+00:05:18,290 --> 00:05:25,160
+So essentially what happens is that only when we receive an action of these three types do we actually
+
+77
+00:05:25,160 --> 00:05:27,410
+want our reducer to react.
+
+78
+00:05:28,010 --> 00:05:32,810
+Now, regardless of the fact that we receive all the actions that ever fire, because in Redux that
+
+79
+00:05:32,810 --> 00:05:33,370
+does happen.
+
+80
+00:05:33,380 --> 00:05:39,110
+Remember, every reducer gets, every action, our reducer does technically only care about these three.
+
+81
+00:05:39,920 --> 00:05:43,610
+So there needs to be a way where we can generically type the action.
+
+82
+00:05:43,610 --> 00:05:50,420
+But inside of our reducer we want to narrow the scope so that our actions are only the ones that are
+
+83
+00:05:50,420 --> 00:05:51,470
+relevant to us.
+
+84
+00:05:51,470 --> 00:05:53,240
+Which are these three action types?
+
+85
+00:05:54,680 --> 00:06:02,840
+So we need to think of a way so that we can extend upon our action creator so that we can make it work
+
+86
+00:06:02,840 --> 00:06:04,070
+inside of TypeScript.
+
+87
+00:06:04,520 --> 00:06:10,460
+The other thing as well is that inside of this reducer we will need something known as type narrowing
+
+88
+00:06:10,460 --> 00:06:12,500
+and that comes from using type predicates.
+
+89
+00:06:12,590 --> 00:06:17,540
+And we're going to discuss that when we go back to our reducer utils and we are going to write some
+
+90
+00:06:17,540 --> 00:06:19,040
+additional functionality here.
+
+91
+00:06:19,580 --> 00:06:25,970
+But the key thing that we're talking about right now is that we need to generate from these action creators
+
+92
+00:06:26,150 --> 00:06:33,890
+some way that we know exactly the specific kinds of actions that exist and the specific kind of actions
+
+93
+00:06:33,890 --> 00:06:37,340
+are going to be some kind of action object, of course.
+
+94
+00:06:37,760 --> 00:06:44,480
+But inside of our category action, there's only three specific types of actions possible, and they
+
+95
+00:06:44,480 --> 00:06:46,330
+are these three defined actions.
+
+96
+00:06:46,580 --> 00:06:53,660
+There is an action with the type categories start but no payload, and then there is a action where
+
+97
+00:06:53,660 --> 00:07:01,940
+the type is that a category success with a categories array as the actual payload and then categories
+
+98
+00:07:01,940 --> 00:07:07,520
+failed with that fetch categories failed as the type and then an error as the payload.
+
+99
+00:07:08,240 --> 00:07:14,720
+But the thing is that they are essentially unique actions because these actions have very specific types
+
+100
+00:07:14,990 --> 00:07:16,850
+as we just defined with our action types.
+
+101
+00:07:17,240 --> 00:07:21,980
+We need our reducers to respond in kind, but they also need to be smart enough to know that when you
+
+102
+00:07:22,160 --> 00:07:27,440
+fetch a specific kind of action that there is exactly the correct payload on it.
+
+103
+00:07:28,710 --> 00:07:31,590
+So if this seems a little confusing, don't worry.
+
+104
+00:07:31,590 --> 00:07:33,630
+As we type it out, it will make more sense.
+
+105
+00:07:33,930 --> 00:07:38,530
+But I'm definitely going to tell you that what we're going to learn is very hard.
+
+106
+00:07:38,550 --> 00:07:42,000
+So if it takes time to absorb, don't worry, it's expected.
+
+107
+00:07:42,010 --> 00:07:42,900
+It's how it should be.
+
+108
+00:07:44,060 --> 00:07:48,950
+So now that I've gone over the high level, what we're going to do, let's go back to our producer Utils
+
+109
+00:07:48,950 --> 00:07:51,420
+and let's start working through what I mentioned.
+
+110
+00:07:52,010 --> 00:07:53,150
+So we'll do that in the next video.
+
+111
+00:07:53,450 --> 00:07:54,020
+I'll see you there.

@@ -1,0 +1,607 @@
+1
+00:00:01,280 --> 00:00:01,910
+Welcome back.
+
+2
+00:00:02,150 --> 00:00:10,940
+Let's start writing some tests that are for asynchronous code, if we go back to our script to test
+
+3
+00:00:10,940 --> 00:00:15,350
+our jobs, we can start off our first test by saying it.
+
+4
+00:00:17,380 --> 00:00:18,010
+Calls.
+
+5
+00:00:20,080 --> 00:00:24,610
+Swaby Star Wars API to get people.
+
+6
+00:00:27,200 --> 00:00:32,570
+And again, same syntax as we've seen before in our first test, what can we do?
+
+7
+00:00:33,750 --> 00:00:36,390
+Well, we can say swapping dot.
+
+8
+00:00:37,970 --> 00:00:38,450
+Get.
+
+9
+00:00:39,420 --> 00:00:39,960
+People.
+
+10
+00:00:41,300 --> 00:00:47,300
+We'll give it the fetch API or the fetch function.
+
+11
+00:00:48,450 --> 00:00:49,800
+And then do it then.
+
+12
+00:00:51,220 --> 00:00:57,280
+And like I said, you could pass down you earles here and we could do something called mocking, which
+
+13
+00:00:57,280 --> 00:00:58,360
+we'll talk about later.
+
+14
+00:00:58,570 --> 00:01:02,320
+For now, we're just sticking with this method.
+
+15
+00:01:03,660 --> 00:01:05,010
+But let's see what we can test.
+
+16
+00:01:05,970 --> 00:01:13,360
+We have the API that we're calling again, it's going to return us a ton of data.
+
+17
+00:01:13,950 --> 00:01:20,370
+So again, we do the DOT, then just simple JavaScript and this dot then is going to return us.
+
+18
+00:01:21,630 --> 00:01:22,290
+Some data.
+
+19
+00:01:24,050 --> 00:01:31,160
+Remember, it's going to return our data or it's going to return our count and results.
+
+20
+00:01:32,550 --> 00:01:38,850
+So in here inside of the dog then block, we can do our assertions expect.
+
+21
+00:01:40,950 --> 00:01:42,360
+Data does count.
+
+22
+00:01:46,260 --> 00:01:47,190
+Two equal.
+
+23
+00:01:50,040 --> 00:01:50,700
+A seven.
+
+24
+00:01:52,010 --> 00:02:01,250
+Because remember, if we go back to the website, the count is 87, so hopefully data count matches
+
+25
+00:02:01,250 --> 00:02:01,850
+87.
+
+26
+00:02:02,920 --> 00:02:09,550
+Let's see if that's the case, I'm going to save and go back to running our tests.
+
+27
+00:02:09,580 --> 00:02:12,430
+Let me clear this and run AMPM test.
+
+28
+00:02:16,980 --> 00:02:19,560
+And we all need to press a to run all tests.
+
+29
+00:02:21,210 --> 00:02:25,510
+All right, so, hmmm, that worked, that wasn't too hard.
+
+30
+00:02:25,530 --> 00:02:27,790
+We don't do anything too crazy.
+
+31
+00:02:28,050 --> 00:02:30,180
+What if we add another test?
+
+32
+00:02:30,650 --> 00:02:37,890
+I'm going to add another test here and it's going to say it's called Swaby to get people with a promise.
+
+33
+00:02:39,280 --> 00:02:42,250
+Now, this time around, we'll use get people.
+
+34
+00:02:44,220 --> 00:02:44,730
+Promise.
+
+35
+00:02:46,230 --> 00:02:46,950
+Let's save.
+
+36
+00:02:49,450 --> 00:02:49,850
+Right.
+
+37
+00:02:50,440 --> 00:02:53,020
+Is that actually working?
+
+38
+00:02:53,740 --> 00:02:54,870
+It looks to be working.
+
+39
+00:02:54,880 --> 00:02:58,750
+I mean, we get the tests, six of them that have passed.
+
+40
+00:02:59,740 --> 00:03:07,210
+But remember what I said, we always want to make sure that we fail our tests and check that the tests
+
+41
+00:03:07,240 --> 00:03:10,870
+actually are checking what we're what we want to check.
+
+42
+00:03:11,380 --> 00:03:14,290
+One tool that we can use with.
+
+43
+00:03:15,450 --> 00:03:18,960
+Jest is something called expect dot.
+
+44
+00:03:21,140 --> 00:03:27,030
+Assertions and assertions are remember assertion library.
+
+45
+00:03:27,350 --> 00:03:28,550
+Are these things?
+
+46
+00:03:30,010 --> 00:03:39,370
+These are assertions, so using the expected assertions, we can say within this block, we expect one
+
+47
+00:03:39,370 --> 00:03:44,620
+assertion if we had to, then we should say we expect to.
+
+48
+00:03:45,250 --> 00:03:47,980
+And this is a good way to test that.
+
+49
+00:03:48,250 --> 00:03:51,990
+These things are actually running, especially with asynchronous code.
+
+50
+00:03:52,630 --> 00:03:53,650
+Let me do one here.
+
+51
+00:03:54,190 --> 00:03:55,150
+I'm going to save.
+
+52
+00:03:57,720 --> 00:03:59,210
+Whoa, what just happened?
+
+53
+00:04:00,690 --> 00:04:05,370
+Are expect Dott assertions one failed.
+
+54
+00:04:07,080 --> 00:04:15,810
+There were zero assertion calls, so something's happening here where this test is passing, but this
+
+55
+00:04:15,810 --> 00:04:16,890
+is never being called.
+
+56
+00:04:19,000 --> 00:04:22,660
+And this is a little gotcha with asynchronous tests.
+
+57
+00:04:23,740 --> 00:04:31,600
+You see, when this happens during tests, it's really, really hard to debug because it's easy to not
+
+58
+00:04:31,600 --> 00:04:33,860
+check that they work properly.
+
+59
+00:04:34,390 --> 00:04:44,340
+The problem is that the tests are actually completing as soon as the get people gets called and remember,
+
+60
+00:04:44,340 --> 00:04:47,300
+a promise returns a pending state.
+
+61
+00:04:47,530 --> 00:04:51,880
+So this is going to get returned before we actually receive the data.
+
+62
+00:04:52,940 --> 00:04:54,420
+How do we get around this?
+
+63
+00:04:54,800 --> 00:05:01,430
+How can we tell the test, hey, don't just pass this test because nothing happened and we just returned
+
+64
+00:05:01,430 --> 00:05:03,150
+a promise with a pending state.
+
+65
+00:05:03,620 --> 00:05:07,870
+Wait until this is actually done and then keep going.
+
+66
+00:05:09,650 --> 00:05:13,070
+There's a few ways to do this, the first way to do it.
+
+67
+00:05:14,140 --> 00:05:22,810
+Is to use a single argument called Done So instead of having an empty parameter here for the function,
+
+68
+00:05:23,200 --> 00:05:26,190
+we can have done that.
+
+69
+00:05:27,280 --> 00:05:29,980
+That gets automatically passed to a test.
+
+70
+00:05:31,850 --> 00:05:33,110
+And this says.
+
+71
+00:05:34,190 --> 00:05:42,110
+Hey, just just wait until the done callback is called before you actually say this test is finished
+
+72
+00:05:42,500 --> 00:05:46,190
+and you usually put it right after the call.
+
+73
+00:05:46,200 --> 00:05:49,390
+So let's say this is now done.
+
+74
+00:05:50,120 --> 00:05:51,350
+So let me save that.
+
+75
+00:05:54,570 --> 00:05:59,910
+All right, it passed now we're saying, hey, don't pass this test until this is done.
+
+76
+00:06:01,030 --> 00:06:03,430
+Just to test, if I change this to zero.
+
+77
+00:06:05,810 --> 00:06:09,620
+This is failing because we have one assertion call awesome.
+
+78
+00:06:10,760 --> 00:06:20,270
+Now, this is one way of doing it, and the neat thing with this is that if for some reason this if
+
+79
+00:06:20,270 --> 00:06:26,840
+this festival fails, let's say that in the script to James, this is actually.
+
+80
+00:06:27,920 --> 00:06:34,130
+And incorrect, your URL parameter that we're sending, maybe we misspelled people if I save this.
+
+81
+00:06:36,190 --> 00:06:45,130
+You see that I get an air call Sorbi to get people and I get an air here so that the test waits until
+
+82
+00:06:45,130 --> 00:06:47,350
+I'm actually done, very nice.
+
+83
+00:06:50,620 --> 00:06:57,700
+Now, let's fix this, bring this back to one and talk about the other way that you can do this, and
+
+84
+00:06:57,820 --> 00:07:03,580
+this is really easy, if your code uses promises like we have, there's a simpler way that's probably
+
+85
+00:07:03,580 --> 00:07:06,820
+less confusing for most people to handle asynchronous tests.
+
+86
+00:07:08,310 --> 00:07:13,830
+And this is another thing that I really like about just we can simply instead of doing this.
+
+87
+00:07:14,860 --> 00:07:15,430
+Just.
+
+88
+00:07:17,880 --> 00:07:25,980
+Return the promise and justice smart enough to say, oh, because we're returning this, I'm going to
+
+89
+00:07:25,980 --> 00:07:33,810
+wait until this promise returns and if the promise is rejected, the test will automatically fail,
+
+90
+00:07:34,170 --> 00:07:35,160
+which is very nice.
+
+91
+00:07:35,410 --> 00:07:36,660
+Again, let's say this.
+
+92
+00:07:38,210 --> 00:07:42,920
+Everything's passing if I misspell the Aperol again.
+
+93
+00:07:44,560 --> 00:07:49,150
+You see that the test automatically gets failed.
+
+94
+00:07:55,350 --> 00:08:00,630
+Now, this is a little tricky, you have to always make sure that you return the promise if you omit
+
+95
+00:08:00,630 --> 00:08:08,130
+this return estimate statement, as you saw, your test will complete before the promise actually gets
+
+96
+00:08:08,130 --> 00:08:09,340
+resolved or rejected.
+
+97
+00:08:09,600 --> 00:08:11,040
+So here's a tip.
+
+98
+00:08:11,820 --> 00:08:19,800
+When running a Synchronoss tests always do this, always do the expect assertions always test out that
+
+99
+00:08:19,800 --> 00:08:23,270
+your assertions are being tested.
+
+100
+00:08:23,970 --> 00:08:25,200
+So let's finish this off.
+
+101
+00:08:25,440 --> 00:08:27,120
+Let's add a few more lines.
+
+102
+00:08:27,480 --> 00:08:30,720
+We'll say that in here.
+
+103
+00:08:32,270 --> 00:08:37,580
+We're going to add to assertions and again, we want to return here.
+
+104
+00:08:38,590 --> 00:08:44,680
+And we'll add another assertion that says that we expect data.
+
+105
+00:08:46,430 --> 00:08:46,850
+Dot.
+
+106
+00:08:48,840 --> 00:08:49,530
+Results.
+
+107
+00:08:51,040 --> 00:08:52,330
+To have a length.
+
+108
+00:08:56,710 --> 00:08:58,810
+And what can we use here?
+
+109
+00:08:59,020 --> 00:09:05,800
+We want to check maybe that the results we get at least five people or that the length is greater than,
+
+110
+00:09:05,800 --> 00:09:06,670
+let's say, five.
+
+111
+00:09:09,020 --> 00:09:14,180
+Luckily for us, there's they just cheat sheet and this just cheat sheet.
+
+112
+00:09:14,450 --> 00:09:16,550
+Well, try to say that fast five times.
+
+113
+00:09:16,580 --> 00:09:23,120
+That's pretty hard actually has all these things that you can use for the test right in here.
+
+114
+00:09:23,330 --> 00:09:24,790
+Super, super useful.
+
+115
+00:09:25,340 --> 00:09:29,540
+These are pretty much all you need to write the perfect test.
+
+116
+00:09:30,020 --> 00:09:34,070
+And we see here that we have the to be greater than method.
+
+117
+00:09:34,070 --> 00:09:34,910
+So let's use that.
+
+118
+00:09:35,190 --> 00:09:39,770
+I'm going to say to be greater then.
+
+119
+00:09:40,250 --> 00:09:45,170
+And again, this is why I love Jast and most assertion libraries.
+
+120
+00:09:45,200 --> 00:09:47,450
+They just make everything very nicely in English.
+
+121
+00:09:47,480 --> 00:09:49,510
+So you understand exactly what's going on.
+
+122
+00:09:49,790 --> 00:09:52,760
+So I'm going to say to be greater than five, let's save.
+
+123
+00:09:56,720 --> 00:10:02,000
+All right, we get a few hours, so let's fix this test to assertions to be called, but we only got
+
+124
+00:10:02,000 --> 00:10:02,460
+one.
+
+125
+00:10:03,050 --> 00:10:04,250
+Why is that?
+
+126
+00:10:04,880 --> 00:10:07,760
+And I get an error length of undefined.
+
+127
+00:10:08,360 --> 00:10:11,470
+And let's log out data to see what we're getting here.
+
+128
+00:10:11,480 --> 00:10:13,580
+So let's do console dialog.
+
+129
+00:10:14,360 --> 00:10:16,040
+DataDot results.
+
+130
+00:10:20,820 --> 00:10:24,750
+And I'm getting on to find so it looks like over here.
+
+131
+00:10:26,250 --> 00:10:27,270
+Oh, there you go.
+
+132
+00:10:27,310 --> 00:10:30,580
+I've noticed Meyer, I misspelled results here.
+
+133
+00:10:31,380 --> 00:10:35,160
+You're probably laughing at me right now, but this happens a lot more than you think.
+
+134
+00:10:35,820 --> 00:10:36,360
+All right.
+
+135
+00:10:37,050 --> 00:10:38,730
+So let's see that.
+
+136
+00:10:39,420 --> 00:10:39,960
+All right.
+
+137
+00:10:39,990 --> 00:10:40,510
+That's good.
+
+138
+00:10:40,530 --> 00:10:41,730
+We're getting some response.
+
+139
+00:10:41,730 --> 00:10:43,260
+Let's remove the council log.
+
+140
+00:10:45,050 --> 00:10:49,910
+It's safe and again, this is another good reason to retest, right, because I wouldn't have caught
+
+141
+00:10:49,910 --> 00:10:52,640
+that mistake until I've actually run the app.
+
+142
+00:10:53,830 --> 00:10:55,960
+So I see here that I just have a simple.
+
+143
+00:10:57,190 --> 00:10:57,850
+Type air.
+
+144
+00:10:59,210 --> 00:11:04,550
+To be greater, then again, terrible at English.
+
+145
+00:11:04,730 --> 00:11:06,110
+This is an.
+
+146
+00:11:09,520 --> 00:11:16,690
+All right, everything is passing, and what you just witnessed is how tests usually work, they're
+
+147
+00:11:16,690 --> 00:11:21,040
+constantly breaking, they constantly breaking, and you try to get to this green state.
+
+148
+00:11:21,040 --> 00:11:25,720
+And when you get to this green state, it's like, hallelujah, this is so nice.
+
+149
+00:11:25,720 --> 00:11:30,820
+It feels so good to have everything green and things are working awesome.
+
+150
+00:11:31,740 --> 00:11:37,440
+All right, I think that's good for now in the next video, I want to talk to you a little bit about
+
+151
+00:11:37,440 --> 00:11:37,950
+mocking.
+
+152
+00:11:38,670 --> 00:11:40,460
+I'll see in that one by.

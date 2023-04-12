@@ -1,0 +1,455 @@
+1
+00:00:00,210 --> 00:00:01,110
+Welcome back, everyone.
+
+2
+00:00:01,830 --> 00:00:05,670
+In this video, we are going to migrate user sagas over to TypeScript.
+
+3
+00:00:06,210 --> 00:00:14,670
+So first, let's modify this 2/8 file and you will see that this file is going to explode in typescript
+
+4
+00:00:14,670 --> 00:00:15,090
+errors.
+
+5
+00:00:15,450 --> 00:00:20,820
+A lot of typing that we need to do because of course this is way more verbose.
+
+6
+00:00:21,540 --> 00:00:24,090
+So to begin with, let's start from the top.
+
+7
+00:00:24,810 --> 00:00:31,440
+First, we want to migrate from Redux saga effects over to typed Redux Saga.
+
+8
+00:00:32,250 --> 00:00:38,820
+And now earlier we had just use type redux saga, but we can actually also use slash macro.
+
+9
+00:00:39,570 --> 00:00:44,370
+Slash macro will allow us to essentially leverage that Babel macro plugin.
+
+10
+00:00:45,090 --> 00:00:46,980
+What is the battle macro plugin?
+
+11
+00:00:47,960 --> 00:00:54,440
+So generally speaking, when it comes to using third party libraries or builders of third party libraries,
+
+12
+00:00:55,010 --> 00:01:00,770
+what they have to do in order for them to add additional steps during the code transformation or the
+
+13
+00:01:00,770 --> 00:01:06,770
+compilation step is they have to create something like a bubble plug in that you need to install.
+
+14
+00:01:07,780 --> 00:01:13,450
+This plugin is going to be unique to their library in order for the code to compile the way that they
+
+15
+00:01:13,450 --> 00:01:16,210
+want it to to interact with the Bible step.
+
+16
+00:01:16,840 --> 00:01:27,700
+However, Babel has defined a very clear step on how to actually create this type of tool inside of
+
+17
+00:01:27,940 --> 00:01:28,360
+BABBEL.
+
+18
+00:01:28,960 --> 00:01:33,130
+So it's kind of like you can see it as a standard interface for libraries to use.
+
+19
+00:01:33,640 --> 00:01:35,860
+That's what we installed the BABBEL plug in macros.
+
+20
+00:01:36,070 --> 00:01:38,070
+It's not actually made by BABBEL.
+
+21
+00:01:38,080 --> 00:01:41,500
+It's made by a great developer by the name of Clancy Dods.
+
+22
+00:01:41,950 --> 00:01:50,620
+But it's very popular because by installing just this plug in, if a third party library uses that interface
+
+23
+00:01:50,620 --> 00:01:57,040
+that is created by this BABBEL macro plug in, it doesn't actually require you to install any more additional
+
+24
+00:01:57,040 --> 00:01:57,880
+BABBEL plug ins.
+
+25
+00:01:58,180 --> 00:02:05,530
+So type like Saga has actually also integrated with this BABBEL plug in macro in order to create this
+
+26
+00:02:05,530 --> 00:02:13,000
+additional macro plugin and what it mainly does versus using type redux saga is it just simplifies the
+
+27
+00:02:13,000 --> 00:02:17,080
+final output of the actual actions that get created by the effects.
+
+28
+00:02:17,500 --> 00:02:22,630
+We won't really see those effects, but generally speaking, it's really helpful for us later on and
+
+29
+00:02:22,630 --> 00:02:23,620
+we'll talk about that later.
+
+30
+00:02:24,010 --> 00:02:27,550
+For now, what we want to use is this type redux saga macro.
+
+31
+00:02:27,910 --> 00:02:34,690
+So similarly, we're also going to update the other saga code we had so that we're also using the macro.
+
+32
+00:02:37,570 --> 00:02:41,380
+So now that we have switched over, let's talk about this.
+
+33
+00:02:41,620 --> 00:02:44,920
+Function star force you get snapshot from user on.
+
+34
+00:02:46,000 --> 00:02:53,710
+So first we notice that we have two type of course, both of these parameters that we're passing inside.
+
+35
+00:02:54,490 --> 00:03:01,540
+So the first thing we need to do is we need to import user from Firebase Auth, which is the type because
+
+36
+00:03:01,540 --> 00:03:03,430
+that's what our user auth is going to be.
+
+37
+00:03:09,090 --> 00:03:12,240
+And we can just cast this over onto the user on.
+
+38
+00:03:13,220 --> 00:03:17,240
+As for additional details, this comes from our Firebase Utils.
+
+39
+00:03:17,450 --> 00:03:23,060
+So here down here, we can just add in additional information, which is our type.
+
+40
+00:03:26,420 --> 00:03:26,990
+Moving on.
+
+41
+00:03:26,990 --> 00:03:30,580
+We know we need to switch this yield over to a yield star.
+
+42
+00:03:32,310 --> 00:03:40,770
+And looking inside here, what we notice is that I.D. and data, these are properties that may not exist
+
+43
+00:03:40,770 --> 00:03:43,080
+because the query documents snapshot.
+
+44
+00:03:43,470 --> 00:03:48,920
+At this point, we don't know if there is a guarantee that we will get this snapshot because create
+
+45
+00:03:48,930 --> 00:03:50,490
+user document from off.
+
+46
+00:03:50,490 --> 00:03:55,950
+If you remember, we could get null, which means that we'll return back void because then the function
+
+47
+00:03:55,950 --> 00:04:03,840
+exits or if it's not null and we do indeed get a proper user our object, then we will return a snapshot
+
+48
+00:04:03,840 --> 00:04:04,800
+for that object.
+
+49
+00:04:05,670 --> 00:04:12,180
+So as a result, what we need to do is we need to make sure that if this exists in the first place so
+
+50
+00:04:12,180 --> 00:04:18,900
+we can say if user snapshot, then we will actually try and yield out this value.
+
+51
+00:04:19,380 --> 00:04:25,620
+And there you see that this value is now clear, but this value now throws an error because it says
+
+52
+00:04:25,620 --> 00:04:30,090
+that we do not have an ID on the type of user data.
+
+53
+00:04:30,840 --> 00:04:34,590
+So sign in success is expecting a user data object.
+
+54
+00:04:36,380 --> 00:04:36,950
+Right here.
+
+55
+00:04:37,980 --> 00:04:44,850
+But the problem is that inside, when we actually append it again, we do append the ID from somewhere
+
+56
+00:04:44,850 --> 00:04:45,270
+else.
+
+57
+00:04:46,020 --> 00:04:52,050
+So what we can do here is we can actually extend this type to have the idea of string.
+
+58
+00:04:52,770 --> 00:04:58,670
+Because if you remember inside of our saga, what we were doing is that we were getting the ID from
+
+59
+00:04:58,680 --> 00:04:59,790
+user snapshot ID.
+
+60
+00:05:00,270 --> 00:05:05,340
+It doesn't actually belong on user snapshot dot data, which is what we have in Firebase.
+
+61
+00:05:05,610 --> 00:05:08,220
+We discussed this earlier when we first created this method.
+
+62
+00:05:08,730 --> 00:05:10,320
+We have to get the ID from the snapshot.
+
+63
+00:05:10,830 --> 00:05:15,840
+So now we have to, of course, extend what the actual action creator is expecting, because the ID
+
+64
+00:05:16,080 --> 00:05:20,670
+is not coming from the snapshot data, it's coming from the snapshot object itself.
+
+65
+00:05:21,240 --> 00:05:22,200
+So that's all we needed to do.
+
+66
+00:05:23,230 --> 00:05:23,530
+Next.
+
+67
+00:05:23,530 --> 00:05:27,730
+Of course, as with the air, we need to make sure to set this as an error.
+
+68
+00:05:28,880 --> 00:05:31,590
+Explicitly because our sign fail is expecting an error type.
+
+69
+00:05:31,640 --> 00:05:34,670
+And we know that when this throws an error, it's going to be an error type anyways.
+
+70
+00:05:35,870 --> 00:05:43,130
+And now moving on here again, the easiest way to convert all of these yields for them to work is just
+
+71
+00:05:43,130 --> 00:05:46,610
+to switch all of them over to yield star.
+
+72
+00:05:47,150 --> 00:05:48,380
+So let's first just do that.
+
+73
+00:05:49,770 --> 00:05:57,390
+Now moving back to our type area here, we see that we actually have an issue where missing a property,
+
+74
+00:05:57,990 --> 00:06:03,720
+the property that we're missing is actually the additional details being passed here as the second argument
+
+75
+00:06:03,720 --> 00:06:05,880
+inside of get snapshot from user.
+
+76
+00:06:06,300 --> 00:06:11,090
+But the third argument of call, the reason for this is because we did not make this optional.
+
+77
+00:06:11,100 --> 00:06:15,330
+So in order for us to fix this, we just have to define this as an optional parameter.
+
+78
+00:06:15,780 --> 00:06:22,380
+And now the call will fix as again, with this error, we just need to set this as error.
+
+79
+00:06:23,160 --> 00:06:27,120
+And now moving onwards, we can look at sign in with email.
+
+80
+00:06:28,120 --> 00:06:28,420
+Here.
+
+81
+00:06:28,420 --> 00:06:34,330
+What we have is that we know that Simon with email is getting called with a specific action.
+
+82
+00:06:34,960 --> 00:06:40,180
+The place where we call it is that whenever we take latest user action types, dot, email, sign and
+
+83
+00:06:40,180 --> 00:06:46,900
+start take land well past the action that matches into our actual saga.
+
+84
+00:06:47,380 --> 00:06:52,450
+So that means that this is actually a action that we are structuring.
+
+85
+00:06:52,780 --> 00:06:59,320
+The specific action that we are structuring here is in fact email sign in start.
+
+86
+00:07:00,010 --> 00:07:02,950
+So we just need to import that from our types.
+
+87
+00:07:04,120 --> 00:07:06,700
+This, I believe, is inside of our user action folder.
+
+88
+00:07:10,590 --> 00:07:17,220
+So we can just copy this and we can just say that this is what we are trying to do, structure all of
+
+89
+00:07:17,220 --> 00:07:22,140
+our values off of, and you'll notice we'll get email and password as strings because those are the
+
+90
+00:07:22,140 --> 00:07:23,550
+parameters on our payload.
+
+91
+00:07:24,770 --> 00:07:34,580
+Similarly inside of this sign in call here we again are getting back a snapshot from sign in with off
+
+92
+00:07:34,640 --> 00:07:36,350
+user and email and password.
+
+93
+00:07:36,920 --> 00:07:40,280
+As we can see, we get back a promise of the user credential.
+
+94
+00:07:40,550 --> 00:07:42,320
+We might also get back undefined.
+
+95
+00:07:42,920 --> 00:07:46,190
+The reason we get back undefined is because we might return early.
+
+96
+00:07:47,100 --> 00:07:48,990
+So this is why we might get undefined.
+
+97
+00:07:49,740 --> 00:07:54,150
+So what we need to do is we need to do a similar check as to what we had above here.
+
+98
+00:07:55,250 --> 00:07:59,630
+So what we'll say is that instead we're not getting back a user snapshot from here.
+
+99
+00:07:59,660 --> 00:08:02,150
+We're actually getting back a user credential.
+
+100
+00:08:03,080 --> 00:08:05,190
+But this credential, of course, might be undefined.
+
+101
+00:08:05,480 --> 00:08:06,710
+So we'll first do a check.
+
+102
+00:08:07,460 --> 00:08:09,110
+Is there a user credential?
+
+103
+00:08:09,590 --> 00:08:16,940
+If there is, then we will structure off the user from this user credential upon which we will yield
+
+104
+00:08:16,940 --> 00:08:25,330
+out a call in order to get the snapshot from user auth passing it onwards to our next saga.
+
+105
+00:08:27,480 --> 00:08:27,960
+As well.
+
+106
+00:08:27,960 --> 00:08:30,810
+We need to make sure that we are casting this air.
+
+107
+00:08:32,450 --> 00:08:33,080
+But there we go.
+
+108
+00:08:33,230 --> 00:08:33,770
+This is it.
+
+109
+00:08:34,370 --> 00:08:39,650
+We have now typed out roughly the basis for the majority of these sagas.
+
+110
+00:08:39,950 --> 00:08:44,390
+So what I want you to do is take some of these lessons that you've learned throughout this video and
+
+111
+00:08:44,390 --> 00:08:46,220
+try and type the rest.
+
+112
+00:08:46,850 --> 00:08:49,760
+I'll continue and we'll do it together in the next video.
+
+113
+00:08:49,760 --> 00:08:50,840
+But I want you to practice.
+
+114
+00:08:51,170 --> 00:08:53,060
+So try it out and I'll see you in the next video.

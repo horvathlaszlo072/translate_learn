@@ -1,0 +1,142 @@
+1
+00:00:00.04 --> 00:00:02.02
+- [Instructor] We have
+our try and catch blocks,
+
+2
+00:00:02.02 --> 00:00:04.08
+and the third optional
+part is the finally block.
+
+3
+00:00:04.08 --> 00:00:06.09
+This gets executed regardless if
+
+4
+00:00:06.09 --> 00:00:09.03
+the try catch block fails or passes.
+
+5
+00:00:09.03 --> 00:00:16.01
+For now let's add the finally
+block to our app.post.
+
+6
+00:00:16.01 --> 00:00:17.03
+There are some cases in which
+
+7
+00:00:17.03 --> 00:00:19.05
+you would want to use a finally block,
+
+8
+00:00:19.05 --> 00:00:22.00
+but in most cases you're probably just
+
+9
+00:00:22.00 --> 00:00:24.03
+going to end up using try and catch.
+
+10
+00:00:24.03 --> 00:00:27.06
+An example could be if you're
+submitting something to a log.
+
+11
+00:00:27.06 --> 00:00:40.06
+So, in our case, if we had a logger
+
+12
+00:00:40.06 --> 00:00:42.02
+we could add an entry that the
+
+13
+00:00:42.02 --> 00:00:44.09
+message post end point was called,
+
+14
+00:00:44.09 --> 00:00:48.08
+or if you're using a resource
+that you need to shut down,
+
+15
+00:00:48.08 --> 00:00:50.09
+for example, in the case of a database
+
+16
+00:00:50.09 --> 00:00:53.06
+you might open a
+connection, post something,
+
+17
+00:00:53.06 --> 00:00:56.06
+and then you might have to
+close it in the finally.
+
+18
+00:00:56.06 --> 00:00:57.09
+For now, just so we can explore the
+
+19
+00:00:57.09 --> 00:00:59.05
+concept of the finally block,
+
+20
+00:00:59.05 --> 00:01:02.06
+I'll change this into a console.log.
+
+21
+00:01:02.06 --> 00:01:04.03
+Then let's open up our Terminal.
+
+22
+00:01:04.03 --> 00:01:09.02
+And now let's try posting a new message.
+
+23
+00:01:09.02 --> 00:01:10.07
+Let's go look at our Terminal,
+
+24
+00:01:10.07 --> 00:01:12.00
+and we can see that we're getting our
+
+25
+00:01:12.00 --> 00:01:16.09
+message post called console.log.
+
+26
+00:01:16.09 --> 00:01:20.05
+Next, let's add a throw
+at the top of our try
+
+27
+00:01:20.05 --> 00:01:22.06
+to trigger our catch,
+
+28
+00:01:22.06 --> 00:01:26.04
+and make our try catch block fail.
+
+29
+00:01:26.04 --> 00:01:29.06
+And now let's try posting again.
+
+30
+00:01:29.06 --> 00:01:32.09
+We get our internal
+server error 500 response,
+
+31
+00:01:32.09 --> 00:01:34.06
+and back in our Terminal we can see that
+
+32
+00:01:34.06 --> 00:01:37.01
+the finally block is still executed,
+
+33
+00:01:37.01 --> 00:01:40.05
+and we're getting our message
+post called console.log.
+

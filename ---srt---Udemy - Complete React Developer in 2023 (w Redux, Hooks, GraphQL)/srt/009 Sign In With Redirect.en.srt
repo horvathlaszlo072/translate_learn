@@ -1,0 +1,695 @@
+1
+00:00:00,570 --> 00:00:01,650
+Welcome back, everyone.
+
+2
+00:00:02,220 --> 00:00:05,760
+In the last video, we learned about signing in with our Google pop up.
+
+3
+00:00:06,330 --> 00:00:11,160
+We also learned about how to store that Google user inside of our Fire Store database.
+
+4
+00:00:11,580 --> 00:00:16,830
+In this video, we are going to learn about other authentication methods that we get provided from Google.
+
+5
+00:00:17,220 --> 00:00:20,310
+Also through Firebase, though, which is signing in with the redirect.
+
+6
+00:00:20,640 --> 00:00:25,650
+And how now that we've set up all this code, it pretty much works for any authentication method.
+
+7
+00:00:26,370 --> 00:00:29,460
+So the first thing I want to do is I want to go into this collection.
+
+8
+00:00:29,820 --> 00:00:34,620
+You'll notice that I've already deleted my collection, and the reason for that is because I want to
+
+9
+00:00:34,620 --> 00:00:40,200
+make sure to show you that once the same user signs in, but with a different redirect method, it is
+
+10
+00:00:40,200 --> 00:00:44,500
+still going to generate and create the same document as well.
+
+11
+00:00:44,520 --> 00:00:48,990
+I've also removed the user from my authentication so you can do that yourself.
+
+12
+00:00:49,020 --> 00:00:50,190
+You can also just watch me do it.
+
+13
+00:00:50,460 --> 00:00:56,160
+Really, it's pretty simple, but now that I've deleted these, what I'm going to do is I want to go
+
+14
+00:00:56,160 --> 00:00:57,390
+back into this application.
+
+15
+00:00:58,350 --> 00:01:04,230
+And you'll notice that up here inside a Firebase utils, I also imported sign in with a redirect.
+
+16
+00:01:04,860 --> 00:01:05,940
+So now we're going to use it.
+
+17
+00:01:06,510 --> 00:01:13,170
+And it's very simple in order to use it instead of here where we export this constant sign in with Google,
+
+18
+00:01:13,170 --> 00:01:17,970
+I want to do sign in with Google Redirect.
+
+19
+00:01:19,220 --> 00:01:20,240
+And it's going to be the same.
+
+20
+00:01:20,480 --> 00:01:24,650
+It's just going to be an anonymous function that calls the sign in with.
+
+21
+00:01:25,790 --> 00:01:26,450
+Redirect.
+
+22
+00:01:27,290 --> 00:01:30,290
+And I'm going to parts of the north, and I'm also going to pass of the provider.
+
+23
+00:01:31,690 --> 00:01:32,320
+So here.
+
+24
+00:01:33,430 --> 00:01:35,270
+One one thing I want you to notice.
+
+25
+00:01:35,800 --> 00:01:40,900
+Notice how with this sign on with pop up and sign in with redirects, these are general and they taken
+
+26
+00:01:40,900 --> 00:01:42,520
+off and they take a provider.
+
+27
+00:01:42,880 --> 00:01:47,080
+I'm calling mine, sign in with Google, pop up and sign in with Google Redirect.
+
+28
+00:01:47,680 --> 00:01:52,660
+The reason for this, as I mentioned earlier, is because there are different providers you can have,
+
+29
+00:01:52,840 --> 00:01:56,500
+whether you want to sign in with Facebook, whether you want to sign in with GitHub.
+
+30
+00:01:56,770 --> 00:02:00,010
+These are all different providers that you can pull in.
+
+31
+00:02:00,460 --> 00:02:03,790
+So here, if we look, there's probably a Facebook auth provider.
+
+32
+00:02:04,120 --> 00:02:08,990
+And just like with Google Provider, you can generate a new provider and pass that in.
+
+33
+00:02:09,250 --> 00:02:11,890
+And now you have another signing method available.
+
+34
+00:02:12,100 --> 00:02:16,930
+This is why these providers are instantiate it as classes, as I mentioned before, whereas these apps
+
+35
+00:02:16,930 --> 00:02:17,470
+are not.
+
+36
+00:02:18,010 --> 00:02:23,620
+So this is an important thing to notice because here I'm essentially saying I know that this pop up
+
+37
+00:02:23,620 --> 00:02:28,450
+is going to be Google because the provider I'm generating for it is a Google provider.
+
+38
+00:02:28,690 --> 00:02:35,110
+If we want to be more explicit, we could say Google provider like so and we can modify it like so as
+
+39
+00:02:35,110 --> 00:02:35,380
+well.
+
+40
+00:02:36,100 --> 00:02:39,400
+This way, it's just more clear if we wanted our code to be like this.
+
+41
+00:02:39,730 --> 00:02:43,810
+So let's just do this just so that we understand, at the very least, that there's multiple different
+
+42
+00:02:43,810 --> 00:02:44,770
+providers available.
+
+43
+00:02:45,400 --> 00:02:48,400
+But once we have this set up, I want to show you this redirect now.
+
+44
+00:02:48,910 --> 00:02:51,410
+So I'm going to copy this sign in with Google Redirect.
+
+45
+00:02:51,460 --> 00:02:57,760
+I'm going to go into my sign in component, and I'm also going to import in sign in with Google Redirect.
+
+46
+00:02:58,850 --> 00:03:03,830
+And here I am going to do is I'm just going to duplicate this button code, and here I'm going to say
+
+47
+00:03:03,830 --> 00:03:06,110
+sign in with Google Redirect.
+
+48
+00:03:07,300 --> 00:03:10,790
+One thing, though, that we're going to have to change is this on click.
+
+49
+00:03:10,810 --> 00:03:12,760
+And we're going have to change it in more ways than one.
+
+50
+00:03:13,360 --> 00:03:14,440
+But to show you why?
+
+51
+00:03:14,470 --> 00:03:20,530
+What I'm going to do is I'm first going to just run a contest log Google Redirect user.
+
+52
+00:03:22,590 --> 00:03:24,660
+And let's get rid of this right here.
+
+53
+00:03:25,650 --> 00:03:30,870
+Instead of signing with Google pop up, I want to sign in with Google Redirect, and I'm just going
+
+54
+00:03:30,870 --> 00:03:32,460
+to console Dot Log here.
+
+55
+00:03:32,670 --> 00:03:33,270
+The user?
+
+56
+00:03:36,300 --> 00:03:40,020
+And then I'm going to put this into the on click so you can see what's going to happen.
+
+57
+00:03:40,500 --> 00:03:42,960
+So we're going to save this and we're going to go into our application.
+
+58
+00:03:44,570 --> 00:03:48,050
+Here, what we're going to do now is click this sign in with Google Redirect.
+
+59
+00:03:48,620 --> 00:03:55,730
+What happens is that this will now take us into this separate page where we're asked to sign in with
+
+60
+00:03:55,730 --> 00:03:58,760
+Google very similar to the pop up, except it's a separate page.
+
+61
+00:03:59,660 --> 00:04:00,800
+I'm going to click this user.
+
+62
+00:04:01,430 --> 00:04:04,540
+What's going to happen is it's going to take us back to our web site.
+
+63
+00:04:05,090 --> 00:04:08,450
+But what you'll notice is that my user is not getting calls a lot.
+
+64
+00:04:09,450 --> 00:04:19,860
+And if we go into this application, well, we will see is the user is indeed now inside of my authentication.
+
+65
+00:04:20,580 --> 00:04:28,050
+However, any code that subsequently followed actually signing in the user with the redirect is not
+
+66
+00:04:28,050 --> 00:04:29,130
+actually triggering.
+
+67
+00:04:29,820 --> 00:04:31,170
+Why is this happening?
+
+68
+00:04:31,770 --> 00:04:37,890
+Well, if you think about it, what did happen just now was that our website redirected us entirely
+
+69
+00:04:38,070 --> 00:04:39,840
+to a new separate domain.
+
+70
+00:04:40,230 --> 00:04:41,310
+When we came back.
+
+71
+00:04:42,290 --> 00:04:48,260
+Our website does not know that there was some previous instant of state of this website that we were
+
+72
+00:04:48,260 --> 00:04:50,960
+being paused for, the web doesn't work like that.
+
+73
+00:04:51,290 --> 00:04:57,380
+When you navigate away from a U R L, the website thinks, Oh OK, I'm going to get rid of everything.
+
+74
+00:04:57,380 --> 00:04:59,450
+I'm going to unmount the entire application.
+
+75
+00:04:59,690 --> 00:05:00,440
+We're done now.
+
+76
+00:05:00,830 --> 00:05:02,060
+Why would I hold on to it?
+
+77
+00:05:02,060 --> 00:05:03,320
+I don't know if you're going to come back or not.
+
+78
+00:05:04,160 --> 00:05:09,470
+So what happened is when we came back, we essentially re initialize our entire application from the
+
+79
+00:05:09,470 --> 00:05:15,080
+start from scratch, meaning that any previously held functions that we were perhaps in the middle of
+
+80
+00:05:15,410 --> 00:05:16,400
+doesn't matter anymore.
+
+81
+00:05:16,520 --> 00:05:18,050
+There's no way to continue from there.
+
+82
+00:05:18,500 --> 00:05:24,260
+For that reason, we need to use a different way in order to actually track this type of information.
+
+83
+00:05:24,980 --> 00:05:26,240
+So what we're going to do?
+
+84
+00:05:27,150 --> 00:05:33,180
+And I'll show you is that first we're going to need to import a few things we need to import use effect
+
+85
+00:05:33,180 --> 00:05:33,930
+from React.
+
+86
+00:05:35,080 --> 00:05:39,400
+We also need to import a method from Firebase off.
+
+87
+00:05:40,790 --> 00:05:44,130
+And this method is called Get Redirect a result.
+
+88
+00:05:44,150 --> 00:05:44,840
+This one right here.
+
+89
+00:05:46,170 --> 00:05:51,600
+And then inside of our utils, we're also need to make sure that we bring in off because that's what
+
+90
+00:05:51,600 --> 00:05:53,520
+the get redirect result is going to get.
+
+91
+00:05:55,960 --> 00:06:01,330
+Finally, what we need to do is I'm just going to instead of doing this log Google Redirect user.
+
+92
+00:06:01,720 --> 00:06:03,550
+I'm just going to directly call.
+
+93
+00:06:05,050 --> 00:06:10,300
+The sign in with Google Redirect, because as we know that function we had before was doing nothing
+
+94
+00:06:10,300 --> 00:06:17,230
+for us after this method internally called the sign in with redirect method already once that's called
+
+95
+00:06:17,710 --> 00:06:20,560
+the application, once we navigate away again on mounts.
+
+96
+00:06:21,250 --> 00:06:24,550
+So now what we're saying is that inside of this code?
+
+97
+00:06:25,570 --> 00:06:31,840
+I want to run a use effect, and I want to run this when this application mounts.
+
+98
+00:06:32,050 --> 00:06:34,450
+So when the sign in component mounts for the first time.
+
+99
+00:06:34,510 --> 00:06:41,350
+Remember when you pass a empty array, it means that run this function once when this component mounts
+
+100
+00:06:41,350 --> 00:06:42,070
+for the first time.
+
+101
+00:06:42,340 --> 00:06:48,790
+The function here being our callback inside, I want to call, get redirected result, get redirect
+
+102
+00:06:48,790 --> 00:06:49,150
+result.
+
+103
+00:06:49,150 --> 00:06:50,430
+I'm going to pass it and off.
+
+104
+00:06:50,440 --> 00:06:55,150
+And because this is an asynchronous method, getting the redirect result is asynchronous.
+
+105
+00:06:55,570 --> 00:06:57,760
+I'm going to say const response.
+
+106
+00:06:59,640 --> 00:07:03,690
+Is equal to a weight get redirect result.
+
+107
+00:07:04,950 --> 00:07:07,050
+And then I'm going to console.log the response.
+
+108
+00:07:08,800 --> 00:07:10,120
+And now I want to say this scope.
+
+109
+00:07:11,230 --> 00:07:15,520
+So what's happening now is that essentially we're going to sign in with the Google redirect.
+
+110
+00:07:16,240 --> 00:07:22,930
+It's then going to take us to that page where we're going to choose our Google user when we come back.
+
+111
+00:07:22,990 --> 00:07:27,820
+What's going to happen is our application is going to remount, meaning this signing component will
+
+112
+00:07:27,820 --> 00:07:33,460
+remount because we're coming back to the signing page where the signing component is on Mount.
+
+113
+00:07:33,760 --> 00:07:37,960
+This use effect will run this callback once on the mountain.
+
+114
+00:07:38,470 --> 00:07:42,700
+And then what's going to happen is that inside this callback, we're going to say, Hey, get me the
+
+115
+00:07:42,700 --> 00:07:46,450
+response for the redirect that just happened.
+
+116
+00:07:47,080 --> 00:07:50,200
+How do you know what redirect happen when it's based on the off?
+
+117
+00:07:50,680 --> 00:07:56,140
+And this is why this is a singleton, because this auth is helping us keep track of all these authentication
+
+118
+00:07:56,140 --> 00:07:58,690
+states that are happening throughout the application.
+
+119
+00:07:58,810 --> 00:08:05,050
+You can kind of see this as if some kind of authentication memory bank is tracking all of our authentication
+
+120
+00:08:05,050 --> 00:08:12,370
+states for our website and for our Firebase instance, regardless of where the website is going.
+
+121
+00:08:13,120 --> 00:08:14,860
+So this is why this is so useful.
+
+122
+00:08:15,070 --> 00:08:20,830
+So now that we have our code, if we go back to our application, we see that on initial mt. this value,
+
+123
+00:08:20,830 --> 00:08:23,800
+we get back from that gap redirect user is not.
+
+124
+00:08:24,280 --> 00:08:26,710
+The reason, of course, is because our application refreshed.
+
+125
+00:08:26,710 --> 00:08:28,390
+There was no redirect that happen.
+
+126
+00:08:28,540 --> 00:08:30,190
+So we expect this to be no, this is good.
+
+127
+00:08:30,790 --> 00:08:33,010
+But now if we click sign in with Google Redirect.
+
+128
+00:08:34,140 --> 00:08:36,750
+And inside, we choose our Google user.
+
+129
+00:08:38,040 --> 00:08:45,180
+Once we come back, our application remains silent, component amounts, runs are initial effect.
+
+130
+00:08:45,510 --> 00:08:49,440
+And here now we see we do indeed get back a response.
+
+131
+00:08:49,860 --> 00:08:53,880
+And on it in the response, we have our user with our UID.
+
+132
+00:08:54,300 --> 00:08:59,400
+And all the relevant information we need in order to create that profile document now.
+
+133
+00:08:59,760 --> 00:09:04,950
+So now that we have this, let's actually continue with what we had before, which is where we created
+
+134
+00:09:04,980 --> 00:09:06,360
+this user doc reference.
+
+135
+00:09:06,720 --> 00:09:10,930
+And here we can just say if response, meaning that it's not null.
+
+136
+00:09:11,010 --> 00:09:15,510
+And we get something back because we saw that there's a chance when we mount, we haven't come from
+
+137
+00:09:15,510 --> 00:09:16,020
+a redirect.
+
+138
+00:09:16,410 --> 00:09:17,070
+Maybe it's not.
+
+139
+00:09:17,550 --> 00:09:23,250
+Then we can say, Oh, now I want you to create this from response dot user.
+
+140
+00:09:25,670 --> 00:09:30,200
+So here now, we're doing the same thing we had before with just saying that if response is not null
+
+141
+00:09:30,200 --> 00:09:34,010
+and it is indeed an object, then I want you to generate the doc reference.
+
+142
+00:09:34,370 --> 00:09:36,440
+So if we come back now and we refresh.
+
+143
+00:09:37,770 --> 00:09:43,290
+We notice now if we sign in with Google Redirect and then we click our user.
+
+144
+00:09:44,160 --> 00:09:45,750
+We sign in with our user.
+
+145
+00:09:48,590 --> 00:09:49,430
+We come back here.
+
+146
+00:09:50,030 --> 00:09:50,900
+Everything mounts.
+
+147
+00:09:51,410 --> 00:09:56,090
+Of course, we don't log anything, but if we go to our Firebase console, we open our database.
+
+148
+00:09:57,370 --> 00:09:59,080
+We should see our user.
+
+149
+00:10:00,480 --> 00:10:01,050
+So there we go.
+
+150
+00:10:01,530 --> 00:10:03,510
+Everything here is working as expected.
+
+151
+00:10:04,140 --> 00:10:09,270
+So this is just to show you a different way that you can utilize different assign and methods.
+
+152
+00:10:09,540 --> 00:10:14,100
+We have seen it with Google Redirect sign in with pop up and also in Firebase Utils.
+
+153
+00:10:14,100 --> 00:10:19,170
+The main thing I wanted you to know was that there are multiple ways that you can provide different
+
+154
+00:10:19,170 --> 00:10:21,540
+providers, Google authors, just one of them.
+
+155
+00:10:21,810 --> 00:10:26,130
+And this is what I was saying earlier when I mentioned that there's a reason why this one is a class
+
+156
+00:10:26,130 --> 00:10:28,050
+and these others are instances.
+
+157
+00:10:28,170 --> 00:10:29,580
+We just saw the reason why.
+
+158
+00:10:30,030 --> 00:10:36,180
+As we saw with this get redirect result, the authors are singleton because it keeps track of the authentication
+
+159
+00:10:36,180 --> 00:10:41,100
+state of the entire application as the user signs in through different means and methods.
+
+160
+00:10:41,250 --> 00:10:46,350
+We need some way to be certain of what it is that the user has done, especially in the framework of
+
+161
+00:10:46,350 --> 00:10:51,420
+this browser, where whenever you navigate away from your website, you are breaking the instance of
+
+162
+00:10:51,420 --> 00:10:52,140
+the website now.
+
+163
+00:10:52,410 --> 00:10:57,240
+So this offers the only way we can keep track of whether or not users are properly authenticating or
+
+164
+00:10:57,240 --> 00:10:57,480
+not.
+
+165
+00:10:57,720 --> 00:11:00,840
+And that's what's great about this service of Firebase.
+
+166
+00:11:01,320 --> 00:11:05,820
+As long as you follow the patterns that it provide, it kind of circumvents a lot of these different
+
+167
+00:11:05,820 --> 00:11:06,720
+issues that are present.
+
+168
+00:11:07,380 --> 00:11:11,490
+But here, now that we've set this up, I'm going to get rid of this because we don't really need it
+
+169
+00:11:11,490 --> 00:11:12,030
+anymore.
+
+170
+00:11:12,480 --> 00:11:16,580
+It was really just to show you this pattern, and I know there's a lot of complexity in this pattern.
+
+171
+00:11:16,590 --> 00:11:20,310
+We learn about effects setting things up, but hopefully a the logic all made sense for you.
+
+172
+00:11:21,030 --> 00:11:25,200
+But I'm just going to get rid of this because I just want to keep the sign in method.
+
+173
+00:11:25,500 --> 00:11:33,900
+This is really just kind of a sidebar for us to learn more about Firebase methods as well as the authentication.
+
+174
+00:11:35,370 --> 00:11:38,670
+So now that we're back to this, let's continue with the next lesson.

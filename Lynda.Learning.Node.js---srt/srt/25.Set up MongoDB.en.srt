@@ -1,0 +1,164 @@
+1
+00:00:00.05 --> 00:00:01.07
+- [Instructor] Let's begin by setting up
+
+2
+00:00:01.07 --> 00:00:03.06
+the MongoDB environment.
+
+3
+00:00:03.06 --> 00:00:06.01
+We could download and run MongoDB locally,
+
+4
+00:00:06.01 --> 00:00:08.07
+but then when it comes
+time to publishing the app,
+
+5
+00:00:08.07 --> 00:00:10.02
+we will need to host it separately
+
+6
+00:00:10.02 --> 00:00:12.03
+or find a third-party host for it.
+
+7
+00:00:12.03 --> 00:00:14.05
+Might as well do that now to save a step.
+
+8
+00:00:14.05 --> 00:00:18.04
+We will use a service that
+offers free hosting called mLab.
+
+9
+00:00:18.04 --> 00:00:21.00
+Please head over to mlab.com,
+
+10
+00:00:21.00 --> 00:00:23.04
+then please create an account or log in.
+
+11
+00:00:23.04 --> 00:00:27.01
+Once you've logged in, if you
+have any previous databases,
+
+12
+00:00:27.01 --> 00:00:29.03
+you can see them listed here.
+
+13
+00:00:29.03 --> 00:00:32.06
+Otherwise, let's select Create new.
+
+14
+00:00:32.06 --> 00:00:36.07
+I'll leave Amazon selected
+and then select Sandbox.
+
+15
+00:00:36.07 --> 00:00:38.08
+But you can use any other
+option that you like,
+
+16
+00:00:38.08 --> 00:00:41.04
+as most of them offer free services.
+
+17
+00:00:41.04 --> 00:00:43.06
+Then I'll select Continue.
+
+18
+00:00:43.06 --> 00:00:47.03
+In my case, I'll use US East
+
+19
+00:00:47.03 --> 00:00:48.08
+and I'll hit Continue again.
+
+20
+00:00:48.08 --> 00:00:52.08
+And I'll call my database learning-node,
+
+21
+00:00:52.08 --> 00:00:54.08
+but you can call yours whatever you like.
+
+22
+00:00:54.08 --> 00:00:57.01
+Let's confirm, make sure that it's free,
+
+23
+00:00:57.01 --> 00:00:58.08
+and then we can submit the order.
+
+24
+00:00:58.08 --> 00:01:01.09
+Within a few seconds,
+the database is created.
+
+25
+00:01:01.09 --> 00:01:03.06
+Let's click on it.
+
+26
+00:01:03.06 --> 00:01:06.03
+The first thing we'll need
+to do is create a new user
+
+27
+00:01:06.03 --> 00:01:07.08
+since that's what we'll use
+
+28
+00:01:07.08 --> 00:01:09.08
+to access the database from our app.
+
+29
+00:01:09.08 --> 00:01:11.04
+So let's select User.
+
+30
+00:01:11.04 --> 00:01:15.02
+Then let's click the Add
+database user button.
+
+31
+00:01:15.02 --> 00:01:18.02
+Since this is just for learning
+purposes and not production,
+
+32
+00:01:18.02 --> 00:01:23.05
+for the username and
+password, I'll just use user.
+
+33
+00:01:23.05 --> 00:01:27.00
+And then I'll hit Create.
+
+34
+00:01:27.00 --> 00:01:29.01
+We can see our user is now listed.
+
+35
+00:01:29.01 --> 00:01:31.08
+At this point, we're ready
+to get Node connected
+
+36
+00:01:31.08 --> 00:01:33.02
+to our new MongoDB.
+
+37
+00:01:33.02 --> 00:01:36.06
+To do that, we will need to
+use a package called Mongoose.
+
+38
+00:01:36.06 --> 00:01:38.06
+Let's look at that next.
+

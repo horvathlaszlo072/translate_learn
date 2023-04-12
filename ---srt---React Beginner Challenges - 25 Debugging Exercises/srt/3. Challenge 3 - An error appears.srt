@@ -1,0 +1,271 @@
+1
+00:00:00,790 --> 00:00:05,710
+All right, so four, challenge three, it's very similar to challenge two in that the app is just crashing
+
+2
+00:00:05,710 --> 00:00:07,880
+and we have to fix the bug now.
+
+3
+00:00:07,960 --> 00:00:11,590
+Once again, this is made easy by the fact that we get that error right here.
+
+4
+00:00:11,950 --> 00:00:15,170
+And we could just read this error to understand what's going on.
+
+5
+00:00:15,580 --> 00:00:18,430
+And as you could see here, the error is pretty descriptive.
+
+6
+00:00:18,430 --> 00:00:24,340
+So it's telling us that the objects are not valid as react child's react children.
+
+7
+00:00:24,760 --> 00:00:31,690
+And it's it's given it says it's found this object with these with this keys, if you meant to render
+
+8
+00:00:31,690 --> 00:00:33,780
+a collection of children, use an array instead.
+
+9
+00:00:33,790 --> 00:00:35,650
+So I wouldn't say this.
+
+10
+00:00:35,890 --> 00:00:39,280
+This really tells you what is going wrong in our app.
+
+11
+00:00:39,280 --> 00:00:44,530
+It looks like what we're trying to do is render this name of this person in our app.
+
+12
+00:00:45,520 --> 00:00:50,550
+And we're failing at doing that, so the error is is not really telling us how to fix that, right.
+
+13
+00:00:50,560 --> 00:00:52,060
+It's just kind of telling us what's wrong.
+
+14
+00:00:52,540 --> 00:00:57,370
+So as you can see what you know, what we could do is we could read this error.
+
+15
+00:00:57,380 --> 00:00:59,140
+We could see, you know, we could we could read it.
+
+16
+00:00:59,140 --> 00:01:00,780
+We could try and understand it ourselves.
+
+17
+00:01:01,510 --> 00:01:04,300
+But first, let's just make sure that it's actually happening in our app.
+
+18
+00:01:04,300 --> 00:01:04,510
+Right.
+
+19
+00:01:04,520 --> 00:01:10,920
+So trace that stack, trace down and we see it's happening at Applegate's line six.
+
+20
+00:01:11,290 --> 00:01:16,390
+So and you could see here, it's also Happe is being rendered from this file here.
+
+21
+00:01:16,660 --> 00:01:20,350
+So you can you can understand that this is happening in our app.
+
+22
+00:01:20,350 --> 00:01:22,620
+So it's happening in Apgar's.
+
+23
+00:01:22,630 --> 00:01:23,880
+This is Apgar's.
+
+24
+00:01:23,890 --> 00:01:24,150
+Right.
+
+25
+00:01:24,520 --> 00:01:25,210
+So you can see here.
+
+26
+00:01:26,170 --> 00:01:30,280
+So this is our this is our code and it is happening on line six.
+
+27
+00:01:30,730 --> 00:01:37,480
+So that's how you would find this exact line that's causing that issue now to dive in deeper.
+
+28
+00:01:37,510 --> 00:01:39,940
+This is definitely a react error.
+
+29
+00:01:39,940 --> 00:01:46,480
+So if I go into the console, as you could see, we are getting the error coming from so tracing it
+
+30
+00:01:46,480 --> 00:01:47,590
+down well.
+
+31
+00:01:47,590 --> 00:01:53,530
+So the error is being caused by this, by our app, but it's being raised in from this app.
+
+32
+00:01:53,530 --> 00:01:58,330
+So it's it's actually throwing that error from react Dom.
+
+33
+00:01:58,690 --> 00:02:00,280
+So you can make that assumption.
+
+34
+00:02:00,280 --> 00:02:05,860
+If you've never seen react before, you've never used react apps before, you'd be able to understand
+
+35
+00:02:05,860 --> 00:02:09,360
+as an advanced user that this is coming from React Dobb.
+
+36
+00:02:09,670 --> 00:02:12,520
+So this is how you're an expert in Web development.
+
+37
+00:02:12,700 --> 00:02:17,890
+You still could figure this out just by understanding, OK, this is I'm tracing this into the react
+
+38
+00:02:17,890 --> 00:02:18,640
+on library.
+
+39
+00:02:19,030 --> 00:02:22,990
+Now, you could do you could so sort of debug this further.
+
+40
+00:02:22,990 --> 00:02:27,490
+You could you could search for this, throw on an invalid object type.
+
+41
+00:02:27,490 --> 00:02:33,220
+But what's going to really help you, it's going to be more obvious is if you just Google the this exact
+
+42
+00:02:33,220 --> 00:02:33,520
+error.
+
+43
+00:02:33,520 --> 00:02:33,780
+Right.
+
+44
+00:02:33,790 --> 00:02:37,150
+So if I Google objects are not valid as react child.
+
+45
+00:02:37,660 --> 00:02:41,380
+OK, so I've Googled that error message and I see here this first snippet.
+
+46
+00:02:41,560 --> 00:02:46,150
+Seeing an objects are not valid as Riak child might mean that a few different things are going on.
+
+47
+00:02:46,150 --> 00:02:52,540
+It could be because the items are being rendered in the JFK element are objects instead of primitives.
+
+48
+00:02:53,020 --> 00:02:57,130
+So we're understanding that it's an object and not a primitive.
+
+49
+00:02:57,140 --> 00:02:59,890
+So if you're not familiar with a primitive, you could also Google that.
+
+50
+00:03:00,220 --> 00:03:03,160
+But basically you probably know the solution at this point.
+
+51
+00:03:03,850 --> 00:03:04,420
+Primitive.
+
+52
+00:03:04,420 --> 00:03:06,280
+It should be either a string or a number.
+
+53
+00:03:06,490 --> 00:03:07,720
+Right, instead of an object.
+
+54
+00:03:07,720 --> 00:03:14,530
+So using this, we were able to Google this error and figure out that you shouldn't be passing objects
+
+55
+00:03:14,530 --> 00:03:14,920
+in your.
+
+56
+00:03:15,940 --> 00:03:18,100
+So at this point, you should know what JSF is.
+
+57
+00:03:18,100 --> 00:03:20,290
+If you don't, you should definitely look that up.
+
+58
+00:03:20,650 --> 00:03:25,450
+But basically the key thing here is that we know what we know what the issue is now.
+
+59
+00:03:25,660 --> 00:03:27,640
+We shouldn't be passing in objects in here.
+
+60
+00:03:27,880 --> 00:03:33,790
+And so we have to look for where is the primitive object, which is where where is the primitive variable
+
+61
+00:03:33,790 --> 00:03:34,030
+here?
+
+62
+00:03:34,030 --> 00:03:36,130
+And that's name text.
+
+63
+00:03:36,790 --> 00:03:39,340
+So if I open up that code sandbox here, I can just.
+
+64
+00:03:40,240 --> 00:03:46,420
+Better see this issue, so if I go here and I just say I could structure this instead, so I could say
+
+65
+00:03:47,170 --> 00:03:49,750
+you could structure text off of that object.
+
+66
+00:03:50,890 --> 00:03:58,030
+And put that here and then that way we can fix the issue, so another thing I could have done was if
+
+67
+00:03:58,030 --> 00:04:03,100
+I roll this back, I could have said name text to get that string.
+
+68
+00:04:05,030 --> 00:04:05,860
+So there we go.

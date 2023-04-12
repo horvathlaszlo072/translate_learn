@@ -1,0 +1,265 @@
+1
+00:00:00.05 --> 00:00:02.06
+- [Narrator] Now let's
+dive into some code.
+
+2
+00:00:02.06 --> 00:00:05.05
+First, we need to
+configure our application.
+
+3
+00:00:05.05 --> 00:00:09.07
+We will use annotative Java
+classes for our configuration.
+
+4
+00:00:09.07 --> 00:00:12.03
+Let's create a package named config.
+
+5
+00:00:12.03 --> 00:00:15.04
+Let's right click on the root package,
+
+6
+00:00:15.04 --> 00:00:19.02
+mouse over new, and select package.
+
+7
+00:00:19.02 --> 00:00:21.05
+And then we're going to name it config.
+
+8
+00:00:21.05 --> 00:00:23.08
+Next, click finish.
+
+9
+00:00:23.08 --> 00:00:26.05
+Let's right click on the config package,
+
+10
+00:00:26.05 --> 00:00:30.04
+mouse over new, and create a new class.
+
+11
+00:00:30.04 --> 00:00:33.05
+Let's name the class ApiConfig.
+
+12
+00:00:33.05 --> 00:00:35.08
+Then, click finish.
+
+13
+00:00:35.08 --> 00:00:38.04
+First, let's add a
+configuration annotation
+
+14
+00:00:38.04 --> 00:00:43.02
+so that Spring knows to use
+this class for configuration.
+
+15
+00:00:43.02 --> 00:00:45.08
+Let's left click on the error
+
+16
+00:00:45.08 --> 00:00:50.03
+and import the Spring framework
+configuration annotation.
+
+17
+00:00:50.03 --> 00:00:53.04
+Next, we will add two beans to this class,
+
+18
+00:00:53.04 --> 00:00:57.01
+an ObjectMapper and an ObjectWriter.
+
+19
+00:00:57.01 --> 00:01:00.06
+The ObjectMapper will
+define how JSON strings
+
+20
+00:01:00.06 --> 00:01:04.00
+in the request body are
+deserialized from requests
+
+21
+00:01:04.00 --> 00:01:08.02
+in POJOs or Plain Old Java Objects,
+
+22
+00:01:08.02 --> 00:01:10.09
+which we use to model our data.
+
+23
+00:01:10.09 --> 00:01:13.09
+The ObjectWriter will
+define how we serialize
+
+24
+00:01:13.09 --> 00:01:18.05
+our Java objects into a JSON
+string in the response body.
+
+25
+00:01:18.05 --> 00:01:21.01
+Let's create a new public method,
+
+26
+00:01:21.01 --> 00:01:29.00
+ObjectMapper, that returns
+a ObjectMapper object.
+
+27
+00:01:29.00 --> 00:01:33.04
+Next, left click on the error and import
+
+28
+00:01:33.04 --> 00:01:35.09
+the Jackson ObjectMapper.
+
+29
+00:01:35.09 --> 00:01:39.08
+Then let's add a bean
+annotation to that method.
+
+30
+00:01:39.08 --> 00:01:43.05
+Click on the error, and
+import the Spring framework
+
+31
+00:01:43.05 --> 00:01:45.03
+bean annotation.
+
+32
+00:01:45.03 --> 00:01:47.09
+Next, let's create another public method
+
+33
+00:01:47.09 --> 00:01:50.06
+that takes in that ObjectMapper bean
+
+34
+00:01:50.06 --> 00:01:52.06
+as a parameter.
+
+35
+00:01:52.06 --> 00:01:55.08
+This method will return a ObjectWriter.
+
+36
+00:01:55.08 --> 00:01:58.04
+It will use the ObjectMapper to create
+
+37
+00:01:58.04 --> 00:02:02.04
+a Default PrettyPrinter,
+which will output a JSON
+
+38
+00:02:02.04 --> 00:02:04.05
+in Human Readable Format.
+
+39
+00:02:04.05 --> 00:02:06.09
+Let's click on the error, and import
+
+40
+00:02:06.09 --> 00:02:09.03
+the Jackson ObjectWriter.
+
+41
+00:02:09.03 --> 00:02:12.01
+Next, let's add another bean annotation.
+
+42
+00:02:12.01 --> 00:02:15.08
+Next, let's jump to our
+Spring Boot Application Class.
+
+43
+00:02:15.08 --> 00:02:18.02
+We are going to add two annotations,
+
+44
+00:02:18.02 --> 00:02:23.02
+enable auto configuration
+and component scan.
+
+45
+00:02:23.02 --> 00:02:26.05
+The annotation, enable auto configuration
+
+46
+00:02:26.05 --> 00:02:28.07
+will intelligently configure beans
+
+47
+00:02:28.07 --> 00:02:30.08
+that you are likely to need in your
+
+48
+00:02:30.08 --> 00:02:33.05
+Spring application context.
+
+49
+00:02:33.05 --> 00:02:35.05
+The annotation, component scan,
+
+50
+00:02:35.05 --> 00:02:37.07
+will enable automatic scanning
+
+51
+00:02:37.07 --> 00:02:40.02
+for configuration classes to wire up
+
+52
+00:02:40.02 --> 00:02:43.06
+in your Spring application context.
+
+53
+00:02:43.06 --> 00:02:46.01
+Left click on the error and import
+
+54
+00:02:46.01 --> 00:02:49.09
+the enable auto configuration annotation.
+
+55
+00:02:49.09 --> 00:02:53.02
+Now let's add the
+component scan annotation.
+
+56
+00:02:53.02 --> 00:02:54.07
+Click on the error,
+
+57
+00:02:54.07 --> 00:02:57.08
+and import the component scan annotation.
+
+58
+00:02:57.08 --> 00:03:01.07
+Let's save our changes.
+
+59
+00:03:01.07 --> 00:03:04.01
+Right click on the project root,
+
+60
+00:03:04.01 --> 00:03:07.05
+go to run as Spring Boot App.
+
+61
+00:03:07.05 --> 00:03:08.05
+Okay, great.
+
+62
+00:03:08.05 --> 00:03:11.02
+So our application started up correctly.
+

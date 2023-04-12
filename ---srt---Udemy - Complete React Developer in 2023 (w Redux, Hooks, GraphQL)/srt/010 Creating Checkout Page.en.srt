@@ -1,0 +1,443 @@
+1
+00:00:00,600 --> 00:00:06,030
+In this video, we are going to build out our checkout page, so here to set up a checkout page.
+
+2
+00:00:06,060 --> 00:00:07,020
+Let's look at what we need.
+
+3
+00:00:07,650 --> 00:00:12,270
+We know that we need a new route that will point to a checkout component.
+
+4
+00:00:12,690 --> 00:00:16,260
+And then inside of this component, we need access to our car items.
+
+5
+00:00:16,470 --> 00:00:20,040
+So we need to connect this checkout page and our cart context.
+
+6
+00:00:20,670 --> 00:00:23,820
+Then we need to display the items inside of our cart.
+
+7
+00:00:24,060 --> 00:00:26,610
+And we want to be able to modify their quantities.
+
+8
+00:00:27,150 --> 00:00:32,910
+We also want to be able to remove these items and in course, also reflect an accurate total.
+
+9
+00:00:33,720 --> 00:00:39,840
+So let's build out this connection and the components and then start thinking about how to create the
+
+10
+00:00:39,840 --> 00:00:40,980
+actual functionality.
+
+11
+00:00:41,970 --> 00:00:48,480
+So back inside of our application, I am going to build a new folder in the roots and I'm going to call
+
+12
+00:00:48,480 --> 00:00:49,200
+this checkout.
+
+13
+00:00:50,040 --> 00:00:56,700
+As for the checkout component itself, I'm going to make the checkout styles that source and also I
+
+14
+00:00:56,700 --> 00:01:01,530
+want to make checkout dot component Dot GSX.
+
+15
+00:01:02,950 --> 00:01:06,940
+Here, as we do before, we want to import in our styles page.
+
+16
+00:01:07,660 --> 00:01:09,280
+So let's bring that in.
+
+17
+00:01:10,720 --> 00:01:18,100
+Declare checkout is equal to a functional component that for now just returns a div and inside of that
+
+18
+00:01:18,100 --> 00:01:23,050
+div, I just want to make and one that says I am the checkout page.
+
+19
+00:01:23,830 --> 00:01:25,630
+I'm going to export this by default.
+
+20
+00:01:29,520 --> 00:01:33,600
+And then what I'm going to do is go back into our OPG's.
+
+21
+00:01:34,750 --> 00:01:37,360
+Import in the appropriate file.
+
+22
+00:01:40,710 --> 00:01:43,770
+And then I'm going to create a new route.
+
+23
+00:01:45,540 --> 00:01:46,320
+For check out.
+
+24
+00:01:48,180 --> 00:01:48,930
+And like so.
+
+25
+00:01:50,670 --> 00:01:57,180
+And then, of course, we need to make some kind of connection between what we have to this page and
+
+26
+00:01:57,180 --> 00:01:59,490
+as we know, inside of our heart dropdown.
+
+27
+00:02:00,950 --> 00:02:03,620
+We have this button that takes us to the checkout.
+
+28
+00:02:04,400 --> 00:02:10,550
+So how do we circumvent this button so that when you click the button, it navigates us to the checkout
+
+29
+00:02:10,550 --> 00:02:10,820
+route?
+
+30
+00:02:11,720 --> 00:02:20,120
+Well, there's actually a hook that we get from React Router Dot, and this one is called Use Navigate
+
+31
+00:02:20,840 --> 00:02:23,220
+from React Router Dom.
+
+32
+00:02:24,430 --> 00:02:28,720
+Use Navigate is a hook that allows us to get a navigate function.
+
+33
+00:02:31,720 --> 00:02:38,470
+Like, so when you call it this navigate function will allow us to actually go to checkout.
+
+34
+00:02:38,890 --> 00:02:42,970
+So here if I say Konst, go to checkout handler.
+
+35
+00:02:44,320 --> 00:02:49,660
+This is just a function that calls navigate to check out like so.
+
+36
+00:02:51,070 --> 00:02:51,670
+And now.
+
+37
+00:02:52,760 --> 00:02:58,370
+If I just attach this to the on click like so and then we go back to our application.
+
+38
+00:02:59,060 --> 00:03:04,880
+And now if we open our cards and we click Go to checkout, we see our checkout page.
+
+39
+00:03:05,570 --> 00:03:09,890
+So now what I want to do is I want to get these items into my checkout page.
+
+40
+00:03:10,550 --> 00:03:11,450
+So how do we do that?
+
+41
+00:03:12,440 --> 00:03:18,800
+So in order for us to list out our car items, let's think about what we need to do inside of our checkout
+
+42
+00:03:18,800 --> 00:03:19,220
+component.
+
+43
+00:03:20,060 --> 00:03:27,770
+The first thing is we probably want to import in the car context as well as the use context hook so
+
+44
+00:03:27,770 --> 00:03:29,240
+that we can access the values.
+
+45
+00:03:30,110 --> 00:03:37,490
+So I'm going to first import in used context from React and then I want to import in the cart context.
+
+46
+00:03:41,990 --> 00:03:44,180
+So let's go up up again.
+
+47
+00:03:45,160 --> 00:03:47,500
+To our contacts, car contact.
+
+48
+00:03:49,350 --> 00:03:49,950
+And then.
+
+49
+00:03:51,100 --> 00:03:52,510
+I'm going to structure off.
+
+50
+00:03:53,290 --> 00:03:54,130
+Car items.
+
+51
+00:03:56,070 --> 00:03:59,880
+Which is equal to use context passing in car context.
+
+52
+00:04:01,230 --> 00:04:07,830
+As for the carte items, let's just make a div that will contain them and we will just map through them.
+
+53
+00:04:11,450 --> 00:04:20,600
+And we get the car item, and for the item, let's just return an H2 that has the item name.
+
+54
+00:04:21,290 --> 00:04:24,440
+Actually, no, let's display the quantity as well, because that's what we need to be modifying.
+
+55
+00:04:24,860 --> 00:04:26,330
+So let's be more explicit.
+
+56
+00:04:26,810 --> 00:04:27,980
+Let's turn back.
+
+57
+00:04:30,250 --> 00:04:31,150
+A div.
+
+58
+00:04:32,380 --> 00:04:33,910
+And inside of the div.
+
+59
+00:04:36,190 --> 00:04:40,570
+Well, contain the H2 that contains both the name.
+
+60
+00:04:42,050 --> 00:04:45,140
+As well as the actual.
+
+61
+00:04:46,290 --> 00:04:46,890
+Quantity.
+
+62
+00:04:48,710 --> 00:04:50,390
+So we needs these structure, these values off.
+
+63
+00:04:51,420 --> 00:04:52,230
+From the cart item.
+
+64
+00:04:54,560 --> 00:04:55,700
+So let's do concert.
+
+65
+00:04:56,710 --> 00:05:00,010
+I'd name and quantity.
+
+66
+00:05:00,760 --> 00:05:01,990
+From our car item.
+
+67
+00:05:05,830 --> 00:05:09,760
+And then for the div, we need to give the key of the ID.
+
+68
+00:05:11,670 --> 00:05:18,600
+So just a very simple, basic HTML structure that will show us that we are indeed getting the correct
+
+69
+00:05:18,600 --> 00:05:21,480
+card item now back inside of our application.
+
+70
+00:05:22,080 --> 00:05:24,390
+We see that we have our car items.
+
+71
+00:05:24,840 --> 00:05:25,710
+We have a title.
+
+72
+00:05:26,130 --> 00:05:27,270
+We have our quantity.
+
+73
+00:05:27,810 --> 00:05:33,630
+And now what we need to do is figure out if we can create some functionality that will allow us to set
+
+74
+00:05:33,630 --> 00:05:35,250
+the left and right values.
+
+75
+00:05:35,940 --> 00:05:41,310
+So what I'm going to do is I'm going to first come back into our cart drop dropdown.
+
+76
+00:05:42,500 --> 00:05:47,390
+And into our checkout component from our checkout component.
+
+77
+00:05:47,900 --> 00:05:54,370
+I want to just create some left button and let's just call it something obvious like decrement.
+
+78
+00:05:56,440 --> 00:05:59,530
+And let's also add another one called Increment.
+
+79
+00:06:01,960 --> 00:06:08,230
+So what I want to do is when I click increment, I want to actually increase the quantity.
+
+80
+00:06:09,100 --> 00:06:10,240
+So how do we do this?
+
+81
+00:06:11,260 --> 00:06:16,370
+Well, what we know is that we have the cart item currently with the cart item.
+
+82
+00:06:16,390 --> 00:06:20,020
+I want to be able to increase the quantity of this cart item.
+
+83
+00:06:20,410 --> 00:06:23,170
+Otherwise, I want to decrease it.
+
+84
+00:06:23,680 --> 00:06:29,500
+So as we know, we already have that functionality built in, which is our add item to cart.
+
+85
+00:06:30,700 --> 00:06:37,990
+This ad item, toccata, the way that it works is that it looks inside and it takes a product to add.
+
+86
+00:06:38,620 --> 00:06:40,190
+But what are we doing with this product?
+
+87
+00:06:40,210 --> 00:06:44,950
+And we check to see if this ID matches the Item ID?
+
+88
+00:06:45,760 --> 00:06:50,620
+If it does, then we just increase the quantity on that car item.
+
+89
+00:06:51,550 --> 00:06:53,620
+Otherwise, we spread it through.
+
+90
+00:06:54,830 --> 00:07:00,980
+But the thing to keep in mind is that we will never reach this part of the code because we are always
+
+91
+00:07:00,980 --> 00:07:03,740
+going to make sure that this existing car exists.
+
+92
+00:07:03,980 --> 00:07:06,630
+Of course it does because it's already in the car item.
+
+93
+00:07:06,650 --> 00:07:07,520
+It's cyclical.
+
+94
+00:07:08,330 --> 00:07:14,730
+So for this reason, all we need to do then is just take our ad item to cart and just attach it as an
+
+95
+00:07:14,750 --> 00:07:15,770
+on click here.
+
+96
+00:07:17,460 --> 00:07:17,970
+Like so.
+
+97
+00:07:19,220 --> 00:07:23,450
+And then what we passed to this item to cart is just our cart item.
+
+98
+00:07:24,200 --> 00:07:30,170
+If we save this and now we come back, we see that it's a little bit unclear.
+
+99
+00:07:30,200 --> 00:07:34,550
+Let me just add this in a way where we can see it from each other.
+
+100
+00:07:35,000 --> 00:07:37,070
+I'm just going to add a break.
+
+101
+00:07:40,160 --> 00:07:47,510
+A break element, which will give us some space between the different spans.
+
+102
+00:07:48,660 --> 00:07:49,920
+And now if I click increment.
+
+103
+00:07:50,580 --> 00:07:52,080
+There we go, we see it increasing.
+
+104
+00:07:53,360 --> 00:07:54,520
+Exactly as it should.
+
+105
+00:07:55,800 --> 00:07:58,260
+So now what we have to do is do the decrement.
+
+106
+00:07:58,950 --> 00:08:04,290
+So my challenge to you, if you haven't already tried it out is figure out how to create this decrement
+
+107
+00:08:04,290 --> 00:08:04,710
+counter.
+
+108
+00:08:04,830 --> 00:08:09,810
+It's going to be similar to increment, but a couple of things you want to consider is that when you
+
+109
+00:08:09,810 --> 00:08:11,790
+decrement, you want to decrease this number.
+
+110
+00:08:12,150 --> 00:08:15,420
+And if you hit zero, you want to remove the item from the cart.
+
+111
+00:08:15,960 --> 00:08:17,850
+So try that out and let's do it together.

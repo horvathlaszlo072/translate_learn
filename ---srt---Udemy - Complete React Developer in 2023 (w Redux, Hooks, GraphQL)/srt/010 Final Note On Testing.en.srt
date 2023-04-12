@@ -1,0 +1,151 @@
+1
+00:00:01,110 --> 00:00:06,330
+Oh, Andre, more slides, can we just get to coding and I know what you're thinking.
+
+2
+00:00:06,390 --> 00:00:12,810
+I know the easiest thing to do is for me to just go to my sublime text and start coding so you can follow
+
+3
+00:00:12,810 --> 00:00:13,260
+along.
+
+4
+00:00:13,590 --> 00:00:21,450
+But I really want this course to build the foundation because I can do all the coding in the world.
+
+5
+00:00:21,810 --> 00:00:27,780
+But if you have these fundamentals and we talk about them first and as you code along with me or you
+
+6
+00:00:27,780 --> 00:00:35,010
+do the exercises, you truly understand them from the basics, then you're going to retain a lot more
+
+7
+00:00:35,010 --> 00:00:35,670
+information.
+
+8
+00:00:36,030 --> 00:00:37,310
+So bear with me.
+
+9
+00:00:37,740 --> 00:00:42,160
+This is going to help you develop into a better developer.
+
+10
+00:00:42,330 --> 00:00:43,440
+This is the last slide.
+
+11
+00:00:43,440 --> 00:00:47,610
+Before we get into some coding, I just want to show you one last part.
+
+12
+00:00:48,460 --> 00:00:53,590
+And that is our unified picture of testing now that we've talked about everything.
+
+13
+00:00:54,770 --> 00:00:59,930
+We're going to be writing tests for our Robo Friends app, and if you remember, we have our main file
+
+14
+00:00:59,930 --> 00:01:00,280
+app.
+
+15
+00:01:01,820 --> 00:01:08,750
+And the way we're going to write test for it and other subcomponents and maybe even reducers and other
+
+16
+00:01:08,750 --> 00:01:11,120
+parts of the redox environment.
+
+17
+00:01:11,720 --> 00:01:16,150
+Well, we're simply going to do the dot test dot js.
+
+18
+00:01:17,250 --> 00:01:22,350
+Which, with our create react type set up, is going to say that this is a test file.
+
+19
+00:01:22,560 --> 00:01:23,850
+Let me run it through.
+
+20
+00:01:24,090 --> 00:01:29,010
+Just keep in mind that tests are meant for development.
+
+21
+00:01:30,170 --> 00:01:34,970
+You're never going to ship your test libraries or your test code into production.
+
+22
+00:01:36,400 --> 00:01:42,670
+Most of the time, you're saving these libraries with the flag, dash, dash, save Deve and AMPM because
+
+23
+00:01:43,090 --> 00:01:46,270
+they're only used for development in development.
+
+24
+00:01:46,600 --> 00:01:53,110
+As you're writing your tests, as you're writing your code, you have something like just running in
+
+25
+00:01:53,110 --> 00:02:00,070
+the background that has the scaffolding, the assertion library, the test runner, the spies, Moxon
+
+26
+00:02:00,070 --> 00:02:10,690
+Stobbs, that we need to read the tests, run the tests, see which tests pass or fail, and also output
+
+27
+00:02:10,690 --> 00:02:14,950
+a code coverage so that we can work on our project.
+
+28
+00:02:15,040 --> 00:02:17,680
+And when it's ready, it passes all the tests.
+
+29
+00:02:17,830 --> 00:02:19,780
+It has all the nice tests that we need.
+
+30
+00:02:20,140 --> 00:02:26,920
+We can then send it to production without all this stuff that production does need.
+
+31
+00:02:27,730 --> 00:02:30,940
+And remember that we're running these tests.
+
+32
+00:02:31,330 --> 00:02:39,400
+We can run them in the dorm, we can run them in a headless browser, or we can just run them in a J-Star,
+
+33
+00:02:39,670 --> 00:02:41,140
+which we are going to do.
+
+34
+00:02:41,410 --> 00:02:46,060
+We're going to use Geston because it's the fastest and the simplest to run our tests.
+
+35
+00:02:47,130 --> 00:02:47,680
+All right.
+
+36
+00:02:48,240 --> 00:02:49,890
+Time to get to Cotting.
+
+37
+00:02:50,550 --> 00:02:51,630
+It's going to be a lot of fun.
+
+38
+00:02:52,290 --> 00:02:53,460
+I'll see you in the next video.

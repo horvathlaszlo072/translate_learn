@@ -1,0 +1,411 @@
+1
+00:00:00,390 --> 00:00:01,350
+Welcome back, everyone.
+
+2
+00:00:02,070 --> 00:00:08,760
+In this lesson, we're going to talk about how to get arrays of information from somewhere that is not
+
+3
+00:00:08,760 --> 00:00:10,890
+just hardcoded on our website.
+
+4
+00:00:11,460 --> 00:00:13,920
+So let's think about applications for a second.
+
+5
+00:00:15,200 --> 00:00:20,120
+Right now, this array is hardcoded on our React application.
+
+6
+00:00:21,150 --> 00:00:27,480
+The only way that this code can be updated is if we update this directly using some JavaScript code
+
+7
+00:00:27,480 --> 00:00:30,300
+as we saw or if we manually update it through typing.
+
+8
+00:00:31,420 --> 00:00:37,000
+Almost all applications don't do this when it comes to any kind of dynamic information.
+
+9
+00:00:37,390 --> 00:00:39,610
+This is dynamic because these values can change.
+
+10
+00:00:39,610 --> 00:00:41,740
+We could get new users, we could get less users.
+
+11
+00:00:41,980 --> 00:00:49,030
+You can imagine on Facebook they get millions of new users or users changing their data every single
+
+12
+00:00:49,030 --> 00:00:49,330
+day.
+
+13
+00:00:50,050 --> 00:00:55,180
+It would be completely unrealistic to have that all hardcoded inside of their recode.
+
+14
+00:00:55,810 --> 00:01:01,090
+In fact, what they have to do is they have all of that user data living in a database somewhere and
+
+15
+00:01:01,090 --> 00:01:08,140
+then whenever their application needs it, they will then ask that database for that information and
+
+16
+00:01:08,140 --> 00:01:10,300
+then use it to populate their website.
+
+17
+00:01:10,750 --> 00:01:13,480
+Right now, what we're doing is we are hard coding in the website.
+
+18
+00:01:13,630 --> 00:01:15,670
+We're not actually calling it from any database.
+
+19
+00:01:15,880 --> 00:01:17,180
+And that's what we want to change.
+
+20
+00:01:17,710 --> 00:01:22,990
+But before we go into that, we need to talk a little bit about single page applications and why it
+
+21
+00:01:22,990 --> 00:01:29,020
+is that a react application as a single page application makes this whole process way easier.
+
+22
+00:01:30,600 --> 00:01:37,920
+So let's break down a little bit of how websites work before and after SBA's SBA stand for single page
+
+23
+00:01:37,920 --> 00:01:43,530
+applications and use frameworks kind of like react and angular and view to help build them.
+
+24
+00:01:43,800 --> 00:01:46,180
+So what we're building is a spa.
+
+25
+00:01:46,230 --> 00:01:49,830
+Whenever we work with React now, there are, of course, some nuances.
+
+26
+00:01:49,830 --> 00:01:54,480
+Once you start doing things like server side rendering or even static page rendering when you do things
+
+27
+00:01:54,480 --> 00:01:57,630
+like Gatsby, which is a react framework for static pages.
+
+28
+00:01:58,020 --> 00:02:03,720
+But as far as our application goes and this course with React, we're just focused on building our space.
+
+29
+00:02:04,440 --> 00:02:09,530
+But before we understand space, we need to talk a little bit about the world before us space.
+
+30
+00:02:09,900 --> 00:02:11,160
+So let's say you have a website.
+
+31
+00:02:12,130 --> 00:02:19,150
+In this particular case, let's imagine you are navigating to zero to Mastery I o, which is our website,
+
+32
+00:02:19,960 --> 00:02:26,200
+when you navigate there, what happens is that you actually need some code and in a non spa environment,
+
+33
+00:02:26,350 --> 00:02:28,630
+your browser doesn't actually know how to build this website.
+
+34
+00:02:28,840 --> 00:02:33,550
+So what it has to do, it has to ask for the code from some kind of server.
+
+35
+00:02:33,880 --> 00:02:39,470
+Now the server is going to host all of the HTML, CSS and JavaScript required to build your entire website.
+
+36
+00:02:39,910 --> 00:02:43,700
+So your browser is going to go, Oh, I need to access zero to mastery.
+
+37
+00:02:43,930 --> 00:02:45,360
+I o what do I need?
+
+38
+00:02:45,370 --> 00:02:46,660
+I need the home page.
+
+39
+00:02:46,960 --> 00:02:51,670
+So you're going to make a request to the server and say, Can you give me the code for the home page?
+
+40
+00:02:52,120 --> 00:02:59,140
+So the server is going to say, OK, send you back the required HMRC s s and JavaScript needed to build
+
+41
+00:02:59,140 --> 00:03:04,960
+the home page and then your browser takes that and actually creates the UI and the page that the user
+
+42
+00:03:04,960 --> 00:03:06,100
+is trying to access.
+
+43
+00:03:06,760 --> 00:03:11,980
+Similarly, what happens if you try to navigate now to zero to mastery IO slash react?
+
+44
+00:03:12,280 --> 00:03:13,810
+Well, this is a different page entirely.
+
+45
+00:03:14,020 --> 00:03:17,620
+So the code that we had before for the home page, not all of it is relevant.
+
+46
+00:03:17,800 --> 00:03:22,180
+So what again, what's going to happen is the browser is going to make another request to the same server
+
+47
+00:03:22,180 --> 00:03:26,320
+and say, Hey, someone's trying to access the React page, can you give me the code for that?
+
+48
+00:03:26,320 --> 00:03:33,220
+And the server says OK, and it will give off the required HTML, CSS and JavaScript files for the React
+
+49
+00:03:33,220 --> 00:03:36,220
+page, which your browser then uses and builds that page.
+
+50
+00:03:36,790 --> 00:03:41,500
+This is very familiar if you were using websites pre 2010.
+
+51
+00:03:41,800 --> 00:03:46,000
+Nowadays, there's very few websites that kind of have this interaction, but you might remember before
+
+52
+00:03:46,000 --> 00:03:52,330
+that there was a brief white page when you are navigating between pages on a website, which was when
+
+53
+00:03:52,480 --> 00:03:57,340
+your browser was actually making a request on the network to a server and getting that code, which
+
+54
+00:03:57,340 --> 00:04:01,450
+is why there was that white page, because essentially that's the time it takes for the network request
+
+55
+00:04:01,450 --> 00:04:05,080
+to ask and then receive and then build the web page.
+
+56
+00:04:05,650 --> 00:04:08,830
+Now, in an s.p.a environment, this is completely different.
+
+57
+00:04:09,770 --> 00:04:15,380
+Similarly, you're still going to ask the browser, Hey, I want to access zero to mastery dial, so
+
+58
+00:04:15,380 --> 00:04:20,210
+for the very first time, there will still be a request to the XHTML server because at this point,
+
+59
+00:04:20,210 --> 00:04:22,550
+your browser doesn't have the code for XHTML.
+
+60
+00:04:22,580 --> 00:04:24,640
+Oh, so it's going to make that request.
+
+61
+00:04:24,660 --> 00:04:31,070
+The server and the server is going to send back the same thing, some html, some yes, and some JavaScript.
+
+62
+00:04:31,370 --> 00:04:36,470
+But now remember, our web site is an ISP, meaning that it was built with react.
+
+63
+00:04:36,830 --> 00:04:42,950
+So this JavaScript code actually contains the React code, as well as the React library and all the
+
+64
+00:04:42,960 --> 00:04:45,800
+stuff that we wrote in order to build the website.
+
+65
+00:04:46,130 --> 00:04:51,230
+So now what's going to happen is that our web site, our browser, is going to take that code, build
+
+66
+00:04:51,230 --> 00:04:52,310
+out that home page.
+
+67
+00:04:52,490 --> 00:04:55,340
+And now, just like before, everything here is the same.
+
+68
+00:04:55,370 --> 00:04:59,210
+You have your home page, everything is built with the code that we got from the server.
+
+69
+00:04:59,720 --> 00:05:03,020
+But now, when you navigate to XHTML, I'll slash react.
+
+70
+00:05:03,560 --> 00:05:10,280
+We still have all of that JavaScript and REAC code and now react isn't need to go and ask the server
+
+71
+00:05:10,280 --> 00:05:11,060
+for more code.
+
+72
+00:05:11,210 --> 00:05:18,980
+Instead, using this real code, it itself is going to build the CFSAN HTML pages required for the React
+
+73
+00:05:18,980 --> 00:05:19,580
+page.
+
+74
+00:05:19,910 --> 00:05:21,100
+And this is the big difference.
+
+75
+00:05:21,110 --> 00:05:26,240
+We no longer need to go to the server for the code whenever we navigate and change pages.
+
+76
+00:05:26,570 --> 00:05:32,000
+Anything that you see on a web site that is an spa or built in react, what's happening is that components
+
+77
+00:05:32,000 --> 00:05:32,900
+are getting stripped off.
+
+78
+00:05:32,930 --> 00:05:33,730
+They're getting put on.
+
+79
+00:05:33,740 --> 00:05:34,670
+They're getting created.
+
+80
+00:05:34,670 --> 00:05:35,570
+They're getting destroyed.
+
+81
+00:05:35,780 --> 00:05:39,150
+All those processes are happening live on the browser.
+
+82
+00:05:39,170 --> 00:05:45,740
+Once we get that initial bundle of code that contains our React code and this is what makes react so
+
+83
+00:05:45,740 --> 00:05:51,890
+powerful, because now we no longer have any more of those white pages and there's no more additional
+
+84
+00:05:51,890 --> 00:05:55,220
+requests the server for page related code.
+
+85
+00:05:55,910 --> 00:06:01,730
+This is not entirely true in the future once we start doing really, really customize optimizations.
+
+86
+00:06:02,060 --> 00:06:06,650
+But for now and the majority of space, that's the main difference you need to think about.
+
+87
+00:06:06,950 --> 00:06:10,340
+Any of those optimizations are further down the line way further down the line.
+
+88
+00:06:10,370 --> 00:06:11,600
+You don't have to worry about that right now.
+
+89
+00:06:11,990 --> 00:06:16,610
+Right now, all you need to know is that through nzrpa, we're able to get the entire bundle of our
+
+90
+00:06:16,610 --> 00:06:19,190
+React code and our website code in one shot.
+
+91
+00:06:20,200 --> 00:06:24,190
+So let's talk about what we are trying to do with our monstrous Rolodex.
+
+92
+00:06:24,820 --> 00:06:30,490
+As I mentioned, we already are writing some of this code required to build the monster's Rolodex website.
+
+93
+00:06:31,150 --> 00:06:32,920
+We don't really have any pages at this point.
+
+94
+00:06:32,920 --> 00:06:35,740
+We have our home page, which is going to display all those monsters.
+
+95
+00:06:36,070 --> 00:06:40,000
+And then we're going to really just sift through them using a search bar.
+
+96
+00:06:40,720 --> 00:06:46,210
+But right now, we don't actually have all those monsters because we're just hard coding them.
+
+97
+00:06:46,570 --> 00:06:53,140
+So what we need to do is we need to access those users from some kind of user API.
+
+98
+00:06:53,530 --> 00:06:59,860
+We're going to ask an external API, which is going to give us back a list of those users that we will
+
+99
+00:06:59,860 --> 00:07:06,070
+then use in order to build out the list so that code that we have hardcoded instead, we want to get
+
+100
+00:07:06,070 --> 00:07:07,330
+that from an API somewhere.
+
+101
+00:07:07,900 --> 00:07:12,490
+Not only do we have to get it from an API somewhere, we have to learn how to actually bring it into
+
+102
+00:07:12,490 --> 00:07:14,860
+our React application so that we can use it.
+
+103
+00:07:15,610 --> 00:07:18,250
+So that's what we're going to cover in the next video, and I'll see you there.

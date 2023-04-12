@@ -1,0 +1,471 @@
+1
+00:00:00,210 --> 00:00:02,350
+OK, async await.
+
+2
+00:00:03,060 --> 00:00:09,000
+This is one of the most exciting features that developers have been waiting for.
+
+3
+00:00:09,390 --> 00:00:19,380
+It is a way to write functions that contain promise oriented or asynchronous code that looks synchronous.
+
+4
+00:00:20,280 --> 00:00:22,200
+So what do I mean by this?
+
+5
+00:00:22,740 --> 00:00:28,170
+Well, when we think back on our last lesson on promises and fetch.
+
+6
+00:00:29,100 --> 00:00:36,330
+We know that with our fetch call, if we were to write it with the style of promises that we would fetch
+
+7
+00:00:36,330 --> 00:00:37,020
+our users.
+
+8
+00:00:38,770 --> 00:00:44,830
+And then we would get the response, we would call response that Jason, which gives us back a promise
+
+9
+00:00:44,830 --> 00:00:50,560
+which we then pass to our then which now finally has our array of users.
+
+10
+00:00:51,750 --> 00:00:52,740
+We would then.
+
+11
+00:00:54,010 --> 00:01:00,620
+Cast our first use are constant with the first user object in our array.
+
+12
+00:01:01,610 --> 00:01:09,430
+We blog it out so we see what our first user looks like and then we return Thach to this link, right,
+
+13
+00:01:09,500 --> 00:01:17,110
+which has posts, except we set your parameter where the user ID is equal to our first user ID.
+
+14
+00:01:17,870 --> 00:01:24,350
+So we want all of the posts related to our first user and then we get back a response.
+
+15
+00:01:24,830 --> 00:01:26,480
+We converted to Jason again.
+
+16
+00:01:26,510 --> 00:01:33,400
+Right, which then we pass through into our next then and then we console log the final posts.
+
+17
+00:01:33,770 --> 00:01:35,810
+So it's a lot of things happening here.
+
+18
+00:01:36,750 --> 00:01:42,930
+And what this actually looks like for us, if we copy this, we go back to our browser.
+
+19
+00:01:45,730 --> 00:01:47,200
+And then we paste this in.
+
+20
+00:01:48,790 --> 00:01:53,830
+We see that what we get is our first user, which gets logged.
+
+21
+00:01:54,770 --> 00:02:00,980
+And then we log our final posts, right, so this is pretty much stuff that we're familiar with when
+
+22
+00:02:00,980 --> 00:02:03,410
+it came down to writing our code.
+
+23
+00:02:05,380 --> 00:02:13,300
+Now, if we wanted to do this in async, await the way that we would do it is we would cast a function
+
+24
+00:02:13,990 --> 00:02:17,080
+called my async function, right.
+
+25
+00:02:17,680 --> 00:02:21,880
+And we make it an async function by writing the async keyword.
+
+26
+00:02:22,600 --> 00:02:26,200
+And then we essentially write a function anyway after.
+
+27
+00:02:26,590 --> 00:02:26,870
+Right.
+
+28
+00:02:27,310 --> 00:02:34,180
+So by saying async and then our function declaration, JavaScript knows that we want to make an async
+
+29
+00:02:34,180 --> 00:02:34,600
+function.
+
+30
+00:02:35,530 --> 00:02:42,160
+Now, by using this async keyword within our async function, we're now suddenly allowed to use the
+
+31
+00:02:42,180 --> 00:02:43,390
+await keyword.
+
+32
+00:02:43,940 --> 00:02:52,750
+And what a weight does is it pauses the functions execution until what is being awaited is completed
+
+33
+00:02:52,750 --> 00:02:54,200
+and comes back with a value.
+
+34
+00:02:54,460 --> 00:02:55,700
+So what do I mean by this?
+
+35
+00:02:56,290 --> 00:03:03,070
+Well, if we were to say a wait and then we want to fetch this value that we had above here, any code
+
+36
+00:03:03,070 --> 00:03:08,460
+down here would wait until this fetch comes back with a value.
+
+37
+00:03:09,190 --> 00:03:15,400
+And the way that we would use that value is we're actually able to cast it to a constant because that's
+
+38
+00:03:15,400 --> 00:03:16,630
+what a weight does for us.
+
+39
+00:03:16,900 --> 00:03:23,560
+A weight takes that resolve, promise value, and then sets it to the courts that we declare it equal
+
+40
+00:03:23,560 --> 00:03:23,770
+to.
+
+41
+00:03:24,220 --> 00:03:27,760
+So if I say this is my users response.
+
+42
+00:03:28,850 --> 00:03:37,880
+Right now, I have that same response object cast to this CONSED user, and any code following was waiting
+
+43
+00:03:37,910 --> 00:03:39,890
+until this FETCH completed.
+
+44
+00:03:40,820 --> 00:03:48,230
+Now we do this again with our actual users, but we have to wait for our users response to be converted
+
+45
+00:03:48,230 --> 00:03:53,690
+to JSON because this is also an asynchronous method of converting it to Jason.
+
+46
+00:03:54,850 --> 00:04:00,280
+So this method returns as a promise, right, which resolves with the final JSON value of our users,
+
+47
+00:04:00,310 --> 00:04:07,980
+which we cast to our CONSED users, and now we can say CONSED first user equals users at zero.
+
+48
+00:04:08,020 --> 00:04:08,340
+Right.
+
+49
+00:04:08,710 --> 00:04:11,200
+Let's console log this first user as well.
+
+50
+00:04:12,010 --> 00:04:13,240
+Actually, let's just change it up.
+
+51
+00:04:13,240 --> 00:04:15,730
+And instead of our first user, it will say second user.
+
+52
+00:04:15,970 --> 00:04:16,340
+Right.
+
+53
+00:04:16,990 --> 00:04:18,310
+So we'll use our second user.
+
+54
+00:04:19,610 --> 00:04:21,320
+And then we want our.
+
+55
+00:04:23,030 --> 00:04:24,590
+Posts response.
+
+56
+00:04:26,490 --> 00:04:28,940
+Equals to our fetch, right?
+
+57
+00:04:30,770 --> 00:04:31,460
+Like so.
+
+58
+00:04:32,670 --> 00:04:35,370
+Except we want to use our new second user.
+
+59
+00:04:38,860 --> 00:04:42,100
+But our fetch, we want to await for it.
+
+60
+00:04:43,770 --> 00:04:48,620
+And then we want our posts to be away of our posts response.
+
+61
+00:04:48,960 --> 00:04:49,770
+Jason.
+
+62
+00:04:51,170 --> 00:04:53,960
+And now finally, we can't log our posts.
+
+63
+00:04:55,510 --> 00:05:02,320
+By doing this, this code reads more like Synchronoss code because we see, oh, there's just a variable
+
+64
+00:05:02,320 --> 00:05:08,740
+declaration, it's just waiting for our asynchronous requests to complete.
+
+65
+00:05:08,740 --> 00:05:14,920
+And then they cast their values right there, resolve, promise, values to our contests, respectively.
+
+66
+00:05:15,500 --> 00:05:21,160
+So as we see, this actually looks a lot like normal synchronous code that we were.
+
+67
+00:05:21,160 --> 00:05:21,530
+Right.
+
+68
+00:05:22,420 --> 00:05:24,010
+Now, let's see if this works.
+
+69
+00:05:24,460 --> 00:05:25,510
+So let's copy this.
+
+70
+00:05:27,770 --> 00:05:29,300
+And then let's just.
+
+71
+00:05:30,220 --> 00:05:33,910
+Paste it in and let's call my async function.
+
+72
+00:05:36,300 --> 00:05:41,580
+And we see there's our second user and there's our posts related to our second user.
+
+73
+00:05:43,310 --> 00:05:52,310
+So this is what a single way allows us to do, so both methods are valid when it comes to tackling this
+
+74
+00:05:52,310 --> 00:05:54,220
+kind of a problem.
+
+75
+00:05:55,400 --> 00:06:03,680
+Specifically, what we were trying to solve was that we had code that was dependent on an asynchronous
+
+76
+00:06:03,830 --> 00:06:08,690
+code above it right to complete before it could actually run.
+
+77
+00:06:09,970 --> 00:06:10,840
+What do I mean?
+
+78
+00:06:11,290 --> 00:06:18,670
+Well, we were not able to fetch our second users posts without having a second user in the first place
+
+79
+00:06:19,030 --> 00:06:24,670
+and getting our second user was dependent on fetching a list of users first.
+
+80
+00:06:24,670 --> 00:06:24,940
+Right.
+
+81
+00:06:25,360 --> 00:06:27,010
+This code is asynchronous.
+
+82
+00:06:27,040 --> 00:06:29,340
+We did not know when that would complete.
+
+83
+00:06:29,920 --> 00:06:35,380
+This could have taken half a second or could have taken three seconds, depending on multiple factors.
+
+84
+00:06:36,220 --> 00:06:42,190
+Now, both are valid because this structure of promise chaining is just like a weight.
+
+85
+00:06:43,060 --> 00:06:49,390
+Each then is waiting for the previous ones, then callback to complete.
+
+86
+00:06:50,080 --> 00:06:58,600
+So this return of this promise, this whole chain is waiting for this then block to complete and this
+
+87
+00:06:58,600 --> 00:07:01,540
+fetch to complete resolve or reject.
+
+88
+00:07:02,540 --> 00:07:09,950
+But with async away, we're able to write it in such a way that it resembles more of the synchronous
+
+89
+00:07:09,950 --> 00:07:14,960
+code that we're used to writing because we're able to cast these constants.
+
+90
+00:07:15,410 --> 00:07:20,000
+Right, which are just equal to a weighted values of these function method calls.
+
+91
+00:07:20,420 --> 00:07:21,620
+So in a way.
+
+92
+00:07:22,950 --> 00:07:24,160
+You can do both.
+
+93
+00:07:24,180 --> 00:07:28,060
+It doesn't matter, it's just which one is more readable.
+
+94
+00:07:28,110 --> 00:07:30,160
+Which one is more reusable.
+
+95
+00:07:30,690 --> 00:07:36,840
+Now, one thing I have not yet talked about with a single way is error handling.
+
+96
+00:07:37,910 --> 00:07:47,540
+We know with our promise chain that if we do a catch right here, we are able to handle our errors.
+
+97
+00:07:48,290 --> 00:07:55,250
+If an error occurs at any of these thens, this catch will catch the error for all of them.
+
+98
+00:07:55,250 --> 00:07:55,590
+Right.
+
+99
+00:07:55,610 --> 00:07:58,780
+If any of these reject this catch will be there for it.
+
+100
+00:07:59,480 --> 00:08:01,850
+How do we do that with an async or wavefunction?
+
+101
+00:08:03,380 --> 00:08:11,350
+Well, what we have to do is use a JavaScript, try catch block and what that looks like is just this.
+
+102
+00:08:11,780 --> 00:08:18,720
+We have a try keyword with a block of code and then there's a catch key word with our error and then
+
+103
+00:08:18,720 --> 00:08:19,490
+the second block.
+
+104
+00:08:20,360 --> 00:08:27,080
+So we put the code that we want to like we want to run inside of our tribe lock and then in the catch,
+
+105
+00:08:27,560 --> 00:08:34,010
+if any error occurs in this tribe, block any promises, reject any of the stuff with our fetch that
+
+106
+00:08:34,010 --> 00:08:34,940
+fails, right.
+
+107
+00:08:35,420 --> 00:08:40,060
+Then this catch code will run and that error is what will get passed in here.
+
+108
+00:08:40,700 --> 00:08:43,220
+So if we wanted to console log.
+
+109
+00:08:44,590 --> 00:08:55,150
+There was an error, we are able to handle our errors this way, so if we were to try this and let's
+
+110
+00:08:55,150 --> 00:08:58,330
+say we just mistype this string, right?
+
+111
+00:09:00,880 --> 00:09:02,740
+Now, if I call my function.
+
+112
+00:09:05,280 --> 00:09:08,500
+We will see that our air got thrown.
+
+113
+00:09:09,300 --> 00:09:13,380
+So while this code ran, it's because up until this point, this code was all valid.
+
+114
+00:09:13,380 --> 00:09:20,760
+But the moment that this error occurred at this fetch it through the air, it paused the execution.
+
+115
+00:09:21,150 --> 00:09:22,200
+It doesn't keep going.
+
+116
+00:09:22,890 --> 00:09:24,300
+And then it just throws.
+
+117
+00:09:24,870 --> 00:09:27,740
+So this is how async away it works.
+
+118
+00:09:28,230 --> 00:09:34,350
+And just like that, you now know the two ways of handling asynchronous events.

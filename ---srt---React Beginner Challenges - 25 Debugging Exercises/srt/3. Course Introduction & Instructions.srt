@@ -1,0 +1,167 @@
+1
+00:00:00,420 --> 00:00:06,310
+Welcome to React Beginner Challenges, 25 debugging exercises from React School.
+
+2
+00:00:06,900 --> 00:00:07,890
+Welcome to the course.
+
+3
+00:00:08,100 --> 00:00:09,150
+Thank you for enrolling.
+
+4
+00:00:09,180 --> 00:00:14,520
+I'm so excited to welcome you to this course and I just want to say that I'm here to help you succeed.
+
+5
+00:00:14,530 --> 00:00:17,250
+So feel free to ask questions on any of these lectures.
+
+6
+00:00:18,650 --> 00:00:23,990
+First of all, I'd like to just go over the course structure so the course is divided into two sections,
+
+7
+00:00:23,990 --> 00:00:28,370
+the debugging strategy section and the React Challenges section.
+
+8
+00:00:28,820 --> 00:00:34,850
+The first section debugging strategy just goes over a lot of the tools and techniques that I've learned
+
+9
+00:00:34,850 --> 00:00:41,060
+over the years to help you understand how I debug in a professional environment.
+
+10
+00:00:41,420 --> 00:00:46,730
+And then the second section is the REACT challenges, which is 25 challenges that allow you to use those
+
+11
+00:00:46,730 --> 00:00:48,500
+skills that you learned in the first section.
+
+12
+00:00:48,950 --> 00:00:50,990
+So you don't have to follow this course in order.
+
+13
+00:00:51,020 --> 00:00:56,560
+It's not like my other courses where we have a big application that we build throughout the whole course.
+
+14
+00:00:56,570 --> 00:01:01,960
+Instead, this time around, we're just going to each lecture is really more its own thing.
+
+15
+00:01:01,970 --> 00:01:07,370
+So there's there's the first section where each each lecture is more or less a different tool or technique
+
+16
+00:01:07,580 --> 00:01:09,770
+that you could use to help yourself debugging.
+
+17
+00:01:10,010 --> 00:01:14,480
+And then the next section, the challenges section, each challenge is its own thing.
+
+18
+00:01:14,480 --> 00:01:16,760
+So you could really skip around if you want to.
+
+19
+00:01:16,760 --> 00:01:21,440
+But I advise you to just go in order just because they kind of build on each other.
+
+20
+00:01:21,440 --> 00:01:24,500
+But they also at the same time are their own standalone videos.
+
+21
+00:01:25,850 --> 00:01:31,760
+So first, to unlock the challenges, you're going to want to go to react at school, slash challenges,
+
+22
+00:01:31,770 --> 00:01:36,860
+slash, unlock, and this is really going to unlock the course content on the website.
+
+23
+00:01:36,890 --> 00:01:40,430
+So this content is private, so try not to share this link.
+
+24
+00:01:40,850 --> 00:01:46,370
+You can access the challenges here, react at school, slash challenges, slash one slash to all the
+
+25
+00:01:46,370 --> 00:01:47,420
+way up to 25.
+
+26
+00:01:47,690 --> 00:01:52,730
+And so the website, you can use that to see the code sandbox link as well.
+
+27
+00:01:52,730 --> 00:01:54,110
+And so, yeah.
+
+28
+00:01:54,110 --> 00:02:00,440
+So each challenge, it's kind of like a brief prompt about roughly a bug and then the code sandbox with
+
+29
+00:02:00,440 --> 00:02:06,740
+the app that you need to debug and your objective there is to really understand the complaint and to
+
+30
+00:02:06,740 --> 00:02:08,770
+return the application to a functioning state.
+
+31
+00:02:09,870 --> 00:02:14,700
+Always open the code sandbox in a new window, so I show you how to do that in every one of the challenge
+
+32
+00:02:14,700 --> 00:02:20,040
+videos, so don't really write a lot of code in the embedded sandbox because it can get kind of buggy
+
+33
+00:02:20,700 --> 00:02:22,380
+and sometimes you won't be writing code.
+
+34
+00:02:22,910 --> 00:02:30,510
+Most of the time you will be, but often a couple of times you will end up needing to debug the browser
+
+35
+00:02:30,510 --> 00:02:32,310
+instead of the actual code sandbox.
+
+36
+00:02:32,320 --> 00:02:35,550
+So we'll explain that as we get to those challenges.
+
+37
+00:02:36,120 --> 00:02:41,400
+And then please watch the next lecture to understand the philosophy behind these challenges and what
+
+38
+00:02:41,400 --> 00:02:43,630
+your true goal is within these course.
+
+39
+00:02:44,010 --> 00:02:47,780
+So this video is just kind of to set you up about what you need to know about the challenges.
+
+40
+00:02:48,150 --> 00:02:54,450
+Let's go into the next video now, where I'm going to share a little bit about the philosophy of debugging
+
+41
+00:02:54,450 --> 00:02:58,050
+and why you should feel good about taking this course.
+
+42
+00:03:00,500 --> 00:03:01,760
+Good luck and happy debugging.

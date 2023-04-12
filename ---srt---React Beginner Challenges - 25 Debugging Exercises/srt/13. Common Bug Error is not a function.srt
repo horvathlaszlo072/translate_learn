@@ -1,0 +1,511 @@
+1
+00:00:00,590 --> 00:00:07,460
+OK, in this one, we are going to talk about a very, very common error that you might get if you're
+
+2
+00:00:07,460 --> 00:00:11,250
+doing react apps and that is the is not a function error.
+
+3
+00:00:11,600 --> 00:00:19,070
+So as you can see here, if I refresh, let's just say you're in an app and a lot of times students
+
+4
+00:00:19,070 --> 00:00:24,470
+will be taking my courses and they'll post their code and just say, I'm getting this.
+
+5
+00:00:24,470 --> 00:00:25,810
+It's not a function error.
+
+6
+00:00:26,180 --> 00:00:28,970
+So this is actually really easy to debug.
+
+7
+00:00:28,970 --> 00:00:33,270
+And I want to help you to understand what's going on and how to fix this error.
+
+8
+00:00:33,470 --> 00:00:38,870
+So as you can see here, when you click on a mine, so I have this this app here that I've set up,
+
+9
+00:00:39,140 --> 00:00:43,490
+if I click on a mine, I get Griselda's X is not a function.
+
+10
+00:00:43,850 --> 00:00:48,080
+So most likely if you get this error, you weren't expecting to get the error.
+
+11
+00:00:48,380 --> 00:00:51,410
+So you might be thinking, you know, why is this here?
+
+12
+00:00:51,410 --> 00:00:52,370
+What does this mean?
+
+13
+00:00:52,370 --> 00:00:54,620
+And your first reaction is to kind of panic.
+
+14
+00:00:54,860 --> 00:00:56,990
+And that's not what you should do.
+
+15
+00:00:56,990 --> 00:01:01,460
+You should really what you should do is to actually read the error first.
+
+16
+00:01:01,460 --> 00:01:03,010
+So understand what's going on.
+
+17
+00:01:03,020 --> 00:01:08,720
+So basically what this is saying and then so after you understand what this is saying, you will go
+
+18
+00:01:08,720 --> 00:01:10,250
+down here and look at the stack trace.
+
+19
+00:01:10,490 --> 00:01:17,660
+So what you have what this is saying ultimately is the same Griselda's X is not a function.
+
+20
+00:01:17,870 --> 00:01:19,630
+It's exactly what it sounds like.
+
+21
+00:01:19,640 --> 00:01:31,460
+So this where we're being, we're attempting to call a function called X on this piece of data and this
+
+22
+00:01:31,460 --> 00:01:36,410
+function X is not on this object.
+
+23
+00:01:36,710 --> 00:01:39,680
+So we have this object here.
+
+24
+00:01:39,980 --> 00:01:47,870
+If this was another sister error to this would be cannot access property X of undefined, which means
+
+25
+00:01:47,870 --> 00:01:49,130
+that grid cells undefined.
+
+26
+00:01:49,460 --> 00:01:57,260
+But this one means that we're trying to call a function called X on this variable, whatever it is,
+
+27
+00:01:57,260 --> 00:01:58,860
+and this is not there.
+
+28
+00:01:59,420 --> 00:02:01,560
+So now you kind of know what that means.
+
+29
+00:02:01,790 --> 00:02:07,940
+So in your brain, you'll say, OK, I understand that this is here in my code somewhere.
+
+30
+00:02:07,940 --> 00:02:10,930
+And I tried to call this function and it's not there.
+
+31
+00:02:11,060 --> 00:02:13,010
+So you might think to yourself, why would I do that?
+
+32
+00:02:13,010 --> 00:02:16,640
+Why would I call this function that doesn't exist?
+
+33
+00:02:17,520 --> 00:02:19,550
+And that entirely depends on your appetite.
+
+34
+00:02:19,860 --> 00:02:24,840
+A lot of times you might assume a functions on an object, maybe this object has that functionality
+
+35
+00:02:24,840 --> 00:02:30,120
+like Griselle would have the X, another type of Griselle would have X, but this Griselle doesn't have
+
+36
+00:02:30,120 --> 00:02:30,480
+X.
+
+37
+00:02:30,810 --> 00:02:36,480
+So you might think, well, what what would I do in that situation to get the grid cell, to have that
+
+38
+00:02:36,480 --> 00:02:37,200
+function on it?
+
+39
+00:02:37,470 --> 00:02:39,270
+So that's kind of why that error would be there.
+
+40
+00:02:39,300 --> 00:02:42,230
+Now, let's talk about how you would debug this and fix it.
+
+41
+00:02:42,570 --> 00:02:48,540
+So if you go down here, you see right there, you know, this is a really awesome error that it actually
+
+42
+00:02:48,540 --> 00:02:54,170
+literally tells you like, hey, this is the line that your code of your code that has that error.
+
+43
+00:02:54,750 --> 00:03:02,010
+So we know that C we could see here that we're we're calling Griselle dot X and that's that's the source
+
+44
+00:03:02,010 --> 00:03:02,600
+of the error.
+
+45
+00:03:02,970 --> 00:03:09,230
+So so we know that X is not defined on Griselle and that might be a better description of this area
+
+46
+00:03:09,320 --> 00:03:16,020
+and might be better off saying something like Grit's, GRISELLE or X is not a function defined on grid.
+
+47
+00:03:16,030 --> 00:03:20,900
+So I think that might be a more descriptive error for you, for you to understand it.
+
+48
+00:03:21,090 --> 00:03:26,310
+So going down here, you could see that if we go down here where we're going under the stack trace.
+
+49
+00:03:26,320 --> 00:03:30,060
+So this is the the code that was called before this function.
+
+50
+00:03:30,060 --> 00:03:31,680
+So we have our handle left.
+
+51
+00:03:31,680 --> 00:03:32,250
+Click here.
+
+52
+00:03:32,580 --> 00:03:38,900
+Even Code Sandbox is going to do us a favor and highlight the error for us as well.
+
+53
+00:03:39,450 --> 00:03:46,140
+So, you know, with all of these tools and, you know, helping you, it should be very, very easy
+
+54
+00:03:46,140 --> 00:03:48,330
+for you to spot and fix this type of error.
+
+55
+00:03:48,720 --> 00:03:55,800
+So you just have to focus and look and see what's going on in the app, use the signs that are there,
+
+56
+00:03:55,800 --> 00:03:57,550
+and then try and figure out what's going on.
+
+57
+00:03:57,810 --> 00:04:04,560
+So like I said, I just pointed to how many clues that that point to this line.
+
+58
+00:04:04,590 --> 00:04:05,480
+There are a lot of clues.
+
+59
+00:04:05,490 --> 00:04:12,270
+So if you go down here, even in the console, if we go down here, this is really more stuff we go
+
+60
+00:04:12,290 --> 00:04:12,870
+to see.
+
+61
+00:04:12,870 --> 00:04:14,580
+I don't actually think that the.
+
+62
+00:04:15,700 --> 00:04:17,550
+If go this up.
+
+63
+00:04:19,270 --> 00:04:27,010
+So I'm pretty sure that let's see if we click this, so, yeah, yeah, you could see here that the
+
+64
+00:04:27,010 --> 00:04:29,320
+code sandbox shows you the arrows here as well.
+
+65
+00:04:29,320 --> 00:04:32,890
+So you have this error being defined for you in multiple spots.
+
+66
+00:04:33,280 --> 00:04:36,460
+But, you know, you may not have this simple to read menu.
+
+67
+00:04:36,460 --> 00:04:41,680
+You might just be going off this log here, in which case you should be able to click on it.
+
+68
+00:04:41,680 --> 00:04:46,180
+Normally in the let's open up the this is a code sandbox, Ed.
+
+69
+00:04:46,390 --> 00:04:52,480
+So if we inspect this and we and we open up, you know, if we actually go up and look at the real Web
+
+70
+00:04:52,570 --> 00:04:56,260
+inspector, this is probably more like what you're going to see.
+
+71
+00:04:56,270 --> 00:05:00,280
+You may not have a react app where you're actually looking at this error menu here.
+
+72
+00:05:00,430 --> 00:05:03,700
+You may not be in Code Sandbox, you're probably not in code sandbox, actually.
+
+73
+00:05:04,000 --> 00:05:06,700
+So you're probably going to look at something that looks like this.
+
+74
+00:05:07,150 --> 00:05:14,380
+And in this situation, what you would do is you would just click on one of these COL stacks so you'll
+
+75
+00:05:14,380 --> 00:05:15,040
+see this.
+
+76
+00:05:15,430 --> 00:05:19,410
+And like I said, you're going to have to come to that conclusion from this.
+
+77
+00:05:19,690 --> 00:05:21,910
+So all this you know, there's warnings.
+
+78
+00:05:21,910 --> 00:05:24,490
+There's there's all kinds of things going on.
+
+79
+00:05:24,850 --> 00:05:31,470
+You're going to have to be smart and highlight and look for an error that makes sense to you.
+
+80
+00:05:31,750 --> 00:05:38,980
+So this error, because I've seen this error a whole bunch in my in my days that I know what this error
+
+81
+00:05:38,980 --> 00:05:44,830
+means and only because I know what that error means, I can understand what's going on.
+
+82
+00:05:45,100 --> 00:05:47,770
+And so that this is a really protip right here.
+
+83
+00:05:47,770 --> 00:05:51,010
+This is this is something that you really won't understand as a beginner.
+
+84
+00:05:51,430 --> 00:05:55,330
+You because I like to beginner all this stuff might look the same to you.
+
+85
+00:05:55,330 --> 00:06:01,870
+Like, if I go up here and I read this, it says, cannot add node one because a node with that ID is
+
+86
+00:06:01,870 --> 00:06:02,850
+already in the store.
+
+87
+00:06:03,460 --> 00:06:08,530
+This is something that I have no real idea what is what's going on here.
+
+88
+00:06:08,950 --> 00:06:14,710
+Now, I'm pretty sure this might happen because I'm just guessing, but maybe this is happening as a
+
+89
+00:06:14,710 --> 00:06:16,270
+result of this error, right?
+
+90
+00:06:16,270 --> 00:06:23,350
+So sometimes the errors come in one after another and you have to scroll up to see the first error or
+
+91
+00:06:23,350 --> 00:06:24,310
+earliest error.
+
+92
+00:06:24,590 --> 00:06:26,010
+So this would be like a warning.
+
+93
+00:06:26,020 --> 00:06:31,570
+We know that this is a react warning, but if we go down here, we see as soon as you see this type
+
+94
+00:06:31,570 --> 00:06:36,310
+of error where it says some of your code has some some error that looks like this, that says it's not
+
+95
+00:06:36,310 --> 00:06:41,470
+a function, that's where you can make the assumption that, OK, this is my code and I know how to
+
+96
+00:06:41,470 --> 00:06:44,590
+fix this because the X is not defined on Griselle.
+
+97
+00:06:44,750 --> 00:06:52,630
+So my this is not a real example of, you know, a situation that I would have here.
+
+98
+00:06:52,870 --> 00:06:55,150
+So it's not the most realistic example.
+
+99
+00:06:55,150 --> 00:06:58,570
+So I don't have, like, a real fix other than to just delete this line.
+
+100
+00:06:58,780 --> 00:07:00,820
+So delete that line and know that fixes it.
+
+101
+00:07:01,210 --> 00:07:09,400
+But I just wanted to to make that aware, make you aware that the reason that you get that error is
+
+102
+00:07:09,400 --> 00:07:11,140
+once again, you know, so it compiles fine.
+
+103
+00:07:11,140 --> 00:07:11,350
+Right.
+
+104
+00:07:11,350 --> 00:07:15,040
+Like there's nothing wrong with the app right now, even though this code is there.
+
+105
+00:07:15,280 --> 00:07:17,200
+So this is an example of a runtime error.
+
+106
+00:07:17,620 --> 00:07:23,960
+And, you know, just just looking at grid cell that acts like if we logged grid Celldex, that wouldn't
+
+107
+00:07:24,310 --> 00:07:27,070
+cause an error because grid Celldex would just be undefined.
+
+108
+00:07:27,310 --> 00:07:33,490
+It's the calling of that function, the the the parentheses on that undefined variable.
+
+109
+00:07:33,490 --> 00:07:38,950
+That's what causes the runtime error, because JavaScript is like, well, what are we calling here?
+
+110
+00:07:38,950 --> 00:07:42,430
+I don't know what I'm calling and I'm just going to throw an error and break your app for you.
+
+111
+00:07:42,760 --> 00:07:49,330
+So I hope I did a good job of explaining that app and how you could look at various different ways of
+
+112
+00:07:49,330 --> 00:07:54,130
+debugging that I didn't actually go into the error again and here looking at the stack trace over here.
+
+113
+00:07:54,280 --> 00:08:00,100
+So once again, like if you click on this, the topmost place that you're calling that you could just
+
+114
+00:08:00,100 --> 00:08:05,860
+see, oh, I'm in handle left click and I'm in and I'm calling this function.
+
+115
+00:08:06,250 --> 00:08:09,280
+Sometimes you'd be in some kind of compiled code, like one compiled code.
+
+116
+00:08:09,280 --> 00:08:11,140
+Right now we're not in source map.
+
+117
+00:08:12,070 --> 00:08:16,490
+So using that, you can just click and it'll highlight that error for you.
+
+118
+00:08:16,510 --> 00:08:24,310
+So if I go back to the console, go back here and I once again, I click right here, I just click on
+
+119
+00:08:24,310 --> 00:08:24,610
+that.
+
+120
+00:08:24,940 --> 00:08:26,660
+It's going to highlight that exact line.
+
+121
+00:08:26,980 --> 00:08:32,980
+So then you're going to be smart and you're going to say, OK, what what is?
+
+122
+00:08:32,980 --> 00:08:38,770
+So, you know, based on what I said, it's calling X and you can come to that conclusion there and
+
+123
+00:08:38,770 --> 00:08:42,750
+you could say, OK, what do I got to do on Griselle to get X to be defined?
+
+124
+00:08:43,210 --> 00:08:47,530
+So that's a solution that you could work toward if this comes up in your app.
+
+125
+00:08:48,020 --> 00:08:54,100
+So sometimes I would be tracing up where this function is actually defined on GRISELLE or whatever data
+
+126
+00:08:54,100 --> 00:08:54,600
+structure.
+
+127
+00:08:54,910 --> 00:08:57,470
+So that would be this error.
+
+128
+00:08:57,520 --> 00:08:57,910
+Thanks.

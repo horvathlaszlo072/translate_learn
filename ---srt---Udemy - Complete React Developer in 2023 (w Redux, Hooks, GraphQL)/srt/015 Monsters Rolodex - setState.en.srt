@@ -1,0 +1,543 @@
+1
+00:00:00,730 --> 00:00:01,690
+Welcome back, everyone.
+
+2
+00:00:02,260 --> 00:00:08,410
+In the last video, we learn about initializing some local state inside of this component, which is
+
+3
+00:00:08,410 --> 00:00:10,870
+a object that has key value pairs in it.
+
+4
+00:00:11,650 --> 00:00:19,090
+And then how do we access that state object or any JavaScript able really inside of our GSX code?
+
+5
+00:00:20,220 --> 00:00:25,140
+In this lesson, we're going to learn more about extending some JavaScript functionality into these
+
+6
+00:00:25,140 --> 00:00:30,870
+components to do something much more dynamic and much more useful when it comes to building applications.
+
+7
+00:00:31,530 --> 00:00:38,040
+So what we want to do is, let's say, I just wanted to click this button change name and then have
+
+8
+00:00:38,040 --> 00:00:40,530
+it change from Yehovah to Andre.
+
+9
+00:00:41,250 --> 00:00:42,270
+How do I do that?
+
+10
+00:00:43,690 --> 00:00:51,640
+So inside of your Jazz X, React actually allows you to bind event handlers onto any HTML element.
+
+11
+00:00:52,210 --> 00:00:53,530
+So what is an event handler?
+
+12
+00:00:54,040 --> 00:00:59,950
+Event handler is really just something that I want to happen whenever an event happens.
+
+13
+00:01:00,190 --> 00:01:05,140
+So what this means for our button, for say, is every time this button is clicked, I want something
+
+14
+00:01:05,140 --> 00:01:05,620
+to happen.
+
+15
+00:01:06,560 --> 00:01:12,140
+So to do that, I have access to this on and then the name of the event in this particular case, I
+
+16
+00:01:12,140 --> 00:01:12,870
+want on.
+
+17
+00:01:12,890 --> 00:01:13,550
+Click.
+
+18
+00:01:14,560 --> 00:01:21,280
+So whenever this gets clicked, I want some functionality to happen and the way that I can tell it,
+
+19
+00:01:21,280 --> 00:01:26,710
+what functionality are to happen when I click it is, I say on Click is a property which is equal to
+
+20
+00:01:26,980 --> 00:01:32,530
+a block of JavaScript, and we'll remember whenever I want to access JavaScript, whether it be a variable
+
+21
+00:01:32,530 --> 00:01:36,190
+or even hardcoded in JavaScript, I use these curly braces.
+
+22
+00:01:36,460 --> 00:01:43,960
+So here I'm saying Hey on click equals and then inside of here, what on click is expecting is a function.
+
+23
+00:01:45,340 --> 00:01:51,580
+You may hear the word function or callback function used pretty interchangeably, a callback is just
+
+24
+00:01:51,580 --> 00:01:52,060
+a function.
+
+25
+00:01:52,060 --> 00:01:57,670
+You pass to some kind of handler that you wanted to call during some process.
+
+26
+00:01:57,790 --> 00:02:02,170
+In this particular case, of course, I want it to be called whenever it gets clicked.
+
+27
+00:02:02,380 --> 00:02:05,500
+So I'm passing it right now, this empty function, so nothing will happen.
+
+28
+00:02:05,980 --> 00:02:12,970
+But what I want to do whenever this button is clicked again is change the name value to Andre instead
+
+29
+00:02:12,970 --> 00:02:13,510
+of EÜ.
+
+30
+00:02:14,380 --> 00:02:20,230
+Now you might think, Oh, let me just do this dot state dot name is equal to Andre.
+
+31
+00:02:21,660 --> 00:02:25,560
+But this is actually not going to behave the way that we're expecting it to.
+
+32
+00:02:25,980 --> 00:02:31,470
+In fact, let's also console log this start state just so that we're very clear about what's happening
+
+33
+00:02:31,470 --> 00:02:32,400
+once we save this.
+
+34
+00:02:33,180 --> 00:02:39,360
+So if we go back to our application, we hit this button change name no matter how many times we hit
+
+35
+00:02:39,360 --> 00:02:39,510
+it.
+
+36
+00:02:39,930 --> 00:02:47,730
+We see the EUA here is not updating to Andre, even though the object that gets logged out is the correct
+
+37
+00:02:47,730 --> 00:02:48,720
+value we're expecting.
+
+38
+00:02:48,990 --> 00:02:51,690
+We see that our object here name is now Andre.
+
+39
+00:02:51,720 --> 00:02:57,090
+But why is it that inside our application, it's still using the previous value of EUA?
+
+40
+00:02:57,900 --> 00:03:04,470
+Now this actually has to do with the way that react determines when a component needs to re, render
+
+41
+00:03:04,650 --> 00:03:05,490
+and re rendering.
+
+42
+00:03:05,490 --> 00:03:11,610
+In this case, as I mentioned, is when React decides, Oh, I need to update the DOM or repaint the
+
+43
+00:03:11,610 --> 00:03:12,090
+UI.
+
+44
+00:03:12,600 --> 00:03:18,000
+So let's break down why exactly it is that here this is not working the way that we want it to.
+
+45
+00:03:18,870 --> 00:03:26,100
+This actually has to do with the fact that we're not actually changing the object in a way that react
+
+46
+00:03:26,100 --> 00:03:29,280
+recognizes that the state object is different.
+
+47
+00:03:29,940 --> 00:03:32,610
+Now you might be wondering, well, Yehuda, the object is different.
+
+48
+00:03:32,640 --> 00:03:34,470
+It used to say name equals equal.
+
+49
+00:03:34,470 --> 00:03:35,880
+Now it's his name equals Andre.
+
+50
+00:03:36,240 --> 00:03:43,020
+But for React, it's not leveraging that change in the values in the object as a actual change.
+
+51
+00:03:43,350 --> 00:03:48,810
+The way that react to text it that there's a change is that uses JavaScript underlying reference by
+
+52
+00:03:48,810 --> 00:03:50,640
+memory for an object.
+
+53
+00:03:51,120 --> 00:03:57,540
+What that means is that in memory, whenever we instantiate a variable, let's say const object one,
+
+54
+00:03:58,080 --> 00:04:02,940
+and let me say that this object is equal to the same object that we have as our state.
+
+55
+00:04:03,360 --> 00:04:04,620
+So name is equal to EÜ.
+
+56
+00:04:05,900 --> 00:04:11,390
+This object one is just pointing to this object when it gets instantiated.
+
+57
+00:04:11,630 --> 00:04:15,980
+So what happens is that under the hood, JavaScript goes, Oh, there's this object I want to create
+
+58
+00:04:15,980 --> 00:04:22,970
+in memory, which has this shape name equals EÜ And then I'm going to create some variable called object
+
+59
+00:04:22,970 --> 00:04:25,250
+one, and it's going to point to this object that is just made.
+
+60
+00:04:26,230 --> 00:04:29,740
+An easy way to see this is if I say Object two is equal to object one.
+
+61
+00:04:30,310 --> 00:04:35,650
+What's happening here is that JavaScript like, OK, this object one, what's it pointing to?
+
+62
+00:04:35,890 --> 00:04:37,630
+It's pointing to this object in memory.
+
+63
+00:04:37,900 --> 00:04:42,340
+So I'm just to make object to a pointer that points to the same object in memory.
+
+64
+00:04:42,910 --> 00:04:50,950
+And now if I say object to strict equality, which is three equal signs equals two object one, it'll
+
+65
+00:04:50,950 --> 00:04:51,790
+say that it's true.
+
+66
+00:04:51,820 --> 00:04:56,500
+Strict equality just says, are these two pointers pointing to the same thing in memory?
+
+67
+00:04:56,920 --> 00:04:57,820
+Yes, they are.
+
+68
+00:04:58,060 --> 00:05:01,960
+This is object equality when you do triple equals with objects.
+
+69
+00:05:02,350 --> 00:05:07,930
+The reason why this is actually not working for react and updating the DOM has to do with this concept.
+
+70
+00:05:08,170 --> 00:05:12,160
+Let's say we say object one name is equal to Andre.
+
+71
+00:05:13,460 --> 00:05:22,160
+When I update this object, one now has that new updated value object to also has an updated value.
+
+72
+00:05:22,220 --> 00:05:23,060
+And this makes sense.
+
+73
+00:05:23,060 --> 00:05:25,280
+They're both pointing to the same thing in memory.
+
+74
+00:05:25,580 --> 00:05:28,770
+But again, this object in memory is not different.
+
+75
+00:05:28,790 --> 00:05:30,770
+It's the same object in memory.
+
+76
+00:05:30,920 --> 00:05:36,110
+So even though the value has changed, it's still the same thing in memory.
+
+77
+00:05:36,620 --> 00:05:41,990
+So for React, React actually says the only way I'm going to update a component when I know that the
+
+78
+00:05:41,990 --> 00:05:47,000
+state is different is if there is a completely different object in memory.
+
+79
+00:05:47,910 --> 00:05:48,930
+And how does that happen?
+
+80
+00:05:49,590 --> 00:05:52,740
+Well, let me give you an example, let's say we make another object object three.
+
+81
+00:05:52,950 --> 00:05:56,100
+And in here we use object dot assign.
+
+82
+00:05:56,820 --> 00:06:04,320
+Object assign is a method that allows us to create a different object using another object as a template.
+
+83
+00:06:04,620 --> 00:06:10,320
+So let's say first, what I'm saying is the first argument is a new object, a brand new object.
+
+84
+00:06:10,950 --> 00:06:12,600
+So this is the first argument.
+
+85
+00:06:12,780 --> 00:06:16,080
+It's like, what do I want to make or assign a new object from?
+
+86
+00:06:16,170 --> 00:06:18,360
+The first one is a brand new object right here.
+
+87
+00:06:19,020 --> 00:06:21,660
+The second one, I want to use object one.
+
+88
+00:06:22,620 --> 00:06:28,800
+Now, if I look object three, it has the same signature or it has the same shape as object one.
+
+89
+00:06:28,810 --> 00:06:30,000
+It's still named because Andre.
+
+90
+00:06:30,300 --> 00:06:35,700
+But now if I do, object one equals against strict equality with object three.
+
+91
+00:06:36,090 --> 00:06:37,350
+I see that it's false.
+
+92
+00:06:37,470 --> 00:06:44,160
+And the reason for this is because this object, even though it's the same one as object one when we
+
+93
+00:06:44,160 --> 00:06:44,640
+change it.
+
+94
+00:06:45,570 --> 00:06:48,480
+These are two different objects in memory.
+
+95
+00:06:49,020 --> 00:06:56,940
+An even easier way to do this is if I say Konst Object four is equal to an object with the name Andre.
+
+96
+00:06:57,900 --> 00:07:00,520
+Here you'll see that I'm typing out a brand new object.
+
+97
+00:07:00,990 --> 00:07:02,820
+So this is a completely different object.
+
+98
+00:07:02,970 --> 00:07:09,090
+Even though it looks the exact same as Object one and Object 2's pointing object in memory, even object
+
+99
+00:07:09,090 --> 00:07:09,510
+three.
+
+100
+00:07:09,540 --> 00:07:10,380
+They all look the same.
+
+101
+00:07:10,770 --> 00:07:15,540
+But when we do strict equality with Object four, we see that different.
+
+102
+00:07:15,930 --> 00:07:16,770
+Object three.
+
+103
+00:07:17,040 --> 00:07:19,320
+An object for completely different.
+
+104
+00:07:19,620 --> 00:07:21,390
+Not the same object and memory.
+
+105
+00:07:22,140 --> 00:07:25,980
+So this is when react will determine that it needs to re render.
+
+106
+00:07:25,980 --> 00:07:30,450
+Your component is when state is a completely different object in memory.
+
+107
+00:07:30,870 --> 00:07:36,240
+The moment it's a different object and memory react will be like, OK, it's time to update this object.
+
+108
+00:07:36,900 --> 00:07:39,450
+So let's do that quickly, actually.
+
+109
+00:07:39,480 --> 00:07:40,260
+How do we do this?
+
+110
+00:07:40,980 --> 00:07:46,950
+Well, an easy way that we can do this react actually gives us a method, and it's called set state.
+
+111
+00:07:48,690 --> 00:07:54,150
+Now, Sets State is an interesting method because there's actually many ways to use it.
+
+112
+00:07:54,480 --> 00:08:00,870
+But I'm going to show you the very basic, simple way, which is that you give it an object that you
+
+113
+00:08:00,870 --> 00:08:04,320
+want to shallow merge with your current state object.
+
+114
+00:08:04,920 --> 00:08:05,910
+What's shallow merge?
+
+115
+00:08:06,150 --> 00:08:12,660
+A shallow merge just means that whatever values that you pass to me inside of this object, I am going
+
+116
+00:08:12,660 --> 00:08:17,160
+to update and check through the state object to see if there are the same keys.
+
+117
+00:08:17,160 --> 00:08:20,960
+If there are the same keys, I'm going to update your state keys with the new value.
+
+118
+00:08:20,970 --> 00:08:21,330
+Give me.
+
+119
+00:08:21,690 --> 00:08:24,390
+So here I'm going to say name is equal to Andre.
+
+120
+00:08:24,900 --> 00:08:27,930
+So what's going to happen is that when we call this?
+
+121
+00:08:28,920 --> 00:08:31,800
+React is going to be like, OK, you want to call sets state.
+
+122
+00:08:32,130 --> 00:08:34,720
+So you want to update the state value, what do you want to do?
+
+123
+00:08:34,740 --> 00:08:40,620
+You want to take this object and you want to say, Oh, I want to find any name on this object and I
+
+124
+00:08:40,620 --> 00:08:42,570
+want to update it to the new value.
+
+125
+00:08:42,930 --> 00:08:47,280
+So now this, I'm just going to say name because Iowa, instead, it's going to update to name equals
+
+126
+00:08:47,280 --> 00:08:47,730
+Andre.
+
+127
+00:08:48,330 --> 00:08:51,870
+So now if we go back, we clear we had changed name.
+
+128
+00:08:52,050 --> 00:08:53,640
+We see that it's updated.
+
+129
+00:08:53,850 --> 00:08:58,920
+And the reason for this, again, is because what sets state does under the hood is that it's actually
+
+130
+00:08:58,920 --> 00:09:06,150
+updating state to a different object and react once it detects, Oh, state is now a different object
+
+131
+00:09:06,150 --> 00:09:06,660
+in memory.
+
+132
+00:09:06,930 --> 00:09:12,480
+Let me re render this component and in turn, update the applications UI.
+
+133
+00:09:13,520 --> 00:09:19,190
+So now that we understand a bit more offset state as well as object and reference, which is how React
+
+134
+00:09:19,190 --> 00:09:25,280
+determines when a component updates, let's go more in-depth into said state, which I will do in the
+
+135
+00:09:25,280 --> 00:09:26,330
+next video.
+
+136
+00:09:26,690 --> 00:09:27,350
+So I'll see you there.

@@ -1,0 +1,876 @@
+1
+00:00:00.07 --> 00:00:02.05
+- [Narrator] Next up let's implement
+
+2
+00:00:02.05 --> 00:00:05.05
+the reservation JPA repository.
+
+3
+00:00:05.05 --> 00:00:10.00
+Reservations will be another
+table in our database.
+
+4
+00:00:10.00 --> 00:00:12.02
+There will be a one to many relationship
+
+5
+00:00:12.02 --> 00:00:14.09
+between room and reservation.
+
+6
+00:00:14.09 --> 00:00:19.02
+One room can potentially have
+many different reservations.
+
+7
+00:00:19.02 --> 00:00:23.05
+First off, let's rename
+reservation response
+
+8
+00:00:23.05 --> 00:00:27.02
+to reservable room response.
+
+9
+00:00:27.02 --> 00:00:30.06
+This will more accurately
+reflect the purpose.
+
+10
+00:00:30.06 --> 00:00:33.07
+Let's right click on reservation response,
+
+11
+00:00:33.07 --> 00:00:41.03
+go to refactor, rename.
+
+12
+00:00:41.03 --> 00:00:46.02
+Make sure update references
+is checked, and click finish.
+
+13
+00:00:46.02 --> 00:00:49.03
+Let's also take a look at the room entity
+
+14
+00:00:49.03 --> 00:00:53.01
+to reservation response converter.
+
+15
+00:00:53.01 --> 00:00:55.03
+We can see the type was updated,
+
+16
+00:00:55.03 --> 00:00:59.08
+but not the base class name.
+
+17
+00:00:59.08 --> 00:01:02.02
+So let's right click on the name,
+
+18
+00:01:02.02 --> 00:01:08.08
+go to refactor, and rename.
+
+19
+00:01:08.08 --> 00:01:13.06
+Okay, let's double check
+in our conversion config,
+
+20
+00:01:13.06 --> 00:01:17.04
+and we can see the name
+was properly updated.
+
+21
+00:01:17.04 --> 00:01:21.00
+Next up, let's add a reservation entity
+
+22
+00:01:21.00 --> 00:01:24.07
+to model the reservation table.
+
+23
+00:01:24.07 --> 00:01:31.01
+Let's create a new class in
+entity called reservation entity
+
+24
+00:01:31.01 --> 00:01:33.05
+and click finish.
+
+25
+00:01:33.05 --> 00:01:37.09
+Okay, first up let's
+add a entity annotation.
+
+26
+00:01:37.09 --> 00:01:39.09
+Be sure to import the entity
+
+27
+00:01:39.09 --> 00:01:44.08
+annotation from Java X persistence.
+
+28
+00:01:44.08 --> 00:01:50.01
+Next up, add a table annotation,
+and then let's import it.
+
+29
+00:01:50.01 --> 00:01:54.07
+Let's pass in the table name
+to that table annotation.
+
+30
+00:01:54.07 --> 00:01:59.09
+Let's set the name equal to reservation.
+
+31
+00:01:59.09 --> 00:02:03.09
+First let's add a ID of the type long.
+
+32
+00:02:03.09 --> 00:02:06.01
+Let's add the annotation ID.
+
+33
+00:02:06.01 --> 00:02:07.03
+Let's import it.
+
+34
+00:02:07.03 --> 00:02:10.00
+Then let's make sure this ID gets
+
+35
+00:02:10.00 --> 00:02:13.07
+automatically generated upon creation.
+
+36
+00:02:13.07 --> 00:02:16.04
+Let's add that generated value annotation,
+
+37
+00:02:16.04 --> 00:02:19.02
+make sure it gets imported,
+and then let's pass
+
+38
+00:02:19.02 --> 00:02:23.07
+in the field strategy
+equals generation type auto.
+
+39
+00:02:23.07 --> 00:02:26.00
+Next up let's add a private
+
+40
+00:02:26.00 --> 00:02:28.05
+local date field called check in.
+
+41
+00:02:28.05 --> 00:02:31.06
+Let's add a not null
+annotation to make sure
+
+42
+00:02:31.06 --> 00:02:34.03
+it gets populated upon creation.
+
+43
+00:02:34.03 --> 00:02:38.04
+Let's import that local date class.
+
+44
+00:02:38.04 --> 00:02:41.09
+Let's create another field
+local date check out.
+
+45
+00:02:41.09 --> 00:02:44.02
+Now let's be sure to add that
+
+46
+00:02:44.02 --> 00:02:48.09
+not null annotation, all right?
+
+47
+00:02:48.09 --> 00:02:52.07
+As a reminder, the keyboard
+shortcut to generate getters
+
+48
+00:02:52.07 --> 00:02:57.03
+and setters is command alt S.
+
+49
+00:02:57.03 --> 00:02:59.07
+Go to generate getters and setters
+
+50
+00:02:59.07 --> 00:03:03.05
+and click on select all then OK.
+
+51
+00:03:03.05 --> 00:03:06.08
+Let's add our constructors.
+
+52
+00:03:06.08 --> 00:03:09.09
+First one takes in check in and check out.
+
+53
+00:03:09.09 --> 00:03:13.06
+Next one is parameter
+list, deselect all, and OK.
+
+54
+00:03:13.06 --> 00:03:19.06
+Then command shift F to
+autoformat and then save.
+
+55
+00:03:19.06 --> 00:03:23.04
+Now let's open up the room entity.
+
+56
+00:03:23.04 --> 00:03:26.03
+Let's add a list of reservations entities
+
+57
+00:03:26.03 --> 00:03:29.08
+called reservation entity list.
+
+58
+00:03:29.08 --> 00:03:33.06
+Command shift O, view our
+imports, then let's add
+
+59
+00:03:33.06 --> 00:03:36.04
+an annotation one to many.
+
+60
+00:03:36.04 --> 00:03:39.07
+Command shift O, this
+one to many annotation
+
+61
+00:03:39.07 --> 00:03:41.09
+indicates that there is a relationship
+
+62
+00:03:41.09 --> 00:03:46.03
+between room entity
+and reservation entity.
+
+63
+00:03:46.03 --> 00:03:49.01
+A room may have multiple reservations.
+
+64
+00:03:49.01 --> 00:03:53.07
+That's why this room has a list.
+
+65
+00:03:53.07 --> 00:03:56.08
+Let's add fetch type set to eager,
+
+66
+00:03:56.08 --> 00:04:02.09
+and let's say cascade to persist.
+
+67
+00:04:02.09 --> 00:04:06.00
+Then when we save this
+entity, any reservation entity
+
+68
+00:04:06.00 --> 00:04:09.00
+children connected to this room entity
+
+69
+00:04:09.00 --> 00:04:14.04
+will also be persisted.
+
+70
+00:04:14.04 --> 00:04:16.07
+Then let's add a getter and setter
+
+71
+00:04:16.07 --> 00:04:19.05
+for the field we just added.
+
+72
+00:04:19.05 --> 00:04:23.06
+Command alt S, generate,
+select reservation entity list,
+
+73
+00:04:23.06 --> 00:04:25.06
+and OK.
+
+74
+00:04:25.06 --> 00:04:33.06
+Let's also add a method
+called add reservation entity.
+
+75
+00:04:33.06 --> 00:04:36.09
+If reservation entity
+list is currently null,
+
+76
+00:04:36.09 --> 00:04:39.06
+let's create a new one.
+
+77
+00:04:39.06 --> 00:04:47.09
+Control space to autopopulate.
+
+78
+00:04:47.09 --> 00:04:52.07
+And let's set it to a
+new array list if null.
+
+79
+00:04:52.07 --> 00:04:56.07
+Control shift O to import, then let's add
+
+80
+00:04:56.07 --> 00:05:00.04
+the new reservation entity to the list.
+
+81
+00:05:00.04 --> 00:05:06.04
+Control space, add and
+then let's make sure
+
+82
+00:05:06.04 --> 00:05:09.04
+we're operating on the list, all right?
+
+83
+00:05:09.04 --> 00:05:11.01
+And then save.
+
+84
+00:05:11.01 --> 00:05:15.05
+Next, let's open up reservation request.
+
+85
+00:05:15.05 --> 00:05:19.03
+Let's add in a field private long room ID.
+
+86
+00:05:19.03 --> 00:05:22.00
+Room ID is the ID of the room that
+
+87
+00:05:22.00 --> 00:05:25.03
+you want to attach your reservation to.
+
+88
+00:05:25.03 --> 00:05:30.01
+Let's delete the
+constructor, control alt S,
+
+89
+00:05:30.01 --> 00:05:39.05
+and create a new one with
+every field except ID.
+
+90
+00:05:39.05 --> 00:05:45.02
+Then let's add a getter and
+setter for that room ID field.
+
+91
+00:05:45.02 --> 00:05:52.02
+Control shift F to
+reformat, and then save.
+
+92
+00:05:52.02 --> 00:05:55.02
+Let's create a new class in response.
+
+93
+00:05:55.02 --> 00:05:58.07
+New class, and let's name it
+
+94
+00:05:58.07 --> 00:06:02.06
+reservation response, and finish.
+
+95
+00:06:02.06 --> 00:06:03.07
+Okay?
+
+96
+00:06:03.07 --> 00:06:07.03
+Let's add in two fields,
+check in and check out,
+
+97
+00:06:07.03 --> 00:06:09.04
+of the type local date.
+
+98
+00:06:09.04 --> 00:06:12.01
+Command shift O to import,
+and let's not forget
+
+99
+00:06:12.01 --> 00:06:19.05
+the ID field as well, of
+the type long, all right?
+
+100
+00:06:19.05 --> 00:06:23.04
+Let's throw in the getters and setters,
+
+101
+00:06:23.04 --> 00:06:29.00
+and then add in the fronter.
+
+102
+00:06:29.00 --> 00:06:31.08
+And then one more.
+
+103
+00:06:31.08 --> 00:06:38.02
+Deselect all, command
+shift F, format, and save.
+
+104
+00:06:38.02 --> 00:06:42.04
+Next up, let's add a JPA repository.
+
+105
+00:06:42.04 --> 00:06:46.05
+Right click on repository, new, class.
+
+106
+00:06:46.05 --> 00:06:51.06
+Let's name it reservation
+repository, and create.
+
+107
+00:06:51.06 --> 00:06:56.06
+All right, let's make sure it
+extends the crud repository.
+
+108
+00:06:56.06 --> 00:07:00.07
+It'll take in a reservation
+entity and a long.
+
+109
+00:07:00.07 --> 00:07:06.07
+Command shift O, let's make
+sure this is a interface.
+
+110
+00:07:06.07 --> 00:07:09.07
+Command shift O, and save.
+
+111
+00:07:09.07 --> 00:07:13.02
+All right, let's create some converters.
+
+112
+00:07:13.02 --> 00:07:17.05
+Right click on converter,
+new, class, all right?
+
+113
+00:07:17.05 --> 00:07:20.01
+This one will be reservation request
+
+114
+00:07:20.01 --> 00:07:23.01
+to reservation entity converter.
+
+115
+00:07:23.01 --> 00:07:27.05
+This class will take in a
+request body from a rest API
+
+116
+00:07:27.05 --> 00:07:31.00
+call and convert it to
+a reservation entity
+
+117
+00:07:31.00 --> 00:07:33.01
+so that we can save it.
+
+118
+00:07:33.01 --> 00:07:36.04
+Let's implement the converter,
+passing in a reservation
+
+119
+00:07:36.04 --> 00:07:39.06
+request and a reservation entity.
+
+120
+00:07:39.06 --> 00:07:42.06
+Fix that typo.
+
+121
+00:07:42.06 --> 00:07:46.01
+Command shift O to import
+and let's make sure
+
+122
+00:07:46.01 --> 00:07:49.09
+we grab the spring framework converter.
+
+123
+00:07:49.09 --> 00:07:53.04
+If you click on this error
+and click on add unimplemented
+
+124
+00:07:53.04 --> 00:07:56.05
+methods, it will stub out the method
+
+125
+00:07:56.05 --> 00:07:59.05
+that you have to override, all right?
+
+126
+00:07:59.05 --> 00:08:06.02
+Let's create a reservation entity.
+
+127
+00:08:06.02 --> 00:08:09.05
+Make sure that gets returned.
+
+128
+00:08:09.05 --> 00:08:14.04
+Let's set the check in
+to the source check in.
+
+129
+00:08:14.04 --> 00:08:19.03
+Let's set the check out
+to the source check out,
+
+130
+00:08:19.03 --> 00:08:23.01
+and then if the source ID is not null,
+
+131
+00:08:23.01 --> 00:08:26.01
+let's also set that.
+
+132
+00:08:26.01 --> 00:08:29.02
+Control space to autopopulate, dot set ID.
+
+133
+00:08:29.02 --> 00:08:35.04
+Command shift F to format, and save.
+
+134
+00:08:35.04 --> 00:08:38.00
+Let's create one more converter.
+
+135
+00:08:38.00 --> 00:08:40.09
+This one going from a reservation
+
+136
+00:08:40.09 --> 00:08:43.09
+entity to a reservation response.
+
+137
+00:08:43.09 --> 00:08:47.09
+Make sure it's an interface.
+
+138
+00:08:47.09 --> 00:08:50.02
+Let's make sure it implements converter
+
+139
+00:08:50.02 --> 00:08:56.03
+going from reservation entity
+to reservation response.
+
+140
+00:08:56.03 --> 00:09:00.06
+Let's make sure that's class, actually.
+
+141
+00:09:00.06 --> 00:09:04.07
+Okay, let's import converter,
+command shift O to do
+
+142
+00:09:04.07 --> 00:09:09.08
+our imports, click on the error,
+add unimplemented methods.
+
+143
+00:09:09.08 --> 00:09:15.04
+Create a reservation response.
+
+144
+00:09:15.04 --> 00:09:19.00
+Make sure that gets returned.
+
+145
+00:09:19.00 --> 00:09:24.00
+Set the check in and set the check out.
+
+146
+00:09:24.00 --> 00:09:26.07
+Okay, and save.
+
+147
+00:09:26.07 --> 00:09:29.04
+Next, let's open up conversion config
+
+148
+00:09:29.04 --> 00:09:41.04
+and add those two converters.
+
+149
+00:09:41.04 --> 00:09:44.07
+Let's make sure this is named correctly.
+
+150
+00:09:44.07 --> 00:09:48.00
+Let's right click, refactor and rename,
+
+151
+00:09:48.00 --> 00:09:53.03
+and let's append converter
+to that name, and save.
+
+152
+00:09:53.03 --> 00:09:57.08
+Let's open up the reservation
+resource, all right?
+
+153
+00:09:57.08 --> 00:09:58.09
+It's in rest.
+
+154
+00:09:58.09 --> 00:10:05.04
+First, let's add the
+reservation repository.
+
+155
+00:10:05.04 --> 00:10:10.02
+Get it autowired, head
+back to the post end point,
+
+156
+00:10:10.02 --> 00:10:14.00
+then let's convert the reservation request
+
+157
+00:10:14.00 --> 00:10:18.05
+into a reservation entity.
+
+158
+00:10:18.05 --> 00:10:25.01
+Let's autowire the conversion service.
+
+159
+00:10:25.01 --> 00:10:29.03
+Okay, now we have access to that beam.
+
+160
+00:10:29.03 --> 00:10:34.00
+Let's pass in the reservation request
+
+161
+00:10:34.00 --> 00:10:36.05
+and set the expected target type
+
+162
+00:10:36.05 --> 00:10:41.01
+to reservation entity dot class.
+
+163
+00:10:41.01 --> 00:10:44.02
+Let's grab the reservation
+repository beam,
+
+164
+00:10:44.02 --> 00:10:48.04
+and then save that entity.
+
+165
+00:10:48.04 --> 00:10:51.00
+Let's grab the room repository beam.
+
+166
+00:10:51.00 --> 00:10:52.09
+Let's call a find by ID
+
+167
+00:10:52.09 --> 00:10:58.08
+and get the room ID from
+the reservation request.
+
+168
+00:10:58.08 --> 00:11:04.05
+Let's grab the response.
+
+169
+00:11:04.05 --> 00:11:08.03
+Then in that room entity
+let's add reservation entity
+
+170
+00:11:08.03 --> 00:11:12.05
+to the list of linked reservations.
+
+171
+00:11:12.05 --> 00:11:18.00
+Then using room repository,
+let's save that room entity.
+
+172
+00:11:18.00 --> 00:11:24.02
+We are also going to persist
+the linked reservation entity.
+
+173
+00:11:24.02 --> 00:11:28.05
+Let's actually head back
+to the reservation entity
+
+174
+00:11:28.05 --> 00:11:31.09
+and add a room entity field,
+
+175
+00:11:31.09 --> 00:11:37.02
+and let's add a many to one annotation,
+
+176
+00:11:37.02 --> 00:11:41.06
+since we could have many
+reservations for one room.
+
+177
+00:11:41.06 --> 00:11:47.07
+Let's save and add a getter and setter.
+
+178
+00:11:47.07 --> 00:11:50.07
+Select room entity and OK.
+
+179
+00:11:50.07 --> 00:11:57.01
+Command shift F to format and save.
+
+180
+00:11:57.01 --> 00:12:00.09
+Let's set the room entity
+to return in the response,
+
+181
+00:12:00.09 --> 00:12:05.05
+then let's create the
+reservation response.
+
+182
+00:12:05.05 --> 00:12:12.02
+Use the conversion service,
+passing in a reservation entity
+
+183
+00:12:12.02 --> 00:12:16.07
+and expecting a reservation response back.
+
+184
+00:12:16.07 --> 00:12:21.01
+All right, let's grab
+that reservation response,
+
+185
+00:12:21.01 --> 00:12:25.09
+and make sure that gets
+returned in the response entity.
+
+186
+00:12:25.09 --> 00:12:32.05
+Let's make sure we have
+the correct return type,
+
+187
+00:12:32.05 --> 00:12:33.09
+and then save.
+
+188
+00:12:33.09 --> 00:12:37.03
+Let's restart.
+
+189
+00:12:37.03 --> 00:12:40.09
+And let's test our post.
+
+190
+00:12:40.09 --> 00:12:46.07
+Getting a 404, 'cause I might
+be expecting an ID field.
+
+191
+00:12:46.07 --> 00:12:50.03
+Let's close.
+
+192
+00:12:50.03 --> 00:12:55.03
+Let's reopen the post.
+
+193
+00:12:55.03 --> 00:12:58.01
+Okay, after we open up a fresh query,
+
+194
+00:12:58.01 --> 00:13:05.01
+we submitted the post, and we
+got a 201 created in response.
+
+195
+00:13:05.01 --> 00:13:06.09
+Let's do a get.
+
+196
+00:13:06.09 --> 00:13:11.00
+Let's click on the self referential link.
+
+197
+00:13:11.00 --> 00:13:13.05
+We could see that reservation entity
+
+198
+00:13:13.05 --> 00:13:18.00
+has been linked to the
+room with the ID of one.
+
+199
+00:13:18.00 --> 00:13:21.02
+So we could see that
+the reservation entity
+
+200
+00:13:21.02 --> 00:13:24.09
+was properly cascaded and
+linked to this room entity
+
+201
+00:13:24.09 --> 00:13:28.05
+when save was executed on room repository.
+

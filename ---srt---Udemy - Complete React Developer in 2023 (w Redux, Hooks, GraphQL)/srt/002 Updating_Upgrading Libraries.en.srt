@@ -1,0 +1,479 @@
+1
+00:00:00,530 --> 00:00:01,460
+Welcome back, everyone.
+
+2
+00:00:02,210 --> 00:00:08,270
+In this video, we are going to implement React router, which is version six right now at the time
+
+3
+00:00:08,270 --> 00:00:10,700
+of this recording into our application.
+
+4
+00:00:11,360 --> 00:00:17,030
+If you're here from the previous two years of the last iteration of this application, you'll know that
+
+5
+00:00:17,030 --> 00:00:19,010
+we were running React router version five.
+
+6
+00:00:19,250 --> 00:00:25,610
+And this is the first major version update with a significant amount of changes in terms of just the
+
+7
+00:00:25,610 --> 00:00:27,320
+implementation syntax.
+
+8
+00:00:28,070 --> 00:00:34,520
+As far as how the actual library works and what it does for us, that is the exact same.
+
+9
+00:00:34,910 --> 00:00:40,220
+It follows largely the exact same concepts we covered in the last video when we walk through how a web
+
+10
+00:00:40,220 --> 00:00:46,130
+application, depending on the route and the suburbs you navigate to, will either decide to keep or
+
+11
+00:00:46,130 --> 00:00:49,640
+remove and change different components on the page.
+
+12
+00:00:49,940 --> 00:00:54,140
+And what those different components will be is largely up to our choice.
+
+13
+00:00:54,320 --> 00:00:58,430
+The library just helps us execute on those decisions that we make.
+
+14
+00:00:58,910 --> 00:01:03,560
+So let's talk about how we actually implement React router version six into the application.
+
+15
+00:01:04,340 --> 00:01:09,860
+So here, let's just walk through the docs really quickly so that we get a good, familiar understanding
+
+16
+00:01:10,040 --> 00:01:14,180
+of majority of how most react libraries work for us.
+
+17
+00:01:15,220 --> 00:01:17,950
+So you can either choose to read the docs or start the editorial.
+
+18
+00:01:18,310 --> 00:01:24,220
+The great thing about starting the trial is you get to go through a very simple setup of how that want
+
+19
+00:01:24,220 --> 00:01:28,510
+you to walk through the major features of React router version six.
+
+20
+00:01:28,960 --> 00:01:29,880
+I'm not going to do it.
+
+21
+00:01:29,920 --> 00:01:33,670
+I'm just going to show you how it actually is implemented because I understand how this routing library
+
+22
+00:01:33,670 --> 00:01:33,940
+works.
+
+23
+00:01:34,120 --> 00:01:39,460
+But if you're ever curious, go through this material and just follow the instructions for this tutorial.
+
+24
+00:01:39,640 --> 00:01:40,330
+It's really great.
+
+25
+00:01:40,330 --> 00:01:45,970
+You get to build a sample application and just see step by step how this routing is built from the bottom
+
+26
+00:01:45,970 --> 00:01:46,210
+up.
+
+27
+00:01:46,540 --> 00:01:51,730
+We're going to go through as well in our application, but this one is straight from the library creators
+
+28
+00:01:51,730 --> 00:01:52,300
+themselves.
+
+29
+00:01:52,750 --> 00:01:58,660
+But the great thing about the tutorial is they have to show you how to install the application and it's
+
+30
+00:01:58,690 --> 00:01:59,980
+honestly, really simple.
+
+31
+00:02:00,730 --> 00:02:06,310
+All we have to do is just initialize the actual library into our packages.
+
+32
+00:02:06,730 --> 00:02:11,800
+So here they're really just using Create React app the way that we have to create some kind of tutorial
+
+33
+00:02:11,800 --> 00:02:14,080
+application that you can walk through in case you don't have one.
+
+34
+00:02:14,440 --> 00:02:16,540
+We can skip all this because we already have all this stuff.
+
+35
+00:02:16,960 --> 00:02:21,760
+But what we really need is we need this part where we install the browser router.
+
+36
+00:02:22,120 --> 00:02:24,250
+But first we have to install the application.
+
+37
+00:02:24,610 --> 00:02:25,810
+So then saw the application.
+
+38
+00:02:25,810 --> 00:02:29,920
+You just want to look here, install react router dependencies and be installed.
+
+39
+00:02:29,920 --> 00:02:33,490
+React Router Dom at six, you can use npm.
+
+40
+00:02:33,520 --> 00:02:34,360
+I'm going to use yarn.
+
+41
+00:02:34,780 --> 00:02:36,400
+So let's go back to our terminal.
+
+42
+00:02:37,830 --> 00:02:40,830
+And let's install into our application rack router.
+
+43
+00:02:41,040 --> 00:02:47,550
+So we're going to say yarn, add react router Dom at six, so that's saying, Hey, give me rack router
+
+44
+00:02:47,550 --> 00:02:48,750
+Dom version six.
+
+45
+00:02:50,150 --> 00:02:52,760
+Now, the reason why it doesn't give you the latest one.
+
+46
+00:02:53,120 --> 00:02:58,670
+Sometimes, depending on recruiter Dom themselves and the package maintainers, they may be having some
+
+47
+00:02:58,670 --> 00:03:03,620
+kind of conflict between a lot of these different versions that they're supporting.
+
+48
+00:03:03,860 --> 00:03:05,770
+Version five may still be the most popular.
+
+49
+00:03:05,780 --> 00:03:07,740
+They may be rolling out version six.
+
+50
+00:03:07,760 --> 00:03:12,410
+Therefore, they want you to specify when you want six, even though it may be the major version they
+
+51
+00:03:12,410 --> 00:03:12,840
+support.
+
+52
+00:03:13,280 --> 00:03:19,220
+Again, a lot of times these libraries are heavily dependent upon by the majority of different applications
+
+53
+00:03:19,220 --> 00:03:21,470
+in production that rely on them.
+
+54
+00:03:21,680 --> 00:03:26,990
+So there's a lot of heavy decision making they have to make when rolling out major versions, especially
+
+55
+00:03:26,990 --> 00:03:31,610
+ones that have sweeping breaking changes like version six in this particular case here.
+
+56
+00:03:31,820 --> 00:03:37,340
+Version six also is not backwards compatible yet at the time of this recording.
+
+57
+00:03:37,610 --> 00:03:43,610
+Meaning that if you have version five and you upgrade your application's library to version six, your
+
+58
+00:03:43,610 --> 00:03:49,430
+application will not work because version six does not support the features that existed in version
+
+59
+00:03:49,430 --> 00:03:49,910
+five.
+
+60
+00:03:50,330 --> 00:03:54,320
+So this is a very important thing to understand about a lot of these libraries.
+
+61
+00:03:54,680 --> 00:04:01,700
+They may want to make updates and they may do so, but often times there will be conflict in how they
+
+62
+00:04:01,700 --> 00:04:07,430
+do it because of the fact that with the upgrades, maybe they have better patterns or better ideas of
+
+63
+00:04:07,430 --> 00:04:08,990
+how they want this library to work.
+
+64
+00:04:10,100 --> 00:04:17,060
+Now, sometimes in order to do that, they may not be able to support the previous working functionality.
+
+65
+00:04:17,480 --> 00:04:22,820
+When that happens, they have to come up with a strategy and different libraries and different companies
+
+66
+00:04:22,820 --> 00:04:28,400
+that support these libraries may have different strategies, which is an unfortunate side effect in
+
+67
+00:04:28,400 --> 00:04:31,670
+this particular case with React router version six.
+
+68
+00:04:32,090 --> 00:04:37,040
+Some students who have taken this course when we were doing version five may have experienced a lot
+
+69
+00:04:37,040 --> 00:04:42,380
+of frustration trying to use version six because it's not backwards compatible with version five.
+
+70
+00:04:42,800 --> 00:04:47,030
+This is an unfortunate side effect of the libraries decision when they rolled out version six.
+
+71
+00:04:47,480 --> 00:04:53,180
+So this is an important thing to think about when it comes to when to upgrade a library.
+
+72
+00:04:53,870 --> 00:04:59,510
+So with rack writer Dom, I want to highlight one thing is that oftentimes in them, they'll have an
+
+73
+00:04:59,510 --> 00:05:00,560
+upgrade guide.
+
+74
+00:05:00,890 --> 00:05:07,070
+So if you watch the upgrade guide and go through it, you will understand some of the key features in
+
+75
+00:05:07,070 --> 00:05:09,470
+the upgrade from one major version to another.
+
+76
+00:05:09,650 --> 00:05:15,460
+Usually, they'll lay out steps about what components or what features have now been removed and of
+
+77
+00:05:15,470 --> 00:05:16,640
+not being upgraded.
+
+78
+00:05:17,090 --> 00:05:22,010
+And similarly, they'll also tell you when you can actually directly update the version.
+
+79
+00:05:22,460 --> 00:05:28,040
+So here, if you read through this guide, it really lists out the major steps required.
+
+80
+00:05:28,310 --> 00:05:32,930
+First, you've got to upgrade your React version to at least sixteen point eight or greater.
+
+81
+00:05:33,500 --> 00:05:38,570
+So another thing to note about a lot of these libraries is that some of these libraries, depending
+
+82
+00:05:38,570 --> 00:05:40,700
+on the version of the library, you download it.
+
+83
+00:05:40,880 --> 00:05:47,360
+So in this case, React browser version six requires you to have a React version sixteen point eight
+
+84
+00:05:47,360 --> 00:05:50,150
+or greater version six of React router.
+
+85
+00:05:50,150 --> 00:05:56,000
+Dom will not work with anything lower than React version sixteen point eight, so that is one of those
+
+86
+00:05:56,000 --> 00:05:58,490
+considerations you may have to make when upgrading libraries.
+
+87
+00:05:59,240 --> 00:06:07,460
+Another one is when upgrading React router version five point one and above you have to remove certain
+
+88
+00:06:07,460 --> 00:06:08,030
+components.
+
+89
+00:06:08,210 --> 00:06:12,890
+I know these might not make sense to you if you haven't touched version five, but the main thing that
+
+90
+00:06:12,890 --> 00:06:19,010
+this really shows you is that they may want you to remove old features, and they may also want you
+
+91
+00:06:19,010 --> 00:06:23,480
+to refactor certain code patterns from those old libraries.
+
+92
+00:06:23,690 --> 00:06:26,090
+That's all these two really represent at a high level.
+
+93
+00:06:26,420 --> 00:06:27,830
+So that's one important thing.
+
+94
+00:06:27,950 --> 00:06:33,830
+You may have to do this first before you actually follow through with the final step, which is where
+
+95
+00:06:33,830 --> 00:06:36,320
+you upgrade the version of the library itself.
+
+96
+00:06:36,800 --> 00:06:38,300
+So these are some important things.
+
+97
+00:06:38,300 --> 00:06:43,220
+If you don't do these properly, you may see a ton of breakages across your application, which may
+
+98
+00:06:43,220 --> 00:06:47,330
+be significantly more difficult to resolve once you've actually upgraded.
+
+99
+00:06:47,930 --> 00:06:53,360
+So this is one of those important things that it's a really good moment to understand about a very particular
+
+100
+00:06:53,360 --> 00:06:58,970
+case that does happen a lot when working with React, which is that some of the supporting libraries
+
+101
+00:06:58,970 --> 00:07:01,940
+that you use may go through major version changes.
+
+102
+00:07:02,210 --> 00:07:07,910
+When that happens and there are breaking changes, there is a process of going through the upgrade with
+
+103
+00:07:07,910 --> 00:07:08,150
+them.
+
+104
+00:07:08,570 --> 00:07:13,940
+It's oftentimes kind of painful, but it's definitely one of those things that is a great moment to
+
+105
+00:07:13,940 --> 00:07:20,150
+really understand how these libraries work with your application, but also the general development
+
+106
+00:07:20,150 --> 00:07:27,140
+cycle and life of a application that you're building in production as a professional developer.
+
+107
+00:07:27,740 --> 00:07:32,060
+So I just wanted to highlight this thing because it's really on top of mind and we actually went through
+
+108
+00:07:32,060 --> 00:07:34,340
+it together inside of this course.
+
+109
+00:07:34,880 --> 00:07:39,620
+Now, for some of you who have not gone through it earlier when we did version five, this may not be
+
+110
+00:07:39,620 --> 00:07:44,990
+as relevant to you in terms of the actual experience of building out the application and the capstone
+
+111
+00:07:44,990 --> 00:07:50,660
+project, but this is still a very good learning moment to understand that these things can happen.
+
+112
+00:07:50,870 --> 00:07:55,430
+And I just want to guide you through some of the steps that you can take in order to go through these
+
+113
+00:07:55,430 --> 00:07:56,330
+kinds of upgrades.
+
+114
+00:07:56,510 --> 00:07:57,740
+So it's really not that scary.
+
+115
+00:07:57,860 --> 00:08:02,180
+It seems way scarier than it is, but it's just one of those things that you just want to follow the
+
+116
+00:08:02,180 --> 00:08:04,130
+instructions and go through application.
+
+117
+00:08:04,370 --> 00:08:08,780
+Take it slow one by one and then finally make the upgrade.
+
+118
+00:08:09,560 --> 00:08:14,630
+So now that we have installed rack router version six and I've gone on this little tangent right now
+
+119
+00:08:14,810 --> 00:08:21,110
+about explaining some of these library changes, let's actually implement React router version six into
+
+120
+00:08:21,110 --> 00:08:21,800
+our application.

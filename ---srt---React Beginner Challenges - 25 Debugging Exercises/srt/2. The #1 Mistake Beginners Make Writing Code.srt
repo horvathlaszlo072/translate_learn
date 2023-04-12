@@ -1,0 +1,119 @@
+1
+00:00:01,000 --> 00:00:05,200
+This video, we're going to talk about the number one mistake, new beginners make writing code.
+
+2
+00:00:05,590 --> 00:00:10,630
+So most of the questions that I've gotten answering questions in my courses has been really traced down
+
+3
+00:00:10,630 --> 00:00:12,850
+to a single mistake that beginners make.
+
+4
+00:00:13,300 --> 00:00:15,160
+So what is the number one mistake?
+
+5
+00:00:15,160 --> 00:00:18,700
+New beginners make writing code so they don't check their spelling.
+
+6
+00:00:19,240 --> 00:00:21,630
+So checking your spelling is really important.
+
+7
+00:00:21,640 --> 00:00:25,630
+You're always going to want to do this twice or three times after you write code.
+
+8
+00:00:25,900 --> 00:00:30,580
+This is because if you're texting a friend and you spell a word wrong, it's not really a big deal.
+
+9
+00:00:30,580 --> 00:00:30,840
+Right?
+
+10
+00:00:31,060 --> 00:00:36,730
+But with code, it not only will cause your app to break sometimes, but also your app will not break
+
+11
+00:00:36,730 --> 00:00:40,510
+and you'll be forced to debug this issue later in a more difficult way.
+
+12
+00:00:40,510 --> 00:00:45,280
+So maybe you misspell an attribute or something so you can see case sensitivity matters.
+
+13
+00:00:45,280 --> 00:00:48,880
+So if you have the wrong case, you're going to have an error.
+
+14
+00:00:48,880 --> 00:00:54,190
+If you try and assume two variables are the same and matching up your brackets is really important as
+
+15
+00:00:54,190 --> 00:00:54,450
+well.
+
+16
+00:00:54,460 --> 00:01:01,780
+So it's really important to get the brackets around a loop and inside of your JSM correct and misdoing
+
+17
+00:01:01,780 --> 00:01:06,270
+the brackets could cause issues as well and compile time versus runtime.
+
+18
+00:01:06,280 --> 00:01:12,010
+So some issues will occur during compile time when you're writing the code, but also other issues will
+
+19
+00:01:12,010 --> 00:01:16,090
+come later when you're when your actual code executes on the browser.
+
+20
+00:01:16,600 --> 00:01:17,260
+Try it out.
+
+21
+00:01:17,470 --> 00:01:19,060
+Can you spot the spelling error?
+
+22
+00:01:24,770 --> 00:01:30,270
+So there isn't technically a runtime error here, but the console, that long statement will print undefined.
+
+23
+00:01:30,440 --> 00:01:33,230
+So this is an example of something that doesn't crash your app.
+
+24
+00:01:33,230 --> 00:01:38,240
+But it may be easy to miss this because it looks like person ID is defined there.
+
+25
+00:01:38,420 --> 00:01:44,260
+But actually, person ID is the local variable we used person person ID is undefined in this example,
+
+26
+00:01:44,570 --> 00:01:48,260
+so an improvement would be to name better variables.
+
+27
+00:01:48,260 --> 00:01:51,650
+So person name would probably make more sense than a person name.
+
+28
+00:01:51,840 --> 00:01:56,780
+And if you're going to use a local variable like person ID, you might as well just d structure const
+
+29
+00:01:56,780 --> 00:02:01,900
+id comma name off of that person and just use those if you're going to log them.
+
+30
+00:02:02,030 --> 00:02:05,620
+So just a way to clean up your code and to avoid spelling errors.

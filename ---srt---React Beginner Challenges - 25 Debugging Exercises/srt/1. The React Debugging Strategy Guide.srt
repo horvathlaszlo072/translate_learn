@@ -1,0 +1,851 @@
+1
+00:00:00,500 --> 00:00:06,020
+OK, so I've prepared this strategy guide here, which sort of represents the steps that you need to
+
+2
+00:00:06,170 --> 00:00:10,340
+take in order to to debug and find the source of your issues.
+
+3
+00:00:10,350 --> 00:00:12,740
+So that's really the point of debugging.
+
+4
+00:00:12,740 --> 00:00:14,720
+It's sort of to find that root cause.
+
+5
+00:00:14,930 --> 00:00:18,050
+So that's your main thing that you're going to be working through in this course.
+
+6
+00:00:18,290 --> 00:00:23,750
+And also just in your career, when you stumble upon a bug, you're going to end up being a detective
+
+7
+00:00:23,750 --> 00:00:25,310
+and following certain steps.
+
+8
+00:00:25,310 --> 00:00:28,820
+You're going to be you're going to be confirming that the bug occurred.
+
+9
+00:00:28,940 --> 00:00:33,950
+You're going to be gathering the clues that are going to help you find that bug, and then you're going
+
+10
+00:00:33,950 --> 00:00:36,800
+to actually find where that bug is in your code.
+
+11
+00:00:37,010 --> 00:00:41,510
+And then, you know, you're working toward finding that root cause.
+
+12
+00:00:41,900 --> 00:00:45,070
+So with that, we'll just get started with explaining this.
+
+13
+00:00:45,080 --> 00:00:49,690
+So, again, the point of this is to help you determine the root cause of that issue.
+
+14
+00:00:50,090 --> 00:00:51,980
+So that's really the hardest part, right?
+
+15
+00:00:51,980 --> 00:00:57,230
+When you find a bug, if you knew why that bug was happening, you'd be you'd be a lot and in better
+
+16
+00:00:57,230 --> 00:00:58,370
+shape to fix that bug.
+
+17
+00:00:58,370 --> 00:00:58,620
+Right.
+
+18
+00:00:59,000 --> 00:01:01,520
+But a lot of times we don't know why the bug occurs.
+
+19
+00:01:01,520 --> 00:01:07,340
+And that's where that source of anxiety and panic happens, because we don't know why it's happening
+
+20
+00:01:07,340 --> 00:01:08,350
+and we don't know how to fix it.
+
+21
+00:01:08,600 --> 00:01:14,090
+So once you figure out why it's happening or the root cause, then you're in much better shape to fix
+
+22
+00:01:14,090 --> 00:01:16,310
+that issue because you know why it's happening.
+
+23
+00:01:16,310 --> 00:01:16,560
+Right?
+
+24
+00:01:16,580 --> 00:01:22,400
+So this whole guide here is to just help you understand why a bug is happening in the app.
+
+25
+00:01:22,670 --> 00:01:26,900
+And I've seen a lot of beginners struggle with with a lot of these steps.
+
+26
+00:01:26,900 --> 00:01:29,960
+So they don't get past a certain point in this.
+
+27
+00:01:30,170 --> 00:01:36,080
+And it's really just about knowing the tools that you need to investigate and just being really resourceful,
+
+28
+00:01:36,080 --> 00:01:40,600
+like using Google and just doing a lot of research on what you're working on.
+
+29
+00:01:40,610 --> 00:01:42,550
+So let's start from the top here.
+
+30
+00:01:42,560 --> 00:01:45,920
+So first thing that you really want to do is confirm the bug.
+
+31
+00:01:45,920 --> 00:01:49,670
+So you actually want to reproduce that bug, whatever it is.
+
+32
+00:01:49,700 --> 00:01:55,460
+So if someone else points out a bug to you, you're going to want to see that you can reproduce it on
+
+33
+00:01:55,460 --> 00:01:58,720
+your end if you run into the bug yourself.
+
+34
+00:01:58,730 --> 00:02:03,170
+Of course, you've already reproduced it, but still, it's really important that you can actually reliably
+
+35
+00:02:03,170 --> 00:02:04,430
+trigger that bug.
+
+36
+00:02:04,430 --> 00:02:08,330
+So you're going to want to refresh the page and you're going to want to make sure that you can actually
+
+37
+00:02:08,330 --> 00:02:09,960
+see that same bug every time.
+
+38
+00:02:10,370 --> 00:02:11,240
+This is really important.
+
+39
+00:02:11,350 --> 00:02:16,010
+The first step just confirmed that the bug is there because sometimes bugs will be reported and there
+
+40
+00:02:16,010 --> 00:02:17,060
+won't actually be an issue.
+
+41
+00:02:17,480 --> 00:02:23,900
+And so you can weed that out quickly by making sure that there is an issue and that you have consistent
+
+42
+00:02:23,900 --> 00:02:24,470
+behavior.
+
+43
+00:02:24,470 --> 00:02:24,680
+Right.
+
+44
+00:02:24,680 --> 00:02:27,170
+You have consistent issue next.
+
+45
+00:02:27,530 --> 00:02:28,700
+You're don't want to gather the clues.
+
+46
+00:02:28,710 --> 00:02:33,240
+So once you've consistently reproduced it, you can now see what what is actually happening.
+
+47
+00:02:33,260 --> 00:02:35,540
+So what's the evidence that you're going to collect here?
+
+48
+00:02:35,960 --> 00:02:39,340
+The first thing you're going to do is you're going to see if there's errors in the console.
+
+49
+00:02:39,350 --> 00:02:40,450
+So this is really important.
+
+50
+00:02:40,730 --> 00:02:43,700
+This is the main source of that.
+
+51
+00:02:43,700 --> 00:02:44,720
+You know that there's an error.
+
+52
+00:02:45,180 --> 00:02:47,690
+It's it appears in the console, it's very obvious.
+
+53
+00:02:47,870 --> 00:02:49,160
+It's in red text.
+
+54
+00:02:49,460 --> 00:02:53,280
+And a lot of people will see this and they will just stop right there.
+
+55
+00:02:53,330 --> 00:02:56,210
+This is kind of where a lot of beginners will just stop right here.
+
+56
+00:02:56,210 --> 00:02:58,820
+They see the error and that's all they know.
+
+57
+00:02:58,820 --> 00:03:01,910
+They don't have any other knowledge of anything of what that error is.
+
+58
+00:03:01,910 --> 00:03:05,900
+And so they just kind of well, we're just report that error to me and say, I'm getting this error.
+
+59
+00:03:05,900 --> 00:03:06,580
+What's going on?
+
+60
+00:03:06,920 --> 00:03:09,020
+So what you can do.
+
+61
+00:03:09,200 --> 00:03:12,100
+So then you could step you could take that step further.
+
+62
+00:03:12,110 --> 00:03:18,560
+So after you you've you have that clue that there's an error in the console, you you can make an assumption
+
+63
+00:03:18,560 --> 00:03:24,050
+that there's a JavaScript bug or, you know, so that's really where those console errors come from.
+
+64
+00:03:24,620 --> 00:03:29,720
+Some JavaScript library, whether it's your code or a library, is throwing a JavaScript error.
+
+65
+00:03:30,080 --> 00:03:34,570
+And so that's that's the first clue that you can make if you see an error.
+
+66
+00:03:34,580 --> 00:03:39,080
+Now, if you don't see an error in your console, it means that you could have any number of things
+
+67
+00:03:39,080 --> 00:03:39,650
+going wrong.
+
+68
+00:03:39,650 --> 00:03:43,250
+You have so common thing is that you have incorrect components.
+
+69
+00:03:43,250 --> 00:03:48,470
+So you have your react app and your rendering, let's say the wrong component or a missing component
+
+70
+00:03:48,470 --> 00:03:51,110
+or some button doesn't do the right thing.
+
+71
+00:03:51,410 --> 00:03:56,690
+That's, you know, some you're clicking on a button and it's not it's not giving you the expected result
+
+72
+00:03:56,690 --> 00:04:00,350
+that's could be due to you, like I said, a wrong style.
+
+73
+00:04:00,350 --> 00:04:03,310
+It could be a it's a rendering issue, right.
+
+74
+00:04:03,530 --> 00:04:04,520
+This type of issue.
+
+75
+00:04:04,670 --> 00:04:07,190
+And it could be related to an unexpected react state.
+
+76
+00:04:07,190 --> 00:04:12,590
+So let's say you have a state that's like hide this button and, you know, it's not being hidden.
+
+77
+00:04:12,590 --> 00:04:18,200
+So that could be a result of the state being wrong in the app that should show that button.
+
+78
+00:04:18,200 --> 00:04:21,260
+Or it could just be the button itself, not hiding itself correctly.
+
+79
+00:04:21,560 --> 00:04:23,870
+So in any case, this would be a rendering issue.
+
+80
+00:04:24,050 --> 00:04:27,530
+And it's you know, it could be HTML.
+
+81
+00:04:27,530 --> 00:04:32,270
+You could have you couldn't you know, you so you have the wrong button HTML text or you have the wrong
+
+82
+00:04:32,270 --> 00:04:37,820
+button attribute on the HTML, or you could have the wrong access so you could have the wrong, let's
+
+83
+00:04:37,820 --> 00:04:41,500
+say display none is C property, you could have the wrong access.
+
+84
+00:04:41,840 --> 00:04:45,980
+So this is just, you know, my two ways that I'm going to be talking about.
+
+85
+00:04:45,980 --> 00:04:49,790
+These could be a rendering issue or it could be a JavaScript issue.
+
+86
+00:04:49,970 --> 00:04:55,130
+And I've also split those out in here as an error shown and then no error shown.
+
+87
+00:04:55,340 --> 00:04:58,550
+So this is just how I'm breaking it down for you to make it easy.
+
+88
+00:04:58,550 --> 00:04:59,990
+There's obviously any number of.
+
+89
+00:05:00,090 --> 00:05:04,460
+Hours, you could have a slowdown, you could have a network issue, you could have something like that,
+
+90
+00:05:04,460 --> 00:05:06,000
+but those are less common.
+
+91
+00:05:06,020 --> 00:05:11,660
+We're going to talk through the most common issues or errors here, which is you have an error which
+
+92
+00:05:12,050 --> 00:05:16,940
+would be determined by the stack trace stack traces that function stack that is going to show in the
+
+93
+00:05:16,940 --> 00:05:17,270
+error.
+
+94
+00:05:17,930 --> 00:05:23,180
+The error is always going to give you the source of that error, which is the biggest clue of how to
+
+95
+00:05:23,180 --> 00:05:24,050
+actually fix that.
+
+96
+00:05:24,770 --> 00:05:28,550
+Now, like I said, if you have a rendering issue, you're going to have less evidence.
+
+97
+00:05:28,550 --> 00:05:30,050
+It's going to be harder to debug that.
+
+98
+00:05:30,200 --> 00:05:35,510
+But I'm show you how to do that in this course with the ability to inspect the elements, inspect the
+
+99
+00:05:35,510 --> 00:05:40,420
+elements on the page to find where that source code is of that component.
+
+100
+00:05:40,790 --> 00:05:46,070
+And again, I'm actually at a search for files for those suspected components or access classes.
+
+101
+00:05:46,070 --> 00:05:52,520
+So common thing to do is when you see a button or something or let's say a header, something wrong,
+
+102
+00:05:52,820 --> 00:05:55,640
+you're going to want to search your app for that component.
+
+103
+00:05:55,640 --> 00:06:01,610
+So, you know, searching your files for that component, searching for CSFs classes, because with
+
+104
+00:06:01,610 --> 00:06:04,850
+a stack trace, you have that exact trace of where that error is coming from.
+
+105
+00:06:05,150 --> 00:06:11,900
+With when you don't have the stack trace, you're going to be forced to actually do some research into
+
+106
+00:06:11,900 --> 00:06:17,540
+the code and see where that element is happening or where that element is being rendered and how that's
+
+107
+00:06:17,540 --> 00:06:19,280
+being rendered and what's going on with that.
+
+108
+00:06:19,520 --> 00:06:22,790
+But really with this section here, the key thing is to find the code.
+
+109
+00:06:22,790 --> 00:06:25,010
+So you're trying to find the code that's causing the issue.
+
+110
+00:06:25,010 --> 00:06:25,190
+Right.
+
+111
+00:06:25,220 --> 00:06:32,630
+So if you have a component that's, you know, a person image or a person page or a profile page, let's
+
+112
+00:06:32,630 --> 00:06:34,340
+say you can know that.
+
+113
+00:06:34,340 --> 00:06:39,260
+And there's a there's a react component called profile page, you can make that assumption, OK, this
+
+114
+00:06:39,260 --> 00:06:40,730
+error is coming from this file.
+
+115
+00:06:41,030 --> 00:06:46,410
+And then if it's on the the person image, you could say, OK, it's it's person image.
+
+116
+00:06:46,700 --> 00:06:48,330
+That's the code that's causing the issue.
+
+117
+00:06:48,590 --> 00:06:54,050
+So the purpose of this section is really just to get you to find the exact files and code.
+
+118
+00:06:54,350 --> 00:07:00,380
+So code or functions or classes inside of that file that are causing the issue, then you're going to
+
+119
+00:07:00,380 --> 00:07:03,470
+actually do some more research into why.
+
+120
+00:07:03,500 --> 00:07:09,890
+So the key thing here is you're going to try and you need to be able to explain why that bug is happening
+
+121
+00:07:09,890 --> 00:07:12,610
+in order to move forward with fixing it.
+
+122
+00:07:13,010 --> 00:07:19,370
+So the split here is the bug is in your code and the bug is coming from an external library.
+
+123
+00:07:19,760 --> 00:07:25,610
+So let's say you have some JavaScript, simple JavaScript error in your code.
+
+124
+00:07:25,650 --> 00:07:29,300
+You've traced the stack trace down to your code.
+
+125
+00:07:29,330 --> 00:07:30,500
+You can make that assumption here.
+
+126
+00:07:30,500 --> 00:07:32,690
+It's in your code because you've written that code.
+
+127
+00:07:32,900 --> 00:07:33,890
+It's in your file.
+
+128
+00:07:34,130 --> 00:07:39,080
+And you you're going to then proceed with checking your spelling, your syntax, making sure that you're
+
+129
+00:07:39,080 --> 00:07:45,110
+writing good JavaScript, and then you're going to want to dig deeper into setting breakpoints and examining
+
+130
+00:07:45,110 --> 00:07:47,210
+that states you're going to be setting breakpoint.
+
+131
+00:07:47,210 --> 00:07:52,870
+You're just looking around and confirming the variables and data that's defined in that state.
+
+132
+00:07:52,880 --> 00:07:56,800
+And that's going to really help you because you're going to be able to make assumptions.
+
+133
+00:07:56,810 --> 00:07:58,070
+OK, well, the states wrong.
+
+134
+00:07:58,190 --> 00:08:01,370
+So that's why it's not rendering the right component or whatever it is.
+
+135
+00:08:01,790 --> 00:08:07,430
+And then also, if let's say you have a successor HTML issue, you're going to want to use the chrome
+
+136
+00:08:07,430 --> 00:08:14,900
+dev tools again to look at that success and then see what success trace that back to your classes,
+
+137
+00:08:14,900 --> 00:08:20,660
+your success classes or style components or whatever you're using, and then make the assumption about
+
+138
+00:08:20,660 --> 00:08:23,770
+what styles are being correct or incorrect.
+
+139
+00:08:23,810 --> 00:08:24,080
+They're.
+
+140
+00:08:26,050 --> 00:08:30,400
+So the bug is coming from the external library, you can make an assumption that it's coming from an
+
+141
+00:08:30,400 --> 00:08:37,000
+external library if, let's say, an external library during an error or if you don't know what's wrong
+
+142
+00:08:37,000 --> 00:08:39,970
+or there is some kind of issue with some component that you're installing.
+
+143
+00:08:40,330 --> 00:08:46,420
+And, you know, a lot of times you that won't have a stack trace, nothing will be wrong with, you
+
+144
+00:08:46,420 --> 00:08:48,590
+know, there won't be any errors, thermosphere rendering issue.
+
+145
+00:08:48,610 --> 00:08:51,850
+So a lot of times you will have to debug external libraries.
+
+146
+00:08:52,120 --> 00:08:56,890
+And that's can be that can be really challenging because it's not your library, it's not your code.
+
+147
+00:08:57,100 --> 00:09:02,500
+And you have to actually research that so you can research that library and then you're going to Google
+
+148
+00:09:02,500 --> 00:09:03,300
+the error message.
+
+149
+00:09:03,320 --> 00:09:04,950
+That's the most common thing to do.
+
+150
+00:09:04,960 --> 00:09:06,460
+This is a really good practice.
+
+151
+00:09:07,360 --> 00:09:12,910
+If you see an error, even if you you already think, you know that error is it's always good to, you
+
+152
+00:09:12,910 --> 00:09:15,130
+know, research it again just to see that error.
+
+153
+00:09:15,520 --> 00:09:19,600
+What people are saying about that error, a lot of times you could if you're in a library.
+
+154
+00:09:19,600 --> 00:09:26,350
+So if it's an external library, you can actually search the GitHub issues for that library and find
+
+155
+00:09:26,350 --> 00:09:28,030
+see if the people are talking about that error there.
+
+156
+00:09:28,030 --> 00:09:30,880
+But usually just Googling that error message is going to give you what you need.
+
+157
+00:09:31,270 --> 00:09:34,480
+Let's say it's a react error you could especially react to.
+
+158
+00:09:34,480 --> 00:09:38,530
+Errors are going to be a lot of documentation, blogs and things about errors in react.
+
+159
+00:09:38,530 --> 00:09:44,530
+So really great practice to just Google the error that you're getting rather than try and track it down
+
+160
+00:09:45,040 --> 00:09:45,700
+yourself.
+
+161
+00:09:45,700 --> 00:09:48,100
+Just quicker way to get an explanation of that.
+
+162
+00:09:48,280 --> 00:09:53,380
+And if you research the library, you may already know a lot of things about it and it should be obvious
+
+163
+00:09:53,380 --> 00:09:53,950
+what's happening.
+
+164
+00:09:54,220 --> 00:10:00,310
+For example, if you if you don't know what react is an error, telling you about state is not going
+
+165
+00:10:00,310 --> 00:10:01,360
+to be very helpful for you.
+
+166
+00:10:01,750 --> 00:10:05,020
+So that's why it's really important to see the library.
+
+167
+00:10:05,140 --> 00:10:10,510
+Also, if you have a component that has a lot of options, you're going to want to research the documentation
+
+168
+00:10:10,510 --> 00:10:12,130
+to see the right options to pass in.
+
+169
+00:10:12,460 --> 00:10:16,540
+And that's where the next thing comes in is try a clean example from the documentation.
+
+170
+00:10:16,540 --> 00:10:22,840
+So if if you have some component in your app and you have no idea where that component came from, you
+
+171
+00:10:22,840 --> 00:10:28,180
+can research the library that it came from and then take an example from their documentation and put
+
+172
+00:10:28,180 --> 00:10:33,760
+it in your app or match it up with your code and see what's wrong and remove attributes on that component
+
+173
+00:10:33,760 --> 00:10:36,190
+to actually get it to a cleaner state.
+
+174
+00:10:36,190 --> 00:10:36,370
+Right.
+
+175
+00:10:36,370 --> 00:10:38,290
+Get it to a cleaner point where it actually works.
+
+176
+00:10:38,560 --> 00:10:42,370
+And that's kind of the really the last step here is, you know, good.
+
+177
+00:10:42,370 --> 00:10:47,470
+A good thing is to to get your code back to normal as quickly as possible so you don't want to be fighting
+
+178
+00:10:47,470 --> 00:10:52,060
+with a bunch of options or things that you've no idea what's going on because it's external code.
+
+179
+00:10:52,360 --> 00:11:00,190
+You are you're always able to, you know, remove code inside of your app and then slowly add back in
+
+180
+00:11:00,190 --> 00:11:01,200
+the problem code.
+
+181
+00:11:01,390 --> 00:11:08,020
+So the last step I have here in the external library is to debug the source code of the library.
+
+182
+00:11:08,320 --> 00:11:10,540
+So this is something that you're going to do pretty rarely.
+
+183
+00:11:10,540 --> 00:11:17,950
+But sometimes the component will be so, or sometimes the library will be really obscure and there won't
+
+184
+00:11:17,950 --> 00:11:19,330
+be any documentation on it.
+
+185
+00:11:19,630 --> 00:11:24,220
+And you'll actually have to go in and set breakpoints in that library and see what's going on or read
+
+186
+00:11:24,220 --> 00:11:27,040
+the GitHub source code and see what's going on.
+
+187
+00:11:27,040 --> 00:11:31,240
+And then you'll you'll know maybe you've got a hidden attribute or something that's not in the documentation.
+
+188
+00:11:31,510 --> 00:11:35,770
+This is really a skill that you're probably not going to need to do as a beginner because you're going
+
+189
+00:11:35,770 --> 00:11:38,560
+to be going to be using good components as a beginner.
+
+190
+00:11:38,560 --> 00:11:42,520
+You're not going to be really trying to debug advanced components right away.
+
+191
+00:11:42,820 --> 00:11:47,200
+But if you're using a lesser known library and you really want to know what's going on and you're not
+
+192
+00:11:47,200 --> 00:11:51,720
+sure what's going on in your code, you could debug the external code of that library.
+
+193
+00:11:52,300 --> 00:11:55,120
+Also, this is the supplies, the APIs as well.
+
+194
+00:11:55,120 --> 00:11:57,580
+So a lot of times you'll have a back end.
+
+195
+00:11:57,580 --> 00:12:04,720
+So you have a backend developer and or an API that you're calling and that network request will return
+
+196
+00:12:04,720 --> 00:12:06,250
+an error or something like that.
+
+197
+00:12:06,250 --> 00:12:08,140
+And so you'll have to debug that API.
+
+198
+00:12:08,470 --> 00:12:13,840
+And that's even more difficult because, well, it's actually more common than an open source.
+
+199
+00:12:14,290 --> 00:12:15,400
+They're both equally common, right?
+
+200
+00:12:15,400 --> 00:12:16,630
+It's just external code.
+
+201
+00:12:16,630 --> 00:12:18,940
+That's not your front end JavaScript or react code.
+
+202
+00:12:19,150 --> 00:12:22,600
+It's coming from a back end or another react library or something.
+
+203
+00:12:22,600 --> 00:12:24,850
+So either way, same steps apply.
+
+204
+00:12:24,850 --> 00:12:30,070
+You're going to want to research your own back end APIs, talk to your back end developer, try and
+
+205
+00:12:30,070 --> 00:12:31,870
+get information about what's going on with the data.
+
+206
+00:12:32,800 --> 00:12:37,990
+OK, and then if you can't track that down, then you can always revert back to a working state, so
+
+207
+00:12:38,620 --> 00:12:43,270
+always try and revert back to something that actually works and then slowly add in that error or, you
+
+208
+00:12:43,270 --> 00:12:44,980
+know, the error state or the problem code.
+
+209
+00:12:45,730 --> 00:12:51,550
+So, like I said, a working state can be an example from the external library or just a simpler component
+
+210
+00:12:51,550 --> 00:12:52,400
+that, you know, works.
+
+211
+00:12:52,870 --> 00:12:56,060
+So that is the debugging strategy guide.
+
+212
+00:12:56,060 --> 00:13:01,150
+We're going to be using this throughout the course and you can download this and use it for your project.
+
+213
+00:13:01,160 --> 00:13:02,140
+So I hope this was helpful.

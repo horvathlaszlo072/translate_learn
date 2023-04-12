@@ -1,0 +1,175 @@
+1
+00:00:00.02 --> 00:00:03.03
+- [Instructor] Let's talk
+about documenting your API.
+
+2
+00:00:03.03 --> 00:00:07.07
+Within Postman, you have the
+ability to export a collection.
+
+3
+00:00:07.07 --> 00:00:09.07
+If you mouse over your collection,
+
+4
+00:00:09.07 --> 00:00:13.07
+click on the elipses, click on export,
+
+5
+00:00:13.07 --> 00:00:17.08
+Collection v2, and export,
+
+6
+00:00:17.08 --> 00:00:21.04
+you can export your
+collection in JSON format.
+
+7
+00:00:21.04 --> 00:00:22.06
+There are many tools online
+
+8
+00:00:22.06 --> 00:00:25.06
+that allow you to document your API.
+
+9
+00:00:25.06 --> 00:00:29.03
+One example, is apimatic.io.
+
+10
+00:00:29.03 --> 00:00:34.00
+If you go to apimatic.io and
+sign up for a free account,
+
+11
+00:00:34.00 --> 00:00:38.01
+go to /transformer, click on convert now,
+
+12
+00:00:38.01 --> 00:00:42.09
+and upload your collection.
+
+13
+00:00:42.09 --> 00:00:44.09
+Add a file descriptor.
+
+14
+00:00:44.09 --> 00:00:48.07
+Let's select API Blueprint Format 1A,
+
+15
+00:00:48.07 --> 00:00:52.01
+and click convert now.
+
+16
+00:00:52.01 --> 00:00:55.02
+If you go to a site like apiary.io,
+
+17
+00:00:55.02 --> 00:00:57.03
+which also requires a free account,
+
+18
+00:00:57.03 --> 00:01:00.06
+if you open the file you downloaded,
+
+19
+00:01:00.06 --> 00:01:02.08
+copy the API blueprint,
+
+20
+00:01:02.08 --> 00:01:06.02
+and then paste it into your apiary,
+
+21
+00:01:06.02 --> 00:01:11.00
+you will then have a live
+documentation of your API,
+
+22
+00:01:11.00 --> 00:01:12.09
+which will describe each end point,
+
+23
+00:01:12.09 --> 00:01:18.01
+and also the required parameters.
+
+24
+00:01:18.01 --> 00:01:19.08
+So, for instance, we see our get,
+
+25
+00:01:19.08 --> 00:01:24.02
+our post, our put and our delete.
+
+26
+00:01:24.02 --> 00:01:26.01
+If you click on an end point,
+
+27
+00:01:26.01 --> 00:01:28.08
+such as get available rooms,
+
+28
+00:01:28.08 --> 00:01:31.07
+scroll down and click try,
+
+29
+00:01:31.07 --> 00:01:36.03
+it'll give you an example on
+how to call that end point.
+
+30
+00:01:36.03 --> 00:01:40.02
+Let's add in the check-in
+and check-out fields
+
+31
+00:01:40.02 --> 00:01:42.08
+and click call resource.
+
+32
+00:01:42.08 --> 00:01:44.03
+We got a 404 in this case,
+
+33
+00:01:44.03 --> 00:01:48.09
+because we don't have a
+hosted URL for our API.
+
+34
+00:01:48.09 --> 00:01:52.05
+But if we did, that'd be
+a good way to test it out.
+
+35
+00:01:52.05 --> 00:01:54.04
+The 1A format is pretty universal,
+
+36
+00:01:54.04 --> 00:01:57.09
+so you'll be able to use it on many sites
+
+37
+00:01:57.09 --> 00:02:00.09
+other than apiary.io.
+
+38
+00:02:00.09 --> 00:02:06.05
+Swagger.io also provides
+hosted documentation.
+
+39
+00:02:06.05 --> 00:02:12.05
+If you go to apimatic and
+convert your Postman export
+
+40
+00:02:12.05 --> 00:02:15.01
+to a Swagger JSON or YAML,
+
+41
+00:02:15.01 --> 00:02:18.02
+you could also host it on SwaggerHub.
+

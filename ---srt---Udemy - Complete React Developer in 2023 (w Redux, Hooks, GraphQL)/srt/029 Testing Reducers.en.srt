@@ -1,0 +1,727 @@
+1
+00:00:01,340 --> 00:00:01,990
+Welcome back.
+
+2
+00:00:02,880 --> 00:00:11,310
+We have a good idea of how to test react components, but what about redux and some of the reducers,
+
+3
+00:00:11,310 --> 00:00:13,590
+actions and concerns that we have?
+
+4
+00:00:14,600 --> 00:00:22,430
+Let's start off with reducers, and you're going to absolutely love this section because remember,
+
+5
+00:00:22,430 --> 00:00:28,080
+our producers are pure functions and pure functions are a Testa's dream.
+
+6
+00:00:28,340 --> 00:00:30,230
+They're the easiest to test.
+
+7
+00:00:30,920 --> 00:00:32,220
+So let's do that.
+
+8
+00:00:32,660 --> 00:00:34,050
+I'm going to create a new file.
+
+9
+00:00:34,340 --> 00:00:38,510
+Call it reducers test dachas.
+
+10
+00:00:40,260 --> 00:00:42,510
+And then in here, I'm going to.
+
+11
+00:00:43,700 --> 00:00:46,700
+Import while we need the constants.
+
+12
+00:00:48,130 --> 00:00:56,050
+So I'm going to import the constants and obviously our reduce or so import, we'll do import star as
+
+13
+00:00:56,530 --> 00:00:59,140
+a new syntax, as reducers.
+
+14
+00:01:00,540 --> 00:01:01,170
+From.
+
+15
+00:01:05,620 --> 00:01:06,190
+Reducers.
+
+16
+00:01:08,060 --> 00:01:12,680
+With this syntax, we can just do reducers, dot, whatever we do here, that we've exported it.
+
+17
+00:01:12,710 --> 00:01:18,680
+So in our case reducers that's are showboats reducers, dot request robots, which reads nicely.
+
+18
+00:01:19,840 --> 00:01:26,050
+All right, let's group these reducers this time around by using a described celesta describe.
+
+19
+00:01:28,370 --> 00:01:34,210
+Search robots, we're going to do our first reducer here and within here.
+
+20
+00:01:34,280 --> 00:01:37,560
+Oops, that's not what I wanted to do within here.
+
+21
+00:01:38,090 --> 00:01:45,740
+We're going to have a test, the first test that says should return the initial state.
+
+22
+00:01:55,490 --> 00:02:03,290
+Now, the initial state in the search, robots reducer can be tested like this, so we can do expect.
+
+23
+00:02:06,230 --> 00:02:07,850
+Reducers Dott.
+
+24
+00:02:08,870 --> 00:02:09,870
+Search robots.
+
+25
+00:02:09,890 --> 00:02:16,550
+So that's our reducer and remember, our reducer takes two things a state and an action.
+
+26
+00:02:18,200 --> 00:02:26,000
+And because if state doesn't exist or is undefined, we give it the initial state search, let's do
+
+27
+00:02:26,000 --> 00:02:26,210
+that.
+
+28
+00:02:26,220 --> 00:02:30,830
+I'm going to say that the reducer does search robots gets undefined.
+
+29
+00:02:31,460 --> 00:02:36,670
+So no state at the beginning and it's going to get no action.
+
+30
+00:02:36,680 --> 00:02:38,960
+But let's just give it an empty action for now.
+
+31
+00:02:40,130 --> 00:02:46,220
+We want to test for those cases where, well, we we have an undefined state, what happens?
+
+32
+00:02:46,700 --> 00:02:49,400
+Well, we wanted to equal.
+
+33
+00:02:51,050 --> 00:02:52,340
+Our ideal state.
+
+34
+00:02:54,380 --> 00:02:58,760
+And our state in this case is to have search field.
+
+35
+00:03:00,530 --> 00:03:01,910
+To be an empty string.
+
+36
+00:03:03,390 --> 00:03:04,650
+So let me save that.
+
+37
+00:03:06,230 --> 00:03:08,660
+Open up our testing suite.
+
+38
+00:03:16,010 --> 00:03:24,860
+And all right, everything is passing, if I press to see that everything is logged out nicely, including
+
+39
+00:03:24,860 --> 00:03:32,150
+our reducers dot test, if we we put in a in the search field, it's going to fail.
+
+40
+00:03:32,360 --> 00:03:32,690
+All right.
+
+41
+00:03:32,700 --> 00:03:35,090
+So that's great.
+
+42
+00:03:35,120 --> 00:03:36,890
+That was super, super easy.
+
+43
+00:03:37,160 --> 00:03:38,030
+What else can we do?
+
+44
+00:03:38,810 --> 00:03:44,510
+Well, we expected that this reducer when we see our.
+
+45
+00:03:46,890 --> 00:03:51,250
+Change search field event that it returns a new state.
+
+46
+00:03:51,750 --> 00:04:01,340
+So once again, we can say that it should handle the change search field event and we can say reducers
+
+47
+00:04:01,350 --> 00:04:02,760
+that search robots.
+
+48
+00:04:03,270 --> 00:04:04,650
+Let's make this a little bit smaller.
+
+49
+00:04:07,290 --> 00:04:11,250
+Is going to get the state of, let's say.
+
+50
+00:04:12,200 --> 00:04:22,190
+An empty state or you know what, let's add a const initial state search here and say that this initial
+
+51
+00:04:22,190 --> 00:04:24,290
+state search is.
+
+52
+00:04:25,910 --> 00:04:26,960
+Search field.
+
+53
+00:04:28,740 --> 00:04:29,520
+He calls this.
+
+54
+00:04:31,140 --> 00:04:38,340
+All right, so we can just use initial search, so this is going to be the initial state, which equals
+
+55
+00:04:38,340 --> 00:04:42,840
+to the empty string and it's going to receive an action.
+
+56
+00:04:43,560 --> 00:04:46,330
+And what kind of action is it going to receive?
+
+57
+00:04:46,380 --> 00:04:47,970
+I'm going to remove this for now.
+
+58
+00:04:48,720 --> 00:04:52,870
+Well, if you remember, our actions are going to have a type.
+
+59
+00:04:53,910 --> 00:04:58,320
+And in this case, we'll say that type is going to be changed.
+
+60
+00:04:58,320 --> 00:05:00,390
+Search field that comes from our Konstanz file.
+
+61
+00:05:01,420 --> 00:05:04,240
+And we can make up the payload that it's going to send.
+
+62
+00:05:04,270 --> 00:05:08,620
+So let's just say for now that the payload is going to be ABC.
+
+63
+00:05:10,570 --> 00:05:18,370
+Now, what do we expect from that output, we expect that once it goes through this reducer, that the
+
+64
+00:05:18,580 --> 00:05:20,890
+search field is going to equal.
+
+65
+00:05:22,520 --> 00:05:23,150
+ABC.
+
+66
+00:05:25,650 --> 00:05:35,180
+So we can say Sarsfield should be AVC again, we have our initial state search, which is an empty string,
+
+67
+00:05:35,490 --> 00:05:44,160
+it goes through this reducer with this action and we now need the state because remember this reducers
+
+68
+00:05:44,170 --> 00:05:45,420
+just going to return the state.
+
+69
+00:05:45,780 --> 00:05:47,430
+We want the state to be A.B.C..
+
+70
+00:05:47,820 --> 00:05:48,420
+Let's save.
+
+71
+00:05:49,930 --> 00:05:52,330
+And we have a bit of a fail here.
+
+72
+00:05:52,570 --> 00:05:59,290
+Let's see what kind of an error we get and it looks like just the unexpected token.
+
+73
+00:06:01,200 --> 00:06:03,240
+Oh, and we need an extra bracket here.
+
+74
+00:06:04,830 --> 00:06:10,760
+And we had an air saying that type is not defined because because, well, you don't need to type here.
+
+75
+00:06:10,800 --> 00:06:12,060
+That's just a typo on my part.
+
+76
+00:06:13,540 --> 00:06:19,720
+All right, so that's passing, how simple is that with reducers, all we need to do is just give us
+
+77
+00:06:19,720 --> 00:06:25,330
+some sort of an input and expect an output and could just keep going like this forever.
+
+78
+00:06:25,730 --> 00:06:27,900
+Make your tests better and better.
+
+79
+00:06:29,060 --> 00:06:33,980
+Let's do the next reducer now, let's say that we want to and let's make more space here.
+
+80
+00:06:35,070 --> 00:06:36,960
+We want to describe the.
+
+81
+00:06:39,880 --> 00:06:40,660
+Request.
+
+82
+00:06:42,810 --> 00:06:43,830
+Robots reducer.
+
+83
+00:06:44,950 --> 00:06:51,380
+In that case, we can just say that we have well, let's create an initial state, so I'm going to again
+
+84
+00:06:51,460 --> 00:06:55,870
+say consed initial state for the robot's.
+
+85
+00:06:58,710 --> 00:07:04,860
+And if you remember, we have the this as the initial state, so I'm just going to actually copy this.
+
+86
+00:07:07,410 --> 00:07:10,230
+So this is our initial state for the.
+
+87
+00:07:11,250 --> 00:07:11,790
+Test.
+
+88
+00:07:13,910 --> 00:07:19,820
+And we want to do the same thing as above, it should return the initial state, so let's just copy
+
+89
+00:07:19,820 --> 00:07:26,300
+and paste the above and just change the search robust to request robots.
+
+90
+00:07:27,170 --> 00:07:30,320
+And we want that to equal the initial state.
+
+91
+00:07:35,110 --> 00:07:35,770
+Let's save.
+
+92
+00:07:37,930 --> 00:07:40,660
+And we have a failed test, let's see what we failed here.
+
+93
+00:07:42,610 --> 00:07:44,490
+Initial state robots.
+
+94
+00:07:45,770 --> 00:07:46,790
+Is not defined.
+
+95
+00:07:49,070 --> 00:07:52,880
+Because I need to add a cost in here, let's save.
+
+96
+00:07:53,760 --> 00:08:00,780
+All right, everything is passing, we're getting our initial state as expected, that's good, but
+
+97
+00:08:01,260 --> 00:08:06,180
+let's do another test and say that we want.
+
+98
+00:08:07,790 --> 00:08:11,480
+The three cases over here to be tested.
+
+99
+00:08:12,710 --> 00:08:15,740
+So let's do an initial it.
+
+100
+00:08:18,490 --> 00:08:19,510
+Should handle.
+
+101
+00:08:20,640 --> 00:08:25,320
+Requests Roberts lists two pending first action.
+
+102
+00:08:26,390 --> 00:08:28,280
+And it's going to.
+
+103
+00:08:31,410 --> 00:08:33,150
+Have something similar to hear.
+
+104
+00:08:33,180 --> 00:08:36,780
+So, again, we're going to use the expect statement.
+
+105
+00:08:38,410 --> 00:08:41,740
+It's going to have the reducers dot this time request.
+
+106
+00:08:42,780 --> 00:08:43,410
+Robots.
+
+107
+00:08:46,890 --> 00:08:49,800
+It's going to receive the initial state of the robots.
+
+108
+00:08:51,230 --> 00:08:55,370
+And then we'll give it an action of type.
+
+109
+00:08:57,940 --> 00:09:03,280
+Request robot spending and a payload of.
+
+110
+00:09:04,280 --> 00:09:05,510
+Let's give it.
+
+111
+00:09:06,340 --> 00:09:11,680
+Is pending, too, true, so we expect that.
+
+112
+00:09:13,350 --> 00:09:19,230
+When this happens, actually, if we take a look at the reducer, we see that it automatically sends
+
+113
+00:09:19,230 --> 00:09:21,930
+the spending to true and there's no payload.
+
+114
+00:09:22,150 --> 00:09:24,420
+So we don't need to set that.
+
+115
+00:09:24,960 --> 00:09:30,870
+We don't need to send a payload, but we expect that payload to change from is pending all us to.
+
+116
+00:09:32,050 --> 00:09:35,590
+False here, because his spending, when we start off, is always false.
+
+117
+00:09:38,460 --> 00:09:44,640
+And in here, we want this to equal.
+
+118
+00:09:46,680 --> 00:09:49,590
+The state of robots.
+
+119
+00:09:51,050 --> 00:09:52,040
+With an empty array.
+
+120
+00:09:53,320 --> 00:09:57,400
+Is spending set to true, so let's save.
+
+121
+00:09:58,830 --> 00:10:04,260
+All right, everything is passing, but I just noticed here that we don't actually want.
+
+122
+00:10:05,490 --> 00:10:07,720
+The default is spending to be true.
+
+123
+00:10:07,950 --> 00:10:14,700
+We wanted to be false because when we first have the initial state, well, we haven't sent the promise
+
+124
+00:10:14,700 --> 00:10:15,050
+yet.
+
+125
+00:10:15,060 --> 00:10:17,220
+We haven't requested anything from the API.
+
+126
+00:10:18,090 --> 00:10:23,940
+If we go into our reducers file, we see that we have the initial state here by true by mistake.
+
+127
+00:10:24,210 --> 00:10:26,430
+We can just change that to false.
+
+128
+00:10:26,830 --> 00:10:27,450
+Let's save.
+
+129
+00:10:28,600 --> 00:10:30,640
+And in here, let's save here.
+
+130
+00:10:31,920 --> 00:10:38,850
+Perfect, everything is working, and the request of robots pending is changing our is pending state
+
+131
+00:10:38,850 --> 00:10:39,300
+to true.
+
+132
+00:10:41,060 --> 00:10:48,140
+All right, let's keep going, we have the second case, which is the success, so I'm just going to
+
+133
+00:10:48,140 --> 00:10:53,060
+copy and paste here and this time say request robots spending.
+
+134
+00:10:55,190 --> 00:10:56,000
+Success.
+
+135
+00:10:57,270 --> 00:10:59,280
+And this success.
+
+136
+00:11:00,830 --> 00:11:07,070
+Should have well, what should it have what we need some sort of payload, because, again, in our
+
+137
+00:11:07,070 --> 00:11:10,610
+reducers we have the robot's action payload.
+
+138
+00:11:12,310 --> 00:11:20,170
+That we return or add to the state upon success, so let's just create that in our type, we're going
+
+139
+00:11:20,170 --> 00:11:21,160
+to say payload.
+
+140
+00:11:23,250 --> 00:11:26,820
+And I'm going to return let's just grab.
+
+141
+00:11:30,550 --> 00:11:32,920
+Let's just create a dummy.
+
+142
+00:11:34,860 --> 00:11:36,660
+Idea of one, two, three.
+
+143
+00:11:38,840 --> 00:11:48,470
+Let's say name of test and then finally email of test at Gmail dot com.
+
+144
+00:11:50,130 --> 00:11:56,340
+You see over here that this is a string instead of a number, I believe, in our component, we're actually
+
+145
+00:11:56,340 --> 00:11:59,160
+not distinguishing between a number and a string.
+
+146
+00:11:59,160 --> 00:12:01,290
+So that's something we might want to fix in the future.
+
+147
+00:12:02,670 --> 00:12:09,660
+But for now, we expect that if the payload is that the state now gets updated with that payload, so
+
+148
+00:12:09,660 --> 00:12:10,530
+let's copy that.
+
+149
+00:12:13,030 --> 00:12:17,680
+And we also expect the spending to be false again, if we remember our reducer.
+
+150
+00:12:17,860 --> 00:12:21,220
+We're also changing our spending to false on success.
+
+151
+00:12:21,580 --> 00:12:22,330
+So let's save.
+
+152
+00:12:24,470 --> 00:12:26,720
+And we have a bit of an air here.
+
+153
+00:12:29,690 --> 00:12:31,890
+That is a simple arch nemesis, comma.
+
+154
+00:12:31,910 --> 00:12:34,700
+If we save, there it is, it passes.
+
+155
+00:12:35,120 --> 00:12:42,440
+One final test you can see can get pretty repetitive with tests, but this is a good thing with reducers.
+
+156
+00:12:42,440 --> 00:12:48,560
+They're so simple to test that you just copy and paste a lot of the code, which again, is fine for
+
+157
+00:12:48,560 --> 00:12:52,520
+testing because this code was never going to go into production.
+
+158
+00:12:52,940 --> 00:12:55,550
+So let's do the the fail case here.
+
+159
+00:12:55,790 --> 00:12:57,140
+That is the failed.
+
+160
+00:13:01,750 --> 00:13:08,080
+And in this case, we want the payload, if we go back to our function, we want the payload to just
+
+161
+00:13:08,080 --> 00:13:08,910
+have an air.
+
+162
+00:13:09,610 --> 00:13:18,820
+So again, back here we can just say no super upset that we got an error and we expect the state to
+
+163
+00:13:18,820 --> 00:13:22,270
+now have an error that is of.
+
+164
+00:13:24,760 --> 00:13:29,590
+Nephew and a spending of false.
+
+165
+00:13:32,390 --> 00:13:38,720
+Although I see here that we're actually not turning the spending to force, which we should be, so
+
+166
+00:13:38,900 --> 00:13:39,650
+if we save.
+
+167
+00:13:43,360 --> 00:13:46,480
+But we also expect the robot's array to be returned.
+
+168
+00:13:46,520 --> 00:13:49,300
+Remember, so the robot's arrays should be empty.
+
+169
+00:13:51,060 --> 00:13:55,200
+And now we have this passing.
+
+170
+00:13:56,300 --> 00:13:56,870
+Very cool.
+
+171
+00:13:57,920 --> 00:14:03,530
+All right, that's enough for reducers, you see how simple they are to test simply checking the input
+
+172
+00:14:03,650 --> 00:14:10,660
+against the output, and that's why you want to have these reducers everywhere and why redux is so amazing.
+
+173
+00:14:10,670 --> 00:14:12,230
+It's super easy to test.
+
+174
+00:14:12,470 --> 00:14:16,400
+And if you think about it all our logic is in our reducers.
+
+175
+00:14:16,640 --> 00:14:25,100
+So if we have really, really good tests for our reducers, we cover a lot of the logic of our applications
+
+176
+00:14:25,100 --> 00:14:29,630
+because reducers are the thing that taken actions and spit out the state.
+
+177
+00:14:29,900 --> 00:14:34,670
+They're pretty much the controller or the brain of our app.
+
+178
+00:14:35,270 --> 00:14:44,150
+Redox allows us to have really, really nice tests and keeping things simple on the back side by just
+
+179
+00:14:44,150 --> 00:14:51,560
+doing snapshot testing or simple enzyme tests and testing out pure functions, which again is very useful.
+
+180
+00:14:52,160 --> 00:14:53,870
+But for now, that's it for me.
+
+181
+00:14:54,110 --> 00:14:55,040
+I'll see you in the next one.
+
+182
+00:14:55,460 --> 00:14:55,790
+Bye bye.

@@ -1,0 +1,639 @@
+1
+00:00:00,990 --> 00:00:02,110
+Welcome back, everyone.
+
+2
+00:00:02,580 --> 00:00:08,370
+I know some of you have been curious about all these things about Web and Bable that we occasionally
+
+3
+00:00:08,370 --> 00:00:15,510
+mention throughout this course, if you remember from one of the initial lessons that we taught, the
+
+4
+00:00:15,510 --> 00:00:22,440
+big thing about Create React app is that it hides away all of the babble and all of the web configurations
+
+5
+00:00:22,620 --> 00:00:24,530
+that you would normally have to figure out.
+
+6
+00:00:24,870 --> 00:00:31,320
+It's one of the big advantages of great reachout, because Web pack and babble have a lot of possible
+
+7
+00:00:31,320 --> 00:00:33,330
+configurations that you have to do.
+
+8
+00:00:34,110 --> 00:00:39,390
+However, if you just wanted to get started with a react application, having to learn those two new
+
+9
+00:00:39,390 --> 00:00:41,610
+technologies is a big overhead.
+
+10
+00:00:41,790 --> 00:00:48,150
+But now that we've gotten really good at react and using create react app, I think it's about time
+
+11
+00:00:48,150 --> 00:00:50,520
+that I show you web pack and babble.
+
+12
+00:00:50,850 --> 00:00:56,490
+I'm going to show you how we can actually set up our react application to run Watpac and babble in a
+
+13
+00:00:56,490 --> 00:00:58,540
+very easy and efficient way.
+
+14
+00:00:58,890 --> 00:01:04,350
+I'm going to show you with as little code as possible so that you can understand what is happening with
+
+15
+00:01:04,350 --> 00:01:06,210
+Web hack as well as babble.
+
+16
+00:01:07,200 --> 00:01:11,370
+Both are actually quite simple, and with the newest versions, they've really reduced the amount of
+
+17
+00:01:11,370 --> 00:01:13,800
+configuration that you have to do for either.
+
+18
+00:01:14,310 --> 00:01:19,710
+So in this lesson, we're really, really going to look at the bare bones of what we need to set up
+
+19
+00:01:19,710 --> 00:01:22,700
+so we truly and deeply understand the concepts.
+
+20
+00:01:23,580 --> 00:01:27,540
+So with Watpac, what you can do is actually go to this link.
+
+21
+00:01:27,550 --> 00:01:33,030
+I'm going to provide you inside of your resources and it's going to take you to this repo.
+
+22
+00:01:33,600 --> 00:01:41,610
+This repo I have is just the most fundamental bare bones react implementation before any Web page has
+
+23
+00:01:41,610 --> 00:01:42,290
+been included.
+
+24
+00:01:42,750 --> 00:01:48,900
+So simply for this project so that you get a copy of it and then once it's finished forking, simply
+
+25
+00:01:48,900 --> 00:01:49,970
+clone it down.
+
+26
+00:01:49,980 --> 00:01:55,590
+So you're going to click your own and you're going to click clone and make sure to use https if you
+
+27
+00:01:55,590 --> 00:02:02,300
+are not set up your S.H. If you have set up S.H., then you can call with SFH, otherwise you https.
+
+28
+00:02:02,940 --> 00:02:08,670
+So just copy this key and what we're going to do is go to our terminal and we are just going to clone
+
+29
+00:02:08,670 --> 00:02:09,090
+it down.
+
+30
+00:02:11,620 --> 00:02:17,050
+Now, I'm going to call mine web project because, of course, I made this project, so I have the same
+
+31
+00:02:17,050 --> 00:02:20,560
+name already, but let's just clone down whatever name you want.
+
+32
+00:02:20,890 --> 00:02:23,770
+I'm going to call my Watpac project and CD into it.
+
+33
+00:02:25,750 --> 00:02:27,700
+Now, let's take a look at what we have currently.
+
+34
+00:02:28,910 --> 00:02:36,380
+And what we're going to look at is just inside our source folder, so so far it's a very simple application.
+
+35
+00:02:37,070 --> 00:02:44,680
+It has an app and all we import inside of just X is react our stylesheet.
+
+36
+00:02:44,900 --> 00:02:53,450
+And then all we have defined is this app div with a card div and inside as an H1 that says our reactor's
+
+37
+00:02:53,450 --> 00:02:56,770
+working the most simple app component that you can imagine.
+
+38
+00:02:57,900 --> 00:03:01,840
+So what I do is export this out by default and bring it into index.
+
+39
+00:03:02,100 --> 00:03:02,480
+Yes.
+
+40
+00:03:02,850 --> 00:03:09,420
+So as you're used to by now, this index as file is where we're going to enter from our application.
+
+41
+00:03:10,170 --> 00:03:12,390
+So in here, I also import react and react.
+
+42
+00:03:12,390 --> 00:03:20,190
+Dom, I import our app component that I just made and then I render the app and I replace the elements
+
+43
+00:03:20,520 --> 00:03:22,230
+with the idea of root.
+
+44
+00:03:22,860 --> 00:03:28,500
+We can find that inside of this index, that HDMI file that in the body there's just this simple div
+
+45
+00:03:28,500 --> 00:03:29,300
+with an idea of it.
+
+46
+00:03:29,490 --> 00:03:34,190
+This is as simple of a setup as possible, but we have a react component.
+
+47
+00:03:34,500 --> 00:03:41,790
+We have some styles and we want to output a optimize build with all of this converted into a version
+
+48
+00:03:42,030 --> 00:03:44,350
+of JavaScript that our browser can understand.
+
+49
+00:03:44,730 --> 00:03:46,830
+So we understand all this about react already.
+
+50
+00:03:46,830 --> 00:03:48,990
+We know about WABAC, we know about Babille.
+
+51
+00:03:49,680 --> 00:03:57,830
+What they do mostly is that Babul allows us to convert files into other files that our browser can understand.
+
+52
+00:03:57,990 --> 00:03:59,090
+That's where PAX purpose.
+
+53
+00:03:59,430 --> 00:04:06,510
+So this code we've written, this JS code, even the HTML and the success, all of this is currently
+
+54
+00:04:06,510 --> 00:04:12,030
+in a format where we're importing it in in a style that older browsers can understand.
+
+55
+00:04:12,360 --> 00:04:18,690
+This import style comes with S6 and ESX doesn't work for some browsers because they only support S5.
+
+56
+00:04:19,110 --> 00:04:24,540
+So this is what Web Pack's main goal is, is that Web hack wants to help us convert all of this code
+
+57
+00:04:24,540 --> 00:04:27,300
+into versions that browsers can understand.
+
+58
+00:04:27,990 --> 00:04:29,400
+So let's actually explore this.
+
+59
+00:04:30,000 --> 00:04:33,570
+In order for us to use Watpac, we have to bring it into our application.
+
+60
+00:04:34,170 --> 00:04:35,310
+So I'm using yarn.
+
+61
+00:04:35,790 --> 00:04:38,460
+You can use NPM if you prefer NPM.
+
+62
+00:04:38,670 --> 00:04:44,880
+One thing to note with NPM is that every time we install a project, you have to make sure that whatever
+
+63
+00:04:44,880 --> 00:04:50,220
+we install at the end you append dash, dash, save, dash, dev, because these are developer dependencies
+
+64
+00:04:50,220 --> 00:04:52,440
+and not regular dependencies with ya.
+
+65
+00:04:52,440 --> 00:04:53,420
+And you don't have to do this.
+
+66
+00:04:53,460 --> 00:04:54,630
+This is just the thing to keep note.
+
+67
+00:04:55,600 --> 00:04:59,390
+To get started, we need to add two packages, the first is Web.
+
+68
+00:05:00,040 --> 00:05:01,660
+The second is Web pack.
+
+69
+00:05:02,080 --> 00:05:04,900
+Keli, so it's got to be on AD.
+
+70
+00:05:06,200 --> 00:05:11,300
+So these two packages allow us to begin using weapons inside of our application.
+
+71
+00:05:12,820 --> 00:05:18,310
+In order to use weapons, there's two things that we've got to add to our actual application.
+
+72
+00:05:18,340 --> 00:05:23,710
+The first is a file inside of our room folder called Web Pack dot config.
+
+73
+00:05:25,300 --> 00:05:29,310
+When we run Web, Watpac will automatically know to look for this file.
+
+74
+00:05:29,740 --> 00:05:36,820
+And in order for us to actually run Watpac, we have to add a new script inside of our scripts object
+
+75
+00:05:36,820 --> 00:05:38,050
+here in our package that Jason.
+
+76
+00:05:39,260 --> 00:05:40,400
+So what will add?
+
+77
+00:05:41,320 --> 00:05:48,450
+Is this Bild script and this Bild script is just going to run Web hack, dash, dash mode production,
+
+78
+00:05:49,120 --> 00:05:55,720
+so this is saying that I want to run Web, use the configuration file, and then I want to spit out
+
+79
+00:05:55,720 --> 00:05:56,620
+a production built.
+
+80
+00:05:57,070 --> 00:06:02,200
+So this is similar to pretty much what we see create react up does when we run our build script in our
+
+81
+00:06:02,200 --> 00:06:02,530
+project.
+
+82
+00:06:02,530 --> 00:06:04,930
+Before it was just hiding all of this away for us.
+
+83
+00:06:06,550 --> 00:06:12,520
+The thing is that inside of our Wopat config, what we're going to do is we have to remember that here
+
+84
+00:06:12,520 --> 00:06:14,460
+we don't have syntax.
+
+85
+00:06:14,470 --> 00:06:16,780
+We have to use the old S5 syntax.
+
+86
+00:06:17,050 --> 00:06:23,200
+So in order for us to export anything, we have to say module exports equals this object because what
+
+87
+00:06:23,200 --> 00:06:26,680
+we're trying to export out of this file is this object of configuration options.
+
+88
+00:06:28,250 --> 00:06:34,940
+We're going to say module and we're going to define this thing called rules, so inside of Westpac,
+
+89
+00:06:35,330 --> 00:06:37,850
+it's got many modules that you can run.
+
+90
+00:06:38,630 --> 00:06:47,660
+The first one is rules, rules is a way to define --, what it needs to do based on certain file
+
+91
+00:06:47,660 --> 00:06:49,010
+types that it encounters.
+
+92
+00:06:49,040 --> 00:06:50,090
+Now, what do I mean by this?
+
+93
+00:06:50,750 --> 00:06:55,760
+Well, as we know, we are writing Jast code or ethics code.
+
+94
+00:06:56,740 --> 00:07:03,760
+Watpac doesn't need to convert CSFs code over into Jass code because with CSFs code, if it's using
+
+95
+00:07:03,760 --> 00:07:10,110
+SAS or for using some other version of access library, that does not come by default with most browsers.
+
+96
+00:07:10,480 --> 00:07:16,510
+We need a different set of rules than our JavaScript rules because we need a different set of lotas
+
+97
+00:07:16,960 --> 00:07:18,250
+than JavaScript loaders.
+
+98
+00:07:18,400 --> 00:07:22,300
+And this actually brings us to the concept of lotas, but we'll talk about it once we start writing
+
+99
+00:07:22,300 --> 00:07:23,490
+out the rules object.
+
+100
+00:07:24,250 --> 00:07:30,280
+So what we're going to say is we are going to say that this test string is what we want to match against.
+
+101
+00:07:30,290 --> 00:07:35,830
+So what type of file extensions we want to match against now here you're going to actually have to write
+
+102
+00:07:35,830 --> 00:07:38,850
+a little bit of regex and it's actually not so hard.
+
+103
+00:07:39,250 --> 00:07:44,410
+I'm going to give you a builder, but we're going to say that inside of these slash marks.
+
+104
+00:07:45,880 --> 00:07:54,490
+That we want to look up any files that end with the dot and then we're going to say jazz or jazz.
+
+105
+00:07:55,390 --> 00:07:59,980
+And then you add the dollar sign to empty or to end the actual test.
+
+106
+00:08:00,010 --> 00:08:06,070
+So this is just saying, I want you to find me any files with the extension jazz or that's all it is.
+
+107
+00:08:07,480 --> 00:08:15,790
+After this, we want to exclude our node modules because we don't want you to run or build any of our
+
+108
+00:08:15,790 --> 00:08:19,730
+node module code, the packages that we download are already optimized.
+
+109
+00:08:19,780 --> 00:08:21,610
+They don't need to run through any of these loaders.
+
+110
+00:08:21,640 --> 00:08:25,360
+They're already converted ahead of time or they should be at least a good library is.
+
+111
+00:08:26,330 --> 00:08:30,950
+And then what we're going to say is this use property, so they use property tells.
+
+112
+00:08:31,970 --> 00:08:38,060
+Watpac, what loader it needs to run and the loader is going to be the helper that actually converts
+
+113
+00:08:38,060 --> 00:08:44,540
+this code into the actual version, so you can kind of see Westpac as the coordinator and the loaders
+
+114
+00:08:44,540 --> 00:08:50,360
+as the actual packages that Tranz pile this code down into the version that we want it to be.
+
+115
+00:08:50,960 --> 00:08:58,370
+And here is where we're going to use Babille, because Babille is the library that helps transport JavaScript
+
+116
+00:08:58,370 --> 00:09:01,660
+and Jacks down into older versions of JavaScript.
+
+117
+00:09:02,270 --> 00:09:06,440
+So we're going to include in a couple other libraries related to Babille.
+
+118
+00:09:07,540 --> 00:09:14,920
+So we'll go back to our terminal and what we're going to do is we are going to say Yorn ad at Babille
+
+119
+00:09:14,920 --> 00:09:15,370
+core.
+
+120
+00:09:16,240 --> 00:09:21,940
+So we want the core Babul Library, we want at Babille Preset Env.
+
+121
+00:09:22,270 --> 00:09:27,460
+And this library, the preset end comes with transponding Essex down to SFI.
+
+122
+00:09:27,670 --> 00:09:28,870
+That's all that library does.
+
+123
+00:09:29,470 --> 00:09:32,560
+We also want Babille preset react.
+
+124
+00:09:33,370 --> 00:09:35,770
+Now, of course, Babille can convert everything.
+
+125
+00:09:35,770 --> 00:09:41,170
+It can convert view, it can convert angular, it can convert Aurora, they can convert all kinds of
+
+126
+00:09:41,170 --> 00:09:42,730
+different JavaScript libraries down.
+
+127
+00:09:43,210 --> 00:09:45,210
+You just have to pick the specific ones you want.
+
+128
+00:09:45,220 --> 00:09:47,200
+That's why it's all at Babille.
+
+129
+00:09:47,710 --> 00:09:50,320
+And then the name of the smaller library, one to include.
+
+130
+00:09:51,100 --> 00:09:52,960
+We also need to include the Bable loader.
+
+131
+00:09:53,650 --> 00:09:59,020
+So these ones were for our actual Babille configuration.
+
+132
+00:09:59,200 --> 00:10:02,710
+The Bible loader is just so that we have the Babilonia for Watpac.
+
+133
+00:10:03,700 --> 00:10:10,540
+And once we have this, we can go back to our application and now what we're going to add in is inside
+
+134
+00:10:10,540 --> 00:10:12,310
+of here, we're going to say the loader.
+
+135
+00:10:12,550 --> 00:10:14,680
+We want to use the Bible loader.
+
+136
+00:10:16,230 --> 00:10:23,750
+Now, what Bable knows to do is look inside of our root directory for a file called Babille Arcy so
+
+137
+00:10:23,760 --> 00:10:30,520
+they babble or C file is going to be the file that tells Babille what it needs to transpire down to.
+
+138
+00:10:31,350 --> 00:10:38,490
+And here we're just simply going to create an object where The Presets is the property that points to
+
+139
+00:10:38,490 --> 00:10:38,940
+an array.
+
+140
+00:10:39,300 --> 00:10:42,390
+And inside of this array, we're going to include those two presets we included.
+
+141
+00:10:42,420 --> 00:10:47,700
+The first one was preset Env, which, as I explained, converts Essex down to S5.
+
+142
+00:10:48,330 --> 00:10:51,370
+And we're also going to include Babul preset react.
+
+143
+00:10:51,690 --> 00:10:58,320
+So this compiles react down into S5 or another version of JavaScript Nacionale that our browser understands.
+
+144
+00:10:59,440 --> 00:11:06,340
+So if you've ever been curious, why is it that you can put Dorchester and our code always works while
+
+145
+00:11:06,340 --> 00:11:08,020
+under the hood, this is what's happening?
+
+146
+00:11:09,270 --> 00:11:14,670
+Create React is doing the exact same thing, it's just taking all of our docs and files and running
+
+147
+00:11:14,670 --> 00:11:19,560
+it through the babble loader anyways, that's why even though you're writing code and appending your
+
+148
+00:11:19,560 --> 00:11:21,870
+files docs, your code still works.
+
+149
+00:11:22,410 --> 00:11:24,420
+This is the loader that's doing that for you.
+
+150
+00:11:25,290 --> 00:11:30,990
+So hopefully with this, we now understand what it is that babble did babbles very simple.
+
+151
+00:11:31,620 --> 00:11:39,680
+It is a loader inside of a pack that converts JavaScript files into oler JavaScript files.
+
+152
+00:11:39,930 --> 00:11:42,950
+It uses certain types of presets that you pass to it.
+
+153
+00:11:43,590 --> 00:11:46,290
+And of course, there's other configuration options you can add.
+
+154
+00:11:46,290 --> 00:11:50,340
+If you want to be more explicit, you can find those in the documentation that I'm going to link in
+
+155
+00:11:50,340 --> 00:11:51,120
+the resources.
+
+156
+00:11:51,510 --> 00:11:55,590
+But this is the base that we need in order to convert our application down.
+
+157
+00:11:57,150 --> 00:12:01,650
+So what this hopefully we at least understand what babble does with JavaScript now, we can't test this
+
+158
+00:12:01,650 --> 00:12:05,040
+until the very end once we set up some other things, which we'll do in the next lesson.
+
+159
+00:12:05,490 --> 00:12:08,730
+But conceptually, this is all Web hack and babble do.
+
+160
+00:12:09,210 --> 00:12:10,520
+So let's move on with the next lesson.

@@ -1,0 +1,215 @@
+1
+00:00:01,490 --> 00:00:02,100
+Welcome back.
+
+2
+00:00:02,690 --> 00:00:10,370
+Let's use snapshot testing to test some of these other simple presentational components that are completely
+
+3
+00:00:10,370 --> 00:00:12,840
+stateless since we saw how easy that is.
+
+4
+00:00:13,370 --> 00:00:15,800
+So let me make this a little bit smaller.
+
+5
+00:00:17,120 --> 00:00:21,280
+And make sure we run AMPM test to have it running in the background.
+
+6
+00:00:25,720 --> 00:00:34,120
+We see that our test or our car component is being tested now, so let's create another one.
+
+7
+00:00:35,480 --> 00:00:39,410
+Let's create a test for the Carlist component.
+
+8
+00:00:39,610 --> 00:00:46,030
+I'm going to remove the console log here because we don't need it and let's create a Carlist test file.
+
+9
+00:00:46,520 --> 00:00:52,180
+So a card list, dot test dojos.
+
+10
+00:00:55,750 --> 00:00:59,590
+And again, it's failing because we need to make sure we have at least a single test.
+
+11
+00:01:00,710 --> 00:01:08,510
+We can actually go back to card that test us and just copy and paste this, go to Carlist component,
+
+12
+00:01:09,230 --> 00:01:10,190
+copy and paste.
+
+13
+00:01:11,410 --> 00:01:14,830
+Whatever we had and just change our component to Cardless.
+
+14
+00:01:16,440 --> 00:01:23,580
+So let's just do that quickly, we can just select all this and say card list, let me save.
+
+15
+00:01:25,920 --> 00:01:29,580
+And we have some fails here, let's see why.
+
+16
+00:01:31,740 --> 00:01:40,020
+We see that we get a type Air Canada property map of undefined, and that is because card list, you
+
+17
+00:01:40,020 --> 00:01:45,040
+see card component is just rendering name and email, but it's not doing anything to it.
+
+18
+00:01:45,120 --> 00:01:48,980
+So if it doesn't get name in email, I'll just render undefined.
+
+19
+00:01:49,380 --> 00:01:56,030
+When we go to card list, we see that we're actually receiving the robots and we need to map over them.
+
+20
+00:01:56,460 --> 00:02:01,170
+But in our test we're rendering card or let's go to Carlist.
+
+21
+00:02:01,170 --> 00:02:03,030
+I'm going to close this so we don't get confused.
+
+22
+00:02:04,320 --> 00:02:06,180
+We're not passing down robots.
+
+23
+00:02:06,510 --> 00:02:11,940
+So in this test, when we try and render Carlist, it's going to fail because.
+
+24
+00:02:13,040 --> 00:02:17,390
+There's no robots to map over, so let's fix that.
+
+25
+00:02:18,820 --> 00:02:24,640
+All we need to do here is just mock our robots so we can just say const.
+
+26
+00:02:26,920 --> 00:02:35,500
+Robots or leisure say mock robots is going to equal an array of some dummy data that we can create.
+
+27
+00:02:35,530 --> 00:02:42,010
+So let's say that this is going to have an ID of one.
+
+28
+00:02:43,570 --> 00:02:47,590
+And we'll have the name of John Snow.
+
+29
+00:02:50,480 --> 00:02:51,920
+Let's say username.
+
+30
+00:02:53,730 --> 00:02:54,660
+Is going to be.
+
+31
+00:02:55,990 --> 00:03:02,110
+John, John, and let's say that email, I don't think we're using your username, but I wanted to give
+
+32
+00:03:02,110 --> 00:03:06,580
+that username anyway is going to be John at Gmail dot com.
+
+33
+00:03:08,440 --> 00:03:11,500
+Now we can just pass our mock robots.
+
+34
+00:03:14,970 --> 00:03:15,690
+As the.
+
+35
+00:03:16,700 --> 00:03:17,270
+Robots.
+
+36
+00:03:20,700 --> 00:03:21,850
+So let's see if that works.
+
+37
+00:03:21,870 --> 00:03:22,710
+I'm going to save.
+
+38
+00:03:24,040 --> 00:03:27,490
+All right, and we have our tests passing.
+
+39
+00:03:28,560 --> 00:03:33,780
+And if we go to our snapshot, we see that we have a card list snapshot as well.
+
+40
+00:03:35,030 --> 00:03:40,760
+That's good, our test failed because we weren't passing robots and, well, we want to make sure that
+
+41
+00:03:40,790 --> 00:03:48,290
+we actually pass those properties and you can imagine you can probably do the same thing with Card as
+
+42
+00:03:48,290 --> 00:03:55,520
+well, or maybe have a default in this component where if you don't receive name, email and ID, that
+
+43
+00:03:55,640 --> 00:04:00,290
+it has some sort of an error boundary or an output that it does for the user.
+
+44
+00:04:02,420 --> 00:04:12,170
+We now see the power of snapshot testing, we see how we can mock some of our properties, and you might
+
+45
+00:04:12,380 --> 00:04:19,310
+want to just go ahead and do snapshot testing for some of these other cases that are quite simple to
+
+46
+00:04:19,310 --> 00:04:21,570
+do to increase our test coverage.
+
+47
+00:04:21,890 --> 00:04:26,840
+And I'm going to leave that up to you because, well, just to give you a bit of extra practice.
+
+48
+00:04:27,500 --> 00:04:32,810
+So let's move on to the next video where we do some things that are a little bit more difficult.
+
+49
+00:04:33,050 --> 00:04:38,360
+But just to check, let's do our coverage to make sure that our coverage for the Carlist is now looking
+
+50
+00:04:38,360 --> 00:04:38,600
+good.
+
+51
+00:04:40,220 --> 00:04:41,720
+I want to make this a little bit bigger.
+
+52
+00:04:43,120 --> 00:04:47,670
+And we see that, yeah, look at that feels good getting 100 percent, doesn't it?
+
+53
+00:04:47,680 --> 00:04:50,020
+Kahless component is not well tested as well.
+
+54
+00:04:51,180 --> 00:04:53,010
+I'll see in the next one, bye bye.

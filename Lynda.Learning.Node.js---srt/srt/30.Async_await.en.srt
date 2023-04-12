@@ -1,0 +1,252 @@
+1
+00:00:00.02 --> 00:00:02.04
+- [Instructor] Asyncawait is
+one of the latest features
+
+2
+00:00:02.04 --> 00:00:03.05
+to make it into Node.
+
+3
+00:00:03.05 --> 00:00:05.00
+Similar to promises,
+
+4
+00:00:05.00 --> 00:00:08.03
+it makes a synchronous code
+look even more synchronous.
+
+5
+00:00:08.03 --> 00:00:10.00
+In order to work with await,
+
+6
+00:00:10.00 --> 00:00:13.09
+we will need to declare our
+express function as async.
+
+7
+00:00:13.09 --> 00:00:15.02
+So on line 27,
+
+8
+00:00:15.02 --> 00:00:18.02
+in the second parameter where
+we specify our callback,
+
+9
+00:00:18.02 --> 00:00:20.03
+let's add async.
+
+10
+00:00:20.03 --> 00:00:21.02
+At this point,
+
+11
+00:00:21.02 --> 00:00:23.09
+we can use await on message.save,
+
+12
+00:00:23.09 --> 00:00:26.08
+which will return a value once it finishes
+
+13
+00:00:26.08 --> 00:00:31.00
+and will save it into a
+variable called savedMessage.
+
+14
+00:00:31.00 --> 00:00:31.08
+So on line 30,
+
+15
+00:00:31.08 --> 00:00:35.05
+I'll create savedMessage
+
+16
+00:00:35.05 --> 00:00:39.00
+and set it to await message.save.
+
+17
+00:00:39.00 --> 00:00:43.03
+Now I can get rid of this then call
+
+18
+00:00:43.03 --> 00:00:47.04
+and I can simply call our console log
+
+19
+00:00:47.04 --> 00:00:49.09
+to show that it'll save.
+
+20
+00:00:49.09 --> 00:00:52.08
+Next we'll do the same
+for our censored words.
+
+21
+00:00:52.08 --> 00:00:55.07
+So I'll create a censored variable
+
+22
+00:00:55.07 --> 00:01:01.00
+and set it to message.findOne,
+
+23
+00:01:01.00 --> 00:01:03.04
+as we check for our bad word.
+
+24
+00:01:03.04 --> 00:01:10.04
+And, again, I can get rid of
+this then in the callback.
+
+25
+00:01:10.04 --> 00:01:13.06
+Then we just check if
+there was a censored word.
+
+26
+00:01:13.06 --> 00:01:15.06
+We'll display it in our console log
+
+27
+00:01:15.06 --> 00:01:17.04
+and we'll remove it.
+
+28
+00:01:17.04 --> 00:01:19.09
+And, again, we'll use await
+
+29
+00:01:19.09 --> 00:01:22.03
+and we'll replace return with await.
+
+30
+00:01:22.03 --> 00:01:25.08
+I'll also get rid of this console log
+
+31
+00:01:25.08 --> 00:01:28.01
+and simply remove the message
+
+32
+00:01:28.01 --> 00:01:30.05
+if a censored word was found.
+
+33
+00:01:30.05 --> 00:01:34.09
+If a censored word wasn't found,
+
+34
+00:01:34.09 --> 00:01:36.04
+then I'll omit the message
+
+35
+00:01:36.04 --> 00:01:40.00
+and regardless I'll send a status of 200.
+
+36
+00:01:40.00 --> 00:01:42.02
+And I won't cover how to
+handle exceptions for now,
+
+37
+00:01:42.02 --> 00:01:44.02
+so let's just comment out the code
+
+38
+00:01:44.02 --> 00:01:47.03
+between line 43 and line 46 on my screen.
+
+39
+00:01:47.03 --> 00:01:49.01
+So I'll save that.
+
+40
+00:01:49.01 --> 00:01:50.00
+And then finally,
+
+41
+00:01:50.00 --> 00:01:52.08
+I'm going to add await
+
+42
+00:01:52.08 --> 00:01:56.07
+in front of message.fineOne on line 34.
+
+43
+00:01:56.07 --> 00:01:58.06
+Let's save that and give it a try.
+
+44
+00:01:58.06 --> 00:01:59.04
+So back in our app.
+
+45
+00:01:59.04 --> 00:02:02.06
+I've deleted all of the
+messages in our collection
+
+46
+00:02:02.06 --> 00:02:04.01
+to clean it up.
+
+47
+00:02:04.01 --> 00:02:11.08
+And let's try new message.
+
+48
+00:02:11.08 --> 00:02:13.03
+And it seems to be working.
+
+49
+00:02:13.03 --> 00:02:20.03
+Now let's try one with our censored word.
+
+50
+00:02:20.03 --> 00:02:22.03
+And you can see its not showing up.
+
+51
+00:02:22.03 --> 00:02:23.01
+And if we refresh,
+
+52
+00:02:23.01 --> 00:02:25.03
+its not in the database either.
+
+53
+00:02:25.03 --> 00:02:27.04
+And so our functionality is maintained.
+
+54
+00:02:27.04 --> 00:02:29.00
+But if we look back at our code,
+
+55
+00:02:29.00 --> 00:02:30.04
+its significantly improved
+
+56
+00:02:30.04 --> 00:02:33.06
+and it's a lot easier to read.
+
+57
+00:02:33.06 --> 00:02:36.07
+Now since we commented
+out the catch function,
+
+58
+00:02:36.07 --> 00:02:39.01
+yet we still new to handle exceptions,
+
+59
+00:02:39.01 --> 00:02:41.07
+let's look at how to
+handle exceptions, errors,
+
+60
+00:02:41.07 --> 00:02:44.04
+and to debug in the next chapter.
+

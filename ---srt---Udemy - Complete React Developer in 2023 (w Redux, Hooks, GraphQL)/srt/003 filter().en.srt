@@ -1,0 +1,111 @@
+1
+00:00:00,760 --> 00:00:04,450
+Now, the next one we're going to look at is Filter.
+
+2
+00:00:05,480 --> 00:00:07,340
+So to understand filter.
+
+3
+00:00:08,420 --> 00:00:11,090
+Let's go back to our browser console.
+
+4
+00:00:13,490 --> 00:00:22,850
+So filter is very similar to a map in the sense that it's also going to take a function that gets iterated
+
+5
+00:00:22,880 --> 00:00:25,050
+over each element in our array.
+
+6
+00:00:25,520 --> 00:00:35,390
+So let's do this again, except this time I'm going to say my array is equal to one three five seven
+
+7
+00:00:35,520 --> 00:00:36,110
+nine.
+
+8
+00:00:37,990 --> 00:00:47,530
+Now, filter is exactly as it sounds, we want to filter out the elements in our array based off of
+
+9
+00:00:47,560 --> 00:00:49,030
+the function that we pass it.
+
+10
+00:00:50,130 --> 00:00:57,090
+And Filter will also give us back a new array instead of modifying my array.
+
+11
+00:00:58,270 --> 00:01:06,280
+So what we're going to do in order to use filter is we're going to write a filter and just like earlier
+
+12
+00:01:06,280 --> 00:01:12,850
+with Matt, we're going to get the element as the argument over function and what we're going to return
+
+13
+00:01:12,850 --> 00:01:16,380
+is actually a true or false value.
+
+14
+00:01:17,260 --> 00:01:23,520
+So let's say, for example, I wanted to filter out anything that was less than five.
+
+15
+00:01:24,190 --> 00:01:27,610
+Well, I would essentially say if the element.
+
+16
+00:01:28,690 --> 00:01:32,620
+Is greater than four, right?
+
+17
+00:01:33,920 --> 00:01:42,800
+So whatever returns true will be the thing that gets kept in our array, so whatever element we'll get,
+
+18
+00:01:42,800 --> 00:01:48,030
+Captain R.A. is based on whether or not the evaluation of this is true.
+
+19
+00:01:48,890 --> 00:01:55,550
+So if, for example, we just return true, what we would get back our whole array if we return false.
+
+20
+00:01:55,760 --> 00:01:58,370
+Right, we would get back nothing.
+
+21
+00:01:59,750 --> 00:02:09,410
+So if we want to just whatever was five or greater, then we would say as long as the element is greater
+
+22
+00:02:09,440 --> 00:02:10,190
+than four.
+
+23
+00:02:12,310 --> 00:02:16,800
+Because if the element is one, one is not greater than four, right?
+
+24
+00:02:17,290 --> 00:02:22,480
+So that will be false and that's why it'll filter out one and three.
+
+25
+00:02:23,390 --> 00:02:31,970
+And this array that we get back is a new array, my array is still the same array.
+
+26
+00:02:32,970 --> 00:02:42,630
+And that's what filter is, so remember, that filter also returns back a new array, except it filters
+
+27
+00:02:42,630 --> 00:02:52,650
+out the anything where the function condition returns false, anything that returns true, it'll keep
+
+28
+00:02:52,650 --> 00:02:54,000
+in the new array.

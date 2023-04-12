@@ -1,0 +1,323 @@
+1
+00:00:01,000 --> 00:00:05,380
+Welcome back, everyone here inside of our office dashboard.
+
+2
+00:00:06,130 --> 00:00:11,560
+What we want to do is access your site and on your site, go to your site settings.
+
+3
+00:00:12,880 --> 00:00:18,250
+In our actual local development, we're using tight end in order to have environment variables so that
+
+4
+00:00:18,250 --> 00:00:20,230
+our local server can access them.
+
+5
+00:00:20,920 --> 00:00:22,210
+Unfortunately not.
+
+6
+00:00:22,210 --> 00:00:28,180
+Lafite does not have access to Diam because it's reading from the actual repository in GitHub.
+
+7
+00:00:28,420 --> 00:00:34,510
+And as we remember, we have ignored NW from being posted to the repository because of course this is
+
+8
+00:00:34,510 --> 00:00:36,670
+not a key we want to reveal to anybody else.
+
+9
+00:00:37,390 --> 00:00:41,740
+Luckily for us though, we can set these environment variables the same way that we've used them in
+
+10
+00:00:41,950 --> 00:00:44,620
+end here inside of our site settings.
+
+11
+00:00:45,190 --> 00:00:50,380
+So inside your site settings, go to build and deploy an inside of build and deploy it.
+
+12
+00:00:50,680 --> 00:00:56,320
+Scroll down until you see environment variables here when you hit edit variable.
+
+13
+00:00:56,740 --> 00:01:02,200
+What you're going to do is actually add them by the variable name and then the value.
+
+14
+00:01:02,800 --> 00:01:07,810
+So as you can see of entertainment before, but for you you're going to do the same thing for both that
+
+15
+00:01:07,810 --> 00:01:11,770
+react app straight publishable key but also the strip secret key.
+
+16
+00:01:12,340 --> 00:01:17,440
+You can literally just copy your file variables over into the here.
+
+17
+00:01:17,920 --> 00:01:22,120
+So for the key you're going to put your react app stripe publishable key.
+
+18
+00:01:22,570 --> 00:01:28,060
+As for the value, what you want to do is you want to copy the value without the quotations.
+
+19
+00:01:28,540 --> 00:01:31,720
+Now, of course, I'm not going to show you my environment variables, but that's what I'm saying.
+
+20
+00:01:31,720 --> 00:01:33,340
+You don't have to post it as a string.
+
+21
+00:01:33,580 --> 00:01:38,890
+You can just post the characters of the actual key inside here as the value.
+
+22
+00:01:39,400 --> 00:01:45,220
+So do that for both the React app, straight publishable key and also the Stripe secret key.
+
+23
+00:01:45,220 --> 00:01:48,010
+And they want to be the exact same key values that you have.
+
+24
+00:01:48,280 --> 00:01:50,290
+Again, the value not being in the quotes.
+
+25
+00:01:50,530 --> 00:01:51,190
+So do that.
+
+26
+00:01:51,190 --> 00:01:51,760
+Come back.
+
+27
+00:01:51,760 --> 00:01:55,330
+I'm going to assume you've done that and then let's actually deploy our website.
+
+28
+00:01:56,410 --> 00:02:01,000
+So now that we've done that, you should have react abstract, publishable key as well as Stripe secret
+
+29
+00:02:01,000 --> 00:02:04,060
+key added into your environment variables and saved.
+
+30
+00:02:04,810 --> 00:02:12,190
+Now what we're going to do, if you have yet to actually commit this code, if you come in now, everything
+
+31
+00:02:12,190 --> 00:02:13,600
+should build properly.
+
+32
+00:02:14,020 --> 00:02:19,360
+But what I'm going to show you is if you want to manually trigger a deployment, so here we can go to
+
+33
+00:02:19,360 --> 00:02:19,930
+deploys.
+
+34
+00:02:20,290 --> 00:02:23,020
+And what we can do is just click Trigger Deploy.
+
+35
+00:02:23,560 --> 00:02:29,290
+And now what will happen is we will manually actually deploy a new build with the latest code.
+
+36
+00:02:29,590 --> 00:02:32,500
+The reason I'm doing this is because I've already pushed my code up.
+
+37
+00:02:32,650 --> 00:02:37,340
+So the CLIA has actually already built the website, but I'm just going to show you manually what this
+
+38
+00:02:37,360 --> 00:02:37,990
+going to look like.
+
+39
+00:02:38,140 --> 00:02:44,200
+Again, if you haven't committed and you have our new function code in, just deploy that meaning that
+
+40
+00:02:44,200 --> 00:02:45,910
+you should just push that code up to GitHub.
+
+41
+00:02:46,180 --> 00:02:48,910
+Let our connection and our ally build the website.
+
+42
+00:02:49,360 --> 00:02:54,730
+And here now while you're waiting, let's just quickly wait a second, because we can actually see our
+
+43
+00:02:54,730 --> 00:02:56,800
+functions build inside of these logs.
+
+44
+00:02:57,670 --> 00:02:59,470
+So I'm just going to fast forward through this section.
+
+45
+00:03:01,650 --> 00:03:04,860
+So here you can see step two is functions bundling.
+
+46
+00:03:05,190 --> 00:03:07,770
+So this is actually adding our functions.
+
+47
+00:03:07,770 --> 00:03:11,370
+And as you can clearly see, this is our create payment intent function.
+
+48
+00:03:11,910 --> 00:03:16,680
+It was built successfully and now the site, should it properly build script is successful.
+
+49
+00:03:16,980 --> 00:03:19,440
+If we scroll up, we see that we have published.
+
+50
+00:03:19,800 --> 00:03:26,430
+So if we preview the deployment now here we can see that I've actually already got a live session and
+
+51
+00:03:26,430 --> 00:03:31,680
+what I'm going to do is just show you with exactly the flows that we should expect to see.
+
+52
+00:03:32,190 --> 00:03:34,380
+So I'm going to sign in with my Google account.
+
+53
+00:03:35,420 --> 00:03:40,760
+And then what I'm going to do if you haven't already added items to your cart, add some value, go
+
+54
+00:03:40,760 --> 00:03:47,360
+to the checkout, scroll down here to the card payment and just add in the test credit card if you hit
+
+55
+00:03:47,360 --> 00:03:47,990
+pay now.
+
+56
+00:03:48,970 --> 00:03:51,880
+What you'll see is that we should see a successful payment.
+
+57
+00:03:53,140 --> 00:03:59,560
+If we come into our striped dashboard, we see that I have successfully made a payment with equal pay.
+
+58
+00:04:00,460 --> 00:04:01,000
+So that's it.
+
+59
+00:04:01,630 --> 00:04:04,020
+We are alive and deployed with our net life functions.
+
+60
+00:04:04,030 --> 00:04:06,520
+All of our functionality is now in production.
+
+61
+00:04:07,180 --> 00:04:12,190
+All that's left now is to learn a couple more optimizations that we can make with our React application.
+
+62
+00:04:12,550 --> 00:04:16,570
+But as far as our Capstone project goes, we are at feature completion.
+
+63
+00:04:16,960 --> 00:04:17,860
+Congratulations.
+
+64
+00:04:17,980 --> 00:04:18,880
+You've made it through.
+
+65
+00:04:19,210 --> 00:04:24,790
+You have learned about all of the different tools that come to help us build features inside of React.
+
+66
+00:04:25,120 --> 00:04:31,240
+From this point forward, what I'm going to teach you is mainly just additional optimizations and primarily
+
+67
+00:04:31,240 --> 00:04:36,820
+a lot of the tools that kind of make your process a little bit more efficient, such as performance
+
+68
+00:04:36,820 --> 00:04:38,740
+and such as TypeScript, etc..
+
+69
+00:04:39,220 --> 00:04:42,820
+So I want you to take a second, take a breather, patch yourself on the back.
+
+70
+00:04:42,970 --> 00:04:46,020
+Appreciate what you've built before you learn something new.
+
+71
+00:04:46,030 --> 00:04:50,020
+Maybe go back and add some more features to the application if you want.
+
+72
+00:04:50,230 --> 00:04:52,750
+Make it look a little bit more unique to your style.
+
+73
+00:04:53,200 --> 00:04:58,660
+Again, I have built this website and since the filming of this course, there's actually been a lot
+
+74
+00:04:58,660 --> 00:05:00,580
+of students who have built this website as well.
+
+75
+00:05:01,030 --> 00:05:05,200
+So if you want to tweak some of the designs and make it look a little bit more like your own, please
+
+76
+00:05:05,200 --> 00:05:06,220
+feel free to do so.
+
+77
+00:05:06,250 --> 00:05:10,390
+You have earned that and it's a great way to practice the skills that you've picked up so far.
+
+78
+00:05:10,570 --> 00:05:11,650
+I'm very proud of you.
+
+79
+00:05:12,010 --> 00:05:15,140
+And when you're ready, come join me in the next video.
+
+80
+00:05:15,160 --> 00:05:16,630
+Well, we'll start a new topic.
+
+81
+00:05:17,230 --> 00:05:18,640
+I'll see you in the next video.

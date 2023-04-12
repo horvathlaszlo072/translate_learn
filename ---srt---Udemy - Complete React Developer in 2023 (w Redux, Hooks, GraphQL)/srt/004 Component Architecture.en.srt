@@ -1,0 +1,211 @@
+1
+00:00:01,290 --> 00:00:08,760
+So we learned that React had this revolutionary idea of let me handle the DOM updates because I know
+
+2
+00:00:08,760 --> 00:00:12,200
+the best way to do them, the most efficient way, you don't have to do that.
+
+3
+00:00:12,210 --> 00:00:15,510
+Just tell me what the page should look like next.
+
+4
+00:00:15,870 --> 00:00:25,380
+Big game changer was this idea of building websites like Lego blocks as designed around the concept
+
+5
+00:00:25,380 --> 00:00:27,270
+of reusable components.
+
+6
+00:00:28,410 --> 00:00:34,650
+Just like you see in this app, how each square or rectangle has different color.
+
+7
+00:00:35,370 --> 00:00:37,000
+Well, these are all components.
+
+8
+00:00:37,710 --> 00:00:46,470
+Each of these individual pieces create this whole app react had this idea of small components that you
+
+9
+00:00:46,470 --> 00:00:49,120
+put them together to form bigger components.
+
+10
+00:00:49,440 --> 00:00:55,950
+So you had the profile picture component, you had the add component, and then you had the navigation
+
+11
+00:00:55,950 --> 00:00:56,880
+bar component.
+
+12
+00:00:58,160 --> 00:01:04,310
+And within here, you had components containing components, so you had a component in here that was
+
+13
+00:01:04,310 --> 00:01:11,060
+surrounded by another component that was surrounded by an ever bigger component, just like Lego blocks.
+
+14
+00:01:12,070 --> 00:01:18,650
+And all these small components, whether they're large or big, can be used in different places.
+
+15
+00:01:18,790 --> 00:01:24,470
+For example, I can have this component just copied over to multiple locations because while they're
+
+16
+00:01:24,500 --> 00:01:30,100
+the same thing and I can even move these over to different projects and reuse them.
+
+17
+00:01:32,050 --> 00:01:39,670
+So people can build these components like material UI components that I could just copy and paste this
+
+18
+00:01:39,670 --> 00:01:43,690
+code and added to my projects like so.
+
+19
+00:01:44,930 --> 00:01:51,770
+You had different component libraries like React Bootstrap again or something like Blueprint.
+
+20
+00:01:52,920 --> 00:01:59,370
+So people can now share these components across different websites, across different projects, and
+
+21
+00:01:59,400 --> 00:02:00,570
+they will all work.
+
+22
+00:02:01,940 --> 00:02:05,660
+Now, this idea of components and react.
+
+23
+00:02:06,700 --> 00:02:12,220
+In a simple term is just plain JavaScript functions that you write.
+
+24
+00:02:13,800 --> 00:02:21,540
+So we have the state of Europe or that is any data that describes our app, for example, the user is
+
+25
+00:02:21,540 --> 00:02:23,910
+logged in, whether it's true or false and maybe friends.
+
+26
+00:02:25,720 --> 00:02:28,730
+Then components are created based on that data.
+
+27
+00:02:29,650 --> 00:02:34,950
+Well, simply as functions and don't worry, don't get intimidated by this.
+
+28
+00:02:34,960 --> 00:02:36,880
+This is something that we'll cover throughout the course.
+
+29
+00:02:37,770 --> 00:02:46,740
+But components are simply just JavaScript functions that receive some sort of input or attributes which
+
+30
+00:02:46,740 --> 00:02:54,480
+we call props, and in return it returns this thing that kind of looks like HTML, but inside of JavaScript.
+
+31
+00:02:55,710 --> 00:03:02,100
+And these components can be built like this as a function or even as a class, but the key here is that
+
+32
+00:03:02,100 --> 00:03:09,630
+based on the state and these components that we built, we have an entire component that we can add
+
+33
+00:03:09,630 --> 00:03:16,140
+to our page and reuse maybe over here as well if we wanted to just like Lego blocks.
+
+34
+00:03:17,280 --> 00:03:24,360
+Now, here is a simple react to do application, and I'm going to be using something called the React
+
+35
+00:03:24,480 --> 00:03:28,800
+Developer Tools, which I recommend you install as well in the Chrome Webster.
+
+36
+00:03:29,250 --> 00:03:31,320
+You can add it to Google as an extension.
+
+37
+00:03:31,320 --> 00:03:36,390
+And what it allows you is when you click view developer developer tools.
+
+38
+00:03:38,440 --> 00:03:42,730
+You'll now have the element STAP, which shows you the don.
+
+39
+00:03:44,220 --> 00:03:46,170
+Of your app, which you can see over here.
+
+40
+00:03:47,410 --> 00:03:50,380
+But also a new tab called React.
+
+41
+00:03:52,570 --> 00:04:00,880
+And this react plugin actually allows you to see the components that we build into an application.
+
+42
+00:04:02,180 --> 00:04:06,560
+Now, you can see over here that this isn't exactly HTML.
+
+43
+00:04:07,700 --> 00:04:15,350
+We're creating custom tags like heter or filtered lists or footer that isn't valid html, but you'll
+
+44
+00:04:15,350 --> 00:04:25,040
+see that inside here, all of these are actually well built by ASML elements like Heter, H1 or input.
+
+45
+00:04:27,210 --> 00:04:33,990
+So, again, this idea of a component's architecture means that we can have some sort of data about
+
+46
+00:04:33,990 --> 00:04:42,240
+our application and we build these components ourselves and these components are what we call riak components
+
+47
+00:04:42,240 --> 00:04:48,930
+that we built out of XML tags that signify a component.
+
+48
+00:04:49,380 --> 00:04:54,390
+And each of these components worked together to eventually have our app.
+
+49
+00:04:55,450 --> 00:05:03,190
+And this component architecture is really, really key in rehab because it allows us to reuse and share
+
+50
+00:05:03,190 --> 00:05:09,370
+components between projects so that if you wanted a date picker on your app, well, instead of maybe
+
+51
+00:05:09,370 --> 00:05:16,210
+building it yourself, you can just Google for it and say react date picker component and just use somebody
+
+52
+00:05:16,210 --> 00:05:17,320
+else's code.
+
+53
+00:05:18,250 --> 00:05:22,600
+But there's two more key concepts to get through, so let's do that in the next video.

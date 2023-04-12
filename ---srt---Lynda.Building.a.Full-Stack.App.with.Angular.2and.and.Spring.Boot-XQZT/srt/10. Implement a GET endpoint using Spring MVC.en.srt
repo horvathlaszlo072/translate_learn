@@ -1,0 +1,601 @@
+1
+00:00:00.04 --> 00:00:02.01
+- [Instructor] Let's take
+a look at the code needed
+
+2
+00:00:02.01 --> 00:00:05.08
+to implement a get endpoint in our API.
+
+3
+00:00:05.08 --> 00:00:07.09
+Let's right click on base package,
+
+4
+00:00:07.09 --> 00:00:12.03
+go to New and create a
+new package called rest.
+
+5
+00:00:12.03 --> 00:00:16.00
+Next, let's right click
+on the rest package
+
+6
+00:00:16.00 --> 00:00:18.01
+and create a new class.
+
+7
+00:00:18.01 --> 00:00:23.03
+Let's name it, ReservationResource.
+
+8
+00:00:23.03 --> 00:00:26.05
+The ReservationResource
+class will represent
+
+9
+00:00:26.05 --> 00:00:29.06
+the resource remodeled in the last video.
+
+10
+00:00:29.06 --> 00:00:31.00
+We will create a method
+
+11
+00:00:31.00 --> 00:00:35.04
+that will let you view
+available rooms for reservation.
+
+12
+00:00:35.04 --> 00:00:37.07
+First, let's annotate this class
+
+13
+00:00:37.07 --> 00:00:41.00
+with a RestController annotation,
+
+14
+00:00:41.00 --> 00:00:44.01
+then let's import that annotation.
+
+15
+00:00:44.01 --> 00:00:47.03
+RestController is a convenience annotation
+
+16
+00:00:47.03 --> 00:00:49.08
+that combines the controller annotation
+
+17
+00:00:49.08 --> 00:00:52.09
+with the RequestBody annotation.
+
+18
+00:00:52.09 --> 00:00:56.02
+The controller annotation
+is a specialization
+
+19
+00:00:56.02 --> 00:00:59.05
+of the component annotation
+that marks a candidate
+
+20
+00:00:59.05 --> 00:01:03.04
+for auto-detection through
+classpath scanning.
+
+21
+00:01:03.04 --> 00:01:08.06
+HTTP requests are intercepted
+by the DispatcherServlet
+
+22
+00:01:08.06 --> 00:01:12.04
+which looks for handler
+mappings and it's type,
+
+23
+00:01:12.04 --> 00:01:16.08
+then routes request to the
+correct RestController method.
+
+24
+00:01:16.08 --> 00:01:21.07
+A response body annotation
+indicates a method return value
+
+25
+00:01:21.07 --> 00:01:25.03
+should be bound to the web response body.
+
+26
+00:01:25.03 --> 00:01:29.02
+Next, let's add a
+request mapping endpoint.
+
+27
+00:01:29.02 --> 00:01:34.01
+Let's import that annotation
+and then let's set the value
+
+28
+00:01:34.01 --> 00:01:39.08
+to /room/reservation/v1.
+
+29
+00:01:39.08 --> 00:01:44.08
+Next, let's create a public
+method called getAvailableRooms.
+
+30
+00:01:44.08 --> 00:01:47.02
+This will return a ResponseEntity
+
+31
+00:01:47.02 --> 00:01:50.03
+containing a ReservationResponse.
+
+32
+00:01:50.03 --> 00:01:53.04
+This method will take in two parameters,
+
+33
+00:01:53.04 --> 00:01:58.01
+a local date object, an iso
+date format called checkin,
+
+34
+00:01:58.01 --> 00:02:03.04
+and a local date object in iso
+date format called checkout.
+
+35
+00:02:03.04 --> 00:02:06.08
+Local date is a Java 8 date class.
+
+36
+00:02:06.08 --> 00:02:12.00
+Okay, let's add the checkin
+and checkout parameters.
+
+37
+00:02:12.00 --> 00:02:16.03
+Let's import the ResponseEntity object.
+
+38
+00:02:16.03 --> 00:02:20.08
+Next, let's import the local date class.
+
+39
+00:02:20.08 --> 00:02:24.09
+Okay, now, let's add a
+RequestParameter annotation
+
+40
+00:02:24.09 --> 00:02:27.00
+to checkin.
+
+41
+00:02:27.00 --> 00:02:29.07
+Let's import that annotation,
+
+42
+00:02:29.07 --> 00:02:32.03
+then let's add the field value
+
+43
+00:02:32.03 --> 00:02:34.09
+and set that value to checkin.
+
+44
+00:02:34.09 --> 00:02:38.09
+Next, let's add a
+DateTimeFormat annotation.
+
+45
+00:02:38.09 --> 00:02:41.05
+Let's import that annotation,
+
+46
+00:02:41.05 --> 00:02:43.09
+then let's add a a field called iso
+
+47
+00:02:43.09 --> 00:02:48.09
+and set iso to DateTimeFormat.ISO.DATE.
+
+48
+00:02:48.09 --> 00:02:51.09
+Next, let's add those two annotations
+
+49
+00:02:51.09 --> 00:03:01.07
+to the parameter checkout.
+
+50
+00:03:01.07 --> 00:03:05.04
+Next, let's return a ResponseEntity
+
+51
+00:03:05.04 --> 00:03:08.09
+containing a empty ReservationResponse
+
+52
+00:03:08.09 --> 00:03:14.02
+and the HTTP status code of 200 OK.
+
+53
+00:03:14.02 --> 00:03:19.00
+Next, let's at a request mapping
+annotation to this method.
+
+54
+00:03:19.00 --> 00:03:23.08
+Let's add three fields,
+path, method, and produces.
+
+55
+00:03:23.08 --> 00:03:28.09
+Path will be set the empty,
+method will be set to get,
+
+56
+00:03:28.09 --> 00:03:31.00
+produces will be set
+
+57
+00:03:31.00 --> 00:03:38.00
+to MediaType.APPLICATION.JSON.UTF8 value.
+
+58
+00:03:38.00 --> 00:03:42.03
+Next, let's create the
+ReservationResponse class.
+
+59
+00:03:42.03 --> 00:03:44.04
+Right click on the base package
+
+60
+00:03:44.04 --> 00:03:47.05
+and create a new package called model.
+
+61
+00:03:47.05 --> 00:03:52.07
+Within model, let's create
+another package called response.
+
+62
+00:03:52.07 --> 00:03:55.02
+Within response, let's create a class
+
+63
+00:03:55.02 --> 00:03:57.09
+called ReservationResponse.
+
+64
+00:03:57.09 --> 00:04:02.05
+Within ReservationResponse,
+let's create four variables.
+
+65
+00:04:02.05 --> 00:04:06.00
+First, let's create a private
+class member called ID
+
+66
+00:04:06.00 --> 00:04:08.02
+which is of the type long.
+
+67
+00:04:08.02 --> 00:04:11.09
+Next, let's create a private
+integer called roomNumber,
+
+68
+00:04:11.09 --> 00:04:15.09
+then, let's create another
+private integer called price.
+
+69
+00:04:15.09 --> 00:04:17.00
+Then finally,
+
+70
+00:04:17.00 --> 00:04:20.09
+let's create another
+class member called links.
+
+71
+00:04:20.09 --> 00:04:24.09
+Use the keyboard shortcut,
+Command + Alt + S
+
+72
+00:04:24.09 --> 00:04:27.00
+to bring up your source menu.
+
+73
+00:04:27.00 --> 00:04:31.07
+Let's create getters and setters
+for each of our variables.
+
+74
+00:04:31.07 --> 00:04:35.03
+Click on Select All then OK.
+
+75
+00:04:35.03 --> 00:04:38.04
+Next, let's create a constructor.
+
+76
+00:04:38.04 --> 00:04:43.01
+Open up the source menu
+again using Command + Alt + S
+
+77
+00:04:43.01 --> 00:04:46.01
+and click on Generate Constructor.
+
+78
+00:04:46.01 --> 00:04:48.00
+The first constructor will take in
+
+79
+00:04:48.00 --> 00:04:51.07
+room number and price as parameters.
+
+80
+00:04:51.07 --> 00:04:56.00
+Next, let's create a
+parameter list constructor.
+
+81
+00:04:56.00 --> 00:04:59.02
+Click Deselect All and OK.
+
+82
+00:04:59.02 --> 00:05:03.04
+Then, let's clean up
+the formatting and save.
+
+83
+00:05:03.04 --> 00:05:10.06
+Next, let's create the links
+object in the model package.
+
+84
+00:05:10.06 --> 00:05:14.09
+Let's add a private
+class member called self.
+
+85
+00:05:14.09 --> 00:05:19.05
+Let's open up the source menu
+and add a getter and setter,
+
+86
+00:05:19.05 --> 00:05:23.06
+click on self and OK, then save.
+
+87
+00:05:23.06 --> 00:05:29.00
+Next, let's create a self object.
+
+88
+00:05:29.00 --> 00:05:33.04
+Within self, let's create a
+private string called ref,
+
+89
+00:05:33.04 --> 00:05:34.09
+bring up the source menu
+
+90
+00:05:34.09 --> 00:05:37.07
+and then generate a getter and setter.
+
+91
+00:05:37.07 --> 00:05:41.08
+Click on ref and OK, then save.
+
+92
+00:05:41.08 --> 00:05:44.07
+Let's go back to our ReservationResponse
+
+93
+00:05:44.07 --> 00:05:49.06
+and import the links object
+we just created, then save.
+
+94
+00:05:49.06 --> 00:05:53.05
+Next, let's go back to
+the ReservationResource
+
+95
+00:05:53.05 --> 00:05:56.06
+and import the ReservationResponse.
+
+96
+00:05:56.06 --> 00:05:58.06
+Now, let's open up a browser
+
+97
+00:05:58.06 --> 00:06:08.09
+and search for
+com.fasterxml.jackson.datatype
+jsr310 maven,
+
+98
+00:06:08.09 --> 00:06:12.04
+click on the link to Maven Repository,
+
+99
+00:06:12.04 --> 00:06:15.01
+click on the latest table of release,
+
+100
+00:06:15.01 --> 00:06:20.00
+click on the Gradle tab,
+copy the import statement,
+
+101
+00:06:20.00 --> 00:06:25.08
+navigate to build.gradle in
+your root project directory,
+
+102
+00:06:25.08 --> 00:06:29.01
+scroll down to the dependency sections,
+
+103
+00:06:29.01 --> 00:06:32.09
+then paste in the dependency we copied
+
+104
+00:06:32.09 --> 00:06:38.03
+from the Maven Repository,
+save your bill.gradle file,
+
+105
+00:06:38.03 --> 00:06:42.05
+click on the Gradle Task
+window, expand build,
+
+106
+00:06:42.05 --> 00:06:47.07
+and double-click on the
+build gradle task, okay?
+
+107
+00:06:47.07 --> 00:06:49.03
+Our build was successful,
+
+108
+00:06:49.03 --> 00:06:52.07
+let's close that gradle task window,
+
+109
+00:06:52.07 --> 00:06:56.03
+and then open up application.properties.
+
+110
+00:06:56.03 --> 00:06:58.07
+Let's add a new property,
+
+111
+00:06:58.07 --> 00:07:08.01
+spring.jackson.serialization.write-dates-as-timestamps.
+
+112
+00:07:08.01 --> 00:07:11.02
+Then, set that to false and save.
+
+113
+00:07:11.02 --> 00:07:13.01
+Next, in the rest package,
+
+114
+00:07:13.01 --> 00:07:19.04
+let's create a new class
+called ResourceConstants.
+
+115
+00:07:19.04 --> 00:07:23.05
+Let's pull the request
+mapping into a constant.
+
+116
+00:07:23.05 --> 00:07:27.07
+So, let's go back to the
+ReservationResource class,
+
+117
+00:07:27.07 --> 00:07:32.01
+copy the request mapping, go
+back to ResourceConstance,
+
+118
+00:07:32.01 --> 00:07:38.02
+and add a public static final String
+
+119
+00:07:38.02 --> 00:07:42.01
+called ROOM in all caps
+
+120
+00:07:42.01 --> 00:07:46.07
+_RESERVATION_V1
+
+121
+00:07:46.07 --> 00:07:51.00
+and set it equal to your request mapping.
+
+122
+00:07:51.00 --> 00:07:53.02
+Copy that constant.
+
+123
+00:07:53.02 --> 00:07:56.07
+Let's go back to the ReservationResource
+
+124
+00:07:56.07 --> 00:08:01.07
+and add in the constant into
+the request mapping, then save.
+
+125
+00:08:01.07 --> 00:08:05.05
+Let's right click on the
+root project directory,
+
+126
+00:08:05.05 --> 00:08:09.02
+go to Run As, Spring Boot App.
+
+127
+00:08:09.02 --> 00:08:11.03
+Now, that our application has started up,
+
+128
+00:08:11.03 --> 00:08:15.03
+let's go to a browser, and
+let's test the endpoint.
+
+129
+00:08:15.03 --> 00:08:22.07
+Type in localhost:8080/room/reservation/v1
+
+130
+00:08:22.07 --> 00:08:26.00
+and add the parameter
+checkin and checkout,
+
+131
+00:08:26.00 --> 00:08:29.02
+both of which are iso formatted dates.
+
+132
+00:08:29.02 --> 00:08:33.01
+Iso format is a four-character year,
+
+133
+00:08:33.01 --> 00:08:36.07
+a two-character month,
+and a two-character day.
+
+134
+00:08:36.07 --> 00:08:38.07
+After submitting the request,
+
+135
+00:08:38.07 --> 00:08:41.08
+we get back a response containing
+
+136
+00:08:41.08 --> 00:08:44.01
+a empty ReservationResponse.
+

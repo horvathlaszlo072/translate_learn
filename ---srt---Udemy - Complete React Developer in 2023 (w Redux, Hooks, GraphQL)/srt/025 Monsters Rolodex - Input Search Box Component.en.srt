@@ -1,0 +1,635 @@
+1
+00:00:00,560 --> 00:00:01,520
+Welcome back, everyone.
+
+2
+00:00:03,040 --> 00:00:08,290
+Just so that we can keep track of all these things we're learning when it comes to our lifecycle methods
+
+3
+00:00:08,290 --> 00:00:11,650
+and our class component methods, as well as rendering and rendering.
+
+4
+00:00:11,800 --> 00:00:15,550
+I know it's a lot of new concepts that we're learning at once, which can be confusing.
+
+5
+00:00:15,880 --> 00:00:21,940
+So just so that we're aware of the order, as I mentioned before, its can structure, then render then
+
+6
+00:00:21,940 --> 00:00:25,720
+component did mount and have component did mount updates the state another render?
+
+7
+00:00:26,590 --> 00:00:32,320
+We're just going to update this console.log text so that it shows us the method so that as we build
+
+8
+00:00:32,320 --> 00:00:37,720
+out this application, we can see very clearly what's happening, and it's really just for your own
+
+9
+00:00:37,720 --> 00:00:39,610
+familiarity in case you get confused.
+
+10
+00:00:40,360 --> 00:00:44,050
+So instead of console.log one, we put constructor instead of console.log.
+
+11
+00:00:44,050 --> 00:00:47,590
+Three, we put component at Mount and instead of console.log.
+
+12
+00:00:47,590 --> 00:00:49,210
+Two we put render.
+
+13
+00:00:50,850 --> 00:00:53,490
+So now that we have this, we go back to our application.
+
+14
+00:00:53,790 --> 00:00:55,380
+We see that when we refresh.
+
+15
+00:00:56,740 --> 00:01:01,030
+We'll see that our constructor runs than our render runs component, didn't mount runs, then render
+
+16
+00:01:01,030 --> 00:01:07,600
+runs and then of course, our monsters array gets logged from our callback in our sets, they call.
+
+17
+00:01:08,640 --> 00:01:11,760
+So everything here is just to recap now moving forward.
+
+18
+00:01:11,940 --> 00:01:16,440
+Let's talk about how we're actually going to build out this application, and in order to do that,
+
+19
+00:01:16,440 --> 00:01:18,960
+we've got to talk a little bit about what we're looking to do.
+
+20
+00:01:20,060 --> 00:01:25,280
+So as I mentioned before, we have these different ones that represent different monsters.
+
+21
+00:01:25,970 --> 00:01:31,550
+Now, before we actually start styling these h ones to look more like the final product, what we want
+
+22
+00:01:31,550 --> 00:01:34,040
+to do instead is actually work on functionality.
+
+23
+00:01:34,430 --> 00:01:40,670
+You always want to work on functionality of your application before you work on the CSS, because once
+
+24
+00:01:40,670 --> 00:01:45,020
+you have the functionality and it's easier to start afterwards, at least that's the way that I prefer
+
+25
+00:01:45,020 --> 00:01:45,590
+to do things.
+
+26
+00:01:46,460 --> 00:01:50,810
+So in order for us to think about the functionality, let's actually take a look at our final product.
+
+27
+00:01:50,900 --> 00:01:52,250
+What are we trying to work towards?
+
+28
+00:01:53,180 --> 00:01:59,120
+So here we have these different monster cards, which represent the different monsters in our H1.
+
+29
+00:01:59,630 --> 00:02:01,010
+So instead of ones, we have cards.
+
+30
+00:02:01,010 --> 00:02:02,560
+But as I mentioned, that's the styling.
+
+31
+00:02:02,570 --> 00:02:03,560
+We're not going to work on that.
+
+32
+00:02:03,830 --> 00:02:06,530
+Instead, we want to add in this search functionality.
+
+33
+00:02:06,950 --> 00:02:08,420
+So what does the search functionality do?
+
+34
+00:02:09,140 --> 00:02:14,390
+Well, let's say that you want to find Clementine Bausch as you type it in.
+
+35
+00:02:14,630 --> 00:02:20,340
+It will filter out the monsters that do not match in name to what we've typed in here for our strengths.
+
+36
+00:02:20,340 --> 00:02:24,410
+So seemingly only matches two cards Clementine and Clementina.
+
+37
+00:02:24,860 --> 00:02:31,610
+In fact, if I type out Clementine, it should get rid of Clementina, but as I remove it, it will
+
+38
+00:02:31,610 --> 00:02:33,530
+bring back anything that does match.
+
+39
+00:02:34,340 --> 00:02:39,350
+So this is the functionality that we want to add into our monster's Rolodex project.
+
+40
+00:02:39,650 --> 00:02:44,840
+Another thing to include is also the fact that if we hit this X, it will also clear the search field
+
+41
+00:02:44,960 --> 00:02:49,040
+and in turn also bring back all the different monsters that were loaded.
+
+42
+00:02:49,700 --> 00:02:51,230
+So this is the feature that we want to build in.
+
+43
+00:02:51,830 --> 00:02:56,150
+Now, before we start coding this right away with any feature we're building, we want to think about
+
+44
+00:02:56,150 --> 00:03:01,460
+what it is that we need to do, because only then do we get a better clear idea of the requirements
+
+45
+00:03:01,460 --> 00:03:02,090
+of this feature.
+
+46
+00:03:02,390 --> 00:03:07,220
+And from there, it's the best way to start moving forward and actually comes the planning out, the
+
+47
+00:03:07,220 --> 00:03:08,210
+code that we want to write.
+
+48
+00:03:09,100 --> 00:03:14,950
+So what we need and what we're missing is we need an input field, and with this input field, we need
+
+49
+00:03:14,950 --> 00:03:20,410
+to be able to insert text, so allow the user to type into it and filter out our monsters.
+
+50
+00:03:21,190 --> 00:03:22,240
+So let's just think about that.
+
+51
+00:03:22,870 --> 00:03:27,100
+Given what we have, we clearly don't have the input field, so we know we need an input field somewhere.
+
+52
+00:03:27,520 --> 00:03:28,360
+So let's start with that.
+
+53
+00:03:30,720 --> 00:03:37,440
+Inside of this app, I'm going to use an input field, and this is just the same input field that you
+
+54
+00:03:37,440 --> 00:03:39,180
+have inside of HTML.
+
+55
+00:03:40,070 --> 00:03:47,180
+But one thing I want to mention is that all of these different HTML like GSX tags that we're writing,
+
+56
+00:03:47,180 --> 00:03:53,810
+the divs, the ones, the inputs or any single HTML tag that you can typically write inside of Iraq
+
+57
+00:03:53,810 --> 00:03:54,860
+in this GSX.
+
+58
+00:03:55,640 --> 00:03:57,570
+It looks like HTML.
+
+59
+00:03:58,070 --> 00:04:03,230
+But it's a little bit more advanced in that what it is really is that it's pretty much a component that
+
+60
+00:04:03,230 --> 00:04:06,770
+React has already included into the jazz acts.
+
+61
+00:04:07,370 --> 00:04:13,490
+So just like the components that we're writing, all of these are also components.
+
+62
+00:04:13,910 --> 00:04:21,020
+An easy way to think about this is that when you look at this app, this class app we know is a class
+
+63
+00:04:21,020 --> 00:04:21,440
+component.
+
+64
+00:04:21,590 --> 00:04:23,930
+We've been writing it and we export this out.
+
+65
+00:04:24,530 --> 00:04:31,400
+But when you look inside of index tags, what's happening is we are importing this app from Dot app,
+
+66
+00:04:31,400 --> 00:04:34,310
+so we're importing this whole class component that we're writing.
+
+67
+00:04:35,850 --> 00:04:39,060
+And what we're doing is we are rendering it right here.
+
+68
+00:04:39,630 --> 00:04:43,110
+But if you look at this, do you notice that this looks like HMO?
+
+69
+00:04:44,220 --> 00:04:45,330
+Well, this does.
+
+70
+00:04:45,600 --> 00:04:51,420
+But again, we're still inside of GSX, and the important thing to notice here is that what is happening
+
+71
+00:04:51,420 --> 00:04:58,410
+is that this app is being written in GSX like an HTML tag, the exact same way that these divs and this
+
+72
+00:04:58,590 --> 00:05:00,210
+one and these inputs are as well.
+
+73
+00:05:00,660 --> 00:05:07,830
+And the reason for this, of course, is the fact that React has created these HTML looking components
+
+74
+00:05:07,830 --> 00:05:08,340
+for us.
+
+75
+00:05:08,640 --> 00:05:12,570
+For every HTML tag, there is an equal React component.
+
+76
+00:05:12,930 --> 00:05:18,660
+And the reason why React does this is because it allows us to bind once again functionality to the UI.
+
+77
+00:05:19,350 --> 00:05:23,130
+So if you think about this input, what do we want to do with this input?
+
+78
+00:05:23,130 --> 00:05:28,290
+Because with all of these inputs, we typically have a bunch of HTML properties we can provide it.
+
+79
+00:05:28,680 --> 00:05:35,430
+In fact, any small property you can think of is equally available on these React HTML components.
+
+80
+00:05:36,430 --> 00:05:40,460
+One thing, though, that I want you to notice is that some of them are named a little differently.
+
+81
+00:05:40,520 --> 00:05:43,090
+And we can see this explicitly up here in this div.
+
+82
+00:05:43,390 --> 00:05:46,090
+We notice that instead of class, it's class name.
+
+83
+00:05:46,660 --> 00:05:53,680
+And the reason why its class name instead of class is because this is written in Joe's X and J X is
+
+84
+00:05:53,680 --> 00:06:00,010
+a syntax extension of JavaScript, meaning that all of the rules of JavaScript apply to GSX because
+
+85
+00:06:00,010 --> 00:06:04,240
+you're really just writing JavaScript with some additional functionality and class.
+
+86
+00:06:04,240 --> 00:06:09,790
+Being a protected keyword in JavaScript means that classes also protect protected keyword inside of
+
+87
+00:06:09,790 --> 00:06:10,450
+GSX.
+
+88
+00:06:11,290 --> 00:06:16,780
+When you think about classes, we use it up here, and what it does is it allows us in JavaScript to
+
+89
+00:06:16,780 --> 00:06:19,630
+create classes as well as class components.
+
+90
+00:06:20,290 --> 00:06:25,750
+So for this reason, riot cannot just allow us to use class freely inside of our JavaScript because
+
+91
+00:06:25,750 --> 00:06:32,170
+there's a very key functionality of JavaScript that's tied to class whenever it appears inside of JavaScript
+
+92
+00:06:32,320 --> 00:06:34,300
+and equally inside of GSX.
+
+93
+00:06:34,840 --> 00:06:37,000
+So keeping that in mind, that's why its class name.
+
+94
+00:06:37,270 --> 00:06:41,560
+So if we wanted to give our input a class, then we have to use class name.
+
+95
+00:06:41,830 --> 00:06:43,030
+And that's exactly how I'm going to do.
+
+96
+00:06:43,540 --> 00:06:46,930
+So here I'm going to say the class name is equal to search box.
+
+97
+00:06:47,980 --> 00:06:50,470
+And what other input properties do we want?
+
+98
+00:06:50,590 --> 00:06:55,750
+Well, we want to give it a type, so we want to say that the type of this input is going to be search.
+
+99
+00:06:56,410 --> 00:06:58,570
+We also want a placeholder.
+
+100
+00:06:59,110 --> 00:07:05,230
+So placeholder is going to be the text that shows up inside of an empty search box.
+
+101
+00:07:05,470 --> 00:07:08,050
+So before the user types in anything, what do we want to put there?
+
+102
+00:07:08,590 --> 00:07:12,490
+Usually what this text, you want to put some kind of text that explains what it's going to do.
+
+103
+00:07:12,970 --> 00:07:17,680
+So I'm just going to say that it's going to be search monsters and that text search monsters is going
+
+104
+00:07:17,680 --> 00:07:21,670
+to show up in that empty input box when users haven't typed in anything yet.
+
+105
+00:07:22,790 --> 00:07:29,390
+Finally, now what we want to do is we want to actually code in the functionality in order to filter
+
+106
+00:07:29,390 --> 00:07:30,500
+down this list.
+
+107
+00:07:30,920 --> 00:07:32,120
+So how do we do this?
+
+108
+00:07:32,810 --> 00:07:38,720
+Well, typically with inputs, what happens is that you have a change handler that you can bind to an
+
+109
+00:07:38,720 --> 00:07:39,050
+input.
+
+110
+00:07:39,290 --> 00:07:42,080
+So this is an event handler very similar to our button.
+
+111
+00:07:42,410 --> 00:07:48,380
+If you think back to our button, you remember that earlier we had a button that would change the name
+
+112
+00:07:48,380 --> 00:07:53,600
+inside of our search field, from Yehovah to Andre, and we used the on click handler.
+
+113
+00:07:54,350 --> 00:08:03,440
+So here instead, we have a similar handler, but every time the value inside of the search box updates
+
+114
+00:08:03,590 --> 00:08:04,550
+or changes.
+
+115
+00:08:04,910 --> 00:08:07,310
+And this is the on change handler.
+
+116
+00:08:07,640 --> 00:08:14,540
+And just like with on click, you get to pass it a callback and this callback runs whenever the value
+
+117
+00:08:14,540 --> 00:08:16,970
+inside of this input changes.
+
+118
+00:08:17,720 --> 00:08:23,720
+So what we want to do is we just want to say, OK, what's going to happen every time it changes?
+
+119
+00:08:24,110 --> 00:08:29,120
+Well, we want to start filtering out the different monsters that we have available.
+
+120
+00:08:30,180 --> 00:08:37,080
+And luckily for us, just like with this event handler inside of regular HTML JavaScript with Jeff Sachs,
+
+121
+00:08:37,080 --> 00:08:38,780
+this is pretty much the same event handler.
+
+122
+00:08:38,790 --> 00:08:42,630
+So what we're going to get back is we are going to get back an event.
+
+123
+00:08:43,910 --> 00:08:47,570
+So for those of you unfamiliar, let's just quickly console.log this event.
+
+124
+00:08:47,630 --> 00:08:49,520
+So we see what we receive.
+
+125
+00:08:50,650 --> 00:08:54,310
+So coming back into our application, we see that we have our input field.
+
+126
+00:08:54,550 --> 00:08:56,980
+We see we have our placeholder text search monsters.
+
+127
+00:08:57,430 --> 00:09:03,010
+And now if we start typing in, if I type L, we see we get this synthetic base event.
+
+128
+00:09:03,670 --> 00:09:08,200
+This event, if you look closely at one of these properties, has an underscore react name.
+
+129
+00:09:08,380 --> 00:09:11,290
+So this tells us it's a reactive it because React is in here.
+
+130
+00:09:11,470 --> 00:09:16,840
+In typical any other events that are generated by your browser or your DOM, you would not see underscore
+
+131
+00:09:16,840 --> 00:09:17,350
+react name.
+
+132
+00:09:17,920 --> 00:09:24,040
+And the reason for this is because React is generating these events for us with these different methods
+
+133
+00:09:24,040 --> 00:09:27,670
+that it provides us in those JavaScript HTML components.
+
+134
+00:09:28,030 --> 00:09:33,190
+The reason for that is just that it makes it easier for us to do this kind of event handling like this
+
+135
+00:09:33,190 --> 00:09:34,600
+on change handler.
+
+136
+00:09:35,290 --> 00:09:40,510
+And the reason why there's an underscore is because these are typically the kinds of properties that
+
+137
+00:09:40,510 --> 00:09:43,480
+react as these events, but they're not for us to access.
+
+138
+00:09:43,630 --> 00:09:46,150
+We shouldn't be accessing anything with an underscore.
+
+139
+00:09:46,660 --> 00:09:48,490
+Generally, everything else, though we do want.
+
+140
+00:09:48,700 --> 00:09:54,490
+And the main thing that we want is target, because inside of Target, other than all of these other
+
+141
+00:09:54,490 --> 00:10:01,480
+keys and values that you could use, these are going to be mainly valuable because of this value instead
+
+142
+00:10:01,480 --> 00:10:01,870
+of value.
+
+143
+00:10:01,900 --> 00:10:04,900
+Here you see, is the string L, which is what we have typed.
+
+144
+00:10:05,290 --> 00:10:07,180
+Now, if I continue to type.
+
+145
+00:10:08,130 --> 00:10:08,520
+E!
+
+146
+00:10:09,120 --> 00:10:14,700
+In the next event, if I check in the target, what we see is that the value is Ali.
+
+147
+00:10:15,450 --> 00:10:23,130
+And similarly, if I type another A, we see that we're going to get inside of target and value LGA.
+
+148
+00:10:24,430 --> 00:10:28,210
+So we know that with this, we're now able to actually get the value.
+
+149
+00:10:28,930 --> 00:10:31,360
+Now this is going to be my challenge to you.
+
+150
+00:10:32,460 --> 00:10:36,390
+Knowing that we need to use the event, don't target dot value.
+
+151
+00:10:37,530 --> 00:10:43,380
+I want you to take this and actually try and filter down this list of monsters.
+
+152
+00:10:44,010 --> 00:10:45,780
+We've done something very similar already.
+
+153
+00:10:46,110 --> 00:10:51,960
+We know that we need to use this handler to update our state object or our state array for monsters.
+
+154
+00:10:52,900 --> 00:10:58,380
+What you have to do is figure out how to use this in order to filter it down and to give you a hint,
+
+155
+00:10:58,390 --> 00:11:02,320
+there's actually an array method called filter that you can leverage for this.
+
+156
+00:11:02,740 --> 00:11:07,780
+I'm going to include in the resources folder a link to the filter so that you can take a look at it.
+
+157
+00:11:07,990 --> 00:11:10,080
+But I want you to try and implement it yourself.
+
+158
+00:11:10,600 --> 00:11:14,560
+Implement a way where as you type, you will filter out these monsters.
+
+159
+00:11:15,340 --> 00:11:18,370
+So good luck and we'll do it together in the next video.

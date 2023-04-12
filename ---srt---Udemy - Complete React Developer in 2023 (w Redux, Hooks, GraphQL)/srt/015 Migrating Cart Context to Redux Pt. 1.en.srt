@@ -1,0 +1,471 @@
+1
+00:00:00,510 --> 00:00:01,440
+Welcome back, everyone.
+
+2
+00:00:02,500 --> 00:00:07,820
+Now, before we continue with our car context, let's just make sure we've cleaned up everything up
+
+3
+00:00:07,820 --> 00:00:08,800
+until this point so far.
+
+4
+00:00:09,860 --> 00:00:13,660
+In the last video, we added a few console logs that I want you to remove as well.
+
+5
+00:00:13,670 --> 00:00:16,140
+If you have, then that's great.
+
+6
+00:00:16,160 --> 00:00:20,000
+If not, please do that now and inside of your context.
+
+7
+00:00:20,300 --> 00:00:24,860
+If you have not deleted your user context and your category context, please delete those as well.
+
+8
+00:00:26,320 --> 00:00:32,980
+So with our car context, there are a lot of little micro functions, utility functions, as well as
+
+9
+00:00:32,980 --> 00:00:35,980
+a lot of the separation of logic that we did so far.
+
+10
+00:00:36,820 --> 00:00:42,970
+There are a couple things that we need to think about when it comes to how we migrate this code over
+
+11
+00:00:42,970 --> 00:00:43,840
+into Redux.
+
+12
+00:00:44,200 --> 00:00:47,260
+It's everything we've already learned, but there are just a few more steps.
+
+13
+00:00:48,520 --> 00:00:56,350
+One key thing is that so far we've been storing our cart count and cart total actually on the reducer
+
+14
+00:00:56,350 --> 00:00:56,920
+itself.
+
+15
+00:00:58,120 --> 00:01:04,000
+So here what we've learned so far is that with these selectors we can actually extrapolate out that
+
+16
+00:01:04,000 --> 00:01:11,500
+data and we can also make it relatively performance as long as we make sure to memorize them using SELECT.
+
+17
+00:01:12,160 --> 00:01:13,330
+So that's what we're going to do.
+
+18
+00:01:14,140 --> 00:01:18,490
+Beyond that, a couple other things we want to do is just make sure that we capture all of the logic
+
+19
+00:01:18,490 --> 00:01:20,890
+in the right places when coding this out.
+
+20
+00:01:22,030 --> 00:01:28,540
+So to begin, what we're going to do is let's go into our store and let's set up and scaffold all of
+
+21
+00:01:28,540 --> 00:01:32,350
+the things we need in order to get this redux up and running.
+
+22
+00:01:33,380 --> 00:01:34,820
+So I'm gonna take the cart folder.
+
+23
+00:01:35,270 --> 00:01:37,610
+I'm going to make the action jazz.
+
+24
+00:01:38,120 --> 00:01:41,660
+I'm going to make, of course, the reducer J.S..
+
+25
+00:01:42,920 --> 00:01:50,270
+I'm going to make the selector jazz, and I'm going to make the types jazz, all the things that we
+
+26
+00:01:50,270 --> 00:01:50,510
+need.
+
+27
+00:01:51,410 --> 00:01:56,750
+And then what we'll do is we will slowly migrate over into each of these files, the different things
+
+28
+00:01:56,750 --> 00:01:57,620
+that we've already created.
+
+29
+00:01:58,340 --> 00:02:01,730
+For example, we know that we already have the reducer and the initial state.
+
+30
+00:02:02,270 --> 00:02:07,280
+We, of course, have to tweak some of these in order for this to work and fit our current model.
+
+31
+00:02:07,760 --> 00:02:09,590
+So initial state.
+
+32
+00:02:10,550 --> 00:02:16,280
+And then the next thing we need to do, of course, we need to set our state equal to cart initial state
+
+33
+00:02:16,940 --> 00:02:22,310
+and our action equal to a empty object if no action is passed.
+
+34
+00:02:23,500 --> 00:02:26,290
+Then by default we just also return the state.
+
+35
+00:02:27,190 --> 00:02:29,380
+The next thing we need is car action types.
+
+36
+00:02:30,070 --> 00:02:32,080
+So here, let's go to our car context.
+
+37
+00:02:32,410 --> 00:02:34,660
+Let's grab our car action types.
+
+38
+00:02:35,690 --> 00:02:37,400
+Put them into our cart types.
+
+39
+00:02:42,600 --> 00:02:49,770
+And let's also add cards in front of each of these strings, because now every single reducer gets every
+
+40
+00:02:49,770 --> 00:02:50,490
+single action.
+
+41
+00:02:50,820 --> 00:02:54,150
+So we want to be very clear and explicit about which one should be receiving it.
+
+42
+00:02:56,300 --> 00:02:57,530
+And then what we need now.
+
+43
+00:02:58,980 --> 00:03:08,730
+Is we need to actually create and move in the types so we're going to import in our car action types.
+
+44
+00:03:11,750 --> 00:03:18,230
+Export out this producer and put this producer inside of our producer.
+
+45
+00:03:32,150 --> 00:03:34,130
+So here we have our cart reducer.
+
+46
+00:03:34,280 --> 00:03:36,020
+We just attach it to cart like so.
+
+47
+00:03:38,260 --> 00:03:40,060
+And now for our first sanity check.
+
+48
+00:03:40,660 --> 00:03:45,190
+Let's just make sure our reducers actually inside of our application.
+
+49
+00:03:46,610 --> 00:03:51,980
+So here, when we initialized, what we see is our next data object.
+
+50
+00:03:52,790 --> 00:03:58,550
+And on the next day we see on cart we indeed have all of our initial values.
+
+51
+00:03:59,620 --> 00:04:00,180
+So there we go.
+
+52
+00:04:00,180 --> 00:04:01,150
+Have set up our reducer.
+
+53
+00:04:01,330 --> 00:04:07,900
+Now we need to think about the hard parts, which is the actions as well as the selectors.
+
+54
+00:04:08,770 --> 00:04:14,920
+So as I mentioned, our selectors should be what actually extrapolates out the logic that we had before
+
+55
+00:04:15,220 --> 00:04:22,000
+that we were doing when we were pushing the values into our reducer in context, because now instead
+
+56
+00:04:22,000 --> 00:04:26,890
+of doing it before it goes into context, we're no longer storing car count and cart total.
+
+57
+00:04:27,250 --> 00:04:30,100
+We want to extract that into selectors.
+
+58
+00:04:30,970 --> 00:04:36,370
+So to do that, what we need to do is just make sure that based on the cart items, we want to move
+
+59
+00:04:36,370 --> 00:04:37,150
+this over.
+
+60
+00:04:37,660 --> 00:04:41,590
+So let's copy this into our selectors first.
+
+61
+00:04:42,460 --> 00:04:46,210
+Let's also make sure to import in our create selector
+
+62
+00:04:49,060 --> 00:04:49,870
+from re select.
+
+63
+00:04:51,730 --> 00:04:58,120
+As far as the electoral logic goes, the key thing that we know that we need to extract off is the cart
+
+64
+00:04:58,120 --> 00:04:58,570
+items.
+
+65
+00:04:59,320 --> 00:05:03,670
+So currently, though, we are storing cart total as cart quantity.
+
+66
+00:05:04,360 --> 00:05:07,270
+So what we can do is we can get rid of these values.
+
+67
+00:05:08,450 --> 00:05:15,020
+And we need to make sure as well that when we set, all we're setting now is just cart items so we can
+
+68
+00:05:15,020 --> 00:05:17,960
+just pass it as the payload, which will be our card items.
+
+69
+00:05:19,220 --> 00:05:27,140
+I think I'm realizing that when we look at our car context, I did not make a new set or a function
+
+70
+00:05:27,650 --> 00:05:29,090
+that uses reducer.
+
+71
+00:05:29,090 --> 00:05:30,530
+Instead, we're still using use date.
+
+72
+00:05:31,070 --> 00:05:36,500
+So this is an oversight on my part, but this is a very quick, simple setter that if you want it to
+
+73
+00:05:36,500 --> 00:05:37,640
+set, you can make it yourself.
+
+74
+00:05:37,640 --> 00:05:41,390
+Maybe some of you have noticed that I missed that, but it's no worries.
+
+75
+00:05:41,390 --> 00:05:44,000
+We'll do it now inside of our car reducer.
+
+76
+00:05:44,780 --> 00:05:47,630
+So all we need to do is just switch the case.
+
+77
+00:05:47,630 --> 00:05:50,000
+I believe, in fact, we even have a set.
+
+78
+00:05:50,000 --> 00:05:50,780
+Is car open?
+
+79
+00:05:51,560 --> 00:05:52,190
+Yes, we do.
+
+80
+00:05:52,490 --> 00:05:54,860
+Is just an oversight on my part.
+
+81
+00:05:55,160 --> 00:06:00,140
+We just need is heart open to point to the payload which will pass as a boolean.
+
+82
+00:06:01,010 --> 00:06:04,430
+So for us let's create the actions that will do this here.
+
+83
+00:06:04,430 --> 00:06:07,640
+Inside, we want to import in our cart types.
+
+84
+00:06:10,340 --> 00:06:19,760
+And then what we'll do is we'll export content set is cart open which will receive a boolean and we
+
+85
+00:06:19,760 --> 00:06:22,640
+also need to import in create action.
+
+86
+00:06:25,520 --> 00:06:32,570
+Because what we'll do is we'll create an action with the cart action types set is cart open and pass
+
+87
+00:06:32,570 --> 00:06:34,910
+the bullion as the value for the payload.
+
+88
+00:06:35,910 --> 00:06:41,490
+Now for the remaining actions, this is going to be a little different when you think about the car
+
+89
+00:06:41,490 --> 00:06:42,150
+context.
+
+90
+00:06:42,450 --> 00:06:47,700
+The way we had a before is we had these helper functions that we exposed and what they did is they were
+
+91
+00:06:47,700 --> 00:06:53,670
+update the reducer, but we would also generate what the new car items would be here and do this as
+
+92
+00:06:53,670 --> 00:06:58,740
+these functions, this you can kind of see as your action creators.
+
+93
+00:06:59,460 --> 00:07:06,330
+All you need to do with the action is the action needs to figure out what to update inside of our final
+
+94
+00:07:06,330 --> 00:07:06,990
+reducer.
+
+95
+00:07:07,990 --> 00:07:14,950
+So what we'll do is we will make sure that our actions are the ones that do so in order to do this.
+
+96
+00:07:15,010 --> 00:07:18,730
+We will probably need all of these different helper functions that we've created.
+
+97
+00:07:19,300 --> 00:07:21,070
+So I'm going to copy these over first.
+
+98
+00:07:22,860 --> 00:07:28,590
+Move these at the bottom and each of them rely on some utility function that helps us actually derive
+
+99
+00:07:28,590 --> 00:07:29,580
+the new car items.
+
+100
+00:07:30,480 --> 00:07:32,760
+So I'm going to copy these over as well.
+
+101
+00:07:36,600 --> 00:07:40,140
+And there should be one more for clear cart down here.
+
+102
+00:07:42,140 --> 00:07:42,470
+I should.
+
+103
+00:07:42,470 --> 00:07:45,170
+We should have moved this right here for more clarity.
+
+104
+00:07:47,700 --> 00:07:48,850
+But no worries.
+
+105
+00:07:49,080 --> 00:07:50,180
+We have it now.
+
+106
+00:07:53,370 --> 00:08:01,860
+And now it's just a matter of modifying these new action creators so that they actually do what we need
+
+107
+00:08:01,860 --> 00:08:02,280
+it to do.
+
+108
+00:08:03,600 --> 00:08:07,470
+So what I want you to do is I want you to try and take a stab at this.
+
+109
+00:08:09,090 --> 00:08:10,860
+If you have already, that's great.
+
+110
+00:08:11,040 --> 00:08:11,610
+If not.
+
+111
+00:08:12,680 --> 00:08:19,070
+Just try and figure out, okay, now that we're inside of the Land of Redux, these actions now no longer
+
+112
+00:08:19,070 --> 00:08:21,680
+have access to items in the scope of the context.
+
+113
+00:08:21,980 --> 00:08:23,450
+We'll probably have to pass it in.
+
+114
+00:08:23,930 --> 00:08:27,680
+But before you do that, just think about when you're writing these actions anyways.
+
+115
+00:08:28,190 --> 00:08:32,240
+Understand the context under which they'll be used and what you might have to do in order to get it
+
+116
+00:08:32,240 --> 00:08:32,690
+to work.
+
+117
+00:08:33,630 --> 00:08:38,610
+So try that out yourself and then join me in the next video where we will code this together as well
+
+118
+00:08:38,610 --> 00:08:41,190
+as finishing up the rest of the set up for this cart.

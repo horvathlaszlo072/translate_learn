@@ -1,0 +1,404 @@
+1
+00:00:00.06 --> 00:00:01.08
+- [Instructor] You might
+have heard of testing,
+
+2
+00:00:01.08 --> 00:00:04.06
+unit tests and test-driven development.
+
+3
+00:00:04.06 --> 00:00:06.06
+They are all related,
+and we will take a look
+
+4
+00:00:06.06 --> 00:00:08.06
+at how to work with these using Node
+
+5
+00:00:08.06 --> 00:00:11.00
+and a test framework called Jasmine.
+
+6
+00:00:11.00 --> 00:00:13.03
+There are a few other options like Mocha,
+
+7
+00:00:13.03 --> 00:00:15.02
+but Jasmine comes with everything you need
+
+8
+00:00:15.02 --> 00:00:17.04
+to get started without much setup.
+
+9
+00:00:17.04 --> 00:00:19.05
+Let's consider a simple requirement.
+
+10
+00:00:19.05 --> 00:00:22.00
+Let's say we have a
+product manager or owner
+
+11
+00:00:22.00 --> 00:00:24.09
+that will give a programmer
+a simple requirement,
+
+12
+00:00:24.09 --> 00:00:27.04
+such as, "When I go to this endpoint,"
+
+13
+00:00:27.04 --> 00:00:31.04
+"localhost port 3000/messages,"
+
+14
+00:00:31.04 --> 00:00:33.04
+"I expect to get a list of messages."
+
+15
+00:00:33.04 --> 00:00:36.05
+That, by definition, is a
+requirement of the application.
+
+16
+00:00:36.05 --> 00:00:38.07
+But, this can also be a test.
+
+17
+00:00:38.07 --> 00:00:41.01
+We could make a test that
+automatically opens up
+
+18
+00:00:41.01 --> 00:00:44.00
+a connection, then checks
+if it receives a list
+
+19
+00:00:44.00 --> 00:00:46.02
+with more than zero messages.
+
+20
+00:00:46.02 --> 00:00:48.02
+This is exactly what the tester
+
+21
+00:00:48.02 --> 00:00:51.01
+and possibly product owner
+and product manager would do
+
+22
+00:00:51.01 --> 00:00:53.05
+once the programmer delivers the feature.
+
+23
+00:00:53.05 --> 00:00:56.00
+It would go through that test manually.
+
+24
+00:00:56.00 --> 00:00:57.05
+Jasmine, on the other hand,
+
+25
+00:00:57.05 --> 00:01:00.01
+can automate that testing for us.
+
+26
+00:01:00.01 --> 00:01:03.05
+All we need to do is
+describe a specification,
+
+27
+00:01:03.05 --> 00:01:05.06
+and in fact, the test I mentioned earlier
+
+28
+00:01:05.06 --> 00:01:07.06
+will be one of the more complex tasks
+
+29
+00:01:07.06 --> 00:01:09.05
+we will write in the next video.
+
+30
+00:01:09.05 --> 00:01:11.04
+But for now, let's start very simple,
+
+31
+00:01:11.04 --> 00:01:14.00
+a test that only checks a single thing,
+
+32
+00:01:14.00 --> 00:01:16.03
+also referred to as unit test.
+
+33
+00:01:16.03 --> 00:01:19.01
+Let's begin by installing Jasmine first.
+
+34
+00:01:19.01 --> 00:01:22.06
+Inside our terminal, we
+will use npm install,
+
+35
+00:01:22.06 --> 00:01:25.06
+and then --save -dev,
+
+36
+00:01:25.06 --> 00:01:28.00
+since this will only be a dev dependency
+
+37
+00:01:28.00 --> 00:01:29.07
+and we won't need it in production.
+
+38
+00:01:29.07 --> 00:01:31.03
+And then jasmine.
+
+39
+00:01:31.03 --> 00:01:33.02
+Then, just like we used npm init
+
+40
+00:01:33.02 --> 00:01:36.02
+to create the package.json file,
+
+41
+00:01:36.02 --> 00:01:37.09
+we'll need to use jasmine init
+
+42
+00:01:37.09 --> 00:01:40.02
+in order to create our testing folder
+
+43
+00:01:40.02 --> 00:01:42.06
+and a couple configuration files.
+
+44
+00:01:42.06 --> 00:01:44.08
+We could use the jasmine CLI
+
+45
+00:01:44.08 --> 00:01:46.07
+and install that with a global flag,
+
+46
+00:01:46.07 --> 00:01:49.09
+but another way to do it
+is just access jasmine init
+
+47
+00:01:49.09 --> 00:01:51.07
+through Node modules.
+
+48
+00:01:51.07 --> 00:02:04.07
+So, we'll type in
+./node_modules/.bin/jasmine init.
+
+49
+00:02:04.07 --> 00:02:07.01
+And we can see it created a spec folder
+
+50
+00:02:07.01 --> 00:02:11.00
+with a jasmine.json configuration file.
+
+51
+00:02:11.00 --> 00:02:14.03
+The next thing we need to do
+is go into our package.json
+
+52
+00:02:14.03 --> 00:02:16.08
+and under scripts on line 6,
+
+53
+00:02:16.08 --> 00:02:22.09
+and then under test, we'll
+change that to jasmine.
+
+54
+00:02:22.09 --> 00:02:28.04
+Now, to test this out,
+we can type in npm test.
+
+55
+00:02:28.04 --> 00:02:32.01
+We can see that it ran
+Jasmine, and it was started,
+
+56
+00:02:32.01 --> 00:02:34.07
+but there were no specs
+found, in other words,
+
+57
+00:02:34.07 --> 00:02:37.01
+there were no test specifications found,
+
+58
+00:02:37.01 --> 00:02:38.09
+so let's create our first.
+
+59
+00:02:38.09 --> 00:02:42.05
+We'll go inside the spec
+folder and create a file called
+
+60
+00:02:42.05 --> 00:02:46.08
+server.spec.js.
+
+61
+00:02:46.08 --> 00:02:48.08
+The first thing we'll create in this file
+
+62
+00:02:48.08 --> 00:02:51.01
+is a suite, or grouping, of tests.
+
+63
+00:02:51.01 --> 00:02:53.07
+We'll do that with describe.
+
+64
+00:02:53.07 --> 00:02:56.03
+And that's a function call
+which takes the description
+
+65
+00:02:56.03 --> 00:02:58.03
+as the first parameter,
+and I'll start with
+
+66
+00:02:58.03 --> 00:03:00.07
+a very simple calculator example,
+
+67
+00:03:00.07 --> 00:03:03.02
+so I'll just call it calc.
+
+68
+00:03:03.02 --> 00:03:05.07
+And then it takes a callback
+for the second parameter,
+
+69
+00:03:05.07 --> 00:03:08.08
+so I'll create an arrow function.
+
+70
+00:03:08.08 --> 00:03:12.06
+Then, we can describe our
+first specification, or test,
+
+71
+00:03:12.06 --> 00:03:14.01
+and it tries to be quite verbose,
+
+72
+00:03:14.01 --> 00:03:15.03
+so we could use something like
+
+73
+00:03:15.03 --> 00:03:22.07
+"It should multiply two and two,"
+
+74
+00:03:22.07 --> 00:03:32.04
+and the second parameter
+will get a callback.
+
+75
+00:03:32.04 --> 00:03:35.00
+And inside the body, we'll describe
+
+76
+00:03:35.00 --> 00:03:37.09
+what we expect the
+result to be with expect.
+
+77
+00:03:37.09 --> 00:03:42.09
+So we expect that two
+multiplied by two should be,
+
+78
+00:03:42.09 --> 00:03:46.00
+or tobe, four.
+
+79
+00:03:46.00 --> 00:03:50.09
+Let's save that and try
+to run it with npm test.
+
+80
+00:03:50.09 --> 00:03:53.00
+And we can see that it's started,
+
+81
+00:03:53.00 --> 00:03:56.04
+and one spec was executed,
+and there were zero failures,
+
+82
+00:03:56.04 --> 00:03:58.04
+meaning it passed.
+
+83
+00:03:58.04 --> 00:04:01.08
+What if we change this to five?
+
+84
+00:04:01.08 --> 00:04:07.09
+We know that's going to be
+wrong and it should fail.
+
+85
+00:04:07.09 --> 00:04:10.00
+And we're shown that we have a failure
+
+86
+00:04:10.00 --> 00:04:13.02
+at calc should multiply two and two,
+
+87
+00:04:13.02 --> 00:04:16.02
+expected four to be five.
+
+88
+00:04:16.02 --> 00:04:18.05
+So that's the general idea behind testing.
+
+89
+00:04:18.05 --> 00:04:21.08
+It's quite simple, Jasmine
+makes it very verbose,
+
+90
+00:04:21.08 --> 00:04:25.02
+and even the failures
+make it very easy to see
+
+91
+00:04:25.02 --> 00:04:26.05
+what we need to fix.
+
+92
+00:04:26.05 --> 00:04:29.08
+So now that we have an
+idea of how testing works,
+
+93
+00:04:29.08 --> 00:04:33.01
+let's go ahead and apply
+it to our application next.
+

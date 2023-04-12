@@ -1,0 +1,499 @@
+1
+00:00:00,120 --> 00:00:01,170
+Welcome back, everyone.
+
+2
+00:00:02,110 --> 00:00:02,860
+In this video.
+
+3
+00:00:02,860 --> 00:00:07,330
+We're going to break down context API versus redux at a very high level.
+
+4
+00:00:07,930 --> 00:00:12,100
+I know we haven't actually written any code for Redux, but at least we've worked with producers and
+
+5
+00:00:12,100 --> 00:00:13,060
+context API.
+
+6
+00:00:13,300 --> 00:00:19,180
+So here we should be able to find some kind of knowledgeable ground when it comes to the theoretical
+
+7
+00:00:19,180 --> 00:00:21,610
+parts of Context API versus Redux.
+
+8
+00:00:21,910 --> 00:00:27,130
+And it's important to understand these theoretical differences when we start coding out Redux.
+
+9
+00:00:27,310 --> 00:00:33,370
+So we at least can understand where Redux sits inside of this whole ecosystem much more clearly.
+
+10
+00:00:34,270 --> 00:00:41,230
+I want to note that there's really only two main differences inside when it comes to Redux versus Context
+
+11
+00:00:41,230 --> 00:00:46,030
+API, and it has to do with the accessibility as well as the flow of data.
+
+12
+00:00:46,510 --> 00:00:52,150
+So accessibility here is the accessibility of the data, and that's what we are going to start with.
+
+13
+00:00:53,050 --> 00:00:55,660
+So let's imagine we have our application here.
+
+14
+00:00:56,110 --> 00:00:58,820
+I've stripped it down a little bit so that it's a little more clear.
+
+15
+00:00:59,170 --> 00:01:02,260
+And what we have is just the app at the top level.
+
+16
+00:01:02,260 --> 00:01:05,620
+And then we have our shot preview on the left and the car on the right.
+
+17
+00:01:06,070 --> 00:01:10,960
+Now, the key thing I want you to remember here is that the shop is on the left and the cart is on the
+
+18
+00:01:10,960 --> 00:01:11,350
+right.
+
+19
+00:01:12,780 --> 00:01:18,990
+We have three different contexts right now, also wrapping around the entire application cart context,
+
+20
+00:01:18,990 --> 00:01:21,510
+categories, context and user context.
+
+21
+00:01:22,050 --> 00:01:27,120
+These three contexts are wrapped around the entire application because any component can access the
+
+22
+00:01:27,120 --> 00:01:28,800
+values in these contexts.
+
+23
+00:01:29,190 --> 00:01:32,700
+But in reality, this doesn't actually have to be the case with context.
+
+24
+00:01:33,030 --> 00:01:34,950
+Context is kind of just like a component.
+
+25
+00:01:35,220 --> 00:01:40,170
+You can actually wrap it around smaller portions of the application, and only that part has access
+
+26
+00:01:40,170 --> 00:01:41,370
+to that context.
+
+27
+00:01:41,730 --> 00:01:47,880
+For example, with the categories context, only the shop page really needs access to what's inside
+
+28
+00:01:47,880 --> 00:01:49,110
+the categories context.
+
+29
+00:01:49,590 --> 00:01:54,720
+As far as the components in the shop are concerned, they're the only ones that actually call the use
+
+30
+00:01:54,720 --> 00:02:00,750
+context hook to reach into that context and pull out the values, the components on the right side,
+
+31
+00:02:00,750 --> 00:02:06,810
+which is our cart, might actually receive those products somehow through the product cards, but in
+
+32
+00:02:06,810 --> 00:02:11,580
+reality it doesn't actually itself reach into the categories context.
+
+33
+00:02:11,580 --> 00:02:16,320
+So it does not actually need to be wrapped by the categories context.
+
+34
+00:02:16,920 --> 00:02:20,940
+If you are a child of categories context, you will have access to the context.
+
+35
+00:02:21,390 --> 00:02:27,150
+If you are a sibling of the categories context or a parent of the categories context, then you do not
+
+36
+00:02:27,150 --> 00:02:28,590
+have access to that context.
+
+37
+00:02:29,070 --> 00:02:32,820
+Now let's take a quick look inside of our application to understand how that works.
+
+38
+00:02:33,880 --> 00:02:36,250
+So here we are inside of our index jars.
+
+39
+00:02:36,730 --> 00:02:42,310
+As we know, we have this categories provider and this category is provider is what allows us to reach
+
+40
+00:02:42,310 --> 00:02:48,160
+inside the application to get the different products that we have, the only parts of the application
+
+41
+00:02:48,160 --> 00:02:50,740
+that are reliant on the categories context.
+
+42
+00:02:50,800 --> 00:02:58,450
+We can take a quick look everywhere where we call use context, we must pass it this categories context.
+
+43
+00:02:58,810 --> 00:03:05,770
+So here we see that inside of our different components, we're only using it in two places the categories
+
+44
+00:03:05,770 --> 00:03:07,900
+preview and the categories component.
+
+45
+00:03:08,650 --> 00:03:15,010
+If we remember, both of these are only components that live inside of the shop page.
+
+46
+00:03:15,190 --> 00:03:17,680
+Both the categories preview and the category.
+
+47
+00:03:18,310 --> 00:03:24,970
+What we can do is we can actually take this categories provider and just wrap it around the shop component
+
+48
+00:03:25,000 --> 00:03:25,630
+like so.
+
+49
+00:03:27,500 --> 00:03:29,000
+As a parent.
+
+50
+00:03:30,310 --> 00:03:34,450
+In fact, actually, let's wrap the entire roots object inside of categories provider.
+
+51
+00:03:35,400 --> 00:03:39,600
+The only thing we haven't done is we have not actually imported it in.
+
+52
+00:03:40,410 --> 00:03:41,790
+So let's do that as well.
+
+53
+00:03:42,780 --> 00:03:46,470
+Let's import in our categories provider.
+
+54
+00:03:51,990 --> 00:03:53,940
+So we need to go up into.
+
+55
+00:03:55,030 --> 00:03:56,350
+Our context folder.
+
+56
+00:03:57,570 --> 00:03:59,220
+Our categories context.
+
+57
+00:04:02,290 --> 00:04:03,400
+And then we save this.
+
+58
+00:04:04,420 --> 00:04:06,850
+And inside of our index, we can remove this.
+
+59
+00:04:07,120 --> 00:04:09,430
+Well, we'll comments it out for now because we want to put it back.
+
+60
+00:04:13,070 --> 00:04:19,340
+So now when we save this and we look inside of our shop component, what we should notice is that in
+
+61
+00:04:19,340 --> 00:04:21,410
+theory, our code should still work.
+
+62
+00:04:22,190 --> 00:04:23,940
+So here, let's go to our application.
+
+63
+00:04:23,960 --> 00:04:24,830
+Let's go to our shop.
+
+64
+00:04:25,700 --> 00:04:26,150
+Look at that.
+
+65
+00:04:26,180 --> 00:04:28,160
+We still have access to this context.
+
+66
+00:04:28,400 --> 00:04:30,110
+We can still add our components.
+
+67
+00:04:31,230 --> 00:04:33,800
+And add items inside of our go to checkout.
+
+68
+00:04:34,410 --> 00:04:35,640
+So nothing is broken here.
+
+69
+00:04:36,650 --> 00:04:43,700
+But one thing that I want you to notice is that if I try and access this categories context from outside
+
+70
+00:04:43,700 --> 00:04:50,660
+of these two routes, meaning that let's imagine that we're trying to access it from, let's say, a
+
+71
+00:04:50,660 --> 00:04:51,650
+different component.
+
+72
+00:04:51,650 --> 00:04:53,240
+Let's say our cart, for example.
+
+73
+00:04:53,720 --> 00:04:58,850
+We know that our cart lives outside of this shop component.
+
+74
+00:04:59,690 --> 00:05:00,500
+It's a sibling.
+
+75
+00:05:00,890 --> 00:05:04,280
+So here, what I can do is I'm going to say, okay, give me.
+
+76
+00:05:06,030 --> 00:05:07,980
+The categories context as well.
+
+77
+00:05:10,090 --> 00:05:11,860
+And I want to pull this from.
+
+78
+00:05:13,740 --> 00:05:14,880
+Categories context.
+
+79
+00:05:16,440 --> 00:05:16,980
+There it is.
+
+80
+00:05:19,330 --> 00:05:22,330
+And when I say contact categories map.
+
+81
+00:05:23,920 --> 00:05:25,840
+Which we know is something that we get.
+
+82
+00:05:27,640 --> 00:05:29,320
+Equals use context.
+
+83
+00:05:31,260 --> 00:05:33,120
+And then I call categories context.
+
+84
+00:05:34,140 --> 00:05:38,610
+And then what we're going to do is we're just going to console dot log categories map.
+
+85
+00:05:40,130 --> 00:05:42,980
+If we save this and we go back to our application.
+
+86
+00:05:43,950 --> 00:05:48,960
+When we open up our cart dropdown, we see that we do log an empty object.
+
+87
+00:05:49,470 --> 00:05:52,320
+But what you'll notice is that we see all of our other products.
+
+88
+00:05:52,410 --> 00:05:57,420
+This means that our categories context has updated and therefore there's a categories map object.
+
+89
+00:05:58,020 --> 00:06:02,130
+However, why is it that our cart dropdown is still an empty object?
+
+90
+00:06:02,790 --> 00:06:08,040
+Well, the reason for this is because categories context has an initial value, which is this.
+
+91
+00:06:08,580 --> 00:06:15,870
+But what happens is that this object never updates the hooking into all of the actual updates that happens
+
+92
+00:06:16,080 --> 00:06:22,890
+from the provider, getting the value, and then this component updating lives tangential to what the
+
+93
+00:06:22,890 --> 00:06:24,300
+CART dropdown has access to.
+
+94
+00:06:24,570 --> 00:06:31,260
+So while it's true that we may be able to derive the default value, the initial value of the categories
+
+95
+00:06:31,260 --> 00:06:36,360
+context, we cannot access any updated values from that provider.
+
+96
+00:06:36,780 --> 00:06:46,110
+So this is how we've managed to now segment the accessibility of this actual context value from our
+
+97
+00:06:46,110 --> 00:06:52,230
+provider inside of the categories context by wrapping it around the shop component.
+
+98
+00:06:53,100 --> 00:06:55,830
+So this is one way we can keep this code if we want.
+
+99
+00:06:56,250 --> 00:07:01,140
+If you want to do this and you want to make sure that only the appropriate portions of your application
+
+100
+00:07:01,140 --> 00:07:05,610
+have access to these respective providers, you can definitely do that.
+
+101
+00:07:06,330 --> 00:07:11,580
+For me, though, I do believe that at some point as this application scales, we're probably going
+
+102
+00:07:11,580 --> 00:07:16,290
+to want to have access to these categories in other place of the application.
+
+103
+00:07:16,740 --> 00:07:21,480
+But it's very easy for you to move your code around and figure out where you don't want access.
+
+104
+00:07:21,930 --> 00:07:25,740
+So I'm just going to revert everything that we've done here back to what we had.
+
+105
+00:07:26,260 --> 00:07:28,050
+I'm just getting rid of all these providers.
+
+106
+00:07:29,200 --> 00:07:30,010
+And there we go.
+
+107
+00:07:30,820 --> 00:07:32,620
+So that's really about accessibility.
+
+108
+00:07:32,710 --> 00:07:39,370
+With context, we are able to wrap the appropriate portions of our application and isolate the accessibility
+
+109
+00:07:39,370 --> 00:07:44,110
+to only the children of where it is that we have wrapped our providers.
+
+110
+00:07:45,380 --> 00:07:53,420
+Now the difference between context and Redux is that Redux will always wrap the entire application with
+
+111
+00:07:53,420 --> 00:07:57,470
+this, just like how we have currently set up inside of our contexts.
+
+112
+00:07:57,770 --> 00:08:03,770
+You have the same access to the Redux store, which is where all of our state is stored from the entire
+
+113
+00:08:03,770 --> 00:08:04,400
+application.
+
+114
+00:08:04,850 --> 00:08:09,170
+So it may not look different from context, but the thing is that you opt out of the choice.
+
+115
+00:08:09,530 --> 00:08:12,320
+With Redux, your application will always have access.
+
+116
+00:08:12,590 --> 00:08:19,730
+This is by design because it's called global state management global implying all of the different internal
+
+117
+00:08:19,730 --> 00:08:22,610
+components of your application have access to the Redux store.
+
+118
+00:08:23,670 --> 00:08:28,800
+Now the retail store itself is what handles the actual data, which we're going to talk about in the
+
+119
+00:08:28,800 --> 00:08:29,460
+next video.
+
+120
+00:08:29,790 --> 00:08:33,600
+But this is one of the key things I want to highlight to you about the differences between context and
+
+121
+00:08:33,600 --> 00:08:34,080
+redux.
+
+122
+00:08:34,480 --> 00:08:37,950
+Along the way, we also learned about something new with context that we can do.
+
+123
+00:08:38,340 --> 00:08:43,380
+There are times where you only want to wrap parts of your application inside of context and not the
+
+124
+00:08:43,380 --> 00:08:44,070
+entire thing.
+
+125
+00:08:44,760 --> 00:08:48,210
+So now that we're armed with this knowledge, let's talk about Dataflow.

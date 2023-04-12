@@ -1,0 +1,99 @@
+1
+00:00:00,990 --> 00:00:01,980
+Hey, welcome back.
+
+2
+00:00:02,190 --> 00:00:08,220
+I just want to add a quick note here, I've actually ejected a create react app just to show you what
+
+3
+00:00:08,220 --> 00:00:08,730
+happens.
+
+4
+00:00:09,150 --> 00:00:14,790
+You'll see here that it gives me a folder called Scripts and then a folder called Config.
+
+5
+00:00:15,210 --> 00:00:20,700
+And in here, well, this was everything that the creator racked up was hiding underneath the hood for
+
+6
+00:00:20,700 --> 00:00:20,910
+us.
+
+7
+00:00:21,660 --> 00:00:24,240
+You had things like just that was using for tests.
+
+8
+00:00:24,660 --> 00:00:26,780
+We have our Web configuration.
+
+9
+00:00:26,790 --> 00:00:28,380
+Remember our module bundler.
+
+10
+00:00:28,410 --> 00:00:32,760
+You can see over here how long and intense and complicated it looks.
+
+11
+00:00:34,350 --> 00:00:41,700
+We also have all the scripts that were run, for example, when we ran NPM Rumbold or NPM Run, start
+
+12
+00:00:41,970 --> 00:00:45,830
+or test, you see over here that it's quite a lot of code.
+
+13
+00:00:46,470 --> 00:00:52,920
+This is why I recommend not ejecting, because no matter what, no matter how much time you spend with
+
+14
+00:00:52,920 --> 00:01:00,570
+react, you never going to compete with the developers that are working full time trying to make, create,
+
+15
+00:01:00,570 --> 00:01:07,560
+react, have the best tool possible developers that are getting paid to make this tool as easy and as
+
+16
+00:01:07,560 --> 00:01:08,780
+efficient for you.
+
+17
+00:01:09,450 --> 00:01:16,440
+So I recommend that you never eject out of a reactor unless you absolutely have to, because by using
+
+18
+00:01:16,440 --> 00:01:24,140
+create react app, we automatically get the best system and project build out of the box.
+
+19
+00:01:24,150 --> 00:01:30,030
+And any time there are updates or the industry changes and there's new ways of doing things, create
+
+20
+00:01:30,030 --> 00:01:37,140
+react app is automatically, well, going to have a new version that has those changes implemented by
+
+21
+00:01:37,140 --> 00:01:37,870
+professionals.
+
+22
+00:01:38,490 --> 00:01:43,890
+So again, I wanted to show you that this is what's happening underneath the hood, but ninety nine
+
+23
+00:01:43,890 --> 00:01:49,890
+point nine percent of the time, you don't really need to eject because you lose all the benefits as
+
+24
+00:01:50,070 --> 00:01:52,830
+a reactor gets more and more updates.
+
+25
+00:01:54,350 --> 00:01:56,140
+I'll see in the next one, bye bye.

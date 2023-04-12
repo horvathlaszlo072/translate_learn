@@ -1,0 +1,94 @@
+1
+00:00:00.03 --> 00:00:02.04
+- [Instructor] Socket.io
+enables real time,
+
+2
+00:00:02.04 --> 00:00:05.03
+bidirectional, event based communication.
+
+3
+00:00:05.03 --> 00:00:07.08
+Express on the other
+hand allows the client
+
+4
+00:00:07.08 --> 00:00:09.08
+to send a request to the server,
+
+5
+00:00:09.08 --> 00:00:12.02
+but the server cannot
+send request to the client
+
+6
+00:00:12.02 --> 00:00:16.02
+and so it does not have
+bidirectional communication.
+
+7
+00:00:16.02 --> 00:00:17.06
+Socket.io solves this.
+
+8
+00:00:17.06 --> 00:00:20.03
+In other words, we can push notifications
+
+9
+00:00:20.03 --> 00:00:22.05
+from the server to the client
+
+10
+00:00:22.05 --> 00:00:25.07
+when an event happens,
+as well as other data.
+
+11
+00:00:25.07 --> 00:00:28.09
+We will see how this works
+eventually with our demo app.
+
+12
+00:00:28.09 --> 00:00:33.00
+Socket.io has two parts,
+a client side library
+
+13
+00:00:33.00 --> 00:00:34.06
+that runs on the browser,
+
+14
+00:00:34.06 --> 00:00:37.01
+and a server side library for node.js.
+
+15
+00:00:37.01 --> 00:00:41.01
+Both components have an API
+that's nearly identical.
+
+16
+00:00:41.01 --> 00:00:44.03
+And just like node.js, it is event driven.
+
+17
+00:00:44.03 --> 00:00:46.00
+Now that we've had a brief intro
+
+18
+00:00:46.00 --> 00:00:49.04
+into some of the most popular
+web frameworks for node,
+
+19
+00:00:49.04 --> 00:00:52.00
+let's go ahead and create
+the demo application
+
+20
+00:00:52.00 --> 00:00:53.04
+utilizing them.
+
+21
+00:00:53.04 --> 00:00:55.04
+Let's look at that next.
+

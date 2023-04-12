@@ -1,0 +1,123 @@
+1
+00:00:00.05 --> 00:00:02.01
+- [Instructor] Let's
+summarize some of the benefits
+
+2
+00:00:02.01 --> 00:00:04.01
+and features of JavaScript.
+
+3
+00:00:04.01 --> 00:00:07.00
+With Node, we get access
+to sharing the language
+
+4
+00:00:07.00 --> 00:00:09.01
+between the back end and the front end,
+
+5
+00:00:09.01 --> 00:00:10.05
+and as well, sharing the code
+
+6
+00:00:10.05 --> 00:00:12.08
+between the back end and the front end.
+
+7
+00:00:12.08 --> 00:00:15.00
+Another difference, and one that I like,
+
+8
+00:00:15.00 --> 00:00:17.08
+is that JavaScript is a dynamic language,
+
+9
+00:00:17.08 --> 00:00:20.03
+meaning the type is determined by value,
+
+10
+00:00:20.03 --> 00:00:22.04
+not when the variable is declared.
+
+11
+00:00:22.04 --> 00:00:25.02
+It is loosely typed versus strongly typed.
+
+12
+00:00:25.02 --> 00:00:28.03
+Another nice benefit is
+that JSON comes naturally
+
+13
+00:00:28.03 --> 00:00:31.03
+to JavaScript, which makes
+it ideal for web apps
+
+14
+00:00:31.03 --> 00:00:33.06
+both on the front end and back end.
+
+15
+00:00:33.06 --> 00:00:36.04
+JSON stands for JavaScript
+Object Notation,
+
+16
+00:00:36.04 --> 00:00:39.05
+and it's based on a subset
+of the JavaScript language.
+
+17
+00:00:39.05 --> 00:00:42.03
+A good example is passing
+data from our back end
+
+18
+00:00:42.03 --> 00:00:43.04
+to our front end.
+
+19
+00:00:43.04 --> 00:00:46.00
+In other environments
+with different languages,
+
+20
+00:00:46.00 --> 00:00:48.03
+you would have to do
+some sort of conversion.
+
+21
+00:00:48.03 --> 00:00:50.06
+With JavaScript it's much easier.
+
+22
+00:00:50.06 --> 00:00:52.08
+Overall, JavaScript has many pros,
+
+23
+00:00:52.08 --> 00:00:54.05
+but these can be seen as cons
+
+24
+00:00:54.05 --> 00:00:56.04
+depending on the circumstance.
+
+25
+00:00:56.04 --> 00:00:59.03
+JavaScript is definitely
+not the ultimate solution,
+
+26
+00:00:59.03 --> 00:01:01.07
+but sharing JavaScript
+between your front end
+
+27
+00:01:01.07 --> 00:01:03.07
+and back end makes web app development
+
+28
+00:01:03.07 --> 00:01:05.03
+that much more fun.
+

@@ -1,0 +1,213 @@
+1
+00:00:00.06 --> 00:00:03.01
+- [Instructor] Now that we've
+extracted the project files,
+
+2
+00:00:03.01 --> 00:00:06.03
+let's get the project
+imported into our IDE.
+
+3
+00:00:06.03 --> 00:00:09.05
+First, let's install Spring Tool Suite.
+
+4
+00:00:09.05 --> 00:00:13.09
+Let's navigate to Spring.io/tools.
+
+5
+00:00:13.09 --> 00:00:16.04
+Click download STS.
+
+6
+00:00:16.04 --> 00:00:19.01
+Next, let's open the downloaded file.
+
+7
+00:00:19.01 --> 00:00:22.05
+Double click to extract,
+
+8
+00:00:22.05 --> 00:00:28.00
+open the extracted files,
+click on STS, and copy.
+
+9
+00:00:28.00 --> 00:00:32.04
+Then, let's navigate to
+applications, and paste.
+
+10
+00:00:32.04 --> 00:00:37.01
+Now, let's open STS using
+the default workspace.
+
+11
+00:00:37.01 --> 00:00:40.07
+Next, we'll need to install
+the Gradle plugin for Eclipse,
+
+12
+00:00:40.07 --> 00:00:42.04
+called Buildship.
+
+13
+00:00:42.04 --> 00:00:43.04
+Let's navigate to
+
+14
+00:00:43.04 --> 00:00:51.06
+projects.eclipse.org/projects/tools.buildship.
+
+15
+00:00:51.06 --> 00:00:55.02
+Click on the current version,
+then copy the link to
+
+16
+00:00:55.02 --> 00:00:57.00
+the update site.
+
+17
+00:00:57.00 --> 00:01:00.02
+Next, let's open up Spring Tool Suite,
+
+18
+00:01:00.02 --> 00:01:03.05
+click on the help tab, then
+install the new software.
+
+19
+00:01:03.05 --> 00:01:07.07
+Next, let's click Add, then
+paste the update site link
+
+20
+00:01:07.07 --> 00:01:12.08
+into the location and
+name field, then click OK.
+
+21
+00:01:12.08 --> 00:01:15.04
+Check the box next to the box
+next to the Buildship plug-in,
+
+22
+00:01:15.04 --> 00:01:18.04
+then click next, and next again.
+
+23
+00:01:18.04 --> 00:01:22.07
+Accept the terms, and click finish.
+
+24
+00:01:22.07 --> 00:01:27.01
+Then click yes to restart STS.
+
+25
+00:01:27.01 --> 00:01:30.06
+Next, let's import our project into STS.
+
+26
+00:01:30.06 --> 00:01:33.05
+Click on the File tab, select Import,
+
+27
+00:01:33.05 --> 00:01:37.05
+expand the Gradle item in
+the import wizard tree.
+
+28
+00:01:37.05 --> 00:01:41.08
+Select Existing Gradle Project,
+then click Next, and Next.
+
+29
+00:01:41.08 --> 00:01:45.02
+Click Browse, and navigate to
+your projects root directory,
+
+30
+00:01:45.02 --> 00:01:49.08
+and click Open, then click Finish.
+
+31
+00:01:49.08 --> 00:01:52.02
+The project will now
+begin importing, building,
+
+32
+00:01:52.02 --> 00:01:55.00
+and downloading dependencies.
+
+33
+00:01:55.00 --> 00:01:58.00
+Next, let's build and run the application.
+
+34
+00:01:58.00 --> 00:02:00.05
+Right click on the
+project's root directory,
+
+35
+00:02:00.05 --> 00:02:04.08
+click Run As, then select Spring Boot App.
+
+36
+00:02:04.08 --> 00:02:07.09
+The application should begin starting up.
+
+37
+00:02:07.09 --> 00:02:10.08
+The final log statement in your
+console should indicate your
+
+38
+00:02:10.08 --> 00:02:13.06
+Spring Boot Application has started.
+
+39
+00:02:13.06 --> 00:02:16.01
+Next, let's stop the application,
+
+40
+00:02:16.01 --> 00:02:20.03
+and look into an alternative
+way of writing your app.
+
+41
+00:02:20.03 --> 00:02:22.08
+Open up a terminal and cd into your
+
+42
+00:02:22.08 --> 00:02:26.01
+project's root directory.
+
+43
+00:02:26.01 --> 00:02:29.09
+Next, let's run the application
+using the Gradle wrapper,
+
+44
+00:02:29.09 --> 00:02:33.02
+and the bootrun task.
+
+45
+00:02:33.02 --> 00:02:36.05
+We're able to run a Spring
+Boot Application without first
+
+46
+00:02:36.05 --> 00:02:40.03
+deploying it to a servlet
+container, such as Tomcat,
+
+47
+00:02:40.03 --> 00:02:43.00
+because the servlet container is embedded
+
+48
+00:02:43.00 --> 00:02:44.09
+in the jar file itself.
+

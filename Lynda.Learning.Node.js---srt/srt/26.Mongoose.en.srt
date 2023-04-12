@@ -1,0 +1,238 @@
+1
+00:00:00.03 --> 00:00:02.04
+- [Instructor] Mongoose
+allows us to elegantly work
+
+2
+00:00:02.04 --> 00:00:06.02
+with our MongoDB database
+with object schemas.
+
+3
+00:00:06.02 --> 00:00:09.02
+Object schemas are
+JavaScript objects we create
+
+4
+00:00:09.02 --> 00:00:11.01
+that will represent the type of data
+
+5
+00:00:11.01 --> 00:00:13.00
+we will be putting in our database.
+
+6
+00:00:13.00 --> 00:00:17.05
+Even though MongoDB is NoSQL,
+and does not have structure,
+
+7
+00:00:17.05 --> 00:00:19.06
+with Mongoose, there is a bit of structure
+
+8
+00:00:19.06 --> 00:00:21.03
+we must design initially.
+
+9
+00:00:21.03 --> 00:00:24.01
+This gives us some benefits
+of easily interacting
+
+10
+00:00:24.01 --> 00:00:26.04
+with our data through
+objects, and other things,
+
+11
+00:00:26.04 --> 00:00:28.02
+such as validation.
+
+12
+00:00:28.02 --> 00:00:41.04
+Let's begin by installing
+Mongoose with npm.
+
+13
+00:00:41.04 --> 00:00:50.00
+Then, inside our server.js,
+let's require it in.
+
+14
+00:00:50.00 --> 00:00:53.00
+Next, let's connect to our mLab database.
+
+15
+00:00:53.00 --> 00:00:55.03
+We will first need the connection string,
+
+16
+00:00:55.03 --> 00:00:58.05
+so let's go back to our
+mLab database website,
+
+17
+00:00:58.05 --> 00:01:00.04
+and copy that from the top.
+
+18
+00:01:00.04 --> 00:01:07.05
+So let's copy this URI.
+
+19
+00:01:07.05 --> 00:01:09.04
+Then, above our messages array,
+
+20
+00:01:09.04 --> 00:01:14.01
+let's create a dbURL variable,
+
+21
+00:01:14.01 --> 00:01:16.04
+and set it to what we copied.
+
+22
+00:01:16.04 --> 00:01:20.02
+Then, let's put in our user credentials.
+
+23
+00:01:20.02 --> 00:01:24.01
+Since I set my username
+and password to both user,
+
+24
+00:01:24.01 --> 00:01:26.00
+I'll use that.
+
+25
+00:01:26.00 --> 00:01:28.09
+An important note is that,
+in a production environment,
+
+26
+00:01:28.09 --> 00:01:32.08
+you would want to keep this
+URL, especially the credentials,
+
+27
+00:01:32.08 --> 00:01:36.06
+hidden in a configuration
+file that has a safe location.
+
+28
+00:01:36.06 --> 00:01:41.01
+Then, let's scroll down to
+the bottom of our server.js,
+
+29
+00:01:41.01 --> 00:01:45.08
+and above our http.listen,
+let's connect to Mongoose.
+
+30
+00:01:45.08 --> 00:01:49.05
+We'll use mongoose.connect.
+
+31
+00:01:49.05 --> 00:01:51.03
+We'll supply the dbURL
+
+32
+00:01:51.03 --> 00:01:53.01
+as the first parameter,
+
+33
+00:01:53.01 --> 00:01:55.05
+and then let's supply a callback
+
+34
+00:01:55.05 --> 00:01:59.00
+that will take an error, for the second.
+
+35
+00:01:59.00 --> 00:02:03.06
+Then, let's create a
+console.log, and pass in
+
+36
+00:02:03.06 --> 00:02:07.06
+mongo db connection,
+
+37
+00:02:07.06 --> 00:02:09.03
+and supply the error
+
+38
+00:02:09.03 --> 00:02:11.08
+as a second parameter, in
+case there is an error.
+
+39
+00:02:11.08 --> 00:02:14.04
+Then, let's save that, and let's look
+
+40
+00:02:14.04 --> 00:02:16.05
+at our integrated terminal.
+
+41
+00:02:16.05 --> 00:02:19.03
+And we can see MongoDB
+connection is shown,
+
+42
+00:02:19.03 --> 00:02:21.05
+therefore we are connected,
+and we're getting
+
+43
+00:02:21.05 --> 00:02:23.06
+an undefined for error.
+
+44
+00:02:23.06 --> 00:02:25.05
+If you're getting a deprecation warning,
+
+45
+00:02:25.05 --> 00:02:29.06
+you might need to specify a
+setting in the second parameter
+
+46
+00:02:29.06 --> 00:02:33.03
+of our mongoose.connect instead.
+
+47
+00:02:33.03 --> 00:02:36.01
+So let's add an object
+and make our callback
+
+48
+00:02:36.01 --> 00:02:38.08
+the third parameter,
+and then we'll specify
+
+49
+00:02:38.08 --> 00:02:44.09
+useMongoClient, and set that to true.
+
+50
+00:02:44.09 --> 00:02:49.00
+Let's save this, and you
+can see we're connecting,
+
+51
+00:02:49.00 --> 00:02:51.08
+and there are no longer
+is a deprecation warning.
+
+52
+00:02:51.08 --> 00:02:55.04
+Now that we're connecting to
+our mLab MongoDB database,
+
+53
+00:02:55.04 --> 00:02:59.01
+let's see how we can start
+saving data with Mongoose.
+

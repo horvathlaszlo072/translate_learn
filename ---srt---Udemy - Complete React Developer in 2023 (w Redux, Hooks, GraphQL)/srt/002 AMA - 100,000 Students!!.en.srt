@@ -1,0 +1,2211 @@
+1
+00:00:03,750 --> 00:00:05,880
+Hey there, it's is my face.
+
+2
+00:00:06,690 --> 00:00:11,550
+I'm usually sitting in front of a computer, not in front of a camera, which I'm not comfortable with,
+
+3
+00:00:12,300 --> 00:00:21,840
+but this is the Army video, and I want to just absolutely thank all of you because we have officially
+
+4
+00:00:21,840 --> 00:00:25,940
+had one hundred thousand unique students, which is insane.
+
+5
+00:00:26,100 --> 00:00:27,330
+Absolutely mind blowing.
+
+6
+00:00:27,540 --> 00:00:32,670
+I did an AMA video when we hit a thousand students and I thought that was just extraordinary.
+
+7
+00:00:32,670 --> 00:00:37,080
+And to be at one hundred thousand now is absolutely incredible.
+
+8
+00:00:37,200 --> 00:00:39,120
+I feel extremely lucky.
+
+9
+00:00:39,300 --> 00:00:40,890
+I feel extremely blessed.
+
+10
+00:00:40,890 --> 00:00:48,480
+And not to get too sappy here, but I'm very, very thankful for you watching this video right now because
+
+11
+00:00:48,990 --> 00:00:50,400
+I don't really do any marketing.
+
+12
+00:00:50,400 --> 00:00:52,920
+And it's it's all grown out of word of mouth.
+
+13
+00:00:52,920 --> 00:00:57,930
+So thank you for telling your friends, your family, your kids, whatever it is.
+
+14
+00:00:57,930 --> 00:01:01,770
+I am extremely thankful that I get to do what I do.
+
+15
+00:01:01,770 --> 00:01:03,090
+And it's all because of you.
+
+16
+00:01:03,270 --> 00:01:03,740
+All right.
+
+17
+00:01:03,750 --> 00:01:04,980
+So no more sappiness.
+
+18
+00:01:04,980 --> 00:01:05,930
+Let's get to it.
+
+19
+00:01:05,940 --> 00:01:09,600
+I asked you on Dischord some questions that you might have for me.
+
+20
+00:01:10,270 --> 00:01:11,850
+There were a lot of questions.
+
+21
+00:01:11,850 --> 00:01:13,620
+Unfortunately, I won't be able to answer all of them.
+
+22
+00:01:13,770 --> 00:01:16,410
+I don't want to make this into a boring one hour video.
+
+23
+00:01:16,530 --> 00:01:20,760
+So I pick the ones that I thought had a lot of people interested in them.
+
+24
+00:01:20,760 --> 00:01:24,080
+And hopefully I can give you some some answers.
+
+25
+00:01:24,090 --> 00:01:29,930
+Keep in mind that you should form your own opinions and decisions based on this.
+
+26
+00:01:30,000 --> 00:01:31,980
+This is just one person's view.
+
+27
+00:01:31,980 --> 00:01:32,670
+My view.
+
+28
+00:01:32,670 --> 00:01:34,560
+It doesn't mean that I'm 100 percent correct.
+
+29
+00:01:35,310 --> 00:01:37,710
+If I thought that, then I would have a YouTube channel.
+
+30
+00:01:38,010 --> 00:01:40,470
+But take it with a grain of salt.
+
+31
+00:01:40,480 --> 00:01:41,850
+These are just my opinions.
+
+32
+00:01:42,460 --> 00:01:43,200
+I may be wrong.
+
+33
+00:01:43,200 --> 00:01:49,320
+I may be right is just what has worked in my life doesn't necessarily mean that it will work for you
+
+34
+00:01:49,320 --> 00:01:50,820
+or the answers are right for you.
+
+35
+00:01:51,890 --> 00:01:52,620
+All right.
+
+36
+00:01:53,160 --> 00:02:01,140
+The first one here, we have Nick Salaat who asks, what's the best way to get into machine learning
+
+37
+00:02:01,140 --> 00:02:02,790
+and artificial intelligence?
+
+38
+00:02:03,460 --> 00:02:05,580
+That's actually a question that kept coming up.
+
+39
+00:02:05,580 --> 00:02:11,640
+A lot of people are interested in machine learning, data science, anything related to A because it
+
+40
+00:02:11,640 --> 00:02:14,490
+is extremely popular and a hot topic right now.
+
+41
+00:02:15,120 --> 00:02:21,240
+I actually have a course coming up on it that that tries to tackle that question because machine learning
+
+42
+00:02:21,240 --> 00:02:27,720
+right now, it's a bit of a buzzword where it it solves all your business problems when in fact, maybe
+
+43
+00:02:27,720 --> 00:02:29,040
+it's not necessarily so.
+
+44
+00:02:29,040 --> 00:02:34,380
+And I think there's developer interest to learn about machine learning, as well as business analysts
+
+45
+00:02:34,380 --> 00:02:41,070
+and business decision makers to use machine learning and data to improve their profits and their business.
+
+46
+00:02:42,420 --> 00:02:47,460
+So I don't really give you an answer for that one, but it's one of those topics that I think in order
+
+47
+00:02:47,460 --> 00:02:54,180
+to learn about it, you should at least learn to code be become a web developer force or perhaps have
+
+48
+00:02:54,180 --> 00:02:59,550
+some understanding of business data data analysis before you get into it.
+
+49
+00:03:00,120 --> 00:03:00,560
+All right.
+
+50
+00:03:00,960 --> 00:03:07,380
+Next, the next question is from N.K. Talk about your life as a developer from start until now to learn
+
+51
+00:03:07,380 --> 00:03:07,770
+from you.
+
+52
+00:03:08,730 --> 00:03:14,550
+Well, I think some of you know, from my previous anime, I did not come from a computer science background.
+
+53
+00:03:14,790 --> 00:03:16,800
+I came from a business background.
+
+54
+00:03:16,800 --> 00:03:21,900
+I did also a minor in psychology and learned to code in my twenties.
+
+55
+00:03:22,320 --> 00:03:24,000
+I'm thirty three now, by the way.
+
+56
+00:03:24,240 --> 00:03:27,870
+Hopefully I don't look thirty three, but that's that's my age.
+
+57
+00:03:28,950 --> 00:03:33,180
+And yeah, I would break down the developer lifecycle into three phases.
+
+58
+00:03:33,180 --> 00:03:37,710
+So the first one is where you're just learning, you're learning to code.
+
+59
+00:03:37,710 --> 00:03:39,150
+Everything is completely new.
+
+60
+00:03:39,150 --> 00:03:42,000
+You feel extremely overwhelmed, overwhelmed.
+
+61
+00:03:42,180 --> 00:03:47,820
+You don't know what to learn, what person to trust, what mentor to have, what course to take.
+
+62
+00:03:48,540 --> 00:03:49,890
+That's a really big challenge.
+
+63
+00:03:49,890 --> 00:03:55,710
+And getting to the point of understanding and being able to build something from scratch yourself.
+
+64
+00:03:55,890 --> 00:03:57,240
+I think that's the first phase.
+
+65
+00:03:57,270 --> 00:04:03,990
+The second phase was when when I was employed for the first time and the first couple of years working
+
+66
+00:04:03,990 --> 00:04:11,370
+as a developer where you feel the imposter syndrome, where you feel like you just don't know enough,
+
+67
+00:04:11,370 --> 00:04:13,590
+or somehow they hired you by mistake.
+
+68
+00:04:13,590 --> 00:04:19,890
+And while everybody else around you is smarter than you, that phase really goes by.
+
+69
+00:04:20,640 --> 00:04:25,950
+The one advice that I have for that phase is to honestly be comfortable with being uncomfortable.
+
+70
+00:04:26,190 --> 00:04:28,350
+That is, ask as many questions as you want.
+
+71
+00:04:28,350 --> 00:04:31,230
+Don't feel like you're raising your hand and asking question.
+
+72
+00:04:31,560 --> 00:04:36,990
+It's going to make you feel it's going to make others look at you like you're dumb or not good enough.
+
+73
+00:04:37,350 --> 00:04:42,060
+The more questions you ask, the better you'll have the answers and you'll find that the successful
+
+74
+00:04:42,060 --> 00:04:45,540
+people through this phase are the people who ask a ton of questions.
+
+75
+00:04:45,540 --> 00:04:51,810
+When they don't understand something, they try to learn and try to grab as much experience as possible
+
+76
+00:04:51,810 --> 00:04:52,770
+from those around you.
+
+77
+00:04:53,160 --> 00:04:59,100
+And then the third phase is when you start to become a little bit of a senior developer, when you start
+
+78
+00:04:59,100 --> 00:05:00,000
+to get confident.
+
+79
+00:05:00,380 --> 00:05:05,840
+Your abilities, you perhaps start to lead projects, perhaps other junior developers look up to you
+
+80
+00:05:05,840 --> 00:05:06,810
+and ask you questions.
+
+81
+00:05:06,920 --> 00:05:15,050
+One of the biggest things with that face of a developer is to not almost get a God complex where you
+
+82
+00:05:15,050 --> 00:05:19,370
+feel like your opinions are the right ones and everybody else's is absolutely wrong.
+
+83
+00:05:19,910 --> 00:05:25,610
+I've seen way too many really good developers get overconfident in themselves and have really strong
+
+84
+00:05:25,610 --> 00:05:30,830
+opinions where they don't take anything else into consideration.
+
+85
+00:05:30,990 --> 00:05:37,070
+I think through that phase, if you're able to understand everything, it has pros and cons, everything
+
+86
+00:05:37,070 --> 00:05:38,570
+depends on the situation.
+
+87
+00:05:38,690 --> 00:05:41,100
+And that you're not only used graphics.
+
+88
+00:05:41,320 --> 00:05:43,010
+Oh, I only use typescript.
+
+89
+00:05:43,010 --> 00:05:51,650
+And dynamic languages are trash when you avoid those strong opinions to almost make yourself feel like
+
+90
+00:05:51,860 --> 00:05:55,000
+you're smart, you're doing something wrong there.
+
+91
+00:05:55,010 --> 00:06:00,260
+You want to be open to ideas, open to suggestions, and not forget to keep growing from that phase,
+
+92
+00:06:00,260 --> 00:06:06,170
+because as you start to get more and more recognition, maybe feel more confident, it's very easy to
+
+93
+00:06:06,170 --> 00:06:08,990
+think that you've reached the pinnacle and you need to stop learning.
+
+94
+00:06:09,740 --> 00:06:13,100
+This whole industry is all about learning and constantly evolving.
+
+95
+00:06:13,250 --> 00:06:18,290
+And what, you know, two years from now will probably be different than what you know.
+
+96
+00:06:18,620 --> 00:06:21,840
+So those are the three phases, kind of the ones that I went through.
+
+97
+00:06:21,890 --> 00:06:25,090
+Obviously, I'm teaching now, but for me, learning doesn't stop.
+
+98
+00:06:25,100 --> 00:06:26,240
+I'm constantly learning.
+
+99
+00:06:27,140 --> 00:06:31,760
+I'm constantly trying to improve myself, both in teaching, but also as a developer.
+
+100
+00:06:31,760 --> 00:06:35,240
+And I hope that that is the case with you as well.
+
+101
+00:06:37,490 --> 00:06:37,890
+All right.
+
+102
+00:06:38,210 --> 00:06:38,950
+Next question.
+
+103
+00:06:39,020 --> 00:06:43,200
+Next question is from S.G. How many countries have you visited during the last year?
+
+104
+00:06:43,220 --> 00:06:46,040
+Any suggestions to travel while working remote?
+
+105
+00:06:46,550 --> 00:06:50,750
+So for some of you that don't know, I, I work completely remote.
+
+106
+00:06:50,820 --> 00:06:56,690
+I carry my recorded recording equipment online and I set up my studio wherever I am in the world.
+
+107
+00:06:56,690 --> 00:07:04,730
+So my courses have been recorded in in Ecuador, in Nicaragua, Colombia and Greece and Romania.
+
+108
+00:07:04,880 --> 00:07:10,980
+Pretty much anywhere that I'm traveling, I bring my recording equipment, set up my little studio and
+
+109
+00:07:11,160 --> 00:07:11,870
+and record.
+
+110
+00:07:12,620 --> 00:07:17,210
+So last year I traveled to, I would say, about seven or eight countries where I lived.
+
+111
+00:07:17,210 --> 00:07:25,190
+And then in then long term, my favorite was I actually recorded The Master, the coding interview course
+
+112
+00:07:25,190 --> 00:07:33,200
+in a little house on the side of a volcano in Ecuador, where the last house at the very top of the
+
+113
+00:07:33,200 --> 00:07:33,920
+volcano.
+
+114
+00:07:33,920 --> 00:07:41,120
+So we had to hike down and grab groceries every time we needed to eat or wanted to cook dinner and hike
+
+115
+00:07:41,120 --> 00:07:42,770
+back up with all our groceries.
+
+116
+00:07:42,920 --> 00:07:43,790
+That was a lot of fun.
+
+117
+00:07:44,450 --> 00:07:45,490
+Any advice for remote?
+
+118
+00:07:45,720 --> 00:07:51,560
+Honestly, if it's one of those lifestyles that it sounds nice, but it also requires a lot of dedication
+
+119
+00:07:51,560 --> 00:07:58,850
+and and commitment to to work instead of just not being committed to a schedule and making it really
+
+120
+00:07:58,850 --> 00:08:02,900
+easy to go off and pretend like you're busy without actually accomplishing anything.
+
+121
+00:08:02,900 --> 00:08:04,760
+So you do need to have a bit of structure.
+
+122
+00:08:05,900 --> 00:08:13,670
+But for those that are self-motivated and determined enough and can keep track of tasks and don't get
+
+123
+00:08:13,670 --> 00:08:17,180
+distracted, often, it's it's definitely a lot of fun.
+
+124
+00:08:17,420 --> 00:08:17,730
+All right.
+
+125
+00:08:17,780 --> 00:08:26,630
+This next question, I think I got asked maybe five times from people like Durjan, supah scrammed block,
+
+126
+00:08:27,410 --> 00:08:30,890
+all of them essentially said, why did you quit your full time job?
+
+127
+00:08:31,370 --> 00:08:33,470
+How come you're not a developer anymore?
+
+128
+00:08:33,740 --> 00:08:35,960
+Well, let's say that I'm still a developer.
+
+129
+00:08:35,960 --> 00:08:38,570
+I do a bit of consulting work on the side.
+
+130
+00:08:39,050 --> 00:08:44,840
+The reason that I quit my developer job was mainly because I wanted to I wanted to travel a little bit
+
+131
+00:08:44,840 --> 00:08:45,860
+and take a break.
+
+132
+00:08:45,920 --> 00:08:52,100
+I had spent a couple of years working for other people and working on projects that perhaps I didn't
+
+133
+00:08:52,100 --> 00:08:53,210
+care too much about.
+
+134
+00:08:53,330 --> 00:08:57,020
+I was working for other people's passion projects or businesses.
+
+135
+00:08:57,260 --> 00:09:03,530
+And after a while that that kind of gets old, or at least it did for me, where I found that I stopped
+
+136
+00:09:03,530 --> 00:09:04,280
+learning as much.
+
+137
+00:09:04,280 --> 00:09:07,010
+It was just repeating and doing the same thing over and over.
+
+138
+00:09:07,910 --> 00:09:12,290
+So I decided to quit and kind of figure out what what I want to do next.
+
+139
+00:09:12,290 --> 00:09:18,920
+And along the way, I decided to record some videos, my first course to mastery, to just keep myself
+
+140
+00:09:18,920 --> 00:09:28,550
+busy and keep doing something and and help people who were like me, where they didn't have a background
+
+141
+00:09:28,790 --> 00:09:33,200
+and wanted to get into web development, but there wasn't a clear path for them to do so.
+
+142
+00:09:33,440 --> 00:09:42,020
+So I recorded that course and it took off and all of a sudden this became my full time job and now I
+
+143
+00:09:42,020 --> 00:09:45,320
+would one hundred percent still go back to being a full time developer.
+
+144
+00:09:45,320 --> 00:09:47,480
+But I'm having so much fun teaching.
+
+145
+00:09:47,870 --> 00:09:49,430
+I still get to code every day.
+
+146
+00:09:49,430 --> 00:09:51,890
+I still get to learn every day.
+
+147
+00:09:52,190 --> 00:09:59,450
+And if anything, I think this way have a bigger impact on on people's lives than.
+
+148
+00:09:59,520 --> 00:10:05,580
+I did when I worked on a single project, so that's why I quit my job and at the end of the day, it
+
+149
+00:10:05,580 --> 00:10:07,260
+was one of the best decisions I ever made.
+
+150
+00:10:07,680 --> 00:10:11,050
+I have another question here, which is, what is my biggest regret?
+
+151
+00:10:11,070 --> 00:10:16,500
+I feel like I'm in an interview right now, so I'll give you my interview answer in case you ever get
+
+152
+00:10:16,500 --> 00:10:17,610
+asked this in an interview.
+
+153
+00:10:18,210 --> 00:10:25,190
+So my biggest regret, honestly, it's there's nothing I'm really, really happy that I learn coding
+
+154
+00:10:25,200 --> 00:10:30,420
+when I did in my 20s and not when I was young, because when I was young, I was able to learn different
+
+155
+00:10:30,420 --> 00:10:30,810
+skills.
+
+156
+00:10:30,810 --> 00:10:37,860
+I was able to learn about business, about about psychology, about communicating with others and people.
+
+157
+00:10:38,040 --> 00:10:44,130
+And those skills helped me get my first job as a developer, although maybe I started to code when I
+
+158
+00:10:44,130 --> 00:10:45,900
+was a lot later on in life.
+
+159
+00:10:46,590 --> 00:10:48,780
+It's not like I didn't do anything before my 20s.
+
+160
+00:10:48,780 --> 00:10:50,190
+I was learning different skills.
+
+161
+00:10:50,310 --> 00:10:54,690
+And for those people that perhaps are thinking, am I too old to learn to code?
+
+162
+00:10:54,690 --> 00:10:59,250
+Or I'm in my thirties and there's people, you know, in their teens that are learning to code right
+
+163
+00:10:59,250 --> 00:11:04,920
+now, there's no way that I'm going to be able to keep up, keep in mind that most likely have skill
+
+164
+00:11:04,920 --> 00:11:06,390
+sets that other people don't.
+
+165
+00:11:06,400 --> 00:11:10,290
+And when it comes to regret, honestly, there's nothing.
+
+166
+00:11:10,290 --> 00:11:15,480
+As long as you're learning every single day and learning something useful over the years that's going
+
+167
+00:11:15,480 --> 00:11:16,610
+to compound.
+
+168
+00:11:16,620 --> 00:11:22,680
+And honestly, every single mistake, every single decision that you make leads you to to where you
+
+169
+00:11:22,680 --> 00:11:25,500
+are now, which sounds a little hokey pokey.
+
+170
+00:11:25,500 --> 00:11:33,060
+But but it is true, honestly, the there are no regrets if you're learning, you're never going to
+
+171
+00:11:33,060 --> 00:11:34,110
+have regrets in life.
+
+172
+00:11:34,800 --> 00:11:35,250
+All right.
+
+173
+00:11:35,310 --> 00:11:40,760
+I'm just gonna ask me, what annoyed you the most about being a developer?
+
+174
+00:11:42,510 --> 00:11:43,710
+I usually don't get annoyed.
+
+175
+00:11:43,710 --> 00:11:45,090
+I'm pretty easy going.
+
+176
+00:11:45,270 --> 00:11:52,500
+But the one thing that I did notice was that as people get more and more experienced, they tend to
+
+177
+00:11:52,500 --> 00:11:57,600
+form really strong opinions and everybody wants to feel like they're part of a group.
+
+178
+00:11:57,760 --> 00:12:03,750
+And I think we see that a lot on Twitter and YouTube and all these people, really strong opinions that
+
+179
+00:12:03,960 --> 00:12:07,660
+kind of gang up on other people that have different beliefs than them.
+
+180
+00:12:07,920 --> 00:12:13,200
+I think it's very easy in the developer community to have something like that where you're thinking,
+
+181
+00:12:13,650 --> 00:12:20,190
+my react team is better than your angular team or typescript and static typing is the way to go or rest
+
+182
+00:12:20,190 --> 00:12:20,730
+is dead.
+
+183
+00:12:20,730 --> 00:12:22,000
+And let's all use graphics.
+
+184
+00:12:22,020 --> 00:12:28,470
+Well, I think when you have that type of mentality, it's it's really, really hard to actually have
+
+185
+00:12:28,470 --> 00:12:35,340
+smart discussions and and and decisions within a project and becomes really, really easy for those
+
+186
+00:12:35,340 --> 00:12:42,870
+who feel superior to others and feel confident in their opinions to really impose their opinions on
+
+187
+00:12:42,870 --> 00:12:49,440
+others, especially junior developers that, you know, are susceptible and have less experience.
+
+188
+00:12:49,440 --> 00:12:54,330
+So they start to believe these senior developers that perhaps have really strong opinions.
+
+189
+00:12:54,510 --> 00:13:00,180
+And in turn, that kind of creates this wave of more and more people that think it's a good idea to
+
+190
+00:13:00,180 --> 00:13:06,390
+have strong opinions and debate with others and argue with others and and telling people that their
+
+191
+00:13:06,390 --> 00:13:08,910
+code stocks and their code is the right way of doing it.
+
+192
+00:13:10,200 --> 00:13:19,410
+I think that was a little bit annoying to deal with because because I think it influences junior developers
+
+193
+00:13:19,530 --> 00:13:20,010
+a lot.
+
+194
+00:13:20,220 --> 00:13:23,340
+And I don't think it's a good attitude to have when working with others.
+
+195
+00:13:24,510 --> 00:13:31,380
+I think being a being somebody senior, being a lead, being a project lead means you're a person that
+
+196
+00:13:31,380 --> 00:13:34,410
+doesn't put other people down, but it lifts others.
+
+197
+00:13:34,830 --> 00:13:40,200
+And that was a little bit annoying because I thought that I saw that that was a little bit prevalent
+
+198
+00:13:40,290 --> 00:13:46,590
+where everybody's trying to almost appease each other and be a better developer than though this person
+
+199
+00:13:46,590 --> 00:13:51,690
+and this person, instead of all of you growing together and learning together because there's enough
+
+200
+00:13:51,690 --> 00:13:56,010
+developer jobs for everybody, you don't need to beat out everybody to be the number one developer.
+
+201
+00:13:56,940 --> 00:14:01,380
+So that mentality was I was a little bit annoying to me.
+
+202
+00:14:01,380 --> 00:14:07,140
+But then again, I worked in Toronto and Silicon Valley, and I think those areas especially have have
+
+203
+00:14:07,140 --> 00:14:11,790
+really, really strong, individualistic philosophies.
+
+204
+00:14:12,600 --> 00:14:13,040
+All right.
+
+205
+00:14:13,500 --> 00:14:17,900
+This is another question from from where and how did you learn and become a developer?
+
+206
+00:14:18,270 --> 00:14:24,090
+So when I started to learn to be a developer, I probably spent, I would say twenty dollars.
+
+207
+00:14:24,090 --> 00:14:30,450
+I think I bought a book on HTML and access and the rest was all online for free, just using online
+
+208
+00:14:30,450 --> 00:14:31,130
+resources.
+
+209
+00:14:31,560 --> 00:14:36,840
+The only difference was that when I started to learn there were very few resources online.
+
+210
+00:14:36,840 --> 00:14:44,880
+I think I used one blog post that that told me to use Photoshop and -- and and some tools that actually
+
+211
+00:14:44,880 --> 00:14:45,960
+didn't even need.
+
+212
+00:14:45,960 --> 00:14:50,040
+But it was really hard to find resources online when I started to learn.
+
+213
+00:14:50,820 --> 00:14:58,500
+So I essentially just try to grab as many resources as possible and create my own curriculum.
+
+214
+00:14:58,680 --> 00:15:04,320
+But it's not like it is now, I think right now we have a lot of resources online, it's a lot easier
+
+215
+00:15:04,330 --> 00:15:08,400
+and there's more of a clear cut path to become a web developer.
+
+216
+00:15:08,410 --> 00:15:10,110
+So I'm a little bit jealous.
+
+217
+00:15:10,110 --> 00:15:15,390
+But I also did the same thing that you probably are doing, which is watch a lot of online courses,
+
+218
+00:15:15,390 --> 00:15:22,440
+read a lot of books, read a lot of articles, and most importantly, building my own projects and coding
+
+219
+00:15:22,440 --> 00:15:23,310
+as much as possible.
+
+220
+00:15:23,320 --> 00:15:25,680
+But nothing beats actually coding.
+
+221
+00:15:26,070 --> 00:15:30,480
+You can watch videos all day, but if you're not doing anything, if you're not producing anything,
+
+222
+00:15:30,780 --> 00:15:31,590
+that's not.
+
+223
+00:15:31,620 --> 00:15:35,280
+It's like watching a tennis match and trying to become a better tennis player.
+
+224
+00:15:35,460 --> 00:15:36,420
+It's just not going to happen.
+
+225
+00:15:37,020 --> 00:15:40,140
+We have a Jamie who asks, what's the best way you could practice code?
+
+226
+00:15:40,140 --> 00:15:41,460
+Is it good for him?
+
+227
+00:15:41,500 --> 00:15:46,380
+Is it good by imitating someone else code for practicing again?
+
+228
+00:15:46,380 --> 00:15:47,760
+Goes back to my last point.
+
+229
+00:15:48,180 --> 00:15:50,310
+The best way to practice code is to code.
+
+230
+00:15:50,430 --> 00:15:53,640
+The the more you code, the more you practice, the better it is.
+
+231
+00:15:53,850 --> 00:15:59,000
+But keep in mind that the best way to code is to solve your own problems, create your own projects.
+
+232
+00:15:59,250 --> 00:16:05,880
+I actually don't recommend just watching all my videos and following along without coding because then
+
+233
+00:16:05,880 --> 00:16:09,230
+you're not going to be able to do things on your own.
+
+234
+00:16:09,450 --> 00:16:15,720
+The best way to code is to code by by doing your own thing.
+
+235
+00:16:16,410 --> 00:16:19,590
+You can watch a hundred videos on people coding and follow along.
+
+236
+00:16:19,590 --> 00:16:25,500
+But if you don't understand why we're doing things, then when you're left to your own device, you're
+
+237
+00:16:25,500 --> 00:16:28,350
+not going to be able to do anything.
+
+238
+00:16:28,380 --> 00:16:31,580
+So the best way to code is think of a project today.
+
+239
+00:16:31,590 --> 00:16:37,770
+Think of a task that you have to do over and over in your life and see if you can automated with code.
+
+240
+00:16:38,250 --> 00:16:39,860
+That's the best way to to learn.
+
+241
+00:16:40,260 --> 00:16:42,510
+Kailin, what you ask?
+
+242
+00:16:42,510 --> 00:16:43,800
+What is your favorite text stack?
+
+243
+00:16:43,980 --> 00:16:48,520
+My favorite test tech stack is the one that lets me accomplish my goal as fast as possible.
+
+244
+00:16:49,170 --> 00:16:51,390
+That's a very vague answer.
+
+245
+00:16:51,390 --> 00:16:59,020
+But honestly, anything that lets me finish fast and deliver something fast is my favorite textbook
+
+246
+00:16:59,310 --> 00:17:04,290
+because I tend to work by myself or in small teams.
+
+247
+00:17:04,530 --> 00:17:06,940
+I really prefer things that are efficient.
+
+248
+00:17:06,960 --> 00:17:13,260
+So, for example, I'm not a big fan of TypeScript because although you get type safety and static typing,
+
+249
+00:17:13,620 --> 00:17:14,990
+it's a lot of extra code.
+
+250
+00:17:15,000 --> 00:17:20,040
+It's the same reason that I personally am not a big fan of Java programming, not because it's not a
+
+251
+00:17:20,040 --> 00:17:27,330
+great language, but because for my personal use cases, I'm not working at a big company with thousands
+
+252
+00:17:27,330 --> 00:17:30,060
+of developers for, let's say, a financial institution.
+
+253
+00:17:30,360 --> 00:17:36,660
+If I'm building a personal project, I'd rather use something quick and easy, like Python or JavaScript,
+
+254
+00:17:36,840 --> 00:17:40,100
+to write a few lines of code and accomplish a goal.
+
+255
+00:17:40,320 --> 00:17:46,260
+So there's really no favorite text that the stack that allows me to accomplish the goal the fastest,
+
+256
+00:17:46,260 --> 00:17:52,950
+which happens to be usually dynamically typed languages and usually the languages that I'm comfortable
+
+257
+00:17:52,950 --> 00:17:57,540
+with, I don't need to learn something new until I have a need to to learn something.
+
+258
+00:17:57,790 --> 00:17:58,170
+All right.
+
+259
+00:17:58,740 --> 00:18:02,580
+Moralez Junior s Moralez Junior.
+
+260
+00:18:02,580 --> 00:18:03,150
+That's what it is.
+
+261
+00:18:03,810 --> 00:18:07,140
+Any advice on escaping the golden handcuffs and going freelance?
+
+262
+00:18:07,200 --> 00:18:12,660
+I have a cushy non developer job at Google and it's hard to imagine leaving when a family and a mortgage.
+
+263
+00:18:13,770 --> 00:18:15,000
+But I long for freedom.
+
+264
+00:18:15,630 --> 00:18:21,300
+And this this topic of freelancer is another topic that has come up many, many times.
+
+265
+00:18:22,980 --> 00:18:25,740
+So let me address it right now.
+
+266
+00:18:26,240 --> 00:18:28,260
+I, I get to work remotely.
+
+267
+00:18:28,260 --> 00:18:35,790
+I get to work for myself, which I feel very fortunate, fortunate about, and I'm extremely lucky.
+
+268
+00:18:36,330 --> 00:18:40,980
+But when it comes to freelancing, I actually am against freelancing.
+
+269
+00:18:41,430 --> 00:18:43,900
+Obviously every situation is different.
+
+270
+00:18:43,920 --> 00:18:48,750
+But let me explain why I think freelancing might not be the best option for most of you.
+
+271
+00:18:48,750 --> 00:18:50,130
+Not all of you, but for most of you.
+
+272
+00:18:50,670 --> 00:18:55,260
+You see, when it comes to freelancing, let's say you are just starting to learn.
+
+273
+00:18:55,710 --> 00:18:56,910
+You're just learning to cope.
+
+274
+00:18:57,330 --> 00:19:02,430
+If you go straight into freelancing, you lose the ability to work with others, to learn from others
+
+275
+00:19:02,430 --> 00:19:07,800
+and actually be in a company and understand how their processes work, how they work with developers.
+
+276
+00:19:08,010 --> 00:19:13,440
+You gain a lot of experience by working on projects with others, with other developers, working with
+
+277
+00:19:13,440 --> 00:19:18,720
+management teams, working with with project managers, scrum masters.
+
+278
+00:19:19,320 --> 00:19:24,240
+That's a really, really valuable experience that I really recommend for people just getting into coding.
+
+279
+00:19:24,690 --> 00:19:27,480
+Now, let's say that you've had a couple of years of experience.
+
+280
+00:19:27,480 --> 00:19:29,760
+You've worked with teams, you have that experience.
+
+281
+00:19:29,940 --> 00:19:31,470
+Should you go into freelancing?
+
+282
+00:19:31,920 --> 00:19:33,600
+I think you should go into freelancing.
+
+283
+00:19:33,600 --> 00:19:38,460
+If you have a clear edge or a clear advantage over others.
+
+284
+00:19:38,730 --> 00:19:45,000
+For example, you have an existing client base and you have people that really trust your work or you
+
+285
+00:19:45,000 --> 00:19:47,140
+offer a really unique skill.
+
+286
+00:19:47,730 --> 00:19:54,870
+The problem with freelancing right now is that you're essentially battling with thousands, potentially
+
+287
+00:19:54,870 --> 00:19:58,320
+millions of other freelancers to get a job.
+
+288
+00:19:58,520 --> 00:20:04,460
+A lot of people might go to places like uptalk or any type of place where you can bid on projects.
+
+289
+00:20:04,730 --> 00:20:13,850
+What happens is in those scenarios, people just bid and it's a battle to lower and lower prices.
+
+290
+00:20:14,030 --> 00:20:14,720
+So what happens?
+
+291
+00:20:14,720 --> 00:20:21,720
+You eventually become an employee of a contract that you probably didn't charge enough for.
+
+292
+00:20:22,100 --> 00:20:28,580
+So it's really hard for you to compete with people that keep lowering and lowering and lowering prices.
+
+293
+00:20:28,580 --> 00:20:33,290
+And you'll see that if you're a freelancer, that's what will happen unless you have an established
+
+294
+00:20:33,290 --> 00:20:40,430
+client base, unless you have a really distinct advantage, maybe you're extremely skilled in graphic
+
+295
+00:20:40,430 --> 00:20:44,270
+design and you're well known, then, yes, maybe you can charge more for it.
+
+296
+00:20:44,270 --> 00:20:50,240
+But people that are usually looking for freelancers are usually looking for the cheapest price.
+
+297
+00:20:50,570 --> 00:20:53,720
+And when you do that, you stop valuing your time.
+
+298
+00:20:53,720 --> 00:21:00,820
+You stop being a slave to the person that created the contract and you're trying to fulfill somebody
+
+299
+00:21:01,310 --> 00:21:08,150
+you're trying to fulfill and please this person so that they give you a good review for the next contract
+
+300
+00:21:08,150 --> 00:21:08,450
+job.
+
+301
+00:21:08,780 --> 00:21:17,090
+I think freelancer jobs are can be good, but there's also a lot of issues that come with it if you
+
+302
+00:21:17,090 --> 00:21:19,970
+want to be a freelancer or perhaps be your own boss.
+
+303
+00:21:20,360 --> 00:21:24,150
+I think there's better ways for you to to go about it.
+
+304
+00:21:24,170 --> 00:21:30,410
+I think there's smarter ways to go about it instead of competing with others on price.
+
+305
+00:21:30,740 --> 00:21:35,150
+So I know that's not really helpful, is just my personal opinion when it comes to freelancing.
+
+306
+00:21:35,150 --> 00:21:37,550
+But it is a question that I get asked a lot.
+
+307
+00:21:37,640 --> 00:21:44,270
+Freelancing essentially involves you taking a lot of time finding clients, working a lot for clients.
+
+308
+00:21:44,690 --> 00:21:49,460
+And at the end of the day, why not just work for a company that already has the clients for you so
+
+309
+00:21:49,460 --> 00:21:50,870
+you can gain that experience?
+
+310
+00:21:51,050 --> 00:21:59,270
+You might think you have the freedom of being a freelancer, being your own job, but instead your you
+
+311
+00:21:59,270 --> 00:22:02,030
+are an employee of whoever your contractor is.
+
+312
+00:22:02,150 --> 00:22:02,870
+That's my advice.
+
+313
+00:22:02,880 --> 00:22:05,630
+I know it's not it's not very, very helpful.
+
+314
+00:22:07,460 --> 00:22:09,530
+But like I said, it's not for everybody.
+
+315
+00:22:09,570 --> 00:22:13,970
+I think there's there's better opportunities for you to work remotely.
+
+316
+00:22:14,270 --> 00:22:15,830
+You can work for remote companies.
+
+317
+00:22:15,830 --> 00:22:20,890
+There's tons of websites right now of showing companies that hire remote workers.
+
+318
+00:22:20,900 --> 00:22:26,540
+I think that's a better option for you than being a freelancer, because the reasons that I mentioned
+
+319
+00:22:27,530 --> 00:22:34,640
+previously, Jati Evars eight ask how is life as far as time spent with family and doing what you like
+
+320
+00:22:34,640 --> 00:22:40,580
+now as an instructor and before when you work for a company, do you enjoy work more now or before?
+
+321
+00:22:40,580 --> 00:22:43,360
+When you work for a company hands down?
+
+322
+00:22:43,370 --> 00:22:45,920
+I absolutely love what I'm doing now.
+
+323
+00:22:45,920 --> 00:22:51,380
+I wake up every day and all I can think about is, is work and what I'm going to teach or what video
+
+324
+00:22:51,380 --> 00:22:54,680
+I'm going to record or what coding challenge I'm going to do.
+
+325
+00:22:54,680 --> 00:23:01,880
+I am I feel so extremely lucky to be at a point in my life where I absolutely adore and love what I'm
+
+326
+00:23:01,880 --> 00:23:02,240
+doing.
+
+327
+00:23:03,230 --> 00:23:06,350
+And I wouldn't I wouldn't trade it for anything in the world.
+
+328
+00:23:06,500 --> 00:23:10,130
+Being a developer was absolutely great, working full time for a company.
+
+329
+00:23:10,370 --> 00:23:12,380
+I loved it and I had a lot of friends.
+
+330
+00:23:12,590 --> 00:23:18,350
+I got along really well with with my bosses, with my clients.
+
+331
+00:23:18,650 --> 00:23:25,340
+But having having the freedom to to work on what I want to work on my projects.
+
+332
+00:23:25,550 --> 00:23:32,150
+But most importantly, knowing that the work that I do maybe impacts just a little bit a little bit
+
+333
+00:23:32,150 --> 00:23:36,290
+of of the world, I think is a really rewarding feeling.
+
+334
+00:23:36,290 --> 00:23:41,870
+And I'm extremely thankful to to know that, you know, not everybody's going to love my courses, but
+
+335
+00:23:41,870 --> 00:23:48,230
+at least there are some that do enjoy my courses and gain a bit of help in their career through it.
+
+336
+00:23:48,230 --> 00:23:50,360
+And that is the most rewarding feeling.
+
+337
+00:23:50,360 --> 00:23:56,360
+And honestly, the past two years since I've started to teach have been some of the happiest moments
+
+338
+00:23:56,680 --> 00:23:57,470
+of my life.
+
+339
+00:23:57,470 --> 00:24:01,430
+And I know this thing isn't going to last forever.
+
+340
+00:24:01,430 --> 00:24:07,130
+I know I'm not going to teach forever, but I'm really appreciative of this moment to have this opportunity,
+
+341
+00:24:07,160 --> 00:24:07,920
+at least for now.
+
+342
+00:24:07,970 --> 00:24:08,330
+All right.
+
+343
+00:24:08,510 --> 00:24:15,710
+Mr. Luciferase asks a safe, secure and stable life, being a skillful employee, working for someone
+
+344
+00:24:15,710 --> 00:24:21,670
+else or dreaming big and starting a business on your own and being your own boss, what path do you
+
+345
+00:24:21,670 --> 00:24:22,280
+suggest?
+
+346
+00:24:23,120 --> 00:24:24,470
+Honestly, it really depends.
+
+347
+00:24:24,470 --> 00:24:30,950
+I think everybody wants the ideal work for yourself, own your own business, work remotely, live wherever
+
+348
+00:24:30,950 --> 00:24:31,400
+you want.
+
+349
+00:24:31,400 --> 00:24:35,210
+It sounds sexy, but it's it's not for everybody.
+
+350
+00:24:35,210 --> 00:24:41,540
+And, you know, I before I started teaching, before I was a developer, I started a bunch of businesses.
+
+351
+00:24:41,540 --> 00:24:45,200
+I was running, surfing, yoga, retreat in Nicaragua.
+
+352
+00:24:45,200 --> 00:24:47,660
+I was doing adventure tours.
+
+353
+00:24:47,660 --> 00:24:49,940
+I was doing adventurous businesses.
+
+354
+00:24:50,120 --> 00:24:55,340
+I was trying all these different things that in the end weren't extremely successful.
+
+355
+00:24:55,640 --> 00:24:57,470
+But there are a lot of fun and.
+
+356
+00:24:57,660 --> 00:25:04,350
+Meanwhile, I had friends who were doing their MBAs, there were becoming lawyers, and, you know,
+
+357
+00:25:04,510 --> 00:25:06,980
+they have really nice life right now.
+
+358
+00:25:06,990 --> 00:25:09,260
+They have to have families.
+
+359
+00:25:09,270 --> 00:25:10,290
+They're very comfortable.
+
+360
+00:25:10,290 --> 00:25:16,590
+And there's actually there's actually an advantage there as you start to work at a company and you see
+
+361
+00:25:16,590 --> 00:25:20,760
+people leave that company, most people think, oh, I should I should leave, too.
+
+362
+00:25:20,760 --> 00:25:24,830
+But you can also look at it as an opportunity for somebody else has left.
+
+363
+00:25:25,050 --> 00:25:32,780
+Now, you are one step closer to going up that that corporate or company ladder.
+
+364
+00:25:32,790 --> 00:25:37,160
+So I think it's not it's not one is better than the other.
+
+365
+00:25:37,170 --> 00:25:40,950
+It really depends on why you prefer what kind of lifestyle you prefer.
+
+366
+00:25:41,150 --> 00:25:46,410
+Do you want more of a stable, comfortable life to make sure that you can provide for your family?
+
+367
+00:25:46,590 --> 00:25:51,690
+Or are you at a stage in your life where you can perhaps take more risks and you're OK with the highs
+
+368
+00:25:51,720 --> 00:25:57,210
+ups in high high downs, high ups and downs that may pay off?
+
+369
+00:25:57,570 --> 00:26:03,450
+Not in the end, but I think every day if you're working towards what your ideal life should look like,
+
+370
+00:26:03,600 --> 00:26:05,040
+eventually you will get there.
+
+371
+00:26:05,040 --> 00:26:07,050
+But don't expect to get there overnight.
+
+372
+00:26:07,400 --> 00:26:08,720
+It's it's hard work.
+
+373
+00:26:08,740 --> 00:26:09,600
+Nothing comes easy.
+
+374
+00:26:09,600 --> 00:26:11,240
+There's no easy solution.
+
+375
+00:26:11,250 --> 00:26:17,520
+So all you can do is kind of work towards that goal and learn every day and improve every day and eventually
+
+376
+00:26:17,520 --> 00:26:18,270
+you'll get there.
+
+377
+00:26:18,270 --> 00:26:20,880
+But it really matters.
+
+378
+00:26:21,390 --> 00:26:26,100
+It's the best thing you can do is to have a plan for yourself and write down what you value.
+
+379
+00:26:26,100 --> 00:26:31,920
+And based on those values and what makes you happy, decide what type of path you want to take.
+
+380
+00:26:32,700 --> 00:26:34,570
+I got all philosophical there for you.
+
+381
+00:26:34,740 --> 00:26:35,190
+All right.
+
+382
+00:26:35,430 --> 00:26:36,530
+Let's get back to some coding.
+
+383
+00:26:37,410 --> 00:26:39,390
+Justin Hey.
+
+384
+00:26:39,420 --> 00:26:44,190
+Justin asks, How do you decide to learn next in this ever changing landscape?
+
+385
+00:26:44,790 --> 00:26:47,910
+From Braddock's graphic, you all react to angular view SSR.
+
+386
+00:26:48,090 --> 00:26:49,770
+There's so much to learn, so little time.
+
+387
+00:26:49,770 --> 00:26:54,010
+So I guess how do you decide what to learn then and how you actually learn to make time for it?
+
+388
+00:26:54,030 --> 00:27:00,330
+I think this is actually something I, I'm pretty good at or I think I'm good at.
+
+389
+00:27:00,330 --> 00:27:05,750
+And that is because when I started to learn how to code, I realized how much is out there.
+
+390
+00:27:06,090 --> 00:27:10,770
+I've become I've become really good at selecting only the right things to learn.
+
+391
+00:27:10,980 --> 00:27:17,450
+There's the famous Parado Principle which says the 20 percent usually accounts for 80 percent of value.
+
+392
+00:27:17,460 --> 00:27:25,350
+So what's the 20 percent that's going to give you 80 percent of a value in learning and things like
+
+393
+00:27:25,820 --> 00:27:26,790
+you all, for example?
+
+394
+00:27:26,790 --> 00:27:28,130
+They're extremely popular.
+
+395
+00:27:28,140 --> 00:27:30,000
+So a lot of people want to learn it.
+
+396
+00:27:30,000 --> 00:27:34,950
+But at the end of the day, how many how many people actually use graphical in production?
+
+397
+00:27:34,950 --> 00:27:37,320
+How many people have actually built something with graphics?
+
+398
+00:27:37,330 --> 00:27:39,350
+All that creates a value.
+
+399
+00:27:40,080 --> 00:27:47,070
+I like to look at technologies and see see what's what's hot and what's trending, but not necessarily
+
+400
+00:27:47,070 --> 00:27:51,530
+jump really deep into them until there's a clear need for me to learn it.
+
+401
+00:27:51,930 --> 00:27:52,920
+So, for example.
+
+402
+00:27:53,340 --> 00:27:58,980
+Yes, yeah, I know a bit of yes, but I want to call myself an expert because I haven't had to use
+
+403
+00:27:59,280 --> 00:28:03,090
+the you know, I can use react or I can use angular.
+
+404
+00:28:03,450 --> 00:28:09,480
+So being selective in why you learn instead of trying to learn everything is going to be better long
+
+405
+00:28:09,480 --> 00:28:17,430
+term strategy over the course of your career, because learning never stops and the more you learn,
+
+406
+00:28:18,450 --> 00:28:24,450
+the more you start to realize that it's not about the syntax, it's not about learning the libraries.
+
+407
+00:28:24,450 --> 00:28:27,750
+It's not about reading the documentation from start to finish.
+
+408
+00:28:28,050 --> 00:28:30,510
+It's about understanding the higher principles.
+
+409
+00:28:30,540 --> 00:28:32,940
+The why was this tool built?
+
+410
+00:28:33,180 --> 00:28:35,040
+Why are we doing things the way it is?
+
+411
+00:28:35,040 --> 00:28:36,480
+What problem is it solving?
+
+412
+00:28:36,480 --> 00:28:43,290
+Being able to understand those and discuss those is going to be really, really important because at
+
+413
+00:28:43,290 --> 00:28:47,670
+the end of the day, the fundamentals is is what matters, not the syntax.
+
+414
+00:28:47,910 --> 00:28:53,670
+If you learn the fundamentals, if you learn to think like a developer, think about systems and how
+
+415
+00:28:53,670 --> 00:28:54,600
+things communicate.
+
+416
+00:28:54,810 --> 00:28:59,490
+That's a lot more valuable than learning the newest react Hoke's API.
+
+417
+00:28:59,550 --> 00:29:01,350
+I mean, that could still be important.
+
+418
+00:29:01,350 --> 00:29:07,290
+But but as you can see, I'm very selective in what I learn.
+
+419
+00:29:07,710 --> 00:29:12,600
+And I'm not I'm not trying to learn ten languages at the same time.
+
+420
+00:29:12,600 --> 00:29:16,770
+If I want to learn something, I'll dedicate maybe a year to get a really, really good at something
+
+421
+00:29:16,950 --> 00:29:18,300
+and then move on to the next thing.
+
+422
+00:29:18,690 --> 00:29:25,800
+So really being picky, as if you're dating a new technology and making sure that it's the right one
+
+423
+00:29:25,800 --> 00:29:26,820
+is the way to go.
+
+424
+00:29:27,150 --> 00:29:31,860
+Oh, and with that said, you obviously have to enjoy what you're doing.
+
+425
+00:29:32,010 --> 00:29:35,100
+If you don't enjoy learning, then that's going to be really hard.
+
+426
+00:29:35,100 --> 00:29:41,670
+So that's just something that has to come for yourself and being able to enjoy the learning process,
+
+427
+00:29:41,670 --> 00:29:43,860
+because that's that's going to be your biggest asset.
+
+428
+00:29:43,860 --> 00:29:45,620
+If you enjoy learning, you're going to learn more.
+
+429
+00:29:45,660 --> 00:29:50,400
+Adrien asks, How long do you plan on continuing doing courses?
+
+430
+00:29:53,110 --> 00:29:55,540
+Because, well, this isn't going to last forever, right?
+
+431
+00:29:56,320 --> 00:30:01,720
+Honestly, I'm not sure I'm it's been close to two years now that I've been doing this.
+
+432
+00:30:01,720 --> 00:30:03,900
+I don't imagine doing this for for a lifetime.
+
+433
+00:30:03,910 --> 00:30:05,860
+There's only so much I could teach.
+
+434
+00:30:06,220 --> 00:30:08,460
+I'm going to keep going until I.
+
+435
+00:30:08,610 --> 00:30:10,270
+I stop enjoying it right now.
+
+436
+00:30:10,270 --> 00:30:11,500
+I really enjoyed the process.
+
+437
+00:30:11,500 --> 00:30:18,370
+I get a lot of reward by by hearing your your reviews and how pleased you are with the courses.
+
+438
+00:30:18,370 --> 00:30:20,410
+So that really drives me to create more.
+
+439
+00:30:20,410 --> 00:30:22,840
+But eventually I will have to stop.
+
+440
+00:30:22,840 --> 00:30:24,820
+I can't just keep creating courses.
+
+441
+00:30:24,820 --> 00:30:27,030
+They they do take a lot of time and effort.
+
+442
+00:30:27,250 --> 00:30:31,330
+So I hope that I can keep going for for a few more years.
+
+443
+00:30:31,690 --> 00:30:39,280
+But one day maybe you retire and and spend a little more time with family or move on to something else.
+
+444
+00:30:39,290 --> 00:30:42,010
+But for now, don't worry, I'm not going anywhere.
+
+445
+00:30:42,430 --> 00:30:45,340
+Balloon asks, Do you play any instruments?
+
+446
+00:30:45,640 --> 00:30:51,370
+No, I am the least musically talented, artistically talented person you'll ever be.
+
+447
+00:30:51,490 --> 00:30:54,580
+I took piano lessons, guitar lessons when I was a kid.
+
+448
+00:30:54,580 --> 00:30:56,770
+And I'm I'm hopeless.
+
+449
+00:30:56,920 --> 00:31:03,100
+Thank God coding exists and thank God sports exists, because if if I had to do anything in the arts,
+
+450
+00:31:03,100 --> 00:31:04,820
+I would be I would not be very good.
+
+451
+00:31:05,080 --> 00:31:09,010
+Garrison asks if it would be really inspirational for all of us.
+
+452
+00:31:09,010 --> 00:31:15,100
+Who or what do you want to do with the next ten years of your life coaching business?
+
+453
+00:31:15,520 --> 00:31:17,230
+Looks like he is the same age as me.
+
+454
+00:31:17,230 --> 00:31:21,190
+So just asking what's what's the next ten years of my life look like?
+
+455
+00:31:22,090 --> 00:31:26,740
+The next ten years of my life is going to involve learning every day I want to, whether it's coding,
+
+456
+00:31:26,740 --> 00:31:28,060
+whether it's different things.
+
+457
+00:31:28,810 --> 00:31:31,780
+I have different hobbies that I want to keep improving at.
+
+458
+00:31:33,250 --> 00:31:35,680
+I really like surfing, so I want to become a better surfer.
+
+459
+00:31:35,980 --> 00:31:38,440
+And there's so many things that I really want to improve.
+
+460
+00:31:38,440 --> 00:31:41,080
+So honestly, every single day my goal is to learn.
+
+461
+00:31:41,200 --> 00:31:47,260
+I want to hopefully have a family by then and have a house and and just enjoy life.
+
+462
+00:31:47,260 --> 00:31:55,900
+And hopefully in 10 years I'm retired, being able to being able to spend every single day with my son
+
+463
+00:31:55,900 --> 00:31:58,690
+or daughter and just enjoying life.
+
+464
+00:31:58,690 --> 00:32:04,150
+But honestly, what I'm doing now is not much different than what I hope to be doing ten years from
+
+465
+00:32:04,150 --> 00:32:08,890
+now, because I am really, really happy with with how life is right now.
+
+466
+00:32:08,890 --> 00:32:11,200
+And I wouldn't really change anything.
+
+467
+00:32:11,350 --> 00:32:16,870
+Dorion, again, do you think all the races you do and yoga and exercises help you mental clarity and
+
+468
+00:32:16,870 --> 00:32:20,410
+have helped your career as a developer when things get rough?
+
+469
+00:32:21,340 --> 00:32:22,780
+Yeah, so fun fact.
+
+470
+00:32:22,780 --> 00:32:28,630
+I'm I'm also a yoga instructor on the side and I do, I do a lot of adventure racing as well.
+
+471
+00:32:28,630 --> 00:32:35,440
+And both of those things I think actually really help with being a developer and dealing with different
+
+472
+00:32:35,440 --> 00:32:36,580
+situations at work.
+
+473
+00:32:36,580 --> 00:32:42,790
+I think for adventure racing it it puts you into situations that are extremely uncomfortable that you
+
+474
+00:32:42,790 --> 00:32:44,740
+have to just survive through.
+
+475
+00:32:44,740 --> 00:32:50,320
+And then with yoga, obviously, it's still in your mind, especially with meditation as well.
+
+476
+00:32:51,190 --> 00:32:55,750
+I think those are extremely important, especially when compared to coding, when you're staring at
+
+477
+00:32:55,750 --> 00:33:01,900
+the screen and everything is usually fast paced and it's really, really easy to get lost in your head.
+
+478
+00:33:02,080 --> 00:33:08,120
+I think balancing out coding with something that's complete opposite, like yoga and meditation, again,
+
+479
+00:33:08,120 --> 00:33:18,580
+not to get a little hippy here, but I think doing different things is is important and being physically
+
+480
+00:33:18,940 --> 00:33:21,250
+active, being mentally strong.
+
+481
+00:33:21,250 --> 00:33:26,860
+Is this is your vessel and this is your body and you should take care of it and it'll only improve you
+
+482
+00:33:26,860 --> 00:33:28,630
+as a developer and as a coder.
+
+483
+00:33:28,630 --> 00:33:34,420
+So I one hundred percent think that although for some people it may be silly to meditate, although
+
+484
+00:33:34,420 --> 00:33:39,280
+for some people they don't actually enjoy exercising, everybody has their different things.
+
+485
+00:33:39,280 --> 00:33:44,410
+But I think doing something other than coding is really, really important for that balance.
+
+486
+00:33:44,410 --> 00:33:51,250
+And to not burn yourself, burn yourself out assim PubMed, ask about interview and the fact that he's
+
+487
+00:33:51,250 --> 00:33:55,090
+really worried about interviews and that he doesn't know enough.
+
+488
+00:33:55,090 --> 00:34:00,550
+And honestly, just keep this in mind because because this is something I hear from so many people.
+
+489
+00:34:02,140 --> 00:34:06,730
+Everybody is just a child trapped in an adult's body.
+
+490
+00:34:06,970 --> 00:34:09,850
+No human knows everything perfectly.
+
+491
+00:34:09,940 --> 00:34:15,430
+And most likely the person sitting across from you that's asking you a question on a on an interview
+
+492
+00:34:15,910 --> 00:34:22,930
+doesn't know everything, has their own insecurities, has their own areas that they're not an expert
+
+493
+00:34:22,930 --> 00:34:23,050
+in.
+
+494
+00:34:23,200 --> 00:34:28,000
+So go into an interview knowing that this person is not God.
+
+495
+00:34:28,000 --> 00:34:31,600
+It's not the ultimate smartest person that you'll ever meet.
+
+496
+00:34:31,630 --> 00:34:33,550
+They have their flaws and their issues.
+
+497
+00:34:33,550 --> 00:34:40,120
+And if you start to realize that there's no such thing as a perfect developer of perfect kotin, everybody
+
+498
+00:34:40,120 --> 00:34:43,450
+is just trying to pretend like they're smart.
+
+499
+00:34:43,450 --> 00:34:45,580
+Everybody's just trying to pretend like they're an adult.
+
+500
+00:34:45,590 --> 00:34:49,300
+Remember everybody, just a kid inside, trapped inside an adult's body.
+
+501
+00:34:49,690 --> 00:34:52,030
+You start to realize that this.
+
+502
+00:34:52,410 --> 00:34:58,650
+All world that we live in, this whole system that we're in is just a game just like your Khoder, just
+
+503
+00:34:58,650 --> 00:35:01,680
+like you're a programmer and you're trying to create a system.
+
+504
+00:35:01,860 --> 00:35:10,390
+This is simply a system that you need to learn to adapt to and to try to essentially beat or improve.
+
+505
+00:35:10,500 --> 00:35:13,220
+So put yourself in their situation.
+
+506
+00:35:13,230 --> 00:35:15,000
+They want to feel important.
+
+507
+00:35:15,030 --> 00:35:17,780
+They want to feel like they're doing a good job.
+
+508
+00:35:17,790 --> 00:35:23,730
+So maybe asking them questions during the interview, maybe praising them for something that they did,
+
+509
+00:35:23,850 --> 00:35:27,380
+even though they're the ones being interviewed, is going to make them feel better.
+
+510
+00:35:27,390 --> 00:35:32,280
+That perhaps will make them ask you better or easier questions again.
+
+511
+00:35:32,430 --> 00:35:33,990
+Think of it as a system.
+
+512
+00:35:34,020 --> 00:35:38,610
+Think of it as a game and realize that there is nothing.
+
+513
+00:35:38,610 --> 00:35:41,370
+Nothing is extremely serious and important.
+
+514
+00:35:41,370 --> 00:35:44,490
+Everything is just a game they can play and that you can improve.
+
+515
+00:35:44,790 --> 00:35:51,300
+And if you start looking at life, good interviews as a as a game, I think it becomes a lot more fun.
+
+516
+00:35:51,330 --> 00:35:54,550
+And it also remove some of those insecurities.
+
+517
+00:35:54,570 --> 00:35:57,420
+I don't know if that answer help, but kind of went on a tangent there.
+
+518
+00:35:57,420 --> 00:35:59,190
+But hopefully that that helps a little bit.
+
+519
+00:35:59,670 --> 00:36:00,030
+All right.
+
+520
+00:36:00,180 --> 00:36:03,110
+Last question, because this video is getting a little too long.
+
+521
+00:36:03,120 --> 00:36:08,610
+So Charles mentioned it asks, what's the difficult day for you at the moment?
+
+522
+00:36:08,610 --> 00:36:16,380
+Your courses are very that's very kind of you seem to be your healthy way of living in your sporty attitude.
+
+523
+00:36:16,380 --> 00:36:22,650
+It all must be worth a course on how to balance your life and the way you do things while you quote.
+
+524
+00:36:23,110 --> 00:36:30,090
+I guess I kind of already talked about this, but my my everyday life usually involves in the morning
+
+525
+00:36:30,120 --> 00:36:37,140
+drinking coffee, reading articles and catching up in the industry, learning a little bit.
+
+526
+00:36:37,140 --> 00:36:44,790
+I really like Morning for Learning and then I usually either record or plan recording or edit videos
+
+527
+00:36:45,060 --> 00:36:45,930
+in the afternoon.
+
+528
+00:36:46,140 --> 00:36:52,020
+Then around one two o'clock I usually go out for a run, do some exercises, try to get outside, not
+
+529
+00:36:52,020 --> 00:36:54,630
+stare at the screen and and be active.
+
+530
+00:36:55,140 --> 00:37:01,920
+And then I come back, I usually check out my emails, answer questions, go on Dischord and chat with
+
+531
+00:37:01,920 --> 00:37:02,760
+other students.
+
+532
+00:37:03,450 --> 00:37:05,700
+And then usually by five o'clock I'm done.
+
+533
+00:37:05,700 --> 00:37:07,170
+I don't do any work.
+
+534
+00:37:07,170 --> 00:37:11,670
+I stop whatever I'm doing because I know after five o'clock, for me personally, I'm not productive.
+
+535
+00:37:11,970 --> 00:37:19,950
+So I usually spend time with family, with my girlfriend or do social activities or maybe go play some
+
+536
+00:37:19,950 --> 00:37:24,780
+tennis, go play some soccer, go for a hike just to relax.
+
+537
+00:37:24,780 --> 00:37:26,520
+And I usually go to bed at ten o'clock.
+
+538
+00:37:26,520 --> 00:37:27,660
+Not that very exciting.
+
+539
+00:37:27,660 --> 00:37:30,720
+I don't I don't enjoy going to bars or clubs anymore.
+
+540
+00:37:30,930 --> 00:37:36,150
+I'm, I'm an old soul and at o'clock I'm ready for bed and I'm ready for the next day.
+
+541
+00:37:36,150 --> 00:37:38,730
+So a pretty, pretty boring day.
+
+542
+00:37:38,760 --> 00:37:39,990
+Nothing too exciting.
+
+543
+00:37:39,990 --> 00:37:44,830
+But it's it's it's what I like right now.
+
+544
+00:37:44,990 --> 00:37:49,710
+Anyway, this this was the and video again, I want to thank you.
+
+545
+00:37:49,710 --> 00:37:54,840
+I cannot believe that there's one hundred thousand students that are taking my courses.
+
+546
+00:37:54,840 --> 00:38:00,930
+And honestly, if it was just me, I would never get to one hundred thousand students.
+
+547
+00:38:01,260 --> 00:38:07,860
+Every single one of you that talk to others recommend my courses that really help me get to where I
+
+548
+00:38:07,860 --> 00:38:08,130
+am.
+
+549
+00:38:08,130 --> 00:38:16,050
+And I cannot express how thankful I am for for everything that that you have done that you have shown
+
+550
+00:38:16,050 --> 00:38:16,740
+support for.
+
+551
+00:38:16,740 --> 00:38:23,490
+And I am I hope to continue to keep impressing you and keep helping you with your learning journey.
+
+552
+00:38:23,490 --> 00:38:27,450
+And, yeah, I'm I'm really, really thankful.
+
+553
+00:38:27,450 --> 00:38:29,550
+So thank you.

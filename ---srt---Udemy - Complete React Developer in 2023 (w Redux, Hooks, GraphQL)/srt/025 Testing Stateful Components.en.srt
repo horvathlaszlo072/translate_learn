@@ -1,0 +1,567 @@
+1
+00:00:01,510 --> 00:00:02,200
+Welcome back.
+
+2
+00:00:02,710 --> 00:00:06,150
+Let's do some tests that are a little bit more difficult to do.
+
+3
+00:00:07,490 --> 00:00:09,850
+We make this a little bit smaller.
+
+4
+00:00:10,120 --> 00:00:16,270
+Let's just have NPM run test just to have a running in the background, that's always nice.
+
+5
+00:00:17,490 --> 00:00:26,640
+And let's go into our cards or account or button, because this is a little bit more unique, right?
+
+6
+00:00:26,820 --> 00:00:28,810
+It's not a stateless component anymore.
+
+7
+00:00:28,830 --> 00:00:32,070
+We actually have a state with the count.
+
+8
+00:00:32,610 --> 00:00:36,010
+And, yeah, we have a little bit more logic.
+
+9
+00:00:36,900 --> 00:00:38,070
+We also have this.
+
+10
+00:00:39,440 --> 00:00:47,120
+Set state that is happening where we increment our state count and I think in the previous video, I
+
+11
+00:00:47,120 --> 00:00:52,430
+had this as a separate method that you can call in here for now we can just leave it the way it is.
+
+12
+00:00:54,610 --> 00:00:59,590
+The idea is that we want to test this state function that it actually increments.
+
+13
+00:01:00,730 --> 00:01:02,470
+Because that's what you expect from a.
+
+14
+00:01:03,880 --> 00:01:05,410
+So how are we going to test that?
+
+15
+00:01:06,400 --> 00:01:10,030
+As we know, the very first step is to actually create a test file, so let's say.
+
+16
+00:01:11,850 --> 00:01:12,570
+Carnavon.
+
+17
+00:01:15,260 --> 00:01:17,090
+That test, James.
+
+18
+00:01:18,340 --> 00:01:23,440
+And the first thing we want to do, well, again, we've already kind of done this before, so I'm going
+
+19
+00:01:23,440 --> 00:01:26,170
+to copy from the Kahless test.
+
+20
+00:01:26,390 --> 00:01:29,590
+Let's close some of this just to clean things up.
+
+21
+00:01:32,700 --> 00:01:34,350
+And copy and paste this.
+
+22
+00:01:35,450 --> 00:01:40,580
+Now, instead of Cardless were testing the counter button.
+
+23
+00:01:42,350 --> 00:01:46,240
+And we also don't really need our mock robots anymore.
+
+24
+00:01:48,190 --> 00:01:53,320
+And this counterman doesn't have any props that it receives.
+
+25
+00:01:55,430 --> 00:02:05,360
+Well, it has the color prop, actually, so let's just do a const mock color and we'll say that this
+
+26
+00:02:05,360 --> 00:02:09,530
+mock color would just be red and we'll give it a.
+
+27
+00:02:11,300 --> 00:02:14,930
+This is an actual component we'll give it a color of.
+
+28
+00:02:16,640 --> 00:02:17,330
+McCulloh.
+
+29
+00:02:19,460 --> 00:02:25,970
+Now, here's the thing, even though it's a stateful component, we can still do match snapshot testing
+
+30
+00:02:25,970 --> 00:02:26,190
+to it.
+
+31
+00:02:26,570 --> 00:02:30,110
+I mean, it's still a component, so let's save.
+
+32
+00:02:32,670 --> 00:02:34,590
+And now we have a new snapshot.
+
+33
+00:02:35,990 --> 00:02:36,440
+Perfect.
+
+34
+00:02:36,620 --> 00:02:39,650
+So if we ever modify contraband, it's going to erupt.
+
+35
+00:02:40,130 --> 00:02:40,670
+That's good.
+
+36
+00:02:40,820 --> 00:02:42,050
+Let's make this a little bit smaller.
+
+37
+00:02:45,300 --> 00:02:51,510
+All right, let's create a another test in here, and by the way, if you want, you could use the describe
+
+38
+00:02:51,510 --> 00:02:57,150
+and then group all the tests together, but I've already shown you how to do that.
+
+39
+00:02:57,160 --> 00:03:01,690
+You can do that on your own if you want to have more organization for your test.
+
+40
+00:03:02,370 --> 00:03:09,000
+Let's have another test this time that we'll say we want to make sure that a correctly.
+
+41
+00:03:11,350 --> 00:03:13,630
+Increments the counter.
+
+42
+00:03:17,850 --> 00:03:22,210
+And again, our usual syntax, and in here we can write tests.
+
+43
+00:03:22,710 --> 00:03:23,760
+So what can we do?
+
+44
+00:03:24,800 --> 00:03:27,680
+Well, first, thanks, let's just do a const.
+
+45
+00:03:29,290 --> 00:03:32,950
+Rapper and this is just going to be the shallow.
+
+46
+00:03:34,180 --> 00:03:35,620
+Rendering of our component.
+
+47
+00:03:36,760 --> 00:03:45,070
+And we'll just have a mock color as well that we're going to use, all right, so now that we have this,
+
+48
+00:03:45,280 --> 00:03:52,270
+instead of just always typing expect and then doing this shallow, we can just say expect wrapper and
+
+49
+00:03:52,270 --> 00:03:53,500
+we can write more tests that way.
+
+50
+00:03:54,390 --> 00:04:04,650
+And here, let's say that we want to have rapper DOT find another thing that we get with the enzyme
+
+51
+00:04:04,650 --> 00:04:11,400
+package, so on the wrapper, just like we would in Jaquie or Querrey, select all we can do something
+
+52
+00:04:11,400 --> 00:04:18,300
+like find where we find, let's say, the I.D. and this has to be square brackets, actually.
+
+53
+00:04:20,610 --> 00:04:22,980
+Where we have Edek of.
+
+54
+00:04:23,850 --> 00:04:24,330
+Counter.
+
+55
+00:04:28,020 --> 00:04:37,410
+By doing this, I can now go into my Carnavon and just give it an ID of.
+
+56
+00:04:40,130 --> 00:04:40,580
+Connor.
+
+57
+00:04:43,300 --> 00:04:45,730
+And we'll make sure that we make the.
+
+58
+00:04:47,200 --> 00:04:48,310
+Snapshot pass.
+
+59
+00:04:52,850 --> 00:04:58,970
+And now we can find this ID counter, which is the button now.
+
+60
+00:05:00,650 --> 00:05:03,470
+And we can do something called simulate.
+
+61
+00:05:05,830 --> 00:05:13,420
+And we can simulate an event such as a click event, which our economy has an unclick event, so we've
+
+62
+00:05:13,420 --> 00:05:15,160
+just simulated a click.
+
+63
+00:05:16,610 --> 00:05:18,200
+On this counterman.
+
+64
+00:05:19,530 --> 00:05:27,420
+So if we've simulated a click on the counterbattery and the state or the count in the state is zero,
+
+65
+00:05:27,600 --> 00:05:29,870
+we expect the count now to be one.
+
+66
+00:05:30,810 --> 00:05:33,270
+So all we would need to do is say expect.
+
+67
+00:05:35,170 --> 00:05:40,090
+Wrapper, we can use something called state.
+
+68
+00:05:41,800 --> 00:05:47,260
+So this is going to grab the state and we expect that state to equal.
+
+69
+00:05:50,850 --> 00:05:52,650
+Count of one.
+
+70
+00:05:54,330 --> 00:05:55,660
+Let's see if that actually works.
+
+71
+00:05:55,680 --> 00:05:57,140
+Let me add some semicolons here.
+
+72
+00:05:59,290 --> 00:06:04,500
+All right, everything is passing, but again, we want to make sure that it's actually testing while
+
+73
+00:06:04,500 --> 00:06:07,330
+you want let's say this is zero now.
+
+74
+00:06:08,980 --> 00:06:16,500
+Oh, it's failed, and let's go back again just to make sure our thing passes, I'm going to simulate
+
+75
+00:06:16,510 --> 00:06:17,650
+a click again.
+
+76
+00:06:18,540 --> 00:06:24,730
+So if I go, nope, now it's expecting a count of two, so I changed it to.
+
+77
+00:06:26,050 --> 00:06:29,480
+And our tests are passing, that's pretty cool.
+
+78
+00:06:30,070 --> 00:06:31,480
+Now, if I remove this.
+
+79
+00:06:32,470 --> 00:06:32,980
+Counter.
+
+80
+00:06:36,960 --> 00:06:43,200
+And I have two failed tests now because on top of running the snapshot, which fails now because we've
+
+81
+00:06:43,200 --> 00:06:51,090
+changed the look of the component, we've also removed the way for us to grab that component by ID.
+
+82
+00:06:51,330 --> 00:06:57,030
+And you can see that method simulate is only meant to be run on a single note, zero found because we
+
+83
+00:06:57,030 --> 00:07:03,990
+weren't able to find the ID of counter and you can do many things here to grab an object.
+
+84
+00:07:04,530 --> 00:07:08,640
+I usually like having an ID because, well, just raise nicely.
+
+85
+00:07:09,790 --> 00:07:11,090
+But that's pretty cool, right?
+
+86
+00:07:11,110 --> 00:07:15,340
+We just in a very simple way, tested our state.
+
+87
+00:07:16,600 --> 00:07:23,470
+And once again, don't get overwhelmed by all this wording with the just cheat sheet and the enzyme
+
+88
+00:07:23,590 --> 00:07:26,950
+documentation, you can pick this up in a day fairly easy.
+
+89
+00:07:27,250 --> 00:07:29,290
+And I don't remember all of these.
+
+90
+00:07:29,290 --> 00:07:32,950
+I usually go to their documentation and say, oh, yeah, they have a simulate method.
+
+91
+00:07:33,100 --> 00:07:36,250
+Oh, yeah, they have the state method to grab the state.
+
+92
+00:07:36,550 --> 00:07:38,410
+And that's how you work as a developer.
+
+93
+00:07:38,420 --> 00:07:42,520
+You don't have an encyclopedia all in your head of all the methods.
+
+94
+00:07:42,730 --> 00:07:48,850
+You just know that this is what enzyme and just do let me go check out their documentation and see how
+
+95
+00:07:48,850 --> 00:07:49,830
+I can grab state.
+
+96
+00:07:50,550 --> 00:07:54,580
+Oh, and by the way, if I add again, remember, this is JavaScript.
+
+97
+00:07:54,580 --> 00:07:56,020
+We're just going one by one.
+
+98
+00:07:56,080 --> 00:08:01,120
+If I add here another click and at the bottom here I.
+
+99
+00:08:02,470 --> 00:08:06,940
+Ron, another expect I'm going to expect that it's now a three.
+
+100
+00:08:08,160 --> 00:08:12,750
+And you see that all my tests still pass because everything happens sequentially.
+
+101
+00:08:14,300 --> 00:08:18,350
+And if I add a another click here, then I can.
+
+102
+00:08:19,930 --> 00:08:22,540
+Or let's say this one is going to be a key press.
+
+103
+00:08:23,880 --> 00:08:30,210
+Even if there's a key press on there, because there's no key press event, I still expect the state
+
+104
+00:08:30,210 --> 00:08:31,500
+of Canticle three.
+
+105
+00:08:32,830 --> 00:08:33,410
+There you go.
+
+106
+00:08:34,150 --> 00:08:38,510
+Now, when you're testing, there are so many things that you can test for.
+
+107
+00:08:38,530 --> 00:08:42,010
+You can just keep going and keep going and keep going.
+
+108
+00:08:43,000 --> 00:08:45,960
+But you want to use your time wisely.
+
+109
+00:08:45,970 --> 00:08:50,370
+Does this test is it enough to move on to other tests?
+
+110
+00:08:50,380 --> 00:08:57,010
+And it's always a trade off on how your project is doing, how much other tests your project have,
+
+111
+00:08:57,010 --> 00:09:00,100
+and how much time and resources you have to write tests.
+
+112
+00:09:00,820 --> 00:09:02,080
+Let's do one last one.
+
+113
+00:09:02,800 --> 00:09:05,680
+I'm going to expect that the.
+
+114
+00:09:07,360 --> 00:09:08,710
+Rapper DOT.
+
+115
+00:09:10,700 --> 00:09:11,360
+Props.
+
+116
+00:09:14,970 --> 00:09:17,190
+To, let's say, to equal.
+
+117
+00:09:19,510 --> 00:09:20,530
+The same color.
+
+118
+00:09:21,560 --> 00:09:21,980
+Read.
+
+119
+00:09:22,930 --> 00:09:23,770
+Let's see if that works.
+
+120
+00:09:26,610 --> 00:09:32,370
+All right, I got a felt test, and that's because I was just kind of guessing based on state, whether
+
+121
+00:09:32,370 --> 00:09:34,450
+it has the props and to equal.
+
+122
+00:09:35,100 --> 00:09:44,940
+So let's scroll up and we see that we expected color red, but instead we got a ton of other props because,
+
+123
+00:09:45,870 --> 00:09:53,160
+well, we have color red, but we also get children and we also have ID as well as well as the UNCLICK
+
+124
+00:09:53,160 --> 00:09:53,610
+event.
+
+125
+00:09:55,670 --> 00:10:00,560
+Another thing we can do here is perhaps just do color, let's save.
+
+126
+00:10:02,180 --> 00:10:05,120
+And now we get red, which is good.
+
+127
+00:10:05,150 --> 00:10:07,220
+So we want to say to equal.
+
+128
+00:10:09,530 --> 00:10:09,950
+Read.
+
+129
+00:10:13,030 --> 00:10:19,690
+And there you go, our test pass, we do have a console log here, which is kind of annoying, so let's
+
+130
+00:10:19,690 --> 00:10:23,660
+remove that from the counter bun and there you go.
+
+131
+00:10:23,680 --> 00:10:27,190
+Our tests are passing and looking very, very nice.
+
+132
+00:10:28,850 --> 00:10:35,840
+I hope that you got a general idea of how to test components and by the way, this snapshot folder,
+
+133
+00:10:36,260 --> 00:10:42,470
+you're going to actually include that in your GitHub or whatever source control you have, you're going
+
+134
+00:10:42,470 --> 00:10:49,220
+to push that and committed to your project because any new developer that comes onto the project is
+
+135
+00:10:49,220 --> 00:10:52,990
+going to download the latest master.
+
+136
+00:10:53,450 --> 00:10:58,010
+And you also want to make sure that they have these snapshots of when they run the tests and they modify
+
+137
+00:10:58,010 --> 00:10:58,670
+a component.
+
+138
+00:10:58,940 --> 00:11:04,520
+These snapshots are going to check against the old version and make sure that this new new developer
+
+139
+00:11:04,550 --> 00:11:05,600
+doesn't change anything.
+
+140
+00:11:05,750 --> 00:11:10,910
+So, again, these things are also going to go into your source control or version control.
+
+141
+00:11:12,080 --> 00:11:13,920
+All right, I'll see you in the next video.
+
+142
+00:11:14,540 --> 00:11:14,890
+Bye bye.

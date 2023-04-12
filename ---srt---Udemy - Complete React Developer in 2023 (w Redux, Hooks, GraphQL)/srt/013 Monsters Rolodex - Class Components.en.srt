@@ -1,0 +1,491 @@
+1
+00:00:00,150 --> 00:00:01,200
+Welcome back, everyone.
+
+2
+00:00:01,860 --> 00:00:07,290
+Now that we understand how Create wrapped up has helped us scaffold out our project, let's actually
+
+3
+00:00:07,290 --> 00:00:09,210
+go about building our project.
+
+4
+00:00:09,690 --> 00:00:14,790
+There's a couple of things that I want you to really focus in on while we go through these lessons,
+
+5
+00:00:14,970 --> 00:00:19,470
+especially throughout this course, because I think that this is probably the main thing you want to
+
+6
+00:00:19,470 --> 00:00:24,780
+focus on when it comes to learning react as a concept beyond just learning how to actually write the
+
+7
+00:00:24,780 --> 00:00:27,060
+code that React presents itself with.
+
+8
+00:00:27,600 --> 00:00:33,780
+And this concept is the idea of rendering, in my opinion, what makes a great react developer from
+
+9
+00:00:33,780 --> 00:00:36,120
+a good react developer is a great react.
+
+10
+00:00:36,120 --> 00:00:42,210
+Developer really understands when React is rendering and re rendering your website.
+
+11
+00:00:42,600 --> 00:00:48,480
+This is one of the most core and essential things to understand with React, because that's really all
+
+12
+00:00:48,480 --> 00:00:49,320
+reacts.
+
+13
+00:00:50,010 --> 00:00:56,640
+Earlier, Andre mentioned that when we're writing React, we are going to write things in either class
+
+14
+00:00:56,640 --> 00:01:00,090
+components or functional components with hooks.
+
+15
+00:01:00,690 --> 00:01:06,240
+Functional components with hooks is the modern way that we do a lot of things and react, even though
+
+16
+00:01:06,240 --> 00:01:10,320
+many companies use a mix of classes and functional components.
+
+17
+00:01:10,320 --> 00:01:12,690
+And if this doesn't make sense right now, don't worry about it.
+
+18
+00:01:13,140 --> 00:01:17,490
+The reason why you don't need to worry about it is because it's really just syntax and different ways
+
+19
+00:01:17,490 --> 00:01:26,460
+to do kind of the same thing, which is tell react when you want it to render and re render different
+
+20
+00:01:26,460 --> 00:01:28,220
+parts of your website.
+
+21
+00:01:28,530 --> 00:01:31,350
+And I'm really going to hone in on this throughout this course.
+
+22
+00:01:31,590 --> 00:01:39,180
+But this is what I really want you to focus on is understanding when React renders and Re renders parts
+
+23
+00:01:39,180 --> 00:01:44,460
+of your website because that's really all React does as a framework.
+
+24
+00:01:45,030 --> 00:01:50,190
+So in order for us to begin on this, let's first take a look at our project.
+
+25
+00:01:50,700 --> 00:01:55,980
+So as I mentioned in our package, Jason Create React app gave us this start script that lets us start
+
+26
+00:01:55,980 --> 00:01:58,260
+the base project that it scaffold it for us.
+
+27
+00:01:58,620 --> 00:02:01,230
+So in case you haven't done it again, let's just quickly do it.
+
+28
+00:02:01,950 --> 00:02:09,360
+Let's go back to our terminal and let's run yarn start, which is the script that will start up our
+
+29
+00:02:09,360 --> 00:02:12,030
+React server that will then host our website.
+
+30
+00:02:13,150 --> 00:02:19,120
+So here we're going to local host 3000, which is where our website is going to be hosted.
+
+31
+00:02:19,690 --> 00:02:21,130
+So let's just wait for this to load.
+
+32
+00:02:22,840 --> 00:02:23,680
+And now we see it.
+
+33
+00:02:23,920 --> 00:02:27,160
+This is the base project that create racked up has given us.
+
+34
+00:02:27,610 --> 00:02:34,240
+So what you saw here is that this website was loading and waiting for react to render something onto
+
+35
+00:02:34,240 --> 00:02:34,780
+the page.
+
+36
+00:02:35,050 --> 00:02:39,760
+In this case, we have this spinning logo, we have this text and then we have this link to learn more
+
+37
+00:02:39,760 --> 00:02:40,510
+about React.
+
+38
+00:02:40,750 --> 00:02:45,760
+It links to the React box, but what happened here was that this page was rendered.
+
+39
+00:02:46,120 --> 00:02:48,850
+These different things that you see were all rendered.
+
+40
+00:02:48,970 --> 00:02:54,940
+All you need to understand about rendering is pretty much putting some UI, which is some HTML, some
+
+41
+00:02:54,940 --> 00:03:01,360
+CSS or some JavaScript on to the page that a user can then interact with and see.
+
+42
+00:03:01,810 --> 00:03:06,520
+So something is done rendering the moment that they can interact with it, it's on the page.
+
+43
+00:03:07,090 --> 00:03:08,890
+That's the idea of rendering.
+
+44
+00:03:09,970 --> 00:03:13,120
+So let's go back to our code here and let's go into APKs.
+
+45
+00:03:13,810 --> 00:03:19,120
+As I mentioned, when we were walking through a Create React app, it generated this file for us app
+
+46
+00:03:19,120 --> 00:03:26,050
+G.S. and inside is a function app, and this function returns some HTML when you look at this.
+
+47
+00:03:26,920 --> 00:03:32,950
+The reason why you can read this as HTML and JavaScript is able to render this is because of the fact
+
+48
+00:03:32,950 --> 00:03:35,440
+that this is written in J.S. X.
+
+49
+00:03:36,400 --> 00:03:41,680
+So GSX is really just a syntax extension of JavaScript.
+
+50
+00:03:42,070 --> 00:03:43,960
+Now you might be wondering what syntax extension?
+
+51
+00:03:43,960 --> 00:03:44,680
+What does that mean?
+
+52
+00:03:45,070 --> 00:03:50,000
+All it really means is that they've taken JavaScript and they've added more functionality to it.
+
+53
+00:03:50,020 --> 00:03:52,420
+They've extended its functionality.
+
+54
+00:03:52,720 --> 00:03:59,650
+And what it really works is that it allows you to write what looks like HTML inside of your JavaScript.
+
+55
+00:04:00,220 --> 00:04:06,190
+So this looks like HTML, but it's not HTML, but it really closely resembles HTML, and that's really
+
+56
+00:04:06,190 --> 00:04:07,360
+the most important thing.
+
+57
+00:04:07,690 --> 00:04:14,680
+The reason why is because React decided that a lot of what you want to render visually now.
+
+58
+00:04:14,680 --> 00:04:21,490
+The visual representation, of course, is HTML as we know them and captures what we want to put onto
+
+59
+00:04:21,490 --> 00:04:22,180
+the web page.
+
+60
+00:04:22,900 --> 00:04:25,210
+It doesn't actually extend any of the functionality.
+
+61
+00:04:25,210 --> 00:04:27,390
+Remember, the functionality is the JavaScript.
+
+62
+00:04:27,400 --> 00:04:29,140
+The behavior is the JavaScript.
+
+63
+00:04:29,440 --> 00:04:31,570
+The email just determines what you want to see.
+
+64
+00:04:32,110 --> 00:04:38,500
+React is decided that that thing that you want to see the UI component is very closely tied to how you
+
+65
+00:04:38,500 --> 00:04:40,090
+want the UI to behave.
+
+66
+00:04:40,930 --> 00:04:44,770
+So we'll learn a lot more about that throughout the course, and you'll really understand that idea.
+
+67
+00:04:45,040 --> 00:04:49,570
+But what you really want to focus on here with Jeff Sachs is that it makes it much easier for us to
+
+68
+00:04:49,570 --> 00:04:57,910
+tell our JavaScript code, i.e. our function what we want it to visually render to the page.
+
+69
+00:04:58,450 --> 00:05:06,160
+GSX is really just a more efficient way for us to tell our React code or our JavaScript extended code.
+
+70
+00:05:06,430 --> 00:05:14,560
+What we want to render in this particular case, this function app is a functional component that renders
+
+71
+00:05:14,710 --> 00:05:16,450
+through its written statement.
+
+72
+00:05:16,930 --> 00:05:21,730
+This block of HTML or HTML like JavaScript.
+
+73
+00:05:22,570 --> 00:05:24,580
+So we'll dive into this a lot more.
+
+74
+00:05:24,590 --> 00:05:28,690
+But again, what I want you to focus on is that this has to do with the rendering.
+
+75
+00:05:28,960 --> 00:05:35,680
+We're telling this function what we want it to render, and the GSX just makes it easier for us to tell
+
+76
+00:05:35,920 --> 00:05:39,940
+this functional app what we want it to render.
+
+77
+00:05:40,390 --> 00:05:45,220
+So writing a functional component is one way to render something to the page.
+
+78
+00:05:45,400 --> 00:05:48,160
+That's the only way to telling ract what our component should do.
+
+79
+00:05:49,100 --> 00:05:55,610
+Another way, though, is using a class component and a class component is where I want us to start.
+
+80
+00:05:56,090 --> 00:05:59,510
+As I mentioned before, class components do pretty much the same thing.
+
+81
+00:05:59,510 --> 00:06:02,330
+Functional components do just in a slightly different way.
+
+82
+00:06:02,570 --> 00:06:03,770
+But they all do the same thing.
+
+83
+00:06:04,010 --> 00:06:10,820
+Functional components and class components allows us to tell react what we expect this component to
+
+84
+00:06:10,820 --> 00:06:13,490
+render and how we expect it to render things.
+
+85
+00:06:14,120 --> 00:06:19,040
+And I want to start with a class component over a functional component because a class component is
+
+86
+00:06:19,040 --> 00:06:20,570
+easier to understand.
+
+87
+00:06:20,570 --> 00:06:23,810
+This idea of when react will render and render things.
+
+88
+00:06:24,410 --> 00:06:25,340
+And I'm going to show you how.
+
+89
+00:06:25,850 --> 00:06:30,680
+So what we're going to first do is just convert this into a class component.
+
+90
+00:06:31,620 --> 00:06:36,330
+In order to do that, we actually need to import component from React.
+
+91
+00:06:36,720 --> 00:06:44,760
+And this is something that is a class that really gives us so that it allows all of the new components
+
+92
+00:06:44,760 --> 00:06:51,150
+that we write in a class component format to get access to some of the functionality that by default,
+
+93
+00:06:51,150 --> 00:06:54,460
+reactor's already built for us inside of this component class.
+
+94
+00:06:54,960 --> 00:06:55,770
+So let's convert it.
+
+95
+00:06:55,950 --> 00:06:57,870
+I'm going to say class app.
+
+96
+00:06:59,460 --> 00:07:02,250
+Extends component.
+
+97
+00:07:02,640 --> 00:07:08,310
+So here I'm saying, hey, I want you to make this class called app and I want you to extend the functionality
+
+98
+00:07:08,310 --> 00:07:11,250
+of this component class that React has given us.
+
+99
+00:07:12,150 --> 00:07:19,590
+And what we need to change here is that React has also created on this component Class A render method.
+
+100
+00:07:19,590 --> 00:07:20,700
+So this already exists.
+
+101
+00:07:20,940 --> 00:07:30,000
+But what we're passing to it is this return and inside of this return is going to be again the G6 or
+
+102
+00:07:30,100 --> 00:07:34,170
+HMO representation of what you want this component to give back.
+
+103
+00:07:34,620 --> 00:07:35,220
+And that's it.
+
+104
+00:07:35,700 --> 00:07:40,740
+This will pretty much be the exact same thing as that previous app function that we had.
+
+105
+00:07:41,100 --> 00:07:47,280
+So if we go back to our browser, we'll see that our web page is the exact same.
+
+106
+00:07:47,520 --> 00:07:50,340
+Everything is still working if we open up our console.
+
+107
+00:07:51,270 --> 00:07:53,940
+We see that we have no errors.
+
+108
+00:07:54,660 --> 00:08:01,650
+So here we understand, OK, this functional components that we had before is pretty much the exact
+
+109
+00:08:01,650 --> 00:08:04,020
+same now as this class component.
+
+110
+00:08:05,080 --> 00:08:06,520
+They're still rendering the same thing.
+
+111
+00:08:06,700 --> 00:08:14,020
+In fact, it's just that here React is explicitly telling us, Oh, this is what you are rendering.
+
+112
+00:08:14,710 --> 00:08:20,530
+So that is why I think it's more helpful already we already seeing, Oh, I'm already explicitly telling
+
+113
+00:08:20,530 --> 00:08:25,480
+my component what I wanted to render, and therefore React knows, oh what I want to render whatever
+
+114
+00:08:25,480 --> 00:08:28,240
+is returned from my render method.
+
+115
+00:08:28,870 --> 00:08:33,910
+So in this lesson, we learned that there are functional components and class components that both pretty
+
+116
+00:08:33,910 --> 00:08:34,630
+much just tell.
+
+117
+00:08:34,630 --> 00:08:36,880
+React that with this component.
+
+118
+00:08:37,540 --> 00:08:38,980
+What do I want you to render?
+
+119
+00:08:39,340 --> 00:08:44,260
+In the next video, we're going to learn about some additional things that we can do that we can jump
+
+120
+00:08:44,260 --> 00:08:49,840
+in and modify both what we're rendering and how we want things to be re rendered.
+
+121
+00:08:50,200 --> 00:08:55,780
+And that will really help us be able to actually begin to modify our website to be more like an app.
+
+122
+00:08:56,080 --> 00:08:57,980
+And we're going to see that in the next video.
+
+123
+00:08:58,360 --> 00:08:59,140
+So I'll see you there.

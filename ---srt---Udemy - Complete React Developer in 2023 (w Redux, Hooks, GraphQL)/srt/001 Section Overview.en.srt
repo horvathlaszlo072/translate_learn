@@ -1,0 +1,299 @@
+1
+00:00:00,740 --> 00:00:08,330
+Let's get started with React BASIX now, if you've taken any of my previous courses where Aftar react
+
+2
+00:00:08,480 --> 00:00:16,430
+or you're not a react beginner and you've built some applications before with react, then you can actually
+
+3
+00:00:16,430 --> 00:00:22,820
+just skim through these videos or skip this entire section as this section covers their react basis.
+
+4
+00:00:23,210 --> 00:00:29,090
+We're going to build our first react application from scratch using something called create react up.
+
+5
+00:00:29,240 --> 00:00:31,550
+And then we're going to deploy to GitHub pages.
+
+6
+00:00:32,630 --> 00:00:38,390
+Again, if you're completely new to react, then you have to finish this section to move on with the
+
+7
+00:00:38,390 --> 00:00:38,760
+course.
+
+8
+00:00:39,170 --> 00:00:43,250
+However, for those with a bit of experience, you might find the section a little bit easy.
+
+9
+00:00:43,470 --> 00:00:46,420
+Determine for yourself which direction you want to go.
+
+10
+00:00:47,750 --> 00:00:54,560
+Remember, our goal here is to build these basics so that we can build our giant application, our e-commerce
+
+11
+00:00:54,560 --> 00:00:59,950
+platform, using react now in this section, we're going to learn a few things.
+
+12
+00:00:59,960 --> 00:01:02,150
+However, we're going to make a few assumptions here.
+
+13
+00:01:03,950 --> 00:01:09,500
+First, we're going to assume, you know how to use your terminal or your command prompt.
+
+14
+00:01:10,750 --> 00:01:18,040
+And you can also use any code editor you want, you can use visual studio code, sublime text or any
+
+15
+00:01:18,040 --> 00:01:20,620
+other popular JavaScript developer environments.
+
+16
+00:01:21,700 --> 00:01:27,040
+Now, this section is going to be a code along, so I highly recommend, if you're following along,
+
+17
+00:01:27,160 --> 00:01:34,330
+to have your terminal or command prompt set up, if you're on Windows Terminal, if you're on Mac or
+
+18
+00:01:34,330 --> 00:01:37,360
+Linux system and have your code editor.
+
+19
+00:01:37,600 --> 00:01:38,700
+So you follow along.
+
+20
+00:01:39,550 --> 00:01:45,850
+Now, over the next couple of videos, we're going to install node if you don't have it already, and
+
+21
+00:01:45,850 --> 00:01:49,060
+also the Create React app that is going to allow us to.
+
+22
+00:01:49,060 --> 00:01:49,450
+Right.
+
+23
+00:01:49,450 --> 00:01:49,910
+React.
+
+24
+00:01:50,080 --> 00:01:51,670
+I do want to make a few notes, though.
+
+25
+00:01:52,580 --> 00:01:53,150
+First.
+
+26
+00:01:54,190 --> 00:02:00,220
+Would this course, as long as you have a version 10 or higher four note, you're going to be fine.
+
+27
+00:02:00,700 --> 00:02:10,180
+If you don't have a version of note on your system that is 10 or lower, then I recommend updating note
+
+28
+00:02:10,690 --> 00:02:16,950
+or if not, you can use something called and VM and SVM is a node version manager.
+
+29
+00:02:17,320 --> 00:02:21,820
+So it's a simple way in the terminal for us to switch node versions.
+
+30
+00:02:23,540 --> 00:02:25,750
+Now, this is something you can go through on your own.
+
+31
+00:02:26,700 --> 00:02:33,540
+The easiest way to do things is to just simply download Noad from the Node Jamesburg website.
+
+32
+00:02:34,640 --> 00:02:40,630
+Now, the second thing we're going to do is we're going to actually install something called create
+
+33
+00:02:40,640 --> 00:02:45,590
+reactor and if I go to Reactor or here and I go to Dock's.
+
+34
+00:02:46,710 --> 00:02:53,520
+Under the create a new reactor up, we have this thing called create reactor, which we're going to
+
+35
+00:02:53,520 --> 00:02:55,170
+talk about in the upcoming video.
+
+36
+00:02:55,650 --> 00:03:03,180
+Now, the one thing I want to mention is that you'll see this command, NPR and NPR is actually new
+
+37
+00:03:03,750 --> 00:03:06,780
+and comes with version of NPM five point two.
+
+38
+00:03:08,400 --> 00:03:14,340
+So if your AMPM version is lower than this, this command won't work.
+
+39
+00:03:15,260 --> 00:03:18,100
+So you might want to update your NPM version as well.
+
+40
+00:03:19,340 --> 00:03:27,470
+Now and for those that haven't seen it before, runs a command of a package without installing it explicitly.
+
+41
+00:03:27,980 --> 00:03:29,060
+So what does that mean?
+
+42
+00:03:29,750 --> 00:03:34,610
+Well, before we had NPCs, this is what we had to do.
+
+43
+00:03:35,240 --> 00:03:39,410
+You see here that this is the current version of REACT based on when you're watching the video, you
+
+44
+00:03:39,410 --> 00:03:41,390
+might have versions that are higher.
+
+45
+00:03:41,420 --> 00:03:45,500
+But again, this course will work with any versions higher than sixteen point eight.
+
+46
+00:03:46,070 --> 00:03:52,190
+If I go here and go to an older version of react, let's say fifteen point six, if I click on documentation
+
+47
+00:03:52,880 --> 00:03:57,560
+and then let's do docs, and then finally we look at the installation.
+
+48
+00:04:00,900 --> 00:04:07,880
+You'll see that we had to run NPM, install globally, create a reactor, and then we ran the Korea
+
+49
+00:04:07,920 --> 00:04:15,840
+reactor up command to create our app and allows us to not install this global version of a reactor and
+
+50
+00:04:15,840 --> 00:04:19,040
+just simply run that one comment to create our app.
+
+51
+00:04:19,740 --> 00:04:20,100
+All right.
+
+52
+00:04:20,100 --> 00:04:21,180
+Now, let's go back.
+
+53
+00:04:22,020 --> 00:04:30,660
+If for some reason during this section you are unable to get this started, there is another option
+
+54
+00:04:30,810 --> 00:04:36,450
+where you can use this code sandbox daddio, which I'll link to that actually allows you within the
+
+55
+00:04:36,450 --> 00:04:39,720
+browser to use react online.
+
+56
+00:04:40,940 --> 00:04:46,640
+Now, one last thing, we're going to get started and go step by step into building our reactor application,
+
+57
+00:04:47,330 --> 00:04:49,040
+but I also want to point something out to you.
+
+58
+00:04:49,640 --> 00:04:57,770
+You see, when we study or learn libraries or frameworks or tools like react, the best place to learn
+
+59
+00:04:57,770 --> 00:05:00,410
+about something is often the documentation.
+
+60
+00:05:01,070 --> 00:05:07,850
+And most tutorials don't mention this fact that, well, we have the official reac documentation that
+
+61
+00:05:07,850 --> 00:05:11,480
+explains how we react works inside and out.
+
+62
+00:05:12,030 --> 00:05:16,440
+Most materials that you see online are taught using this basic template.
+
+63
+00:05:16,910 --> 00:05:21,980
+So remember, if you ever have questions, this is always the best place to start.
+
+64
+00:05:23,080 --> 00:05:29,830
+Now we're going to be covering some main concepts and react here, but remember that the way you learn
+
+65
+00:05:29,830 --> 00:05:36,070
+a library is not like reading a dictionary where you just learn every single thing that this library
+
+66
+00:05:36,070 --> 00:05:36,520
+gives you.
+
+67
+00:05:37,270 --> 00:05:43,690
+The thing to understand that will go into later on in this course is how to build bigger and bigger
+
+68
+00:05:43,690 --> 00:05:50,680
+applications, how to architect your app so that instead of learning something like a dictionary, one
+
+69
+00:05:50,680 --> 00:05:57,340
+by one, we learn the principles and the concepts that allow us to do advanced things and build real
+
+70
+00:05:57,340 --> 00:06:00,740
+life applications, something that I'm really excited to do in this course.
+
+71
+00:06:01,360 --> 00:06:02,600
+So enough talk.
+
+72
+00:06:02,620 --> 00:06:04,090
+It's time for us to get started.
+
+73
+00:06:04,630 --> 00:06:07,510
+We're going to start setting up our environment in the next video.
+
+74
+00:06:07,810 --> 00:06:10,720
+We're going to build our first app and it's going to be a fun one.
+
+75
+00:06:11,450 --> 00:06:12,760
+I'll see that one by.

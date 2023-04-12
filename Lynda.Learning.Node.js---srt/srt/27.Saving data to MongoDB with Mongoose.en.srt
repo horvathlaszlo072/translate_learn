@@ -1,0 +1,307 @@
+1
+00:00:00.05 --> 00:00:03.01
+- [Instructor] In order to
+start saving data with Mongoose,
+
+2
+00:00:03.01 --> 00:00:06.00
+we need to setup that bit of
+structure I mentioned earlier,
+
+3
+00:00:06.00 --> 00:00:09.05
+which is a model and a
+schema for a message object.
+
+4
+00:00:09.05 --> 00:00:12.06
+At the top of our script,
+let's create the message model.
+
+5
+00:00:12.06 --> 00:00:16.00
+So above our messages array on line 14,
+
+6
+00:00:16.00 --> 00:00:19.09
+let's add a few lines, we'll
+create a message variable,
+
+7
+00:00:19.09 --> 00:00:23.04
+and we use a capital M to
+indicate that it's a model
+
+8
+00:00:23.04 --> 00:00:27.07
+and we'll set it to mongoose.model
+
+9
+00:00:27.07 --> 00:00:30.02
+and for the first parameter,
+we'll specify what we call it,
+
+10
+00:00:30.02 --> 00:00:33.05
+which is message and then we'll pass in
+
+11
+00:00:33.05 --> 00:00:36.08
+our schema definition,
+which will be an object
+
+12
+00:00:36.08 --> 00:00:39.04
+with the properties, first being name,
+
+13
+00:00:39.04 --> 00:00:42.00
+which will be of type string.
+
+14
+00:00:42.00 --> 00:00:43.07
+Then our message property,
+
+15
+00:00:43.07 --> 00:00:45.09
+which will be of type string as well.
+
+16
+00:00:45.09 --> 00:00:47.01
+Let's save that.
+
+17
+00:00:47.01 --> 00:00:50.00
+Now that we have a model,
+let's create an object
+
+18
+00:00:50.00 --> 00:00:51.04
+based on that model.
+
+19
+00:00:51.04 --> 00:00:54.01
+Let's go down to our post message function
+
+20
+00:00:54.01 --> 00:00:56.01
+and create that.
+
+21
+00:00:56.01 --> 00:01:01.09
+So on line 28, at the
+top, let's add var message
+
+22
+00:01:01.09 --> 00:01:07.00
+equals new message and
+we'll pass in request.body
+
+23
+00:01:07.00 --> 00:01:10.07
+since it contains our message definition.
+
+24
+00:01:10.07 --> 00:01:13.08
+Next let's save it to MongoDB.
+
+25
+00:01:13.08 --> 00:01:19.04
+We will use message.save and
+we can pass in a call back
+
+26
+00:01:19.04 --> 00:01:23.02
+that takes an error in case it failed.
+
+27
+00:01:23.02 --> 00:01:30.00
+If there's an error, let's
+send the status of 500,
+
+28
+00:01:30.00 --> 00:01:31.07
+which is a server error.
+
+29
+00:01:31.07 --> 00:01:34.01
+If there is no error, let's move the rest
+
+30
+00:01:34.01 --> 00:01:43.08
+of the functionality into
+the save success block.
+
+31
+00:01:43.08 --> 00:01:46.01
+And so now, only if the
+message was successfully
+
+32
+00:01:46.01 --> 00:01:50.04
+saved to the database, we will
+then emit a socket IO event
+
+33
+00:01:50.04 --> 00:01:53.06
+and then we'll send a status of 200
+
+34
+00:01:53.06 --> 00:01:56.02
+and I'll leave our message.push for now
+
+35
+00:01:56.02 --> 00:01:58.04
+until we've completely replaced it
+
+36
+00:01:58.04 --> 00:01:59.08
+with our MongoDB.
+
+37
+00:01:59.08 --> 00:02:01.07
+Now let's send a message from our app
+
+38
+00:02:01.07 --> 00:02:04.05
+and then check mLab for
+a new message collection.
+
+39
+00:02:04.05 --> 00:02:06.09
+So I've saved the changes,
+let's go to our app
+
+40
+00:02:06.09 --> 00:02:14.06
+and then add a new message.
+
+41
+00:02:14.06 --> 00:02:21.08
+Now let's check mLab and
+refresh our collections.
+
+42
+00:02:21.08 --> 00:02:23.04
+And we can see a new collection.
+
+43
+00:02:23.04 --> 00:02:26.00
+Let's click on that.
+
+44
+00:02:26.00 --> 00:02:29.01
+Inside we can see a new
+record with the name Lisa
+
+45
+00:02:29.01 --> 00:02:31.03
+and the message Hi.
+
+46
+00:02:31.03 --> 00:02:32.05
+So we know it's working.
+
+47
+00:02:32.05 --> 00:02:34.03
+Finally, let's update our app
+
+48
+00:02:34.03 --> 00:02:36.09
+so that it no longer
+uses the message array.
+
+49
+00:02:36.09 --> 00:02:41.05
+So let's take up line 35 in our app.post
+
+50
+00:02:41.05 --> 00:02:44.05
+and then on line 25, instead of sending
+
+51
+00:02:44.05 --> 00:02:50.04
+our messages array, we'll send
+our messages from MongoDB.
+
+52
+00:02:50.04 --> 00:02:57.02
+So above our response.send,
+we'll add message.find
+
+53
+00:02:57.02 --> 00:02:59.02
+and we want to select all of the messages
+
+54
+00:02:59.02 --> 00:03:01.09
+so we won't pass in any requirements
+
+55
+00:03:01.09 --> 00:03:05.00
+and so I'm passing in an empty object.
+
+56
+00:03:05.00 --> 00:03:07.00
+Then we'll create a call
+back that takes an error
+
+57
+00:03:07.00 --> 00:03:13.08
+and all of the messages it finds.
+
+58
+00:03:13.08 --> 00:03:18.01
+Inside, let's copy our
+response.send messages
+
+59
+00:03:18.01 --> 00:03:20.02
+and paste it.
+
+60
+00:03:20.02 --> 00:03:25.05
+Now let's get rid of our messages array.
+
+61
+00:03:25.05 --> 00:03:29.00
+If we save this and then
+give it a try in our app,
+
+62
+00:03:29.00 --> 00:03:32.03
+we refresh and we can see,
+the first message we added
+
+63
+00:03:32.03 --> 00:03:34.04
+to our MongoDB database.
+
+64
+00:03:34.04 --> 00:03:40.03
+Let's add another.
+
+65
+00:03:40.03 --> 00:03:42.00
+We can see it instantly shows up
+
+66
+00:03:42.00 --> 00:03:45.03
+because of socket IO and if we refresh,
+
+67
+00:03:45.03 --> 00:03:48.04
+it shows up again because of MongoDB.
+
+68
+00:03:48.04 --> 00:03:50.00
+Next let's take a look at some of
+
+69
+00:03:50.00 --> 00:03:51.08
+the newer features of JavaScript,
+
+70
+00:03:51.08 --> 00:03:53.05
+which Node now uses.
+

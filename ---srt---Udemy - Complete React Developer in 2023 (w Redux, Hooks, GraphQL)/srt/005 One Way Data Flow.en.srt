@@ -1,0 +1,279 @@
+1
+00:00:00,920 --> 00:00:03,350
+So we've learned the first two concepts.
+
+2
+00:00:04,310 --> 00:00:12,170
+The third concept that made to react really popular is this idea of uni directional dataflow.
+
+3
+00:00:12,560 --> 00:00:13,460
+What do I mean by that?
+
+4
+00:00:14,150 --> 00:00:14,510
+Well.
+
+5
+00:00:15,530 --> 00:00:23,060
+So far, we understand that React is just a JavaScript library that allows us to write more JavaScript
+
+6
+00:00:23,360 --> 00:00:25,600
+to have interactivity on our website.
+
+7
+00:00:26,740 --> 00:00:34,300
+And in fact, we have this idea of state, which you can think of it as a JavaScript object that describes
+
+8
+00:00:34,300 --> 00:00:39,160
+our app, so all the data of our app is within the state.
+
+9
+00:00:39,940 --> 00:00:48,190
+And then we also learned about this idea of components that we can build using react with this weird
+
+10
+00:00:48,460 --> 00:00:52,480
+HTML looking thing, but inside of our JavaScript files.
+
+11
+00:00:53,530 --> 00:01:01,990
+This idea of state, which is the data over app works with the components which are built using what
+
+12
+00:01:01,990 --> 00:01:05,140
+will eventually learn is called JSF X.
+
+13
+00:01:05,800 --> 00:01:10,240
+So it's XML like syntax inside of JavaScript.
+
+14
+00:01:12,020 --> 00:01:20,720
+And these all combine to essentially give our reactor library to things, that is the components that
+
+15
+00:01:20,720 --> 00:01:25,730
+we've built, the state overapplication, and you can think of this as a function.
+
+16
+00:01:25,730 --> 00:01:30,320
+A react library is simply a function that we give all these things to.
+
+17
+00:01:31,450 --> 00:01:40,870
+What it's going to do is it's going to create what we call a virtual dump, that is it creates a JavaScript
+
+18
+00:01:40,870 --> 00:01:42,150
+version of the DOM.
+
+19
+00:01:43,400 --> 00:01:50,330
+Remember this, this isn't the dam we installed, they react, Plug-In, to have something that looks
+
+20
+00:01:50,330 --> 00:01:58,430
+like the elements tab but isn't exactly and this is just a JavaScript object that describes our app.
+
+21
+00:02:00,250 --> 00:02:09,340
+Into what we called this virtual dawn, which is a tree like object like this that gives react a blueprint
+
+22
+00:02:09,340 --> 00:02:12,530
+of how it should update the actual done.
+
+23
+00:02:13,060 --> 00:02:21,790
+So what happens then is react takes all of this and says, hey, here is the actual dorm or the document
+
+24
+00:02:21,790 --> 00:02:23,230
+object model of the website.
+
+25
+00:02:23,800 --> 00:02:31,330
+And the react little board over here is going to go look at the blueprint of what it needs to build
+
+26
+00:02:31,540 --> 00:02:34,320
+and modifies the DOM for us.
+
+27
+00:02:35,390 --> 00:02:43,490
+Now, this idea of a uni directional dataflow means that any time we want something to change on our
+
+28
+00:02:43,490 --> 00:02:47,990
+Web page, well, the state has to change.
+
+29
+00:02:48,020 --> 00:02:50,610
+That is, the data has to change in our app.
+
+30
+00:02:51,140 --> 00:02:54,670
+So what happens if as a user I click on, let's say, a button?
+
+31
+00:02:55,280 --> 00:03:02,330
+Well, I click on a button, react, is going to intercept that and say, hey, somebody just clicked
+
+32
+00:03:02,330 --> 00:03:02,990
+on the bottom.
+
+33
+00:03:02,990 --> 00:03:09,170
+How does that let's say I click on the Sinabung react is going to say, hey, somebody just clicked
+
+34
+00:03:09,320 --> 00:03:10,580
+on this on our button.
+
+35
+00:03:10,580 --> 00:03:12,430
+How are we going to change the state?
+
+36
+00:03:13,100 --> 00:03:18,140
+Well, internally, we would say that if somebody clicks on the sign up, then we're going to change
+
+37
+00:03:18,140 --> 00:03:20,360
+is logged in to now say Phos.
+
+38
+00:03:21,720 --> 00:03:29,770
+And react as soon as the state changes, reacts to that change and says, hey, the state just changed,
+
+39
+00:03:30,240 --> 00:03:35,520
+combine the new state and the components we have and update the dome.
+
+40
+00:03:36,090 --> 00:03:39,030
+You see the data only flows one way.
+
+41
+00:03:39,980 --> 00:03:42,740
+A better way to think about this is like this.
+
+42
+00:03:44,150 --> 00:03:52,310
+Our application is simply built with this virtual dump, this JavaScript object that describes our app
+
+43
+00:03:52,490 --> 00:03:55,490
+and as soon as a state changes.
+
+44
+00:03:56,830 --> 00:04:03,250
+It's going to trickle down that information and let everybody know, hey, the state just changed if
+
+45
+00:04:03,290 --> 00:04:10,230
+is logged in is now false display this version of the app data can never move up.
+
+46
+00:04:10,630 --> 00:04:16,300
+So, for example, the state, as we'll learn, can live in different locations, different components.
+
+47
+00:04:16,870 --> 00:04:22,220
+And if the state, lets say, changes here, the data can never move up.
+
+48
+00:04:22,270 --> 00:04:26,890
+That is, all these changes can only trickle down.
+
+49
+00:04:27,190 --> 00:04:30,840
+Now, this concept is hard to explain without actually seeing any code.
+
+50
+00:04:31,000 --> 00:04:33,460
+So if you don't get this right away, don't worry.
+
+51
+00:04:33,460 --> 00:04:38,860
+We will explore this idea and revisit this idea of one way dataflow throughout the course.
+
+52
+00:04:39,250 --> 00:04:46,570
+But the key takeaway here is that by having this restriction of data, only being able to move down
+
+53
+00:04:47,230 --> 00:04:53,860
+from the state of our application all the way to the dorm, and if any changes or events happen that
+
+54
+00:04:53,860 --> 00:05:01,150
+change the state while we go back to the state and that state, change trickles down to different components.
+
+55
+00:05:01,150 --> 00:05:07,780
+And one direction is a restriction on how data can move through our app.
+
+56
+00:05:07,930 --> 00:05:12,120
+And by adding this restriction, it's really easy to debug code.
+
+57
+00:05:12,520 --> 00:05:19,900
+For example, if there's something wrong with our sign function, I can go to wherever the state is
+
+58
+00:05:19,900 --> 00:05:20,740
+logged in lifts.
+
+59
+00:05:20,740 --> 00:05:23,410
+Let's say it lives in this top component here.
+
+60
+00:05:23,650 --> 00:05:29,920
+I can go over here and know that this is where the bug is happening and whatever is underneath this
+
+61
+00:05:29,920 --> 00:05:30,640
+component.
+
+62
+00:05:30,850 --> 00:05:32,140
+Well, that's it.
+
+63
+00:05:33,160 --> 00:05:38,830
+I don't have to look outside of the component of this tree was massive with thousands and millions of
+
+64
+00:05:38,830 --> 00:05:39,380
+components.
+
+65
+00:05:39,400 --> 00:05:45,940
+I only have to look in the place where the data exists and where the data flows through.
+
+66
+00:05:47,150 --> 00:05:52,610
+Again, this is a really hard concept that we will explore throughout the course, but this idea of
+
+67
+00:05:52,610 --> 00:05:58,460
+one way dataflow is the restriction, and because of this restriction, it's easier for us to understand
+
+68
+00:05:58,460 --> 00:05:59,960
+how our app works.
+
+69
+00:06:00,390 --> 00:06:08,330
+Unlike the arrows and points that we saw with an angular app where things got confusing really, really
+
+70
+00:06:08,330 --> 00:06:08,710
+fast.

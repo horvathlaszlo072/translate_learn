@@ -1,0 +1,419 @@
+1
+00:00:00,850 --> 00:00:01,900
+Welcome back, everyone.
+
+2
+00:00:02,770 --> 00:00:11,140
+In the last video, we migrated over our selector code from our reducer so that we were able to convert
+
+3
+00:00:11,140 --> 00:00:19,150
+our categories array that we store inside of Redux into the categories map that we use in order to access
+
+4
+00:00:19,150 --> 00:00:21,370
+our categories quickly and efficiently.
+
+5
+00:00:22,120 --> 00:00:28,120
+In this video, though, I'm going to highlight a lot of the new nuances that come with this pattern
+
+6
+00:00:28,120 --> 00:00:34,690
+that we need to think about at every single stage of utilizing all of the tools that we've seen so far
+
+7
+00:00:34,690 --> 00:00:38,380
+with React Redux as well as Redux in general.
+
+8
+00:00:39,380 --> 00:00:46,280
+So to begin with, if you have been console logging your component throughout this process, you may
+
+9
+00:00:46,280 --> 00:00:52,100
+notice some really weird behavior that is happening inside of your components.
+
+10
+00:00:52,100 --> 00:00:58,490
+And I will aim to demystify all of this alongside getting a deeper understanding of how these hooks
+
+11
+00:00:58,490 --> 00:01:02,930
+work and how you need to think about architecting some of your application.
+
+12
+00:01:03,830 --> 00:01:06,380
+So to start, I want to look at this category component.
+
+13
+00:01:07,040 --> 00:01:13,730
+As we know, the category component takes the category name from the URL parameter and then it pulls
+
+14
+00:01:13,730 --> 00:01:20,060
+off the categories map from our new selector that will transform the categories array.
+
+15
+00:01:20,600 --> 00:01:28,130
+And then what it does is it runs an effect that will update the products inside that this category uses,
+
+16
+00:01:28,130 --> 00:01:34,220
+which will be an array depending on when the category itself changes in the URL parameter or when the
+
+17
+00:01:34,220 --> 00:01:36,110
+category is map updates.
+
+18
+00:01:36,710 --> 00:01:38,330
+So there's a couple of things I want to do.
+
+19
+00:01:38,600 --> 00:01:44,210
+The first is that I want to console log render, slash, re rendering.
+
+20
+00:01:45,750 --> 00:01:46,350
+Component.
+
+21
+00:01:47,670 --> 00:01:53,370
+Now, this is important because we need to know when our functional component is being re render.
+
+22
+00:01:53,880 --> 00:02:00,030
+In fact, I'm even going to be more explicit and say category render slash re rendering category component.
+
+23
+00:02:00,360 --> 00:02:00,990
+So we know.
+
+24
+00:02:02,150 --> 00:02:08,030
+Then inside I also want a console dot log effect fired calling.
+
+25
+00:02:13,480 --> 00:02:14,470
+Set products.
+
+26
+00:02:17,800 --> 00:02:19,420
+And what I'm also going to do.
+
+27
+00:02:20,350 --> 00:02:21,070
+From here.
+
+28
+00:02:22,490 --> 00:02:27,800
+Is I want to go into the selector and I'm going to transform this.
+
+29
+00:02:30,080 --> 00:02:31,910
+Make sure that we return back.
+
+30
+00:02:33,510 --> 00:02:39,930
+And inside I'm going to add another console.log and this is going to say selector fired.
+
+31
+00:02:43,130 --> 00:02:44,510
+Now I'm going to save this code.
+
+32
+00:02:45,320 --> 00:02:52,220
+And when I go into the application, there will be a bunch of new logs and there will be a bunch of
+
+33
+00:02:52,220 --> 00:02:58,490
+orders and it's going to be flip flopping between redux triggered renders our own internal category
+
+34
+00:02:58,490 --> 00:02:59,420
+triggered renders.
+
+35
+00:02:59,660 --> 00:03:02,260
+There's going to be a lot and I'm going to walk through it.
+
+36
+00:03:02,270 --> 00:03:08,060
+And please bear in mind that there are going to be a couple jumps we need to make in order to understand
+
+37
+00:03:08,060 --> 00:03:08,750
+all the pieces.
+
+38
+00:03:09,080 --> 00:03:11,690
+So even if not, everything makes sense at once.
+
+39
+00:03:11,930 --> 00:03:14,570
+Follow along and in the end it will all make sense.
+
+40
+00:03:15,470 --> 00:03:18,410
+So the first thing we need to do, let's go to our application.
+
+41
+00:03:19,390 --> 00:03:23,380
+I want to go to hats and I'm going to refresh.
+
+42
+00:03:24,740 --> 00:03:27,700
+What we see here is a bunch of different calls.
+
+43
+00:03:27,710 --> 00:03:28,100
+Fire.
+
+44
+00:03:29,050 --> 00:03:31,120
+First of what we see is selector fired.
+
+45
+00:03:31,660 --> 00:03:36,820
+Actually, what I'm going to do is I'm actually going to move this up above the selector, because the
+
+46
+00:03:36,820 --> 00:03:40,150
+selector right now is firing above the console lock.
+
+47
+00:03:40,480 --> 00:03:45,400
+And the reason for that is because, of course, use selector whenever the code runs top to bottom,
+
+48
+00:03:45,610 --> 00:03:47,800
+when it hits the selector, it's going to call the selector.
+
+49
+00:03:48,580 --> 00:03:49,630
+And we'll see this in action.
+
+50
+00:03:49,630 --> 00:03:53,860
+Now, if I refresh again, we see at first render re rendering.
+
+51
+00:03:54,190 --> 00:03:57,730
+So this is our initial component getting mounted on to the page.
+
+52
+00:03:57,850 --> 00:03:58,600
+It's rendering.
+
+53
+00:03:58,870 --> 00:04:03,880
+And what it will do is it will walk through our code, hit the line where it's saying use selector and
+
+54
+00:04:03,880 --> 00:04:05,440
+then our selector fires.
+
+55
+00:04:06,220 --> 00:04:10,990
+Then what happens is that our use effect will run because our use effect of course, is listing for
+
+56
+00:04:10,990 --> 00:04:15,940
+category change, which is in the URL parameter, but it's also working for category map changes.
+
+57
+00:04:16,270 --> 00:04:20,440
+Now both of these, of course, are initializing for the first time, so our effect will one regardless.
+
+58
+00:04:20,860 --> 00:04:24,760
+So set products get called when set products gets called.
+
+59
+00:04:25,030 --> 00:04:30,340
+What you'll notice is once again, this selector fires and then the re render happens here.
+
+60
+00:04:30,940 --> 00:04:33,550
+Now, you might be wondering, yeah, why is this happening?
+
+61
+00:04:33,550 --> 00:04:38,290
+Shouldn't the re render happen before the selector fires?
+
+62
+00:04:39,070 --> 00:04:40,000
+You would be correct.
+
+63
+00:04:40,330 --> 00:04:43,540
+The reason this is happening is not actually what you think.
+
+64
+00:04:44,200 --> 00:04:50,990
+This actually has to do with the way that this logger is confusing us, this redux.
+
+65
+00:04:50,990 --> 00:04:51,820
+The logger code.
+
+66
+00:04:52,240 --> 00:04:58,090
+The way that it works is that in order for it to show you the next state, it actually needs to update
+
+67
+00:04:58,090 --> 00:04:59,230
+the reducer first.
+
+68
+00:04:59,500 --> 00:05:04,030
+And when the reducer updates, it's actually re rendering AR component.
+
+69
+00:05:04,570 --> 00:05:08,620
+And there's a lot to unpack here that I need to do in order for us to understand this.
+
+70
+00:05:09,040 --> 00:05:16,360
+The key thing I want you to notice is that even though this logger right here is occurring below the
+
+71
+00:05:16,360 --> 00:05:22,900
+re render and the selector fire, this is actually supposed to be somewhere before this block happens.
+
+72
+00:05:23,650 --> 00:05:28,120
+And I'm going to explain why this is happening, because it's a rather nuanced issue.
+
+73
+00:05:29,540 --> 00:05:32,630
+First of all, why is in the first place?
+
+74
+00:05:33,660 --> 00:05:37,770
+Set current user re rendering this component.
+
+75
+00:05:38,580 --> 00:05:43,470
+The reason for this is because the root reducer, as I mentioned.
+
+76
+00:05:44,530 --> 00:05:53,620
+Whenever root reducer updates any of these reducer values, the entire store object is going to be a
+
+77
+00:05:53,620 --> 00:05:54,820
+new store object.
+
+78
+00:05:55,180 --> 00:05:59,080
+So just like how our reducer we spread it through the existing state.
+
+79
+00:05:59,080 --> 00:06:04,150
+If you think about our category reducer, we spread through the state and then we update the corresponding
+
+80
+00:06:04,150 --> 00:06:04,690
+property.
+
+81
+00:06:05,230 --> 00:06:09,700
+You can kind of see the root reducer doing the same thing for just the reducer that's updating.
+
+82
+00:06:10,000 --> 00:06:13,750
+And then the other ones just retain their old state objects.
+
+83
+00:06:14,410 --> 00:06:20,080
+So while with the current user, the user reducer is a new object category.
+
+84
+00:06:20,170 --> 00:06:22,270
+Reducer returns the old state object.
+
+85
+00:06:22,630 --> 00:06:25,930
+So the categories reducer object is the same one in memory.
+
+86
+00:06:26,290 --> 00:06:28,180
+The user reducer one is a new one.
+
+87
+00:06:28,540 --> 00:06:36,460
+However, every single time this combined reducers store object is always a new one whenever any of
+
+88
+00:06:36,460 --> 00:06:37,780
+these reducers update.
+
+89
+00:06:38,320 --> 00:06:44,410
+So this is why, despite the fact that current user is the value that's getting set inside the user
+
+90
+00:06:44,410 --> 00:06:49,630
+reducer, our category components selector function is still getting rerun.
+
+91
+00:06:49,840 --> 00:06:55,420
+And the reason for this is because use selector as a hook is literally hooked into the Redux store.
+
+92
+00:06:55,440 --> 00:06:58,540
+And whenever an action comes in this world, refire.
+
+93
+00:06:59,380 --> 00:07:08,410
+So now what I want you to take away is just that fact alone, that whenever any action fires and as
+
+94
+00:07:08,410 --> 00:07:15,280
+long as a reducer updates, it does not matter which part of the reducer you're listening into.
+
+95
+00:07:15,310 --> 00:07:19,240
+Every single component that has a use selector will rerun.
+
+96
+00:07:19,660 --> 00:07:24,640
+Now, whether or not this triggers a re render is going to be up to how we code out our structure.
+
+97
+00:07:25,420 --> 00:07:28,520
+So this is going to be the first thing we're going to tackle.
+
+98
+00:07:28,540 --> 00:07:33,760
+We're just going to tackle this topic first before we dive into anything else regarding all of these
+
+99
+00:07:33,760 --> 00:07:38,020
+different logs, because I want to clarify and demystify this section.
+
+100
+00:07:38,710 --> 00:07:40,210
+So that's what we'll do in the next video.
+
+101
+00:07:40,210 --> 00:07:45,940
+We are going to talk about our selectors and how to prevent them from triggering through better understanding
+
+102
+00:07:45,940 --> 00:07:53,170
+of how these sectors work, as well as learning about how we can modify our own middleware so that we
+
+103
+00:07:53,170 --> 00:07:59,200
+avoid this problem where this gets a little confusing, but also more importantly so that we at least
+
+104
+00:07:59,200 --> 00:08:02,050
+understand why this is happening.
+
+105
+00:08:02,830 --> 00:08:04,060
+So I'll see you in the next video.

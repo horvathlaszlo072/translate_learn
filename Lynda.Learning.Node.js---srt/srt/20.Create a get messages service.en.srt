@@ -1,0 +1,434 @@
+1
+00:00:00.01 --> 00:00:01.04
+- [Instructor] Let's begin by creating
+
+2
+00:00:01.04 --> 00:00:04.01
+a getMessages service endpoint, and note,
+
+3
+00:00:04.01 --> 00:00:06.05
+this will allow us to get actual messages
+
+4
+00:00:06.05 --> 00:00:11.02
+from our backend to our front-end website.
+
+5
+00:00:11.02 --> 00:00:15.04
+Inside our server.js, let's
+add a route for our endpoint.
+
+6
+00:00:15.04 --> 00:00:18.02
+We will be using app.get to specify that
+
+7
+00:00:18.02 --> 00:00:20.06
+we will be handling GET requests.
+
+8
+00:00:20.06 --> 00:00:24.01
+So between line four and
+five, let's add a few lines,
+
+9
+00:00:24.01 --> 00:00:28.01
+so that we can make room for app.get.
+
+10
+00:00:28.01 --> 00:00:29.08
+Then for the first parameter,
+
+11
+00:00:29.08 --> 00:00:31.04
+we need to specify the route.
+
+12
+00:00:31.04 --> 00:00:34.05
+We'll use /messages, since we'll be
+
+13
+00:00:34.05 --> 00:00:36.05
+supplying a list of messages.
+
+14
+00:00:36.05 --> 00:00:40.03
+And then we'll need our
+callback to handle the request.
+
+15
+00:00:40.03 --> 00:00:43.06
+That will take in request,
+and then give us reference
+
+16
+00:00:43.06 --> 00:00:47.07
+to response, so that we can respond to it.
+
+17
+00:00:47.07 --> 00:00:50.07
+For now, let's respond with a
+test string that says hello.
+
+18
+00:00:50.07 --> 00:00:52.07
+So we'll use response
+
+19
+00:00:52.07 --> 00:00:55.00
+dot send
+
+20
+00:00:55.00 --> 00:00:57.04
+and then a string that says hello.
+
+21
+00:00:57.04 --> 00:00:59.08
+We can try this out in
+our browser by navigating
+
+22
+00:00:59.08 --> 00:01:04.00
+to the endpoint with a /messages.
+
+23
+00:01:04.00 --> 00:01:07.01
+And then we can see the string hello.
+
+24
+00:01:07.01 --> 00:01:09.07
+Next, let's create a
+placeholder messages list
+
+25
+00:01:09.07 --> 00:01:15.03
+as an array at the top.
+
+26
+00:01:15.03 --> 00:01:17.07
+We will call it messages,
+and then we'll create
+
+27
+00:01:17.07 --> 00:01:31.01
+two message objects,
+with a name and message.
+
+28
+00:01:31.01 --> 00:01:33.05
+Then I'll copy this, add a comma,
+
+29
+00:01:33.05 --> 00:01:37.04
+and add the second message object.
+
+30
+00:01:37.04 --> 00:01:42.00
+Then change the name and the message.
+
+31
+00:01:42.00 --> 00:01:44.04
+Now we can update our
+messages and point to send
+
+32
+00:01:44.04 --> 00:01:49.01
+that messages array instead
+of the hello string.
+
+33
+00:01:49.01 --> 00:01:54.01
+Let's save that and refresh our browser.
+
+34
+00:01:54.01 --> 00:01:57.00
+And you can see that we're
+getting the messages array.
+
+35
+00:01:57.00 --> 00:01:59.05
+Next, let's go back to our index html
+
+36
+00:01:59.05 --> 00:02:02.01
+and update our front
+end, so that we actually
+
+37
+00:02:02.01 --> 00:02:04.03
+get those messages from the backend,
+
+38
+00:02:04.03 --> 00:02:07.03
+using an http ajax request.
+
+39
+00:02:07.03 --> 00:02:09.07
+Let's go down to our script element,
+
+40
+00:02:09.07 --> 00:02:12.02
+and add a new function below our last.
+
+41
+00:02:12.02 --> 00:02:13.07
+We'll call it
+
+42
+00:02:13.07 --> 00:02:18.05
+getMessages.
+
+43
+00:02:18.05 --> 00:02:23.01
+Inside here, let's make a
+jQuery http GET request.
+
+44
+00:02:23.01 --> 00:02:26.00
+We'll use $.get.
+
+45
+00:02:26.00 --> 00:02:28.03
+And then we'll need the
+URL from our browser.
+
+46
+00:02:28.03 --> 00:02:31.02
+So let's copy that.
+
+47
+00:02:31.02 --> 00:02:33.08
+And paste that in.
+
+48
+00:02:33.08 --> 00:02:36.03
+And of course, we'll need a callback
+
+49
+00:02:36.03 --> 00:02:40.03
+that provides us with our data.
+
+50
+00:02:40.03 --> 00:02:42.06
+So we'll supply that
+as a second parameter.
+
+51
+00:02:42.06 --> 00:02:44.08
+Now, let's console log the data
+
+52
+00:02:44.08 --> 00:02:46.09
+to make sure that this step works.
+
+53
+00:02:46.09 --> 00:02:49.06
+And before we try this, let's call our
+
+54
+00:02:49.06 --> 00:02:53.04
+getMessages function and
+our document ready function.
+
+55
+00:02:53.04 --> 00:02:58.00
+So we'll add that below our click binding.
+
+56
+00:02:58.00 --> 00:03:00.02
+Let's save that and give it a try.
+
+57
+00:03:00.02 --> 00:03:04.00
+Let's go back to our web
+app, and then hit refresh.
+
+58
+00:03:04.00 --> 00:03:07.00
+If we give this a try, we can
+see that it will not work.
+
+59
+00:03:07.00 --> 00:03:09.05
+It does not recognize
+the jQuery GET function
+
+60
+00:03:09.05 --> 00:03:11.09
+as we can see in our console error.
+
+61
+00:03:11.09 --> 00:03:14.09
+That's because by default,
+the jQuery CDN link
+
+62
+00:03:14.09 --> 00:03:18.02
+we copied earlier, is
+using a slim version.
+
+63
+00:03:18.02 --> 00:03:22.05
+So let's remove that from the
+URL in our script element.
+
+64
+00:03:22.05 --> 00:03:26.03
+So let's scroll to the top, and
+in the first script element,
+
+65
+00:03:26.03 --> 00:03:31.06
+on line three, we can see
+it contains a slim version.
+
+66
+00:03:31.06 --> 00:03:34.09
+So I'll take out the word slim.
+
+67
+00:03:34.09 --> 00:03:37.06
+Since we're now using a
+different version of jQuery,
+
+68
+00:03:37.06 --> 00:03:39.07
+the integrity property
+will no longer work,
+
+69
+00:03:39.07 --> 00:03:49.01
+so we can take that out.
+
+70
+00:03:49.01 --> 00:03:51.01
+Then let's save that and give it a try.
+
+71
+00:03:51.01 --> 00:03:53.06
+When we reload our app, we can see that
+
+72
+00:03:53.06 --> 00:03:58.08
+we have our messages list in our console.
+
+73
+00:03:58.08 --> 00:04:01.06
+Next, let's display these messages
+
+74
+00:04:01.06 --> 00:04:06.05
+in the message area we created earlier.
+
+75
+00:04:06.05 --> 00:04:10.08
+So let's scroll down and
+get rid of the console log
+
+76
+00:04:10.08 --> 00:04:14.04
+on line 34 in our getMessages call.
+
+77
+00:04:14.04 --> 00:04:16.08
+And instead, we will
+iterate through each message
+
+78
+00:04:16.08 --> 00:04:20.03
+in our data, and call addMessage.
+
+79
+00:04:20.03 --> 00:04:24.04
+We can do that with data.foreach.
+
+80
+00:04:24.04 --> 00:04:27.09
+And that auto-generates
+a forEach function for us
+
+81
+00:04:27.09 --> 00:04:32.02
+with a callback, so we're
+using just data.forEach.
+
+82
+00:04:32.02 --> 00:04:34.09
+Then inside, we'll call addMessages,
+
+83
+00:04:34.09 --> 00:04:41.04
+and supply the message
+object as the argument.
+
+84
+00:04:41.04 --> 00:04:45.07
+Let's save that, and give it a try.
+
+85
+00:04:45.07 --> 00:04:48.05
+So now as I refresh, our list populates
+
+86
+00:04:48.05 --> 00:04:50.08
+our message history area.
+
+87
+00:04:50.08 --> 00:04:53.07
+We can do a quick optimization.
+
+88
+00:04:53.07 --> 00:04:56.08
+Since the signature of
+our addMessages function
+
+89
+00:04:56.08 --> 00:05:00.05
+matches the signature of the
+callback we're supplying,
+
+90
+00:05:00.05 --> 00:05:02.08
+we don't need a callback at all.
+
+91
+00:05:02.08 --> 00:05:05.04
+We can simply call forEach and then supply
+
+92
+00:05:05.04 --> 00:05:08.07
+the name of our function, addMessages.
+
+93
+00:05:08.07 --> 00:05:12.01
+And now our addMessages
+function will be called directly
+
+94
+00:05:12.01 --> 00:05:16.00
+instead of going through
+an in-line callback.
+
+95
+00:05:16.00 --> 00:05:18.07
+Let's save that and make
+sure it still works.
+
+96
+00:05:18.07 --> 00:05:20.03
+So I've refreshed the page,
+
+97
+00:05:20.03 --> 00:05:22.02
+and both messages are still there.
+
+98
+00:05:22.02 --> 00:05:24.02
+Now that we're able to get messages,
+
+99
+00:05:24.02 --> 00:05:27.08
+next let's see how we
+can post new messages.
+

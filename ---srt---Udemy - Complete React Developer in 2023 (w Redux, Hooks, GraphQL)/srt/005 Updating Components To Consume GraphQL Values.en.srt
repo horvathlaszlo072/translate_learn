@@ -1,0 +1,351 @@
+1
+00:00:01,420 --> 00:00:02,380
+Welcome back, everyone.
+
+2
+00:00:03,010 --> 00:00:08,180
+In this video, we are going to learn how to work with the data that we fetched in the last video.
+
+3
+00:00:09,220 --> 00:00:16,630
+So as we saw this use query hook along with our collections GQ, our query was able to return back to
+
+4
+00:00:16,630 --> 00:00:18,520
+us the data of collections.
+
+5
+00:00:18,970 --> 00:00:25,570
+What we want to do now is we want to convert it from the array of collections over to this map of collections
+
+6
+00:00:25,570 --> 00:00:27,010
+that we're so used to using.
+
+7
+00:00:27,910 --> 00:00:34,240
+So in order for us to utilize this, what we'll do is what transform the data and to transform the data,
+
+8
+00:00:34,240 --> 00:00:35,650
+we'll run an effect.
+
+9
+00:00:36,740 --> 00:00:44,060
+As you can imagine, the data that we get back from this hook is something that we can pass into our
+
+10
+00:00:44,060 --> 00:00:49,820
+use effects dependency array so that we only run this effect whenever the data updates.
+
+11
+00:00:50,420 --> 00:00:57,020
+So we know that whenever we get this data, we want to essentially reduce over it and generate the map
+
+12
+00:00:57,020 --> 00:00:58,670
+as we've been doing up to this point.
+
+13
+00:00:59,660 --> 00:01:04,280
+What we want to do, though, is we want to make sure that that data exists first, because as we saw
+
+14
+00:01:04,310 --> 00:01:09,680
+on initialization, that data comes in undefined when we're initially fetching for that data.
+
+15
+00:01:10,700 --> 00:01:19,040
+So here we'll say if the data exists, then what we'll do is we will fetch the collections value off
+
+16
+00:01:19,040 --> 00:01:20,030
+of the data.
+
+17
+00:01:21,290 --> 00:01:21,620
+Next.
+
+18
+00:01:21,620 --> 00:01:27,830
+What we're going to do is we need to generate this collections map so this is equal to the same code
+
+19
+00:01:27,830 --> 00:01:30,080
+we had before where we reduced over it.
+
+20
+00:01:31,050 --> 00:01:33,540
+And we start with an object.
+
+21
+00:01:34,590 --> 00:01:40,380
+As we reduce over it, what we're going to do is in the callback, we know that we're getting this accumulator
+
+22
+00:01:40,380 --> 00:01:42,630
+value as well as the collection itself.
+
+23
+00:01:44,040 --> 00:01:51,150
+So we'll say first, let's pull off the title and the items from the collection.
+
+24
+00:01:52,500 --> 00:01:57,870
+And then we'll add that title as the key onto the accumulator.
+
+25
+00:01:58,110 --> 00:02:00,540
+I will make sure that we lowercase that as well.
+
+26
+00:02:02,900 --> 00:02:08,750
+And this value will be set to the items array and then we just need to return the accumulator so that
+
+27
+00:02:08,750 --> 00:02:11,810
+it continues on through the rest of the reduce.
+
+28
+00:02:13,090 --> 00:02:19,090
+Once we're done, then we are going to set the categories map equal to our collections map.
+
+29
+00:02:20,020 --> 00:02:23,920
+So run set categories map equal to collections map.
+
+30
+00:02:25,630 --> 00:02:26,260
+And that's it.
+
+31
+00:02:26,530 --> 00:02:27,220
+That's all we need.
+
+32
+00:02:27,790 --> 00:02:31,540
+We can now get rid of our console.log and now categories.
+
+33
+00:02:31,540 --> 00:02:39,280
+Map is already passed as a value into our context, but we can also add in the loading state like so.
+
+34
+00:02:41,710 --> 00:02:43,510
+And now we have all of our values.
+
+35
+00:02:44,170 --> 00:02:45,850
+If we go back to our application.
+
+36
+00:02:47,090 --> 00:02:50,990
+What we'll see is that if we enter the shop, our data is present.
+
+37
+00:02:51,320 --> 00:02:54,260
+If we go into a category, the data is still there.
+
+38
+00:02:54,770 --> 00:02:55,700
+So everything works.
+
+39
+00:02:55,710 --> 00:02:56,720
+We have everything hooked up.
+
+40
+00:02:57,440 --> 00:03:02,810
+But one thing that we might want to do is that on refresh, notice that we don't have the spinner because
+
+41
+00:03:02,810 --> 00:03:08,240
+we had that when we implemented our redux saga as well as our Redux pattern.
+
+42
+00:03:08,690 --> 00:03:15,320
+But due to the fact that loading is present now, we can always leverage this inside of our appropriate
+
+43
+00:03:15,320 --> 00:03:16,010
+application.
+
+44
+00:03:16,550 --> 00:03:21,080
+So here I'm going to go into the category component.
+
+45
+00:03:22,100 --> 00:03:23,930
+Actually, let's go into the shop component.
+
+46
+00:03:25,680 --> 00:03:29,130
+So in the shop component, we know that we have categories preview and category.
+
+47
+00:03:29,820 --> 00:03:33,030
+In the categories preview is where we draw the categories map.
+
+48
+00:03:33,600 --> 00:03:38,760
+So in order for us to modify this, to use the spinner and the loading value, we're already passing
+
+49
+00:03:38,760 --> 00:03:41,490
+that loading value through the actual context.
+
+50
+00:03:41,820 --> 00:03:44,030
+So we can just get that directly here now.
+
+51
+00:03:45,010 --> 00:03:45,310
+Next.
+
+52
+00:03:45,310 --> 00:03:48,850
+What we're going to do is we want to import in the spinner component.
+
+53
+00:03:49,210 --> 00:03:50,230
+So let's import.
+
+54
+00:03:51,560 --> 00:03:55,850
+Spinner from our components folder.
+
+55
+00:03:56,850 --> 00:03:58,380
+Our Spinner folder.
+
+56
+00:03:58,740 --> 00:03:59,610
+Spinner component.
+
+57
+00:04:02,020 --> 00:04:04,450
+And now all we need to do is conditionally render.
+
+58
+00:04:05,140 --> 00:04:07,450
+So we will say if it's loading.
+
+59
+00:04:10,500 --> 00:04:12,540
+Then render the spinner component.
+
+60
+00:04:13,960 --> 00:04:14,590
+Otherwise.
+
+61
+00:04:17,350 --> 00:04:22,630
+Render in our object keys map code that we had up until this point.
+
+62
+00:04:25,530 --> 00:04:32,130
+So now if we save this and we go back to our application and we do a hard refresh there we see our spinner
+
+63
+00:04:32,760 --> 00:04:33,870
+and then our code loads in.
+
+64
+00:04:34,710 --> 00:04:35,120
+Awesome.
+
+65
+00:04:35,790 --> 00:04:40,710
+So let's do the same thing for our other component, which is our category component.
+
+66
+00:04:41,490 --> 00:04:43,080
+So opening up this component.
+
+67
+00:04:44,110 --> 00:04:45,130
+We're going to do the same thing.
+
+68
+00:04:45,940 --> 00:04:48,040
+We're going to bring in the loading value.
+
+69
+00:04:48,640 --> 00:04:52,450
+And we're also going to import in our spinner.
+
+70
+00:04:56,140 --> 00:04:58,780
+Going up to our components folder.
+
+71
+00:04:59,620 --> 00:05:01,570
+Into our spinner folder.
+
+72
+00:05:02,140 --> 00:05:03,400
+Grabbing our spinner component.
+
+73
+00:05:04,830 --> 00:05:12,870
+So just like we did before here, what we're going to do is we are going to wrap this fragment inside
+
+74
+00:05:12,870 --> 00:05:14,430
+of a conditional check.
+
+75
+00:05:17,980 --> 00:05:23,260
+So we'll say that if loading is true, then load the spinner.
+
+76
+00:05:28,810 --> 00:05:34,000
+Otherwise render out this title and this category container.
+
+77
+00:05:35,160 --> 00:05:41,760
+But because this needs a top level parent or also wrap this inside of a fragment.
+
+78
+00:05:45,900 --> 00:05:51,210
+And I'm sure that some of my spacing is off or my brackets.
+
+79
+00:05:52,740 --> 00:05:53,580
+Like so.
+
+80
+00:05:57,310 --> 00:06:02,770
+So let's save this and let's go back into our category preview.
+
+81
+00:06:03,610 --> 00:06:07,840
+And if we refresh, we see where our spinner and then we see our content.
+
+82
+00:06:08,530 --> 00:06:08,920
+Awesome.
+
+83
+00:06:08,930 --> 00:06:10,480
+So everything here is working.
+
+84
+00:06:11,320 --> 00:06:17,290
+So we've learned how to use that exact same collections query that we had in our GraphQL in order to
+
+85
+00:06:17,290 --> 00:06:18,940
+fetch all of the appropriate items.
+
+86
+00:06:19,960 --> 00:06:26,080
+In the next video, let's actually leverage a different query and query by a variable and I'll show
+
+87
+00:06:26,080 --> 00:06:26,770
+you how that works.
+
+88
+00:06:27,250 --> 00:06:28,240
+I'll see you in the next video.

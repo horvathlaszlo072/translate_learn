@@ -1,0 +1,491 @@
+1
+00:00:00,590 --> 00:00:06,170
+All right, so our next challenge, challenge eight, we can't type users in, please see if you can
+
+2
+00:00:06,170 --> 00:00:10,520
+fix once again another Vagg error into what's going on.
+
+3
+00:00:10,920 --> 00:00:15,070
+As you can see here, the app looks like it's already crashed when we started it up.
+
+4
+00:00:15,680 --> 00:00:20,900
+So once again, I'm going to go up and click open sandbox and that's going to give me this sandbox here
+
+5
+00:00:20,900 --> 00:00:23,570
+so where I can have a better workspace of what's going on.
+
+6
+00:00:24,770 --> 00:00:28,750
+So as you can see, we have cannot read property map of undefined.
+
+7
+00:00:29,210 --> 00:00:31,480
+So this is a pretty common error.
+
+8
+00:00:31,490 --> 00:00:34,190
+If you're not familiar with this, you can always Google this.
+
+9
+00:00:34,220 --> 00:00:36,320
+So this is a pretty common error.
+
+10
+00:00:36,800 --> 00:00:44,060
+And as you could see in this first stack overflow, this person is quite confused.
+
+11
+00:00:44,060 --> 00:00:45,520
+They're getting the same error as us.
+
+12
+00:00:46,310 --> 00:00:55,280
+And as you can see, it's basically as a result of somebody needing to check whether or not they actually
+
+13
+00:00:55,280 --> 00:00:56,210
+have that data.
+
+14
+00:00:56,660 --> 00:01:03,200
+So basically what's happening here is that users is undefined and it cannot read property map of undefined,
+
+15
+00:01:03,560 --> 00:01:05,100
+so users is undefined.
+
+16
+00:01:05,120 --> 00:01:11,320
+So basically what we have to do, like our last challenge is initialize users to an empty array.
+
+17
+00:01:11,690 --> 00:01:15,230
+So we go up and we say, where is users defined?
+
+18
+00:01:16,230 --> 00:01:27,180
+So we search for our app and we see here users is defined here in a reactor, OK, so as you know,
+
+19
+00:01:27,180 --> 00:01:29,550
+we have to just put an empty array here.
+
+20
+00:01:30,740 --> 00:01:33,630
+So we do that and that fixes that initial error, right?
+
+21
+00:01:34,130 --> 00:01:36,550
+So that was our first clue.
+
+22
+00:01:37,370 --> 00:01:43,670
+I explain this in the previous challenge, but basically you have to look and research about you state
+
+23
+00:01:43,670 --> 00:01:44,270
+and react.
+
+24
+00:01:44,270 --> 00:01:49,220
+TOOKES And that'll give you a hint into why this variable here was undefined.
+
+25
+00:01:49,820 --> 00:01:54,320
+That's because we did not initialize that used state hook.
+
+26
+00:01:54,710 --> 00:01:55,690
+So we did that.
+
+27
+00:01:55,730 --> 00:01:56,930
+So that's easy, right?
+
+28
+00:01:57,320 --> 00:02:00,820
+So now we type in things here and we get this object object.
+
+29
+00:02:01,310 --> 00:02:04,420
+So now it's time to debug a little further.
+
+30
+00:02:04,670 --> 00:02:07,610
+So we go down here, we read some of the render method in here.
+
+31
+00:02:09,320 --> 00:02:16,400
+And as you could see, we have an endpoint where we type in that user and it looks like this this code
+
+32
+00:02:16,400 --> 00:02:18,020
+is trying to add users here.
+
+33
+00:02:18,530 --> 00:02:23,590
+So we have the input now we're typing into this input and we're getting this.
+
+34
+00:02:23,600 --> 00:02:24,510
+So that's bad, right?
+
+35
+00:02:24,530 --> 00:02:26,650
+This looks like an issue that we need to resolve.
+
+36
+00:02:27,230 --> 00:02:34,400
+So if we go and we look at what's happening on the input, we see we have a style, we have a placeholder,
+
+37
+00:02:34,400 --> 00:02:38,270
+which if we refresh, we get type name in.
+
+38
+00:02:38,300 --> 00:02:39,560
+So that's where that placeholder is.
+
+39
+00:02:39,560 --> 00:02:39,760
+Right.
+
+40
+00:02:39,770 --> 00:02:40,790
+We can make that assumption.
+
+41
+00:02:41,540 --> 00:02:44,910
+And then we have on change, name change and then we have value.
+
+42
+00:02:45,410 --> 00:02:50,410
+So name change looks like the function that's called when the input is changed.
+
+43
+00:02:50,990 --> 00:02:54,280
+So we go up here and we see this function called name change.
+
+44
+00:02:54,950 --> 00:03:01,240
+So we see that inside of this function we call a set name to value.
+
+45
+00:03:01,850 --> 00:03:03,170
+So what a set name.
+
+46
+00:03:03,170 --> 00:03:10,040
+We can research that we go up here and we see that set name is just another reactor.
+
+47
+00:03:10,090 --> 00:03:16,430
+OK, so we see you states being called here and we see that you state is being initialized with an empty
+
+48
+00:03:16,430 --> 00:03:19,740
+string and we see that that looks right.
+
+49
+00:03:19,760 --> 00:03:23,750
+OK, so we have a name here and we have a set name, Setar.
+
+50
+00:03:24,080 --> 00:03:26,720
+So this looks like good initialization of a reactor.
+
+51
+00:03:26,750 --> 00:03:28,140
+OK, so we've confirmed that.
+
+52
+00:03:28,490 --> 00:03:29,440
+So what's going on here?
+
+53
+00:03:29,450 --> 00:03:30,410
+Why isn't this working?
+
+54
+00:03:30,890 --> 00:03:33,910
+Well, let's put a breakpoint in here and see why it's not working.
+
+55
+00:03:33,950 --> 00:03:40,040
+Now, what else is supposed to happen here is that the value of that input is supposed to be set here
+
+56
+00:03:40,040 --> 00:03:40,670
+on that name.
+
+57
+00:03:41,240 --> 00:03:46,900
+So the value of that input as we type it looks like it's set to an object.
+
+58
+00:03:47,390 --> 00:03:50,000
+So that gives us a hint.
+
+59
+00:03:50,030 --> 00:03:50,810
+That's not correct.
+
+60
+00:03:50,840 --> 00:03:51,060
+Right.
+
+61
+00:03:51,590 --> 00:03:57,260
+When you initialize an input value, you want it to be a string so you could research HTML inputs,
+
+62
+00:03:57,260 --> 00:03:59,060
+but that's that's the gist of it.
+
+63
+00:03:59,060 --> 00:03:59,630
+And react.
+
+64
+00:03:59,630 --> 00:04:02,290
+You want to set that value to be a string for the input.
+
+65
+00:04:02,780 --> 00:04:07,460
+If you remember the react select example earlier, that was a completely different signature.
+
+66
+00:04:07,460 --> 00:04:07,720
+Right.
+
+67
+00:04:07,880 --> 00:04:10,770
+But similar in that it's a value and on change.
+
+68
+00:04:11,270 --> 00:04:14,210
+So what I'll do now is I'll open up the dev tools.
+
+69
+00:04:16,330 --> 00:04:23,680
+And I'm going to search for Abdul just once again and here I'm going to put a breakpoint on the name
+
+70
+00:04:23,680 --> 00:04:25,330
+change function.
+
+71
+00:04:26,960 --> 00:04:29,150
+So I go over here and I type in something.
+
+72
+00:04:30,770 --> 00:04:36,890
+And you see, I get a value and it's a synthetic event, so you could see here, I'm I'm quite confused.
+
+73
+00:04:36,900 --> 00:04:38,840
+I don't know what a synthetic event is.
+
+74
+00:04:39,830 --> 00:04:48,890
+But if you Google this, so I could Google now input change synthetic event.
+
+75
+00:04:51,290 --> 00:05:00,350
+And you see here we get some tutorials on synthetic event, so we see here we have this example, add
+
+76
+00:05:00,350 --> 00:05:02,180
+in on change handler to an input.
+
+77
+00:05:03,670 --> 00:05:04,180
+So.
+
+78
+00:05:05,150 --> 00:05:10,460
+We could see here, right in this example right here, a very simple example that we found on the Internet
+
+79
+00:05:11,690 --> 00:05:12,800
+on change handler.
+
+80
+00:05:14,100 --> 00:05:20,550
+Handle change, just like we have, but this time we see that it's easy, you don't target value.
+
+81
+00:05:20,940 --> 00:05:26,940
+So interesting right now we go down here, we say, and on change, event handler returns a synthetic
+
+82
+00:05:26,940 --> 00:05:32,430
+event which contains useful metadata such as the target's ID name and current value.
+
+83
+00:05:32,730 --> 00:05:38,720
+We can access the target's value inside of the handle change by accessing that target value.
+
+84
+00:05:39,120 --> 00:05:43,940
+Therefore, to log the name of the input field, we can log Iida target name.
+
+85
+00:05:44,280 --> 00:05:47,800
+So it sounds like we want to use the target value, right?
+
+86
+00:05:48,210 --> 00:05:54,060
+So we go back here, let's go ahead and change this signature to be an E to represent that event.
+
+87
+00:05:54,390 --> 00:05:57,210
+And then we say E target value.
+
+88
+00:05:57,690 --> 00:06:03,690
+So if we go into our breakpoint where we had put that breakpoint, we could see that if we go here value
+
+89
+00:06:03,690 --> 00:06:10,170
+this is actually the static event at Target and then we go to value inside of that target.
+
+90
+00:06:13,040 --> 00:06:14,510
+Go all the way down to LA.
+
+91
+00:06:14,720 --> 00:06:19,700
+There's a lot of properties in this, but eventually we get to value and we see we click on that.
+
+92
+00:06:19,710 --> 00:06:21,800
+We see we have s, which is what we typed in.
+
+93
+00:06:22,820 --> 00:06:23,390
+So.
+
+94
+00:06:25,460 --> 00:06:32,690
+We undo this break point and we go and change this to eat out target value, we had save and then we
+
+95
+00:06:32,690 --> 00:06:33,380
+refresh.
+
+96
+00:06:35,360 --> 00:06:41,300
+And we type in a name, so let's type in a name and then we click add user and it looks like it works
+
+97
+00:06:41,300 --> 00:06:44,060
+now, so we added more users.
+
+98
+00:06:45,890 --> 00:06:46,480
+Wait a minute.
+
+99
+00:06:50,240 --> 00:06:53,950
+This isn't working, so I would expect there to be more users in here, right.
+
+100
+00:06:54,850 --> 00:06:58,580
+So now it's time to debug what's going on here with this ad user button.
+
+101
+00:06:59,350 --> 00:07:05,490
+So if we go up to this ad user button, you could see here we're setting the users to be the name the
+
+102
+00:07:05,500 --> 00:07:11,440
+an array right here of just one variable, just one property of that.
+
+103
+00:07:12,300 --> 00:07:19,350
+Aura or one value inside of that Arae name, so that doesn't include the existing users, right.
+
+104
+00:07:19,920 --> 00:07:26,610
+So if you remember from a previous challenge, what we could do is spread those users here, Atacama,
+
+105
+00:07:26,640 --> 00:07:28,300
+and then add in the new name.
+
+106
+00:07:29,100 --> 00:07:30,390
+So now we save that.
+
+107
+00:07:31,350 --> 00:07:32,760
+And let's just see if that works.
+
+108
+00:07:34,010 --> 00:07:36,290
+So now, just like that, we don't even have to refresh.
+
+109
+00:07:38,210 --> 00:07:43,940
+We get the expected behavior now just to confirm we go down here, we didn't talk about this, but we
+
+110
+00:07:43,940 --> 00:07:48,380
+do see users that map, we are mapping over the users and we're just listing that user.
+
+111
+00:07:49,390 --> 00:07:49,790
+All right.
+
+112
+00:07:49,790 --> 00:07:51,290
+So let's summarize what's going on.
+
+113
+00:07:51,320 --> 00:07:52,550
+Users is an array.
+
+114
+00:07:52,580 --> 00:07:56,690
+We have to initialize that array with an empty array in the used state prop.
+
+115
+00:07:58,570 --> 00:08:04,000
+That's how we list the users and fix the initial error input when we type in and input the on change
+
+116
+00:08:04,000 --> 00:08:07,330
+event needs to select from the target value.
+
+117
+00:08:08,530 --> 00:08:15,430
+That's how we set with the reactor the current name value when we add user with the button on click
+
+118
+00:08:15,430 --> 00:08:16,130
+add user.
+
+119
+00:08:16,660 --> 00:08:23,170
+We need to spread the current users onto an array, a new array and add the current name onto the end.
+
+120
+00:08:23,680 --> 00:08:32,410
+Then we set users onto our an array onto our with the set users react hauk and that thus renders with
+
+121
+00:08:32,410 --> 00:08:35,140
+users being the new list of users.
+
+122
+00:08:35,530 --> 00:08:41,290
+So this is a basic to do list type of app, and I hope this is helpful and this is the end of the challenge.
+
+123
+00:08:41,320 --> 00:08:41,710
+Thanks.

@@ -1,0 +1,403 @@
+1
+00:00:00,330 --> 00:00:01,170
+Welcome back, everyone.
+
+2
+00:00:01,770 --> 00:00:08,340
+In this video, we are going to really deep dive into components and understanding what components are
+
+3
+00:00:08,340 --> 00:00:09,210
+conceptually.
+
+4
+00:00:09,580 --> 00:00:14,520
+We're going to take this concept into our application so that we can understand how to leverage this
+
+5
+00:00:14,520 --> 00:00:21,960
+concept of components so that we can write a more scalable, maintainable and reusable web application
+
+6
+00:00:22,110 --> 00:00:23,640
+inside of React.
+
+7
+00:00:24,560 --> 00:00:26,900
+So what is a component?
+
+8
+00:00:27,770 --> 00:00:31,760
+We've already written one component, which is our app component.
+
+9
+00:00:32,060 --> 00:00:35,720
+It's a class component, but it is a component nonetheless.
+
+10
+00:00:36,440 --> 00:00:40,760
+And so far, let's quickly recap what we know about this component that we've written.
+
+11
+00:00:41,480 --> 00:00:46,760
+This component right now is something that governs a piece of the UI.
+
+12
+00:00:47,540 --> 00:00:52,430
+For us, this entire application, everything you see.
+
+13
+00:00:52,430 --> 00:00:58,280
+So all of this UI is all encapsulated inside of this app components.
+
+14
+00:00:59,200 --> 00:01:04,600
+What this means is that our entire application lives inside of one component.
+
+15
+00:01:05,350 --> 00:01:11,080
+But if you really think about the concept of it, what we've done so far in our component is that we
+
+16
+00:01:11,080 --> 00:01:17,500
+have tied together the functionality of the UI with the actual UI itself.
+
+17
+00:01:18,010 --> 00:01:19,480
+And that is what React does.
+
+18
+00:01:19,480 --> 00:01:25,390
+If you remember in the early lesson that I was teaching was that React is really just a way for us to
+
+19
+00:01:25,390 --> 00:01:32,590
+tie together the visual representation of the UI and the functional representation of the UI.
+
+20
+00:01:33,040 --> 00:01:36,220
+It ties them together, but that's what the code does.
+
+21
+00:01:36,520 --> 00:01:38,590
+What about this concept of a component, though?
+
+22
+00:01:39,250 --> 00:01:46,030
+We know that a component is meant to tie together functionality and visual representation of our user
+
+23
+00:01:46,030 --> 00:01:46,510
+interface?
+
+24
+00:01:47,410 --> 00:01:56,500
+But what it also aims to do is it aims to tie together reusable portions of the code together into one
+
+25
+00:01:56,890 --> 00:01:57,760
+segment.
+
+26
+00:01:58,450 --> 00:02:02,140
+And what I mean by this is if you look at our application.
+
+27
+00:02:03,180 --> 00:02:05,790
+We really only have two features.
+
+28
+00:02:06,510 --> 00:02:12,810
+We have a list of monsters and we have a search bar that searches through those monsters.
+
+29
+00:02:13,590 --> 00:02:20,010
+Technically speaking, these two parts are the two features that encompass our entire application.
+
+30
+00:02:20,850 --> 00:02:29,400
+However, if you think about it deeply, this list of monsters can be a list of anything, really.
+
+31
+00:02:29,760 --> 00:02:33,150
+The concept of a list alone is just a concept.
+
+32
+00:02:33,510 --> 00:02:37,800
+You can have a list of monsters, you can have a list of cars, you can have a list of homes, you can
+
+33
+00:02:37,800 --> 00:02:39,150
+have a list of anything.
+
+34
+00:02:39,840 --> 00:02:46,680
+Similarly, a search bar is just a field input that takes some text, and then we do something with
+
+35
+00:02:46,680 --> 00:02:47,250
+that text.
+
+36
+00:02:47,700 --> 00:02:52,140
+In our particular application, we filter the list of monsters with that text.
+
+37
+00:02:52,500 --> 00:02:55,560
+But you could also take that text and do something else with it.
+
+38
+00:02:55,830 --> 00:03:01,500
+You can use it to actually filter through a completely different set of articles.
+
+39
+00:03:01,620 --> 00:03:05,820
+You can use it to search for a specific website, as Google does.
+
+40
+00:03:06,090 --> 00:03:11,040
+But the idea is just a search bar really takes some text and then does something with the text.
+
+41
+00:03:11,820 --> 00:03:17,220
+The reason why I'm trying to generalize these two features is because that's the idea of components
+
+42
+00:03:17,610 --> 00:03:24,390
+you want to try and figure out if when you're creating a component, you can generate size the functionality
+
+43
+00:03:24,390 --> 00:03:29,580
+of that component as much as you can, so that it becomes as reusable as possible.
+
+44
+00:03:30,270 --> 00:03:35,460
+And by thinking about components that way, you're able to build your application so that you don't
+
+45
+00:03:35,460 --> 00:03:40,680
+have to rewrite a lot of code, because that's the most important thing about our code.
+
+46
+00:03:40,980 --> 00:03:43,710
+We want to be able to create LEGO blocks.
+
+47
+00:03:44,130 --> 00:03:49,140
+We want to be able to build these reusable bits of code that we can use in multiple places.
+
+48
+00:03:49,650 --> 00:03:55,590
+But we want to use them in a way that makes sense where ideally it has a single responsibility.
+
+49
+00:03:56,340 --> 00:04:00,530
+So let's think about what that means, and we're going to learn about that a lot.
+
+50
+00:04:00,600 --> 00:04:03,750
+That idea of a single responsibility throughout our components.
+
+51
+00:04:03,900 --> 00:04:10,470
+It's very general and it's very abstract, and it's something that really comes to you as you build
+
+52
+00:04:10,470 --> 00:04:13,770
+a website, and it varies from website to website.
+
+53
+00:04:14,130 --> 00:04:17,790
+But through good practice, you'll really come to understand this and throughout the course, we're
+
+54
+00:04:17,790 --> 00:04:19,380
+really going to develop this concept.
+
+55
+00:04:19,740 --> 00:04:23,190
+But if you think about it right now, let's think about that concept right now.
+
+56
+00:04:23,640 --> 00:04:30,240
+Inside of our application component, our search bar and our list of users is completely tied together
+
+57
+00:04:30,790 --> 00:04:31,770
+in our application.
+
+58
+00:04:31,770 --> 00:04:34,920
+For some reason, we wanted to reuse this list component.
+
+59
+00:04:35,070 --> 00:04:38,430
+We can't do it because we automatically get a search bar with it.
+
+60
+00:04:38,670 --> 00:04:41,490
+This becomes evidently clear when we look inside of our code.
+
+61
+00:04:41,850 --> 00:04:47,850
+Right now, our search bar is tied to our filtered monsters list through all of the code that we've
+
+62
+00:04:47,850 --> 00:04:50,400
+written, and it all lives inside of our app component.
+
+63
+00:04:50,850 --> 00:04:55,740
+We're not actually generalizing the feature of the search bar or the list of users.
+
+64
+00:04:56,340 --> 00:04:59,790
+So what we need to do is we need to start generalizing them.
+
+65
+00:05:00,000 --> 00:05:05,910
+And by doing that, we're also going to understand more about components and how these components render.
+
+66
+00:05:06,540 --> 00:05:07,890
+So let's get started doing that.
+
+67
+00:05:08,670 --> 00:05:13,260
+Let's first generalize a component that makes the most sense for us immediately.
+
+68
+00:05:13,350 --> 00:05:17,250
+And the easiest way, which is this list of monsters.
+
+69
+00:05:18,640 --> 00:05:23,860
+Now, before we actually start figuring out from a coding perspective how we're going to do that, there's
+
+70
+00:05:23,860 --> 00:05:29,890
+one very quick thing I want to highlight, which is the fact that what we need to now understand is
+
+71
+00:05:29,890 --> 00:05:31,150
+our folder structure.
+
+72
+00:05:31,780 --> 00:05:38,890
+So inside of most react projects, you do separate the files that you have in two different folders
+
+73
+00:05:39,010 --> 00:05:40,450
+by their responsibility.
+
+74
+00:05:40,840 --> 00:05:45,610
+And one of the most common patterns you'll see across React projects in terms of their folder structure
+
+75
+00:05:46,060 --> 00:05:51,970
+is they will create a folder that holds all of their components, and usually that is the components
+
+76
+00:05:51,970 --> 00:05:54,660
+folder depending on the size of your website.
+
+77
+00:05:54,670 --> 00:06:00,700
+These folder structures may evolve and adapt according to what you're seeing are architects who lead
+
+78
+00:06:00,700 --> 00:06:04,990
+the projects are going to figure out, but there's a pretty general pattern that we're going to follow
+
+79
+00:06:04,990 --> 00:06:10,210
+for all of our projects in this course, and they're going to give you a good idea of how to make that
+
+80
+00:06:10,210 --> 00:06:15,520
+decision and how these decisions do get made when it comes to figuring out the folder structure.
+
+81
+00:06:16,000 --> 00:06:21,220
+So for this one, the most common one is we know we want to start building out components and we want
+
+82
+00:06:21,220 --> 00:06:24,220
+those components to encapsulate functionality.
+
+83
+00:06:24,430 --> 00:06:28,930
+So what we want to do is we want to make a folder that's going to hold all of our components.
+
+84
+00:06:29,470 --> 00:06:34,990
+And if we really think about what it is that we are creating right now, our very first component.
+
+85
+00:06:36,120 --> 00:06:45,000
+Looking at the actual feature that we just spoke about, this is going to be a list of cards.
+
+86
+00:06:46,550 --> 00:06:48,440
+So that's really what this component should be.
+
+87
+00:06:48,920 --> 00:06:49,730
+It's a list.
+
+88
+00:06:50,150 --> 00:06:54,890
+But in this particular case, the final output of this is a list of cards.
+
+89
+00:06:55,310 --> 00:06:59,360
+So that's what I'm going to make a new folder that's going to hold this component to be.
+
+90
+00:06:59,690 --> 00:07:01,250
+It's a card list.
+
+91
+00:07:02,030 --> 00:07:08,360
+So again, that is going to be how we're going to make the next folder as well, which is to encapsulate
+
+92
+00:07:08,360 --> 00:07:11,210
+our second feature, as I mentioned, which is the search box.
+
+93
+00:07:12,790 --> 00:07:19,420
+So here inside of this components folder, we are going to create an add into it all of our components
+
+94
+00:07:19,420 --> 00:07:22,660
+and each component is going to live in its separate own folder.
+
+95
+00:07:23,140 --> 00:07:27,520
+So we're going to have a components folder and then we have a cardless folder, which holds our cardless
+
+96
+00:07:27,520 --> 00:07:27,970
+component.
+
+97
+00:07:28,270 --> 00:07:33,340
+We have a search box component, which is going to live inside of the search box folder and then any
+
+98
+00:07:33,340 --> 00:07:34,960
+future new components we make.
+
+99
+00:07:34,960 --> 00:07:40,510
+We're going to make a new folder for that general component inside of this components folder.
+
+100
+00:07:41,500 --> 00:07:48,190
+So that's the idea around components and breaking them up and then how they live inside of our application.
+
+101
+00:07:48,820 --> 00:07:55,300
+And in the next video, let's actually start moving our card list into its own component.

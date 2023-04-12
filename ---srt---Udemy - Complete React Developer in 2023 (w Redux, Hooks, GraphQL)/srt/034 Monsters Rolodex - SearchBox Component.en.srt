@@ -1,0 +1,511 @@
+1
+00:00:00,860 --> 00:00:01,730
+Welcome back, everyone.
+
+2
+00:00:02,730 --> 00:00:08,550
+So in this video, let's actually move out another component that we were talking about, which is our
+
+3
+00:00:08,550 --> 00:00:09,420
+search box.
+
+4
+00:00:10,230 --> 00:00:16,590
+So here we already have our search box folder, so let's just do the same thing and create a new file
+
+5
+00:00:16,590 --> 00:00:19,350
+called search box component such as sex.
+
+6
+00:00:20,250 --> 00:00:23,090
+Once again, we want to make sure we import component.
+
+7
+00:00:25,230 --> 00:00:25,950
+From React.
+
+8
+00:00:27,920 --> 00:00:34,550
+And then we're going to initialize our class search box, which extends component.
+
+9
+00:00:36,210 --> 00:00:45,540
+And then inside of our render method, we want to return the actual HTML related to our search box.
+
+10
+00:00:45,990 --> 00:00:47,670
+So here I'm just going to cut this out.
+
+11
+00:00:49,570 --> 00:00:51,130
+Go back here, paste it in.
+
+12
+00:00:53,980 --> 00:00:58,960
+And before we actually figure out how we're going to get this into our component, let's just make sure
+
+13
+00:00:58,960 --> 00:01:05,830
+to also export our component just so that we remember to do this when we need to actually access this
+
+14
+00:01:05,830 --> 00:01:07,390
+component from the code that uses it.
+
+15
+00:01:09,010 --> 00:01:12,130
+So similarly, let's talk about props again.
+
+16
+00:01:12,850 --> 00:01:17,920
+We know that this input is supposed to be a generic search box component.
+
+17
+00:01:18,670 --> 00:01:21,460
+What it does is it takes some text and it does something.
+
+18
+00:01:22,690 --> 00:01:24,340
+What that something is, we don't really know.
+
+19
+00:01:25,350 --> 00:01:28,770
+However, here, how do we generate size, what this input is?
+
+20
+00:01:30,000 --> 00:01:31,210
+Well, there's a couple of things here.
+
+21
+00:01:31,230 --> 00:01:35,130
+What are some of the props of a search box that we know we want to change?
+
+22
+00:01:35,340 --> 00:01:37,110
+And what are the ones that we don't want to change?
+
+23
+00:01:37,950 --> 00:01:42,040
+Well, we know that we want to keep the tape search if this is a search box component.
+
+24
+00:01:42,060 --> 00:01:43,860
+We want to use a search input.
+
+25
+00:01:44,580 --> 00:01:52,200
+Now, if you're unfamiliar what a search type on this input does is, it turns our input box into a
+
+26
+00:01:52,200 --> 00:01:54,360
+actual search box one.
+
+27
+00:01:54,930 --> 00:01:59,340
+And what that does is it allows us to actually generate this little x button.
+
+28
+00:01:59,580 --> 00:02:06,570
+So when you hit it, it actually clears out the text, so automatically it builds that into the feature
+
+29
+00:02:06,570 --> 00:02:06,870
+for us.
+
+30
+00:02:06,870 --> 00:02:10,980
+If we did not have that, we would not be able to actually have that X.
+
+31
+00:02:10,980 --> 00:02:12,480
+It would just be a normal input field.
+
+32
+00:02:12,750 --> 00:02:15,930
+So that's why we know that if we're doing a search box, we probably want that feature.
+
+33
+00:02:15,960 --> 00:02:17,700
+So we want to keep this type search.
+
+34
+00:02:18,210 --> 00:02:19,740
+But what about everything else?
+
+35
+00:02:20,700 --> 00:02:27,780
+Everything else, we probably want to make sure that they can be dynamic because we probably don't want
+
+36
+00:02:27,780 --> 00:02:32,280
+the class name to be search box for every single search box, that's not specific enough.
+
+37
+00:02:32,610 --> 00:02:37,860
+You can imagine that if an application has multiple search boxes, in order for us to be able to distinguish
+
+38
+00:02:37,890 --> 00:02:41,580
+search boxes from each other, they might need different class names.
+
+39
+00:02:42,390 --> 00:02:46,140
+So what we can do is we can actually.
+
+40
+00:02:47,110 --> 00:02:52,690
+Use another feature with props, but before I talk about those ones, let's just make sure that we first.
+
+41
+00:02:55,630 --> 00:03:00,190
+Enable are on change as well as maybe our placeholder.
+
+42
+00:03:01,330 --> 00:03:09,880
+So what we're going to do is we are going to first look at this on change and change is a callback that
+
+43
+00:03:09,880 --> 00:03:12,740
+runs whenever change happens on our input.
+
+44
+00:03:13,330 --> 00:03:19,030
+What that happens is up to the component that's trying to render the search box.
+
+45
+00:03:19,840 --> 00:03:22,450
+Now you might be wondering, should we bring in?
+
+46
+00:03:24,410 --> 00:03:27,530
+This search field text into the change.
+
+47
+00:03:28,570 --> 00:03:29,660
+Well, let's think about that.
+
+48
+00:03:30,160 --> 00:03:33,880
+Where are we actually using this search field state?
+
+49
+00:03:35,010 --> 00:03:38,590
+We're actually using it inside of our app component.
+
+50
+00:03:38,820 --> 00:03:42,660
+We're filtering down our monsters from the search field.
+
+51
+00:03:43,350 --> 00:03:51,210
+So that means that because this app component utilizes the search field value that our search box actually
+
+52
+00:03:51,210 --> 00:03:56,970
+has in order to determine what it's trying to do, which is to filter the monsters.
+
+53
+00:03:57,420 --> 00:04:01,350
+We actually need this string stored inside of this level.
+
+54
+00:04:02,530 --> 00:04:06,760
+Now, there's different patterns that you can do this, but this is a good way of thinking about with
+
+55
+00:04:06,760 --> 00:04:07,570
+react components.
+
+56
+00:04:08,660 --> 00:04:16,780
+So that means that what on search changed is as far as for our search box component in the current context
+
+57
+00:04:17,090 --> 00:04:23,390
+is it is just supposed to update APJ assist state search field value.
+
+58
+00:04:24,510 --> 00:04:29,400
+And that's exactly what our on search change method here does.
+
+59
+00:04:30,580 --> 00:04:34,630
+So we want to pass on search changed into the search box component.
+
+60
+00:04:36,160 --> 00:04:38,200
+So let's think about what we're going to name this prop.
+
+61
+00:04:39,400 --> 00:04:45,280
+Inside of our search box, we know that we're attaching it to the on change of the input prop.
+
+62
+00:04:46,120 --> 00:04:53,230
+So what this is is it's an on change handler because that's the function we're passing a handler function,
+
+63
+00:04:53,740 --> 00:04:54,640
+an event handler.
+
+64
+00:04:55,120 --> 00:04:58,150
+So what we can call this is exactly that.
+
+65
+00:04:58,160 --> 00:04:59,710
+It's an on change handler.
+
+66
+00:05:00,130 --> 00:05:02,290
+This stop prompts that on change handler.
+
+67
+00:05:03,670 --> 00:05:07,840
+So let's just comment this out for now, and let's just make sure at least this is working from what
+
+68
+00:05:07,840 --> 00:05:12,310
+we've again just defined, so I'm going to default, export it out.
+
+69
+00:05:12,550 --> 00:05:13,900
+I'm going to copy search box.
+
+70
+00:05:14,290 --> 00:05:15,690
+I'm going to go into OPG's.
+
+71
+00:05:15,700 --> 00:05:22,930
+I'm going to import it from the respective file import search box from components Dash Search Box,
+
+72
+00:05:23,410 --> 00:05:25,240
+Dash Search Box Stock component.
+
+73
+00:05:26,190 --> 00:05:27,600
+I'm going to copy search box.
+
+74
+00:05:28,050 --> 00:05:33,870
+I'm going to go down to where it was before, and then I'm going to pass on Change Handler.
+
+75
+00:05:36,050 --> 00:05:38,810
+Which is equal to on search change.
+
+76
+00:05:40,090 --> 00:05:41,200
+And now if I save this.
+
+77
+00:05:42,510 --> 00:05:43,170
+Let's go back.
+
+78
+00:05:44,080 --> 00:05:48,070
+What we see is that because we can't set out our place holder, there's no place holder.
+
+79
+00:05:48,520 --> 00:05:53,980
+But if we type in, we see that our application still works as expected.
+
+80
+00:05:54,460 --> 00:05:54,910
+Amazing.
+
+81
+00:05:54,910 --> 00:05:57,520
+So everything here is working now, this placeholder text.
+
+82
+00:05:58,180 --> 00:06:01,510
+We know that with a placeholder text, this might also change.
+
+83
+00:06:01,510 --> 00:06:06,760
+The search box is supposed to be a generic search box just because in this particular case, we're searching
+
+84
+00:06:06,760 --> 00:06:10,000
+for monsters doesn't mean all our search boxes are going to say search monsters.
+
+85
+00:06:10,330 --> 00:06:11,440
+So this is another.
+
+86
+00:06:12,350 --> 00:06:17,570
+Property that we probably want to change and make generic, so I'm going to do the same thing, I'm
+
+87
+00:06:17,570 --> 00:06:19,940
+going to say this stop props, stop placeholder.
+
+88
+00:06:21,440 --> 00:06:22,460
+And similarly.
+
+89
+00:06:24,240 --> 00:06:30,120
+Let's just make sure that this works, and I'm going to say placeholder, which is equal to.
+
+90
+00:06:31,410 --> 00:06:32,730
+Search monsters.
+
+91
+00:06:32,760 --> 00:06:33,840
+Actually, I don't need.
+
+92
+00:06:35,370 --> 00:06:40,800
+These squiggly backers for that, just say, search monsters, let's save this, go back and see.
+
+93
+00:06:41,430 --> 00:06:42,540
+They are two search monsters.
+
+94
+00:06:43,080 --> 00:06:44,040
+Everything still works.
+
+95
+00:06:44,970 --> 00:06:46,980
+And finally, for class name.
+
+96
+00:06:48,400 --> 00:06:49,480
+Let's do the same thing.
+
+97
+00:06:51,680 --> 00:06:54,440
+We can hear say this stop prop stock class name.
+
+98
+00:06:57,110 --> 00:06:59,130
+And then similarly in J.S..
+
+99
+00:07:00,740 --> 00:07:03,650
+We do class name is equal to.
+
+100
+00:07:04,590 --> 00:07:05,340
+Search box.
+
+101
+00:07:05,970 --> 00:07:12,480
+And now if we save and we go back to our application, let's just make sure that class name is being
+
+102
+00:07:12,480 --> 00:07:12,900
+applied.
+
+103
+00:07:13,410 --> 00:07:16,350
+It is so everything here works as we had it before.
+
+104
+00:07:17,790 --> 00:07:22,680
+Now, one quick note is that you may be wondering why are all these other props named the exact same
+
+105
+00:07:22,680 --> 00:07:28,890
+as the base props such as class name and placeholder are the same prop name as the one an input, whereas
+
+106
+00:07:28,890 --> 00:07:31,260
+here for on change, I call on change handler.
+
+107
+00:07:31,800 --> 00:07:35,610
+You can call it on change as well in your property just to find them the same thing.
+
+108
+00:07:36,090 --> 00:07:37,950
+I just prefer to do it this way myself.
+
+109
+00:07:37,950 --> 00:07:41,460
+So it's a little bit more explosive for me with, especially when I'm writing my own components.
+
+110
+00:07:41,460 --> 00:07:43,120
+But again, it's a personal preference thing.
+
+111
+00:07:43,140 --> 00:07:45,270
+It might just be a little bit of a tick thing.
+
+112
+00:07:45,780 --> 00:07:48,300
+It's entirely up to you if you want to keep it the way that you keep it.
+
+113
+00:07:48,570 --> 00:07:52,870
+People will sometimes write these a little differently, just based on the preference.
+
+114
+00:07:52,890 --> 00:07:59,250
+Honestly, a lot of these standards of how you name your props is kind of going to be set on a project
+
+115
+00:07:59,250 --> 00:08:00,110
+by project basis.
+
+116
+00:08:00,120 --> 00:08:04,890
+Sometimes there are different rules, depending on who is the architect or the senior developer and
+
+117
+00:08:04,890 --> 00:08:05,910
+what they want to set it up.
+
+118
+00:08:05,910 --> 00:08:07,740
+As for consistency across the code base.
+
+119
+00:08:08,160 --> 00:08:15,570
+This is just my personal quirk is that all of the change, if I want to name an event handler as a prop
+
+120
+00:08:15,570 --> 00:08:17,910
+that I'm passing in, I just say handler to be explicit.
+
+121
+00:08:18,210 --> 00:08:19,830
+That's a personal preference for me.
+
+122
+00:08:20,040 --> 00:08:21,390
+That is really all it is.
+
+123
+00:08:22,490 --> 00:08:26,270
+So we have a search box working, we have our cardless component working.
+
+124
+00:08:26,900 --> 00:08:33,050
+Everything here is pretty much going to be the basic setup for our components.
+
+125
+00:08:34,140 --> 00:08:37,740
+In the next video we're going to do is now just start styling everything.
+
+126
+00:08:37,890 --> 00:08:41,490
+And we're going to understand how X-Files work inside of React.
+
+127
+00:08:41,820 --> 00:08:45,660
+And through that, we're also going to understand how React builds our project a little bit clearer.
+
+128
+00:08:46,230 --> 00:08:48,510
+So let's talk about that in the next video.

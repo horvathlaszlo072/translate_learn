@@ -1,0 +1,90 @@
+1
+00:00:00.05 --> 00:00:02.03
+- [Instructor] My name is Chris Anatalio
+
+2
+00:00:02.03 --> 00:00:04.08
+and I'm a senior software engineer.
+
+3
+00:00:04.08 --> 00:00:07.00
+I have over a decade of experience
+
+4
+00:00:07.00 --> 00:00:10.06
+crafting scalable
+modular web applications.
+
+5
+00:00:10.06 --> 00:00:14.03
+Modern application development
+is more demanding than ever.
+
+6
+00:00:14.03 --> 00:00:16.09
+You need to support mobile and tablet apps
+
+7
+00:00:16.09 --> 00:00:19.01
+as well as web applications.
+
+8
+00:00:19.01 --> 00:00:22.00
+A well built rest API can provide the data
+
+9
+00:00:22.00 --> 00:00:23.08
+to power all three.
+
+10
+00:00:23.08 --> 00:00:27.00
+In this course, we're
+going to build a rest API
+
+11
+00:00:27.00 --> 00:00:29.01
+with Java and Spring Boot.
+
+12
+00:00:29.01 --> 00:00:32.01
+We will also build a
+responsive modern front end
+
+13
+00:00:32.01 --> 00:00:34.05
+using Angular JS 2.
+
+14
+00:00:34.05 --> 00:00:38.07
+We will walk through how to
+design and model your resources.
+
+15
+00:00:38.07 --> 00:00:42.08
+Finally we will go over how
+to test and document your API.
+
+16
+00:00:42.08 --> 00:00:44.06
+After completing this course,
+
+17
+00:00:44.06 --> 00:00:46.03
+you will have a solid foundation
+
+18
+00:00:46.03 --> 00:00:49.04
+for creating a modern, scalable API.
+
+19
+00:00:49.04 --> 00:00:50.09
+You will also have a foundation
+
+20
+00:00:50.09 --> 00:00:54.00
+for building a fast, responsive front end.
+
+21
+00:00:54.00 --> 00:00:55.09
+Now, let's get started.
+

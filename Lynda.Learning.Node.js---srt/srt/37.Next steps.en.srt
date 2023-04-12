@@ -1,0 +1,127 @@
+1
+00:00:00.05 --> 00:00:03.02
+- [Alex] We've covered many
+of the basics with Node
+
+2
+00:00:03.02 --> 00:00:05.08
+and we looked at many more
+advance features as well.
+
+3
+00:00:05.08 --> 00:00:08.04
+This resulted in creating
+a basic but robust
+
+4
+00:00:08.04 --> 00:00:12.05
+chat application where
+I'm able to post a message
+
+5
+00:00:12.05 --> 00:00:15.02
+and have it automatically
+synchronize across
+
+6
+00:00:15.02 --> 00:00:24.04
+several different
+browsers using Socket.IO.
+
+7
+00:00:24.04 --> 00:00:27.06
+With automatic notifications and updates,
+
+8
+00:00:27.06 --> 00:00:31.00
+we also looked at database
+frameworks and providers
+
+9
+00:00:31.00 --> 00:00:36.06
+such as our mLab database
+that's using MongoDb.
+
+10
+00:00:36.06 --> 00:00:39.06
+And I hope you have a good
+understanding of the differences
+
+11
+00:00:39.06 --> 00:00:42.07
+between synchronous and
+asynchronous code at this point
+
+12
+00:00:42.07 --> 00:00:45.02
+and how Node shines along with JavaScript
+
+13
+00:00:45.02 --> 00:00:47.09
+when it comes to working
+with asynchronous code
+
+14
+00:00:47.09 --> 00:00:50.07
+and the various options we
+have for working with it
+
+15
+00:00:50.07 --> 00:00:54.04
+such as callbacks, promises, async/await.
+
+16
+00:00:54.04 --> 00:00:57.01
+And finally we ended up with
+a new way of development
+
+17
+00:00:57.01 --> 00:00:59.02
+called test-driven development.
+
+18
+00:00:59.02 --> 00:01:02.00
+If you enjoyed developing
+this chat application
+
+19
+00:01:02.00 --> 00:01:04.06
+while working with both the
+front end and the back end,
+
+20
+00:01:04.06 --> 00:01:06.07
+I suggest working with framework such as
+
+21
+00:01:06.07 --> 00:01:09.04
+React or Angular to develop that further.
+
+22
+00:01:09.04 --> 00:01:11.03
+And you can check out my course,
+
+23
+00:01:11.03 --> 00:01:14.05
+Building Angular Apps and
+Node Apps with Authentication
+
+24
+00:01:14.05 --> 00:01:17.00
+to explore these concepts
+further as well as
+
+25
+00:01:17.00 --> 00:01:19.08
+introducing authentication
+into your application.
+
+26
+00:01:19.08 --> 00:01:22.06
+Good luck with your future
+Node and web development
+
+27
+00:01:22.06 --> 00:01:24.01
+and thank you for watching.
+

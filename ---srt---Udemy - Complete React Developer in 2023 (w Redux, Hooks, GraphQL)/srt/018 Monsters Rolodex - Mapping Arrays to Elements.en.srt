@@ -1,0 +1,511 @@
+1
+00:00:00,540 --> 00:00:01,500
+Welcome back, everyone.
+
+2
+00:00:02,470 --> 00:00:07,720
+So let's start actually building our monster's Rolodex project so that it looks much more similar to
+
+3
+00:00:07,720 --> 00:00:11,350
+the application we're expecting it to be to begin with.
+
+4
+00:00:11,800 --> 00:00:15,940
+What I want you to think about what this app component that we have here.
+
+5
+00:00:16,090 --> 00:00:19,960
+This class component, let's get rid of everything inside, except for the div.
+
+6
+00:00:21,060 --> 00:00:28,080
+Right now, this app component is pretty much the only component in the entire application, and it
+
+7
+00:00:28,080 --> 00:00:30,630
+means that it represents the entire application as well.
+
+8
+00:00:31,860 --> 00:00:37,620
+What I want you to think about is that when you look inside of index stocks, I want you to ignore everything
+
+9
+00:00:37,620 --> 00:00:39,210
+except for this part right here.
+
+10
+00:00:39,240 --> 00:00:40,650
+React Dom Dot render.
+
+11
+00:00:41,540 --> 00:00:47,930
+What it's saying is that react, I want you to render whatever's given to you as the first argument
+
+12
+00:00:48,680 --> 00:00:53,960
+at the point where you go on to the document and you find some element with root.
+
+13
+00:00:54,830 --> 00:01:00,740
+I explained to you earlier that when you look inside of the indexed HTML file that got generated for
+
+14
+00:01:00,740 --> 00:01:04,220
+us, we had this div with the idea of root.
+
+15
+00:01:04,700 --> 00:01:12,180
+And what react does is it says, OK, instead of this div, I want you to render the entire application
+
+16
+00:01:12,190 --> 00:01:17,690
+and the way it does that is it takes this argument, which is really just the app as far as we're concerned.
+
+17
+00:01:18,680 --> 00:01:25,970
+This app is this component, whatever this component renders, is whatever react Dom is going to render
+
+18
+00:01:25,970 --> 00:01:26,750
+in this place.
+
+19
+00:01:27,620 --> 00:01:32,990
+So here this component is actually going to contain our entire application.
+
+20
+00:01:33,950 --> 00:01:39,710
+All of the turmoil here that we're going to return is going to be all of the matter of our application.
+
+21
+00:01:40,100 --> 00:01:44,210
+And these are going to be broken up into smaller and smaller components and we'll talk about how that's
+
+22
+00:01:44,210 --> 00:01:44,510
+done.
+
+23
+00:01:44,780 --> 00:01:49,790
+But what you need to understand really is that this app component represents the entire application.
+
+24
+00:01:50,630 --> 00:01:56,810
+It's a pretty common best practice to do so where you have one app component and this app component
+
+25
+00:01:56,810 --> 00:02:00,380
+is what you use to render as the entirety of your application.
+
+26
+00:02:01,860 --> 00:02:06,660
+So now that we understand that the app is going to be the actual application, let's start actually
+
+27
+00:02:06,660 --> 00:02:12,240
+building it out and understanding what it is that we're trying to do so with monsters Rolodex.
+
+28
+00:02:12,660 --> 00:02:17,430
+It is a Rolodex, which is a tool that shows you a bunch of different user profiles.
+
+29
+00:02:17,430 --> 00:02:19,800
+In our particular case, these users are monsters.
+
+30
+00:02:20,850 --> 00:02:26,130
+Now, let's say we wanted to show three monsters, how do we go about doing that, doing what we know?
+
+31
+00:02:26,700 --> 00:02:30,600
+Well, to begin with inside of state, maybe we have three different monsters.
+
+32
+00:02:30,720 --> 00:02:37,560
+We have monster one, which is going to be a monster with the name of Linda.
+
+33
+00:02:38,610 --> 00:02:46,530
+We have Monster two, which is going to be a similar object with the name of Frank.
+
+34
+00:02:47,320 --> 00:02:49,390
+And then we have Monster three.
+
+35
+00:02:51,370 --> 00:02:54,070
+Which has the name of Jackie.
+
+36
+00:02:55,850 --> 00:03:00,050
+Here inside of our div, we want to render these three monsters somehow.
+
+37
+00:03:00,260 --> 00:03:05,660
+And for now, just to keep it simple, let's say we render these monsters names as ones.
+
+38
+00:03:06,380 --> 00:03:08,510
+So what we can do is we can say each one.
+
+39
+00:03:08,750 --> 00:03:14,900
+And then using curly braces monster one dot name or sorry, this dot state dot monster one.
+
+40
+00:03:16,730 --> 00:03:17,180
+Dot net.
+
+41
+00:03:17,810 --> 00:03:24,770
+And then similarly, we would just copy this three times, and now we use Monster two and Monster three.
+
+42
+00:03:25,520 --> 00:03:30,980
+Now if we save this and we go to obligation, we see that we have it updated.
+
+43
+00:03:31,280 --> 00:03:33,170
+Linda, Frank and Jackie are showing.
+
+44
+00:03:33,260 --> 00:03:34,190
+So our code is working.
+
+45
+00:03:35,440 --> 00:03:37,270
+But let's go back to this code here.
+
+46
+00:03:37,960 --> 00:03:40,030
+This is actually pretty repetitive.
+
+47
+00:03:40,060 --> 00:03:46,480
+If we had 100 monsters or a thousand monsters, if we imagine a really big Rolodex, then we have to
+
+48
+00:03:46,480 --> 00:03:48,940
+copy and paste this a thousand times.
+
+49
+00:03:49,330 --> 00:03:51,340
+That seems extremely inefficient, doesn't it?
+
+50
+00:03:52,240 --> 00:03:57,100
+What if instead, we know that all of these different things are going to be the same?
+
+51
+00:03:57,100 --> 00:04:00,220
+All these different monsters are going to be displayed using just an H1.
+
+52
+00:04:00,730 --> 00:04:07,330
+Can we instead just use this as a template, especially if every single one of these monsters is the
+
+53
+00:04:07,330 --> 00:04:09,040
+same shape of data?
+
+54
+00:04:09,580 --> 00:04:15,100
+The object is just an object that has a name of Jackie or a name of Frank or name of Linda, or a name
+
+55
+00:04:15,100 --> 00:04:15,580
+of whatever.
+
+56
+00:04:16,030 --> 00:04:21,550
+We know that we can expect that this object is going to have a name property that's going to be a string.
+
+57
+00:04:22,180 --> 00:04:24,280
+So we just don't want to put that string inside of an H1.
+
+58
+00:04:24,290 --> 00:04:28,900
+Can we just reuse the same HTML template?
+
+59
+00:04:29,770 --> 00:04:34,570
+Well, actually, we can, and this is what we're going to do to make this way easier for us.
+
+60
+00:04:35,350 --> 00:04:41,260
+So what I'm going to do is that instead of each of these individual monsters having their own key on
+
+61
+00:04:41,260 --> 00:04:44,230
+the state, I'm going to make a new key called monsters.
+
+62
+00:04:44,560 --> 00:04:46,240
+And it's going to contain an array.
+
+63
+00:04:47,020 --> 00:04:51,010
+Inside of this array is going to be my three monsters.
+
+64
+00:04:51,340 --> 00:04:57,670
+So I'm just going to copy this over and get rid of the keys because it needs to actually look like an
+
+65
+00:04:57,670 --> 00:04:58,030
+array.
+
+66
+00:05:02,250 --> 00:05:10,050
+So now I have a monster's key with an array of our monsters, as we had before, and now instead, what
+
+67
+00:05:10,050 --> 00:05:12,810
+I'm going to do is I just want to use this H1 template.
+
+68
+00:05:13,060 --> 00:05:16,920
+But how do I access this array and convert it into those h1s?
+
+69
+00:05:17,900 --> 00:05:21,110
+Well, here I'm going to use the array method map.
+
+70
+00:05:22,380 --> 00:05:28,290
+So inside of our HMO, we're going to once again now call squiggly braces because I mentioned before
+
+71
+00:05:28,320 --> 00:05:30,720
+that we want to access JavaScript.
+
+72
+00:05:31,470 --> 00:05:38,220
+So I want to say this starts state dot monsters, which gives me the array and I want to use the dot
+
+73
+00:05:38,220 --> 00:05:39,060
+map method.
+
+74
+00:05:39,720 --> 00:05:46,170
+The Dot Map method is a method that allows you to iterate over every single element from left to right
+
+75
+00:05:46,170 --> 00:05:49,950
+inside of your array, and it gives you back a new array.
+
+76
+00:05:50,900 --> 00:05:57,800
+But why is this useful, because what we really want is an array of HTML elements with the shape that
+
+77
+00:05:57,800 --> 00:05:59,600
+we expect the HTML to render.
+
+78
+00:05:59,720 --> 00:06:03,770
+So in our particular case, we want to return a bunch of ones where the text inside is the name of the
+
+79
+00:06:03,770 --> 00:06:04,250
+monster.
+
+80
+00:06:04,940 --> 00:06:07,750
+So right now I have an array of JSON objects.
+
+81
+00:06:07,760 --> 00:06:10,340
+I don't have an array of the JSON amount.
+
+82
+00:06:10,670 --> 00:06:11,530
+So how do I do that?
+
+83
+00:06:11,540 --> 00:06:13,880
+I use Stop Map Dot Map.
+
+84
+00:06:14,210 --> 00:06:17,090
+The way it works is you pass it a callback function.
+
+85
+00:06:17,900 --> 00:06:23,300
+This callback function, the first argument that it gets, is the actual element.
+
+86
+00:06:23,840 --> 00:06:25,180
+So in this case, it's a monster.
+
+87
+00:06:25,190 --> 00:06:26,040
+We know it's a monster.
+
+88
+00:06:26,600 --> 00:06:32,060
+What react does, or rather what JavaScript does with that map because Map is a JavaScript method on
+
+89
+00:06:32,060 --> 00:06:38,330
+a race is that it takes the callback function that you pass to it and it invokes it on every single
+
+90
+00:06:38,330 --> 00:06:43,040
+element inside of the array, from top to bottom or left to right in this particular case.
+
+91
+00:06:43,940 --> 00:06:49,970
+So we know that when we invoke this callback on this element, this one first element, first inside
+
+92
+00:06:49,970 --> 00:06:53,540
+of our array, this monster is going to be the element itself.
+
+93
+00:06:53,540 --> 00:06:57,020
+It's going to give us that JSON object where the name is, Linda.
+
+94
+00:06:57,890 --> 00:07:04,910
+And here what we want to do is we want to return back the H one, as I mentioned where I'm calling.
+
+95
+00:07:05,870 --> 00:07:08,720
+So once again, we need the curly braces because we're inside of each animal.
+
+96
+00:07:09,260 --> 00:07:10,790
+I want monster name.
+
+97
+00:07:12,220 --> 00:07:13,720
+Here, what's going to happen.
+
+98
+00:07:14,110 --> 00:07:19,420
+As I mentioned, is that React is going to look at your code and say, Oh, inside of here, there is
+
+99
+00:07:19,420 --> 00:07:20,350
+some curly braces.
+
+100
+00:07:20,860 --> 00:07:25,480
+You want to access this dot state dot monsters, which is an array and you want to map over it.
+
+101
+00:07:26,080 --> 00:07:30,550
+What you want to do in that map is you want to give me this callback function where I'm going to take
+
+102
+00:07:30,730 --> 00:07:33,340
+the elements that you're trying to iterate through.
+
+103
+00:07:33,490 --> 00:07:38,410
+So each of these different monsters and I'm going to give you access to it inside of the callback.
+
+104
+00:07:39,040 --> 00:07:42,850
+And what we want to do is want to say, OK, what's that monster or what that element?
+
+105
+00:07:43,420 --> 00:07:50,560
+I want you to return me in that place and one where the inside is using monster dot name.
+
+106
+00:07:50,770 --> 00:07:53,380
+So this particular monster, I'm going to put Linda in there.
+
+107
+00:07:53,380 --> 00:07:57,970
+And then the next one, when I iterate on the second element, it's going to use Frank.
+
+108
+00:07:58,360 --> 00:08:00,970
+And then in the third element, it's going to use Jackie.
+
+109
+00:08:01,540 --> 00:08:04,900
+And here, when we look at our code, we see that it still works.
+
+110
+00:08:06,000 --> 00:08:10,650
+In fact, to prove that it's still working, I'm just going to add a fourth one and this monster is
+
+111
+00:08:10,650 --> 00:08:17,400
+going to be Andre if I save and I go, there it is so, so easy now.
+
+112
+00:08:17,760 --> 00:08:23,880
+The inside of this array, all we need to do is just make sure that we have an array where every object
+
+113
+00:08:23,880 --> 00:08:25,920
+has the same signature or the same shape.
+
+114
+00:08:26,730 --> 00:08:33,450
+And now inside of our code, our dot map function is always going to now just generate a new one every
+
+115
+00:08:33,450 --> 00:08:39,300
+time a new monster is added inside, or it's at least going to do it for every single monster inside
+
+116
+00:08:39,300 --> 00:08:39,780
+of our array.
+
+117
+00:08:40,560 --> 00:08:48,210
+And this is extremely powerful because by doing this now, this one block of code right here now encapsulates
+
+118
+00:08:48,210 --> 00:08:52,440
+the entire UI rendering of all of the different monsters that we want to show.
+
+119
+00:08:53,280 --> 00:08:56,160
+And this is an extremely powerful thing about React.
+
+120
+00:08:57,000 --> 00:09:02,040
+Now, if you're unfamiliar with that map, we're going to include a video in our appendix where I'm
+
+121
+00:09:02,130 --> 00:09:05,610
+is going to go into more depth about Map if you're uncomfortable with it.
+
+122
+00:09:06,150 --> 00:09:11,220
+But if you are and you already understand how a map works, then let's move on to the next lesson and
+
+123
+00:09:11,220 --> 00:09:11,900
+the next lesson.
+
+124
+00:09:11,920 --> 00:09:14,460
+We're going to talk about something that some of you might have seen.
+
+125
+00:09:14,460 --> 00:09:19,260
+If you have your developer console open, you'll see that there's this warning where each child in a
+
+126
+00:09:19,260 --> 00:09:21,000
+list should have a key property.
+
+127
+00:09:21,210 --> 00:09:24,210
+And we're going to go into exactly what that means in the next video.
+
+128
+00:09:24,630 --> 00:09:25,200
+I'll see you there.

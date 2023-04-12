@@ -1,0 +1,591 @@
+1
+00:00:00,270 --> 00:00:01,380
+Welcome back, everyone.
+
+2
+00:00:02,310 --> 00:00:09,750
+In the last video, as I mentioned, we have utilized our new user context in order to store our user
+
+3
+00:00:10,020 --> 00:00:13,110
+wherever it either signs in or signs out.
+
+4
+00:00:13,590 --> 00:00:19,050
+We know that in our sign up form, our sign in form and our navigation form is currently where the majority
+
+5
+00:00:19,050 --> 00:00:20,970
+of that code is living.
+
+6
+00:00:21,870 --> 00:00:25,620
+But we can start to see that this might be a little difficult to keep track of.
+
+7
+00:00:26,340 --> 00:00:32,720
+In fact, we actually missed another place where we need to store this user inside of our user context.
+
+8
+00:00:32,730 --> 00:00:39,210
+Whenever a user signs in with Google pop up here, we know that we're authenticating the user once our
+
+9
+00:00:39,210 --> 00:00:40,860
+sign in with Google pop up succeeds.
+
+10
+00:00:41,310 --> 00:00:44,910
+So we actually need to also set current user here as well.
+
+11
+00:00:45,450 --> 00:00:51,750
+But the larger pattern that's emerging is that we're noticing that we're spreading out all of this different
+
+12
+00:00:51,750 --> 00:00:53,340
+code in multiple places.
+
+13
+00:00:54,310 --> 00:01:01,540
+So what we want to do is we want to be able to now move this code into one centralized place.
+
+14
+00:01:01,930 --> 00:01:06,460
+And luckily for us, Firebase actually gives us an easy way to do that.
+
+15
+00:01:07,180 --> 00:01:14,350
+We can actually start using what's known as a observable listener and an observable listener is a way
+
+16
+00:01:14,350 --> 00:01:22,630
+for us to hook into some kind of stream of events, whether these events are sign at events or sign
+
+17
+00:01:22,630 --> 00:01:23,230
+out events.
+
+18
+00:01:23,380 --> 00:01:27,610
+We're actually able to trigger something based on these changes.
+
+19
+00:01:28,030 --> 00:01:31,700
+I'm going to dive a little deeper into that technical concept a little later.
+
+20
+00:01:31,990 --> 00:01:37,420
+But for now, let's utilize it because I think it's the best way to actually understand something like
+
+21
+00:01:37,420 --> 00:01:40,300
+that by using it in practice first.
+
+22
+00:01:40,960 --> 00:01:44,860
+So the method that we want to get is on author state changed.
+
+23
+00:01:45,610 --> 00:01:50,750
+This will return us back a listener, an era for us to use it again.
+
+24
+00:01:50,770 --> 00:01:52,720
+We're going to create another helper function.
+
+25
+00:01:53,320 --> 00:01:54,580
+And what I'm going to show you.
+
+26
+00:01:55,770 --> 00:01:59,910
+Is that I want to call this on, OK, state changed, listener.
+
+27
+00:02:00,660 --> 00:02:03,290
+I'm going to call it a listener because that's what it is.
+
+28
+00:02:03,300 --> 00:02:04,620
+It's an observer listener.
+
+29
+00:02:04,620 --> 00:02:07,370
+And again, for now, don't worry about what the observer means.
+
+30
+00:02:07,470 --> 00:02:08,460
+I'll talk about it later.
+
+31
+00:02:09,090 --> 00:02:13,470
+But what this observer does is it returns you back.
+
+32
+00:02:13,470 --> 00:02:19,470
+Whatever you get back from on off state changed in our four on off state change to work, it takes two
+
+33
+00:02:19,470 --> 00:02:20,250
+parameters.
+
+34
+00:02:20,520 --> 00:02:24,540
+The first one, as you guessed it, is going to be our off singleton.
+
+35
+00:02:25,170 --> 00:02:32,790
+The second one, though, is going to be some callback that you want to call every time this ofstate
+
+36
+00:02:32,790 --> 00:02:33,420
+changes.
+
+37
+00:02:34,080 --> 00:02:41,400
+So because we're defining it as our own method, I'm going to pass this method directly in like so.
+
+38
+00:02:42,620 --> 00:02:48,860
+So essentially, I'm just saying, whenever you instantiate this function, you have to give me a callback
+
+39
+00:02:48,860 --> 00:02:51,950
+because this callback is what I'm going to give to on off state changed.
+
+40
+00:02:52,460 --> 00:02:55,220
+So let's copy our on off state change listener.
+
+41
+00:02:56,240 --> 00:03:02,000
+And in fact, we can even be more explicit by saying, if you don't give me a callback, I'm not even
+
+42
+00:03:02,000 --> 00:03:02,570
+going to work.
+
+43
+00:03:03,930 --> 00:03:07,230
+But for now, let's not worry about that, let's just see what it does.
+
+44
+00:03:07,260 --> 00:03:08,340
+Let's go one step at a time.
+
+45
+00:03:09,000 --> 00:03:15,180
+So I'm going to take this on off state change listener, and I'm going to go into our user context.
+
+46
+00:03:15,750 --> 00:03:21,150
+The reason why I want to do this in user context is because the majority of the code that has to do
+
+47
+00:03:21,150 --> 00:03:26,340
+with fetching and keeping track of what the user value is should probably be kept in the place where
+
+48
+00:03:26,340 --> 00:03:27,450
+we're also storing it.
+
+49
+00:03:28,170 --> 00:03:34,170
+So here, in order to utilize it, I want to mount it on component mount.
+
+50
+00:03:34,680 --> 00:03:39,660
+So I'm going to use use effect and I'm going to use this pattern.
+
+51
+00:03:39,660 --> 00:03:45,420
+We've already seen where I'm going to instantiate some function, but give it a empty dependency array,
+
+52
+00:03:45,750 --> 00:03:51,060
+meaning that I only want to run this function once when the component mounts.
+
+53
+00:03:51,840 --> 00:03:58,830
+And what I'm going to run is going to be this new method that we got from our firebase utils.
+
+54
+00:04:06,990 --> 00:04:13,410
+So let's talk a little bit about this on off state change listener on off state change listener, as
+
+55
+00:04:13,410 --> 00:04:16,740
+we know, receives some kind of callback function.
+
+56
+00:04:17,460 --> 00:04:25,200
+What it does is it parses this callback function as the second value of on off state changed what on
+
+57
+00:04:25,200 --> 00:04:26,850
+off state change does.
+
+58
+00:04:27,210 --> 00:04:35,370
+As I mentioned, is that it will call this callback whenever the authentication state of our off singleton
+
+59
+00:04:35,370 --> 00:04:35,940
+changes.
+
+60
+00:04:36,270 --> 00:04:44,220
+So when a user signs in, that's considered an OK change because a user has authenticated when a user
+
+61
+00:04:44,220 --> 00:04:46,320
+signs out, that's another change.
+
+62
+00:04:47,010 --> 00:04:54,660
+So both times are callback is going to get invoked whenever a user authenticates in and whenever an
+
+63
+00:04:54,660 --> 00:04:55,880
+authenticates out.
+
+64
+00:04:55,890 --> 00:04:56,640
+So sign out.
+
+65
+00:04:58,260 --> 00:05:00,300
+This, though, is an open listener.
+
+66
+00:05:00,540 --> 00:05:06,630
+This means that the moment you set it, this thing is always waiting to see whether or not author states
+
+67
+00:05:06,630 --> 00:05:10,650
+are changing and the moment it does, it will run a callback.
+
+68
+00:05:11,190 --> 00:05:13,690
+So this thing is a permanently open listener.
+
+69
+00:05:13,710 --> 00:05:20,340
+You can imagine this as if somebody is standing there and trying to listen for changes to this state
+
+70
+00:05:20,340 --> 00:05:22,710
+and then whenever it does, it will run this function.
+
+71
+00:05:23,460 --> 00:05:30,660
+The problem with this is that you actually need to get rid of it, i.e. tell it to stop listening whenever
+
+72
+00:05:31,110 --> 00:05:33,060
+this component un mounts.
+
+73
+00:05:33,060 --> 00:05:36,030
+Because if you don't, then this is something of a memory leak.
+
+74
+00:05:36,750 --> 00:05:39,660
+Because if this component un mounts, we don't need this listener anymore.
+
+75
+00:05:40,410 --> 00:05:43,620
+So this method actually gives us a handy way to do so.
+
+76
+00:05:44,010 --> 00:05:49,410
+It returns us back a function that while unsubscribe i.e., stop listening.
+
+77
+00:05:50,310 --> 00:05:57,210
+So the reason why we get it back from our function is because, as you can imagine, we are really just
+
+78
+00:05:57,210 --> 00:06:02,280
+returning back from our function, whatever we get back from on off stage change, and this is really
+
+79
+00:06:02,280 --> 00:06:05,940
+the function that gives us back that unsubscribe function.
+
+80
+00:06:06,720 --> 00:06:09,030
+So here we just say, Hey, give me the unsubscribe.
+
+81
+00:06:09,840 --> 00:06:17,670
+And as we know, with use effect with this callback, it will run whatever you return from this callback
+
+82
+00:06:18,180 --> 00:06:19,320
+when it announced.
+
+83
+00:06:19,380 --> 00:06:25,740
+So we want to say, hey, unsubscribe whenever you unmount and hear what I'm saying is that OK, what
+
+84
+00:06:25,740 --> 00:06:30,960
+I want to do is for now, I just want to see, what am I even getting back?
+
+85
+00:06:31,620 --> 00:06:33,750
+So I'm just going to console.log user.
+
+86
+00:06:34,980 --> 00:06:40,020
+So what's going to happen is when our application initializes, we're going to mount our user provider,
+
+87
+00:06:40,380 --> 00:06:44,400
+our user provider is going to instantiate this first callback on Mount.
+
+88
+00:06:44,910 --> 00:06:48,240
+And what it's going to do is it's going to call on a state change listener.
+
+89
+00:06:48,720 --> 00:06:50,040
+It's going to give it this callback.
+
+90
+00:06:50,040 --> 00:06:53,850
+And this callback is just saying, Hey, whatever the offset changes, I want you to log the user for
+
+91
+00:06:53,850 --> 00:06:54,030
+me.
+
+92
+00:06:55,010 --> 00:07:01,940
+But going back to our application, you might actually notice something interesting right now, our
+
+93
+00:07:01,940 --> 00:07:08,060
+application state seems to say that we're signed out, but let's refresh when I refresh.
+
+94
+00:07:08,660 --> 00:07:11,120
+What do I see right here in that user context?
+
+95
+00:07:11,630 --> 00:07:16,520
+Our callback is actually telling us, Hey, you do have a user, actually.
+
+96
+00:07:17,180 --> 00:07:25,610
+And the reason why this is happening is because the authentication singleton that we have from our firebase
+
+97
+00:07:25,610 --> 00:07:33,900
+utils, the one that we've been using all this time that we instantiated from this get off this object.
+
+98
+00:07:33,920 --> 00:07:41,180
+It turns out, is actually keeping track of whether or not the user has signed in or sign out using
+
+99
+00:07:41,180 --> 00:07:44,960
+the different sign in and sign out methods that we have been calling.
+
+100
+00:07:45,740 --> 00:07:50,540
+And it actually persists this between refreshes.
+
+101
+00:07:51,530 --> 00:07:56,870
+So that's why inside of our application, despite the fact that I refreshed, I didn't actually sign
+
+102
+00:07:56,870 --> 00:08:03,440
+in or sign up, and yet somehow Firebase knows that my user is still authenticated in.
+
+103
+00:08:04,280 --> 00:08:11,600
+This is because Firebase is actually listening to our current connection to this instance of Crown clothing,
+
+104
+00:08:11,900 --> 00:08:15,020
+where earlier I must have signed in somehow.
+
+105
+00:08:15,830 --> 00:08:19,910
+The only way that we can actually change this is if I manually sign out.
+
+106
+00:08:20,270 --> 00:08:20,960
+So that's I'm going to do.
+
+107
+00:08:20,960 --> 00:08:27,080
+I'm just going to also import this sign out call, and I'm just going to call it because right now I'm
+
+108
+00:08:27,080 --> 00:08:28,580
+currently signed into my user.
+
+109
+00:08:29,090 --> 00:08:33,890
+So what I want to do is just the moment that this user provider mounts.
+
+110
+00:08:34,250 --> 00:08:35,390
+I just want you to sign out.
+
+111
+00:08:35,480 --> 00:08:36,410
+I'm just saying, sign out.
+
+112
+00:08:36,500 --> 00:08:36,980
+Matter what.
+
+113
+00:08:38,720 --> 00:08:42,410
+So here what happens, you'll notice that we sign out first.
+
+114
+00:08:42,740 --> 00:08:44,360
+But you see these null calls.
+
+115
+00:08:44,840 --> 00:08:53,690
+There's no call is actually again our callback getting fired because an off state change just happen.
+
+116
+00:08:54,110 --> 00:08:57,470
+And in our particular case, what we did was we signed out our user.
+
+117
+00:08:58,550 --> 00:09:03,890
+So here now, if I get rid of this sign out user technically are off.
+
+118
+00:09:03,920 --> 00:09:09,020
+Singleton is not keeping track of a signed in user now, and this makes sense because we just signed
+
+119
+00:09:09,020 --> 00:09:09,320
+them out.
+
+120
+00:09:09,530 --> 00:09:10,480
+So have I refresh?
+
+121
+00:09:11,000 --> 00:09:12,620
+Look at that there, I see.
+
+122
+00:09:13,010 --> 00:09:13,430
+No.
+
+123
+00:09:13,970 --> 00:09:15,950
+This means that no user is signed it.
+
+124
+00:09:16,880 --> 00:09:18,260
+So this is another great thing.
+
+125
+00:09:18,260 --> 00:09:25,880
+The moment that this listener mounts it will check the authentication state automatically when you initialize
+
+126
+00:09:25,880 --> 00:09:26,480
+the listener.
+
+127
+00:09:27,350 --> 00:09:32,780
+So the moment you initialize the listener, you will run this callback once any future runs of this
+
+128
+00:09:32,780 --> 00:09:39,860
+callback is going to be tied directly to the actual off state changing.
+
+129
+00:09:40,490 --> 00:09:42,320
+So again, how does the state change?
+
+130
+00:09:42,980 --> 00:09:45,050
+Well, we can log in with our user.
+
+131
+00:09:45,410 --> 00:09:50,950
+If I log in with my user here, I should see this off state trigger an order to prove it to you.
+
+132
+00:09:50,960 --> 00:09:56,180
+I'm going to remove the places that may cause it actually to console.log.
+
+133
+00:09:56,810 --> 00:10:02,330
+So here's what I'm going to do is I'm actually going to get rid of this set current user in sign in
+
+134
+00:10:02,330 --> 00:10:02,840
+with Google.
+
+135
+00:10:05,330 --> 00:10:09,800
+Because essentially, what I'm going to show you is a pattern that allows us to do this more easily.
+
+136
+00:10:11,440 --> 00:10:12,610
+So I'm going to save this.
+
+137
+00:10:13,000 --> 00:10:19,270
+So right now, sign in, all it does is it calls our authentication method, sign in with e-mail password.
+
+138
+00:10:20,460 --> 00:10:27,090
+So here, watch what happens, I click Sign in notice that my context and my callback got called from
+
+139
+00:10:27,090 --> 00:10:27,660
+my listener.
+
+140
+00:10:27,930 --> 00:10:30,300
+The reason for this, of course, is because the listener is listening.
+
+141
+00:10:30,540 --> 00:10:35,940
+The moment we successfully signed into the was like, Oh, I registered that a different user has signed
+
+142
+00:10:35,940 --> 00:10:36,000
+it.
+
+143
+00:10:36,010 --> 00:10:37,860
+Now my ofstate has changed.
+
+144
+00:10:38,010 --> 00:10:43,020
+Therefore, I'm going to run our callback, which is just console logging this user instance.
+
+145
+00:10:43,890 --> 00:10:47,430
+And now we have a centralized place for all of these changes.
+
+146
+00:10:48,240 --> 00:10:53,880
+So what I'm going to do is I'm actually going to modify all of our code in order to now just allow this
+
+147
+00:10:53,880 --> 00:10:56,100
+one place to keep track of these references.
+
+148
+00:10:56,640 --> 00:10:59,700
+So join me in the next video where we will centralize this concept.

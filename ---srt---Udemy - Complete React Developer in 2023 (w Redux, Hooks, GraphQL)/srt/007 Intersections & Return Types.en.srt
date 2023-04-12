@@ -1,0 +1,483 @@
+1
+00:00:00,530 --> 00:00:01,580
+Welcome back, everyone.
+
+2
+00:00:02,300 --> 00:00:06,560
+So I know we're learning so many new concepts in TypeScript and it's very overwhelming.
+
+3
+00:00:06,950 --> 00:00:11,900
+We learned about discrimination unions and their flaws and being used inside of the reducer pattern
+
+4
+00:00:11,900 --> 00:00:13,340
+despite their popularity.
+
+5
+00:00:13,730 --> 00:00:19,010
+We're learning about these type predicate functions that help us narrow down the type of variables inside
+
+6
+00:00:19,010 --> 00:00:20,060
+of JavaScript world.
+
+7
+00:00:20,300 --> 00:00:23,510
+If they pass this type predicate function.
+
+8
+00:00:24,390 --> 00:00:29,010
+In this video, we actually start to learn two more types before we can start figuring out how to create
+
+9
+00:00:29,010 --> 00:00:31,800
+that action creator extension.
+
+10
+00:00:32,640 --> 00:00:38,640
+And what we need to learn is we need to learn intersection types and we need to learn about the return
+
+11
+00:00:38,640 --> 00:00:38,970
+type.
+
+12
+00:00:40,110 --> 00:00:41,910
+So let's start with the intersection type.
+
+13
+00:00:42,480 --> 00:00:50,120
+Let's say we had some type human and this is just some type that has a name property that's equal to
+
+14
+00:00:50,130 --> 00:00:50,460
+string.
+
+15
+00:00:51,580 --> 00:00:53,980
+Let's say we also had some type alien.
+
+16
+00:00:54,850 --> 00:01:00,850
+And on alien it had the ability to fly and it's a function just a random function doesn't really matter.
+
+17
+00:01:02,260 --> 00:01:03,520
+What is a.
+
+18
+00:01:03,970 --> 00:01:04,900
+Intersection type?
+
+19
+00:01:05,710 --> 00:01:09,670
+An intersection is essentially the joining of two different types.
+
+20
+00:01:10,480 --> 00:01:19,230
+So let's say we had some third type hybrid, for example, and this is equal to human ampersand alien.
+
+21
+00:01:19,990 --> 00:01:23,890
+The ampersand is going to be the intersection keyword.
+
+22
+00:01:24,220 --> 00:01:25,600
+It's the type literal here.
+
+23
+00:01:26,530 --> 00:01:30,040
+Hybrid, as you check, is now both a human and an alien.
+
+24
+00:01:30,730 --> 00:01:34,870
+What this allows us to do is set some variable, let's say, Josh.
+
+25
+00:01:35,810 --> 00:01:38,300
+And it can be of that type hybrid.
+
+26
+00:01:39,020 --> 00:01:49,040
+And now what you'll notice is that the value of Josh can have both the name as well as the fly method.
+
+27
+00:01:50,940 --> 00:01:58,230
+This is possible because this hybrid type will have all of the properties and their respective types
+
+28
+00:01:58,230 --> 00:02:00,660
+of both human and alien.
+
+29
+00:02:01,320 --> 00:02:08,730
+If Josh was just a human, then you cannot have the fly method because fly cannot exist and assign on
+
+30
+00:02:08,730 --> 00:02:09,300
+type human.
+
+31
+00:02:09,780 --> 00:02:15,660
+Similarly, if Josh was an alien, then you can correspondingly guess that the name does not exist on
+
+32
+00:02:15,660 --> 00:02:16,380
+type alien.
+
+33
+00:02:16,890 --> 00:02:23,550
+But if he is both a human and an alien, then he can have both name and fly.
+
+34
+00:02:24,210 --> 00:02:26,580
+That is essentially an intersection type.
+
+35
+00:02:27,000 --> 00:02:27,600
+Very simple.
+
+36
+00:02:27,600 --> 00:02:29,340
+It's kind of like merging two types together.
+
+37
+00:02:32,290 --> 00:02:35,620
+The other type that I was mentioning is return type.
+
+38
+00:02:36,460 --> 00:02:40,660
+Let's say, for example, you had some function definition type.
+
+39
+00:02:41,650 --> 00:02:43,620
+Let's call it my funk, for example.
+
+40
+00:02:45,000 --> 00:02:50,040
+My funk is just a function that returns you back a string.
+
+41
+00:02:51,900 --> 00:02:58,290
+If I wanted the return type of my funk, I actually currently don't know how to get it.
+
+42
+00:02:58,950 --> 00:03:05,790
+The way I get it is I use a return type literal, so it's a very special key word inside of TypeScript
+
+43
+00:03:05,790 --> 00:03:09,060
+that lets me get the return type from a function and then set it to something.
+
+44
+00:03:09,480 --> 00:03:11,340
+So let me call it my return.
+
+45
+00:03:12,030 --> 00:03:17,350
+And this is equal to calling, return type and then passing it some function type.
+
+46
+00:03:18,270 --> 00:03:24,810
+Now it will reach into this type and then get the return and give that back to me and then set it to
+
+47
+00:03:24,810 --> 00:03:25,230
+this type.
+
+48
+00:03:25,710 --> 00:03:27,990
+If I hover over my return, I see it's a string.
+
+49
+00:03:28,650 --> 00:03:33,960
+If my func instead, the return type of it is a number, then my return is a number.
+
+50
+00:03:34,740 --> 00:03:39,300
+If we go back and we assumed that type human that we had earlier.
+
+51
+00:03:41,500 --> 00:03:49,660
+If this is what my func returns, then the return type again will get it and give me that type.
+
+52
+00:03:50,970 --> 00:03:53,100
+So this is what return type does for us.
+
+53
+00:03:53,610 --> 00:04:00,720
+And we're going to now use both the intersection as well as this return type to create our maximal type.
+
+54
+00:04:01,530 --> 00:04:06,660
+Now the manual type is essentially an extension on this action creator.
+
+55
+00:04:07,080 --> 00:04:14,880
+Remember how I said every function in JavaScript is a object we're going to attach on every action creator
+
+56
+00:04:14,880 --> 00:04:16,080
+this match property.
+
+57
+00:04:16,090 --> 00:04:22,650
+And what it does is it's going to reach into this function, get this return type action, and it's
+
+58
+00:04:22,650 --> 00:04:25,650
+going to get on this action, the type value.
+
+59
+00:04:25,770 --> 00:04:31,980
+Now the type value is going to be equal to this specific value, and it's going to use that and compare
+
+60
+00:04:31,980 --> 00:04:34,800
+it against any action we compare it against.
+
+61
+00:04:35,670 --> 00:04:40,170
+So to do this, what we need to create is first this type.
+
+62
+00:04:40,770 --> 00:04:42,930
+So I'm going to call this type manageable.
+
+63
+00:04:43,380 --> 00:04:48,210
+Now, if you're confused, once I write it, just really look at it and really study it and understand
+
+64
+00:04:48,210 --> 00:04:48,750
+what's happening.
+
+65
+00:04:48,990 --> 00:04:51,510
+Because right now I understand we're learning so many concepts.
+
+66
+00:04:51,510 --> 00:04:52,830
+It's definitely overwhelming.
+
+67
+00:04:53,310 --> 00:04:58,830
+But I guarantee you once you understand it, it will all click and you'll be so much better equipped
+
+68
+00:04:58,830 --> 00:05:00,210
+as a typescript developer.
+
+69
+00:05:01,020 --> 00:05:02,910
+So again, we have some type manageable.
+
+70
+00:05:02,970 --> 00:05:06,690
+It's going to take a generic AKC here stands for Action Creator.
+
+71
+00:05:07,050 --> 00:05:13,500
+We know that this action creator is going to be some function that returns back any action.
+
+72
+00:05:13,860 --> 00:05:16,560
+So as you can see here, we imported any action from Redux.
+
+73
+00:05:16,830 --> 00:05:18,300
+It's literally just any action.
+
+74
+00:05:18,300 --> 00:05:24,810
+It has some type that can be equivalent to a string or anything else and it has a bunch of other properties.
+
+75
+00:05:24,810 --> 00:05:27,450
+Could be payload, could be additional meta tags.
+
+76
+00:05:27,570 --> 00:05:30,750
+We know a saw value add some additional stuff to these action objects.
+
+77
+00:05:30,930 --> 00:05:36,000
+The key thing here is that any action literally says that it can have any number of fields, as you
+
+78
+00:05:36,000 --> 00:05:40,500
+can see, any extra props there, string values that point to anything.
+
+79
+00:05:40,710 --> 00:05:45,600
+That's the any action and extends some action which receive some type which of anything.
+
+80
+00:05:45,610 --> 00:05:50,220
+Of course for us we use strings or we can use enum values doesn't really matter.
+
+81
+00:05:50,430 --> 00:05:52,500
+But here this is the definition.
+
+82
+00:05:53,460 --> 00:05:58,260
+We are saying that we are getting some magical receives a generic action creator which is an object
+
+83
+00:05:58,260 --> 00:05:59,640
+that returns back any type.
+
+84
+00:06:00,390 --> 00:06:08,520
+And what we want this magical to be is of course the action creators type and we also want to intersect
+
+85
+00:06:08,520 --> 00:06:10,500
+it against another type.
+
+86
+00:06:10,890 --> 00:06:16,890
+And this type is going to have that type value where we're going to get the return type from the action
+
+87
+00:06:16,890 --> 00:06:17,400
+creator.
+
+88
+00:06:17,580 --> 00:06:20,550
+So we want to get the action itself.
+
+89
+00:06:21,660 --> 00:06:28,530
+And off of this value, we want to get the type from the type property which we can access using these
+
+90
+00:06:28,800 --> 00:06:29,640
+square brackets.
+
+91
+00:06:30,150 --> 00:06:37,500
+This will reach into the action, get the type value, and then take the type off of that value and
+
+92
+00:06:37,500 --> 00:06:38,910
+set it to this type.
+
+93
+00:06:40,110 --> 00:06:43,890
+So I know that seems very confusing, but this will make sense once we start using it.
+
+94
+00:06:44,070 --> 00:06:45,780
+Once we start using it, all of it will be clear.
+
+95
+00:06:47,130 --> 00:06:53,340
+Next we have some match method and this match method receives an action because as I mentioned, we're
+
+96
+00:06:53,340 --> 00:06:57,480
+going to be comparing arm type now against this action.
+
+97
+00:06:58,270 --> 00:07:01,060
+And what the match does we haven't implemented yet.
+
+98
+00:07:01,330 --> 00:07:06,340
+But essentially what it will do is it will narrow the tape down.
+
+99
+00:07:06,700 --> 00:07:11,020
+So this is where I mentioned before that we were using those type predicate functions where we narrow
+
+100
+00:07:11,020 --> 00:07:12,070
+the scope of the type down.
+
+101
+00:07:12,640 --> 00:07:18,700
+So as long as whatever match receives that action, once it passes that check, we want to say that
+
+102
+00:07:18,700 --> 00:07:24,520
+this action is definitely of the return type of our action creator.
+
+103
+00:07:25,270 --> 00:07:32,590
+So if our action creator is our fetch category start and it passes calling match on the action, if
+
+104
+00:07:32,590 --> 00:07:37,810
+it passes, then we know for sure it's going to be of the fetch category start action.
+
+105
+00:07:38,320 --> 00:07:40,840
+That's what this Mashable is trying to define.
+
+106
+00:07:42,290 --> 00:07:44,360
+So if that's confusing, don't worry.
+
+107
+00:07:44,390 --> 00:07:50,090
+We're going to now write out the actual modification function that will give us back a manual from an
+
+108
+00:07:50,090 --> 00:07:50,780
+action creator.
+
+109
+00:07:51,170 --> 00:07:57,350
+But for now, I want you to absorb the usage of the intersection, the usage of the return types, and
+
+110
+00:07:57,350 --> 00:07:59,600
+what I talked about that this manual does.
+
+111
+00:08:00,050 --> 00:08:04,010
+I want you to sit with this, read this and really understand what's happening here.
+
+112
+00:08:04,850 --> 00:08:10,160
+As long as you understand enough of it, we'll move on to the next video where we will write the actual
+
+113
+00:08:10,160 --> 00:08:16,880
+function overload that will use this manual type and the past in action creator to create this new object
+
+114
+00:08:16,880 --> 00:08:17,630
+that I'm talking about.
+
+115
+00:08:18,500 --> 00:08:20,060
+So again, this is very challenging.
+
+116
+00:08:20,060 --> 00:08:26,000
+This is rather advanced TypeScript But as I mentioned, with Redux, Redux and TypeScript is challenging
+
+117
+00:08:26,000 --> 00:08:26,600
+by nature.
+
+118
+00:08:26,900 --> 00:08:29,000
+So we're really flexing our knowledge on TypeScript.
+
+119
+00:08:29,900 --> 00:08:30,860
+So let's keep learning.
+
+120
+00:08:30,860 --> 00:08:33,080
+And in the next video, let's use our new magical type.
+
+121
+00:08:33,260 --> 00:08:34,340
+I'll see you in the next video.

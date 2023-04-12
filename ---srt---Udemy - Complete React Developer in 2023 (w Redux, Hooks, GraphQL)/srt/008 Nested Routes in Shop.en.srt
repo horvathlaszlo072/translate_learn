@@ -1,0 +1,371 @@
+1
+00:00:00,360 --> 00:00:06,060
+Welcome back, everyone, in this video, what we're going to do is we are going to create our nested
+
+2
+00:00:06,060 --> 00:00:06,510
+roots.
+
+3
+00:00:06,930 --> 00:00:09,750
+We have this page already that we want, as our base wrote.
+
+4
+00:00:10,110 --> 00:00:12,870
+So we need to figure out how to set this up as its own component.
+
+5
+00:00:13,290 --> 00:00:18,660
+And then we need to set up this nested row while accounting for it in our current routing structure.
+
+6
+00:00:19,620 --> 00:00:25,410
+So the first thing we need to do in order to make this component of shop investable with its roots is
+
+7
+00:00:25,410 --> 00:00:32,940
+we need to say OK, when you start matching this path, I know there will be a subsequent you are all
+
+8
+00:00:32,940 --> 00:00:35,100
+parameter set after shop.
+
+9
+00:00:35,790 --> 00:00:37,840
+Whatever that set is, I don't care.
+
+10
+00:00:37,860 --> 00:00:39,800
+That's what this star represents.
+
+11
+00:00:39,810 --> 00:00:41,000
+It's the wild card.
+
+12
+00:00:41,460 --> 00:00:44,940
+This just means that I want you to match shop, slash anything.
+
+13
+00:00:45,090 --> 00:00:46,050
+It doesn't matter.
+
+14
+00:00:46,200 --> 00:00:52,980
+As long as you match that, I want you to forward them and render this component the shop component,
+
+15
+00:00:53,340 --> 00:00:57,120
+because now the shop component is going to have its own roots inside.
+
+16
+00:00:58,020 --> 00:01:02,730
+Now, before we actually start implementing the roots, we need to duplicate this into the appropriate
+
+17
+00:01:02,730 --> 00:01:08,850
+page component because now this shop component is going to be a collection preview.
+
+18
+00:01:09,540 --> 00:01:11,850
+So let's make a new route.
+
+19
+00:01:12,790 --> 00:01:19,930
+Folder, and I want to call this my category's preview, because we're previewing multiple categories,
+
+20
+00:01:20,590 --> 00:01:29,110
+and similarly, of course, we'll need the categories dot styles, dot SAS and we'll also need a categories
+
+21
+00:01:29,650 --> 00:01:33,430
+slash preview dot component Dutch sex.
+
+22
+00:01:33,880 --> 00:01:35,500
+Actually, I misspelled this.
+
+23
+00:01:35,530 --> 00:01:37,630
+This is not just categories, this is categories.
+
+24
+00:01:37,780 --> 00:01:39,370
+Slash preview.
+
+25
+00:01:40,550 --> 00:01:40,970
+There we go.
+
+26
+00:01:42,020 --> 00:01:47,360
+Now inside of the categories, while I cannot spell categories.
+
+27
+00:01:48,510 --> 00:01:48,990
+There you go.
+
+28
+00:01:49,070 --> 00:01:49,670
+Categories.
+
+29
+00:01:50,570 --> 00:01:53,990
+I'm going to paste in the appropriate code that we have from before.
+
+30
+00:01:54,740 --> 00:01:56,780
+So all of these are still relative.
+
+31
+00:01:57,290 --> 00:01:58,790
+So you can double check.
+
+32
+00:01:59,060 --> 00:02:00,650
+This is going to the correct context.
+
+33
+00:02:00,860 --> 00:02:02,420
+This is going to the correct preview.
+
+34
+00:02:03,140 --> 00:02:06,450
+And what we need to do now is we need to modify this.
+
+35
+00:02:06,890 --> 00:02:11,770
+So instead of importing from shop, this is now category's dash preview.
+
+36
+00:02:12,870 --> 00:02:16,950
+And this component will now be categories preview.
+
+37
+00:02:20,220 --> 00:02:25,020
+We no longer need the actually no, we still need the categories map because all of this functionality
+
+38
+00:02:25,020 --> 00:02:31,350
+is still going to stay the same, except the only difference here is that instead of category preview
+
+39
+00:02:31,350 --> 00:02:34,260
+container should be the name instead of shop container.
+
+40
+00:02:35,930 --> 00:02:38,540
+So everything else, though, is the exact same.
+
+41
+00:02:38,660 --> 00:02:40,670
+We actually already had this component fully finished.
+
+42
+00:02:41,540 --> 00:02:45,380
+It was just a bunch of updates to the naming and also for preview styles.
+
+43
+00:02:45,500 --> 00:02:46,790
+We didn't even have any styles.
+
+44
+00:02:47,000 --> 00:02:49,480
+So actually, since we don't have any styles, we don't even need this file.
+
+45
+00:02:49,490 --> 00:02:50,270
+Let's get rid of this.
+
+46
+00:02:51,140 --> 00:02:55,700
+And inside, we don't need this import for the styles anyways if we're not adding styles.
+
+47
+00:02:55,730 --> 00:02:56,600
+There's really no need.
+
+48
+00:02:57,020 --> 00:03:03,050
+And if this div isn't doing anything, then we can also replace this div with a fragment which as we
+
+49
+00:03:03,050 --> 00:03:06,230
+learn about the shorthand of just doing this for fragments.
+
+50
+00:03:06,560 --> 00:03:11,870
+But again, as I mentioned for consistency sake, let's just import fragments like so.
+
+51
+00:03:13,600 --> 00:03:22,990
+And let's bring this categories preview now into our shop component, so now our shop component doesn't
+
+52
+00:03:22,990 --> 00:03:24,970
+need any of this anymore.
+
+53
+00:03:25,720 --> 00:03:29,530
+Now what it primarily needs is nested routing.
+
+54
+00:03:29,950 --> 00:03:33,640
+So this means that we need to import in routes and route.
+
+55
+00:03:34,300 --> 00:03:38,560
+The reason why is because you cannot use a root component unless it's immediate.
+
+56
+00:03:38,560 --> 00:03:43,420
+Parent is a root soft component from React Root or Dom.
+
+57
+00:03:46,620 --> 00:03:48,900
+So here we don't need this context.
+
+58
+00:03:49,440 --> 00:03:53,550
+In fact, we don't need any of this code, let's get rid of all of this and let's start creating our
+
+59
+00:03:53,550 --> 00:03:54,030
+roots.
+
+60
+00:03:54,630 --> 00:04:01,230
+So here I'm going to say roots is going to match a root where the index root is going to render the
+
+61
+00:04:01,230 --> 00:04:02,880
+elements of our new.
+
+62
+00:04:04,590 --> 00:04:07,260
+Collections preview or categories preview.
+
+63
+00:04:08,040 --> 00:04:12,510
+So here, let's import this in important categories preview.
+
+64
+00:04:13,700 --> 00:04:15,400
+From categories preview route.
+
+65
+00:04:16,220 --> 00:04:18,350
+And then we're going to render the full component.
+
+66
+00:04:20,560 --> 00:04:24,430
+And now, if I save this and I go back to my application.
+
+67
+00:04:25,470 --> 00:04:26,100
+There we see it.
+
+68
+00:04:26,280 --> 00:04:29,850
+Everything is still present, so nothing has broken yet.
+
+69
+00:04:31,410 --> 00:04:38,220
+It would come back now we need to add an additional route for our new category individually.
+
+70
+00:04:39,030 --> 00:04:43,650
+But before we do that, let's just quickly go over what we had done.
+
+71
+00:04:44,650 --> 00:04:50,170
+The main thing with nested routes is that you want to say with React Rotterdam.
+
+72
+00:04:51,590 --> 00:04:57,290
+Writer Tom takes a look at the path value, and it says, Hey, whenever I match this path inside of
+
+73
+00:04:57,290 --> 00:05:04,970
+the URL relative to what my parent path is, I am going to render this element that you've given me
+
+74
+00:05:04,970 --> 00:05:05,630
+for this route.
+
+75
+00:05:06,700 --> 00:05:13,240
+Now, what we're saying is that, hey, if you match shop, slash any wild card of whatever you are
+
+76
+00:05:13,240 --> 00:05:14,200
+parameters that follow.
+
+77
+00:05:14,710 --> 00:05:22,060
+Render the shop because inside of the shop you can expect further routes and these routes are all going
+
+78
+00:05:22,060 --> 00:05:29,200
+to be relative to the parent route, which was shop slash whatever is rendered inside as the parameter
+
+79
+00:05:29,200 --> 00:05:31,660
+will be dealt with inside of this route.
+
+80
+00:05:31,960 --> 00:05:35,080
+So this is the benefit of nesting the code like so.
+
+81
+00:05:36,550 --> 00:05:43,150
+Now what we can do is we can actually build the next category route, which utilizes a U R L parameter,
+
+82
+00:05:43,330 --> 00:05:45,160
+and we'll learn about that in the next video.
+
+83
+00:05:45,460 --> 00:05:50,590
+But really, if you think about nesting roots this way, it becomes much more intuitive as to what's
+
+84
+00:05:50,590 --> 00:05:51,010
+happening.
+
+85
+00:05:51,550 --> 00:05:56,550
+Because remember, the whole thing about the path is that the path just matches the URL and then react.
+
+86
+00:05:56,560 --> 00:06:00,820
+Rotterdam is like, Oh, I'm going to render this element anything afterwards here.
+
+87
+00:06:01,030 --> 00:06:05,860
+I'm not going to worry about because the fact that you did this means that you have roots set up for
+
+88
+00:06:05,860 --> 00:06:08,950
+that component that will carry on and figuring it out.
+
+89
+00:06:09,340 --> 00:06:13,020
+And this is true for any subsequent children roots that get nested.
+
+90
+00:06:13,060 --> 00:06:14,770
+They're going to follow a similar pattern.
+
+91
+00:06:15,100 --> 00:06:19,990
+Right now, we just have an index route, but in the next component, we're going to do a dynamic URL
+
+92
+00:06:19,990 --> 00:06:20,980
+parameter based route.
+
+93
+00:06:21,430 --> 00:06:23,110
+So let's do that in the next video together.

@@ -1,0 +1,335 @@
+1
+00:00:00,580 --> 00:00:01,600
+Welcome back, everyone.
+
+2
+00:00:02,610 --> 00:00:05,280
+So so far, we've learned quite a bit about class components.
+
+3
+00:00:05,760 --> 00:00:07,740
+We've learned about their constructor call.
+
+4
+00:00:07,920 --> 00:00:11,430
+We have learned about some of their lifecycle methods component amount specifically.
+
+5
+00:00:11,790 --> 00:00:13,080
+And we've learned about the render.
+
+6
+00:00:13,920 --> 00:00:18,960
+So you might be wondering what's the order that these actually get run when React decides to initialize
+
+7
+00:00:18,960 --> 00:00:20,190
+and mount a component?
+
+8
+00:00:20,790 --> 00:00:25,410
+So the order I'm going to tell you is that it runs the constructor first because the constructor runs
+
+9
+00:00:25,410 --> 00:00:27,390
+before anything in any class.
+
+10
+00:00:27,510 --> 00:00:33,180
+That is, regardless of whether this is React or JavaScript, classes will always run the constructor
+
+11
+00:00:33,180 --> 00:00:34,950
+function first inside of here.
+
+12
+00:00:34,950 --> 00:00:39,660
+The only thing you're really going to do with the constructor is initialize the state.
+
+13
+00:00:40,380 --> 00:00:45,000
+So this is pretty much just saying, Hey, react, there's going to be a state object for this component,
+
+14
+00:00:45,000 --> 00:00:47,430
+and this is the initial values that it's going to have.
+
+15
+00:00:47,820 --> 00:00:50,610
+That's all you really need to ever use the constructor for.
+
+16
+00:00:51,570 --> 00:00:58,080
+The render runs next, and what it does is the render determines what to show.
+
+17
+00:00:59,010 --> 00:01:04,740
+This you can see kind of as the template of the HTML, so this dictates what the UI for this component
+
+18
+00:01:04,740 --> 00:01:05,460
+is going to be.
+
+19
+00:01:06,410 --> 00:01:12,020
+Then the next life cycle that runs is component did Mount, because what happens is that React is like,
+
+20
+00:01:12,050 --> 00:01:18,020
+OK, I run the constructor of initialize the state, the initial state at the very least, and I am
+
+21
+00:01:18,020 --> 00:01:23,030
+going to now render the initial UI of this component.
+
+22
+00:01:23,210 --> 00:01:27,500
+So it's actually going to mount this initial UI onto the Dom.
+
+23
+00:01:27,890 --> 00:01:34,670
+So what this means is that whatever the initial state of your component is, is what it will mount on.
+
+24
+00:01:35,450 --> 00:01:37,970
+Then once it mounts, it will run.
+
+25
+00:01:37,970 --> 00:01:42,200
+The lifecycle method component did mount because our component did just mount.
+
+26
+00:01:42,410 --> 00:01:45,200
+The moment it mounts, it runs the code inside.
+
+27
+00:01:45,560 --> 00:01:51,350
+And here we can easily see very quickly if I console log in each space.
+
+28
+00:01:51,740 --> 00:01:52,700
+So this is one.
+
+29
+00:01:54,400 --> 00:01:57,070
+This one with the render should be to.
+
+30
+00:01:58,370 --> 00:02:01,670
+And then inside of this component at Mount, this should be three.
+
+31
+00:02:02,210 --> 00:02:04,760
+So if we save this, we go back to our application.
+
+32
+00:02:05,240 --> 00:02:09,440
+We see one two three and then you'll notice that two runs again.
+
+33
+00:02:10,520 --> 00:02:11,810
+So why did this happen?
+
+34
+00:02:12,530 --> 00:02:13,850
+Well, let's think about what just happened.
+
+35
+00:02:14,480 --> 00:02:16,130
+Our constructor runs our stake.
+
+36
+00:02:16,130 --> 00:02:21,890
+It's initialized, so console.log one yes, we know the constructor runs first, then the render runs
+
+37
+00:02:22,160 --> 00:02:23,420
+console.log two.
+
+38
+00:02:23,900 --> 00:02:25,010
+This is the second thing.
+
+39
+00:02:25,160 --> 00:02:32,390
+The initial rendering and mounting of our component onto the page then component did mount three runs.
+
+40
+00:02:32,660 --> 00:02:35,570
+And here we are fetching some JSON.
+
+41
+00:02:35,570 --> 00:02:39,680
+And remember, this is asynchronous, so we actually don't know when this data is going to come back.
+
+42
+00:02:40,100 --> 00:02:42,680
+Once it comes back, we are going to now update the state.
+
+43
+00:02:43,040 --> 00:02:48,770
+But the moment that that state updates remember, I told you that the moment state changes and you've
+
+44
+00:02:48,770 --> 00:02:49,700
+called set state.
+
+45
+00:02:50,880 --> 00:02:56,610
+React knows, oh, this components different, I need to re render it re render here's the key word,
+
+46
+00:02:56,640 --> 00:03:02,250
+meaning that we need to run the render again, because the moment you run the render method react is
+
+47
+00:03:02,250 --> 00:03:08,610
+saying, Oh, let me render onto the page again with this template and inside of this template, the
+
+48
+00:03:08,610 --> 00:03:15,180
+state dot monsters is now different because as we know, we've updated the state with the appropriate
+
+49
+00:03:15,180 --> 00:03:19,530
+users, which is why you see the second two logged out.
+
+50
+00:03:20,410 --> 00:03:23,440
+This is how React is going to work.
+
+51
+00:03:23,470 --> 00:03:29,530
+Majority of the time with your components by looking at just the order of when the initial render happens
+
+52
+00:03:29,530 --> 00:03:32,500
+and another render happens once that state gets called.
+
+53
+00:03:32,830 --> 00:03:36,610
+You now understand pretty much the core of class components and rendering.
+
+54
+00:03:36,910 --> 00:03:41,440
+This is like 80 percent of what you need to know about class components when it comes to understanding
+
+55
+00:03:41,440 --> 00:03:42,340
+the rendering cycles.
+
+56
+00:03:42,970 --> 00:03:49,060
+So the moment that's at stake, it's called the render method gets called again because once the state
+
+57
+00:03:49,060 --> 00:03:55,120
+is up to date, we want to re render what this components UI is with any new values that may be there,
+
+58
+00:03:55,210 --> 00:04:00,250
+which we know is probably going to be the case because the state object is different and the render
+
+59
+00:04:00,250 --> 00:04:05,230
+is simply just going to look through this GSX and say, Oh, I need to look at state dot monsters.
+
+60
+00:04:05,620 --> 00:04:08,620
+What's the monsters, whatever the new value is?
+
+61
+00:04:09,130 --> 00:04:14,380
+This is the key thing of understanding, react and really just understanding with class components when
+
+62
+00:04:14,380 --> 00:04:15,310
+something renders.
+
+63
+00:04:15,400 --> 00:04:19,090
+And here we explicitly see step by step what that looks like.
+
+64
+00:04:19,420 --> 00:04:25,720
+Run the constructor, run the initial render when your initial monster's value was an empty array.
+
+65
+00:04:26,380 --> 00:04:32,650
+Then, once your component mounts fetch, the new users call that state and once again, once the state
+
+66
+00:04:32,650 --> 00:04:38,080
+gets called Call Render Again and now Monsters is the new updated users list.
+
+67
+00:04:38,650 --> 00:04:44,560
+This is pretty much the basic flow of rendering and re rendering when it comes to making these basic
+
+68
+00:04:44,560 --> 00:04:45,430
+API requests.
+
+69
+00:04:46,090 --> 00:04:48,740
+That's it with a bit more practice.
+
+70
+00:04:48,760 --> 00:04:50,080
+This will become very familiar.
+
+71
+00:04:50,080 --> 00:04:54,940
+But this flow, I just want you to understand that constructor runs first, initialize your state,
+
+72
+00:04:55,240 --> 00:04:57,490
+render your initial component UI.
+
+73
+00:04:57,760 --> 00:05:02,800
+Then once you need some API, calls to it in the component at Mount lifecycle.
+
+74
+00:05:03,070 --> 00:05:06,790
+Once that happens, you want to set state to make sure that your component updates.
+
+75
+00:05:07,030 --> 00:05:11,290
+And once it updates, it's going to call render again to re render the UI.
+
+76
+00:05:11,590 --> 00:05:12,340
+That's the flow.
+
+77
+00:05:12,970 --> 00:05:18,220
+We're going to dive deep into a lot more of these concepts, but now you understand very integrally.
+
+78
+00:05:18,430 --> 00:05:23,530
+One of the hardest things for a lot of people when it comes to understanding react is when things really
+
+79
+00:05:23,530 --> 00:05:23,920
+render.
+
+80
+00:05:24,010 --> 00:05:30,040
+But now you've seen a very common flow you're going to encounter over and over again in your react life.
+
+81
+00:05:30,820 --> 00:05:32,350
+You've understood some of these life cycles.
+
+82
+00:05:33,190 --> 00:05:36,850
+So this is enough for us to get started with this component.
+
+83
+00:05:37,030 --> 00:05:42,100
+So let's start actually making this look a little bit more similar to our website, and we'll do that
+
+84
+00:05:42,100 --> 00:05:43,030
+in the next video.

@@ -1,0 +1,695 @@
+1
+00:00:00,180 --> 00:00:01,380
+Welcome back, everyone.
+
+2
+00:00:01,830 --> 00:00:05,340
+In the last video, we finished off the functionality within our sign up form.
+
+3
+00:00:05,610 --> 00:00:11,550
+And in this video, now we need to think about how to actually style this component, but also at a
+
+4
+00:00:11,550 --> 00:00:15,510
+high level, whether or not there is any component ization that we can do.
+
+5
+00:00:16,170 --> 00:00:21,630
+So one of the things and patterns that I want you to think about when working with different components
+
+6
+00:00:21,630 --> 00:00:26,880
+and different features is the most important thing is to build in the functionality.
+
+7
+00:00:26,880 --> 00:00:32,880
+First, you don't really need the styling as much as you need to make sure that the actual functionality
+
+8
+00:00:32,880 --> 00:00:34,020
+of the component works.
+
+9
+00:00:34,320 --> 00:00:38,460
+Once you have the functionality and then you can start thinking about styling and all of those things
+
+10
+00:00:38,490 --> 00:00:41,190
+knowing that the hardest portion of your code works.
+
+11
+00:00:41,790 --> 00:00:48,300
+So now that we have the functionality in, let's think about these different HTML elements that we have
+
+12
+00:00:48,300 --> 00:00:51,030
+and how they might fit in a larger application.
+
+13
+00:00:51,780 --> 00:00:57,390
+So when we look at our final application here, we see that we've got in some very basic form fields.
+
+14
+00:00:57,630 --> 00:01:04,380
+But when looking at the actual final format, we know that here what we've done is really just work
+
+15
+00:01:04,380 --> 00:01:05,790
+on the sign up page.
+
+16
+00:01:06,210 --> 00:01:12,810
+What we do need is also a sign in page, which means that we're actually sharing these different form
+
+17
+00:01:12,810 --> 00:01:13,410
+inputs.
+
+18
+00:01:14,070 --> 00:01:19,470
+So what we want to do then, is we want to generate size these inputs because as we see, we're also
+
+19
+00:01:19,470 --> 00:01:23,310
+using it in four different places within the same component anyways.
+
+20
+00:01:23,610 --> 00:01:27,360
+So this gives us a good chance to think about moving this into its own component.
+
+21
+00:01:28,990 --> 00:01:34,550
+So to start this, let's go into our components folder and let's make a new folder.
+
+22
+00:01:35,020 --> 00:01:39,250
+I'm going to call this form input and insight a form input.
+
+23
+00:01:39,280 --> 00:01:44,230
+I'm also going to make this form input dot component.
+
+24
+00:01:44,350 --> 00:01:45,520
+Dot GSX.
+
+25
+00:01:46,030 --> 00:01:48,220
+And because we know we're going to need to style it.
+
+26
+00:01:48,370 --> 00:01:52,690
+I'm going to make a form input dot styles dot SAS.
+
+27
+00:01:53,980 --> 00:02:00,580
+So here, what I want to do is inside of the component, let's think about just copying this over for
+
+28
+00:02:00,580 --> 00:02:03,670
+now and then we'll talk about styling the component.
+
+29
+00:02:04,360 --> 00:02:06,790
+So I want to do a contact form.
+
+30
+00:02:06,790 --> 00:02:09,850
+Input equals a functional component.
+
+31
+00:02:10,930 --> 00:02:14,170
+That just returns what we have in here so far.
+
+32
+00:02:15,220 --> 00:02:20,350
+So as we see, we don't have a handle change and we don't have a value.
+
+33
+00:02:20,980 --> 00:02:29,800
+So what we can do is inside of the props, we can pass through a display name value because that's also
+
+34
+00:02:29,800 --> 00:02:31,360
+going to go into this label.
+
+35
+00:02:32,050 --> 00:02:38,110
+So let's actually be very explicit in calling that label because we know that's what this will be.
+
+36
+00:02:39,420 --> 00:02:41,400
+So other than a label, what else is there?
+
+37
+00:02:41,790 --> 00:02:42,990
+There's a handle change.
+
+38
+00:02:43,170 --> 00:02:46,050
+So let's call this a change handler.
+
+39
+00:02:47,650 --> 00:02:51,850
+And then for the value here, we can just explicitly say value.
+
+40
+00:02:53,500 --> 00:03:00,520
+And because we know that this value and this value overlap, there's also this name.
+
+41
+00:03:01,000 --> 00:03:02,980
+And we can even put a name to overlap.
+
+42
+00:03:03,430 --> 00:03:07,930
+There's this required text, which makes it something that the input takes in as well.
+
+43
+00:03:08,470 --> 00:03:15,190
+What we can do is actually we can spread through the values and use this like a normal input.
+
+44
+00:03:15,670 --> 00:03:19,420
+So other than the fact that we have this change handler, we can even call it on change.
+
+45
+00:03:19,420 --> 00:03:24,940
+In fact, I can even be more explicit in the sense that I know that this component is going to be used
+
+46
+00:03:24,940 --> 00:03:32,830
+like a regular input, except it has some functionality where we have perhaps a wrapping, higher level
+
+47
+00:03:32,830 --> 00:03:36,260
+parent component, which should get rid of this warning, as we see.
+
+48
+00:03:37,180 --> 00:03:43,090
+But also all of these properties here, the type, the required, the on change, the name, the value.
+
+49
+00:03:43,540 --> 00:03:48,910
+I am just going to use them directly on this component in place of a regular input component.
+
+50
+00:03:48,940 --> 00:03:54,370
+The only thing that's new that doesn't go into this is going to be label everything else, though.
+
+51
+00:03:54,760 --> 00:03:57,730
+I just want to spread this in as other props.
+
+52
+00:03:58,420 --> 00:04:03,700
+And because I'm aggregating them here now, I can just spread them through like so.
+
+53
+00:04:04,930 --> 00:04:13,630
+As these other prop values to go on this input and this now should be able to be used to replace what
+
+54
+00:04:13,630 --> 00:04:14,410
+we currently have.
+
+55
+00:04:14,800 --> 00:04:17,680
+Let's just make sure I want to take this component.
+
+56
+00:04:18,890 --> 00:04:23,030
+I want to impart this in here, so I'm going to import in.
+
+57
+00:04:24,290 --> 00:04:25,310
+Form input.
+
+58
+00:04:27,090 --> 00:04:28,200
+I misspelled import.
+
+59
+00:04:28,950 --> 00:04:34,950
+I want to import informed input from farm input component file.
+
+60
+00:04:35,610 --> 00:04:40,470
+And then what we'll do is, as I mentioned, we know that we need this display name.
+
+61
+00:04:40,470 --> 00:04:44,550
+So all these inputs, let's first just replace them with our form input component.
+
+62
+00:04:45,240 --> 00:04:51,990
+And then I'm going to put a label and this label is going to point to this label value.
+
+63
+00:04:52,680 --> 00:04:57,250
+So go ahead and do that for all these other form inputs for here.
+
+64
+00:04:57,270 --> 00:05:00,830
+I want to do label goes to email.
+
+65
+00:05:02,940 --> 00:05:04,740
+As we see here.
+
+66
+00:05:05,700 --> 00:05:08,340
+Like, so I'm going to get rid of this one.
+
+67
+00:05:09,210 --> 00:05:11,070
+This one will be password.
+
+68
+00:05:14,680 --> 00:05:17,710
+So let's capitalize password.
+
+69
+00:05:19,120 --> 00:05:27,250
+And then instead of here again, Labor will be confirm password.
+
+70
+00:05:28,400 --> 00:05:34,100
+So if we save this, at the very least, we should see that everything here still works.
+
+71
+00:05:35,180 --> 00:05:40,490
+In fact, just because we put it in our own div now for each one of these groupings, we actually see
+
+72
+00:05:40,490 --> 00:05:42,620
+that it's even shifting into its own form.
+
+73
+00:05:43,430 --> 00:05:48,620
+So here, if I just type these through as we can see, everything still works awesome.
+
+74
+00:05:50,270 --> 00:05:56,690
+So now that we have this, let's start actually styling this, so there's again, a couple of things
+
+75
+00:05:56,690 --> 00:06:02,840
+that I'm going to show you in terms of the actual sass I've already provided, and it's a pretty extensive
+
+76
+00:06:02,840 --> 00:06:03,440
+source file.
+
+77
+00:06:04,130 --> 00:06:08,630
+So what you need around to make the ceasefire work, though, we can walk there.
+
+78
+00:06:09,110 --> 00:06:13,130
+So first, we have a div with a class name and this class name.
+
+79
+00:06:13,130 --> 00:06:17,000
+I want to say group because it's essentially grouping the form input together.
+
+80
+00:06:18,190 --> 00:06:28,360
+And then as far as this label goes, this label, you can give something of a dynamic class name because
+
+81
+00:06:28,360 --> 00:06:30,430
+if you look at the functionality of this.
+
+82
+00:06:30,970 --> 00:06:33,940
+What happens is that it shrinks up or it doesn't.
+
+83
+00:06:34,480 --> 00:06:36,300
+So let's talk about some functionality here.
+
+84
+00:06:37,400 --> 00:06:44,000
+This class name value typically is a string, but you can render string in JavaScript, which means
+
+85
+00:06:44,000 --> 00:06:47,660
+that you can actually say that for this class name.
+
+86
+00:06:48,380 --> 00:06:56,840
+I want to render some string interpolated string where the value inside is going to be dependent on
+
+87
+00:06:56,840 --> 00:06:58,340
+this other props value.
+
+88
+00:06:59,630 --> 00:07:09,470
+So in other props, if the value length is there, meaning that if the user has typed something into
+
+89
+00:07:09,470 --> 00:07:13,460
+this input, that means that I want the label to shrink.
+
+90
+00:07:14,760 --> 00:07:19,380
+When that happens, meaning that this length is greater than zero, so you can either be explicit about
+
+91
+00:07:19,380 --> 00:07:27,420
+it, or you can just say as long as it's exists, because zero in this particular context actually evaluates
+
+92
+00:07:27,420 --> 00:07:28,890
+as a false value.
+
+93
+00:07:29,100 --> 00:07:33,510
+So this ternary operator is going to see this as false when length is zero, when it's greater, it's
+
+94
+00:07:33,510 --> 00:07:34,320
+going to see it as true.
+
+95
+00:07:34,740 --> 00:07:41,400
+So we're saying if the length value is truth, then I want you to append this shrink class.
+
+96
+00:07:42,240 --> 00:07:44,700
+Otherwise, just don't do anything.
+
+97
+00:07:46,080 --> 00:07:49,290
+Or you can even just say append an empty string.
+
+98
+00:07:50,390 --> 00:07:57,260
+And then outside of that, we also know this is a form input label, which is another class that we
+
+99
+00:07:57,260 --> 00:08:04,100
+just want to add to this so that we know what this label is and now inside of the inputs.
+
+100
+00:08:04,250 --> 00:08:10,400
+I also want this to have a specific, let's say, class name.
+
+101
+00:08:10,880 --> 00:08:12,560
+And I want to call this class.
+
+102
+00:08:13,570 --> 00:08:14,800
+The form and put itself.
+
+103
+00:08:16,500 --> 00:08:21,810
+The other thing we know is that if there's no label, then don't render a label and here what we can
+
+104
+00:08:21,810 --> 00:08:29,310
+do is we can just wrap this inside of these squiggly braces and we can just say that if label exists,
+
+105
+00:08:30,150 --> 00:08:32,370
+then render this label.
+
+106
+00:08:33,740 --> 00:08:41,090
+So now if we save this and inside of your form, input style, Scozzafava file, just paste in the sass
+
+107
+00:08:41,090 --> 00:08:44,000
+file that I've provided for you in your resources folder.
+
+108
+00:08:44,780 --> 00:08:51,950
+So now that we have in our styling, let's go back to our form input component and let's import in that
+
+109
+00:08:51,950 --> 00:08:52,700
+styles file.
+
+110
+00:08:53,600 --> 00:08:56,700
+So let's save this and now go back to our application.
+
+111
+00:08:57,470 --> 00:08:59,780
+And here we see we have our styling.
+
+112
+00:09:00,760 --> 00:09:04,420
+What we'll notice, though, is that this display name is not moving up.
+
+113
+00:09:04,810 --> 00:09:12,160
+It does move up once we start typing, but we do also wanted to move up when we actually start selecting.
+
+114
+00:09:13,110 --> 00:09:14,310
+So how do we do that?
+
+115
+00:09:14,880 --> 00:09:17,910
+Well, I've actually included the stars for you inside of here.
+
+116
+00:09:18,240 --> 00:09:21,450
+And it's specifically this selector, the CSA selector.
+
+117
+00:09:21,840 --> 00:09:27,900
+Essentially, what this code says is that for this group element, which is our top level div inside,
+
+118
+00:09:28,410 --> 00:09:34,470
+there's a form input if you focus on the input, meaning that if it's selected, I want you to find
+
+119
+00:09:34,470 --> 00:09:43,290
+the next sibling or a generally subsequent sibling with this class and then attach that shrink label
+
+120
+00:09:43,500 --> 00:09:46,890
+Nixon, which is what creates the label shrinking effect.
+
+121
+00:09:47,520 --> 00:09:55,770
+But here we noticed that our input is actually below the actual label, which means that the subsequent
+
+122
+00:09:55,770 --> 00:10:01,530
+selector is not going to work because the selector is looking for a general sibling component with this
+
+123
+00:10:01,530 --> 00:10:04,590
+form input label class after the input.
+
+124
+00:10:05,070 --> 00:10:09,960
+So in order to fix that, we just need to move this input above the label.
+
+125
+00:10:10,410 --> 00:10:15,000
+And now if we go back, we'll see that once we select display name, it works.
+
+126
+00:10:15,840 --> 00:10:20,520
+And we also notice that it's also working with this text that's been auto populate it.
+
+127
+00:10:21,090 --> 00:10:21,660
+So there we go.
+
+128
+00:10:22,110 --> 00:10:28,290
+We now have our form input component that's now reusable, and we've also learned a little bit about
+
+129
+00:10:28,290 --> 00:10:34,500
+different ways that we can compose and actually structure our components so that it's a little bit more
+
+130
+00:10:34,500 --> 00:10:38,430
+intuitive when it comes to how we set up this input.
+
+131
+00:10:39,400 --> 00:10:44,920
+What you can also do if you want to be more explicit is actually pass an object that has all of these
+
+132
+00:10:44,920 --> 00:10:47,890
+values as some kind of.
+
+133
+00:10:48,460 --> 00:10:50,020
+You can call it input options.
+
+134
+00:10:50,380 --> 00:10:51,280
+You can do that as well.
+
+135
+00:10:51,880 --> 00:10:54,340
+Both are actually viable options.
+
+136
+00:10:54,370 --> 00:10:56,170
+It's really up to you how you want to do it.
+
+137
+00:10:56,710 --> 00:11:00,790
+But personally, because I'm the only person using this application, I'm going to do it this way.
+
+138
+00:11:01,180 --> 00:11:03,940
+I can show you quickly what the other way entails.
+
+139
+00:11:04,240 --> 00:11:11,350
+All it would be is that here for this form input label, of course, being label here, you can create
+
+140
+00:11:11,770 --> 00:11:14,800
+something called input options as an object.
+
+141
+00:11:15,250 --> 00:11:17,800
+And this would just be equal to this.
+
+142
+00:11:18,670 --> 00:11:20,890
+And instead of these equal signs.
+
+143
+00:11:22,430 --> 00:11:25,790
+We can just do this except for a type text.
+
+144
+00:11:27,070 --> 00:11:27,790
+This one.
+
+145
+00:11:29,460 --> 00:11:31,290
+Should be kept.
+
+146
+00:11:31,680 --> 00:11:32,040
+Oops.
+
+147
+00:11:32,950 --> 00:11:37,350
+Actually, like so we just also have to add commas.
+
+148
+00:11:38,580 --> 00:11:39,780
+To these values here.
+
+149
+00:11:41,780 --> 00:11:48,410
+And instead of interpolating it, we can just directly put these values like some.
+
+150
+00:11:50,230 --> 00:11:57,010
+And of course, this being an object, we have to double wrap these and then required equals true or
+
+151
+00:11:57,310 --> 00:11:57,820
+untrue.
+
+152
+00:11:59,520 --> 00:12:03,600
+And now let me just comment this out, I just want to quickly show you this format.
+
+153
+00:12:04,540 --> 00:12:10,510
+If I comment this out now, you'll notice that this input options here is being passed as an object.
+
+154
+00:12:10,900 --> 00:12:16,180
+So now what you can do is you can go into your form input component and instead of spreading all these
+
+155
+00:12:16,180 --> 00:12:18,040
+other props, you can just get.
+
+156
+00:12:19,410 --> 00:12:21,000
+This input options object.
+
+157
+00:12:21,330 --> 00:12:22,440
+You can do it like this.
+
+158
+00:12:23,950 --> 00:12:27,970
+And now, if you save will go back, we should see just the one display name.
+
+159
+00:12:28,390 --> 00:12:31,360
+But we notice that everything works as normal.
+
+160
+00:12:32,260 --> 00:12:35,980
+What's the advantage of doing this format versus the other props method?
+
+161
+00:12:36,370 --> 00:12:44,290
+You do have a bit more of a clear separation between what is associated as your input portion versus
+
+162
+00:12:44,290 --> 00:12:46,660
+the actual label portion.
+
+163
+00:12:47,110 --> 00:12:52,990
+So the label portion could even be labeled options if we had nothing more than just the label.
+
+164
+00:12:53,560 --> 00:12:59,050
+But in this particular case, it allows us to very clearly define, Oh, there's a difference between
+
+165
+00:12:59,050 --> 00:13:04,540
+the props that we're getting related to our label and then all the props related to our input.
+
+166
+00:13:05,140 --> 00:13:08,830
+So this is also a very viable way that you can do this kind of separation.
+
+167
+00:13:09,190 --> 00:13:11,080
+Personally, it's up to you again.
+
+168
+00:13:11,080 --> 00:13:15,400
+When you're working with different teams, you can make different decisions on which one of these you
+
+169
+00:13:15,400 --> 00:13:16,270
+want to move forward with.
+
+170
+00:13:16,900 --> 00:13:18,430
+I personally just prefer this way.
+
+171
+00:13:19,870 --> 00:13:24,610
+And let's just move this back into what we had before.
+
+172
+00:13:30,610 --> 00:13:37,450
+OK, so now that we've generic sized our form input, we need to style the rest of our sign up form
+
+173
+00:13:37,450 --> 00:13:40,210
+itself, and we can also work on the sign in form.
+
+174
+00:13:40,660 --> 00:13:42,970
+So that's what we'll do in the next video.

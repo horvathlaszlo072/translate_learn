@@ -1,0 +1,523 @@
+1
+00:00:00,760 --> 00:00:01,580
+Welcome back, everyone.
+
+2
+00:00:02,530 --> 00:00:10,390
+In the last video we learned about how to pass this generic monsters array into our own function definition
+
+3
+00:00:10,390 --> 00:00:12,340
+where we're expecting a generic.
+
+4
+00:00:13,030 --> 00:00:18,550
+Now, generic is a thing that is very prevalent across all of TypeScript because essentially you're
+
+5
+00:00:18,550 --> 00:00:22,540
+writing composable types, you're writing parameterized types.
+
+6
+00:00:22,960 --> 00:00:29,410
+It's a way for you to actually get a lot of extensibility and power out of your typescript and react.
+
+7
+00:00:29,410 --> 00:00:32,860
+And all these third party libraries utilize generics extensively.
+
+8
+00:00:33,940 --> 00:00:36,070
+So we were talking about using sets date.
+
+9
+00:00:36,520 --> 00:00:43,570
+What I want you to see is that once we get our users, let's say I call set monsters and I pass in our
+
+10
+00:00:43,570 --> 00:00:44,170
+users.
+
+11
+00:00:45,130 --> 00:00:51,490
+Notice how there throw an error argument of a type monsters array is not assignable to parameter of
+
+12
+00:00:51,490 --> 00:00:59,200
+type sets the action never array type monster array is not assignable to type never array type monster
+
+13
+00:00:59,200 --> 00:01:03,520
+is not assignable to type never what is all this mean?
+
+14
+00:01:03,520 --> 00:01:10,420
+Especially the never never is a very special keyword inside of TypeScript.
+
+15
+00:01:10,420 --> 00:01:11,560
+It's a very special type.
+
+16
+00:01:12,220 --> 00:01:15,940
+Essentially, the never type is the opposite of the any type.
+
+17
+00:01:15,940 --> 00:01:19,930
+It means that nothing can ever get assigned to never.
+
+18
+00:01:20,890 --> 00:01:27,790
+The reason why it says this is because it needs to make sure that you are defending your code base and
+
+19
+00:01:27,790 --> 00:01:29,120
+making it strictly tight.
+
+20
+00:01:29,620 --> 00:01:30,730
+Set state right here.
+
+21
+00:01:30,730 --> 00:01:36,670
+If you look at you state, notice that right now it's initialized with the never type for the array
+
+22
+00:01:36,820 --> 00:01:38,140
+as the default value.
+
+23
+00:01:38,500 --> 00:01:43,180
+The reason why it's getting an array is because we passed it the array, so it's at least knowing we're
+
+24
+00:01:43,180 --> 00:01:43,900
+getting an array.
+
+25
+00:01:44,380 --> 00:01:48,370
+But the problem is we did not type this array, so it just automatically applies.
+
+26
+00:01:48,370 --> 00:01:48,830
+Never.
+
+27
+00:01:48,850 --> 00:01:53,140
+TypeScript is smart like that because it knows that if you're giving me an empty array, you have not
+
+28
+00:01:53,140 --> 00:01:53,980
+defined the type for me.
+
+29
+00:01:54,190 --> 00:01:58,260
+I'm not going to set it to any because that would be extremely not type safe.
+
+30
+00:01:58,750 --> 00:02:04,420
+I'm forcing you to give me a type in order for me to actually set this value.
+
+31
+00:02:05,200 --> 00:02:12,010
+So now what we need to do then is pass it as a generic argument or monsters array.
+
+32
+00:02:13,350 --> 00:02:19,050
+Now what this knows is that U.S. knows we are going to get an initial state of a monsters array.
+
+33
+00:02:19,500 --> 00:02:26,460
+Our set state is going to expect a monsters array as the actual definition of what gets received as
+
+34
+00:02:26,460 --> 00:02:26,940
+the argument.
+
+35
+00:02:27,480 --> 00:02:29,970
+And now we'll notice that Set Monsters works.
+
+36
+00:02:30,310 --> 00:02:37,980
+Set monsters is equal to some function where the value is a set state action that receives the monsters
+
+37
+00:02:37,980 --> 00:02:39,540
+array as the actual type.
+
+38
+00:02:40,140 --> 00:02:42,620
+And now that is how you type you state.
+
+39
+00:02:43,700 --> 00:02:47,360
+Now you might be wondering, well, why don't we need to type the you state?
+
+40
+00:02:48,850 --> 00:02:52,300
+So if you hover over it, you should notice that we don't.
+
+41
+00:02:52,810 --> 00:02:59,920
+And the reason for this is because TypeScript is able to infer the type if it has a type already.
+
+42
+00:03:00,920 --> 00:03:02,870
+When we passed in you state.
+
+43
+00:03:03,910 --> 00:03:08,260
+The default initial state that we pass for search field is a empty string.
+
+44
+00:03:08,710 --> 00:03:14,230
+Now an empty string is explicitly typed because there's no way a string can be any other type.
+
+45
+00:03:14,620 --> 00:03:21,730
+So here what you see is that you state is already assigned to this string search field.
+
+46
+00:03:21,760 --> 00:03:25,750
+We'll infer that type and know that it can only be a string.
+
+47
+00:03:26,080 --> 00:03:30,600
+Because if you're giving you say, an initial value of a string, it's only setting strings.
+
+48
+00:03:30,610 --> 00:03:33,310
+There's no way that you can set for anything else.
+
+49
+00:03:33,340 --> 00:03:39,310
+So if you try and call set search field and pass it any other type other than string, you will get
+
+50
+00:03:39,310 --> 00:03:39,670
+an error.
+
+51
+00:03:40,210 --> 00:03:45,640
+This also means that we do not need to explicitly type to use state as a result because it can infer
+
+52
+00:03:45,640 --> 00:03:46,240
+that type.
+
+53
+00:03:47,080 --> 00:03:55,210
+Similarly, our use state for our filtered monsters takes the monsters from our actual previous use
+
+54
+00:03:55,210 --> 00:03:57,460
+state as the default initial state.
+
+55
+00:03:58,240 --> 00:04:01,660
+This is explicitly type to monsters array, which we've already done.
+
+56
+00:04:02,020 --> 00:04:06,640
+So now this use state is going to also infer that from the initial state.
+
+57
+00:04:07,900 --> 00:04:13,480
+There is a lot of inference inside of TypeScript so that we don't have to get too explicit about everything.
+
+58
+00:04:14,390 --> 00:04:16,340
+And this is how we type used it.
+
+59
+00:04:16,760 --> 00:04:22,160
+There's numerous ways that we can utilize this typing and again, you'll only get more familiar with
+
+60
+00:04:22,160 --> 00:04:22,670
+practice.
+
+61
+00:04:23,740 --> 00:04:29,770
+So now that we have this monster type, what we want to do is utilize it in other places that require
+
+62
+00:04:29,770 --> 00:04:29,980
+it.
+
+63
+00:04:30,670 --> 00:04:36,760
+Now, chances are we're going to need to actually import this monster type in other components, so
+
+64
+00:04:36,760 --> 00:04:38,080
+we might as well export it for now.
+
+65
+00:04:39,250 --> 00:04:45,310
+We can finally get rid of this -- since we now have our own function that will make this async fetch.
+
+66
+00:04:46,270 --> 00:04:48,880
+And let's make sure to actually call this function as well.
+
+67
+00:04:50,250 --> 00:04:54,240
+Let's save this now and let's continue typing the rest of this function.
+
+68
+00:04:55,390 --> 00:04:56,050
+Down here.
+
+69
+00:04:56,050 --> 00:04:58,090
+We have this on search change event.
+
+70
+00:04:58,720 --> 00:05:03,430
+This gives us some event that we then use in order to call our set search field.
+
+71
+00:05:04,090 --> 00:05:11,920
+The problem is that the event here is of an any type because again on search change this function React
+
+72
+00:05:11,920 --> 00:05:15,080
+does not know what this actual event is.
+
+73
+00:05:15,100 --> 00:05:21,460
+We know that this is supposed to go to the actual on change handler, but we need to actually type on
+
+74
+00:05:21,460 --> 00:05:24,940
+search change so that React knows what exactly this event will be.
+
+75
+00:05:25,900 --> 00:05:31,180
+So here's what we know for sure, is that we're definitely returning void from this function because
+
+76
+00:05:31,180 --> 00:05:33,910
+there's no explicit returns inside the function itself.
+
+77
+00:05:34,600 --> 00:05:37,000
+This event is a change event.
+
+78
+00:05:37,450 --> 00:05:42,100
+So what we can do is from react import in the change event.
+
+79
+00:05:43,450 --> 00:05:47,590
+This is what we did earlier when we looked at our change event typing.
+
+80
+00:05:48,040 --> 00:05:49,870
+So essentially we just need to do the same thing.
+
+81
+00:05:50,260 --> 00:05:51,370
+We know it's a change event.
+
+82
+00:05:51,730 --> 00:05:57,520
+We know we're getting an H HTML input element and now this event is correct.
+
+83
+00:05:57,850 --> 00:06:01,030
+Answer Change receives this event change event.
+
+84
+00:06:01,390 --> 00:06:08,140
+We then pass this into on change handler, which similarly is expecting an event with that exact change
+
+85
+00:06:08,140 --> 00:06:09,850
+event of a similar input element.
+
+86
+00:06:10,940 --> 00:06:13,400
+So now this is properly typed.
+
+87
+00:06:13,850 --> 00:06:19,480
+If we go back to our application, let's close our Jason Placeholder here.
+
+88
+00:06:19,550 --> 00:06:23,660
+If we start typing, we see that our code still works.
+
+89
+00:06:24,670 --> 00:06:31,390
+So now that we've typed out our app Dot TSX, we still have two remaining components to type the cardless
+
+90
+00:06:31,390 --> 00:06:35,920
+component which receives monsters and this card component which receives a monster.
+
+91
+00:06:36,900 --> 00:06:42,780
+So very simply, in order to type these remaining two files, we just need to import in that monster
+
+92
+00:06:42,780 --> 00:06:46,140
+type that we are exporting from our app component.
+
+93
+00:06:46,860 --> 00:06:52,620
+So you go up to your app dot TSX and you import in the monster type.
+
+94
+00:06:54,290 --> 00:06:58,400
+And then now it's just a matter of typing out card components.
+
+95
+00:06:59,000 --> 00:07:07,790
+So I'll say type card props is equal to us receiving a monster, which is of the monster type.
+
+96
+00:07:10,060 --> 00:07:11,500
+Then we can just pass this.
+
+97
+00:07:12,680 --> 00:07:13,190
+Like so.
+
+98
+00:07:14,310 --> 00:07:18,930
+And of course, you'll notice that this is saying type aliases can only be used in TypeScript files,
+
+99
+00:07:19,320 --> 00:07:24,120
+which just means that we did not convert this from G6 over to TSX.
+
+100
+00:07:26,640 --> 00:07:29,790
+But once we do that, we notice again, everything works.
+
+101
+00:07:30,840 --> 00:07:32,430
+Carla's component being the last one.
+
+102
+00:07:33,820 --> 00:07:35,360
+Just like we did with the other component.
+
+103
+00:07:35,800 --> 00:07:37,000
+Convert it to TSX.
+
+104
+00:07:38,360 --> 00:07:40,640
+In part in Monster.
+
+105
+00:07:41,800 --> 00:07:42,940
+From our app component.
+
+106
+00:07:43,950 --> 00:07:47,880
+And then we type out our cardless props.
+
+107
+00:07:50,270 --> 00:07:52,580
+Monsters is a monster array.
+
+108
+00:07:57,620 --> 00:07:58,580
+And then weeks pass.
+
+109
+00:07:58,760 --> 00:07:59,960
+Carlos, props like this.
+
+110
+00:08:00,980 --> 00:08:01,550
+And there we go.
+
+111
+00:08:03,240 --> 00:08:08,070
+We go into our application once again, we notice everything works.
+
+112
+00:08:09,220 --> 00:08:09,760
+So that's it.
+
+113
+00:08:10,510 --> 00:08:14,140
+You've learned really pretty much the core parts of typing react.
+
+114
+00:08:14,980 --> 00:08:19,390
+There are, of course, other additional type structures that we need to get more familiar with.
+
+115
+00:08:19,870 --> 00:08:24,070
+But generally speaking, this pattern of typing these things out, thinking about what it is that you're
+
+116
+00:08:24,070 --> 00:08:24,610
+going to type.
+
+117
+00:08:24,910 --> 00:08:26,980
+This forms the basis of TypeScript.
+
+118
+00:08:27,430 --> 00:08:31,120
+It's really just getting familiar of when you're going to use generics, when you need to create new
+
+119
+00:08:31,120 --> 00:08:35,770
+types, where you're going to set some of these values and then allowing the inference to work in the
+
+120
+00:08:35,770 --> 00:08:40,390
+places where it does, where it's going to infer the types anyways, and typing the places where they're
+
+121
+00:08:40,390 --> 00:08:45,550
+not just trusting the TypeScript compiler to tell you where things are not being properly typed and
+
+122
+00:08:45,550 --> 00:08:47,830
+set and then just moving on from there.
+
+123
+00:08:48,930 --> 00:08:56,640
+Now my challenge to you is to start trying to type whatever you can inside of our actual final project,
+
+124
+00:08:56,640 --> 00:08:57,510
+crown clothing.
+
+125
+00:08:58,420 --> 00:08:59,470
+Start working from it.
+
+126
+00:09:00,040 --> 00:09:06,100
+For now, I want you to avoid the generators or the sagas, because the sagas are actually quite challenging
+
+127
+00:09:06,100 --> 00:09:08,680
+to type, and we'll cover that together later on.
+
+128
+00:09:09,250 --> 00:09:13,420
+But for now, just start typing the things that you know inside of your components.
+
+129
+00:09:13,420 --> 00:09:14,380
+Start thinking about it.
+
+130
+00:09:14,980 --> 00:09:16,990
+And then in the next video, we'll do it together.
+
+131
+00:09:17,590 --> 00:09:18,640
+I'll see you in the next video.

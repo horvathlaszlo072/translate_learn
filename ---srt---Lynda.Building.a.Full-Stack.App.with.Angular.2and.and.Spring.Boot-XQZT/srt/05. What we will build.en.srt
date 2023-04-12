@@ -1,0 +1,186 @@
+1
+00:00:00.00 --> 00:00:03.04
+- [Instructor] In this course,
+we will be building a mobile,
+
+2
+00:00:03.04 --> 00:00:07.06
+responsive website for the
+fictional Landon Hotel.
+
+3
+00:00:07.06 --> 00:00:10.09
+We will design and build a rest API
+
+4
+00:00:10.09 --> 00:00:13.05
+using Java and Spring Boot.
+
+5
+00:00:13.05 --> 00:00:16.05
+Then, we will build a responsive front-end
+
+6
+00:00:16.05 --> 00:00:20.08
+using Angularjs 2.0 and Twitter Bootstrap.
+
+7
+00:00:20.08 --> 00:00:23.06
+Finally, we will test each end point
+
+8
+00:00:23.06 --> 00:00:26.05
+using a tool called Postman.
+
+9
+00:00:26.05 --> 00:00:29.07
+The website will be
+mobile, responsive, and
+
+10
+00:00:29.07 --> 00:00:36.02
+be able to scale to a tablet
+or mobile device view port.
+
+11
+00:00:36.02 --> 00:00:39.09
+A user will be able to
+check for available rooms
+
+12
+00:00:39.09 --> 00:00:43.03
+based on a check-in and check-out date.
+
+13
+00:00:43.03 --> 00:00:44.09
+The results of your search
+
+14
+00:00:44.09 --> 00:00:49.07
+will be populated by
+our back-end rest API.
+
+15
+00:00:49.07 --> 00:00:53.04
+You will also be able to reserve a room.
+
+16
+00:00:53.04 --> 00:00:56.04
+As you can see here,
+after clicking reserve,
+
+17
+00:00:56.04 --> 00:01:01.06
+we executed a post request
+to the back-end rest API
+
+18
+00:01:01.06 --> 00:01:05.06
+and got back a 201, in response.
+
+19
+00:01:05.06 --> 00:01:08.09
+We will also use Postman
+to check each end point
+
+20
+00:01:08.09 --> 00:01:11.00
+on our rest API.
+
+21
+00:01:11.00 --> 00:01:15.05
+Here, we are executing a get
+command to get available rooms
+
+22
+00:01:15.05 --> 00:01:18.00
+based on a check-in and check-out date.
+
+23
+00:01:18.00 --> 00:01:20.05
+After executing that get command,
+
+24
+00:01:20.05 --> 00:01:23.08
+we get back a response of 200 OK.
+
+25
+00:01:23.08 --> 00:01:27.04
+Looking at the request
+body in the content field
+
+26
+00:01:27.04 --> 00:01:31.07
+we have an array of available rooms.
+
+27
+00:01:31.07 --> 00:01:35.02
+Each room has a self-referential link
+
+28
+00:01:35.02 --> 00:01:39.09
+that allows you to look up
+more information on that entry.
+
+29
+00:01:39.09 --> 00:01:42.09
+The results will also be paginated,
+
+30
+00:01:42.09 --> 00:01:47.00
+so that you are able to
+page through results.
+
+31
+00:01:47.00 --> 00:01:50.04
+You will be able to create
+a new room reservation
+
+32
+00:01:50.04 --> 00:01:54.07
+by executing a post command passing in
+
+33
+00:01:54.07 --> 00:01:56.04
+a JSON raw body
+
+34
+00:01:56.04 --> 00:01:59.01
+including the room you want to reserve,
+
+35
+00:01:59.01 --> 00:02:02.02
+the check-in date, and the check-out date.
+
+36
+00:02:02.02 --> 00:02:04.09
+Let's try to execute that post command.
+
+37
+00:02:04.09 --> 00:02:08.06
+After executing that command,
+we get a 201 created,
+
+38
+00:02:08.06 --> 00:02:12.05
+and information about the
+reservation we just created.
+
+39
+00:02:12.05 --> 00:02:16.02
+You can also update a
+existing room reservation
+
+40
+00:02:16.02 --> 00:02:18.05
+using a put command.
+
+41
+00:02:18.05 --> 00:02:22.05
+Finally, you should be able
+to delete a room reservation
+
+42
+00:02:22.05 --> 00:02:24.09
+passing in a reservation ID.
+

@@ -1,0 +1,431 @@
+1
+00:00:00,240 --> 00:00:01,290
+Welcome back, everyone.
+
+2
+00:00:02,010 --> 00:00:08,170
+In this video, we are going to start working on breaking out this nested route of shop inside of shop.
+
+3
+00:00:08,190 --> 00:00:10,320
+We have mainly two different routes.
+
+4
+00:00:10,410 --> 00:00:14,700
+We have the base route, which shows these different collection previews of our categories.
+
+5
+00:00:15,330 --> 00:00:18,900
+And similarly, deeper down into the shop route.
+
+6
+00:00:18,930 --> 00:00:24,810
+We also have the individual routes that point to each specific category that shows all the products
+
+7
+00:00:24,810 --> 00:00:25,590
+inside of it.
+
+8
+00:00:26,340 --> 00:00:31,470
+So here, hat shows all of the hats and of course, jackets shows all of the jackets.
+
+9
+00:00:31,800 --> 00:00:33,570
+But notice how this value is dynamic.
+
+10
+00:00:33,870 --> 00:00:38,040
+What we're going to learn all of that in this upcoming section, but the first thing we want to do is
+
+11
+00:00:38,040 --> 00:00:42,270
+just figure out how to build this base section for our shop page.
+
+12
+00:00:43,050 --> 00:00:44,430
+So let's go back to the application.
+
+13
+00:00:45,030 --> 00:00:49,440
+What I'm going to do is I'm going to make a new component that is a preview of a category.
+
+14
+00:00:49,650 --> 00:00:54,090
+So of course, I'm going to call this category preview inside of this folder.
+
+15
+00:00:54,120 --> 00:00:56,340
+We need to set up our base files.
+
+16
+00:00:56,580 --> 00:01:04,350
+So I'm going to make a category preview that styles that source, and I'm also going to make a category
+
+17
+00:01:04,350 --> 00:01:05,010
+preview.
+
+18
+00:01:06,310 --> 00:01:08,310
+Dash component Dot GSX.
+
+19
+00:01:09,280 --> 00:01:10,030
+Nothing new here.
+
+20
+00:01:10,750 --> 00:01:14,440
+The component is going to import in these stylesheet.
+
+21
+00:01:16,890 --> 00:01:21,810
+And then we're just going to set up some base component category preview.
+
+22
+00:01:24,110 --> 00:01:29,750
+Equals a functional component, and we're just going to export by default.
+
+23
+00:01:31,920 --> 00:01:32,850
+Category preview.
+
+24
+00:01:34,450 --> 00:01:36,820
+Now, let's think about what this category preview is going to do.
+
+25
+00:01:37,510 --> 00:01:41,500
+So this category preview is going to live at the sharp component level.
+
+26
+00:01:42,570 --> 00:01:47,100
+Inside of shop component, what we're going to do is we're still going to receive this categories map
+
+27
+00:01:47,100 --> 00:01:52,530
+because we need to generate a separate preview for each of these different categories.
+
+28
+00:01:53,340 --> 00:01:58,650
+So that means that whatever's inside needs to receive both the title so that it can generate the appropriate
+
+29
+00:01:58,650 --> 00:01:59,520
+H2 title.
+
+30
+00:02:00,060 --> 00:02:05,220
+And then it needs to create the appropriate container that shows the first four objects.
+
+31
+00:02:05,730 --> 00:02:11,460
+So that means that for our category preview, we can anticipate that we will receive both a title string
+
+32
+00:02:12,030 --> 00:02:13,950
+as well as a product's array.
+
+33
+00:02:15,240 --> 00:02:16,830
+Then what we're going to return back.
+
+34
+00:02:18,210 --> 00:02:21,960
+Is we will return a div an inside of this div.
+
+35
+00:02:23,620 --> 00:02:24,940
+Is going to be the content.
+
+36
+00:02:25,480 --> 00:02:32,980
+So as always, we have an outer containing element and we always tend to call these the category or
+
+37
+00:02:32,980 --> 00:02:34,270
+the name of the component at least.
+
+38
+00:02:35,550 --> 00:02:36,480
+Dash container.
+
+39
+00:02:38,260 --> 00:02:43,730
+And once we have this now, let's think about what goes inside, so we know we have to display the title.
+
+40
+00:02:43,750 --> 00:02:50,980
+So I'm going to make an H2 and this H2 is going to contain a span and within the span is where I'm going
+
+41
+00:02:50,980 --> 00:02:52,690
+to have the title.
+
+42
+00:02:53,640 --> 00:02:54,960
+And I'm going to uppercase it.
+
+43
+00:02:56,860 --> 00:03:00,730
+Now, you might be wondering, why is it that we have a span inside the H2?
+
+44
+00:03:01,360 --> 00:03:05,140
+Well, remember this H2 becomes clickable and becomes a nav link for us.
+
+45
+00:03:05,500 --> 00:03:11,290
+So what I want to do is I want to make sure that this only is clickable on the text, not the H2.
+
+46
+00:03:11,800 --> 00:03:14,980
+The way that we're going to set up this container is that is going to use Flexbox.
+
+47
+00:03:14,980 --> 00:03:21,400
+So that's going to actually make it so that the entire H2 spans across the entirety of the width, which
+
+48
+00:03:21,400 --> 00:03:21,910
+we don't want.
+
+49
+00:03:21,910 --> 00:03:23,080
+We don't want all that clickable.
+
+50
+00:03:23,380 --> 00:03:26,500
+We just want the span and you'll see once we actually add in the styling.
+
+51
+00:03:27,460 --> 00:03:30,160
+So I'm going to add a class name here of title.
+
+52
+00:03:32,160 --> 00:03:36,720
+And then what I'm going to do is I'm going to add a div and in this div, this is where it's going to
+
+53
+00:03:36,720 --> 00:03:39,240
+contain all of the actual products.
+
+54
+00:03:39,540 --> 00:03:42,660
+So this I'm going to give a class name of preview.
+
+55
+00:03:43,970 --> 00:03:47,030
+And then what we'll do is we'll take the products away we receive.
+
+56
+00:03:47,630 --> 00:03:51,290
+I remember we want to filter out anything but the first four.
+
+57
+00:03:51,830 --> 00:03:55,550
+So here what I'm going to say is that I want to get some callback.
+
+58
+00:03:56,210 --> 00:04:00,280
+This callback is going to get the product, which I'm going to ignore.
+
+59
+00:04:00,290 --> 00:04:02,600
+So I'm going to use an underscore saying that I don't want to use it.
+
+60
+00:04:03,290 --> 00:04:08,750
+And then the second argument of this is the index, which is the index inside of the array.
+
+61
+00:04:10,170 --> 00:04:15,570
+So the placement in the array first element being index zero, second being index, one, third being
+
+62
+00:04:15,570 --> 00:04:17,430
+indexed to, et cetera, and onwards.
+
+63
+00:04:17,790 --> 00:04:23,070
+And what we want to say is that we want to filter it out if the index is greater than four.
+
+64
+00:04:23,460 --> 00:04:28,770
+So we'll say, Hey, keep it if the index is less than four, because greater than four, as we remember
+
+65
+00:04:28,770 --> 00:04:34,860
+with filter, whatever evaluates to being false is what gets thrown away.
+
+66
+00:04:35,310 --> 00:04:40,560
+So here we're saying, hey, as long as the index is less than four, so the first four indexes because
+
+67
+00:04:40,560 --> 00:04:42,990
+it starts from zero, I want you to keep these products.
+
+68
+00:04:43,740 --> 00:04:47,040
+And then after we filter them out, then we can map through them.
+
+69
+00:04:48,340 --> 00:04:51,430
+So here we pretty much just do what we had before.
+
+70
+00:04:51,670 --> 00:04:55,870
+We're going to take our product and then we're going to pass it to some product cart component that
+
+71
+00:04:55,870 --> 00:04:56,770
+we need to import it.
+
+72
+00:04:57,610 --> 00:05:00,400
+So let's import in product card from.
+
+73
+00:05:02,320 --> 00:05:05,950
+The product car component, folder and file.
+
+74
+00:05:08,180 --> 00:05:10,940
+And here inside, we're just going to render the product card.
+
+75
+00:05:11,660 --> 00:05:14,830
+And of course, we're going to give it the key of the product ID.
+
+76
+00:05:16,140 --> 00:05:18,780
+And then product goes to product.
+
+77
+00:05:23,070 --> 00:05:29,970
+Now, again, inside of your preview styles, I've included the file for you, so please copy and paste
+
+78
+00:05:29,970 --> 00:05:31,110
+that from your resource folder.
+
+79
+00:05:31,920 --> 00:05:37,260
+So now that we have this, paste it in or we need to do now is use this category preview component.
+
+80
+00:05:38,070 --> 00:05:41,430
+So here, let's import this back into our shop component.
+
+81
+00:05:42,450 --> 00:05:46,980
+And here we can just say instead of importing the product card, we're not doing that anymore.
+
+82
+00:05:47,460 --> 00:05:53,580
+We're importing directly the category preview, which will replace the need for a lot of what we have
+
+83
+00:05:53,580 --> 00:05:53,920
+inside.
+
+84
+00:05:53,940 --> 00:06:00,120
+Now, let's just say category preview goes up one more into components.
+
+85
+00:06:02,990 --> 00:06:05,180
+Slash category preview component.
+
+86
+00:06:06,190 --> 00:06:08,490
+And now what we can do is start replacing this coat.
+
+87
+00:06:09,010 --> 00:06:14,500
+So instead, this fragment, I'm going to use a div, and for this div, I'm going to give it a class
+
+88
+00:06:14,500 --> 00:06:18,340
+name of the shop container.
+
+89
+00:06:19,650 --> 00:06:26,760
+And then inside of here, we don't need all of this fragment code or we do need, though, is we need
+
+90
+00:06:26,760 --> 00:06:28,170
+the actual objects.
+
+91
+00:06:28,770 --> 00:06:34,560
+So let me also fix this because instead of doing one line return, we now need to do multi-line.
+
+92
+00:06:35,370 --> 00:06:40,470
+The reason for this is because I need to set the products to a contest because I want to get this out
+
+93
+00:06:40,470 --> 00:06:42,720
+of my categories map using the title.
+
+94
+00:06:43,500 --> 00:06:50,160
+And then what I'm going to return is this category preview, which we've already determined needs to
+
+95
+00:06:50,160 --> 00:06:50,880
+utilize.
+
+96
+00:06:52,420 --> 00:06:54,250
+First, I'm going to pass the key for the title.
+
+97
+00:06:54,880 --> 00:07:00,010
+I'm going to pass it a title, which is the title, and then I'm going to pass a products, which is
+
+98
+00:07:00,010 --> 00:07:00,760
+products.
+
+99
+00:07:01,940 --> 00:07:08,240
+So now, if I save this, get rid of the need for the fragment up here, if we go back to our application,
+
+100
+00:07:09,200 --> 00:07:09,860
+here we see it.
+
+101
+00:07:10,340 --> 00:07:12,530
+Everything is as we want it to be.
+
+102
+00:07:13,280 --> 00:07:17,180
+So we have our previews showing our four different elements.
+
+103
+00:07:17,960 --> 00:07:18,350
+Awesome.
+
+104
+00:07:18,920 --> 00:07:19,880
+So this is a preview.
+
+105
+00:07:20,740 --> 00:07:25,790
+What we need to do now is actually start building out the next route, which is where when you click
+
+106
+00:07:25,790 --> 00:07:31,610
+this title, it takes you to the corresponding shops hats route and shows the full collection.
+
+107
+00:07:32,360 --> 00:07:37,790
+So let's figure out how to split up our nested routes now that we have our collection preview in the
+
+108
+00:07:37,790 --> 00:07:38,750
+next video.

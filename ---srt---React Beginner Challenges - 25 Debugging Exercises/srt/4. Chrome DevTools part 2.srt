@@ -1,0 +1,667 @@
+1
+00:00:00,870 --> 00:00:06,240
+All right, so moving along to the second part of our Web, Inspector, Chrome debugger, chrome dev
+
+2
+00:00:06,240 --> 00:00:09,650
+tools tool, we have here the network panel.
+
+3
+00:00:09,990 --> 00:00:13,270
+So here basically you could just see the network activity for your site.
+
+4
+00:00:13,590 --> 00:00:16,850
+So here you can see the different files that have been loaded from the server.
+
+5
+00:00:16,860 --> 00:00:19,650
+So you have the method that you're getting that file.
+
+6
+00:00:19,660 --> 00:00:22,440
+So get request, you have the status code.
+
+7
+00:00:22,440 --> 00:00:24,120
+So the file fails.
+
+8
+00:00:24,120 --> 00:00:27,690
+You'll see the error here and then you have the type of that file.
+
+9
+00:00:27,690 --> 00:00:33,320
+So you can see here we're loading JavaScript, we're loading images, some styles and the initiator.
+
+10
+00:00:33,330 --> 00:00:34,890
+So where was that loaded from?
+
+11
+00:00:35,340 --> 00:00:41,730
+And you could see the size of that file and you could click on these to sort these by size so you could
+
+12
+00:00:41,730 --> 00:00:45,720
+see the biggest file that you're loading and then you could see the time.
+
+13
+00:00:45,720 --> 00:00:50,850
+So the time it takes for that to get to your website from the server, you could see that here as well.
+
+14
+00:00:51,240 --> 00:00:55,800
+And then on your right, you'll see just a time frame of this and you hover over that and you could
+
+15
+00:00:55,800 --> 00:00:58,110
+see just more details about that.
+
+16
+00:00:58,110 --> 00:01:00,240
+And you can see just a breakdown of that.
+
+17
+00:01:00,510 --> 00:01:02,970
+And then this up here is just across time.
+
+18
+00:01:02,970 --> 00:01:08,580
+So as you're loading assets, you could see here they some of the assets take longer and then you can
+
+19
+00:01:08,580 --> 00:01:09,990
+go and just click record.
+
+20
+00:01:10,140 --> 00:01:17,580
+And then you could see here you can refresh the page and then you could see all of your assets loading
+
+21
+00:01:17,580 --> 00:01:19,090
+after you stop recording.
+
+22
+00:01:19,410 --> 00:01:20,310
+So there you go.
+
+23
+00:01:20,310 --> 00:01:24,800
+So you can now just you can click on sections here if you want to, like, dive in deep.
+
+24
+00:01:25,290 --> 00:01:26,230
+And yes.
+
+25
+00:01:26,240 --> 00:01:28,890
+So this is pretty useful if you're debugging network activity.
+
+26
+00:01:29,080 --> 00:01:33,780
+I would say the most common thing that you're going to do here is you are going to check the response
+
+27
+00:01:33,780 --> 00:01:34,380
+from the server.
+
+28
+00:01:34,390 --> 00:01:37,490
+So let's say that you load some some packet of data.
+
+29
+00:01:37,500 --> 00:01:39,720
+So like let's say I load this file right here.
+
+30
+00:01:40,110 --> 00:01:42,750
+What you're going to do is you're going to read this information here.
+
+31
+00:01:42,760 --> 00:01:47,760
+A lot of the times that you can see, you know, the different headers that come back from the server.
+
+32
+00:01:47,760 --> 00:01:49,820
+You can see the response from the server.
+
+33
+00:01:49,860 --> 00:01:51,240
+So if you go here, you see a preview.
+
+34
+00:01:51,240 --> 00:01:52,590
+This is what the server returns.
+
+35
+00:01:52,590 --> 00:01:57,480
+You can see the exact content that your server is delivering to your website piece by piece.
+
+36
+00:01:57,730 --> 00:02:02,970
+So just like with images, you can go here and see different images for things that have been loaded.
+
+37
+00:02:03,180 --> 00:02:07,920
+And you could go here and see the response if there's a response from that.
+
+38
+00:02:07,920 --> 00:02:13,980
+So you could see a preview response and then the initiator where you load it, loading that from, and
+
+39
+00:02:13,980 --> 00:02:16,030
+then you could see more details about timing there.
+
+40
+00:02:16,440 --> 00:02:20,850
+So this is the network tab, very useful for checking out things coming from the server.
+
+41
+00:02:21,750 --> 00:02:24,890
+And up here, you could see you can actually filter out some of that data.
+
+42
+00:02:24,900 --> 00:02:29,550
+So if you go here and click X once you're in here, then you go back to this menu and you could go here
+
+43
+00:02:29,550 --> 00:02:30,570
+and filter out.
+
+44
+00:02:30,570 --> 00:02:36,360
+So if you only want to see JavaScript or X Chaffetz requests, you could do that and then looking like
+
+45
+00:02:36,360 --> 00:02:36,540
+that.
+
+46
+00:02:36,540 --> 00:02:39,170
+So you could see here JSON and if you go down here.
+
+47
+00:02:39,420 --> 00:02:39,690
+Yeah.
+
+48
+00:02:39,710 --> 00:02:44,550
+So a lot of times you could see the requests that are sometimes you'll want to debug like what am I
+
+49
+00:02:44,550 --> 00:02:45,240
+requesting.
+
+50
+00:02:45,240 --> 00:02:45,600
+So.
+
+51
+00:02:46,690 --> 00:02:51,430
+What am I requesting with right, so say your app is requesting with some query parameters.
+
+52
+00:02:51,670 --> 00:02:54,490
+This is where you'll see, well, what am I requesting right here?
+
+53
+00:02:54,640 --> 00:02:56,410
+And then you'll see that's exactly what you're getting back.
+
+54
+00:02:56,410 --> 00:03:00,910
+And JSON data, you can then go and actually browse through the JSON data that you're getting back from
+
+55
+00:03:00,910 --> 00:03:03,550
+the server self server, sending you some weird data.
+
+56
+00:03:03,550 --> 00:03:08,590
+You'll be able to debug that here, send a screenshot to your back end developer and tell them to fix
+
+57
+00:03:08,590 --> 00:03:09,150
+their code.
+
+58
+00:03:09,460 --> 00:03:10,750
+So here another thing.
+
+59
+00:03:10,750 --> 00:03:12,160
+This is another response.
+
+60
+00:03:12,170 --> 00:03:13,210
+And so there we go.
+
+61
+00:03:13,240 --> 00:03:15,480
+So this is pretty much the network tab.
+
+62
+00:03:15,490 --> 00:03:18,810
+You can also go up here and throttle the network.
+
+63
+00:03:18,820 --> 00:03:25,530
+So if you want to have slow 3G or fast 3G or disable Wi-Fi quickly, you could do that.
+
+64
+00:03:25,840 --> 00:03:30,580
+And over here, this is pretty much you can upload a network profile file.
+
+65
+00:03:30,580 --> 00:03:34,330
+If you want to see someone else's file, you could disable cache.
+
+66
+00:03:34,330 --> 00:03:36,970
+So if your network is caching, you could disable that.
+
+67
+00:03:37,480 --> 00:03:40,300
+And yes, you could filter, you could clear.
+
+68
+00:03:40,450 --> 00:03:43,810
+And that's basically, as is clear, the network tab.
+
+69
+00:03:43,810 --> 00:03:45,220
+It's going to clear all of that data.
+
+70
+00:03:45,220 --> 00:03:45,850
+So we have.
+
+71
+00:03:45,880 --> 00:03:46,460
+So there you go.
+
+72
+00:03:46,780 --> 00:03:48,390
+So cool.
+
+73
+00:03:48,400 --> 00:03:51,040
+So now we go back to Profile Tab.
+
+74
+00:03:51,040 --> 00:03:58,030
+This is for if you're debugging JavaScript specifically and also more and more information as well.
+
+75
+00:03:58,030 --> 00:04:03,280
+So you could see in addition to JavaScript, you can see your network here as well.
+
+76
+00:04:03,280 --> 00:04:05,230
+And then you could see more information.
+
+77
+00:04:05,230 --> 00:04:05,920
+So frames.
+
+78
+00:04:05,920 --> 00:04:10,660
+So as you load that page, you can see the exact frames that come in.
+
+79
+00:04:10,660 --> 00:04:16,090
+And if you go up here, you could see as we're loading in that profile, it's coming in or as reloading
+
+80
+00:04:16,090 --> 00:04:16,900
+in that page.
+
+81
+00:04:16,900 --> 00:04:19,840
+It's coming in just like this in this timeline.
+
+82
+00:04:20,050 --> 00:04:21,310
+So here we loaded that image.
+
+83
+00:04:21,670 --> 00:04:27,130
+And as you see here, we have green, purple and yellow and blue.
+
+84
+00:04:27,130 --> 00:04:29,200
+So sections out your site.
+
+85
+00:04:29,200 --> 00:04:35,010
+So you could see here across the the time frame that we're on right now, this should update.
+
+86
+00:04:35,020 --> 00:04:40,630
+So you have, you know, about a second of information here that you could look at.
+
+87
+00:04:40,630 --> 00:04:47,110
+You could see, OK, we spent 100 milliseconds rendering 30 seconds painting that to the screen scripting.
+
+88
+00:04:47,110 --> 00:04:49,150
+You have JavaScript running for most of it.
+
+89
+00:04:49,450 --> 00:04:54,880
+And then you go down here and you could actually scroll up to expand and then see the actual call stack
+
+90
+00:04:54,880 --> 00:04:57,210
+of that JavaScript it calls functions down.
+
+91
+00:04:57,460 --> 00:05:00,370
+So each function above is calling the function below.
+
+92
+00:05:00,370 --> 00:05:08,230
+And you can just zoom in and see different types of you could debug, basically see where your app is
+
+93
+00:05:08,230 --> 00:05:12,120
+spending most of its time if you have some kind of performance bottleneck.
+
+94
+00:05:12,550 --> 00:05:18,760
+So that's really cool and useful to do if you're doing some really intense profiling, if you're trying
+
+95
+00:05:18,760 --> 00:05:25,090
+to do some speed debugging, this in combination of the network tab are going to get you a lot more
+
+96
+00:05:25,090 --> 00:05:28,720
+information about what's going on in your app as far as performance goes.
+
+97
+00:05:29,080 --> 00:05:31,120
+So then down here, you see the bottom up.
+
+98
+00:05:31,120 --> 00:05:35,460
+You can actually see during that time what JavaScript functions were called.
+
+99
+00:05:35,800 --> 00:05:37,680
+So I think you need to.
+
+100
+00:05:37,690 --> 00:05:37,950
+Yeah.
+
+101
+00:05:37,960 --> 00:05:44,710
+So let's see if we click on one of these blocks, then you go down and you could see the exact time
+
+102
+00:05:44,710 --> 00:05:46,600
+that it's been in each one of those functions.
+
+103
+00:05:46,600 --> 00:05:48,630
+So we're not going to go too much more into this.
+
+104
+00:05:48,640 --> 00:05:49,720
+This is pretty intense.
+
+105
+00:05:49,720 --> 00:05:50,890
+We could do a lot more on this.
+
+106
+00:05:50,890 --> 00:05:54,180
+If you want to do more profiling, we could do another lecture on that.
+
+107
+00:05:54,190 --> 00:05:54,850
+Just let me know.
+
+108
+00:05:55,600 --> 00:06:00,610
+So moving along, we have memory so you could see how much memory your app is using across time.
+
+109
+00:06:00,940 --> 00:06:07,650
+So as you as your JavaScript gets more memory built up, it will show here and as well as DOM nodes.
+
+110
+00:06:07,660 --> 00:06:09,010
+So there's going to be nodes here.
+
+111
+00:06:09,010 --> 00:06:11,230
+These are actually your HTML nodes that are being rendered.
+
+112
+00:06:11,230 --> 00:06:13,450
+So you could see how many are actually rendering.
+
+113
+00:06:13,810 --> 00:06:14,410
+This is good.
+
+114
+00:06:14,410 --> 00:06:19,090
+If you have a ton of nodes that you're rendering and you want to just see what's going on as far as
+
+115
+00:06:19,090 --> 00:06:22,750
+your how your browser is handling that in terms of like what?
+
+116
+00:06:22,840 --> 00:06:26,530
+OK, we're taking up 11 megabytes of data and.
+
+117
+00:06:27,490 --> 00:06:27,820
+Cool.
+
+118
+00:06:27,850 --> 00:06:32,830
+So memory tab, same thing here, we're not going to do this, but same thing if you want to get a snapshot
+
+119
+00:06:32,830 --> 00:06:37,960
+of your memory distribution across time for different JavaScript and DOM nodes.
+
+120
+00:06:39,190 --> 00:06:42,750
+OK, moving along, we have the application tab.
+
+121
+00:06:42,760 --> 00:06:47,230
+So here is where you'll see the local data that your app is storing.
+
+122
+00:06:47,380 --> 00:06:52,450
+So when you have local storage, you have keys and values that are being stored there.
+
+123
+00:06:52,450 --> 00:06:56,170
+And that's pretty common in apps to have cookies as well.
+
+124
+00:06:56,180 --> 00:06:59,850
+So you could see a lot of cookies and that's pretty useful.
+
+125
+00:06:59,860 --> 00:07:02,530
+You have cash, so you could clear cache like this.
+
+126
+00:07:02,860 --> 00:07:06,590
+You could clear your cookies as well just by clicking on that.
+
+127
+00:07:06,910 --> 00:07:08,760
+So that's pretty useful.
+
+128
+00:07:08,770 --> 00:07:12,170
+And so that's the application tab.
+
+129
+00:07:12,190 --> 00:07:17,830
+This is basically just seeing your application storage and most of the time you're in here just looking
+
+130
+00:07:17,830 --> 00:07:20,290
+at local storage or clearing cookies.
+
+131
+00:07:20,980 --> 00:07:22,650
+Next tab is the security tab.
+
+132
+00:07:22,660 --> 00:07:26,290
+This is a tab I'm almost never in just to show you what it is.
+
+133
+00:07:26,290 --> 00:07:31,910
+Basically, we are showing whether this page is secure or not through https.
+
+134
+00:07:31,910 --> 00:07:36,160
+So whether you have an encrypted connection and it's going to tell you whether or not you have that
+
+135
+00:07:36,160 --> 00:07:37,200
+server certificate.
+
+136
+00:07:37,570 --> 00:07:43,030
+So if you want to see your origins that you're loading data from and to see whether they are secure
+
+137
+00:07:43,030 --> 00:07:48,310
+or not, this is the panel that you're going to do that and not much else going on in here, audits
+
+138
+00:07:48,310 --> 00:07:48,460
+here.
+
+139
+00:07:48,460 --> 00:07:53,710
+You could generate a report of your site so you could get a nice speed report.
+
+140
+00:07:53,920 --> 00:07:59,590
+And this is cool seeing your SEO for your site if you're interested in that.
+
+141
+00:07:59,800 --> 00:08:01,720
+So I need to properly size images.
+
+142
+00:08:01,720 --> 00:08:03,810
+This is the information that they're getting here.
+
+143
+00:08:03,850 --> 00:08:05,140
+I didn't minified it.
+
+144
+00:08:05,140 --> 00:08:06,940
+I didn't minifie any of my images here.
+
+145
+00:08:07,060 --> 00:08:08,800
+And that's probably why I'm getting that.
+
+146
+00:08:09,070 --> 00:08:10,240
+This is also the same.
+
+147
+00:08:11,020 --> 00:08:13,990
+This is also the same as page speed, Google page speed.
+
+148
+00:08:14,170 --> 00:08:16,360
+It's a website where you can go and enter in your website.
+
+149
+00:08:16,780 --> 00:08:19,840
+So if you want to just do that locally, you could do that here.
+
+150
+00:08:20,350 --> 00:08:24,280
+And I'm pretty sure there's mobile and there's desktop versions of this.
+
+151
+00:08:24,580 --> 00:08:28,690
+So this is, I believe, doing the mobile one here.
+
+152
+00:08:28,690 --> 00:08:31,020
+But there should be a way to see the desktop one.
+
+153
+00:08:31,510 --> 00:08:34,240
+So this is the speed on it.
+
+154
+00:08:35,220 --> 00:08:41,190
+And then next, you have your various chrome extensions of my ad blocker, my react dev tools here,
+
+155
+00:08:41,190 --> 00:08:47,190
+which we'll get into, and then a react profiler, and then up here you have some warnings and this
+
+156
+00:08:47,190 --> 00:08:49,440
+is just some warnings that are appearing in your console.
+
+157
+00:08:49,440 --> 00:08:51,560
+So you just have that little warning up here.
+
+158
+00:08:52,020 --> 00:08:57,480
+And then over here we have some more these things we kind of talked about already, which is the docs
+
+159
+00:08:57,810 --> 00:09:04,710
+side and the and other different shortcuts and other just settings for the developer developer tools
+
+160
+00:09:04,710 --> 00:09:04,990
+here.
+
+161
+00:09:05,220 --> 00:09:08,850
+So here is where you can actually enable dark mode if you want to.
+
+162
+00:09:08,850 --> 00:09:14,100
+That's pretty much the main thing that I've been going in here and doing that I can remember recently.
+
+163
+00:09:14,970 --> 00:09:18,810
+So the dark mode would be right here and theme, you could change that to dark mode.
+
+164
+00:09:20,060 --> 00:09:23,120
+And then I'll reload with the dark modin here, cool.
+
+165
+00:09:24,240 --> 00:09:27,010
+So that's basically it for Webcke, Inspector.
+
+166
+00:09:27,180 --> 00:09:32,850
+Next up, we're going to talk about the responsive button here that you could use to debug responsive
+
+167
+00:09:32,850 --> 00:09:33,480
+websites.

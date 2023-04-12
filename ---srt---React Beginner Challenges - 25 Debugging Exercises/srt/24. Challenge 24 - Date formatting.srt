@@ -1,0 +1,751 @@
+1
+00:00:00,700 --> 00:00:03,580
+All right, so here we are on challenge 24.
+
+2
+00:00:04,360 --> 00:00:07,480
+You could see here it says date is not formatting correctly.
+
+3
+00:00:07,660 --> 00:00:11,710
+I want the chip to display as the form same format as the date input.
+
+4
+00:00:11,740 --> 00:00:12,400
+Can you help?
+
+5
+00:00:12,880 --> 00:00:20,890
+So with this challenge, the objective here is to basically change this chip text to be the same format
+
+6
+00:00:20,890 --> 00:00:23,400
+as the date picker's format.
+
+7
+00:00:23,860 --> 00:00:29,350
+And this way you'll be able to change the date and you'll see that updated here.
+
+8
+00:00:29,350 --> 00:00:36,250
+But in this format, as you could see here, it currently does update to the same format or the same
+
+9
+00:00:36,250 --> 00:00:37,540
+date, it looks like.
+
+10
+00:00:37,540 --> 00:00:39,360
+But this format is not the same.
+
+11
+00:00:39,970 --> 00:00:47,050
+So this exercise is really useful when you are building an app with a lot of dates and you're going
+
+12
+00:00:47,050 --> 00:00:48,370
+to need to format the dates.
+
+13
+00:00:48,370 --> 00:00:50,800
+And this is not really a great format.
+
+14
+00:00:51,100 --> 00:00:57,040
+And so you wanted a clean format that looks kind of like, you know, a shorthand date format just like
+
+15
+00:00:57,040 --> 00:00:57,310
+this.
+
+16
+00:00:57,580 --> 00:01:05,920
+And so this exercise to get you to learn how date formatting works and by researching or reverse engineering,
+
+17
+00:01:05,920 --> 00:01:13,090
+how this data input works, you'll be able to understand how formatting works with that component and
+
+18
+00:01:13,090 --> 00:01:15,140
+apply that to this component over here.
+
+19
+00:01:15,670 --> 00:01:17,320
+And so what?
+
+20
+00:01:17,500 --> 00:01:18,760
+So let's open up the challenge here.
+
+21
+00:01:20,780 --> 00:01:27,320
+OK, so here we are in the challenge, and as you could see, we have some material UI components being
+
+22
+00:01:27,320 --> 00:01:33,470
+rendered and we have some, you know, a date picture being rendered, of course, as well.
+
+23
+00:01:33,830 --> 00:01:36,790
+And here's the date pick our keyboard date picker.
+
+24
+00:01:37,190 --> 00:01:43,220
+And so, as you could see, this is the material UI date picture.
+
+25
+00:01:43,220 --> 00:01:46,310
+And if you go and highlight that, you could see where it's imported here.
+
+26
+00:01:46,310 --> 00:01:48,790
+It's from material UI pictures.
+
+27
+00:01:49,130 --> 00:01:50,870
+So that's your first clue into what?
+
+28
+00:01:50,870 --> 00:01:51,560
+To research.
+
+29
+00:01:51,980 --> 00:01:57,770
+So our objective here, again, is to figure out how this date pictures, formatting so that we can
+
+30
+00:01:58,130 --> 00:01:59,880
+use the formatter over here.
+
+31
+00:01:59,900 --> 00:02:00,920
+So this is the chip.
+
+32
+00:02:00,930 --> 00:02:04,160
+So this is what we are and this is what we need to modify.
+
+33
+00:02:04,160 --> 00:02:04,450
+Right.
+
+34
+00:02:04,880 --> 00:02:06,510
+Currently, we're going to.
+
+35
+00:02:06,770 --> 00:02:09,170
+So currently it's using selected date.
+
+36
+00:02:09,190 --> 00:02:10,480
+So that's our first clue.
+
+37
+00:02:10,490 --> 00:02:11,230
+Let's go up here.
+
+38
+00:02:11,870 --> 00:02:14,210
+This is react use state.
+
+39
+00:02:14,210 --> 00:02:14,480
+Right.
+
+40
+00:02:14,490 --> 00:02:17,150
+So this is our state for this date.
+
+41
+00:02:17,420 --> 00:02:19,670
+So we're initializing it with a new date.
+
+42
+00:02:20,150 --> 00:02:22,490
+Now, this is going to be a native JavaScript date.
+
+43
+00:02:22,490 --> 00:02:25,860
+So you can research this by just searching for date JavaScript.
+
+44
+00:02:25,880 --> 00:02:29,620
+This is just the native JavaScript object.
+
+45
+00:02:29,630 --> 00:02:35,150
+So this this doesn't really give you a lot of formatting tools.
+
+46
+00:02:35,150 --> 00:02:35,420
+Right.
+
+47
+00:02:35,430 --> 00:02:37,250
+So this isn't a good.
+
+48
+00:02:38,390 --> 00:02:44,390
+So you could use the functions here and format the date manually.
+
+49
+00:02:44,840 --> 00:02:49,470
+But we have date formatting libraries to do this for us.
+
+50
+00:02:49,490 --> 00:02:55,040
+So that's kind of what you could look into, what material UI is using as a date formatting tool and
+
+51
+00:02:55,040 --> 00:02:56,000
+then kind of copy that.
+
+52
+00:02:56,000 --> 00:02:56,770
+And that's how we're going to do.
+
+53
+00:02:56,780 --> 00:03:02,020
+So if we go here, you could see that the date, the JavaScript date is the state.
+
+54
+00:03:02,030 --> 00:03:04,320
+So that's what we're we're actually storing the data.
+
+55
+00:03:04,560 --> 00:03:05,220
+And this is good.
+
+56
+00:03:05,240 --> 00:03:08,060
+You don't want to store the date has a string.
+
+57
+00:03:08,300 --> 00:03:10,400
+You want to store it as the actual date object.
+
+58
+00:03:11,270 --> 00:03:17,210
+And if we go down here, we could see that we are currently just calling to string.
+
+59
+00:03:17,540 --> 00:03:23,450
+So as you could see here, I think date should have to string here and it returns the string representing
+
+60
+00:03:23,450 --> 00:03:24,170
+the date object.
+
+61
+00:03:24,170 --> 00:03:25,010
+So that's what we're doing.
+
+62
+00:03:25,010 --> 00:03:30,500
+So we're using the date and we're just using a string here that's not formatted and we want to change
+
+63
+00:03:30,500 --> 00:03:30,790
+this.
+
+64
+00:03:31,250 --> 00:03:35,300
+So this is really the only line we're going to touch to finish this challenge.
+
+65
+00:03:35,690 --> 00:03:38,630
+But in order to get there, we have to do a little bit of research.
+
+66
+00:03:38,630 --> 00:03:43,420
+So it's good practice always to just research what you're dealing with when you see some code like this.
+
+67
+00:03:43,940 --> 00:03:51,050
+And so what we want to do here is now you could first you could search this library here, but it's
+
+68
+00:03:51,050 --> 00:03:55,340
+just easier to just search for material UI date picture like this.
+
+69
+00:03:55,370 --> 00:03:59,240
+So you search for this because we want to know, like, well, what is this using for format?
+
+70
+00:03:59,240 --> 00:03:59,510
+Right.
+
+71
+00:03:59,520 --> 00:04:03,670
+Like if I do this, you can then you'll end up here.
+
+72
+00:04:03,680 --> 00:04:04,020
+Right.
+
+73
+00:04:04,040 --> 00:04:08,660
+So if I do, this is another page that comes up.
+
+74
+00:04:08,660 --> 00:04:09,000
+Right.
+
+75
+00:04:09,890 --> 00:04:12,830
+So this is this is really the main page.
+
+76
+00:04:12,830 --> 00:04:19,310
+You want to go to the date time pictures page on material, UI, pictures, components, pictures.
+
+77
+00:04:19,310 --> 00:04:21,440
+So this is the actual component we're using in our app.
+
+78
+00:04:21,440 --> 00:04:21,660
+Right.
+
+79
+00:04:22,010 --> 00:04:23,120
+Material UI pictures.
+
+80
+00:04:23,690 --> 00:04:28,050
+And if we go expand this, you could see our exact component is here, right?
+
+81
+00:04:28,070 --> 00:04:29,930
+That's called keyboard date picture.
+
+82
+00:04:30,170 --> 00:04:30,430
+Right.
+
+83
+00:04:30,440 --> 00:04:35,480
+That's the one we're rendering here and that's the one we are rendering in this example as well.
+
+84
+00:04:36,230 --> 00:04:41,180
+Now that so we found an example that does this right.
+
+85
+00:04:41,450 --> 00:04:46,490
+But we didn't find we don't have an example of how they use the formatting outside of the date picture.
+
+86
+00:04:46,490 --> 00:04:46,780
+Right.
+
+87
+00:04:47,000 --> 00:04:49,610
+And that's what we need to keep researching.
+
+88
+00:04:49,610 --> 00:04:49,820
+Right.
+
+89
+00:04:49,830 --> 00:04:50,990
+So what is this?
+
+90
+00:04:51,020 --> 00:04:53,690
+So this is a separate package.
+
+91
+00:04:53,690 --> 00:04:56,880
+So this is actually a completely separate package that we can open up.
+
+92
+00:04:58,460 --> 00:05:05,690
+And again, this is not obvious from this, but, you know, going down here, this is the native date
+
+93
+00:05:05,690 --> 00:05:06,020
+picture.
+
+94
+00:05:06,020 --> 00:05:08,720
+So this is so this is not what we need.
+
+95
+00:05:08,720 --> 00:05:10,670
+This is different component all together.
+
+96
+00:05:10,670 --> 00:05:13,400
+So there isn't any more information here about dates.
+
+97
+00:05:13,400 --> 00:05:13,680
+Right.
+
+98
+00:05:14,090 --> 00:05:19,300
+So this is not obvious, but this opens up into this library over here.
+
+99
+00:05:20,180 --> 00:05:22,590
+This is called material UI pictures.
+
+100
+00:05:22,610 --> 00:05:28,370
+So this is the library, a special library built for material UI.
+
+101
+00:05:29,510 --> 00:05:33,860
+And we can learn a little bit about this now, just high level.
+
+102
+00:05:33,860 --> 00:05:35,870
+We could see it provides this.
+
+103
+00:05:35,870 --> 00:05:42,050
+And then, as you could see here, any date management library designed to be efficient or zero effort
+
+104
+00:05:42,050 --> 00:05:45,840
+compatible with moment date functions, luxon and deejay's.
+
+105
+00:05:46,640 --> 00:05:53,630
+Now, you don't know what all of these libraries are yet, but you are you have a clue into a date management
+
+106
+00:05:53,630 --> 00:05:54,380
+library.
+
+107
+00:05:54,480 --> 00:05:59,750
+And so what this is actually using is so go now.
+
+108
+00:05:59,970 --> 00:06:03,560
+Nothing else is as useful here on this homepage so we can go to get started.
+
+109
+00:06:04,220 --> 00:06:12,710
+But basically here you could see again material UI pictures was designed to use with the date management
+
+110
+00:06:12,710 --> 00:06:14,230
+library of your choice.
+
+111
+00:06:14,240 --> 00:06:18,610
+So here at this point, you should say, well, what is a date management library?
+
+112
+00:06:18,620 --> 00:06:19,310
+Which one?
+
+113
+00:06:19,560 --> 00:06:21,370
+Should we use what does that do?
+
+114
+00:06:21,540 --> 00:06:23,600
+Does that help me format, right.
+
+115
+00:06:24,060 --> 00:06:31,080
+And if we go, we could see moment James is one and here you could see the format with.
+
+116
+00:06:31,740 --> 00:06:33,330
+So they have formatting utilities.
+
+117
+00:06:33,330 --> 00:06:33,590
+Right.
+
+118
+00:06:33,600 --> 00:06:36,690
+You could see this is basically the main thing.
+
+119
+00:06:36,690 --> 00:06:40,830
+If you go to their website, this is like one of the main hallmarks of this is that it helps you format
+
+120
+00:06:40,830 --> 00:06:41,190
+dates.
+
+121
+00:06:41,610 --> 00:06:49,350
+And similarly, date functions is going to be another utility library that provides manipulating dates
+
+122
+00:06:49,350 --> 00:06:50,090
+in the browser.
+
+123
+00:06:50,100 --> 00:06:54,300
+So, again, formatting is like the main thing that you're going to use here.
+
+124
+00:06:56,070 --> 00:07:00,480
+And so, yeah, that that's basically it, you could read more about this, but so now we know what
+
+125
+00:07:00,570 --> 00:07:06,870
+date management library is and how it's being used sort of with this date picture library.
+
+126
+00:07:06,870 --> 00:07:13,650
+So the date picture library is using a date management library to format the date.
+
+127
+00:07:13,690 --> 00:07:16,770
+So this is a this is a library just for date pictures, right?
+
+128
+00:07:16,800 --> 00:07:21,330
+It's not a library for formatting dates, but it uses a date formatting library.
+
+129
+00:07:22,500 --> 00:07:26,460
+And so now we know that we could see that they tell you how to set it up in your app.
+
+130
+00:07:26,460 --> 00:07:28,230
+And this is your first clue here.
+
+131
+00:07:28,230 --> 00:07:32,900
+Another clue, which is date functions, utils here.
+
+132
+00:07:32,940 --> 00:07:35,620
+So they pass in that.
+
+133
+00:07:35,640 --> 00:07:42,000
+So as you could see, tell the peckers which date management library it should use with the provider.
+
+134
+00:07:42,000 --> 00:07:44,760
+So, you know, react provider's context.
+
+135
+00:07:45,600 --> 00:07:52,170
+They you you wrap your app with this and then you won't you know, this this date picker knows what
+
+136
+00:07:52,320 --> 00:07:53,880
+date management library to use.
+
+137
+00:07:54,840 --> 00:08:01,980
+OK, so we know that material UI material, UI pictures, utils provider uses this data manipulation
+
+138
+00:08:01,980 --> 00:08:02,730
+library here.
+
+139
+00:08:02,730 --> 00:08:08,450
+And then if we go to usage we could see that it says choose your library.
+
+140
+00:08:08,850 --> 00:08:12,630
+So as you can see again, it's the same same example.
+
+141
+00:08:12,630 --> 00:08:14,760
+Right, we have the utility library here.
+
+142
+00:08:14,940 --> 00:08:15,240
+All right.
+
+143
+00:08:15,250 --> 00:08:17,010
+So now we can go back to our example.
+
+144
+00:08:17,790 --> 00:08:19,260
+We know that this provider's here.
+
+145
+00:08:19,260 --> 00:08:21,480
+And so let's go ahead and see if we have that.
+
+146
+00:08:21,570 --> 00:08:22,050
+And we do.
+
+147
+00:08:22,050 --> 00:08:25,800
+We have this provider here and you could see we are using the same one.
+
+148
+00:08:25,800 --> 00:08:27,850
+And the examples date functions, utils.
+
+149
+00:08:27,990 --> 00:08:31,560
+So if we go up, we could see it's date date functions.
+
+150
+00:08:32,030 --> 00:08:38,700
+Now I want to get into date IO, but basically at Wrap's data is a wrapper around all these utilities
+
+151
+00:08:38,700 --> 00:08:40,980
+to make the same, to make the functions the same.
+
+152
+00:08:43,110 --> 00:08:51,090
+And but then you could see here we have date functions, utils and then you could see over here we're
+
+153
+00:08:51,090 --> 00:08:54,360
+using, we're importing from date functions so.
+
+154
+00:08:56,430 --> 00:09:01,980
+This is a clue that I left in, so we hover over format, you could see format is declared, but its
+
+155
+00:09:01,980 --> 00:09:03,140
+value is never read.
+
+156
+00:09:03,480 --> 00:09:07,830
+So I included this in here as a clue as like, hey, you should be using this format function here.
+
+157
+00:09:08,220 --> 00:09:10,320
+And that's what we could use.
+
+158
+00:09:10,320 --> 00:09:10,560
+Right.
+
+159
+00:09:10,570 --> 00:09:13,340
+So we can use this function from day functions.
+
+160
+00:09:13,350 --> 00:09:18,500
+Now, we can research date functions a little bit more to understand how they actually format.
+
+161
+00:09:18,960 --> 00:09:23,220
+And if you go here and to date functions, this is their home page.
+
+162
+00:09:23,610 --> 00:09:27,840
+But if you search date functions, format, search for that.
+
+163
+00:09:30,910 --> 00:09:38,260
+You can see here that this is right in their docks, there's a page all about formating, and if we
+
+164
+00:09:38,260 --> 00:09:43,710
+search for a format, you could see that they are importing format here.
+
+165
+00:09:43,720 --> 00:09:48,500
+And then if we see usage, you can see right here on their main getting started page.
+
+166
+00:09:48,520 --> 00:09:51,880
+So this, you know, isn't really that obscure of an example, right.
+
+167
+00:09:51,890 --> 00:09:54,900
+We're just formatting a date to accommodate format.
+
+168
+00:09:55,480 --> 00:09:57,770
+And this is the solution right here.
+
+169
+00:09:57,820 --> 00:10:04,270
+Basically, we need to use the format function from date functions to format the date, and that's basically
+
+170
+00:10:04,270 --> 00:10:04,450
+it.
+
+171
+00:10:04,480 --> 00:10:09,940
+Now, you could accomplish this challenge by using a different date, format and library.
+
+172
+00:10:09,940 --> 00:10:15,820
+But the completed state is to use this format function that's already imported here.
+
+173
+00:10:16,150 --> 00:10:21,250
+And you're going to import that right here and you're going to use that right down here.
+
+174
+00:10:21,630 --> 00:10:31,570
+So if we go here to, again, the format examples right here, you could see they use this and then
+
+175
+00:10:31,570 --> 00:10:34,060
+they pass in the formatting string right here.
+
+176
+00:10:34,060 --> 00:10:36,290
+And this is the string that we want to format.
+
+177
+00:10:36,310 --> 00:10:38,830
+This is the pattern that we're going to tell it to match.
+
+178
+00:10:38,830 --> 00:10:41,590
+And you could see all kinds of different patterns there.
+
+179
+00:10:41,590 --> 00:10:47,200
+Like if you go to format here, you could see all kinds of different examples.
+
+180
+00:10:47,200 --> 00:10:50,380
+So you could get any of these types of outputs if you wanted to.
+
+181
+00:10:52,100 --> 00:11:01,400
+So the solution is to use the format function here and get rid of this two string because we want the
+
+182
+00:11:01,400 --> 00:11:07,400
+raw JavaScript date, right, and then pass in the formatting string and then close the parentheses
+
+183
+00:11:07,400 --> 00:11:07,850
+like that.
+
+184
+00:11:08,300 --> 00:11:09,080
+And then there we go.
+
+185
+00:11:09,110 --> 00:11:11,270
+Now, the chip has the formatted date.
+
+186
+00:11:11,660 --> 00:11:16,100
+And if we change the date, you could see the chip correctly updates.
+
+187
+00:11:18,820 --> 00:11:19,460
+So that's it.
+
+188
+00:11:19,480 --> 00:11:23,800
+I hope you learned a little bit about formatting date and material, you idiot pictures.

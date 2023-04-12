@@ -1,0 +1,315 @@
+1
+00:00:00,630 --> 00:00:06,180
+All right, so this is challenge number two solution, and the remaining of these challenges are a lot
+
+2
+00:00:06,180 --> 00:00:11,550
+of these challenges are going to be involved with changing code around or fixing code that's broken.
+
+3
+00:00:11,880 --> 00:00:16,950
+And you'll see the subjective up here, which is basically like, hey, this this is the issue and I
+
+4
+00:00:16,950 --> 00:00:19,930
+need you to fix this code by writing code in the sandbox.
+
+5
+00:00:19,950 --> 00:00:24,630
+So basically the concept here is that you're getting some vague issue.
+
+6
+00:00:24,640 --> 00:00:28,740
+So it's not going to be a specific thing you have to do because that would make it easy.
+
+7
+00:00:28,740 --> 00:00:28,980
+Right?
+
+8
+00:00:28,980 --> 00:00:33,670
+Like if I told you exactly what you needed to do, it wouldn't be very it wouldn't be much of a challenge.
+
+9
+00:00:33,690 --> 00:00:39,270
+So what this is doing is it's it's just giving you a simulation of somebody reporting an issue, which
+
+10
+00:00:39,270 --> 00:00:41,560
+is what you're going to encounter in the real world.
+
+11
+00:00:41,580 --> 00:00:44,400
+So here you could say it just says the app is crashing.
+
+12
+00:00:44,400 --> 00:00:45,050
+Fix the bug.
+
+13
+00:00:45,060 --> 00:00:50,310
+So as you can see here, the syntax error should be pretty obvious.
+
+14
+00:00:50,310 --> 00:00:55,990
+But if it isn't, then I'm going to show you how to debug this as if you had never seen this issue before.
+
+15
+00:00:56,370 --> 00:01:00,180
+So as you can see here now, we can open the sandbox like this.
+
+16
+00:01:00,430 --> 00:01:06,790
+So if we click that open the sandbox button, it's going to be loading here and then we are in here.
+
+17
+00:01:06,840 --> 00:01:10,830
+So this is just the the bigger sandbox, if you want to look at this.
+
+18
+00:01:11,130 --> 00:01:14,850
+And as you can see here, we have the larger area.
+
+19
+00:01:15,330 --> 00:01:16,800
+The area is more expanded.
+
+20
+00:01:17,100 --> 00:01:21,940
+And if I go down here to the console, this would be the dev tools console here.
+
+21
+00:01:21,960 --> 00:01:29,340
+Now, if I if I also just do control shift J, I will get the the real webcam inspector, which is what
+
+22
+00:01:29,340 --> 00:01:30,450
+you would see on a real app.
+
+23
+00:01:30,450 --> 00:01:32,010
+So I recommend just doing this.
+
+24
+00:01:32,640 --> 00:01:34,560
+It's not going to be exactly as if you were on a real app.
+
+25
+00:01:34,560 --> 00:01:40,080
+If you want to get the real app experience again, you could go up here and copy this you URL.
+
+26
+00:01:40,320 --> 00:01:42,270
+So if we do that, we go over here.
+
+27
+00:01:43,710 --> 00:01:49,110
+Paste that in, we get this here, so and then now we could open up the dev tools in here and this would
+
+28
+00:01:49,110 --> 00:01:50,460
+be more like a realistic app, right?
+
+29
+00:01:50,500 --> 00:01:51,950
+We're not in a code sandbox anymore.
+
+30
+00:01:51,960 --> 00:01:53,550
+We're sort of running their actual app.
+
+31
+00:01:53,940 --> 00:01:58,470
+So as you can see here, we are getting an error from Babille.
+
+32
+00:01:58,470 --> 00:02:00,810
+So you could see here we have this syntax error.
+
+33
+00:02:00,810 --> 00:02:02,640
+We trace it down into Babul.
+
+34
+00:02:02,640 --> 00:02:06,040
+So you very you know, it's not your code, right?
+
+35
+00:02:06,060 --> 00:02:11,130
+This is definitely not what is our code, but the error is being raised from Babille.
+
+36
+00:02:11,610 --> 00:02:18,310
+So Babul is going to interpret your syntax and it's going to basically throw this error.
+
+37
+00:02:18,330 --> 00:02:23,940
+Now, I'm not going to describe too much of this because if you don't know what this is, I don't want
+
+38
+00:02:23,940 --> 00:02:24,600
+to give it away.
+
+39
+00:02:24,600 --> 00:02:29,240
+But basically, let's just say that we we don't know what this is and we're just going to Google this.
+
+40
+00:02:29,550 --> 00:02:33,910
+So if I just copy this or if I just write click and I say search Google for that error.
+
+41
+00:02:34,410 --> 00:02:39,780
+So as you can see, I get some stack overflow here as the first Google result.
+
+42
+00:02:40,170 --> 00:02:46,620
+And you could see this person asks this error and basically they get this on terminated Jass contents.
+
+43
+00:02:47,010 --> 00:02:51,450
+And as you could see, they have to unclosed div tags, so.
+
+44
+00:02:52,640 --> 00:02:58,370
+So I'd get rid of those so and then try it again, so not really too much too helpful in this one,
+
+45
+00:02:58,370 --> 00:03:02,150
+but this person, I believe, shows what is wrong.
+
+46
+00:03:02,540 --> 00:03:08,980
+Give this closing, you know, backslash in the closing development and remove the semicolon.
+
+47
+00:03:08,990 --> 00:03:12,680
+So basically, he's just saying, hey, put put a closing div tag there.
+
+48
+00:03:13,010 --> 00:03:19,880
+As you could see here, we have a similar issue where we we are not closing the div tag and so it's
+
+49
+00:03:19,880 --> 00:03:20,690
+on terminated.
+
+50
+00:03:20,690 --> 00:03:20,960
+Right.
+
+51
+00:03:21,230 --> 00:03:23,930
+Terminating the div would be closing it off.
+
+52
+00:03:23,930 --> 00:03:26,000
+So we're just leaving something open ended.
+
+53
+00:03:26,450 --> 00:03:28,190
+And so that's the gist of this.
+
+54
+00:03:28,250 --> 00:03:34,280
+I know it was probably obvious for some of you, but if you if you weren't aware of this, this is a
+
+55
+00:03:34,280 --> 00:03:35,300
+syntax error.
+
+56
+00:03:35,540 --> 00:03:40,550
+And to just fix that errors, you could see all I'm doing is I'm just I'm just closing that div tag
+
+57
+00:03:40,550 --> 00:03:40,850
+off.
+
+58
+00:03:40,850 --> 00:03:46,010
+So I know this is probably an easy one, but I just wanted to include this in here as an example of
+
+59
+00:03:46,010 --> 00:03:47,210
+a syntax error.
+
+60
+00:03:47,210 --> 00:03:50,000
+So that is a challenge to now.
+
+61
+00:03:50,000 --> 00:03:51,770
+Another thing you could do is you could.
+
+62
+00:03:52,000 --> 00:03:55,430
+So let's go to our strategy guide here and how we debug that.
+
+63
+00:03:55,440 --> 00:04:00,650
+So again, we we read the error in the console and then we followed the stack trace that didn't really
+
+64
+00:04:00,650 --> 00:04:03,440
+help us that much because it was in an external library.
+
+65
+00:04:03,440 --> 00:04:03,650
+Right.
+
+66
+00:04:03,650 --> 00:04:05,240
+It was coming from Babul.
+
+67
+00:04:05,600 --> 00:04:07,010
+So we researched a little bit.
+
+68
+00:04:07,010 --> 00:04:07,340
+We did.
+
+69
+00:04:07,340 --> 00:04:11,630
+We Googled the error message and that was able to help us.
+
+70
+00:04:11,630 --> 00:04:15,890
+We found some some code, some comments that were able to help us find that bug.
+
+71
+00:04:16,310 --> 00:04:20,600
+Now, we could also try a clean example so we could try a clean react app.
+
+72
+00:04:20,600 --> 00:04:20,780
+Right.
+
+73
+00:04:20,780 --> 00:04:28,490
+We could we could basically, again, like return an actual, you know, div that was it was closed.
+
+74
+00:04:28,490 --> 00:04:32,330
+And then we'll figure out will match that up with our code and we'll figure it out from there.
+
+75
+00:04:32,840 --> 00:04:35,000
+But yeah, that's another way of doing it.
+
+76
+00:04:35,000 --> 00:04:36,530
+But again, this was pretty obvious one.
+
+77
+00:04:36,530 --> 00:04:41,390
+But if you had like a really complicated syntax error, you might want to backtrack and put some good
+
+78
+00:04:41,390 --> 00:04:42,140
+syntax in.
+
+79
+00:04:42,470 --> 00:04:45,320
+So that is the that's this one such challenge to.

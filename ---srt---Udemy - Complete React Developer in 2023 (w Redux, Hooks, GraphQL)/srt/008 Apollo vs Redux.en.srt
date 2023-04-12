@@ -1,0 +1,287 @@
+1
+00:00:00,570 --> 00:00:01,500
+Welcome back, everyone.
+
+2
+00:00:02,340 --> 00:00:08,520
+So now that we've understood how to work with Apollo and GraphQL, let's talk about the advantages and
+
+3
+00:00:08,520 --> 00:00:16,680
+disadvantages and why you as a developer or as a team may want a GraphQL and Apollo React application
+
+4
+00:00:16,680 --> 00:00:19,590
+versus a Redux React application.
+
+5
+00:00:20,520 --> 00:00:24,540
+So first off, let me address Redux versus GraphQL and Apollo.
+
+6
+00:00:25,720 --> 00:00:34,630
+Apollo seeks to act as a single source of truth for the data and states on your application the same
+
+7
+00:00:34,630 --> 00:00:40,960
+way that Redux does, where essentially the whole idea is that all of your application state of the
+
+8
+00:00:40,960 --> 00:00:43,660
+data that you're fetching is stored in Redux.
+
+9
+00:00:44,380 --> 00:00:51,460
+As we noticed with the caching and the actual fetching, this is exactly what Apollo is trying to do
+
+10
+00:00:51,460 --> 00:00:51,850
+as well.
+
+11
+00:00:52,730 --> 00:01:01,520
+As a result, an application that uses Apollo does not need redux when it comes to more minutiae details
+
+12
+00:01:01,520 --> 00:01:03,200
+such as what we did with context.
+
+13
+00:01:03,620 --> 00:01:10,490
+You can still keep context and utilize context in order to make some of these storage options or in
+
+14
+00:01:10,490 --> 00:01:17,150
+order to utilize context as a mounter to make the initial call in the first place at the top level.
+
+15
+00:01:17,720 --> 00:01:24,710
+All of these patterns are still possible when it comes to coordinating the actual fetches and when the
+
+16
+00:01:24,710 --> 00:01:30,710
+stake gets stored and etc. But the actual single source of truth, Apollo, is now the single source
+
+17
+00:01:30,710 --> 00:01:32,360
+of truth, not redux anymore.
+
+18
+00:01:33,520 --> 00:01:37,030
+So as a result, what are those advantages and disadvantages?
+
+19
+00:01:37,780 --> 00:01:45,160
+Well, one big thing about Apollo and GraphQL is that in order for you on the front end to use GraphQL,
+
+20
+00:01:45,430 --> 00:01:47,530
+your backend must be set up.
+
+21
+00:01:47,530 --> 00:01:55,150
+Similarly, to spit out GraphQL, it must support GraphQL, and that requires a lot of work in order
+
+22
+00:01:55,150 --> 00:02:01,630
+to set up all of these queries and all of these type definitions and everything in between as well.
+
+23
+00:02:02,200 --> 00:02:07,480
+There's a lot of code to update on a server in order for it to be a GraphQL server.
+
+24
+00:02:07,990 --> 00:02:14,230
+So unless your company and your backend teams are familiar and willing to navigate through the complexity
+
+25
+00:02:14,410 --> 00:02:19,630
+of upgrading to graphical, it is not just something you can implement on the front end, and that's
+
+26
+00:02:19,630 --> 00:02:20,470
+very important.
+
+27
+00:02:20,650 --> 00:02:26,770
+Notice how we keep referencing back to the GraphQL playground in order to understand what we're fetching,
+
+28
+00:02:27,010 --> 00:02:29,350
+how we're fetching it, and what the shape looks like.
+
+29
+00:02:29,860 --> 00:02:33,520
+The advantage of this is that it becomes much more transparent to us on the front end.
+
+30
+00:02:33,730 --> 00:02:39,460
+But the disadvantage is that this requires a constant coordination of the backend team in order to set
+
+31
+00:02:39,460 --> 00:02:42,880
+up the backend to give us all of these benefits and perks.
+
+32
+00:02:43,810 --> 00:02:48,130
+So that's not just something that we can decide to do exclusively on the front end.
+
+33
+00:02:48,340 --> 00:02:52,750
+We have to get the backend teams on board as well and they have to learn how to write in the GraphQL
+
+34
+00:02:52,750 --> 00:02:53,290
+language.
+
+35
+00:02:53,470 --> 00:02:58,540
+They have to understand the complexities of performance and how to improve it all on the service side.
+
+36
+00:02:58,960 --> 00:03:05,050
+All we need to learn is just Apollo client, but other than that, for us, it's actually not that complicated.
+
+37
+00:03:05,170 --> 00:03:10,450
+The large bulk of the complexity actually lives in the back end of setting up GraphQL servers.
+
+38
+00:03:10,780 --> 00:03:12,430
+So that's one big disadvantage.
+
+39
+00:03:13,000 --> 00:03:19,000
+The other one, of course, is that we have to get familiar with writing these GraphQL queries while
+
+40
+00:03:19,000 --> 00:03:19,840
+working with it.
+
+41
+00:03:19,870 --> 00:03:25,420
+It seems rather intuitive and it's designed to be Apollo has actually come a very long way throughout
+
+42
+00:03:25,420 --> 00:03:25,990
+the years.
+
+43
+00:03:25,990 --> 00:03:31,690
+Before, it was way more complicated and it was almost like writing back end GraphQL code on the front
+
+44
+00:03:31,690 --> 00:03:31,840
+end.
+
+45
+00:03:32,200 --> 00:03:37,450
+But now it's essentially all been isolated and extrapolated and hidden away from us so that all we're
+
+46
+00:03:37,450 --> 00:03:39,310
+really passing are just queries.
+
+47
+00:03:39,310 --> 00:03:40,990
+And then are you trying to make a query?
+
+48
+00:03:41,290 --> 00:03:42,260
+Usually use query hook.
+
+49
+00:03:42,460 --> 00:03:44,740
+Are you trying to use imitation using mutation hook?
+
+50
+00:03:45,070 --> 00:03:48,280
+It's very flowed well now with the React ecosystem.
+
+51
+00:03:49,800 --> 00:03:55,440
+But still you do need to learn how to use this pattern and it is different from web development anywhere
+
+52
+00:03:55,470 --> 00:03:55,920
+else.
+
+53
+00:03:56,490 --> 00:04:01,020
+So that's another thing is that there is an additional learning curve and a lot of different developers
+
+54
+00:04:01,020 --> 00:04:05,850
+are very comfortable with the flux architecture pattern that Redux has come from.
+
+55
+00:04:06,270 --> 00:04:10,270
+Redux has also been scaled enormously across numerous applications.
+
+56
+00:04:10,560 --> 00:04:11,670
+Graphical has as well.
+
+57
+00:04:11,670 --> 00:04:13,290
+It's come a long way, and so is Apollo.
+
+58
+00:04:13,440 --> 00:04:20,520
+In fact, React is almost designed to work with GraphQL because Facebook also created GraphQL.
+
+59
+00:04:21,090 --> 00:04:23,910
+Facebook created React, Facebook created GraphQL.
+
+60
+00:04:24,390 --> 00:04:29,970
+So in turn, there is a lot of harmony in the way that they're designing both of these tools per se.
+
+61
+00:04:30,630 --> 00:04:36,450
+But once again, a lot of the time it comes down to the team and it comes down to the scalability of
+
+62
+00:04:36,450 --> 00:04:41,220
+the team, not necessarily the technology, but are there enough developers who are more comfortable
+
+63
+00:04:41,220 --> 00:04:45,120
+with the read UX architecture at scale, or are they comfortable with GraphQL?
+
+64
+00:04:45,480 --> 00:04:50,970
+So those are additional considerations that go beyond just the technology that a good developer must
+
+65
+00:04:50,970 --> 00:04:54,720
+think about before jumping on any new hot technology.
+
+66
+00:04:55,870 --> 00:04:56,740
+But that's my piece.
+
+67
+00:04:57,070 --> 00:05:01,510
+Hopefully now you understand some of the discussions around GraphQL versus Redux.
+
+68
+00:05:01,510 --> 00:05:06,550
+And also when you want to use GraphQL yourself, if you want to use it in your own projects, feel free
+
+69
+00:05:06,550 --> 00:05:07,080
+to do so.
+
+70
+00:05:07,090 --> 00:05:09,640
+Just understand you'll have to learn the back end of GraphQL as well.
+
+71
+00:05:10,120 --> 00:05:13,930
+But other than that, using it on the front end, as you can see, is very simple.
+
+72
+00:05:14,710 --> 00:05:16,810
+So that wraps up our graph you all section.

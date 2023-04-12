@@ -1,0 +1,103 @@
+1
+00:00:01,210 --> 00:00:02,690
+This is a big one.
+
+2
+00:00:03,130 --> 00:00:05,410
+This one I hold dear to my heart.
+
+3
+00:00:06,250 --> 00:00:09,880
+And it's the idea that things will never be perfect.
+
+4
+00:00:10,740 --> 00:00:15,690
+No matter how hard you study, no matter how many videos you watch, how many books you read, how many
+
+5
+00:00:15,690 --> 00:00:19,920
+projects you built, your code is never going to be perfect.
+
+6
+00:00:20,490 --> 00:00:26,550
+A lot of people hold off on shipping a product or building something because they think they still need
+
+7
+00:00:26,550 --> 00:00:27,450
+to improve something.
+
+8
+00:00:27,960 --> 00:00:32,200
+They still need to learn or they still need to add that feature at a buck.
+
+9
+00:00:32,310 --> 00:00:35,960
+But the problem is that this is a continuous cycle.
+
+10
+00:00:36,630 --> 00:00:38,210
+It's never going to be perfect.
+
+11
+00:00:38,430 --> 00:00:43,410
+Things are always evolving and there's always going to be different ways that you can refactor code.
+
+12
+00:00:44,300 --> 00:00:47,060
+Make things maybe more efficient, cleaner looking.
+
+13
+00:00:48,720 --> 00:00:54,230
+The problem is when you have this mentality of, oh, I'm going have to wait until it's absolutely perfect,
+
+14
+00:00:54,750 --> 00:00:59,070
+is that you end up just bottling all this productivity inside you.
+
+15
+00:00:59,460 --> 00:01:06,720
+But until you put out your work, until you do something in the real world to solve a problem, everything
+
+16
+00:01:06,720 --> 00:01:07,470
+is internal.
+
+17
+00:01:08,540 --> 00:01:14,330
+All that code that you write, if nobody sees it, if nobody uses it, it might as well just not be
+
+18
+00:01:14,330 --> 00:01:14,560
+there.
+
+19
+00:01:15,350 --> 00:01:16,550
+So keep that in mind.
+
+20
+00:01:17,270 --> 00:01:23,030
+It's better to just start doing something, start putting something out there, start releasing that
+
+21
+00:01:23,240 --> 00:01:26,950
+product, because no matter why you do, it won't be perfect.
+
+22
+00:01:26,990 --> 00:01:29,330
+What you want to do is constantly improve.
+
+23
+00:01:29,690 --> 00:01:34,700
+And the best way to improve is to get feedback on your code from other people, feedback on your product.
+
+24
+00:01:35,870 --> 00:01:39,170
+So I guess what I'm saying is stop watching these videos.
+
+25
+00:01:40,190 --> 00:01:46,730
+Close your laptop well, don't close your laptop where programmers, but close this video, open up
+
+26
+00:01:46,730 --> 00:01:50,510
+your code editor and start writing your project.

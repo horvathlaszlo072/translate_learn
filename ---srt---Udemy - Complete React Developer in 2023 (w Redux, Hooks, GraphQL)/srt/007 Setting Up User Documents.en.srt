@@ -1,0 +1,791 @@
+1
+00:00:00,090 --> 00:00:01,050
+Welcome back, everyone.
+
+2
+00:00:02,350 --> 00:00:09,130
+So inside of your console, in order for us to start using Firestorm, you need to go to the Fire Store
+
+3
+00:00:09,130 --> 00:00:10,060
+database tab.
+
+4
+00:00:10,300 --> 00:00:17,020
+And here you'll see some kind of introductory screen if you click Create Database and inside of here.
+
+5
+00:00:17,350 --> 00:00:19,160
+Just start with production mode.
+
+6
+00:00:19,180 --> 00:00:24,220
+It's actually easier to weather production mode because all the changes are just the rules that allow
+
+7
+00:00:24,220 --> 00:00:27,310
+you to determine who gets to set different documents.
+
+8
+00:00:28,030 --> 00:00:34,210
+So just click production mode, hit next and then by default, choose your location.
+
+9
+00:00:34,480 --> 00:00:37,150
+I'm going to choose you as central because that's the one I'm closest to.
+
+10
+00:00:37,600 --> 00:00:41,860
+But you can choose whichever region that you feel like is closest to where you're at.
+
+11
+00:00:42,010 --> 00:00:45,910
+Honestly, it's not going to matter too much for the sample project anyways.
+
+12
+00:00:46,690 --> 00:00:47,750
+So I'm going to choose now.
+
+13
+00:00:47,750 --> 00:00:51,510
+I'm five U.S. central and I'm going to click Enable now.
+
+14
+00:00:51,520 --> 00:00:56,140
+It's going to happen is it's actually going to now generate the database for us.
+
+15
+00:00:58,480 --> 00:01:01,540
+So once it's finished, you should see this view right here.
+
+16
+00:01:02,050 --> 00:01:05,560
+Of course, as I mentioned, we have an empty database, so it doesn't even matter.
+
+17
+00:01:06,520 --> 00:01:11,350
+And what you're going to do want to do is you're going to want to click rules here inside of rules.
+
+18
+00:01:11,710 --> 00:01:17,680
+These rules define who is allowed to modify what documents inside of here.
+
+19
+00:01:17,680 --> 00:01:20,380
+We're going to really play with this a little bit later.
+
+20
+00:01:20,650 --> 00:01:25,360
+Right now, we just want to keep it as general and open as possible because we're going to be the only
+
+21
+00:01:25,360 --> 00:01:31,270
+people developing against it so that I want you to do is I want you to switch this allowed read right.
+
+22
+00:01:31,450 --> 00:01:36,160
+If from false to true and then you're going to hit publish.
+
+23
+00:01:36,820 --> 00:01:44,110
+What this will now do is that this will allow us to make any modifications we want to any document inside
+
+24
+00:01:44,110 --> 00:01:45,130
+of this database.
+
+25
+00:01:45,340 --> 00:01:46,080
+It doesn't matter.
+
+26
+00:01:46,090 --> 00:01:48,460
+We can read, we can write, we can do whatever we want.
+
+27
+00:01:48,730 --> 00:01:49,600
+So that's what we want.
+
+28
+00:01:50,290 --> 00:01:57,130
+And now that we have these settings, we can actually start implementing storing users inside of our
+
+29
+00:01:57,130 --> 00:01:57,850
+cloud store.
+
+30
+00:01:58,330 --> 00:01:59,480
+So let's do that.
+
+31
+00:01:59,500 --> 00:02:01,000
+Let's go back to our application.
+
+32
+00:02:02,110 --> 00:02:08,740
+And inside of our application, we want to go to our Firebase utils dogs now, just like Firebase app
+
+33
+00:02:08,740 --> 00:02:14,770
+and Firebase Auth, Firestorm, as I mentioned, is a different service, so we need to import some
+
+34
+00:02:14,770 --> 00:02:19,000
+methods from Firebase Firestar.
+
+35
+00:02:20,120 --> 00:02:24,380
+And just like we did with get off, we need to instantiate our Firestar instance.
+
+36
+00:02:24,710 --> 00:02:26,330
+So we need get Firestorm.
+
+37
+00:02:27,140 --> 00:02:29,600
+Well, we also need our three other methods.
+
+38
+00:02:30,110 --> 00:02:31,460
+We need the doc method.
+
+39
+00:02:31,700 --> 00:02:37,850
+And what this doc method allows us to do is retrieve documents inside of our Firestar database.
+
+40
+00:02:38,480 --> 00:02:43,490
+But how do you get that data or how do you set that data on these documents?
+
+41
+00:02:43,970 --> 00:02:47,780
+Well, this is where you need the get doc method and the set doc method.
+
+42
+00:02:48,410 --> 00:02:54,080
+So I know these seem like it's called getting the doc or setting the doc, but what they're really representing
+
+43
+00:02:54,080 --> 00:02:58,280
+is you're getting the documents data or you're setting the documents data.
+
+44
+00:02:58,850 --> 00:03:06,290
+Doc is what you need to actually get a document instance, but when you want to access the data on those
+
+45
+00:03:06,290 --> 00:03:08,150
+documents, you need to use get doc.
+
+46
+00:03:08,150 --> 00:03:10,610
+And when you want to set the data, you need some doc.
+
+47
+00:03:10,940 --> 00:03:13,050
+So I know this verbiage seems a little confusing.
+
+48
+00:03:13,070 --> 00:03:16,850
+This is just unfortunately how Firebase has decided to name these methods.
+
+49
+00:03:17,180 --> 00:03:19,280
+But once you use them, you'll get more familiar.
+
+50
+00:03:19,790 --> 00:03:24,800
+So now that we've imported our methods, let's actually instantiate what we need to instantiate.
+
+51
+00:03:25,190 --> 00:03:29,630
+So first, as I mentioned, we know that we need to create the DB.
+
+52
+00:03:30,020 --> 00:03:35,480
+So I'm just going to call this DB for database, which is equal to calling get firestorm.
+
+53
+00:03:37,280 --> 00:03:38,420
+Get Firestorm.
+
+54
+00:03:39,470 --> 00:03:42,920
+I accidentally auto imported up here that type, but we don't need that.
+
+55
+00:03:43,640 --> 00:03:50,720
+So once we've instantiated our fire store now, we can use it in order to actually access our database.
+
+56
+00:03:51,170 --> 00:03:57,260
+So this singleton instance allows us now to tell Firebase when we want to get a document or we want
+
+57
+00:03:57,260 --> 00:04:00,440
+to set a document or anything like that related to our database.
+
+58
+00:04:00,680 --> 00:04:05,930
+This is the database that we're going to pass because this actually directly points to our database
+
+59
+00:04:06,110 --> 00:04:07,190
+inside of the console.
+
+60
+00:04:08,510 --> 00:04:15,670
+So in order to use it, for example, what we're going to do is we're just going to create some method,
+
+61
+00:04:15,680 --> 00:04:19,400
+I'm going to call it create user document.
+
+62
+00:04:20,670 --> 00:04:22,690
+So I can even be more explicit.
+
+63
+00:04:22,710 --> 00:04:25,800
+Let's call it create user document from.
+
+64
+00:04:29,010 --> 00:04:35,880
+And what this method is, is it's an async function that receives some user authentication object because
+
+65
+00:04:35,880 --> 00:04:41,700
+that's really what we're getting back anyways from our Firebase authentication or Google sign it.
+
+66
+00:04:43,100 --> 00:04:48,560
+Whatever we were, council logging earlier, here is what we're going to want to pass, we want to pass
+
+67
+00:04:48,560 --> 00:04:50,450
+something specific and we'll walk through what that is.
+
+68
+00:04:51,080 --> 00:04:57,650
+But all we're thinking about right now is that we want some function that will take that data we're
+
+69
+00:04:57,650 --> 00:05:03,740
+getting from the authentication service and then we're going to store that inside of Firestorm.
+
+70
+00:05:04,520 --> 00:05:11,750
+So this is where things are going to get a little bit more confusing just because we have to follow
+
+71
+00:05:11,750 --> 00:05:15,800
+along with how we use these methods that we've imported.
+
+72
+00:05:16,100 --> 00:05:22,730
+So remember, what we need to do first is we need to see if there is an existing document reference.
+
+73
+00:05:23,480 --> 00:05:30,890
+So when I say reference, this is a special type of object that story uses when talking about actual
+
+74
+00:05:30,890 --> 00:05:33,950
+instance of a document model.
+
+75
+00:05:34,850 --> 00:05:38,720
+So just to be clear, I'm going to call this doc rough user doc ref.
+
+76
+00:05:39,020 --> 00:05:42,620
+And this is equal to doc, and Doc takes three arguments.
+
+77
+00:05:42,920 --> 00:05:45,200
+The first it takes is the database.
+
+78
+00:05:45,530 --> 00:05:50,120
+So we're using our Firestar database instance, so we're going to pass that as our first argument.
+
+79
+00:05:50,900 --> 00:05:56,270
+The second is going to be collection, so we know we're going to call it our users collections.
+
+80
+00:05:57,590 --> 00:06:03,050
+And then third is going to be some identifier that tells it what it was.
+
+81
+00:06:03,350 --> 00:06:04,070
+So do you remember?
+
+82
+00:06:04,070 --> 00:06:09,770
+Well, I showed you in our slideshow in the last video and I showed you the identifier was Nike Air
+
+83
+00:06:09,770 --> 00:06:11,270
+Max or Adidas.
+
+84
+00:06:11,270 --> 00:06:12,740
+NMD capitalized.
+
+85
+00:06:12,740 --> 00:06:19,730
+And altogether, if you remember, it looks something like this Nike Air Max like that, that identifier
+
+86
+00:06:19,730 --> 00:06:20,870
+is a unique ID.
+
+87
+00:06:21,710 --> 00:06:24,470
+So similarly, we need a unique ID for this to work.
+
+88
+00:06:25,070 --> 00:06:26,570
+So what is our unique ID?
+
+89
+00:06:27,290 --> 00:06:30,140
+Well, let's first look at our sign in.
+
+90
+00:06:30,740 --> 00:06:34,400
+We're going to console.log the response, and let's look at it to see what we have access to.
+
+91
+00:06:34,730 --> 00:06:35,990
+So let's go to our application.
+
+92
+00:06:36,470 --> 00:06:37,700
+Let's open up our console.
+
+93
+00:06:38,820 --> 00:06:41,010
+And let's just click sign in with Google.
+
+94
+00:06:43,630 --> 00:06:50,650
+Here, let's sign in and let's look closely at that object that were concealed logging here inside of
+
+95
+00:06:50,650 --> 00:06:54,160
+here, there's a couple of things like the operation type and what provider it's from.
+
+96
+00:06:54,670 --> 00:07:00,670
+We don't really care about any of this, whereas this user object, this is that authentication object
+
+97
+00:07:00,670 --> 00:07:03,340
+I was talking about that comes with the access token.
+
+98
+00:07:04,030 --> 00:07:09,340
+What we really care about is the fact that on here we get a display name, we get an email, we know
+
+99
+00:07:09,340 --> 00:07:14,140
+if it's verified and then there's some other information, such as a phone number, a photo URL.
+
+100
+00:07:14,800 --> 00:07:23,650
+But most importantly, there is a you I.D. This is a unique ID identifier that we get with this object.
+
+101
+00:07:24,160 --> 00:07:28,540
+So we might as well use this UIDAI as our unique identifier.
+
+102
+00:07:29,380 --> 00:07:35,590
+So right now, we're in the process of creating this user instance inside a firestorm.
+
+103
+00:07:36,560 --> 00:07:37,910
+So we've never done that before.
+
+104
+00:07:39,470 --> 00:07:45,770
+So what we can do is we can say, OK, what I want you to look for is off of this user off object.
+
+105
+00:07:46,010 --> 00:07:51,050
+This UID and I want you to use that as the unique ID to get a document referent.
+
+106
+00:07:51,860 --> 00:08:01,280
+What's interesting about Google Firestorm is that even though right now, as we explicitly saw, we
+
+107
+00:08:01,280 --> 00:08:08,030
+do not have a document reference inside of our database, we don't even have a user's collection.
+
+108
+00:08:08,630 --> 00:08:11,870
+But Google will still generate this object for you.
+
+109
+00:08:12,230 --> 00:08:13,310
+So let me show you what I mean.
+
+110
+00:08:13,790 --> 00:08:21,800
+Let's go inside of our silent component and let's import in the appropriate file.
+
+111
+00:08:22,930 --> 00:08:23,950
+From virus utils.
+
+112
+00:08:24,160 --> 00:08:29,110
+Actually, I'm already importing it up here, so I'm just going to move this up here.
+
+113
+00:08:30,600 --> 00:08:38,000
+And what I want to do is I want to call this method using responses, use our object.
+
+114
+00:08:38,010 --> 00:08:40,800
+Remember that was this specific object right here.
+
+115
+00:08:41,310 --> 00:08:43,170
+The one right here, it's off of user.
+
+116
+00:08:43,650 --> 00:08:44,670
+So I'm going to take that.
+
+117
+00:08:45,480 --> 00:08:50,550
+I'm going to destructor off the response because that's really all I want, and I'm going to pass that
+
+118
+00:08:50,550 --> 00:08:52,230
+in as the user off.
+
+119
+00:08:52,710 --> 00:08:54,210
+So it's out of firebase utils.
+
+120
+00:08:54,210 --> 00:09:00,450
+I'm getting this user off and then I'm essentially saying, Hey, give me the document reference.
+
+121
+00:09:01,450 --> 00:09:06,960
+Inside of this database under the user's collection with this user office, UIDAI.
+
+122
+00:09:07,960 --> 00:09:11,930
+As we know, we do not have anything inside of our collections.
+
+123
+00:09:11,950 --> 00:09:13,010
+We don't even have collections.
+
+124
+00:09:13,060 --> 00:09:14,920
+We just generated a database earlier.
+
+125
+00:09:15,670 --> 00:09:19,480
+So what this will log, though, when you see this inside of.
+
+126
+00:09:20,550 --> 00:09:23,700
+Here, let's refresh, because we just added some code.
+
+127
+00:09:25,840 --> 00:09:27,430
+I click sign in with Google pop up.
+
+128
+00:09:28,390 --> 00:09:29,530
+I click equalizing.
+
+129
+00:09:30,160 --> 00:09:35,890
+So now what's happening is it's giving us that response back and we're passing it into our new create
+
+130
+00:09:35,890 --> 00:09:36,340
+method.
+
+131
+00:09:36,790 --> 00:09:40,750
+And right here, you see, we actually got back some object.
+
+132
+00:09:41,560 --> 00:09:49,270
+This object is actually the object that represents some document reference in the database.
+
+133
+00:09:49,990 --> 00:09:55,230
+However, what we know is that we don't actually have a value, but here this idea is that you idea
+
+134
+00:09:55,260 --> 00:10:01,300
+we just used and the part, well, this points to our collection of users, but then it also points
+
+135
+00:10:01,300 --> 00:10:02,950
+to this UID.
+
+136
+00:10:03,700 --> 00:10:05,590
+But we know that nothing exists here.
+
+137
+00:10:05,620 --> 00:10:08,140
+There's actually no data we can get from this.
+
+138
+00:10:09,160 --> 00:10:11,740
+So why did Google create this for us?
+
+139
+00:10:12,280 --> 00:10:20,200
+The reason why Google did this is because this reference points to some now unique point inside of the
+
+140
+00:10:20,200 --> 00:10:20,770
+database.
+
+141
+00:10:21,340 --> 00:10:25,030
+There's nothing there for this ID, so Google is like, OK, there's no harm.
+
+142
+00:10:25,040 --> 00:10:27,430
+I'm not going to overwrite anything with this ID.
+
+143
+00:10:28,450 --> 00:10:35,050
+So by giving us this reference, Google wants us to use this specific document reference object that
+
+144
+00:10:35,050 --> 00:10:42,580
+they provided us in order to set data there, because it's already kind of pointing to some place inside
+
+145
+00:10:42,580 --> 00:10:43,320
+of our database.
+
+146
+00:10:43,330 --> 00:10:48,460
+You can imagine that there is now this user's collection that Google hasn't made yet, but it knows
+
+147
+00:10:48,460 --> 00:10:49,420
+that is pointing here.
+
+148
+00:10:49,660 --> 00:10:53,440
+And then inside of that user's collection is that specific user ID.
+
+149
+00:10:54,400 --> 00:10:55,480
+Now they don't exist.
+
+150
+00:10:55,480 --> 00:11:00,700
+But if we wanted to set the data, Google at least knows, Oh, I'm going to set it inside of users
+
+151
+00:11:00,820 --> 00:11:01,870
+for this specific ID.
+
+152
+00:11:02,530 --> 00:11:04,030
+That's exactly what Google is going to do.
+
+153
+00:11:05,290 --> 00:11:11,230
+So now that we have this, how do we actually figure out how to get in check some data?
+
+154
+00:11:12,070 --> 00:11:14,320
+Well, the way we do that is where we use that.
+
+155
+00:11:15,430 --> 00:11:20,680
+Method that I was telling about the get talk, remember this will try and get the data related to a
+
+156
+00:11:20,680 --> 00:11:21,260
+document.
+
+157
+00:11:21,880 --> 00:11:27,400
+So to do this, we're going to say, OK, contest user snapshot.
+
+158
+00:11:27,430 --> 00:11:29,530
+The snapshot is kind of like the data.
+
+159
+00:11:29,740 --> 00:11:31,810
+It's also a specific kind of object.
+
+160
+00:11:32,230 --> 00:11:37,720
+We're going to use a because Google needs to do this asynchronously, say, get the document for our
+
+161
+00:11:37,720 --> 00:11:39,280
+user doc ref.
+
+162
+00:11:40,470 --> 00:11:47,520
+Here now, what's going to happen if we save this and we also let's console.log use our snapshot as
+
+163
+00:11:47,520 --> 00:11:47,730
+well.
+
+164
+00:11:50,880 --> 00:11:53,700
+If we go back now, we refresh.
+
+165
+00:11:55,820 --> 00:11:57,410
+We sign in with our Google pop up.
+
+166
+00:11:59,430 --> 00:12:03,390
+Now, what's going to happen, as we know before, is we still see two things a lot.
+
+167
+00:12:04,260 --> 00:12:07,270
+The first we'll see is our user doc reference.
+
+168
+00:12:07,290 --> 00:12:08,460
+We've already seen that before.
+
+169
+00:12:08,850 --> 00:12:14,100
+But now what we also see is this new document snapshot.
+
+170
+00:12:15,150 --> 00:12:23,490
+This snapshot again points the same identifier, but this is a special object now because on this object
+
+171
+00:12:23,490 --> 00:12:28,410
+are different ways that we can check whether or not this document exists.
+
+172
+00:12:29,010 --> 00:12:35,850
+So I'm actually going to directly leverage a method called exists if you save this now.
+
+173
+00:12:36,360 --> 00:12:37,890
+And let's go through that flow again.
+
+174
+00:12:38,340 --> 00:12:39,120
+That's a refresh.
+
+175
+00:12:40,240 --> 00:12:41,350
+That's clear, our console.
+
+176
+00:12:42,690 --> 00:12:43,770
+Do our Google sign in?
+
+177
+00:12:46,460 --> 00:12:47,840
+I'm going to sign into EÜ.
+
+178
+00:12:49,530 --> 00:12:51,810
+What we'll see is false.
+
+179
+00:12:52,020 --> 00:12:57,600
+A Boolean, so using this object is actually a method on there called exists, which tells us whether
+
+180
+00:12:57,600 --> 00:13:04,920
+or not inside of our database does that reference and the data relates to the reference even exist?
+
+181
+00:13:05,010 --> 00:13:05,940
+Well, we know it doesn't.
+
+182
+00:13:05,950 --> 00:13:07,890
+We know we have an empty collection.
+
+183
+00:13:08,550 --> 00:13:14,310
+So that's how you can check whether or not based on a document and the data you're looking for in that
+
+184
+00:13:14,310 --> 00:13:19,950
+document, if any of it exists or not, it's utilizing this that we can create patterns to determine
+
+185
+00:13:19,950 --> 00:13:24,360
+that if there is a relevant place in the database for this data, give it back to me.
+
+186
+00:13:24,600 --> 00:13:26,580
+If not, create one for me.
+
+187
+00:13:26,580 --> 00:13:28,350
+And that's the flow that we're going to follow.
+
+188
+00:13:29,040 --> 00:13:34,110
+So I know there's a lot that we have to learn here about documents, document references and then documents
+
+189
+00:13:34,110 --> 00:13:34,830
+snapshots.
+
+190
+00:13:34,830 --> 00:13:36,600
+It's like, Wow, what are all these new things?
+
+191
+00:13:37,020 --> 00:13:42,480
+Well, the main idea is just that these are the tools that Google has determined to use faster in order
+
+192
+00:13:42,480 --> 00:13:46,350
+to best actually store things inside a firestorm.
+
+193
+00:13:47,070 --> 00:13:48,420
+So if it's a little confusing, don't worry.
+
+194
+00:13:48,420 --> 00:13:51,810
+In the next few videos, we're going to work a lot with it in order to better understand it.
+
+195
+00:13:52,350 --> 00:13:53,970
+So at least here we have a high level idea.
+
+196
+00:13:54,300 --> 00:13:58,950
+In the next video, let's actually start utilizing the snapshot now and writing out the rest of our
+
+197
+00:13:58,950 --> 00:14:02,040
+function to start storing this stuff inside of our database.
+
+198
+00:14:02,280 --> 00:14:03,330
+So I'll see in the next video.

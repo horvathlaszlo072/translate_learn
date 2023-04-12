@@ -1,0 +1,547 @@
+1
+00:00:00,620 --> 00:00:01,520
+Welcome back, everyone.
+
+2
+00:00:01,880 --> 00:00:06,440
+In the last video, we migrated our category store over to using TypeScript.
+
+3
+00:00:06,800 --> 00:00:11,600
+In this video, we're going to do it for our carts because it is the next simplest set of data to work
+
+4
+00:00:11,600 --> 00:00:11,840
+with.
+
+5
+00:00:12,590 --> 00:00:17,630
+To begin with, we're going to start with our car types and as always, we are going to migrate this
+
+6
+00:00:17,630 --> 00:00:19,580
+file over to its file.
+
+7
+00:00:20,740 --> 00:00:25,600
+What we now need to do is we need to first convert this over to an inner.
+
+8
+00:00:26,290 --> 00:00:28,480
+So we're going to replace content with Enum.
+
+9
+00:00:28,750 --> 00:00:34,690
+Get rid of the equal sign and then every one of these colons is going to be an equal sign.
+
+10
+00:00:37,190 --> 00:00:43,070
+Now that we have our collection types, we want to think about if there are any other specific heart
+
+11
+00:00:43,070 --> 00:00:44,570
+types that we need to define.
+
+12
+00:00:45,660 --> 00:00:48,300
+We can get a good idea of this inside of the cart reducer.
+
+13
+00:00:49,080 --> 00:00:52,400
+As we can see, we are storing car items in an array.
+
+14
+00:00:53,160 --> 00:00:57,150
+Car items is a specific set of data in an array.
+
+15
+00:00:57,750 --> 00:00:59,010
+But what is that data?
+
+16
+00:00:59,850 --> 00:01:06,690
+Well, if we remember inside of car actions, our car item is the first time where we actually create
+
+17
+00:01:06,690 --> 00:01:08,700
+this actual car item.
+
+18
+00:01:08,970 --> 00:01:14,610
+And what it is, is all of the properties of the product that we're adding in, plus a quantity value,
+
+19
+00:01:14,610 --> 00:01:15,360
+which is a number.
+
+20
+00:01:15,870 --> 00:01:17,300
+So what is product to add?
+
+21
+00:01:17,730 --> 00:01:20,490
+What product to add is a category item.
+
+22
+00:01:20,820 --> 00:01:26,340
+So what we know is that our car item is just a category item with an additional quantity.
+
+23
+00:01:27,000 --> 00:01:33,840
+And what we can do in order to make our lives easier is we can actually bring in the category item.
+
+24
+00:01:35,260 --> 00:01:36,490
+From our categories.
+
+25
+00:01:37,480 --> 00:01:39,250
+So let's go up to categories.
+
+26
+00:01:39,820 --> 00:01:40,780
+Category types.
+
+27
+00:01:42,020 --> 00:01:46,880
+Now, if you think about the category item, it has all these properties we want, but it just missing
+
+28
+00:01:46,880 --> 00:01:47,630
+the quantity.
+
+29
+00:01:48,020 --> 00:01:56,990
+So here we can make an intersection type of item which is equal to category item, plus this additional
+
+30
+00:01:56,990 --> 00:02:00,380
+quantity field that we're looking for, which is a number.
+
+31
+00:02:01,760 --> 00:02:03,590
+And now it's very simple.
+
+32
+00:02:03,590 --> 00:02:10,070
+If category item ever changes, our item will similarly change as long as quantity is the only field
+
+33
+00:02:10,070 --> 00:02:12,380
+we want to spend to our items.
+
+34
+00:02:13,390 --> 00:02:18,190
+The great thing about this is because the way our code is set up as well, we are spreading through
+
+35
+00:02:18,190 --> 00:02:19,840
+these fields anyways.
+
+36
+00:02:20,170 --> 00:02:26,230
+So as long as all of these values stay the same, essentially our types of code type is also inferring
+
+37
+00:02:26,230 --> 00:02:31,440
+the same pattern of spreading through the category item to create the actual cart item.
+
+38
+00:02:32,480 --> 00:02:38,840
+So now that we have this car item type, what we want to do is we want to start typing the appropriate
+
+39
+00:02:39,110 --> 00:02:39,770
+actions.
+
+40
+00:02:40,220 --> 00:02:48,200
+So first we are going to change our cart action from Ajax file to its file and inside.
+
+41
+00:02:48,380 --> 00:02:53,450
+What we need to do is we need to bring in the appropriate width matcher.
+
+42
+00:02:54,470 --> 00:02:56,900
+Similarly, we know we need a few types.
+
+43
+00:02:57,500 --> 00:03:07,370
+We know we need our cart item, but we also need that category item because as you remember right here,
+
+44
+00:03:07,370 --> 00:03:08,270
+a product to add.
+
+45
+00:03:08,570 --> 00:03:10,730
+Well, this is a category item.
+
+46
+00:03:11,600 --> 00:03:14,330
+As for cart items, this is an array.
+
+47
+00:03:15,620 --> 00:03:16,640
+Of course, items.
+
+48
+00:03:17,800 --> 00:03:20,530
+And what does the car item give you back?
+
+49
+00:03:21,130 --> 00:03:27,910
+Well, if you remember, it is going to give us back an array of car items, regardless of which of
+
+50
+00:03:27,910 --> 00:03:28,870
+these returns it is.
+
+51
+00:03:28,990 --> 00:03:33,100
+So here we can just say, give us back a car item array.
+
+52
+00:03:35,180 --> 00:03:37,850
+This is our helper function that we've typed.
+
+53
+00:03:38,210 --> 00:03:42,710
+This doesn't need the width matcher because it doesn't actually generate an action, but we do use it
+
+54
+00:03:42,710 --> 00:03:46,430
+inside of our actual action creators.
+
+55
+00:03:46,730 --> 00:03:47,900
+So let's type these first.
+
+56
+00:03:48,560 --> 00:03:52,240
+Now, similarly, this remove car item is very similar as well.
+
+57
+00:03:53,430 --> 00:03:57,810
+It's an array of car items as well as a cart item.
+
+58
+00:03:57,990 --> 00:04:02,340
+Unlike before remove cart item gets called on only car items.
+
+59
+00:04:03,460 --> 00:04:06,070
+And now this existing car item.
+
+60
+00:04:06,850 --> 00:04:09,340
+Here we see check if quantity is equal to one.
+
+61
+00:04:10,090 --> 00:04:13,960
+But if you hover over it, it could possibly be undefined.
+
+62
+00:04:14,680 --> 00:04:21,070
+There is a high chance that when we do this find we don't find a matching car item, which is what our
+
+63
+00:04:21,070 --> 00:04:22,180
+coat checks to do.
+
+64
+00:04:22,810 --> 00:04:28,390
+Of course, in this particular case, when you check on this quantity value inside of JavaScript, JavaScript
+
+65
+00:04:28,390 --> 00:04:31,030
+will give you back undefined if there is no existing card item.
+
+66
+00:04:31,900 --> 00:04:33,780
+But for us this is not good.
+
+67
+00:04:33,790 --> 00:04:36,730
+We need to actually modify this code so that it works.
+
+68
+00:04:36,940 --> 00:04:43,640
+And all we can do is just say if there is an existing card item, then check the quantity.
+
+69
+00:04:43,660 --> 00:04:46,270
+Otherwise, don't run this part.
+
+70
+00:04:46,750 --> 00:04:49,450
+And now we've resolved our actual type issue.
+
+71
+00:04:50,140 --> 00:04:54,250
+And in this particular case, it actually helped us, because now our code is less prone to error.
+
+72
+00:04:55,550 --> 00:05:00,710
+So what we can do now is we can just make sure that we also type the return value for this function
+
+73
+00:05:00,710 --> 00:05:02,270
+as the cart item array.
+
+74
+00:05:04,000 --> 00:05:06,790
+Finally we have our clear car item again.
+
+75
+00:05:06,910 --> 00:05:08,830
+We have an array of car items.
+
+76
+00:05:09,990 --> 00:05:14,160
+And we have a cart item that is trying to be removed.
+
+77
+00:05:15,500 --> 00:05:19,280
+Once again, we were turning back an array of items.
+
+78
+00:05:22,730 --> 00:05:23,480
+So there we go.
+
+79
+00:05:24,020 --> 00:05:26,970
+We have now typed out all of our utility functions.
+
+80
+00:05:27,770 --> 00:05:31,940
+What we want to do next is we want to define each of our actions as a type.
+
+81
+00:05:32,690 --> 00:05:38,210
+So here first, I'm going to say export type set is cart open.
+
+82
+00:05:40,470 --> 00:05:45,660
+And this is going to be equal to some action with payload.
+
+83
+00:05:45,690 --> 00:05:47,090
+So actually, first, let's bring that in.
+
+84
+00:05:47,100 --> 00:05:51,110
+We need to bring in the appropriate action types as well, which we did not bring in.
+
+85
+00:05:52,150 --> 00:05:56,380
+We need our action as well as action with payload.
+
+86
+00:05:58,730 --> 00:06:00,480
+So first set card open.
+
+87
+00:06:00,590 --> 00:06:05,090
+It is an action with payload that receives card action type.
+
+88
+00:06:07,110 --> 00:06:09,180
+Dot set his car open.
+
+89
+00:06:10,500 --> 00:06:13,620
+With some boolean value as the payload.
+
+90
+00:06:14,720 --> 00:06:18,260
+Next we need to think about these three actions.
+
+91
+00:06:18,500 --> 00:06:19,580
+Add item to cart.
+
+92
+00:06:19,580 --> 00:06:22,010
+Remove item from cart and clear item from cart.
+
+93
+00:06:23,130 --> 00:06:31,920
+Each of these, while being a different action creator, actually does in the end create the exact same
+
+94
+00:06:31,950 --> 00:06:34,110
+set cart items action.
+
+95
+00:06:34,740 --> 00:06:41,700
+So technically, these three are different functions that manufacture the same type of action.
+
+96
+00:06:42,030 --> 00:06:44,010
+And here we're just defining the type of action.
+
+97
+00:06:44,010 --> 00:06:49,500
+And this type of action is our set cart items action.
+
+98
+00:06:50,100 --> 00:06:52,710
+And this is also an action with payload.
+
+99
+00:06:53,670 --> 00:07:02,490
+The car action types is set car items, but the actual payload value is going to be an array of cart
+
+100
+00:07:02,490 --> 00:07:03,050
+items.
+
+101
+00:07:03,900 --> 00:07:06,510
+So this is what's really useful about typing.
+
+102
+00:07:06,510 --> 00:07:09,120
+You can actually see some of the optimizations you can make.
+
+103
+00:07:09,780 --> 00:07:16,350
+So of course set is cart open this we can turn into a matcher first.
+
+104
+00:07:17,560 --> 00:07:19,510
+We receive a boolean value.
+
+105
+00:07:20,710 --> 00:07:23,590
+And we output a set is open.
+
+106
+00:07:24,640 --> 00:07:25,630
+Action object.
+
+107
+00:07:26,800 --> 00:07:33,130
+As for these other three, we need to first create this set cart items.
+
+108
+00:07:33,610 --> 00:07:35,080
+Action Creator.
+
+109
+00:07:36,100 --> 00:07:39,910
+Export const set cart items.
+
+110
+00:07:40,270 --> 00:07:42,550
+Is equal to with matcher.
+
+111
+00:07:43,180 --> 00:07:46,240
+We receive cart items which is an array.
+
+112
+00:07:47,620 --> 00:07:48,610
+I'll cart items.
+
+113
+00:07:49,710 --> 00:07:50,210
+It's the type.
+
+114
+00:07:51,430 --> 00:07:52,390
+We output.
+
+115
+00:07:53,670 --> 00:07:55,670
+Are set cart items.
+
+116
+00:07:55,680 --> 00:07:56,130
+Action.
+
+117
+00:07:57,980 --> 00:08:00,890
+And the definition is that we create an action.
+
+118
+00:08:01,490 --> 00:08:03,290
+With cart action types.
+
+119
+00:08:03,290 --> 00:08:05,420
+Dot set items.
+
+120
+00:08:06,140 --> 00:08:08,030
+Passing cart items.
+
+121
+00:08:10,660 --> 00:08:12,040
+As the actual payload.
+
+122
+00:08:13,540 --> 00:08:22,330
+As for these other three now, instead, we can simply replace this with set cart items.
+
+123
+00:08:23,260 --> 00:08:26,530
+Passing in new cart items like soap.
+
+124
+00:08:28,560 --> 00:08:32,100
+Then we just need to type these card items as part item.
+
+125
+00:08:34,710 --> 00:08:35,280
+Like so.
+
+126
+00:08:39,280 --> 00:08:47,860
+And product to add, of course, is a category item, but then cart items to remove is also a cart item.
+
+127
+00:08:48,850 --> 00:08:50,440
+Just like item two.
+
+128
+00:08:50,440 --> 00:08:50,800
+Clear.
+
+129
+00:08:54,690 --> 00:08:55,290
+And there we go.
+
+130
+00:08:55,830 --> 00:08:58,020
+That is our new updated code.
+
+131
+00:08:58,980 --> 00:09:06,030
+So now all we need to import in to our reducer is these two matters in order to determine what the new
+
+132
+00:09:06,030 --> 00:09:06,540
+order is.
+
+133
+00:09:07,050 --> 00:09:08,040
+So I want you to try that.
+
+134
+00:09:08,070 --> 00:09:13,260
+I want you to take what we've just made, go into the reducer and update it to the new pattern that
+
+135
+00:09:13,260 --> 00:09:14,430
+we use with our matches.
+
+136
+00:09:15,820 --> 00:09:18,820
+So once you've tried that, we'll do it together in the next video.
+
+137
+00:09:19,360 --> 00:09:19,930
+I'll see you there.

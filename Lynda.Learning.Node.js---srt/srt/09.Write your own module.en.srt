@@ -1,0 +1,217 @@
+1
+00:00:00.04 --> 00:00:01.04
+- [Instructor] Now let's take a look
+
+2
+00:00:01.04 --> 00:00:03.09
+at how modules work inside node.js.
+
+3
+00:00:03.09 --> 00:00:06.01
+We'll dive right in and
+start creating our own.
+
+4
+00:00:06.01 --> 00:00:07.02
+Let's create a new file.
+
+5
+00:00:07.02 --> 00:00:10.07
+So in Visual Studio code,
+I'll hit the new file icon
+
+6
+00:00:10.07 --> 00:00:15.02
+and we'll call this my-module.js.
+
+7
+00:00:15.02 --> 00:00:17.01
+And now let's create another
+file that we'll be using
+
+8
+00:00:17.01 --> 00:00:18.08
+our new module.
+
+9
+00:00:18.08 --> 00:00:22.03
+I'll call it module-demo.js.
+
+10
+00:00:22.03 --> 00:00:24.08
+The idea is to get the
+code inside my module
+
+11
+00:00:24.08 --> 00:00:28.02
+to be accessible inside our module demo.
+
+12
+00:00:28.02 --> 00:00:30.06
+The power behind that, for example,
+
+13
+00:00:30.06 --> 00:00:33.06
+this could be a math
+library that we've written
+
+14
+00:00:33.06 --> 00:00:36.02
+and we'd like to reuse
+it inside different files
+
+15
+00:00:36.02 --> 00:00:38.05
+or maybe even inside different projects.
+
+16
+00:00:38.05 --> 00:00:41.06
+This leverages the concept of code reuse.
+
+17
+00:00:41.06 --> 00:00:44.01
+So to continue, let's go over to my module
+
+18
+00:00:44.01 --> 00:00:46.04
+and we'll use the exports object
+
+19
+00:00:46.04 --> 00:00:50.05
+and we can pass in any data
+we'd like with exports.
+
+20
+00:00:50.05 --> 00:00:56.01
+We'll create a property called myText
+
+21
+00:00:56.01 --> 00:00:58.03
+and we'll set that to
+some placeholder value.
+
+22
+00:00:58.03 --> 00:01:00.08
+I'll set it to hello from module.
+
+23
+00:01:00.08 --> 00:01:04.02
+(keys clicking on keyboard)
+
+24
+00:01:04.02 --> 00:01:06.06
+Node has a simple module loading system.
+
+25
+00:01:06.06 --> 00:01:09.02
+In Node, files and modules are
+
+26
+00:01:09.02 --> 00:01:10.08
+in a one to one correspondence
+
+27
+00:01:10.08 --> 00:01:13.00
+and in order to access my module,
+
+28
+00:01:13.00 --> 00:01:16.00
+I'll first set its
+reference to a variable.
+
+29
+00:01:16.00 --> 00:01:17.05
+So let's go in our module demo
+
+30
+00:01:17.05 --> 00:01:22.03
+and I'll call this variable myModule.
+
+31
+00:01:22.03 --> 00:01:24.01
+And I'll use require to bring it in.
+
+32
+00:01:24.01 --> 00:01:27.08
+(keys clicking on keyboard)
+
+33
+00:01:27.08 --> 00:01:29.01
+And then I'll specify the path.
+
+34
+00:01:29.01 --> 00:01:32.05
+(keys clicking on keyboard)
+
+35
+00:01:32.05 --> 00:01:34.09
+And now to test this, let's
+do a simple console log
+
+36
+00:01:34.09 --> 00:01:38.04
+in the line below.
+
+37
+00:01:38.04 --> 00:01:40.07
+We'll test to see if we're
+getting the same value
+
+38
+00:01:40.07 --> 00:01:42.05
+from our module.
+
+39
+00:01:42.05 --> 00:01:46.04
+So we'll access our module
+reference with myModule
+
+40
+00:01:46.04 --> 00:01:48.01
+and then we'll get the value
+
+41
+00:01:48.01 --> 00:01:51.09
+from the property we created, .myText.
+
+42
+00:01:51.09 --> 00:01:53.09
+Now let's go over to
+our console or terminal
+
+43
+00:01:53.09 --> 00:01:59.06
+and execute our module demo.
+
+44
+00:01:59.06 --> 00:02:04.00
+So I'll type in node and then
+the file name module demo.
+
+45
+00:02:04.00 --> 00:02:05.09
+And as we can see, we're
+getting our console log
+
+46
+00:02:05.09 --> 00:02:09.00
+with the hello from
+module placeholder text.
+
+47
+00:02:09.00 --> 00:02:10.07
+And so we were able to access data
+
+48
+00:02:10.07 --> 00:02:14.05
+in our module demo from
+another module or file.
+
+49
+00:02:14.05 --> 00:02:15.07
+We'll be able to do the same thing
+
+50
+00:02:15.07 --> 00:02:18.01
+with functionality later on.
+

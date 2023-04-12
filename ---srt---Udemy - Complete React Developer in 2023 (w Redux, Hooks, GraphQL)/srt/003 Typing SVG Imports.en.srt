@@ -1,0 +1,439 @@
+1
+00:00:00,270 --> 00:00:01,260
+Welcome back, everyone.
+
+2
+00:00:02,390 --> 00:00:05,090
+In this video, we're going to type our heart icon.
+
+3
+00:00:06,080 --> 00:00:10,220
+So to begin, let's switch these over to TSX files.
+
+4
+00:00:14,410 --> 00:00:18,430
+And as you can notice, card icon taking no props, no problem.
+
+5
+00:00:19,330 --> 00:00:23,110
+But when we look inside of our icon component, what do we notice?
+
+6
+00:00:23,710 --> 00:00:25,360
+We notice that here.
+
+7
+00:00:26,450 --> 00:00:29,480
+TypeScript can't find this module for savages.
+
+8
+00:00:30,110 --> 00:00:33,020
+The reason for this actually has to do with our test config.
+
+9
+00:00:33,500 --> 00:00:40,250
+We need to tell TypeScript to include checking for alternative file types and then typing them inside
+
+10
+00:00:40,250 --> 00:00:41,780
+of a react world.
+
+11
+00:00:42,650 --> 00:00:49,910
+Now this is where we need to actually declare a global type, just like we did before when we added
+
+12
+00:00:50,270 --> 00:00:51,350
+something to the window.
+
+13
+00:00:51,380 --> 00:00:53,600
+If you remember, we were working with Redux dev tools.
+
+14
+00:00:54,290 --> 00:00:56,900
+So inside of our component.
+
+15
+00:00:57,930 --> 00:01:06,030
+First of all, we need to do is we need to create a global file that we can add some additional typing
+
+16
+00:01:06,030 --> 00:01:06,300
+to.
+
+17
+00:01:06,840 --> 00:01:10,620
+I'm going to call it custom done deportees.
+
+18
+00:01:10,650 --> 00:01:16,260
+Now, the data to us is some special file that TypeScript is looking for.
+
+19
+00:01:16,800 --> 00:01:18,150
+So let's add it inside the source.
+
+20
+00:01:18,730 --> 00:01:21,930
+When I make a new file called Custom Deportees.
+
+21
+00:01:23,810 --> 00:01:34,580
+Inside of our custom dot dots, we are going to declare a module where we register any path where we
+
+22
+00:01:34,580 --> 00:01:36,410
+go star dot SVG.
+
+23
+00:01:36,830 --> 00:01:40,820
+So we're recognizing any pathways again, remember, we're importing.
+
+24
+00:01:41,000 --> 00:01:45,660
+So TypeScript needs to be able to import the appropriate modules because that's really what we're importing.
+
+25
+00:01:45,680 --> 00:01:47,000
+All of these are considered modules.
+
+26
+00:01:47,510 --> 00:01:52,160
+We're importing any module that ends in a SVG file according to the following the rules.
+
+27
+00:01:53,090 --> 00:01:56,870
+Now first, we want to just register the fact there's something in here that we want to export.
+
+28
+00:01:57,380 --> 00:02:01,610
+We're going to say can't source is equal to a string because essentially that's what's going to come
+
+29
+00:02:01,610 --> 00:02:01,970
+out of it.
+
+30
+00:02:02,600 --> 00:02:05,540
+And then we're going to export by default source.
+
+31
+00:02:06,110 --> 00:02:07,740
+So that's how we're going to get the files.
+
+32
+00:02:07,760 --> 00:02:12,230
+It's just going to be some value that gets initialize and then it's going to export it out by default.
+
+33
+00:02:12,230 --> 00:02:17,900
+In order for us to declare these as register of all TypeScript modules in portable and exportable.
+
+34
+00:02:18,080 --> 00:02:22,850
+So by default, we need to append this type of export so that TypeScript knows, Hey, you're exporting
+
+35
+00:02:22,850 --> 00:02:23,750
+something from this.
+
+36
+00:02:23,960 --> 00:02:27,260
+It's going to be a string because all files actually get converted to strings.
+
+37
+00:02:27,860 --> 00:02:31,910
+And then once you import that in React knows what to do with it, it'll pass it appropriately.
+
+38
+00:02:32,060 --> 00:02:33,980
+React is already doing all that under the hood.
+
+39
+00:02:34,010 --> 00:02:35,990
+It's really typescript that needs to register that.
+
+40
+00:02:36,590 --> 00:02:42,710
+So let's save that and let's include this new custom that deducts file inside of our test config.
+
+41
+00:02:43,250 --> 00:02:49,790
+For us to do this, we can include it inside of our include and we can just say include source slash
+
+42
+00:02:50,180 --> 00:02:51,020
+and then custom.
+
+43
+00:02:51,920 --> 00:02:52,340
+Yes.
+
+44
+00:02:54,000 --> 00:02:58,830
+And now that we've included this inside of our config so that we know that, hey, inside of here,
+
+45
+00:02:58,830 --> 00:03:02,430
+I want you to register these as specific files as part of your configuration.
+
+46
+00:03:03,240 --> 00:03:08,640
+If we go back to our icon, we'll notice that we're no longer getting that module where we can successfully
+
+47
+00:03:08,670 --> 00:03:12,060
+see that this is a module where we can bring in the SVG.
+
+48
+00:03:12,780 --> 00:03:17,130
+But now we're seeing, Oh, this is no longer an exportable member.
+
+49
+00:03:17,640 --> 00:03:19,230
+What you're exporting is a string.
+
+50
+00:03:19,830 --> 00:03:21,930
+You're not actually exporting a react component.
+
+51
+00:03:22,800 --> 00:03:27,450
+Now, this is where in order for us to turn this into a component, because remember, react under the
+
+52
+00:03:27,450 --> 00:03:29,080
+hood is already doing all this.
+
+53
+00:03:29,100 --> 00:03:31,680
+We just need TypeScript to register that this is happening.
+
+54
+00:03:32,460 --> 00:03:34,530
+We've got to extend upon this module.
+
+55
+00:03:35,100 --> 00:03:40,830
+So first, what we're going to do is we're going to import in React and we need to require this from
+
+56
+00:03:40,830 --> 00:03:41,360
+React.
+
+57
+00:03:43,250 --> 00:03:48,320
+What we're going to do with this rock library is we're going to export cost a react component.
+
+58
+00:03:49,600 --> 00:03:54,520
+So we're going to say react components, which is the name of what we're importing, remember?
+
+59
+00:03:54,970 --> 00:03:55,540
+Right here.
+
+60
+00:03:55,900 --> 00:03:58,630
+You want to think about these imports and exports?
+
+61
+00:03:59,080 --> 00:04:05,890
+First, we're exporting by default the source, but we can also export a member, which is what happens
+
+62
+00:04:05,890 --> 00:04:08,650
+here when you do a named import.
+
+63
+00:04:08,680 --> 00:04:13,390
+Remember, with these squiggly braces, you need some cortes to be exported.
+
+64
+00:04:13,960 --> 00:04:19,540
+That's the only way that we can make sure that we can import it inside of these squiggly braces.
+
+65
+00:04:19,840 --> 00:04:23,860
+This means that we're importing something react component.
+
+66
+00:04:24,220 --> 00:04:30,460
+That's why when you don't need the as shopping cart, this needs to be something that is actually exportable
+
+67
+00:04:30,460 --> 00:04:32,080
+as a value from this file.
+
+68
+00:04:32,740 --> 00:04:39,100
+Seeing as shopping icon is just us renaming the variable, but react component needs to live as a valid
+
+69
+00:04:39,100 --> 00:04:42,070
+variable inside of this shopping bag.
+
+70
+00:04:42,070 --> 00:04:46,390
+The SVG that TypeScript can register is actually valid.
+
+71
+00:04:46,750 --> 00:04:48,190
+Again, this is what we're saying here.
+
+72
+00:04:48,370 --> 00:04:53,470
+We're saying, hey, there is some constant that is going to be exported called react component and
+
+73
+00:04:53,470 --> 00:04:57,310
+this is going to be of the type React DFC.
+
+74
+00:04:57,610 --> 00:05:02,590
+It's a functional component and what it is is a SPG.
+
+75
+00:05:03,570 --> 00:05:04,170
+Props.
+
+76
+00:05:05,350 --> 00:05:07,480
+So again, this is a functional component.
+
+77
+00:05:07,810 --> 00:05:12,670
+We have SVG props being passed in and the props is going to be an SPG.
+
+78
+00:05:13,900 --> 00:05:16,150
+S v g e element.
+
+79
+00:05:18,250 --> 00:05:20,020
+So these are just settings that need to be set.
+
+80
+00:05:20,230 --> 00:05:25,840
+If this seems confusing again, once you go through enough of these typescript patterns and documentation,
+
+81
+00:05:25,840 --> 00:05:29,120
+you're going to essentially figure out what are these components.
+
+82
+00:05:29,140 --> 00:05:32,860
+Mainly this is a lot of configuration with TypeScript that we just need to do.
+
+83
+00:05:32,890 --> 00:05:37,050
+I'm not actually typing anything through some deeper knowledge of all this stuff.
+
+84
+00:05:37,060 --> 00:05:40,600
+It's really just the fact that I've read through a lot of the documentation, so I understand what's
+
+85
+00:05:40,600 --> 00:05:43,180
+needed in order for these components to actually render and their types.
+
+86
+00:05:43,870 --> 00:05:46,030
+But that's what we need to bring in now.
+
+87
+00:05:46,480 --> 00:05:51,580
+And inside, we now notice that this is working because essentially we've defined what this react component
+
+88
+00:05:51,580 --> 00:05:51,790
+is.
+
+89
+00:05:51,910 --> 00:05:58,900
+If you have a over it right there, you see we have a React FC with SBG as the props where the prop
+
+90
+00:05:58,900 --> 00:06:01,090
+types are based off of SVG element.
+
+91
+00:06:02,100 --> 00:06:03,900
+Now because we did it for this one.
+
+92
+00:06:04,200 --> 00:06:05,880
+It will work for all the others.
+
+93
+00:06:06,180 --> 00:06:14,280
+If I remember correctly, our navigation routes component also has similarly an import where we're bringing
+
+94
+00:06:14,280 --> 00:06:17,250
+in some react component like so.
+
+95
+00:06:18,210 --> 00:06:21,540
+So here we can, in fact, convert this one as well.
+
+96
+00:06:22,730 --> 00:06:26,510
+So first, I'm going to convert the styles to a CSX file.
+
+97
+00:06:27,860 --> 00:06:31,580
+And I'm going to convert the component also to TSX.
+
+98
+00:06:34,940 --> 00:06:41,180
+And now looking inside again, this component, if you have a rare component, you notice it is a valid
+
+99
+00:06:41,180 --> 00:06:41,600
+prop.
+
+100
+00:06:42,960 --> 00:06:47,340
+Looking through this file, there are no type concerns because, again, this is a very straightforward
+
+101
+00:06:47,340 --> 00:06:47,800
+component.
+
+102
+00:06:47,820 --> 00:06:51,930
+We're using all these hooks that are already typed for us, so there's nothing additional that we need
+
+103
+00:06:51,930 --> 00:06:52,390
+to type.
+
+104
+00:06:52,410 --> 00:06:53,550
+We started with Redux.
+
+105
+00:06:53,700 --> 00:06:56,250
+All of our Redux portions are all properly typed.
+
+106
+00:06:57,260 --> 00:06:58,010
+So there we go.
+
+107
+00:06:58,040 --> 00:07:00,800
+We now learn how to type SB G's inside of React.
+
+108
+00:07:01,490 --> 00:07:06,650
+Chances are whenever you need to do anything with SB G's inside of React using this very common pattern,
+
+109
+00:07:06,950 --> 00:07:11,330
+you just need to also declare this additional module and then include it inside of your test config.
+
+110
+00:07:12,020 --> 00:07:15,290
+Now that we know this, let's continue typing the rest of our components.

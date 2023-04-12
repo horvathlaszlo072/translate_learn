@@ -1,0 +1,507 @@
+1
+00:00:00,530 --> 00:00:01,610
+Welcome back, everyone.
+
+2
+00:00:02,210 --> 00:00:06,620
+And the last video we discovered that we seem to have this styling clash.
+
+3
+00:00:07,250 --> 00:00:13,460
+And what you would notice if you look inside of the category container is you see that we have both
+
+4
+00:00:13,460 --> 00:00:19,730
+styling coming from our category dot styles that says, but we also have styling coming from our category.
+
+5
+00:00:19,760 --> 00:00:26,540
+Item dot styles our category item, if you remember, is what we named these components.
+
+6
+00:00:27,200 --> 00:00:33,380
+So this is actually an unfortunate side effect that does happen very frequently when we write season
+
+7
+00:00:33,400 --> 00:00:33,920
+sass.
+
+8
+00:00:34,400 --> 00:00:39,860
+The reason being that if we forget the name ining and the nomenclature of these components, it's very
+
+9
+00:00:39,860 --> 00:00:45,800
+easy to accidentally write the same class names for specific elements that you might have forgotten
+
+10
+00:00:45,800 --> 00:00:47,060
+about for some time now.
+
+11
+00:00:47,390 --> 00:00:50,330
+This is also a very common problem in general.
+
+12
+00:00:50,330 --> 00:00:56,480
+Web development when you're writing CC and Sass, CSI is present across the entire page.
+
+13
+00:00:56,900 --> 00:01:01,370
+If you're not super diligent with your strategy, it's very easy to find these clashes.
+
+14
+00:01:02,210 --> 00:01:07,040
+So for us, this is actually a two fold problem that we can solve.
+
+15
+00:01:07,220 --> 00:01:09,070
+The first is solving this immediately.
+
+16
+00:01:09,080 --> 00:01:14,570
+The next is figuring out if we can solve it using something in the React ecosystem.
+
+17
+00:01:14,990 --> 00:01:16,640
+And I'm going to talk about that later.
+
+18
+00:01:16,670 --> 00:01:22,040
+First, let's just fix this with the first solution, which is just to resolve this conflict.
+
+19
+00:01:22,880 --> 00:01:27,680
+So back inside of our component, we have this category item component.
+
+20
+00:01:28,220 --> 00:01:33,150
+This component is what we use to demonstrate on the main page.
+
+21
+00:01:33,440 --> 00:01:36,320
+These five different selectable options.
+
+22
+00:01:36,860 --> 00:01:43,070
+What these are is instead of calling them category item, we can call them directory item because they
+
+23
+00:01:43,070 --> 00:01:45,950
+are housed in the directory component, if you remember.
+
+24
+00:01:46,460 --> 00:01:47,900
+So let's start renaming these.
+
+25
+00:01:48,410 --> 00:01:51,320
+I want to rename this to directory item.
+
+26
+00:01:52,300 --> 00:01:57,880
+And similarly, the code inside this should be directory item component.
+
+27
+00:02:00,050 --> 00:02:03,320
+And also directory item dot styles.
+
+28
+00:02:04,910 --> 00:02:10,760
+For this directory item, of course, we need to update all references to this, so let's focus on our
+
+29
+00:02:10,760 --> 00:02:11,930
+internal files first.
+
+30
+00:02:13,550 --> 00:02:15,170
+Directory item like so.
+
+31
+00:02:16,260 --> 00:02:23,340
+And then instead of category container, this should be directory item container.
+
+32
+00:02:24,620 --> 00:02:29,420
+And instead of category bottom container, we'll call this directory item body container.
+
+33
+00:02:29,900 --> 00:02:32,210
+In fact, let's just call it directory item body.
+
+34
+00:02:33,290 --> 00:02:37,730
+So now let's save this and inside of our directory item styles, let's remember what we change this
+
+35
+00:02:37,730 --> 00:02:37,940
+to.
+
+36
+00:02:38,480 --> 00:02:41,270
+This is now directory item container.
+
+37
+00:02:42,170 --> 00:02:46,070
+And similarly, it's just now body.
+
+38
+00:02:48,070 --> 00:02:49,870
+If I remember correctly that we just call a body.
+
+39
+00:02:50,090 --> 00:02:54,370
+Now we call it directory item body, no, let's call it body body is pretty clear because it's housed
+
+40
+00:02:54,370 --> 00:02:58,750
+under directory item container, so it's the body of the directory item.
+
+41
+00:02:59,500 --> 00:03:01,820
+And let's see if anywhere else we might have this.
+
+42
+00:03:01,900 --> 00:03:02,620
+Yes, we do.
+
+43
+00:03:02,860 --> 00:03:04,030
+Let's fix this here as well.
+
+44
+00:03:05,020 --> 00:03:09,790
+And now, if we save this, we need to now make sure that we're leveraging the new item in the correct
+
+45
+00:03:09,790 --> 00:03:13,030
+place, which will be inside of our directory component.
+
+46
+00:03:13,900 --> 00:03:16,480
+So here now, this is no longer a category item.
+
+47
+00:03:16,510 --> 00:03:22,180
+This is a directory item which we can now save and now we come back.
+
+48
+00:03:22,480 --> 00:03:23,020
+Let's see.
+
+49
+00:03:24,900 --> 00:03:27,250
+Our component is now working.
+
+50
+00:03:27,870 --> 00:03:32,280
+And now if we navigate to slash shop slash hats.
+
+51
+00:03:34,630 --> 00:03:37,330
+We also see that our shop page is working.
+
+52
+00:03:38,340 --> 00:03:39,840
+So what about the other roots?
+
+53
+00:03:40,590 --> 00:03:43,920
+Well, here if we go to shop jackets.
+
+54
+00:03:46,330 --> 00:03:48,100
+We see that it also works.
+
+55
+00:03:49,120 --> 00:03:54,610
+The last thing we need to do that we seem to miss with our collection preview is we did not make these
+
+56
+00:03:54,610 --> 00:04:00,460
+clickable links to take us to the appropriate place so you can actually leverage the link component
+
+57
+00:04:00,460 --> 00:04:03,490
+we get from Rotterdam to switch this over.
+
+58
+00:04:04,650 --> 00:04:06,600
+Let's actually do this quickly together.
+
+59
+00:04:08,270 --> 00:04:09,620
+Go to the navigation component.
+
+60
+00:04:10,010 --> 00:04:16,760
+Pause the video and try and figure out how to leverage this link component and use it inside the category
+
+61
+00:04:16,850 --> 00:04:17,750
+preview component.
+
+62
+00:04:19,350 --> 00:04:21,030
+I'm going to give you a second to try yourself.
+
+63
+00:04:22,320 --> 00:04:23,460
+And now let's do it.
+
+64
+00:04:24,150 --> 00:04:31,500
+So what we need to do is import in link from React Rotterdam and then what we're going to do is we're
+
+65
+00:04:31,500 --> 00:04:38,400
+going to replace this span with Link and then the two is going to take us to title.
+
+66
+00:04:39,600 --> 00:04:41,670
+Because we're using title as our roots.
+
+67
+00:04:42,830 --> 00:04:47,540
+If I save this now, if I click hats, it does take me two hats.
+
+68
+00:04:49,320 --> 00:04:53,730
+Inside of this page, we can also render the title up here as well, since we haven't done that.
+
+69
+00:04:54,390 --> 00:05:03,030
+So let's go into our category component and at the very top, before any of this, we can render a H2
+
+70
+00:05:03,720 --> 00:05:07,770
+where we just show the actual category.
+
+71
+00:05:08,890 --> 00:05:12,730
+And we can give this a class name of title.
+
+72
+00:05:14,280 --> 00:05:20,520
+Now, similarly, we are going to want to stall this title, so inside a category styles, we can target
+
+73
+00:05:20,700 --> 00:05:21,170
+title.
+
+74
+00:05:21,810 --> 00:05:27,660
+And let's just take the same font that we've been using throughout the other parts of our application.
+
+75
+00:05:28,630 --> 00:05:32,140
+So inside of our category preview.
+
+76
+00:05:34,100 --> 00:05:37,310
+Component right here.
+
+77
+00:05:38,720 --> 00:05:41,600
+Let's take this font size.
+
+78
+00:05:43,220 --> 00:05:45,980
+And let's just put this inside of here.
+
+79
+00:05:47,360 --> 00:05:52,220
+In fact, let's increase it to 38, and now if we save this, we come back.
+
+80
+00:05:52,940 --> 00:05:55,670
+Now we see that our hats is being rendered in the wrong place.
+
+81
+00:05:55,700 --> 00:05:57,080
+Of course it is because it's a grid.
+
+82
+00:05:57,770 --> 00:06:05,240
+So now let's go back to our category component and let's move this above, which means that if we're
+
+83
+00:06:05,240 --> 00:06:09,110
+going to do that, then we want to wrap this in a fragment.
+
+84
+00:06:14,070 --> 00:06:16,470
+And now we can say fragment.
+
+85
+00:06:18,200 --> 00:06:19,100
+Fragment.
+
+86
+00:06:22,280 --> 00:06:27,140
+Let's paste this in like so and then move the div below it.
+
+87
+00:06:28,330 --> 00:06:28,870
+Save.
+
+88
+00:06:29,590 --> 00:06:30,790
+Come back to our application.
+
+89
+00:06:31,930 --> 00:06:33,250
+And now we see hats up here.
+
+90
+00:06:34,460 --> 00:06:39,710
+So what we can also do is to upper case, we need to call the method like so.
+
+91
+00:06:42,250 --> 00:06:43,210
+And here we see hats.
+
+92
+00:06:44,280 --> 00:06:48,090
+So you can further stall this if you want if you want to center this more, if you want to make this
+
+93
+00:06:48,090 --> 00:06:48,540
+bigger.
+
+94
+00:06:49,410 --> 00:06:55,200
+All you need to do is because this is no longer inside of the category container.
+
+95
+00:06:56,190 --> 00:06:57,810
+You can say title like so.
+
+96
+00:06:58,260 --> 00:07:03,570
+But the problem with this, of course, is that now any of our other titles might inherit this style
+
+97
+00:07:03,990 --> 00:07:05,520
+if they have this class name of title.
+
+98
+00:07:06,330 --> 00:07:08,940
+So here we actually need to be more explicit.
+
+99
+00:07:09,450 --> 00:07:12,210
+We need to call this something like category title.
+
+100
+00:07:12,750 --> 00:07:18,060
+But again, this is assuming that we can properly remember that this is called category title.
+
+101
+00:07:18,660 --> 00:07:23,280
+This becomes that same problem where we're getting these styling clashes that keep happening.
+
+102
+00:07:24,030 --> 00:07:27,030
+So this is actually what's going to bring me towards my next topic.
+
+103
+00:07:27,240 --> 00:07:29,520
+But before that, let's finish up styling.
+
+104
+00:07:29,910 --> 00:07:30,870
+What we need to stop.
+
+105
+00:07:31,350 --> 00:07:38,400
+So category title, I'm also going to add a text align center here, and then I'm going to update the
+
+106
+00:07:38,400 --> 00:07:43,980
+corresponding component in our category component so that its category title.
+
+107
+00:07:45,000 --> 00:07:47,730
+And now let's save come back and there we go.
+
+108
+00:07:49,210 --> 00:07:50,270
+This is pretty much it.
+
+109
+00:07:50,320 --> 00:07:52,630
+We built our entire application.
+
+110
+00:07:53,290 --> 00:07:58,420
+There's a couple of things that we're missing, such as the checkout or not the actual checkout, but
+
+111
+00:07:58,420 --> 00:08:02,590
+the payment step, but we can discuss that in a later video.
+
+112
+00:08:02,620 --> 00:08:06,130
+It's not the most pressing thing right now because it's just an additional feature.
+
+113
+00:08:06,730 --> 00:08:12,400
+What I do want to do is take a second and really congratulate you because you've built a rather complicated
+
+114
+00:08:12,400 --> 00:08:20,050
+React application that utilizes a lot of the modern technology and a lot of the complex base of what
+
+115
+00:08:20,050 --> 00:08:24,100
+React has to offer in the next video we're going to discuss.
+
+116
+00:08:24,280 --> 00:08:29,140
+The first thing I mentioned at the beginning of this video, which is that there is this styling clashing
+
+117
+00:08:29,140 --> 00:08:30,370
+problem that we keep seeing.
+
+118
+00:08:30,910 --> 00:08:38,410
+The styling clashing issue comes from the fact that we are relying on CIUSSS to style these individual
+
+119
+00:08:38,410 --> 00:08:44,230
+components and thinking about how we named their classes may not be the most accurate option.
+
+120
+00:08:44,980 --> 00:08:48,640
+What we're going to do is talk about CIUSSS in J.
+
+121
+00:08:48,670 --> 00:08:51,490
+S Solutions, so that's what we're going to do.
+
+122
+00:08:51,880 --> 00:08:53,560
+And we're going to talk about that in the next video.
+
+123
+00:08:53,680 --> 00:08:55,660
+But until then, take a quick breather.
+
+124
+00:08:55,690 --> 00:08:57,670
+Appreciate the work that we've done.
+
+125
+00:08:58,030 --> 00:09:00,840
+You've come a long way and you've really built something great now.
+
+126
+00:09:00,850 --> 00:09:07,390
+You've learned a lot about React, and that is no easy feat to pat yourself on the back and then join
+
+127
+00:09:07,390 --> 00:09:08,380
+me in the next video.

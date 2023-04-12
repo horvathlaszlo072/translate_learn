@@ -1,0 +1,431 @@
+1
+00:00:00,460 --> 00:00:01,480
+Welcome back, everyone.
+
+2
+00:00:02,440 --> 00:00:05,980
+So in this video, we are going to finish off our cart drop down.
+
+3
+00:00:06,580 --> 00:00:13,030
+A lot of the complexity of the actual car maintenance has been achieved through our cart context.
+
+4
+00:00:13,780 --> 00:00:17,260
+Now, though, let's finish off the actual car items.
+
+5
+00:00:18,040 --> 00:00:23,800
+So as you can guess, I've already, of course, styled out the car item for you.
+
+6
+00:00:24,520 --> 00:00:29,890
+So what you need to do, though, is you need to fill in with the appropriate HDMI structure.
+
+7
+00:00:30,940 --> 00:00:36,970
+So here what we need to do is we need to think about what gets added into the cart.
+
+8
+00:00:37,120 --> 00:00:41,200
+We know there's name, we know this quantity, but we also know there's an image.
+
+9
+00:00:41,680 --> 00:00:46,300
+And we also need to know what the quantity is multiplied by the price of the item.
+
+10
+00:00:47,110 --> 00:00:54,010
+So at this top level, I'm just going to say that this div is of the class name cart item container.
+
+11
+00:00:54,610 --> 00:00:55,830
+So this is our parent.
+
+12
+00:00:56,410 --> 00:01:04,870
+Then inside, I'm going to have an image and this image is going to be of the image URL coming from
+
+13
+00:01:04,870 --> 00:01:05,500
+the cart item.
+
+14
+00:01:06,250 --> 00:01:12,520
+So all of those fields that we had before the name, the image URL, the price, the quantity, I want
+
+15
+00:01:12,520 --> 00:01:13,150
+all of these.
+
+16
+00:01:14,020 --> 00:01:17,230
+And the source is going to be the image URL.
+
+17
+00:01:17,410 --> 00:01:23,650
+So this is very similar to our product card and the alt text is also going to be the name.
+
+18
+00:01:26,020 --> 00:01:32,510
+So here inside, I also now need a separate div that will contain all of our item details.
+
+19
+00:01:33,250 --> 00:01:39,640
+So here when you think about this structure, where inside you have this quantity, when you look at
+
+20
+00:01:39,640 --> 00:01:41,080
+the actual component.
+
+21
+00:01:41,770 --> 00:01:48,340
+Notice that this image and this section are two separate sections, but these details are kind of grouped
+
+22
+00:01:48,340 --> 00:01:48,790
+together.
+
+23
+00:01:49,240 --> 00:01:56,140
+That's why I want to wrap these in another div and this div, I'm going to call the item details.
+
+24
+00:01:57,230 --> 00:02:00,710
+And then inside, I'm going to have a span.
+
+25
+00:02:01,920 --> 00:02:05,010
+And this ban will show the name.
+
+26
+00:02:06,800 --> 00:02:09,800
+And the class name for this will just be name.
+
+27
+00:02:11,070 --> 00:02:18,780
+Similarly, this ban is already written, which will be the price, and it will contain the quantity
+
+28
+00:02:19,320 --> 00:02:21,720
+multiplied by dollar.
+
+29
+00:02:25,600 --> 00:02:26,320
+And this is it.
+
+30
+00:02:26,710 --> 00:02:27,940
+This is the entire component.
+
+31
+00:02:28,890 --> 00:02:34,740
+Now inside of your car item stores, just copy paste in the item style sheet that I provided in your
+
+32
+00:02:34,740 --> 00:02:35,610
+resources folder.
+
+33
+00:02:36,420 --> 00:02:40,860
+Now, once you've saved this now, go into your application.
+
+34
+00:02:41,980 --> 00:02:44,270
+And you should see that right here.
+
+35
+00:02:44,290 --> 00:02:49,090
+We have everything that we wanted to see from what we had finally.
+
+36
+00:02:49,870 --> 00:02:54,160
+So here, if I add more, there is another item.
+
+37
+00:02:54,910 --> 00:02:56,710
+So our car is looking pretty good.
+
+38
+00:02:57,010 --> 00:03:01,510
+It's pretty much exactly what we have inside of our final application.
+
+39
+00:03:01,990 --> 00:03:07,330
+There is one feature we are missing left and that is the count inside of the card icon.
+
+40
+00:03:08,170 --> 00:03:13,750
+I want you to try and figure out using all the things we learned, how to build in that count.
+
+41
+00:03:14,260 --> 00:03:16,330
+So pause the video and try it out yourself.
+
+42
+00:03:16,570 --> 00:03:21,700
+You're essentially accumulating all of the quantities, storing it somewhere inside of the car context
+
+43
+00:03:21,700 --> 00:03:22,750
+and then utilizing it.
+
+44
+00:03:23,200 --> 00:03:24,220
+So try it out yourself.
+
+45
+00:03:24,580 --> 00:03:27,280
+And then when you're ready, unpaused the video and let's do it together.
+
+46
+00:03:28,780 --> 00:03:31,960
+So let's build into our application, the accountability.
+
+47
+00:03:32,560 --> 00:03:35,530
+So here, let's go into our context.
+
+48
+00:03:36,520 --> 00:03:41,920
+Inside of our car context, we already have all the car items that has the quantity on them while we
+
+49
+00:03:41,920 --> 00:03:47,920
+want to be able to do is that whenever car items changes, we want to be able to show a new cart count.
+
+50
+00:03:48,250 --> 00:03:52,420
+So I'm going to make a new property called car count that by default starts at zero.
+
+51
+00:03:53,230 --> 00:04:01,600
+Then what I want to do is I want to make a new cart count and set cart count state using you state,
+
+52
+00:04:02,350 --> 00:04:03,850
+which by default causes zero.
+
+53
+00:04:04,750 --> 00:04:09,610
+Then what I want to do is I'm going to use the use effect hook because essentially what we're doing
+
+54
+00:04:09,610 --> 00:04:14,440
+is we are recounting the total quantity every time the car items changes.
+
+55
+00:04:15,160 --> 00:04:16,490
+There's more ways to do this.
+
+56
+00:04:16,510 --> 00:04:18,190
+This is just one particular way.
+
+57
+00:04:18,700 --> 00:04:23,140
+You can also expose a function that will always reduce the car items.
+
+58
+00:04:23,440 --> 00:04:30,310
+But this way, I think, is just the way that we can think about using use effect and highlight some
+
+59
+00:04:30,310 --> 00:04:32,800
+of these changes that we can make.
+
+60
+00:04:33,490 --> 00:04:39,370
+Like so, so remember, with use effect, we pass it a callback and this callback runs every time something
+
+61
+00:04:39,370 --> 00:04:40,930
+in your dependency array changes.
+
+62
+00:04:41,050 --> 00:04:47,170
+So for us, I want to change the cart items every time this car items array changes in any way.
+
+63
+00:04:47,380 --> 00:04:49,450
+We need to recalculate the cart count.
+
+64
+00:04:50,050 --> 00:04:59,170
+So here I'm going to say new cart count is equal to cart items, reduce some reducing over the cart
+
+65
+00:04:59,170 --> 00:05:03,280
+items and reduce is going to take two arguments.
+
+66
+00:05:03,880 --> 00:05:06,020
+The first argument here is the callback.
+
+67
+00:05:06,040 --> 00:05:08,470
+The second argument is the starting value.
+
+68
+00:05:09,010 --> 00:05:10,480
+So what goes into the callback?
+
+69
+00:05:10,870 --> 00:05:13,390
+The callback is going to be the current total.
+
+70
+00:05:15,470 --> 00:05:20,150
+And then the second volume is going to be the current carte item.
+
+71
+00:05:20,960 --> 00:05:27,920
+So here what happens is that essentially we are going to say, OK, I want to take the total and I want
+
+72
+00:05:27,920 --> 00:05:31,040
+to add the item quantity.
+
+73
+00:05:32,710 --> 00:05:38,950
+So now, whenever these values accumulate, as it traverses through the card items, we'll finally end
+
+74
+00:05:38,950 --> 00:05:47,080
+up with a new total, which we will then set as the new car count, something I say set card count equal
+
+75
+00:05:47,080 --> 00:05:48,220
+to new card count.
+
+76
+00:05:49,330 --> 00:05:52,900
+And now I can just add this cart count to my values.
+
+77
+00:05:53,560 --> 00:05:58,930
+And then inside of the cart icon component, I just need to pull it in.
+
+78
+00:06:00,460 --> 00:06:01,630
+And instead of rendering.
+
+79
+00:06:03,190 --> 00:06:03,670
+Zero.
+
+80
+00:06:03,850 --> 00:06:05,410
+I just wonder, can't count like so.
+
+81
+00:06:06,070 --> 00:06:06,850
+And if we go back.
+
+82
+00:06:09,590 --> 00:06:10,550
+Let's add some items.
+
+83
+00:06:11,910 --> 00:06:12,810
+And there we see.
+
+84
+00:06:13,710 --> 00:06:16,530
+We are accurately now keeping track of our car count.
+
+85
+00:06:17,660 --> 00:06:23,870
+So as you can see, we pretty much now got everything that looks similar to our main Crown clothing
+
+86
+00:06:23,870 --> 00:06:24,500
+application.
+
+87
+00:06:25,550 --> 00:06:30,650
+Now, what I want to challenge you to do is I want you to be able to try and figure out how to build
+
+88
+00:06:30,650 --> 00:06:34,550
+this, go to check out button that takes you to this checkout step.
+
+89
+00:06:35,150 --> 00:06:40,220
+And then inside of here, there is all of these different checkout items.
+
+90
+00:06:40,940 --> 00:06:44,420
+You don't necessarily have to build out this visual component.
+
+91
+00:06:44,810 --> 00:06:51,290
+But what I challenge you to do is try and figure out how to increment the item from this arrow, decrement
+
+92
+00:06:51,290 --> 00:06:57,260
+the item from this arrow, as well as remove an item entirely with that X button.
+
+93
+00:06:58,130 --> 00:07:03,230
+This will really flex every single thing you've learned up until this point with the code.
+
+94
+00:07:03,680 --> 00:07:04,920
+You don't have to do the styling.
+
+95
+00:07:04,940 --> 00:07:10,220
+The main thing is figuring out the composition of the function, the composition of the functionality,
+
+96
+00:07:10,550 --> 00:07:16,670
+as well as how to build these additional features into your context and your components and linking
+
+97
+00:07:16,670 --> 00:07:17,630
+it all together.
+
+98
+00:07:18,080 --> 00:07:19,370
+This is a great challenge.
+
+99
+00:07:19,490 --> 00:07:23,360
+And also to comprise the total value as well.
+
+100
+00:07:24,110 --> 00:07:31,220
+This entire page is actually a great way for you to figure out how to make all of these things that
+
+101
+00:07:31,220 --> 00:07:34,160
+we've learned into one unique feature.
+
+102
+00:07:34,970 --> 00:07:36,800
+So my challenge to you is to try that out.
+
+103
+00:07:37,640 --> 00:07:45,080
+And before you proceed, I also want you to commit your code because we've just added some new functionality.
+
+104
+00:07:45,800 --> 00:07:50,660
+So I want you to get add and then leave a message that says what you did.
+
+105
+00:07:50,960 --> 00:07:57,470
+So here we just added in our add to cart feature.
+
+106
+00:07:59,050 --> 00:08:02,920
+And then push it up and now try and build that checkout page.
+
+107
+00:08:04,010 --> 00:08:04,940
+Once you're finished.
+
+108
+00:08:05,690 --> 00:08:08,090
+Come join me and we'll do it together in the next video.

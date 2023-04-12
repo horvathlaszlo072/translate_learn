@@ -1,0 +1,423 @@
+1
+00:00:00,830 --> 00:00:01,760
+Welcome back, everyone.
+
+2
+00:00:02,450 --> 00:00:06,200
+In this video, we are going to start typing our read up saga.
+
+3
+00:00:06,710 --> 00:00:14,330
+Now, typing sagas is going to allow us to start really understanding the nuances of why typing them
+
+4
+00:00:14,330 --> 00:00:15,260
+is so challenging.
+
+5
+00:00:15,980 --> 00:00:22,490
+There are ways to make it easier and it starts with including a new library as well as a new plug in.
+
+6
+00:00:23,550 --> 00:00:29,850
+So in order for us to include the new library, what will say is yarn ad typed redux saga.
+
+7
+00:00:30,750 --> 00:00:34,820
+So Type Redux Saga is a library that extends upon it.
+
+8
+00:00:35,100 --> 00:00:41,670
+This extension of typing out generators and typing out generators is typically very challenging.
+
+9
+00:00:42,240 --> 00:00:48,600
+Other than the Type Redux saga, we also need to include a macro for babble.
+
+10
+00:00:49,230 --> 00:00:55,980
+Now I mentioned before that we will talk about babble at the very end, but for now all we need to really
+
+11
+00:00:55,980 --> 00:00:59,310
+do is just include this additional dependency.
+
+12
+00:00:59,760 --> 00:01:04,650
+So yarn at that dash dev babble dash, plug in.
+
+13
+00:01:05,580 --> 00:01:06,450
+Dash macros.
+
+14
+00:01:09,130 --> 00:01:15,700
+Now that we have everything installed going back into our code base, what we want to do is we want
+
+15
+00:01:15,700 --> 00:01:18,370
+to start migrating over our sagas.
+
+16
+00:01:19,090 --> 00:01:24,010
+So to begin, I'm going to switch this category saga over to a tortoise file.
+
+17
+00:01:25,340 --> 00:01:31,100
+The reason why we have typed up Saga is that we no longer need to use Redux Saga effects.
+
+18
+00:01:31,550 --> 00:01:39,080
+Essentially, typed Redux Saga allows us to leverage a typed version of each of these effect creators.
+
+19
+00:01:39,800 --> 00:01:46,340
+The way to use them, though, is that instead of calling yield, we will now be calling yield star.
+
+20
+00:01:48,070 --> 00:01:54,730
+So the difference between yield and yield star is that yield typically yields that generator and you're
+
+21
+00:01:54,730 --> 00:02:00,010
+still inside of JavaScript generator land that handles the actual execution of those generator functions.
+
+22
+00:02:00,370 --> 00:02:05,590
+Yield start is similar, but it essentially hands up off to the Redux Saga Library.
+
+23
+00:02:06,040 --> 00:02:12,490
+So Redux Saga is going to behave the same way, except because its Redux saga, redux saga can coordinate
+
+24
+00:02:12,490 --> 00:02:16,390
+and identify what these effects are, what their return values are going to be.
+
+25
+00:02:16,570 --> 00:02:21,760
+Because if you remember with a saga, a saga can have multiple yield steps.
+
+26
+00:02:22,180 --> 00:02:28,240
+Typically with a generator, it's very difficult to determine what the output of these generators are
+
+27
+00:02:28,240 --> 00:02:32,830
+because each yield is a output of the next call in the generator.
+
+28
+00:02:32,980 --> 00:02:38,320
+If you remember from our generator video, if you unfamiliar go back, rewatch that generator video
+
+29
+00:02:38,530 --> 00:02:43,220
+because a lot of the difference between sagas and generators is extremely minimal.
+
+30
+00:02:43,240 --> 00:02:48,340
+The main thing is just that you can see sagas as generators that have redux bindings within them.
+
+31
+00:02:48,880 --> 00:02:54,160
+But the other thing is that Redux saga, the library becomes the thing that actually drives and calls
+
+32
+00:02:54,160 --> 00:02:56,080
+the generator in order to move it forward.
+
+33
+00:02:56,260 --> 00:03:01,690
+But along the way, what it does is it's able to now determine the types of the values that come back.
+
+34
+00:03:02,410 --> 00:03:07,300
+And by doing it like this, now, we can see that we are getting the appropriate type arrows.
+
+35
+00:03:08,600 --> 00:03:13,280
+Now here, when we look at this type of error, what is it that we see that's wrong?
+
+36
+00:03:14,280 --> 00:03:22,860
+We notice that this is a very extensive mention inside of the overload matches all of that stuff right
+
+37
+00:03:22,860 --> 00:03:24,510
+now that's not as important.
+
+38
+00:03:24,540 --> 00:03:30,870
+The key thing that we see is that up here, it says type saga generator is not an array type or a string
+
+39
+00:03:30,870 --> 00:03:31,170
+type.
+
+40
+00:03:31,680 --> 00:03:39,060
+The compiler needs to use this option down level iteration to allow the iterating of iterate hours.
+
+41
+00:03:39,960 --> 00:03:45,940
+So what we need to do is in order for our to properly parse this well, we need to go into our test
+
+42
+00:03:45,960 --> 00:03:50,850
+config JSON and inside of our compiler options.
+
+43
+00:03:51,300 --> 00:03:56,490
+Now what we want to add is down level iteration, except we want to set it to true.
+
+44
+00:03:57,930 --> 00:04:02,040
+On save here, though this may not work the way that we expect it to.
+
+45
+00:04:02,580 --> 00:04:09,270
+If we go back to our category saga, sometimes if you hover over, you'll notice that the type errors
+
+46
+00:04:09,270 --> 00:04:10,950
+have not gone away and you'll still see it.
+
+47
+00:04:11,760 --> 00:04:13,710
+In our case, it did end up working for me.
+
+48
+00:04:13,710 --> 00:04:21,050
+But if it does not for you, all you need to do is go into your VTS code and just close it.
+
+49
+00:04:21,390 --> 00:04:24,000
+Make sure you close all of your voice code, restart it.
+
+50
+00:04:24,300 --> 00:04:29,400
+And what happens is that the Vasco compiler will rerun and hopefully pick up the correct changes from
+
+51
+00:04:29,400 --> 00:04:31,170
+your test config json.
+
+52
+00:04:31,500 --> 00:04:34,800
+It really happens when your computer is a little older and a little slower.
+
+53
+00:04:35,010 --> 00:04:40,500
+Sometimes the code takes a lot of resources, so as a result, the TypeScript compiler and the listing
+
+54
+00:04:40,500 --> 00:04:41,790
+might be a little bit behind.
+
+55
+00:04:42,390 --> 00:04:45,600
+But now we see that everything is working here right away.
+
+56
+00:04:45,600 --> 00:04:48,180
+We actually see that we have this error.
+
+57
+00:04:48,900 --> 00:04:55,800
+Now, this error is due to the fact that this function does not receive any actual properties.
+
+58
+00:04:55,800 --> 00:04:58,440
+But here I'm clearly passing it categories.
+
+59
+00:04:58,470 --> 00:05:03,420
+So this is actually a mistake on my part in JavaScript in one of their own error, because if you pass
+
+60
+00:05:03,420 --> 00:05:05,820
+a parameter to the function, the function still gets invoked.
+
+61
+00:05:06,060 --> 00:05:10,980
+All of our code still works, but in my particular case, I'm passing a property in TypeScript that
+
+62
+00:05:10,980 --> 00:05:14,430
+does not actually expect in this function.
+
+63
+00:05:14,490 --> 00:05:15,690
+This function takes no properties.
+
+64
+00:05:16,230 --> 00:05:20,640
+So that's actually one great thing that we can quickly fix to make our code less confusing.
+
+65
+00:05:21,910 --> 00:05:22,660
+The next error.
+
+66
+00:05:22,930 --> 00:05:25,270
+And this is, again, that catch error was mentioning.
+
+67
+00:05:26,250 --> 00:05:29,310
+In this catch, catch can catch any type of error.
+
+68
+00:05:29,580 --> 00:05:33,040
+So for us, it does not know what this is.
+
+69
+00:05:33,060 --> 00:05:37,440
+It's always going to throw unknown, even though we're expecting a parameter of error.
+
+70
+00:05:37,590 --> 00:05:43,950
+So here we might as well just cast this to error because we know that if this fails, we will be getting
+
+71
+00:05:43,950 --> 00:05:44,340
+an error.
+
+72
+00:05:45,440 --> 00:05:49,430
+And that's really all we needed to do in order for our sagas to be type now.
+
+73
+00:05:49,790 --> 00:05:53,450
+So if you look at the saga now, you'll look inside of this generator definition.
+
+74
+00:05:53,990 --> 00:05:59,420
+You'll see that what it does is it makes a call effect as the categories array.
+
+75
+00:05:59,900 --> 00:06:05,870
+So each of these different values in the first part of the generator tells you what the yield values
+
+76
+00:06:05,870 --> 00:06:06,230
+will be.
+
+77
+00:06:06,830 --> 00:06:10,340
+One is going to be a call effect that returns back the category at Ray.
+
+78
+00:06:10,580 --> 00:06:13,790
+Now the category array is the return of this.
+
+79
+00:06:14,030 --> 00:06:15,650
+Categories and documents call.
+
+80
+00:06:16,280 --> 00:06:17,060
+So yield.
+
+81
+00:06:17,060 --> 00:06:19,070
+As you can clearly tell of that.
+
+82
+00:06:19,070 --> 00:06:25,580
+One will give you a call effect, which I mentioned is an effect generated by Redux saga and that returns
+
+83
+00:06:25,580 --> 00:06:26,990
+you back the category array.
+
+84
+00:06:28,030 --> 00:06:30,100
+The next is the yield of the put effect.
+
+85
+00:06:30,370 --> 00:06:32,830
+It does fetch categories success.
+
+86
+00:06:34,450 --> 00:06:37,180
+Finally, we have also a poor effect of batch categories failed.
+
+87
+00:06:37,210 --> 00:06:41,800
+These are the three different possible yields that can come out of such categories async.
+
+88
+00:06:42,430 --> 00:06:47,320
+So that is essentially what the first parameter of the generator represents.
+
+89
+00:06:47,920 --> 00:06:49,900
+The next one is the return value.
+
+90
+00:06:50,440 --> 00:06:57,310
+So this is if inside of our generator function, we return something as a final value, which we rarely
+
+91
+00:06:57,310 --> 00:06:58,690
+ever do inside of our generators.
+
+92
+00:06:59,320 --> 00:07:01,000
+So for us, that's going to be void.
+
+93
+00:07:01,540 --> 00:07:08,530
+And then the third argument of the generator or any values that we pass into the next call in order
+
+94
+00:07:08,530 --> 00:07:11,380
+for them to get passed into the subsequent yield calls.
+
+95
+00:07:11,860 --> 00:07:15,010
+So for us, we generally also don't really handle those.
+
+96
+00:07:15,340 --> 00:07:21,520
+So most of the time we're really just focused on this initial typing right here for the generator.
+
+97
+00:07:22,460 --> 00:07:28,070
+But as we noticed with the yield star call inside of Type two Redux saga, what will happen is that
+
+98
+00:07:28,070 --> 00:07:36,380
+this inference gets deferred to the actual Redux Saga Library and type Redux Saga is smart enough to
+
+99
+00:07:36,380 --> 00:07:41,450
+actually go through it and infer all the required times for any sagas and generators that got called
+
+100
+00:07:41,600 --> 00:07:44,690
+in order to build out this actual type structure.
+
+101
+00:07:44,960 --> 00:07:47,330
+So we really don't have to do it ourselves.
+
+102
+00:07:48,350 --> 00:07:54,800
+So now that we've typed category saga, we have to type user sagas and user sagas are going to be more
+
+103
+00:07:54,800 --> 00:08:00,380
+complicated because there's a lot more saga code in there and there's actually a couple of adjustments
+
+104
+00:08:00,380 --> 00:08:04,490
+we need to make in order to make it fit inside of TypeScript.
+
+105
+00:08:05,120 --> 00:08:06,230
+So join me in the next video.
+
+106
+00:08:06,350 --> 00:08:07,910
+Let's start typing out user sagas.

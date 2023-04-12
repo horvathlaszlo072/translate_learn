@@ -1,0 +1,87 @@
+1
+00:00:00.00 --> 00:00:03.03
+- In this course we'll be
+creating a demo chat application.
+
+2
+00:00:03.03 --> 00:00:06.04
+It will feature HTTP requests
+made from the front end
+
+3
+00:00:06.04 --> 00:00:07.03
+to the back end,
+
+4
+00:00:07.03 --> 00:00:10.03
+as well as web sockets through Socket.IO,
+
+5
+00:00:10.03 --> 00:00:12.06
+which will allow for
+automatic push notifications
+
+6
+00:00:12.06 --> 00:00:14.07
+from the server to the client.
+
+7
+00:00:14.07 --> 00:00:16.07
+So let's take a look at that.
+
+8
+00:00:16.07 --> 00:00:19.06
+So I can post a new message
+
+9
+00:00:19.06 --> 00:00:23.05
+and it will automatically
+show up in my client,
+
+10
+00:00:23.05 --> 00:00:30.05
+but in the second client as well,
+
+11
+00:00:30.05 --> 00:00:32.06
+and vice versa.
+
+12
+00:00:32.06 --> 00:00:34.07
+In fact, we can open up as
+many clients as we like,
+
+13
+00:00:34.07 --> 00:00:47.08
+and it will scale.
+
+14
+00:00:47.08 --> 00:00:50.05
+We can even restart our clients,
+
+15
+00:00:50.05 --> 00:00:52.04
+and the data will still show.
+
+16
+00:00:52.04 --> 00:00:58.02
+And we'll be using MongoDB and
+mLab to make our data persist
+
+17
+00:00:58.02 --> 00:01:00.03
+Most of the node concepts will be taught
+
+18
+00:01:00.03 --> 00:01:02.02
+by developing this app.
+
+19
+00:01:02.02 --> 00:01:05.00
+While a few of the more
+fundamental concepts will be taught
+
+20
+00:01:05.00 --> 00:01:07.09
+through separate programming lessons.
+

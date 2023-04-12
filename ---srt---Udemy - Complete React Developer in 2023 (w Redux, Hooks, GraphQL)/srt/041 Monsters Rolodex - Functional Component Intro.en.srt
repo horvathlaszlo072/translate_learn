@@ -1,0 +1,319 @@
+1
+00:00:00,750 --> 00:00:01,800
+Welcome back, everyone.
+
+2
+00:00:02,460 --> 00:00:08,820
+So let's talk about functional components, a functional component typically takes the form of a arrowe
+
+3
+00:00:08,820 --> 00:00:14,870
+function or functions at this point are the norm of writing functions and the way that we want to replicate.
+
+4
+00:00:14,880 --> 00:00:20,190
+Let's say this app component is, we would say, Konst app the same way that we said class app.
+
+5
+00:00:20,190 --> 00:00:26,640
+So we're initializing some constant variable named app and we want it to be equal to a function.
+
+6
+00:00:27,630 --> 00:00:33,240
+That is pretty much all you need as far as the boilerplate of a functional component goes.
+
+7
+00:00:33,540 --> 00:00:34,830
+You don't need this constructor.
+
+8
+00:00:34,860 --> 00:00:36,340
+You don't need these lifecycle methods.
+
+9
+00:00:36,360 --> 00:00:37,440
+You don't need the render.
+
+10
+00:00:37,650 --> 00:00:41,070
+These are all things that are only unique to class components.
+
+11
+00:00:41,250 --> 00:00:46,860
+These are methods attached to a class functions in this particular case, and functional components
+
+12
+00:00:47,130 --> 00:00:52,770
+are pure functions, meaning that all react is going to do is run this function top to bottom.
+
+13
+00:00:53,130 --> 00:00:54,420
+Whatever gets returned.
+
+14
+00:00:54,420 --> 00:00:59,940
+Finally from this function is going to be the UI that this function returns.
+
+15
+00:01:00,630 --> 00:01:06,630
+So in turn, what we return from our class component is inside of the render in this return statement
+
+16
+00:01:06,750 --> 00:01:07,680
+in our render method.
+
+17
+00:01:08,310 --> 00:01:14,460
+But with a functional component, whatever you return inside of the function is going to be the same
+
+18
+00:01:14,460 --> 00:01:14,880
+UI.
+
+19
+00:01:15,180 --> 00:01:19,140
+So let's just copy that over and paste it into this return.
+
+20
+00:01:20,260 --> 00:01:23,290
+This right here is your functional component.
+
+21
+00:01:24,010 --> 00:01:30,460
+What you see inside of here is enough to get a functional component working, assuming you have all
+
+22
+00:01:30,460 --> 00:01:31,270
+your variables.
+
+23
+00:01:32,070 --> 00:01:33,790
+In our particular case, we don't.
+
+24
+00:01:33,850 --> 00:01:39,310
+But just so that I can show you what I mean, I'm going to comment everything else out that is a component
+
+25
+00:01:39,520 --> 00:01:44,200
+and just render an H1 because nothing inside of this function is reliant on any of that.
+
+26
+00:01:44,800 --> 00:01:51,010
+And here are class component is now in conflict because we have two matching variables, both named
+
+27
+00:01:51,010 --> 00:01:51,340
+app.
+
+28
+00:01:51,880 --> 00:01:53,900
+We have our content and we have our class.
+
+29
+00:01:53,920 --> 00:01:56,170
+So I'm just going to comment about the class.
+
+30
+00:01:56,530 --> 00:01:58,900
+And just to show you that this is all it takes.
+
+31
+00:01:59,380 --> 00:02:02,080
+Now our app is a functional component.
+
+32
+00:02:02,560 --> 00:02:05,410
+Now we save and we go, look inside our application.
+
+33
+00:02:05,830 --> 00:02:06,970
+We see our title.
+
+34
+00:02:07,120 --> 00:02:11,260
+So we know that our functional component is working because it's all we're rendering from this functional
+
+35
+00:02:11,260 --> 00:02:11,680
+component.
+
+36
+00:02:12,900 --> 00:02:18,300
+Now, before we start moving and figuring out how our functional component can reflect all of those
+
+37
+00:02:18,300 --> 00:02:24,780
+other functionalities that we had in our class component, let's break down the differences immediately
+
+38
+00:02:24,780 --> 00:02:28,320
+when it comes to the mounting phase with a functional component.
+
+39
+00:02:29,980 --> 00:02:35,140
+Clearly, when we look at this functional component, there's no construct or method, because constructor,
+
+40
+00:02:35,140 --> 00:02:42,670
+as we know, is related to classes because there's no constructor and no class, a functional component
+
+41
+00:02:42,670 --> 00:02:49,120
+behaves as you would expect a regular JavaScript function to do an all a JavaScript function does is
+
+42
+00:02:49,120 --> 00:02:52,600
+it takes some arguments and it returns something.
+
+43
+00:02:53,050 --> 00:02:59,830
+And this particular case, a react functional component, takes arguments that are the props of this
+
+44
+00:02:59,830 --> 00:03:02,500
+component, and then it returns to assets.
+
+45
+00:03:02,800 --> 00:03:07,360
+That's all it is a function when it gets invoked runs from top to bottom.
+
+46
+00:03:07,660 --> 00:03:09,490
+And then that function is done with.
+
+47
+00:03:09,850 --> 00:03:13,120
+So unlike our classes which get instantiate it.
+
+48
+00:03:13,120 --> 00:03:18,700
+And then there are all these different numerous lifecycle methods or constructor method or render method
+
+49
+00:03:18,850 --> 00:03:25,840
+that are related to class components that are constantly being kept alive and being run and invoked
+
+50
+00:03:25,840 --> 00:03:31,510
+depending on what phase a class component is in functional components do not do that.
+
+51
+00:03:31,810 --> 00:03:37,300
+Instead, React takes your functional component, which is just a simple function, and it says, Oh,
+
+52
+00:03:37,300 --> 00:03:41,950
+I need this component, I'm just going to run this function and just return whatever returns.
+
+53
+00:03:42,190 --> 00:03:44,830
+Once I've returned it onto the page, I'm done with it.
+
+54
+00:03:45,340 --> 00:03:49,990
+React under the hood will keep a reference to that component and of course, the functional component
+
+55
+00:03:49,990 --> 00:03:51,010
+that instantiated it.
+
+56
+00:03:51,340 --> 00:03:56,590
+But as far as you're concerned, the simplicity of a functional component is like a JavaScript function.
+
+57
+00:03:56,830 --> 00:03:59,270
+It just runs from top to bottom.
+
+58
+00:03:59,350 --> 00:04:00,370
+And then that's it.
+
+59
+00:04:01,760 --> 00:04:07,010
+Here with our functional app component during the mounting phase, React is essentially saying, Oh,
+
+60
+00:04:07,010 --> 00:04:15,410
+you gave me this function, I'm just going to run it and just return that html GSX, which was inside
+
+61
+00:04:15,410 --> 00:04:16,670
+of your return of this function.
+
+62
+00:04:17,030 --> 00:04:18,470
+And then that's all I'm going to do with it.
+
+63
+00:04:19,190 --> 00:04:24,530
+That's a very important thing to note because functional components do not go through life cycles the
+
+64
+00:04:24,530 --> 00:04:28,160
+way that we typically think about when we're talking about class components.
+
+65
+00:04:28,760 --> 00:04:32,300
+It's almost an entirely different mental model.
+
+66
+00:04:32,690 --> 00:04:38,630
+Sometimes when you read different guides on React, you will see people talking about functional components,
+
+67
+00:04:38,840 --> 00:04:44,270
+going through similar methods and using similar hooks that replicate life cycles.
+
+68
+00:04:44,570 --> 00:04:52,670
+This is actually very misguiding because there are no life cycles when it comes to functional components.
+
+69
+00:04:52,760 --> 00:04:57,140
+You have to think about it in a completely different way, and the way you want to think about them
+
+70
+00:04:57,320 --> 00:05:01,460
+is in the concept of functions and side effects.
+
+71
+00:05:02,180 --> 00:05:03,890
+What are side effects?
+
+72
+00:05:04,160 --> 00:05:10,670
+In order for us to understand side effects, we need to understand pure functions and impure functions,
+
+73
+00:05:10,910 --> 00:05:13,040
+which we'll cover in the next video.
+
+74
+00:05:13,670 --> 00:05:20,390
+The reason why you need to know about functions pure functions impair functions and side effects is
+
+75
+00:05:20,390 --> 00:05:27,920
+because in order for us to replicate all of the behavior that we had in our class components with state
+
+76
+00:05:28,430 --> 00:05:34,820
+and with set state and with lifecycle methods, we need to understand this idea of side effects.
+
+77
+00:05:35,090 --> 00:05:36,980
+So we'll talk about that in the next video.
+
+78
+00:05:37,730 --> 00:05:43,940
+Remember, without understanding functions, pure functions impair functions and side effects, you
+
+79
+00:05:43,940 --> 00:05:48,590
+won't be able to fully grasp the way that react handles functional components.
+
+80
+00:05:49,040 --> 00:05:50,810
+So in the next video, let's talk about it.

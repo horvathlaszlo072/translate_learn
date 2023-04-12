@@ -1,0 +1,435 @@
+1
+00:00:00,710 --> 00:00:01,850
+Welcome back, everyone.
+
+2
+00:00:02,420 --> 00:00:05,900
+In this video, we are going to talk about TypeScript.
+
+3
+00:00:06,260 --> 00:00:11,870
+From this point forward, we are going to try and migrate all of our existing wrap applications to TypeScript
+
+4
+00:00:12,380 --> 00:00:18,770
+in order to understand the advantages that TypeScript brings and also understand why TypeScript is slowly
+
+5
+00:00:18,770 --> 00:00:24,830
+becoming even more popular than JavaScript when it comes to actually coding out your applications.
+
+6
+00:00:25,520 --> 00:00:32,300
+So TypeScript is actually a language that extends from JavaScript that is maintained by Microsoft.
+
+7
+00:00:33,020 --> 00:00:38,810
+The thing about TypeScript is that it emulates a typically statically type language, which JavaScript
+
+8
+00:00:38,810 --> 00:00:44,750
+is not well discussed, statically type languages versus non like JavaScript in a little bit.
+
+9
+00:00:45,350 --> 00:00:50,420
+The main thing I want you to understand about TypeScript is that when it comes to writing TypeScript,
+
+10
+00:00:50,810 --> 00:00:55,550
+if you can write TypeScript, you can definitely write JavaScript, but if you can write JavaScript,
+
+11
+00:00:55,550 --> 00:00:57,770
+it does not mean you can write TypeScript.
+
+12
+00:00:58,040 --> 00:01:03,590
+So I want you to see TypeScript as almost a enhanced version of JavaScript.
+
+13
+00:01:03,740 --> 00:01:10,160
+It still has all the core logic of JavaScript, but there is now this extra layer on top when it comes
+
+14
+00:01:10,160 --> 00:01:11,390
+to type safety.
+
+15
+00:01:12,290 --> 00:01:16,160
+Now we talk a lot about types, but what are types to begin with?
+
+16
+00:01:16,880 --> 00:01:22,550
+So to begin we have discussed certain types before, such as primitive types in JavaScript.
+
+17
+00:01:22,940 --> 00:01:28,220
+So if you think about primitive types, you know, there are integers which is essentially any number
+
+18
+00:01:28,220 --> 00:01:28,760
+value.
+
+19
+00:01:29,090 --> 00:01:35,090
+You know, there are strings, you know, there are objects, there are functions which are essentially
+
+20
+00:01:35,090 --> 00:01:36,590
+extensions of objects.
+
+21
+00:01:36,590 --> 00:01:38,690
+They're special type of object.
+
+22
+00:01:39,200 --> 00:01:41,360
+We also have arrays.
+
+23
+00:01:42,920 --> 00:01:46,340
+We also have booleans like true false.
+
+24
+00:01:47,620 --> 00:01:55,870
+And we also have NULL, which is its own type, undefined, which is its own type as well as symbols.
+
+25
+00:01:55,870 --> 00:01:57,340
+But you don't really need to use symbols.
+
+26
+00:01:58,150 --> 00:02:03,730
+The main thing that you want to know about these different types is that every single thing that you
+
+27
+00:02:03,730 --> 00:02:09,580
+cast in JavaScript to some variable or anything that holds value is some kind of type.
+
+28
+00:02:10,300 --> 00:02:14,350
+When you think about it, typically we are constantly parsing types around.
+
+29
+00:02:15,040 --> 00:02:17,140
+Different types also have different methods on it.
+
+30
+00:02:17,500 --> 00:02:22,150
+If you think about strings, if we have some string value called my string.
+
+31
+00:02:23,320 --> 00:02:29,770
+Using this string that holds my name, I can perform a bunch of different transformations on it, such
+
+32
+00:02:29,770 --> 00:02:32,710
+as two local uppercase.
+
+33
+00:02:33,430 --> 00:02:35,560
+This will uppercase all the string.
+
+34
+00:02:36,190 --> 00:02:40,750
+The thing, though, is that you cannot call this two local uppercase on some array.
+
+35
+00:02:41,200 --> 00:02:44,080
+So let's say I had my array value like this.
+
+36
+00:02:45,180 --> 00:02:49,800
+If I tried to call my array, talk to local uppercase.
+
+37
+00:02:52,160 --> 00:02:52,370
+Here.
+
+38
+00:02:52,370 --> 00:02:55,790
+You're going to see my logo is not a function.
+
+39
+00:02:56,390 --> 00:02:59,510
+So this, though, as you can see, is a type error.
+
+40
+00:03:00,230 --> 00:03:05,450
+When you think about a type error, it implies that you are trying to call something on a type that
+
+41
+00:03:05,450 --> 00:03:08,210
+does not have that method or function.
+
+42
+00:03:08,480 --> 00:03:12,110
+It's essentially saying you have the wrong type here, which is exactly the case.
+
+43
+00:03:12,110 --> 00:03:14,630
+Two local uppercase is a string method.
+
+44
+00:03:14,960 --> 00:03:18,740
+Here we're trying to call a string method on an array.
+
+45
+00:03:19,220 --> 00:03:21,140
+It's the wrong type to use that method.
+
+46
+00:03:21,980 --> 00:03:27,020
+So in JavaScript, when you really think about all of these methods that we call constantly map on a
+
+47
+00:03:27,020 --> 00:03:28,790
+raised off filter reduce.
+
+48
+00:03:28,820 --> 00:03:30,770
+These are all array methods.
+
+49
+00:03:31,160 --> 00:03:33,890
+When you think about object calling, object assign.
+
+50
+00:03:33,920 --> 00:03:38,600
+These are also all specific methods to specific types.
+
+51
+00:03:39,260 --> 00:03:46,190
+So when it comes to using these types, when you think about writing some of your code, let's say you
+
+52
+00:03:46,190 --> 00:03:48,920
+had some function called my function.
+
+53
+00:03:49,490 --> 00:03:52,430
+And what it did is it takes some message.
+
+54
+00:03:53,240 --> 00:03:58,430
+And then with this message, what we return is message dot to lower case.
+
+55
+00:03:59,940 --> 00:04:07,650
+If we get passed into my funk, a string value like this, we get it back as lower case.
+
+56
+00:04:08,130 --> 00:04:14,370
+However, when we use my funk, when you think about it, if you're exporting this out of your file
+
+57
+00:04:14,400 --> 00:04:19,950
+and you're trying to call this somewhere else, it's very easy to forget that my funk takes a message.
+
+58
+00:04:20,490 --> 00:04:26,730
+In fact, it's also easy to forget when looking at the method what exactly this thing it's expecting
+
+59
+00:04:26,730 --> 00:04:27,960
+to receive is going to be.
+
+60
+00:04:28,350 --> 00:04:31,370
+We have to know that to lower case is only a string method.
+
+61
+00:04:31,380 --> 00:04:33,960
+But what if it was calling some other method that we were unaware of?
+
+62
+00:04:34,440 --> 00:04:41,040
+In general, it's very challenging for us to be fully aware when looking at all of our functions, on
+
+63
+00:04:41,040 --> 00:04:44,670
+all of our code, what the types of the things that they hold are.
+
+64
+00:04:45,570 --> 00:04:51,690
+TypeScript actually aims to resolve that essentially with TypeScript, every single variable, every
+
+65
+00:04:51,690 --> 00:04:58,020
+single thing you pass, every function, everything you write statically says, these are the only types
+
+66
+00:04:58,020 --> 00:04:59,070
+I'm willing to accept.
+
+67
+00:04:59,070 --> 00:05:01,260
+These are the only types I'm going to give you back.
+
+68
+00:05:01,710 --> 00:05:05,460
+Everything is typed, meaning all of the types are defined.
+
+69
+00:05:05,820 --> 00:05:11,280
+We lose out on the flexibility of JavaScript because of course with JavaScript, with my func, nothing
+
+70
+00:05:11,280 --> 00:05:13,500
+stops me from passing in an object.
+
+71
+00:05:14,160 --> 00:05:18,040
+But again, we're going to get a type error because once I pass an object, it's going to try and call
+
+72
+00:05:18,040 --> 00:05:18,990
+a method that doesn't exist.
+
+73
+00:05:19,290 --> 00:05:25,770
+But JavaScript does not stop you from calling my func with a type that it's not expecting.
+
+74
+00:05:26,460 --> 00:05:30,810
+Now this is where it comes to being static, typed versus not statically typed.
+
+75
+00:05:31,500 --> 00:05:32,970
+JavaScript is not statically typed.
+
+76
+00:05:32,970 --> 00:05:38,490
+What that means is that at what point is it actually going to check that this type is not what it's
+
+77
+00:05:38,490 --> 00:05:41,220
+expecting it to be in order to call to lowercase on it?
+
+78
+00:05:41,940 --> 00:05:46,950
+Well, actually, does it outrun time when it actually tries to execute my func?
+
+79
+00:05:46,950 --> 00:05:53,340
+When I got called here with message being an object and then went to lowercase attempted to be run,
+
+80
+00:05:53,700 --> 00:05:57,060
+that's when it realized, oh, this method doesn't exist, this is the wrong type.
+
+81
+00:05:57,720 --> 00:06:04,290
+With a statically type language, you can't even pass this an object when you define your code and you
+
+82
+00:06:04,290 --> 00:06:05,190
+write your code out.
+
+83
+00:06:05,700 --> 00:06:10,770
+If you were to even try and write this code without running it, TypeScript will throw you a type error
+
+84
+00:06:10,770 --> 00:06:13,620
+and it will say, Hey, you have to give me a string.
+
+85
+00:06:14,160 --> 00:06:15,450
+I'm expecting a string.
+
+86
+00:06:15,570 --> 00:06:16,800
+You're giving me an object.
+
+87
+00:06:16,800 --> 00:06:17,880
+This is not going to work.
+
+88
+00:06:18,480 --> 00:06:21,960
+This is at a very low level, the main advantage of TypeScript.
+
+89
+00:06:22,470 --> 00:06:28,050
+But in order for this to extend itself and for us to see a lot of the advantages that it brings, we
+
+90
+00:06:28,050 --> 00:06:33,360
+need to start working with it first in order to really explore all of the benefits.
+
+91
+00:06:34,020 --> 00:06:36,540
+So that's what we're going to do in this lesson.
+
+92
+00:06:36,540 --> 00:06:38,580
+We are going to integrate with TypeScript.
+
+93
+00:06:38,580 --> 00:06:44,580
+We're going to convert over first our Master's Rolodex project into TypeScript so that we can learn
+
+94
+00:06:44,580 --> 00:06:47,220
+about some of the benefits that TypeScript brings.
+
+95
+00:06:47,310 --> 00:06:52,650
+There is a lot of complexity that comes with TypeScript, but once you get familiar with it, it's just
+
+96
+00:06:52,650 --> 00:06:54,000
+really a matter of practice.
+
+97
+00:06:54,210 --> 00:06:59,400
+And another important thing to know is that with a lot of TypeScript, there are definitely some best
+
+98
+00:06:59,400 --> 00:07:00,000
+practices.
+
+99
+00:07:00,450 --> 00:07:03,810
+A lot of it is considered an art, not necessarily a science.
+
+100
+00:07:03,840 --> 00:07:09,060
+There's a balance here that we're trying to strike in being typed enough that we get the security that
+
+101
+00:07:09,060 --> 00:07:15,870
+comes from TypeScript, but not so much that we are so hindered from writing code quickly and efficiently.
+
+102
+00:07:16,200 --> 00:07:21,060
+This is really the dance of writing TypeScript and why for a long time there was a slower adoption.
+
+103
+00:07:21,270 --> 00:07:26,910
+But the benefits that it brings in the long run and that statically typed confidence you have in your
+
+104
+00:07:26,910 --> 00:07:34,350
+code is actually a net benefit to speed and quality of code and even the actual efficiency of how much
+
+105
+00:07:34,350 --> 00:07:36,780
+code you can pump out in the long run.
+
+106
+00:07:37,440 --> 00:07:39,240
+There's a lot of advantages to writing TypeScript.
+
+107
+00:07:39,240 --> 00:07:43,080
+It's just we have to get through that beginning valid that makes it challenging.
+
+108
+00:07:43,770 --> 00:07:46,470
+So there's a lot in these lessons about TypeScript.
+
+109
+00:07:47,010 --> 00:07:50,610
+So once you're ready, let's dive right into it in the next video.

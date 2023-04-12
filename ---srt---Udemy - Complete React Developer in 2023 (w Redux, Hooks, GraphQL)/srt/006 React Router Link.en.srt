@@ -1,0 +1,443 @@
+1
+00:00:00,330 --> 00:00:01,380
+Welcome back, everyone.
+
+2
+00:00:02,040 --> 00:00:06,660
+In the last video, we learned about nesting components inside of the rotting structure, and we're
+
+3
+00:00:06,660 --> 00:00:09,690
+starting to set up our initial navigation bar component.
+
+4
+00:00:10,170 --> 00:00:15,570
+In this video, we are going to dive deeper into actually styling it out and structuring our code according
+
+5
+00:00:15,570 --> 00:00:16,800
+to our folder structure.
+
+6
+00:00:17,670 --> 00:00:23,430
+So the first thing that I want you to do is I actually want you to take this navigation component and
+
+7
+00:00:23,430 --> 00:00:25,150
+put it inside of your roots.
+
+8
+00:00:25,770 --> 00:00:30,810
+So I'm going to make a new component or a new folder for our component inside of our Roots folder called
+
+9
+00:00:30,810 --> 00:00:37,410
+navigation inside of navigation, it's going to follow the same format where we have a navigation dock
+
+10
+00:00:37,470 --> 00:00:39,300
+component Dutch sex file.
+
+11
+00:00:40,260 --> 00:00:41,880
+Then we're going to go back to OPG's.
+
+12
+00:00:42,150 --> 00:00:48,840
+We're going to cut out this code for navigation, and we're going to paste it inside of our navigation
+
+13
+00:00:48,840 --> 00:00:52,620
+component file, then we're going to copy this outlet code.
+
+14
+00:00:54,430 --> 00:00:55,750
+Because that's where we need.
+
+15
+00:00:57,200 --> 00:00:57,800
+The outlet.
+
+16
+00:00:59,380 --> 00:01:04,990
+From recruiter Tom, because we're going to be using the outlet in order to actually render these Nasdaq
+
+17
+00:01:04,990 --> 00:01:06,910
+components inside of our navigation.
+
+18
+00:01:07,540 --> 00:01:13,600
+And then I'm going to export default navigation, the same setup we've been doing all this time.
+
+19
+00:01:15,400 --> 00:01:21,850
+Now inside of us, because we're now no longer leveraging navigation that we had to find inside, we
+
+20
+00:01:21,850 --> 00:01:27,460
+need to import it in and we also need to get rid of outlet because it's no longer a dependency.
+
+21
+00:01:28,330 --> 00:01:31,360
+And here we're going to go up to our Roots folder.
+
+22
+00:01:32,550 --> 00:01:33,480
+Our navigation.
+
+23
+00:01:34,560 --> 00:01:35,910
+And our navigation component.
+
+24
+00:01:40,110 --> 00:01:42,930
+And now all our code should work the exact same.
+
+25
+00:01:43,560 --> 00:01:44,550
+So let's just check.
+
+26
+00:01:47,280 --> 00:01:49,770
+We see that we have our navigation bar.
+
+27
+00:01:51,300 --> 00:01:54,720
+And we have our navigation bar on our home page, so everything's still working.
+
+28
+00:01:56,690 --> 00:02:01,520
+When we look at our application here, our final application, this is what we want the navigation to
+
+29
+00:02:01,520 --> 00:02:04,040
+barge a look right now, it's just some text.
+
+30
+00:02:04,550 --> 00:02:05,900
+So let's start building it up.
+
+31
+00:02:07,040 --> 00:02:11,060
+Let's go back to our navigation component, and let's remember what these dives are.
+
+32
+00:02:11,570 --> 00:02:16,490
+This outside dive is almost like a dive that contains everything, so the entire page.
+
+33
+00:02:17,490 --> 00:02:24,810
+Instead of using a div here, we can actually use a fragment and a fragment is something that we get
+
+34
+00:02:24,810 --> 00:02:25,590
+from react.
+
+35
+00:02:25,980 --> 00:02:32,610
+It's essentially a component that actually renders to nothing when it actually gets mounted on the DOM.
+
+36
+00:02:33,680 --> 00:02:39,860
+The whole reason of using a fragment is because of reax roles where our component must have a parent,
+
+37
+00:02:39,950 --> 00:02:42,980
+a top level parent containing component.
+
+38
+00:02:43,970 --> 00:02:49,280
+A fragment is useful if you don't actually want to render some specific moment.
+
+39
+00:02:49,490 --> 00:02:55,730
+For example, if I just want a div that represents the actual navigation and then I want the components
+
+40
+00:02:55,730 --> 00:02:57,350
+that represent my pages down below.
+
+41
+00:02:57,770 --> 00:02:59,210
+I don't need a wrapping div.
+
+42
+00:02:59,480 --> 00:03:01,100
+I can just use a fragment.
+
+43
+00:03:03,260 --> 00:03:07,600
+So with this fragment, once it actually finally renders, nothing's going to render on the page, I
+
+44
+00:03:07,610 --> 00:03:08,300
+will check this out.
+
+45
+00:03:08,780 --> 00:03:13,010
+So let's save this code and let's just give this class name for now.
+
+46
+00:03:14,310 --> 00:03:18,600
+Navigation so that we know what we're looking at when we look inside of our home.
+
+47
+00:03:19,230 --> 00:03:20,070
+So let's save this.
+
+48
+00:03:20,250 --> 00:03:20,940
+Let's go back.
+
+49
+00:03:21,390 --> 00:03:22,170
+Let's refresh.
+
+50
+00:03:23,440 --> 00:03:26,020
+And let's just inspect the elements on this page.
+
+51
+00:03:27,880 --> 00:03:32,320
+So here inside of elements, what we see is that this is our navigation.
+
+52
+00:03:32,740 --> 00:03:34,120
+And then right away, it's our route.
+
+53
+00:03:34,480 --> 00:03:36,430
+This route is the entry point.
+
+54
+00:03:36,430 --> 00:03:39,700
+If you remember, we use react on to render targeting this div.
+
+55
+00:03:40,300 --> 00:03:46,090
+But other than the navigation and then the inside div that contains the homepage element of directory.
+
+56
+00:03:46,690 --> 00:03:48,790
+There is no other wrapping div.
+
+57
+00:03:49,540 --> 00:03:51,800
+So as you can see, there's actually no fragment on here.
+
+58
+00:03:51,820 --> 00:03:54,100
+And that's the beautiful thing about rock fragment.
+
+59
+00:03:54,160 --> 00:03:55,030
+Very useful.
+
+60
+00:03:56,110 --> 00:03:59,230
+So let's go back and now style the rest of our navigation.
+
+61
+00:04:00,330 --> 00:04:05,640
+So we have this navigation component, and what we know is that there is a logo component here.
+
+62
+00:04:06,090 --> 00:04:09,030
+So for now, just going make a do and inside I'm going to say logo.
+
+63
+00:04:09,330 --> 00:04:14,190
+We're actually going to import in the logo SVG file, and I'm going to explain that after, but I'm
+
+64
+00:04:14,190 --> 00:04:16,710
+just setting up the initial basis of the application first.
+
+65
+00:04:17,750 --> 00:04:23,250
+There is also a div, an inside of the div, this is going to hold all of our links.
+
+66
+00:04:23,900 --> 00:04:27,050
+So here we can say that this is the Lynx container.
+
+67
+00:04:29,810 --> 00:04:30,930
+Because that's what it's going to contain.
+
+68
+00:04:30,950 --> 00:04:33,350
+It's going to contain all the possible links that we can go to.
+
+69
+00:04:34,560 --> 00:04:40,560
+And then inside of here, we're going to actually have links that take you to the different pages or
+
+70
+00:04:40,560 --> 00:04:41,670
+routes that are available.
+
+71
+00:04:42,680 --> 00:04:50,660
+So inside of here, let's import in the link component, and Link is essentially an anchor tag.
+
+72
+00:04:51,020 --> 00:04:57,500
+But what it does is that it actually appropriately, dynamically uses the correct browser that you have
+
+73
+00:04:57,500 --> 00:05:01,640
+installed and it will take your application to that specific place.
+
+74
+00:05:01,940 --> 00:05:06,200
+Now, this is not so important for us because it behaves pretty much just like an anchor tank inside
+
+75
+00:05:06,200 --> 00:05:08,210
+of a browser router, which is what we have.
+
+76
+00:05:08,600 --> 00:05:11,930
+But if you were using other types of routers, that might be a little bit of different behavior.
+
+77
+00:05:12,530 --> 00:05:17,510
+That's not so important right now, because right now, all we need to know is that this link component
+
+78
+00:05:17,510 --> 00:05:23,240
+is what we utilize in order to leverage proper routing, just like we do with anchor tags.
+
+79
+00:05:24,590 --> 00:05:28,550
+Now, because we're probably going to want to stop all these, we should also give it a class name.
+
+80
+00:05:29,120 --> 00:05:31,550
+So I'm going to give you the class name of Link.
+
+81
+00:05:33,050 --> 00:05:35,840
+We can't even call it novel link if we want to be more specific.
+
+82
+00:05:36,560 --> 00:05:38,840
+In fact, let's call this a novel lynx container.
+
+83
+00:05:39,850 --> 00:05:45,490
+So here is NAV Link and then inside in order to tell this link where we want to go.
+
+84
+00:05:45,730 --> 00:05:50,830
+We give it the two property and here we just match the string we're trying to navigate to.
+
+85
+00:05:51,220 --> 00:05:52,780
+So I want to go to shop.
+
+86
+00:05:54,030 --> 00:05:57,270
+Inside of the link, we put some text, let's say we say shop.
+
+87
+00:05:58,140 --> 00:06:03,720
+And then finally, this should be the very formative basis of our component.
+
+88
+00:06:05,010 --> 00:06:09,410
+So once again, because we want to stop this, let's just see what it looks like.
+
+89
+00:06:09,420 --> 00:06:12,390
+First, we see there's a large logo and then we see their shop.
+
+90
+00:06:12,480 --> 00:06:14,370
+If I had shop, it takes me to shop.
+
+91
+00:06:14,670 --> 00:06:17,370
+Right now, there's no way of going back other than pressing the back button.
+
+92
+00:06:17,400 --> 00:06:21,090
+But we want our logo to be the thing that will allow us to actually go back as well.
+
+93
+00:06:21,840 --> 00:06:24,930
+So the great thing about Link is that it's just like an anchor tag.
+
+94
+00:06:25,320 --> 00:06:29,460
+Whatever you wrap in a link will give you that navigation functionality.
+
+95
+00:06:29,880 --> 00:06:33,680
+So let's make a new link that we wrap around our logo.
+
+96
+00:06:35,150 --> 00:06:42,140
+As for the link itself, instead, this class name should be our logo container because that's what
+
+97
+00:06:42,140 --> 00:06:42,500
+it is.
+
+98
+00:06:42,800 --> 00:06:44,150
+It contains the logo.
+
+99
+00:06:44,150 --> 00:06:47,930
+We might want some different styling for it than we do for our navy links.
+
+100
+00:06:48,890 --> 00:06:55,310
+And then instead, where it should navigate to is the slash, because that is where our home page lives.
+
+101
+00:06:56,030 --> 00:06:59,960
+So now if we save this and we go back to our application.
+
+102
+00:07:00,900 --> 00:07:03,930
+If we click shop, it takes us to the shop.
+
+103
+00:07:04,320 --> 00:07:07,890
+And now if we click logo, it takes us to the homepage.
+
+104
+00:07:09,030 --> 00:07:11,130
+So here everything behaves the way we want it to.
+
+105
+00:07:11,520 --> 00:07:18,060
+We've got in some navigation behavior now, all thanks to the link component that we get from Rotterdam,
+
+106
+00:07:18,060 --> 00:07:22,770
+which again behaves like anchor tags, but with a little bit of additional functionality, according
+
+107
+00:07:22,770 --> 00:07:24,210
+to the needs of Rak Rotterdam.
+
+108
+00:07:25,290 --> 00:07:31,230
+And finally, we have separated out our navigation component into its own component, so a lot of good
+
+109
+00:07:31,230 --> 00:07:36,150
+work with navigation now in the next video, what we're going to do is we're actually going to bring
+
+110
+00:07:36,150 --> 00:07:42,060
+in that Crown SVG for our logo and we're also going to start styling out this navigation.
+
+111
+00:07:42,480 --> 00:07:43,980
+So we'll see you in the next video for that.

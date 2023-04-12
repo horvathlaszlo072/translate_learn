@@ -1,0 +1,171 @@
+1
+00:00:00.06 --> 00:00:01.06
+- [Instructor] Let's submit an event
+
+2
+00:00:01.06 --> 00:00:03.04
+from the server to all clients
+
+3
+00:00:03.04 --> 00:00:05.08
+notifying them of a new message.
+
+4
+00:00:05.08 --> 00:00:08.08
+We can do this in our post
+message endpoint function.
+
+5
+00:00:08.08 --> 00:00:11.07
+Let's scroll to that on line 20.
+
+6
+00:00:11.07 --> 00:00:17.02
+And below line 21, let's add io.emit,
+
+7
+00:00:17.02 --> 00:00:21.08
+and we'll call our event message.
+
+8
+00:00:21.08 --> 00:00:23.07
+And we'll pass the request.body,
+
+9
+00:00:23.07 --> 00:00:25.06
+which will contain the message.
+
+10
+00:00:25.06 --> 00:00:26.09
+Let's save that.
+
+11
+00:00:26.09 --> 00:00:31.00
+Then on our front end, then
+let's open up our index.html.
+
+12
+00:00:31.00 --> 00:00:34.03
+And on our front end, we need
+to add an event listener.
+
+13
+00:00:34.03 --> 00:00:37.03
+So let's scroll down
+to our script section.
+
+14
+00:00:37.03 --> 00:00:42.06
+Then below our document
+ready, we'll add socket.on,
+
+15
+00:00:42.06 --> 00:00:44.09
+and we'll check for the message event,
+
+16
+00:00:44.09 --> 00:00:51.08
+and we'll simply call add message.
+
+17
+00:00:51.08 --> 00:00:54.05
+And I'll rename this to add message
+
+18
+00:00:54.05 --> 00:00:57.01
+since we're only adding a single message.
+
+19
+00:00:57.01 --> 00:00:59.03
+And notice that I've
+supplied just the name of
+
+20
+00:00:59.03 --> 00:01:01.05
+our add message function.
+
+21
+00:01:01.05 --> 00:01:04.08
+Since its signature matches
+that exactly of the callback
+
+22
+00:01:04.08 --> 00:01:10.02
+that we'd need to supply
+with our socket.on call.
+
+23
+00:01:10.02 --> 00:01:14.01
+Let's give it a try after saving.
+
+24
+00:01:14.01 --> 00:01:20.06
+So I'll refresh, and
+let's post a new message.
+
+25
+00:01:20.06 --> 00:01:22.03
+It seems to work fine with one client.
+
+26
+00:01:22.03 --> 00:01:25.00
+Now let's try two.
+
+27
+00:01:25.00 --> 00:01:31.00
+So I'll duplicate this tab.
+
+28
+00:01:31.00 --> 00:01:34.02
+And I'll post a message
+from the second client,
+
+29
+00:01:34.02 --> 00:01:36.01
+and let's check the first.
+
+30
+00:01:36.01 --> 00:01:38.09
+And you can see that
+it instantly shows up.
+
+31
+00:01:38.09 --> 00:01:41.06
+It's fairly straightforward
+with socket.io.
+
+32
+00:01:41.06 --> 00:01:44.03
+Notice though, every time
+we restart our server,
+
+33
+00:01:44.03 --> 00:01:46.08
+we lose all of our message history.
+
+34
+00:01:46.08 --> 00:01:48.00
+Let's fix that.
+
+35
+00:01:48.00 --> 00:01:50.08
+We could do that with file
+write and read functionality
+
+36
+00:01:50.08 --> 00:01:53.00
+that we learned in an earlier chapter,
+
+37
+00:01:53.00 --> 00:01:55.09
+but a much better solution
+would be to store our messages
+
+38
+00:01:55.09 --> 00:01:57.03
+in a database.
+
+39
+00:01:57.03 --> 00:01:59.01
+Let's look at that next.
+

@@ -1,0 +1,459 @@
+1
+00:00:00.05 --> 00:00:02.03
+- [Instructor] So back in our server spec
+
+2
+00:00:02.03 --> 00:00:05.06
+let's fix our calculator test
+
+3
+00:00:05.06 --> 00:00:07.02
+and change it's to be to four.
+
+4
+00:00:07.02 --> 00:00:10.03
+Now let's describe another set of tests.
+
+5
+00:00:10.03 --> 00:00:13.09
+This time it'll be
+specific to get messages.
+
+6
+00:00:13.09 --> 00:00:15.09
+So all the test part of this group
+
+7
+00:00:15.09 --> 00:00:17.07
+will test various features
+
+8
+00:00:17.07 --> 00:00:19.09
+of our get messages endpoint.
+
+9
+00:00:19.09 --> 00:00:23.01
+So let's create our first
+test or specification.
+
+10
+00:00:23.01 --> 00:00:27.02
+It should return
+
+11
+00:00:27.02 --> 00:00:29.01
+200 ok.
+
+12
+00:00:29.01 --> 00:00:31.05
+So we expect that the status code
+
+13
+00:00:31.05 --> 00:00:34.06
+of get messages will be 200 ok
+
+14
+00:00:34.06 --> 00:00:36.07
+not 500 if there is a server error
+
+15
+00:00:36.07 --> 00:00:39.08
+not 401 for not found, etc
+
+16
+00:00:39.08 --> 00:00:43.01
+and then let's add a call back.
+
+17
+00:00:43.01 --> 00:00:45.04
+So inside here we actually need to make an
+
+18
+00:00:45.04 --> 00:00:47.02
+HTTP get request.
+
+19
+00:00:47.02 --> 00:00:50.00
+Natively we can't do
+that so we'll have to use
+
+20
+00:00:50.00 --> 00:00:52.00
+a library called request.
+
+21
+00:00:52.00 --> 00:00:55.03
+So let's install that with npm install
+
+22
+00:00:55.03 --> 00:00:59.04
+- - save - dev
+
+23
+00:00:59.04 --> 00:01:04.01
+request
+
+24
+00:01:04.01 --> 00:01:15.05
+and at the top let's require it in.
+
+25
+00:01:15.05 --> 00:01:19.06
+Then we'll use request.get
+
+26
+00:01:19.06 --> 00:01:29.02
+and we'll specify our URL
+
+27
+00:01:29.02 --> 00:01:36.02
+and then a call back.
+
+28
+00:01:36.02 --> 00:01:38.04
+The call back will contain an error
+
+29
+00:01:38.04 --> 00:01:41.03
+and the response.
+
+30
+00:01:41.03 --> 00:01:44.00
+For now we'll console log
+
+31
+00:01:44.00 --> 00:01:46.08
+the response to make sure we're
+actually getting a response.
+
+32
+00:01:46.08 --> 00:01:49.02
+At this point we'll
+have to start our server
+
+33
+00:01:49.02 --> 00:01:52.08
+so we use nodemon
+
+34
+00:01:52.08 --> 00:01:54.03
+and it started our server.
+
+35
+00:01:54.03 --> 00:01:56.01
+Now let's open up a new terminal
+
+36
+00:01:56.01 --> 00:01:59.06
+and we'll use npm test.
+
+37
+00:01:59.06 --> 00:02:01.08
+We can see that two specs passed,
+
+38
+00:02:01.08 --> 00:02:05.02
+but we didn't see our
+response console logged.
+
+39
+00:02:05.02 --> 00:02:07.07
+That's because this test ends
+
+40
+00:02:07.07 --> 00:02:09.09
+before we even get a call back.
+
+41
+00:02:09.09 --> 00:02:13.06
+The reason for that is because
+it's not set as asynchronous.
+
+42
+00:02:13.06 --> 00:02:15.02
+So to do that with Jasmine
+
+43
+00:02:15.02 --> 00:02:18.02
+inside the spec definition.
+
+44
+00:02:18.02 --> 00:02:21.01
+We need to pass back done
+
+45
+00:02:21.01 --> 00:02:22.07
+and then we need to call done
+
+46
+00:02:22.07 --> 00:02:25.06
+whenever our asynchronous code finishes.
+
+47
+00:02:25.06 --> 00:02:29.08
+Let's give that another try.
+
+48
+00:02:29.08 --> 00:02:34.05
+Now if we scroll up we
+can see our response.
+
+49
+00:02:34.05 --> 00:02:40.04
+Let's try console logging
+the response.body,
+
+50
+00:02:40.04 --> 00:02:42.02
+and we can see our messages.
+
+51
+00:02:42.02 --> 00:02:47.02
+So now let's create our first expect.
+
+52
+00:02:47.02 --> 00:02:51.08
+So we're checking that
+response.status code
+
+53
+00:02:51.08 --> 00:02:54.07
+is equal
+
+54
+00:02:54.07 --> 00:03:00.08
+to 200,
+
+55
+00:03:00.08 --> 00:03:03.00
+and I'll take out the console log,
+
+56
+00:03:03.00 --> 00:03:05.03
+save that, and let's try running it.
+
+57
+00:03:05.03 --> 00:03:08.04
+We can see two tests passed.
+
+58
+00:03:08.04 --> 00:03:10.06
+Let's create another test spec.
+
+59
+00:03:10.06 --> 00:03:14.04
+So I'll copy the first it from line 10
+
+60
+00:03:14.04 --> 00:03:19.04
+to line 15 and paste it below.
+
+61
+00:03:19.04 --> 00:03:21.04
+In here we'll check that it returns a list
+
+62
+00:03:21.04 --> 00:03:22.06
+that's not empty.
+
+63
+00:03:22.06 --> 00:03:26.02
+It should return a list
+
+64
+00:03:26.02 --> 00:03:29.01
+that's not empty.
+
+65
+00:03:29.01 --> 00:03:32.03
+Then let's change our expect.
+
+66
+00:03:32.03 --> 00:03:36.05
+So we'll check the response.body
+
+67
+00:03:36.05 --> 00:03:43.01
+.length
+
+68
+00:03:43.01 --> 00:03:48.01
+to be greater than zero.
+
+69
+00:03:48.01 --> 00:03:50.04
+That made the array inside the body
+
+70
+00:03:50.04 --> 00:03:53.03
+that needs to be greater
+than zero or not empty
+
+71
+00:03:53.03 --> 00:03:56.02
+and since we know there are two messages
+
+72
+00:03:56.02 --> 00:03:57.04
+they should pass.
+
+73
+00:03:57.04 --> 00:04:00.01
+So I'll save this and let's run our test,
+
+74
+00:04:00.01 --> 00:04:02.08
+and it's passing, but
+just to try something else
+
+75
+00:04:02.08 --> 00:04:05.00
+I'll check if it's greater than 40.
+
+76
+00:04:05.00 --> 00:04:06.09
+Let's try that.
+
+77
+00:04:06.09 --> 00:04:08.06
+And even though I set it to 40
+
+78
+00:04:08.06 --> 00:04:12.09
+yet we know we only have two
+items inside our message array
+
+79
+00:04:12.09 --> 00:04:14.04
+somehow it's still passing.
+
+80
+00:04:14.04 --> 00:04:17.01
+In this case even though I
+thought I was testing something
+
+81
+00:04:17.01 --> 00:04:19.09
+I was actually testing
+something completely different
+
+82
+00:04:19.09 --> 00:04:22.02
+and if we remember our response.body
+
+83
+00:04:22.02 --> 00:04:24.00
+is a string by default.
+
+84
+00:04:24.00 --> 00:04:26.03
+So really I was testing the length
+
+85
+00:04:26.03 --> 00:04:28.07
+of the amount of
+characters in that string,
+
+86
+00:04:28.07 --> 00:04:31.04
+which is roughly around 70 or 80.
+
+87
+00:04:31.04 --> 00:04:35.03
+So a good idea is to actually
+get your tests to fail first
+
+88
+00:04:35.03 --> 00:04:37.01
+that way it further reinforces that
+
+89
+00:04:37.01 --> 00:04:39.04
+you're actually testing the right thing
+
+90
+00:04:39.04 --> 00:04:41.03
+and this is a concept we'll get into
+
+91
+00:04:41.03 --> 00:04:43.08
+in test driven development
+in the next video,
+
+92
+00:04:43.08 --> 00:04:45.05
+but for now what we're going to do
+
+93
+00:04:45.05 --> 00:04:49.03
+is convert this over to JSON first
+
+94
+00:04:49.03 --> 00:04:52.07
+with JSPON parse we'll wrap the body
+
+95
+00:04:52.07 --> 00:04:55.03
+and we'll get the length of that JSON,
+
+96
+00:04:55.03 --> 00:04:57.09
+and since that JSON will be an array
+
+97
+00:04:57.09 --> 00:05:00.00
+this should work
+
+98
+00:05:00.00 --> 00:05:02.05
+and by work I mean it should fail.
+
+99
+00:05:02.05 --> 00:05:05.01
+So let's try it
+
+100
+00:05:05.01 --> 00:05:09.05
+and there we go expected
+two to be greater than 40.
+
+101
+00:05:09.05 --> 00:05:14.03
+So now let's switch it back to zero
+
+102
+00:05:14.03 --> 00:05:15.09
+and it should pass.
+
+103
+00:05:15.09 --> 00:05:18.04
+Now that we have an idea
+of how we can apply tests
+
+104
+00:05:18.04 --> 00:05:20.05
+to our existing application features
+
+105
+00:05:20.05 --> 00:05:22.04
+to verify that they are working
+
+106
+00:05:22.04 --> 00:05:25.04
+and will continue to work
+as we develop new features
+
+107
+00:05:25.04 --> 00:05:26.06
+let's take a quick look
+
+108
+00:05:26.06 --> 00:05:29.01
+at how we can develop
+new features in our app
+
+109
+00:05:29.01 --> 00:05:32.07
+using test first or
+test driven development.
+

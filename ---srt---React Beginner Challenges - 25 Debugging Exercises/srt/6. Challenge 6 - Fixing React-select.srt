@@ -1,0 +1,1139 @@
+1
+00:00:00,890 --> 00:00:06,350
+All right, so four, challenge six, we see this error that says drop down doesn't work, please see
+
+2
+00:00:06,350 --> 00:00:07,100
+if you can fix.
+
+3
+00:00:07,580 --> 00:00:12,350
+So this is a very short error, short description of what's going on.
+
+4
+00:00:12,770 --> 00:00:15,820
+And this one, we are going to try and reproduce.
+
+5
+00:00:15,830 --> 00:00:18,830
+So let's go ahead and open up the code sandbox.
+
+6
+00:00:21,670 --> 00:00:27,400
+So we open up this code sandbox and we see a dropdown here, I'm just going to tighten this up.
+
+7
+00:00:27,400 --> 00:00:29,540
+So we see we have this dropdown.
+
+8
+00:00:29,800 --> 00:00:32,940
+So as you can see, the first thing I'm going to try and do is reproduce this issue.
+
+9
+00:00:32,950 --> 00:00:39,610
+So if I click, I see a list of states and if I click on one of those states, nothing happens.
+
+10
+00:00:40,060 --> 00:00:44,320
+So if you're familiar with drop downs, you know that if you scroll and you click on one, it should
+
+11
+00:00:44,320 --> 00:00:44,970
+appear here.
+
+12
+00:00:44,980 --> 00:00:45,280
+Right.
+
+13
+00:00:45,760 --> 00:00:49,640
+So that's the reproducing of the issue.
+
+14
+00:00:49,660 --> 00:00:51,080
+So I've reproduced the issue.
+
+15
+00:00:51,550 --> 00:00:55,330
+My next step, if I go to my strategy guide, I want to gather clues.
+
+16
+00:00:55,330 --> 00:00:57,240
+So see if there are errors in the console.
+
+17
+00:00:57,700 --> 00:00:59,950
+So if I go back, I go here.
+
+18
+00:01:00,160 --> 00:01:01,720
+I look at the console.
+
+19
+00:01:02,650 --> 00:01:04,780
+And I don't see any errors.
+
+20
+00:01:06,130 --> 00:01:09,430
+I do see a warning, I see another warning as well.
+
+21
+00:01:10,850 --> 00:01:15,860
+I see these two warnings component will receive props has been renamed, and I also see Component Will
+
+22
+00:01:15,860 --> 00:01:19,190
+Mount has been renamed and it's not recommended for use.
+
+23
+00:01:19,670 --> 00:01:23,360
+Now at first glance, that doesn't really look related to this issue.
+
+24
+00:01:23,360 --> 00:01:25,560
+So I'm just going to ignore those two issues here.
+
+25
+00:01:26,180 --> 00:01:29,990
+Next, I can see we have a long statement that says selected.
+
+26
+00:01:30,740 --> 00:01:32,440
+I'm also just going to ignore that as well.
+
+27
+00:01:32,900 --> 00:01:38,450
+So I'm going to do here is I'm just going to, again, reproduce and I see that that log comes here.
+
+28
+00:01:38,720 --> 00:01:43,220
+Now, that's this looks like there's just a log statement in there that doesn't really help me troubleshoot
+
+29
+00:01:43,220 --> 00:01:43,520
+this.
+
+30
+00:01:43,820 --> 00:01:47,060
+So my next step, I'm going to open this actual app here.
+
+31
+00:01:47,090 --> 00:01:47,900
+I'm going to click on this.
+
+32
+00:01:47,900 --> 00:01:50,840
+I'm going to copy and then I'm going to paste that into a new.
+
+33
+00:01:53,880 --> 00:02:01,470
+Here, so I have this in a new browser window here so that I am not interfering with any code sandbox
+
+34
+00:02:01,470 --> 00:02:02,790
+code, so.
+
+35
+00:02:03,730 --> 00:02:08,710
+Next thing I'm going to do is I'm just going to go here, I'm going to open up the chrome dev tools,
+
+36
+00:02:09,190 --> 00:02:13,320
+always make sure you click and open up a new dev tools for that window.
+
+37
+00:02:13,570 --> 00:02:16,780
+I believe I had another window open and I have another one behind here.
+
+38
+00:02:16,780 --> 00:02:19,300
+So just make sure you close out of all your dev tools.
+
+39
+00:02:19,810 --> 00:02:23,200
+So as you could see here, I'm in my chrome dev tools.
+
+40
+00:02:23,200 --> 00:02:28,000
+Now, if you remember from the first challenge, what we're going to do is we want to find this code,
+
+41
+00:02:28,000 --> 00:02:28,230
+right.
+
+42
+00:02:28,240 --> 00:02:33,010
+So we want to find where this object or where this dropdown is being initialized.
+
+43
+00:02:33,430 --> 00:02:39,160
+Now, to be honest, if I was in a real app, I would probably go and familiarize myself with the actual
+
+44
+00:02:39,160 --> 00:02:40,230
+code itself.
+
+45
+00:02:40,540 --> 00:02:45,310
+So if I go here, I just want to get a little bit of context into what app I'm in.
+
+46
+00:02:45,630 --> 00:02:49,900
+Now, if you're in a real app, you have probably hundreds of files and it's going to be a lot more
+
+47
+00:02:49,900 --> 00:02:50,360
+difficult.
+
+48
+00:02:50,800 --> 00:02:53,040
+This one is, you know, a lot smaller.
+
+49
+00:02:53,050 --> 00:02:55,630
+So basically you could see here we have a couple of files.
+
+50
+00:02:55,630 --> 00:02:57,940
+We have this we have some data.
+
+51
+00:02:58,450 --> 00:03:02,680
+And, you know, this is the index and then this is calling example.
+
+52
+00:03:02,680 --> 00:03:04,270
+So I go over here into example.
+
+53
+00:03:04,810 --> 00:03:07,900
+And as you could see here, it's a very small component.
+
+54
+00:03:08,500 --> 00:03:10,420
+We are end up we end up rendering.
+
+55
+00:03:10,420 --> 00:03:12,970
+So I go down to my rendering function and I see a return.
+
+56
+00:03:12,970 --> 00:03:16,960
+This thing, which is select now that looks like that could be my dropdown.
+
+57
+00:03:16,960 --> 00:03:18,610
+Right, because we have some options here.
+
+58
+00:03:20,000 --> 00:03:25,700
+And as you could see, I go up and my next step is to trace exactly where this is coming from, where
+
+59
+00:03:25,700 --> 00:03:26,930
+is this select coming from?
+
+60
+00:03:27,380 --> 00:03:32,830
+So if I go up here, I see this is coming from this airport here, which is called React Select.
+
+61
+00:03:33,590 --> 00:03:36,380
+So that is not part of my code.
+
+62
+00:03:36,390 --> 00:03:36,610
+Right.
+
+63
+00:03:36,650 --> 00:03:38,770
+I don't see anything in here called React Select.
+
+64
+00:03:39,470 --> 00:03:43,280
+So I have to determine that this is a external library.
+
+65
+00:03:43,820 --> 00:03:50,300
+I can go and package that JSON here and I can confirm that React Select is a package and this is Riak
+
+66
+00:03:50,300 --> 00:03:52,900
+select version one point three point zero.
+
+67
+00:03:53,210 --> 00:03:54,440
+So this is a version of that.
+
+68
+00:03:54,450 --> 00:03:59,050
+So very important to note that because this might not be the latest version.
+
+69
+00:03:59,360 --> 00:04:04,250
+So that is basically I've you know, I found the.
+
+70
+00:04:05,220 --> 00:04:10,590
+Initialization of that component is the only component in this app, so very obvious, but.
+
+71
+00:04:12,230 --> 00:04:15,770
+And a real app, if I go back here, this might not be obvious where that is.
+
+72
+00:04:15,800 --> 00:04:19,370
+So, again, another thing I could do, a couple of things I could do, actually.
+
+73
+00:04:19,370 --> 00:04:21,110
+I could go in here components.
+
+74
+00:04:21,740 --> 00:04:26,240
+And as you could see here we have this is my react dev tools.
+
+75
+00:04:27,220 --> 00:04:33,070
+Here and I go here and I hover over these elements and I see here, I click on this select and then
+
+76
+00:04:33,070 --> 00:04:35,560
+I go here to view source for this element.
+
+77
+00:04:36,370 --> 00:04:37,840
+And it brings me here.
+
+78
+00:04:38,760 --> 00:04:48,000
+So it brings me select James, so as you could see here, this is happening in the node modules react,
+
+79
+00:04:48,000 --> 00:04:50,210
+select, libs select.
+
+80
+00:04:50,880 --> 00:04:57,350
+So that is telling me that, OK, this is coming from a library in my node modules.
+
+81
+00:04:58,050 --> 00:05:03,720
+So not exactly helping me in terms of where it's happening in the app, but it is showing me that it
+
+82
+00:05:03,720 --> 00:05:04,900
+is a node module.
+
+83
+00:05:05,160 --> 00:05:11,190
+Now if I go one layer up an example, I click on that and then I click on View Source for this element.
+
+84
+00:05:12,740 --> 00:05:15,660
+It brings me here to exampled Ijaz.
+
+85
+00:05:16,700 --> 00:05:21,900
+Now, this brings me to this example, dodgiest file and it says Source map detected.
+
+86
+00:05:22,190 --> 00:05:24,570
+So this looks like this is the minified code, right?
+
+87
+00:05:24,920 --> 00:05:26,420
+So it's a source map detected.
+
+88
+00:05:26,420 --> 00:05:31,970
+If I go to more click on that, it's going to tell me to access files via control.
+
+89
+00:05:32,600 --> 00:05:38,600
+So normally in this situation, if you're in a minified code, you do control P or command P and type
+
+90
+00:05:38,600 --> 00:05:39,760
+in the same file.
+
+91
+00:05:39,770 --> 00:05:41,330
+So Exampled Digests.
+
+92
+00:05:41,570 --> 00:05:44,750
+And then we'll find the source map version right here and we click enter.
+
+93
+00:05:45,080 --> 00:05:46,940
+And then now we have this.
+
+94
+00:05:47,240 --> 00:05:54,430
+So we were able to track that component down to this file and then we could find it through here.
+
+95
+00:05:54,950 --> 00:06:01,460
+And like I said, you could also you could also search for the strings so you could search for a state
+
+96
+00:06:01,700 --> 00:06:06,920
+and then you would probably get into the data digest where those states are to find, you know, if
+
+97
+00:06:06,920 --> 00:06:13,260
+I type in Arizona, you could see here Arizona will pop up no matches.
+
+98
+00:06:13,610 --> 00:06:15,290
+So if I type in Alabama.
+
+99
+00:06:17,020 --> 00:06:20,680
+You could see there we go, so that does pop up here in the source map, same thing.
+
+100
+00:06:21,100 --> 00:06:28,240
+If I click on that, it highlights this option here and that's showing me that this is the options that
+
+101
+00:06:28,240 --> 00:06:28,630
+are being.
+
+102
+00:06:28,840 --> 00:06:29,360
+Now, then.
+
+103
+00:06:29,380 --> 00:06:31,810
+OK, so I say, all right, well, I see Alabama and these options.
+
+104
+00:06:31,810 --> 00:06:34,540
+What's what's going on now where these options used.
+
+105
+00:06:34,820 --> 00:06:40,030
+So then I control F and I search for options and I see they're being passed into here.
+
+106
+00:06:40,420 --> 00:06:45,130
+OK, so at the end of the day now I have the react select.
+
+107
+00:06:45,130 --> 00:06:46,990
+I know that this is in React Select.
+
+108
+00:06:46,990 --> 00:06:47,260
+Right.
+
+109
+00:06:47,260 --> 00:06:49,300
+I know that this is a react select component.
+
+110
+00:06:49,900 --> 00:06:54,520
+The next thing I want to do is actually understand more about react select because let's say I don't
+
+111
+00:06:54,520 --> 00:06:56,080
+know anything about react select.
+
+112
+00:06:56,410 --> 00:06:58,060
+I don't know why this isn't working.
+
+113
+00:06:58,510 --> 00:07:02,110
+And now you could debug this by just guessing.
+
+114
+00:07:02,110 --> 00:07:06,130
+I could look at these props and say, OK, well I see there's an en change handler.
+
+115
+00:07:06,580 --> 00:07:11,200
+Maybe that has something to do with it because there's name, there's value and there's options.
+
+116
+00:07:11,470 --> 00:07:16,300
+So sometimes you could look at these components and you could just guess, OK, well, on change is
+
+117
+00:07:16,300 --> 00:07:22,840
+a pretty common callback and most of these really components are going to have that same on change handler
+
+118
+00:07:23,080 --> 00:07:25,180
+or the similar on change handler.
+
+119
+00:07:25,510 --> 00:07:31,060
+And so if you want to just go for it and just guess, you could just guess that that's the issue right
+
+120
+00:07:31,060 --> 00:07:31,420
+here.
+
+121
+00:07:31,840 --> 00:07:35,920
+And we see that this is traced down to this not handle change.
+
+122
+00:07:36,490 --> 00:07:37,900
+And as you could see here.
+
+123
+00:07:39,140 --> 00:07:43,490
+I can put a break point here and I can understand what's going on with that, so.
+
+124
+00:07:44,440 --> 00:07:47,200
+As you can see, here I am.
+
+125
+00:07:48,720 --> 00:07:52,080
+Setting the stage to be selected, so.
+
+126
+00:07:52,970 --> 00:07:56,840
+So let me let me actually put a break point here, so first thing I want to do is make sure that this
+
+127
+00:07:57,020 --> 00:08:00,230
+Handal change function is actually working correctly.
+
+128
+00:08:00,560 --> 00:08:07,730
+So if I go over here and I click this, I could see if I hover over this and I'm in here, I can hover
+
+129
+00:08:07,730 --> 00:08:10,910
+over selected option and I can see that this is right.
+
+130
+00:08:10,910 --> 00:08:12,740
+This is what I actually clicked on.
+
+131
+00:08:12,740 --> 00:08:12,980
+Right.
+
+132
+00:08:13,430 --> 00:08:15,470
+So this has a label and this has a value.
+
+133
+00:08:16,520 --> 00:08:25,160
+Now, my next question is, well, if that's correct, then why isn't it going back in to my select
+
+134
+00:08:25,160 --> 00:08:25,880
+as the value?
+
+135
+00:08:25,880 --> 00:08:26,160
+Right.
+
+136
+00:08:26,600 --> 00:08:31,590
+So I'm guessing once again that the value is the signature for the current value.
+
+137
+00:08:31,980 --> 00:08:36,140
+So now so that's that's an assumption I'm making.
+
+138
+00:08:36,140 --> 00:08:39,480
+And I can Google react to confirm that.
+
+139
+00:08:39,770 --> 00:08:42,380
+So let me go ahead and search for react select.
+
+140
+00:08:44,320 --> 00:08:51,760
+So search for react select now, as I said before, we were in version one, point three, so we want
+
+141
+00:08:51,760 --> 00:08:53,920
+to make sure that we're in the right version of this.
+
+142
+00:08:54,280 --> 00:08:59,440
+So you could see we we might be coming from react select version one.
+
+143
+00:08:59,680 --> 00:09:02,050
+So it's just something to keep in mind in this example.
+
+144
+00:09:02,050 --> 00:09:05,530
+We're not going to do that because it just so happens that it's the same signature.
+
+145
+00:09:05,860 --> 00:09:07,360
+But here we go.
+
+146
+00:09:07,360 --> 00:09:10,090
+And then we see we have this this dropdown here.
+
+147
+00:09:10,540 --> 00:09:14,080
+And we we want to just read a little bit about this.
+
+148
+00:09:14,080 --> 00:09:14,430
+Right.
+
+149
+00:09:14,440 --> 00:09:15,580
+So we're getting started.
+
+150
+00:09:15,790 --> 00:09:16,810
+We have options.
+
+151
+00:09:17,170 --> 00:09:19,570
+We have, you know, custom styles.
+
+152
+00:09:20,150 --> 00:09:20,860
+I'm going down.
+
+153
+00:09:20,860 --> 00:09:24,220
+I'm not really seeing a whole lot of information on the home page here.
+
+154
+00:09:24,610 --> 00:09:28,210
+So if I go to props, though, you'll see some props here.
+
+155
+00:09:29,630 --> 00:09:35,450
+And, you know, it's good to just read what's going on here just to familiarize yourself, but once
+
+156
+00:09:35,450 --> 00:09:39,480
+again, it's not really giving me an obvious it's not really telling.
+
+157
+00:09:39,500 --> 00:09:43,700
+It's only helping me in terms of what what this actually is doing.
+
+158
+00:09:43,700 --> 00:09:43,900
+Right.
+
+159
+00:09:43,920 --> 00:09:44,210
+So.
+
+160
+00:09:45,520 --> 00:09:51,820
+All right, so eventually, if we go keep looking at these examples will eventually come into this example,
+
+161
+00:09:51,820 --> 00:09:58,990
+fixed options, where if we go here and we expand the source code here, we are able to actually see
+
+162
+00:09:58,990 --> 00:10:02,190
+a similar code structure to what we have in our app.
+
+163
+00:10:02,650 --> 00:10:04,390
+We have it on change.
+
+164
+00:10:04,390 --> 00:10:06,730
+We have a name and we have a value.
+
+165
+00:10:07,210 --> 00:10:08,800
+And as you could see here.
+
+166
+00:10:10,070 --> 00:10:15,590
+We have similar we have an on change call back here, and we could just look at the function signature
+
+167
+00:10:15,590 --> 00:10:20,390
+here, we're taking in a value and we're setting the state of our app.
+
+168
+00:10:20,390 --> 00:10:22,000
+So we're in a react component, right.
+
+169
+00:10:22,190 --> 00:10:22,850
+With state.
+
+170
+00:10:23,120 --> 00:10:25,010
+We're setting the state to that value.
+
+171
+00:10:25,490 --> 00:10:28,050
+Now, you could just kind of ignore some of what's going on here.
+
+172
+00:10:28,070 --> 00:10:32,900
+Basically, they're taking, you know, certain actions, you know, certain actions that are being
+
+173
+00:10:33,230 --> 00:10:33,770
+applied.
+
+174
+00:10:33,770 --> 00:10:38,540
+I'm just guessing, you know, if we clear it, you know, you're going to want to set the value to
+
+175
+00:10:38,540 --> 00:10:40,580
+be something what it was.
+
+176
+00:10:40,580 --> 00:10:40,870
+Right.
+
+177
+00:10:40,880 --> 00:10:44,900
+So but at any rate, the value is being set here.
+
+178
+00:10:44,900 --> 00:10:48,860
+So we get so basically they they say order options.
+
+179
+00:10:49,400 --> 00:10:51,890
+And as you could see, we go up here, that order option.
+
+180
+00:10:51,910 --> 00:10:55,370
+So we're just tracing in what is this value and what are we setting on our app.
+
+181
+00:10:56,030 --> 00:10:57,500
+So values.
+
+182
+00:10:58,940 --> 00:11:07,960
+So it passes in that so it turns value into values appear and then it filters that array.
+
+183
+00:11:08,180 --> 00:11:10,100
+So you could see that it is an array, right?
+
+184
+00:11:10,100 --> 00:11:12,740
+Because you know, that values that filter filters an array.
+
+185
+00:11:14,190 --> 00:11:15,740
+You can only call filter on an array.
+
+186
+00:11:15,750 --> 00:11:18,010
+So value is an array.
+
+187
+00:11:18,110 --> 00:11:19,280
+We've determined that.
+
+188
+00:11:19,280 --> 00:11:22,160
+And then now we set that array on the app, so.
+
+189
+00:11:23,080 --> 00:11:29,200
+We we can kind of just guess, OK, well, this is a speech we also see here we see is multi.
+
+190
+00:11:29,710 --> 00:11:32,350
+So this is a multi select component.
+
+191
+00:11:32,350 --> 00:11:32,640
+Right.
+
+192
+00:11:33,340 --> 00:11:37,510
+And this is all kinds of different, you know, locked values, as you could see, were playing with
+
+193
+00:11:37,510 --> 00:11:37,690
+it.
+
+194
+00:11:38,110 --> 00:11:43,270
+And we could you know, we could try and find this component as well and debug it here as well to just
+
+195
+00:11:43,270 --> 00:11:44,290
+confirm what this is.
+
+196
+00:11:44,710 --> 00:11:49,810
+But we have a little bit more context of what our app is doing now that we have we see this example
+
+197
+00:11:50,050 --> 00:11:50,200
+now.
+
+198
+00:11:50,200 --> 00:11:53,950
+You could see here we do pass that value in this that state, that value.
+
+199
+00:11:54,430 --> 00:11:59,560
+And the value here is just this, that state value that we set here.
+
+200
+00:11:59,560 --> 00:11:59,950
+Right.
+
+201
+00:12:00,550 --> 00:12:05,930
+And just like up at the top, you could see here, state value here is order options as well.
+
+202
+00:12:05,950 --> 00:12:07,210
+So it's again, it's an array.
+
+203
+00:12:07,540 --> 00:12:09,010
+So we've got a lot of clues.
+
+204
+00:12:09,010 --> 00:12:11,790
+Now, you could see here that more more details about that.
+
+205
+00:12:12,100 --> 00:12:13,410
+So color options.
+
+206
+00:12:13,690 --> 00:12:16,150
+So if you go up here to color options, you'll see data.
+
+207
+00:12:16,180 --> 00:12:23,410
+So now let's OK, we have data here so we could even go into here and the this code sandbox and see
+
+208
+00:12:23,410 --> 00:12:24,250
+if this happened.
+
+209
+00:12:24,250 --> 00:12:25,740
+OK, so this is a 404.
+
+210
+00:12:25,990 --> 00:12:30,700
+So once again, the documentation on these things is not going to be always perfect.
+
+211
+00:12:31,360 --> 00:12:35,770
+And that's why I included this example, because it's just, you know, react select.
+
+212
+00:12:35,770 --> 00:12:36,700
+Do they upgrade things?
+
+213
+00:12:36,700 --> 00:12:37,420
+They break stuff.
+
+214
+00:12:37,420 --> 00:12:39,010
+The code sandboxes don't work.
+
+215
+00:12:39,280 --> 00:12:44,140
+You're not going to be in a perfect sunshine and rainbows environment always.
+
+216
+00:12:44,140 --> 00:12:44,400
+Right.
+
+217
+00:12:44,740 --> 00:12:46,120
+So we have a clue.
+
+218
+00:12:46,120 --> 00:12:49,480
+We have this clue about what's going on here, about what these do now.
+
+219
+00:12:49,990 --> 00:12:53,050
+And we see we have a working example we could play with over here.
+
+220
+00:12:53,320 --> 00:12:59,100
+So we go back to our app and once again we go and we check.
+
+221
+00:12:59,110 --> 00:13:00,120
+So still it's working.
+
+222
+00:13:00,130 --> 00:13:00,910
+It's not working.
+
+223
+00:13:01,180 --> 00:13:05,260
+So we go back here and we we're going to put a breakpoint here in this handle change function.
+
+224
+00:13:05,800 --> 00:13:13,180
+So we go back to our browser where we had that example open and we go and we once again, we find that
+
+225
+00:13:13,180 --> 00:13:16,250
+component and we do what we were about to do before.
+
+226
+00:13:16,250 --> 00:13:16,400
+Right.
+
+227
+00:13:16,420 --> 00:13:18,970
+We put a breakpoint here and then.
+
+228
+00:13:20,050 --> 00:13:26,410
+What we do is we will trigger this change event, so now that we know where we might be expecting an
+
+229
+00:13:26,410 --> 00:13:27,230
+array here, right.
+
+230
+00:13:27,730 --> 00:13:30,330
+So we go and we look at this and we say, OK, this is an array.
+
+231
+00:13:30,460 --> 00:13:33,100
+So now we notice that it's actually an array, it's on an object.
+
+232
+00:13:33,580 --> 00:13:38,100
+And we we know that we could pass that array into the value here.
+
+233
+00:13:38,620 --> 00:13:40,450
+So we say, OK, well, what's going on there?
+
+234
+00:13:41,110 --> 00:13:46,110
+We are setting in the state to selected and we're setting that.
+
+235
+00:13:46,120 --> 00:13:49,180
+So we should be expecting this that state that's selected.
+
+236
+00:13:49,180 --> 00:13:49,450
+Right.
+
+237
+00:13:49,840 --> 00:13:55,420
+So if we put a breakpoint here and we look at what selected option is, we see that it's nothing.
+
+238
+00:13:55,420 --> 00:13:56,770
+It's just an empty string.
+
+239
+00:13:57,340 --> 00:13:59,830
+So it didn't look like that.
+
+240
+00:13:59,830 --> 00:14:01,550
+We actually set that on our state.
+
+241
+00:14:02,050 --> 00:14:04,870
+So this is actually not a react select issue.
+
+242
+00:14:04,870 --> 00:14:07,250
+It looks like it looks like it's an issue with our app.
+
+243
+00:14:07,750 --> 00:14:12,270
+So what we need to do is figure out how to set the stage to be selected option.
+
+244
+00:14:12,790 --> 00:14:14,580
+So what we did.
+
+245
+00:14:14,590 --> 00:14:16,480
+So I'm going to reveal the solution now.
+
+246
+00:14:16,840 --> 00:14:21,790
+The solution here is that we that this not set out state selected here.
+
+247
+00:14:22,030 --> 00:14:23,020
+This was a mistake.
+
+248
+00:14:23,380 --> 00:14:26,800
+We only wanted to set selected option, not selected.
+
+249
+00:14:27,280 --> 00:14:33,310
+So we change that to be selected option like this, which means this is the key and the value.
+
+250
+00:14:33,310 --> 00:14:33,540
+Right.
+
+251
+00:14:33,550 --> 00:14:34,270
+This is the key.
+
+252
+00:14:34,450 --> 00:14:39,100
+Select that option, which should be set as the that state that selected option.
+
+253
+00:14:39,820 --> 00:14:43,760
+And then we go back to the dropdown and we could see that it's now working.
+
+254
+00:14:44,410 --> 00:14:46,690
+So what did we learn here?
+
+255
+00:14:46,690 --> 00:14:54,070
+We learned to debug the component, look at the examples for react select or the component that you
+
+256
+00:14:54,070 --> 00:14:55,450
+want to research.
+
+257
+00:14:55,450 --> 00:14:56,560
+Look at their examples.
+
+258
+00:14:56,830 --> 00:14:58,350
+Make sure you're on that right version.
+
+259
+00:14:58,360 --> 00:15:03,950
+We were actually looking at a more later version of that, but you could also, you know, search for
+
+260
+00:15:03,950 --> 00:15:06,520
+a react select version one.
+
+261
+00:15:06,820 --> 00:15:10,290
+And just so happens that they have documentation here for version one.
+
+262
+00:15:10,780 --> 00:15:14,170
+So and then once again, this is actually a simpler example.
+
+263
+00:15:14,170 --> 00:15:19,030
+But if we go here to source of that, we could see once again we would be able to figure out, you know,
+
+264
+00:15:19,030 --> 00:15:21,160
+we have value we have on change here.
+
+265
+00:15:21,310 --> 00:15:22,580
+And it's a similar example.
+
+266
+00:15:23,020 --> 00:15:27,160
+Now, you also might be wondering, why are you showing me this?
+
+267
+00:15:27,160 --> 00:15:28,720
+It's not react hooks, right?
+
+268
+00:15:28,750 --> 00:15:30,250
+This is a class based component.
+
+269
+00:15:30,610 --> 00:15:32,770
+So this I included this in here for a couple of reasons.
+
+270
+00:15:32,770 --> 00:15:37,990
+You're going to want to eventually you're going to run into legacy react code at some point.
+
+271
+00:15:38,170 --> 00:15:43,090
+And so it's important to know about legacy code and legacy components debugging.
+
+272
+00:15:43,090 --> 00:15:47,950
+These are going to really make you skilled because you're going to be able to troubleshoot older code
+
+273
+00:15:48,280 --> 00:15:53,020
+and that's going to really apply to newer code as well, because you're going be able to port older
+
+274
+00:15:53,020 --> 00:15:57,730
+code to another newer code and you're going to be able to understand what's going on in this example.
+
+275
+00:15:57,730 --> 00:15:59,950
+It didn't even have anything to do with this.
+
+276
+00:15:59,950 --> 00:16:01,390
+Actually, we were doing this right.
+
+277
+00:16:01,390 --> 00:16:03,820
+We didn't change anything with the initialization.
+
+278
+00:16:04,090 --> 00:16:09,310
+All we did was we just noticed that we were trying to set state to a state variable that we didn't use
+
+279
+00:16:09,310 --> 00:16:09,940
+anywhere else.
+
+280
+00:16:10,240 --> 00:16:12,860
+So we didn't use this that state that selected anywhere.
+
+281
+00:16:13,180 --> 00:16:15,850
+So basically, all I did was to create this example.
+
+282
+00:16:15,850 --> 00:16:21,210
+I just tried to throw you off by setting a state to a variable we weren't even using.
+
+283
+00:16:21,580 --> 00:16:24,070
+So I hope this was useful.
+
+284
+00:16:24,700 --> 00:16:30,460
+I'm sorry if that was confusing, but this hopefully allowed you to gain some insight into troubleshooting
+
+285
+00:16:30,880 --> 00:16:33,580
+more complicated dropdown components.

@@ -1,0 +1,1071 @@
+1
+00:00:00,360 --> 00:00:06,240
+I'd like to now share the purpose of this course or the purpose of why you should learn debugging within
+
+2
+00:00:06,240 --> 00:00:11,870
+the react world and the tagline here, it's about the journey, not destination.
+
+3
+00:00:12,360 --> 00:00:17,820
+This kind of sounds pretty cheesy, but actually this is really appropriate for debugging because a
+
+4
+00:00:17,820 --> 00:00:19,950
+lot of people were taking my courses.
+
+5
+00:00:20,410 --> 00:00:24,360
+And if you've taken them, you know that it's sort of this big application that you kind of build up
+
+6
+00:00:24,360 --> 00:00:24,690
+to.
+
+7
+00:00:24,960 --> 00:00:29,060
+And a lot of people would be posting these kind of basic bugs out of nowhere.
+
+8
+00:00:29,070 --> 00:00:34,710
+And that is just something that I feel like beginners really get stuck on, which is they get blocked
+
+9
+00:00:34,710 --> 00:00:37,980
+at these at these Jurnee, are these stepping stones.
+
+10
+00:00:38,310 --> 00:00:44,130
+And when you're in the professional environment, you can't go to your supervisor and say that you're
+
+11
+00:00:44,130 --> 00:00:50,070
+stuck on this bug, especially if they're an engineer, because they're going to expect you to know
+
+12
+00:00:50,070 --> 00:00:50,970
+how to do that already.
+
+13
+00:00:50,970 --> 00:00:56,910
+So it's almost like debugging is kind of like a set of hiking boots or a set of tools that you can use
+
+14
+00:00:56,910 --> 00:00:58,380
+to climb that mountain easier.
+
+15
+00:00:58,660 --> 00:01:01,080
+And this is why this course is really about the journey.
+
+16
+00:01:01,080 --> 00:01:05,790
+It's not about client, you know, getting to the top of the mountain and looking at this big application
+
+17
+00:01:05,790 --> 00:01:11,670
+that you built when a lot of the times it was just you kind of copying maybe a coding tutorial or something.
+
+18
+00:01:12,300 --> 00:01:19,320
+I feel like those tutorials can be a little lacking in basic skills or equipment or tools that you need.
+
+19
+00:01:19,320 --> 00:01:19,600
+Right.
+
+20
+00:01:19,950 --> 00:01:21,810
+And so this is really about the journey.
+
+21
+00:01:21,810 --> 00:01:27,340
+It's about getting equipped and getting stronger and debugging so that when you hit those bugs and you're
+
+22
+00:01:27,390 --> 00:01:32,250
+when you're building the next big project, you're not stuck and you can easily power through those.
+
+23
+00:01:33,630 --> 00:01:36,390
+So really, it's about changing your mindset on debugging.
+
+24
+00:01:37,020 --> 00:01:42,270
+I want you to actually start to expect and love bugs in the apps that you're going to be building.
+
+25
+00:01:42,750 --> 00:01:49,050
+Not only should you expect the bugs, right, you want to love them and be excited about them.
+
+26
+00:01:49,050 --> 00:01:52,650
+And I'm going to the last lecture of this is really going to go into that more.
+
+27
+00:01:52,650 --> 00:01:58,110
+But basically, you need to start expecting bugs because, you know, I think a lot of beginners will
+
+28
+00:01:58,110 --> 00:02:01,950
+see the bug that they hit and they'll think that they did something wrong or they're like, what's going
+
+29
+00:02:01,950 --> 00:02:02,280
+on?
+
+30
+00:02:02,520 --> 00:02:03,420
+And that makes sense, right?
+
+31
+00:02:03,420 --> 00:02:07,350
+They're totally new and they don't really understand the error that's being thrown at them.
+
+32
+00:02:08,040 --> 00:02:13,770
+But you have to start getting used to that, get comfortable to that error and move on, move forward
+
+33
+00:02:13,770 --> 00:02:16,410
+with that error by troubleshooting and debugging it.
+
+34
+00:02:16,410 --> 00:02:16,680
+Right.
+
+35
+00:02:17,190 --> 00:02:18,960
+And you have to understand that they occur.
+
+36
+00:02:18,960 --> 00:02:22,950
+Bugs occur for everyone and all the time without any exception.
+
+37
+00:02:22,950 --> 00:02:25,550
+So any programmer, they're going to be hitting bugs.
+
+38
+00:02:25,890 --> 00:02:31,350
+The difference is, though, is that the professionals are going to know immediately what's what's going
+
+39
+00:02:31,350 --> 00:02:33,360
+wrong with an error most of the time.
+
+40
+00:02:33,360 --> 00:02:33,570
+Right.
+
+41
+00:02:33,780 --> 00:02:35,820
+Unless it's a library specific error.
+
+42
+00:02:35,820 --> 00:02:38,130
+And then they'll kind of even know what to do about that.
+
+43
+00:02:38,130 --> 00:02:39,660
+They'll know how to research that library.
+
+44
+00:02:39,660 --> 00:02:42,130
+And we'll talk more about that in this course.
+
+45
+00:02:42,130 --> 00:02:43,710
+It's more of a strategy guide.
+
+46
+00:02:43,740 --> 00:02:46,890
+I'm going to walk you through different ways of troubleshooting, different types of errors.
+
+47
+00:02:47,250 --> 00:02:53,010
+But the point is that the pros are going to expect this already, that they're going to have bugs and
+
+48
+00:02:53,010 --> 00:02:57,390
+they're going to know how to fix them very quickly, because when you're a professional building an
+
+49
+00:02:57,390 --> 00:03:04,380
+app on your own, you you don't have time to spend a day or two or hours or waiting for an instructor
+
+50
+00:03:04,380 --> 00:03:07,590
+or somebody to get back to you about a bug that wouldn't be very productive.
+
+51
+00:03:07,590 --> 00:03:07,840
+Right.
+
+52
+00:03:08,400 --> 00:03:15,810
+The Web development world set up to where the bugs are there to be or the error messages are there to
+
+53
+00:03:15,810 --> 00:03:16,410
+help you.
+
+54
+00:03:16,410 --> 00:03:19,020
+And that's why the next bullet is there.
+
+55
+00:03:19,020 --> 00:03:24,860
+And I'm so happy to really explain this, this bullet for you, which is why error messages are actually
+
+56
+00:03:24,870 --> 00:03:25,290
+good.
+
+57
+00:03:25,950 --> 00:03:31,500
+Error messages are a good thing because they explain where the bug is coming from.
+
+58
+00:03:31,740 --> 00:03:35,580
+May or may not be obvious, but they explain where it's coming from via the stack trace.
+
+59
+00:03:35,910 --> 00:03:39,630
+And then they also tell you are human readable explanation.
+
+60
+00:03:39,630 --> 00:03:39,870
+Right.
+
+61
+00:03:40,320 --> 00:03:47,670
+A lot of people may not realize that a human wrote that bug description, a human wrote the error that
+
+62
+00:03:47,670 --> 00:03:50,190
+you're reading a lot of the times or most of the time.
+
+63
+00:03:50,190 --> 00:03:50,480
+Right.
+
+64
+00:03:52,170 --> 00:03:54,270
+You know, it's very rare that you'll get an error.
+
+65
+00:03:54,270 --> 00:03:57,780
+That's just a bunch of, you know, gibberish and you can't read it right.
+
+66
+00:03:57,930 --> 00:03:59,550
+You know, an unknown error occurred.
+
+67
+00:03:59,550 --> 00:04:02,040
+That would be that's like every developer's nightmare.
+
+68
+00:04:02,040 --> 00:04:05,460
+That's like what how do we do, you know, how do you move forward from that?
+
+69
+00:04:05,460 --> 00:04:10,920
+And that's why errors are written by developers in a way that make it easy to debug.
+
+70
+00:04:10,920 --> 00:04:16,140
+And I'm going to show you about show you how to read errors in this course to to help you move forward
+
+71
+00:04:16,140 --> 00:04:16,500
+with that.
+
+72
+00:04:16,500 --> 00:04:23,070
+So that's why you should look forward to errors, because if you see an error, that's going to be a
+
+73
+00:04:23,070 --> 00:04:26,130
+great clue that you can move forward with fixing it.
+
+74
+00:04:26,700 --> 00:04:28,460
+And so the next bullet.
+
+75
+00:04:29,190 --> 00:04:31,200
+So that's why you should love error messages.
+
+76
+00:04:32,280 --> 00:04:36,660
+Next, I want to just talk about why debugging is actually more than just fixing bugs.
+
+77
+00:04:36,660 --> 00:04:42,180
+So not only is debugging good for fixing bugs, but also they helps you understand your app.
+
+78
+00:04:42,540 --> 00:04:46,500
+And it's almost like popping the hood of your car and looking at the engine.
+
+79
+00:04:46,800 --> 00:04:52,410
+The chrome dev tools is open, should be open all the time when you're building an app because you can
+
+80
+00:04:52,620 --> 00:04:56,400
+quickly put a breakpoint and inspect how things are working.
+
+81
+00:04:56,400 --> 00:04:56,760
+Right.
+
+82
+00:04:57,180 --> 00:04:59,490
+You can just check things and you could.
+
+83
+00:04:59,810 --> 00:05:05,780
+Research things to just validate that your code is working, and I think that you may be unfamiliar
+
+84
+00:05:05,780 --> 00:05:11,690
+with chrome dev tools if you're a beginner, and that's this is really what this course is all about,
+
+85
+00:05:11,690 --> 00:05:16,720
+using the chrome dev tools to inspect your app in addition to fixing it.
+
+86
+00:05:16,730 --> 00:05:20,900
+So once you get good at chrome dev tools, you'll be able to easily understand your app.
+
+87
+00:05:20,900 --> 00:05:24,470
+And that's what I really hope that you can get out of this course.
+
+88
+00:05:26,750 --> 00:05:32,660
+So, yeah, with this course, you succeed by debugging, not building, so other courses, you know,
+
+89
+00:05:32,660 --> 00:05:38,060
+students build, they race to build this big app and this course doesn't have a giant application.
+
+90
+00:05:38,060 --> 00:05:43,100
+And that should be a relief to you, because a lot of times you're you're typing out what I'm saying.
+
+91
+00:05:43,100 --> 00:05:46,840
+And it's not really a great engaging thing for you this course.
+
+92
+00:05:46,850 --> 00:05:49,220
+It's really focusing you on.
+
+93
+00:05:49,430 --> 00:05:52,310
+This, of course, is really just about explaining how apps work.
+
+94
+00:05:52,640 --> 00:05:58,150
+And the goal is to build an understanding of how to research and fix broken applications.
+
+95
+00:05:58,490 --> 00:06:01,190
+So goal of the app isn't to build an awesome.
+
+96
+00:06:01,460 --> 00:06:04,460
+The goal of the course isn't to build an awesome app.
+
+97
+00:06:04,460 --> 00:06:08,270
+It's to just gain an understanding of how apps work and how to fix them.
+
+98
+00:06:09,880 --> 00:06:15,520
+OK, and so next, seriously, actually try and debug the challenges in this course, there are 25 opportunities
+
+99
+00:06:15,520 --> 00:06:17,050
+for you to fix bugs.
+
+100
+00:06:17,470 --> 00:06:22,360
+Some of them might be really easy for you that you're going to roll your eyes and say, this is so easy.
+
+101
+00:06:22,360 --> 00:06:23,140
+Why is this here?
+
+102
+00:06:23,530 --> 00:06:28,960
+And others, you know, you might want to just give up entirely, but either way, just watch the solution
+
+103
+00:06:28,960 --> 00:06:29,380
+videos.
+
+104
+00:06:29,380 --> 00:06:35,050
+To understand my perspective, I try to show you honestly how I would fix them if I knew nothing about
+
+105
+00:06:35,050 --> 00:06:39,310
+bugs, even nothing about react, you know, from a complete beginners perspective.
+
+106
+00:06:39,520 --> 00:06:46,210
+And I truly think that these types of research investigations and chrome debug debugging tools can be
+
+107
+00:06:46,210 --> 00:06:48,190
+used for any app that you use.
+
+108
+00:06:48,190 --> 00:06:48,520
+Right.
+
+109
+00:06:49,330 --> 00:06:52,210
+Any type of front end project you could use these skills in.
+
+110
+00:06:52,480 --> 00:06:58,090
+And just understanding my perspective, I hope that you learn something new that you didn't learn before.
+
+111
+00:06:58,390 --> 00:07:03,520
+And so that's why I say, you know, don't just get to the end and just look at the solution of the
+
+112
+00:07:03,520 --> 00:07:03,970
+challenge.
+
+113
+00:07:03,970 --> 00:07:04,950
+That's really not the point.
+
+114
+00:07:04,960 --> 00:07:11,170
+The point is to like it's to understand the process of getting to there and to see what I do, what
+
+115
+00:07:11,170 --> 00:07:14,170
+I try, what I what kind of searches that I Google for.
+
+116
+00:07:14,620 --> 00:07:18,070
+And and then the next one, you know, pretend your job is on the line.
+
+117
+00:07:18,070 --> 00:07:24,580
+Like if in like I said in the before, if if you're if you're on the job and you don't fix the bugs,
+
+118
+00:07:25,240 --> 00:07:27,970
+you know, your customers are going to suffer from a bad experience.
+
+119
+00:07:27,970 --> 00:07:31,030
+Your coworkers are going to be asking you for help.
+
+120
+00:07:31,030 --> 00:07:37,060
+And this is really encourage you to just put yourself in that situation and just say, you know, how
+
+121
+00:07:37,060 --> 00:07:41,380
+can I learn or how can I fix this bug if, you know, my job is on the line.
+
+122
+00:07:41,380 --> 00:07:41,610
+Right.
+
+123
+00:07:42,040 --> 00:07:48,100
+And that's really why that first section's there, to just help you absorb all of those strategies before
+
+124
+00:07:48,100 --> 00:07:51,390
+you go into the second section of the challenges.
+
+125
+00:07:51,400 --> 00:07:54,780
+So the first section just really trying to absorb as much of that as you can.
+
+126
+00:07:55,090 --> 00:08:00,040
+I promise that everything that I use to debug apps in the real world is there.
+
+127
+00:08:00,370 --> 00:08:05,650
+There's no tool that I did not discuss in the first section that you wouldn't that that's missing that
+
+128
+00:08:05,650 --> 00:08:07,000
+would help you debug faster.
+
+129
+00:08:07,480 --> 00:08:08,110
+And.
+
+130
+00:08:08,230 --> 00:08:08,590
+Yeah.
+
+131
+00:08:08,710 --> 00:08:09,670
+So the next one.
+
+132
+00:08:11,230 --> 00:08:16,660
+So the prompts that you're going to read on these challenges, they're intentionally vague, so the
+
+133
+00:08:16,880 --> 00:08:20,890
+the problems that you're going to read or something like the dropdown doesn't work, please fix.
+
+134
+00:08:21,190 --> 00:08:26,530
+So in the real world, you'll be contacted by a non-technical user telling you about your broken app
+
+135
+00:08:26,860 --> 00:08:31,630
+and they will rarely tell you about a JavaScript error or even how to reproduce.
+
+136
+00:08:31,990 --> 00:08:34,530
+They will just say something like, it's broken.
+
+137
+00:08:35,110 --> 00:08:41,410
+And so I kind of wanted that experience for you so you could read that error, that you could read that
+
+138
+00:08:41,410 --> 00:08:47,710
+form of contact and you could internalize that and work through that yourself to try and understand
+
+139
+00:08:47,710 --> 00:08:48,260
+how to.
+
+140
+00:08:48,730 --> 00:08:54,400
+What are they even mean, you know, translating that in English and then, you know, putting that
+
+141
+00:08:54,400 --> 00:08:55,810
+into a diagnosis.
+
+142
+00:08:55,960 --> 00:08:57,090
+That's the root cause.
+
+143
+00:08:57,100 --> 00:09:04,210
+So that's that's why, you know, it's part of the career, really, to understand when people say things
+
+144
+00:09:04,210 --> 00:09:06,790
+are broken, that you have to do a lot of work there.
+
+145
+00:09:07,090 --> 00:09:10,690
+And like I said, they're not going to tell you about a JavaScript error or any of that stuff.
+
+146
+00:09:10,690 --> 00:09:13,630
+So I'm not going to tell you about any of that either for the prompts.
+
+147
+00:09:13,960 --> 00:09:16,570
+I'm not going to give you any hints about what's going on.
+
+148
+00:09:16,580 --> 00:09:19,090
+That's entirely up to you to debug.
+
+149
+00:09:19,090 --> 00:09:24,040
+And with the videos and the solutions, you should be able to learn how to do that.
+
+150
+00:09:26,930 --> 00:09:31,340
+OK, so why is this important, you know, everything that was created in this course is material I
+
+151
+00:09:31,340 --> 00:09:36,830
+would consider like vitally important to your career as a reactor developer, because if you if you
+
+152
+00:09:36,830 --> 00:09:41,260
+know this stuff, if you don't know this stuff, you're going to be you're definitely going to be blocked.
+
+153
+00:09:41,270 --> 00:09:42,770
+And I want to make that really clear.
+
+154
+00:09:42,770 --> 00:09:45,260
+You will get stuck if you don't know how to debug.
+
+155
+00:09:45,260 --> 00:09:51,800
+And that's why a lot of the questions that I get are people just kind of they stop their app process
+
+156
+00:09:51,800 --> 00:09:52,670
+or some of them don't.
+
+157
+00:09:52,670 --> 00:09:53,600
+Some of them keep going.
+
+158
+00:09:53,840 --> 00:09:57,800
+But, you know, maybe some of them here and there will just say, like, hey, this is an error that
+
+159
+00:09:57,800 --> 00:09:58,270
+I got.
+
+160
+00:09:58,580 --> 00:09:59,390
+Please help me.
+
+161
+00:09:59,810 --> 00:10:04,880
+You know, my reaction to that is, well, you know, I don't want to just solve the bug for you.
+
+162
+00:10:04,880 --> 00:10:07,390
+I want to show you how to debug better.
+
+163
+00:10:07,400 --> 00:10:08,960
+And so that's why I created this course.
+
+164
+00:10:08,960 --> 00:10:13,990
+Really, it's because I want to just create a course that helps people debug and fix apps.
+
+165
+00:10:14,000 --> 00:10:19,840
+I don't want to just fix bugs for people because you don't learn anything if I tell you what's wrong.
+
+166
+00:10:19,850 --> 00:10:20,120
+Right.
+
+167
+00:10:20,600 --> 00:10:21,820
+And yeah.
+
+168
+00:10:21,830 --> 00:10:25,520
+So, you know, I and you might quit entirely.
+
+169
+00:10:25,520 --> 00:10:29,600
+And that's what I really don't want to happen, because when I was first starting out, I almost quit
+
+170
+00:10:29,600 --> 00:10:32,270
+because I couldn't really get a lot of help.
+
+171
+00:10:32,270 --> 00:10:36,980
+But I was in an environment that I constantly had people that I could ask for help.
+
+172
+00:10:36,980 --> 00:10:43,940
+And it was allowed me to work with people to show me and to get me through the different types of issues
+
+173
+00:10:43,940 --> 00:10:44,690
+that I would run into.
+
+174
+00:10:46,760 --> 00:10:52,040
+OK, so the next one is the reality of opensource, and I want you to just know, like when you when
+
+175
+00:10:52,040 --> 00:10:57,170
+you look at react and when you read forums and everything, you see people talking about react and all
+
+176
+00:10:57,170 --> 00:11:01,490
+these different things like these are these just happy tools that just work all the time.
+
+177
+00:11:01,490 --> 00:11:06,290
+And that's really it just could not be further from the truth, like with the exception of like react
+
+178
+00:11:06,290 --> 00:11:12,440
+and material UI, like a lot of the other libraries out there are just going to be broken sometimes
+
+179
+00:11:12,440 --> 00:11:17,360
+and or they won't have any documentation, you know, meta material UI and react or the exceptions.
+
+180
+00:11:17,360 --> 00:11:22,520
+They have great documentation and great, you know, examples even react.
+
+181
+00:11:22,520 --> 00:11:25,630
+I would say, you know, they could even have better documentation.
+
+182
+00:11:25,640 --> 00:11:25,790
+Right.
+
+183
+00:11:25,810 --> 00:11:31,100
+So even like the big libraries, like react, they may not be able to give you the clues or whatever
+
+184
+00:11:31,100 --> 00:11:35,090
+that you need to, you know, the examples that you want to use in your app.
+
+185
+00:11:36,200 --> 00:11:40,670
+And so the industry is moving too quickly to have an easy path for beginners.
+
+186
+00:11:40,670 --> 00:11:40,850
+Right.
+
+187
+00:11:40,850 --> 00:11:45,830
+Like, if you look at the bridge picture on the right, you can kind of see this is like there's these
+
+188
+00:11:45,830 --> 00:11:47,420
+awesome tools out there.
+
+189
+00:11:47,420 --> 00:11:48,710
+There's awesome libraries.
+
+190
+00:11:48,710 --> 00:11:51,230
+But at some point it just kind of falls off.
+
+191
+00:11:51,590 --> 00:11:54,020
+And at that point you'll get stuck.
+
+192
+00:11:54,020 --> 00:12:00,200
+And and I want to help you to just build on these tools yourself by learning how they work and learning
+
+193
+00:12:00,200 --> 00:12:03,750
+where you can really go inside of the tools themselves.
+
+194
+00:12:03,750 --> 00:12:06,770
+So go inside of those libraries and learn how they work.
+
+195
+00:12:06,820 --> 00:12:10,730
+Like I said, documentation generally isn't good for a lot of these libraries that you're going to find.
+
+196
+00:12:10,730 --> 00:12:15,290
+And so that's really where you need to be that resourceful of where you're going and you're reading
+
+197
+00:12:15,290 --> 00:12:15,830
+that code.
+
+198
+00:12:16,970 --> 00:12:18,830
+So never assume things will just work.
+
+199
+00:12:18,830 --> 00:12:19,100
+Right.
+
+200
+00:12:20,240 --> 00:12:22,730
+You know, it's good to it's good to assume that things will work.
+
+201
+00:12:22,730 --> 00:12:26,030
+But when you when you do that, you might get frustrated.
+
+202
+00:12:26,030 --> 00:12:31,970
+So you want to assume that if you run into a bug, you want to be prepared for that by being able to
+
+203
+00:12:31,970 --> 00:12:39,230
+debug and having those issues that those issues set up, you know, the GitHub issues set up.
+
+204
+00:12:39,230 --> 00:12:42,320
+In other words, you're looking through those GitHub issues right away.
+
+205
+00:12:42,740 --> 00:12:48,350
+You know, one of the things that I do when I'm looking at libraries is even, you know, if there's
+
+206
+00:12:48,350 --> 00:12:53,360
+a library that doesn't have any GitHub stars or something, even though that might seem like a superficial,
+
+207
+00:12:53,360 --> 00:12:58,070
+like metric of how many people are using that library, that's a really important thing, because if
+
+208
+00:12:58,070 --> 00:13:03,040
+there's no one who's use this library for three years or five years, that's a good sign.
+
+209
+00:13:03,050 --> 00:13:04,700
+It might not work for your react app.
+
+210
+00:13:04,730 --> 00:13:11,300
+So in general, I like to stick to really popular projects that are complete in terms of like developers
+
+211
+00:13:11,300 --> 00:13:17,390
+have used them a lot and there's a lot of history there where developers have run into all the bugs
+
+212
+00:13:17,390 --> 00:13:22,430
+already because if you're using a library that no one else uses and you run into a bug with it, that's
+
+213
+00:13:22,430 --> 00:13:28,510
+going to be a lot harder to fix than a common library like react, because we've run into bugs with
+
+214
+00:13:28,520 --> 00:13:29,810
+react all the time.
+
+215
+00:13:29,810 --> 00:13:35,510
+And that's that's still hard for beginners to or anyone professionals to even fix.
+
+216
+00:13:35,510 --> 00:13:38,900
+Right when you run into a bug in a library like that.
+
+217
+00:13:39,290 --> 00:13:44,660
+So imagine how hard that would be to to troubleshoot that in another library that only a couple of people
+
+218
+00:13:44,660 --> 00:13:45,100
+are using.
+
+219
+00:13:45,440 --> 00:13:48,260
+So be careful what libraries you pick up.
+
+220
+00:13:48,260 --> 00:13:52,940
+And if you pick up a you know, if you use a library like reactor material, you are going to be in
+
+221
+00:13:53,150 --> 00:13:54,140
+a lot better shape.
+
+222
+00:13:54,530 --> 00:14:01,460
+But just know that use the use the communities that are available to look up what's going on in those
+
+223
+00:14:01,460 --> 00:14:06,920
+communities and and debug the source code when you have two or frequently.
+
+224
+00:14:08,040 --> 00:14:12,710
+Okay, so the last one, this is kind of a positive thing that we're leaving on here.
+
+225
+00:14:13,160 --> 00:14:14,390
+You will be a hero.
+
+226
+00:14:15,020 --> 00:14:20,930
+There's no question that when you get on the job and somebody sends you a broken app, it's something
+
+227
+00:14:20,930 --> 00:14:22,790
+that people are frustrated with.
+
+228
+00:14:22,790 --> 00:14:27,980
+And nobody wants to figure the, you know, the bugs out like non-technical people.
+
+229
+00:14:27,980 --> 00:14:28,460
+Forget it.
+
+230
+00:14:28,460 --> 00:14:29,540
+They can't fix the bugs.
+
+231
+00:14:30,170 --> 00:14:34,490
+Even engineers on your team, they're going to they're not going to be the first person usually to jump
+
+232
+00:14:34,490 --> 00:14:35,330
+onto a bug.
+
+233
+00:14:35,660 --> 00:14:37,160
+They're working on their own projects.
+
+234
+00:14:37,160 --> 00:14:43,280
+And so when I say love bugs, like I mean, like you should love them in the sense that you can take
+
+235
+00:14:43,280 --> 00:14:46,280
+that on and figure that out yourself, you'll be a hero.
+
+236
+00:14:46,280 --> 00:14:47,180
+You'll be praised.
+
+237
+00:14:47,420 --> 00:14:48,710
+People will will love it.
+
+238
+00:14:48,710 --> 00:14:50,840
+They'll be so happy that you fixed that issue for them.
+
+239
+00:14:51,110 --> 00:14:58,160
+And that's one great way to to succeed on the job and keep your job charging headfirst into a bug,
+
+240
+00:14:58,160 --> 00:14:59,210
+you know, shows bravery.
+
+241
+00:14:59,210 --> 00:15:05,510
+So even if you can't figure out a bug, it's great to just drop that information for your other developers
+
+242
+00:15:05,510 --> 00:15:13,310
+on your team, like, hey, I took steps X, Y and Z and I learned this, but I didn't go this further,
+
+243
+00:15:13,310 --> 00:15:15,110
+so I didn't get this far right.
+
+244
+00:15:15,110 --> 00:15:16,580
+I got stuck at this point.
+
+245
+00:15:16,850 --> 00:15:23,300
+So even just doing that for other developers is really helpful to other developers can help you to continue
+
+246
+00:15:23,630 --> 00:15:24,260
+troubleshooting.
+
+247
+00:15:24,260 --> 00:15:28,400
+It's almost like you're a detective and you or your Indiana Jones.
+
+248
+00:15:28,400 --> 00:15:28,580
+Right.
+
+249
+00:15:28,580 --> 00:15:33,020
+Like, imagine if Indiana Jones was like, you know, I can't get to the temple.
+
+250
+00:15:33,020 --> 00:15:33,980
+How do you get to the temple?
+
+251
+00:15:33,980 --> 00:15:34,180
+Right.
+
+252
+00:15:34,190 --> 00:15:37,730
+No, he's going to go all the way up to the temple and he's going to get all the way up there and figure
+
+253
+00:15:37,730 --> 00:15:38,330
+it out himself.
+
+254
+00:15:38,330 --> 00:15:38,540
+Right.
+
+255
+00:15:38,540 --> 00:15:44,160
+So, you know, you're not you're not Indiana Jones yet, but you're going to you're going to be the
+
+256
+00:15:44,160 --> 00:15:45,740
+the person who's going to try.
+
+257
+00:15:45,810 --> 00:15:52,620
+Right, like at least go as far as you can and when you when you finally do get stuck and you've exhausted
+
+258
+00:15:52,620 --> 00:15:58,800
+all of your options, that's when you can really contact other developers or file a GitHub issue or
+
+259
+00:15:58,800 --> 00:16:02,430
+ask a question on stack overflow or read it and who knows?
+
+260
+00:16:02,430 --> 00:16:06,870
+You know, maybe you might be the person that ask that question and figure out a bug in reactor, another
+
+261
+00:16:06,870 --> 00:16:07,400
+library.
+
+262
+00:16:07,800 --> 00:16:10,980
+So do as much as you can on your own.
+
+263
+00:16:10,980 --> 00:16:13,350
+And, you know, you'll you'll go along.
+
+264
+00:16:13,530 --> 00:16:14,350
+You'll go really far.
+
+265
+00:16:14,370 --> 00:16:15,570
+So that's it.
+
+266
+00:16:16,140 --> 00:16:16,680
+Good luck.
+
+267
+00:16:16,680 --> 00:16:18,840
+And that's all I wanted to say about this.
+
+268
+00:16:18,870 --> 00:16:19,290
+Thanks.

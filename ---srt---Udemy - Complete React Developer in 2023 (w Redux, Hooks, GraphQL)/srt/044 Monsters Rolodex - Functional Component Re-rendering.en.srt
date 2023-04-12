@@ -1,0 +1,363 @@
+1
+00:00:00,150 --> 00:00:01,080
+Welcome back, everyone.
+
+2
+00:00:01,770 --> 00:00:07,200
+In this video, we are going to talk about rendering and re rendering inside of our functional components
+
+3
+00:00:07,590 --> 00:00:13,500
+and specifically we're going to talk about how hooks and more specifically the use state hook fits inside
+
+4
+00:00:13,500 --> 00:00:14,130
+all of this.
+
+5
+00:00:14,760 --> 00:00:20,010
+To begin with, I have console logged out the string render online eight at the very top of our functional
+
+6
+00:00:20,010 --> 00:00:23,700
+component, and we're still continuing to log out our search field value.
+
+7
+00:00:24,330 --> 00:00:30,780
+What I want you to think about is whenever right now inside of our application, let's clear this.
+
+8
+00:00:32,000 --> 00:00:35,450
+When I refresh, we see render and then we see the empty string.
+
+9
+00:00:36,460 --> 00:00:44,140
+Whenever I type anything, you'll notice that render is getting called first and then the string value
+
+10
+00:00:44,140 --> 00:00:44,860
+is being called.
+
+11
+00:00:45,760 --> 00:00:54,520
+What this means is that React is running this entire function every single time it needs to re render
+
+12
+00:00:54,520 --> 00:00:57,070
+a component that is a functional component.
+
+13
+00:00:57,610 --> 00:00:59,050
+This is a very important thing.
+
+14
+00:00:59,740 --> 00:01:06,640
+Previously, inside of our class components, whenever there were mounting and update cycles render
+
+15
+00:01:06,640 --> 00:01:12,730
+would get run and update cycles ran whenever props changed or whenever state updated.
+
+16
+00:01:13,670 --> 00:01:20,180
+The only thing that ran, though, was whatever code was inside of the render method with functional
+
+17
+00:01:20,180 --> 00:01:22,130
+components, we don't have a render method.
+
+18
+00:01:22,490 --> 00:01:28,040
+This entire functional component, you can kind of see as the same thing as the render method.
+
+19
+00:01:28,460 --> 00:01:35,210
+Essentially, whenever React has determined that a functional component needs to render or re render,
+
+20
+00:01:35,390 --> 00:01:38,660
+it will just run the entire function top to bottom.
+
+21
+00:01:39,920 --> 00:01:45,050
+The way that it determines whether or not a functional component needs to update is the same as a class
+
+22
+00:01:45,050 --> 00:01:51,050
+component whenever the props change, which is the arguments inside of a function that we have not worked
+
+23
+00:01:51,050 --> 00:01:51,430
+with yet.
+
+24
+00:01:51,440 --> 00:01:52,150
+But we will soon.
+
+25
+00:01:52,160 --> 00:01:55,610
+But just remember that whatever prompts change, the whole function gets run.
+
+26
+00:01:55,610 --> 00:01:58,310
+So Rack is determining, Oh, I need to re render the component.
+
+27
+00:01:58,520 --> 00:02:00,710
+Let me run the entire functional component.
+
+28
+00:02:01,400 --> 00:02:07,820
+Similarly, whenever state changes, it will also rerun this entire functional component.
+
+29
+00:02:08,240 --> 00:02:11,870
+That is the only way reac knows there's probably new UI.
+
+30
+00:02:12,080 --> 00:02:14,870
+How do I determine what that new UI is going to be?
+
+31
+00:02:15,260 --> 00:02:21,590
+Let me just rerun the entire function so that whatever gets returned from this function is going to
+
+32
+00:02:21,590 --> 00:02:27,440
+have the latest variables, latest props to state values so that I know what the new UI will look like
+
+33
+00:02:27,620 --> 00:02:30,620
+based on the returned GSX from this function.
+
+34
+00:02:31,220 --> 00:02:33,320
+This is the thing to remember about functional components.
+
+35
+00:02:33,620 --> 00:02:35,150
+You cannot just run part of this function.
+
+36
+00:02:35,150 --> 00:02:38,030
+This whole function needs to rerun every single time.
+
+37
+00:02:38,950 --> 00:02:40,660
+So what about you, state and this hook?
+
+38
+00:02:42,400 --> 00:02:47,980
+The thing about you state, is that you are getting back this state value and under the hood, what
+
+39
+00:02:47,980 --> 00:02:53,140
+react does is React will actually check whether or not this state value is different.
+
+40
+00:02:54,210 --> 00:02:59,190
+Only went through that hard a quality, it notices that there are different values.
+
+41
+00:02:59,490 --> 00:03:02,490
+Only then will react actually rerun this value.
+
+42
+00:03:02,970 --> 00:03:08,280
+So currently, every time our event changes, the state value is updating because we're either typing
+
+43
+00:03:08,280 --> 00:03:11,430
+new characters into the string or removing characters from the string.
+
+44
+00:03:11,670 --> 00:03:12,330
+We saw that.
+
+45
+00:03:12,900 --> 00:03:20,700
+However, if I were to copy search field and just call set search field instead and save this every
+
+46
+00:03:20,700 --> 00:03:27,060
+time we type into this search box, I don't care about what the string you're giving me back is.
+
+47
+00:03:27,630 --> 00:03:32,400
+I just want you to set the value of search field to the current search field value.
+
+48
+00:03:33,120 --> 00:03:36,720
+If we do this and we refresh, we'll see.
+
+49
+00:03:38,530 --> 00:03:44,150
+Is that despite the fact that I'm typing in these characters, we're not seeing any of the console.log,
+
+50
+00:03:44,150 --> 00:03:44,740
+the fire.
+
+51
+00:03:45,280 --> 00:03:51,310
+And the reason for that is because React is calling our set, our function, our set search field,
+
+52
+00:03:51,910 --> 00:03:54,240
+but it's just not giving it a different value.
+
+53
+00:03:54,250 --> 00:04:01,090
+So React is smart enough to know, oh, as this state value is the same value, then don't rerun this
+
+54
+00:04:01,090 --> 00:04:01,540
+function.
+
+55
+00:04:02,200 --> 00:04:08,650
+And what this tells us, it's not actually set a search field that triggers a rendering of a component.
+
+56
+00:04:09,130 --> 00:04:12,280
+It's actually when the state value changes.
+
+57
+00:04:13,270 --> 00:04:20,860
+In the context of our current you state, if the current string value of our state is the same as the
+
+58
+00:04:20,860 --> 00:04:25,150
+new string value coming in, literally the string values are the exact same.
+
+59
+00:04:25,240 --> 00:04:30,520
+Then we will not render meaning that we will not run this function from top to bottom again.
+
+60
+00:04:32,060 --> 00:04:33,290
+We can easily test this.
+
+61
+00:04:34,040 --> 00:04:38,570
+Let's say I initialized the initial state value as a string that contains the letter A.
+
+62
+00:04:39,710 --> 00:04:45,320
+Let's update so that instead of passing the search field and we're passing back in the string value
+
+63
+00:04:45,320 --> 00:04:47,450
+that we're getting from the events of our search box.
+
+64
+00:04:48,390 --> 00:04:54,390
+Remember are search boxes, internal string state is completely separate from our you state, meaning
+
+65
+00:04:54,390 --> 00:04:59,040
+that whatever the state value is does not actually affect the value that a search box has inside of
+
+66
+00:04:59,040 --> 00:04:59,160
+it.
+
+67
+00:04:59,910 --> 00:05:05,220
+The way that we can easily see this is that with that initialization, the initial string value is a.
+
+68
+00:05:05,790 --> 00:05:08,490
+But our search box is an empty string.
+
+69
+00:05:08,850 --> 00:05:13,730
+Of course it is because we're not actually taking our state value and putting it into the search box.
+
+70
+00:05:13,740 --> 00:05:18,720
+It's the other way we're taking out whatever value is being typed into the search box and we're trying
+
+71
+00:05:18,720 --> 00:05:21,270
+to remedy it against what we have in our app.
+
+72
+00:05:22,190 --> 00:05:26,270
+So here what should happen is that when I type the letter A..
+
+73
+00:05:26,480 --> 00:05:31,940
+We should see no consul logs because our current state value is a.
+
+74
+00:05:32,480 --> 00:05:38,870
+So if I type a, we're going to get the letter a string and it's going to say, Oh, the value of the
+
+75
+00:05:39,230 --> 00:05:43,100
+string you typed in is the same value as what I have inside of my state.
+
+76
+00:05:43,460 --> 00:05:47,780
+So our function is not going to rerun and that's what we see.
+
+77
+00:05:47,790 --> 00:05:48,350
+We just type in.
+
+78
+00:05:48,770 --> 00:05:49,430
+Nothing happened.
+
+79
+00:05:49,820 --> 00:05:56,060
+But if I keep typing it in, then we see we're now rerunning the component because of the string value
+
+80
+00:05:56,060 --> 00:05:59,450
+is now different than what we have inside of our internal state.
+
+81
+00:06:00,050 --> 00:06:03,350
+And now everything works as expected.
+
+82
+00:06:03,830 --> 00:06:10,820
+So that's the thing to understand about the way that react determines using state inside of your functional
+
+83
+00:06:10,820 --> 00:06:13,730
+component, whether or not it needs to re render.
+
+84
+00:06:14,240 --> 00:06:19,040
+We'll talk more about this as we build out our application with the different hooks and some more complex
+
+85
+00:06:19,040 --> 00:06:21,020
+cases when putting this kind of stuff together.
+
+86
+00:06:21,440 --> 00:06:25,610
+But this is really the most important difference about functional components and class components.
+
+87
+00:06:26,000 --> 00:06:31,400
+You need to stop thinking about functional components and life cycles and start seeing it instead,
+
+88
+00:06:31,550 --> 00:06:36,710
+as when does react determined that I need to rerun my entire functional component.
+
+89
+00:06:37,760 --> 00:06:38,690
+That's really the difference.
+
+90
+00:06:38,960 --> 00:06:46,190
+So with that, let's move on to completely changing the remainder of our class app into this functional
+
+91
+00:06:46,190 --> 00:06:46,850
+component.

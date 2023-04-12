@@ -1,0 +1,395 @@
+1
+00:00:00,480 --> 00:00:01,560
+Welcome back, everyone.
+
+2
+00:00:02,490 --> 00:00:09,390
+In this video, we are going to discuss getting our products up on to Firestorm, what we see here is
+
+3
+00:00:09,390 --> 00:00:13,860
+just a limited array that we have hardcoded into our front and application.
+
+4
+00:00:14,340 --> 00:00:19,890
+We have a larger array that more accurate reflects these five different directory categories that are
+
+5
+00:00:19,890 --> 00:00:21,030
+available for products.
+
+6
+00:00:21,450 --> 00:00:26,460
+But more importantly, the reason why you want your products not to live on the frontend is because
+
+7
+00:00:26,460 --> 00:00:33,450
+when you think about most applications, especially e-commerce applications, the data is actually spread
+
+8
+00:00:33,450 --> 00:00:38,370
+across hundreds of thousands, if not millions, of different products.
+
+9
+00:00:38,700 --> 00:00:44,460
+It makes zero sense for us to store that on the front end because that becomes inconceivably large and
+
+10
+00:00:44,790 --> 00:00:45,960
+arduous to work with.
+
+11
+00:00:46,470 --> 00:00:48,480
+Also, if anything needs to change.
+
+12
+00:00:48,720 --> 00:00:51,300
+What happens if you have to change it in the frontend?
+
+13
+00:00:51,420 --> 00:00:52,770
+That makes it very limited sense.
+
+14
+00:00:52,770 --> 00:00:55,860
+To do that, you most likely want to change it in a database somewhere.
+
+15
+00:00:56,100 --> 00:00:59,640
+Oftentimes, these products might also be split across multiple countries.
+
+16
+00:00:59,820 --> 00:01:01,500
+Some countries might receive some products.
+
+17
+00:01:01,500 --> 00:01:02,610
+Other countries might not.
+
+18
+00:01:03,030 --> 00:01:08,490
+By having a centralized source where you can control the data, it becomes much easier of a strategy
+
+19
+00:01:08,490 --> 00:01:11,280
+of how you distribute that data and those products.
+
+20
+00:01:11,490 --> 00:01:17,220
+So for us, we need to figure out how to mimic at least interacting with such a resource of a backend,
+
+21
+00:01:17,400 --> 00:01:20,550
+such as a data API endpoint for our products.
+
+22
+00:01:20,820 --> 00:01:26,850
+Luckily for us, we can figure out how to store that into our Crown Clothing DB, and that's what we're
+
+23
+00:01:26,850 --> 00:01:28,350
+going to focus on right now.
+
+24
+00:01:29,160 --> 00:01:32,160
+To begin with, though, there's a couple of things that I want to discuss with you.
+
+25
+00:01:32,610 --> 00:01:38,670
+When you look inside of my database right now in Firestorm, I've currently got these categories just
+
+26
+00:01:38,670 --> 00:01:41,520
+to show you what the final result that we're moving towards is.
+
+27
+00:01:41,820 --> 00:01:43,350
+So don't worry, Zegers doesn't have it.
+
+28
+00:01:43,380 --> 00:01:46,500
+Of course it wasn't because we haven't actually uploaded anything there.
+
+29
+00:01:47,010 --> 00:01:52,140
+But the main reason I want to highlight this to you is because I want to show you the general structure
+
+30
+00:01:52,170 --> 00:01:53,160
+of Firestorm.
+
+31
+00:01:53,760 --> 00:01:57,030
+If you've ever worked with no SQL databases such as MongoDB.
+
+32
+00:01:57,420 --> 00:02:01,140
+This Firestorm database is actually pretty much the same thing.
+
+33
+00:02:02,010 --> 00:02:07,120
+And when I talk about that, what I really mean is that there's primarily two different types of databases.
+
+34
+00:02:07,140 --> 00:02:09,930
+There is SQL databases and NoSQL databases.
+
+35
+00:02:10,350 --> 00:02:16,650
+A single database you can kind of see as if the structure of what the data being housed inside of an
+
+36
+00:02:16,650 --> 00:02:17,800
+individual collection.
+
+37
+00:02:18,180 --> 00:02:24,870
+So if you think of a collection for us as categories looking at each of these five different document
+
+38
+00:02:24,870 --> 00:02:29,580
+items I have, what do they look like when you consider their shape?
+
+39
+00:02:30,360 --> 00:02:33,420
+Here we see that hat contains items and titles.
+
+40
+00:02:33,900 --> 00:02:38,230
+Items is an array that contains objects that have the shape of ID.
+
+41
+00:02:38,520 --> 00:02:40,110
+Image your name and price.
+
+42
+00:02:40,650 --> 00:02:43,620
+If you look through them, they all have this same shape.
+
+43
+00:02:44,600 --> 00:02:50,720
+So here, even though what we have with this firestorm is a NoSQL database.
+
+44
+00:02:51,080 --> 00:02:55,400
+What I want you to think about is that with a single database, this is very rigid.
+
+45
+00:02:55,790 --> 00:02:59,330
+There's actually a lot more other additional nuances to sequel.
+
+46
+00:02:59,450 --> 00:03:04,490
+But the main thing you want to think about is just that the shape and the expectation of what fields
+
+47
+00:03:04,490 --> 00:03:10,970
+are present inside of every single document of one collection must be the same.
+
+48
+00:03:11,450 --> 00:03:17,270
+So that means that every single document and categories must have an items as an array and inside of
+
+49
+00:03:17,270 --> 00:03:21,330
+the array, they all must have the same values of like I.D. image.
+
+50
+00:03:21,330 --> 00:03:25,160
+Your name and price similarity title must be a strength.
+
+51
+00:03:26,100 --> 00:03:30,810
+So you might be wondering, well, you're in this five star database, if this is not in that shape,
+
+52
+00:03:30,810 --> 00:03:33,510
+why is it that all of these still look the same?
+
+53
+00:03:34,440 --> 00:03:38,640
+So that's actually one of the things about using a no skill database.
+
+54
+00:03:39,270 --> 00:03:46,230
+While it is flexible in the sense that it's not held by that same ruleset, meaning that on this set
+
+55
+00:03:46,230 --> 00:03:51,150
+of categories, I could easily make a new document, for example, and let's say we call it something
+
+56
+00:03:51,150 --> 00:03:54,450
+new, let's say we call it kids, meaning that we have some kids clothes.
+
+57
+00:03:55,230 --> 00:04:00,900
+If I save this and let's say what I'm going to add as well is those fields on honor.
+
+58
+00:04:01,440 --> 00:04:04,790
+What I could do is I could actually add an age property.
+
+59
+00:04:05,040 --> 00:04:09,750
+And this might point to string, and the string might say, Hey, it's between 11 and 18.
+
+60
+00:04:10,230 --> 00:04:13,890
+Similarly, I could add even yet another field, for example.
+
+61
+00:04:13,890 --> 00:04:21,360
+Maybe I could add address and the address might be a array, and this array might contain values of
+
+62
+00:04:21,360 --> 00:04:22,980
+the location, for example.
+
+63
+00:04:23,850 --> 00:04:31,020
+Instead of having something like that, I could have a map and a map you can see as a object, except
+
+64
+00:04:31,020 --> 00:04:36,420
+the only difference is that with a map, the objects all have unique fields, meaning that you can't
+
+65
+00:04:36,420 --> 00:04:37,710
+have duplicate fields.
+
+66
+00:04:38,550 --> 00:04:43,320
+So in this sense, if we think about this map, the field for a dress might be city.
+
+67
+00:04:43,890 --> 00:04:44,790
+So let's see.
+
+68
+00:04:44,790 --> 00:04:47,460
+In our particular case, one city is Toronto.
+
+69
+00:04:47,880 --> 00:04:52,830
+But then I could also add another one for another different city.
+
+70
+00:04:53,460 --> 00:04:55,410
+And that city might be New York.
+
+71
+00:04:56,400 --> 00:05:03,150
+I can even in this group of a race where there all maps, I can make a new one where the third one is
+
+72
+00:05:03,150 --> 00:05:03,630
+a string.
+
+73
+00:05:03,720 --> 00:05:05,520
+And for some reason, I could say Beijing.
+
+74
+00:05:06,240 --> 00:05:07,230
+None of this matters.
+
+75
+00:05:07,650 --> 00:05:15,390
+I can still equally save this document, and this field will live alongside these other document objects.
+
+76
+00:05:16,110 --> 00:05:19,860
+So really, the main benefit of this is that you get a lot of flexibility.
+
+77
+00:05:20,220 --> 00:05:22,740
+You don't really have to adhere to any kind of structure.
+
+78
+00:05:22,740 --> 00:05:25,380
+You can just save whatever you want anywhere you want.
+
+79
+00:05:25,950 --> 00:05:29,790
+But the problem with this is that your data becomes really inconsistent.
+
+80
+00:05:30,090 --> 00:05:35,400
+Can you imagine mapping through this array of potentially six different documents?
+
+81
+00:05:35,670 --> 00:05:39,840
+But for some reason, the shape of all of these objects are completely different.
+
+82
+00:05:40,320 --> 00:05:45,360
+This becomes extremely unpredictable and very hard to work with, which is why, despite the fact that
+
+83
+00:05:45,360 --> 00:05:51,000
+this might be a NoSQL database and you can save whatever you want onto it, we want to be very diligent
+
+84
+00:05:51,000 --> 00:05:55,770
+when it comes to what we're actually saving the structure of this data to be.
+
+85
+00:05:56,460 --> 00:05:59,070
+So let's take a quick look at this structure.
+
+86
+00:05:59,280 --> 00:06:02,580
+So I'm just going to delete that kids document that I made.
+
+87
+00:06:03,300 --> 00:06:08,400
+Really, what this is is that these are just objects that contain an item's field, as I mentioned,
+
+88
+00:06:08,430 --> 00:06:11,880
+that has these objects as well as a title field.
+
+89
+00:06:12,510 --> 00:06:19,050
+So what we're going to do is we are going to try and actually add this into our own firestorm.
+
+90
+00:06:19,380 --> 00:06:24,670
+I don't expect you to manually create every single document individually.
+
+91
+00:06:24,690 --> 00:06:27,450
+That would be absolutely a waste of time.
+
+92
+00:06:27,930 --> 00:06:31,830
+So what I'm going to do is actually give you the JSON object and then we're going to figure out how
+
+93
+00:06:31,830 --> 00:06:34,380
+to create some utility functions that allow us to do so.
+
+94
+00:06:34,800 --> 00:06:38,760
+But the primary thing I want you to see is that this is the type of database we're going to be working
+
+95
+00:06:38,760 --> 00:06:38,970
+with.
+
+96
+00:06:39,840 --> 00:06:44,720
+So now that we know this, let's try and create our own categories in the next video.
+
+97
+00:06:45,150 --> 00:06:49,710
+But before that, I'm just going to delete this category so that we're all starting in the same place.
+
+98
+00:06:50,280 --> 00:06:55,470
+So here I'm just deleting the categories, and now my database probably looks like yours.
+
+99
+00:06:56,190 --> 00:07:00,300
+So let's get started with adding our products into our store.
